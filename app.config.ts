@@ -2,7 +2,7 @@ import type { NavGroup } from './types/nav'
 
 export default defineAppConfig({
     author: {
-        name: '纸鹿本鹿',
+        name: '纸鹿摸鱼处',
     },
     description: '纸鹿至麓不知路，支炉制露不止漉。',
     footer: {
@@ -13,7 +13,8 @@ export default defineAppConfig({
         {
             title: '',
             list: [
-                { icon: 'ph:house-duotone', title: '主页', link: '/' },
+                { icon: 'ph:files-duotone', title: '文章', link: '/' },
+                { icon: 'ph:archive-duotone', title: '归档', link: '/archive' },
             ],
         },
         {

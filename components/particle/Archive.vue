@@ -6,7 +6,6 @@ import type ArticleProps from '~/types/article'
 const props = defineProps<ArticleProps>()
 
 const publishedLabel = getPostTime(props.date)
-const updatedLabel = getPostTime(props.updated)
 function getPostTime(date: string) {
     const postDate = new Date(date)
     const now = new Date()
@@ -23,59 +22,35 @@ function getPostTime(date: string) {
 </script>
 
 <template>
-    <ZRawLink class="article-card">
-        <div class="article-header">
-            <time v-if="publishedLabel !== updatedLabel" :datetime="updated">
-                {{ updatedLabel }}</time>
-            <time :datetime="date">{{ publishedLabel }}</time>
-        </div>
-        <h2 class="article-title">
+    <ZRawLink class="article-line">
+        <time :datetime="date">{{ publishedLabel }}</time>
+        <span class="article-title">
             {{ title }}
-        </h2>
-        <p class="article-descrption">
-            {{ description }}
-        </p>
+        </span>
         <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" />
     </ZRawLink>
 </template>
 
 <style lang="scss" scoped>
-.article-card {
+.article-line {
     display: block;
     position: relative;
     overflow: hidden;
     padding: 8px;
     border-radius: 8px;
-    text-shadow: 0 0 4px var(--c-bg-1), 0 0 8px var(--c-bg-1);
     transition: all 0.2s;
 
     &:hover {
         background-color: var(--c-primary-soft);
+
+        .article-cover {
+            width: 50%;
+        }
     }
 
     >* {
         margin: 8px;
     }
-}
-
-.article-header {
-    display: flex;
-    gap: 0.8em;
-    font-size: 0.8em;
-    color: var(--c-text-2);
-
-    >time + time {
-        color: var(--c-text-3);
-    }
-}
-
-.article-title {
-    font-size: 1.2em;
-    font-weight: normal;
-}
-
-.article-descrption {
-    color: var(--c-text-2);
 }
 
 .article-cover {

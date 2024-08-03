@@ -1,0 +1,24 @@
+.article {
+    h1, h2, h3, h4, h5, h6 {
+        margin: 1.5em 0;
+    }
+
+    p {
+        line-height: 2;
+    }
+
+    li, ul {
+        margin: 0.5em 0;
+        padding: 0 0 0 1em;
+    }
+
+    &.md-story {
+        h1, h2, h3, h4, h5, h6 {
+            text-align: center;
+        }
+
+        p {
+            text-indent: 2em;
+        }
+    }
+}

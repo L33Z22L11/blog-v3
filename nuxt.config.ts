@@ -26,6 +26,7 @@ export default defineNuxtConfig({
 
     css: [
         '@/assets/main.scss',
+        '@/assets/article.scss',
     ],
 
     devtools: { enabled: false },
