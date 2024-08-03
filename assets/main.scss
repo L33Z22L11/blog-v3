@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color: var(--c-primary-3);
+}
+
+:root {
+    background-color: var(--c-bg-1);
+    font-family: system-ui, sans-serif;
+    color: var(--c-text-1);
+    scrollbar-color: var(--c-text-3) var(--c-bg-2);
+}
+
+code, pre {
+    /* stylelint-disable-next-line font-family-name-quotes */
+    font-family: "Sarasa Mono SC", SFMono-Regular, "Fira Code", "JetBrains Mono", "Cascadia Code", Monaco, "Noto Sans Mono", Consolas, "monospace", monospace;
+}
+
+::selection {
+    background-color: var(--c-primary-2);
+}
+
+p {
+    line-height: 1.4;
+
+    & + & {
+        margin-top: 0.5em;
+    }
+}
+
+mark {
+    background: linear-gradient(var(--c-primary-2), var(--c-primary-2)) no-repeat left bottom / 100% 0.3em;
+    text-decoration: none;
+    color: var(--c-primary-1);
+    transition: 0.2s;
+    animation: line-spread 0.5s;
+
+    @keyframes line-spread {
+        from { background-size: 0 0.3em; }
+    }
+
+    &:hover {
+        background-size: 100% 50%;
+    }
+}
+
+.text-primary {
+    color: var(--c-primary-1);
+}
+
+.wrapper {
+    max-width: 768px;
+    margin: 0 auto;
+}
