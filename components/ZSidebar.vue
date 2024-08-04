@@ -12,24 +12,21 @@ const sidebarStore = useSidebarStore()
         </header>
         <nav class="sidebar-nav">
             <template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">
-                <h2 v-if="group.title">
+                <h3 v-if="group.title">
                     {{ group.title }}
-                </h2>
+                </h3>
                 <ul>
-                    <li v-for="(item, itemIndex) in group.list" :key="itemIndex">
-                        <NuxtLink :to="item.link" :target="item.external ? '_blank' : ''">
+                    <li v-for="(item, itemIndex) in group.items" :key="itemIndex">
+                        <ZRawLink :to="item.url">
                             <Icon :name="item.icon" />
-                            <span class="title">{{ item.title }}</span>
-                            <Icon v-if="item.external" class="external-tip" name="ph:arrow-up-right" />
-                        </NuxtLink>
+                            <span class="nav-text">{{ item.text }}</span>
+                        </ZRawLink>
                     </li>
                 </ul>
             </template>
         </nav>
         <footer class="sidebar-footer">
             <ZThemeToggle />
-            <br>
-            <p>{{ appConfig.footer.copyright }}<br>{{ appConfig.footer.message }}</p>
         </footer>
     </aside>
     <Transition>
@@ -114,15 +111,13 @@ const sidebarStore = useSidebarStore()
     overflow: auto;
     padding: 0.5rem;
 
-    h2 {
+    h3 {
         margin: 2rem 0 1rem 1rem;
-        font-size: 1em;
-        font-weight: normal;
+        font: inherit;
         color: var(--c-text-2);
     }
 
     li {
-        display: grid;
         margin: 6px 0;
 
         >a {
@@ -152,7 +147,7 @@ const sidebarStore = useSidebarStore()
                 font-size: 1.5rem;
             }
 
-            .title {
+            .nav-text {
                 flex-grow: 1;
             }
 

@@ -1,29 +1,15 @@
 <script setup lang="ts">
-import { format, formatDistanceToNow } from 'date-fns'
-import { zhCN } from 'date-fns/locale'
+import { format } from 'date-fns'
 import type ArticleProps from '~/types/article'
 
 const props = defineProps<ArticleProps>()
 
-const publishedLabel = getPostTime(props.date)
-function getPostTime(date: string) {
-    const postDate = new Date(date)
-    const now = new Date()
-    if (postDate.getTime() > now.getTime() - 1000 * 60 * 60 * 24 * 7) {
-        return formatDistanceToNow(postDate, { addSuffix: true, locale: zhCN })
-    }
-    else if (postDate.getFullYear() === now.getFullYear()) {
-        return format(postDate, 'M月d日')
-    }
-    else {
-        return format(postDate, 'yy年M月d日')
-    }
-}
+const datetime = computed(() => format(new Date(props.date), 'MM-dd'))
 </script>
 
 <template>
     <ZRawLink class="article-line">
-        <time :datetime="date">{{ publishedLabel }}</time>
+        <time :datetime="date">{{ datetime }}</time>
         <span class="article-title">
             {{ title }}
         </span>

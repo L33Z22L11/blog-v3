@@ -27,6 +27,10 @@ code, pre {
     font-family: "Sarasa Mono SC", SFMono-Regular, "Fira Code", "JetBrains Mono", "Cascadia Code", Monaco, "Noto Sans Mono", Consolas, "monospace", monospace;
 }
 
+menu, ol, ul {
+    list-style: none;
+}
+
 ::selection {
     background-color: var(--c-primary-2);
 }

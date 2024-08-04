@@ -7,7 +7,7 @@ const route = useRoute()
 const router = useRouter()
 
 const page = computed(() => Number.parseInt(route.params.page || '1', 10))
-const perPage = appConfig.indexGenerator.per_page
+const perPage = appConfig.indexGenerator.perPage
 
 function indexFilter(list: ParsedContent[]) {
     const sortedList = sortByOrder(list)
@@ -34,7 +34,7 @@ function onPageChange(newPage: number) {
         <ZPagination
             v-if="appConfig.indexGenerator.pagination"
             :total="list.length"
-            :per_page="appConfig.indexGenerator.per_page"
+            :per-page="appConfig.indexGenerator.perPage"
             :current_page="page"
             @page-change="onPageChange"
         />

@@ -1,10 +1,10 @@
 .article {
-    h1, h2, h3, h4, h5, h6 {
-        margin: 1.5em 0;
-    }
-
     line-height: 1.8;
     word-break: break-word;
+
+    h2, h3, h4, h5, h6 {
+        margin: 1em 0;
+    }
 
     .iconify {
         vertical-align: middle;
@@ -22,9 +22,14 @@
         }
     }
 
-    li, ul {
+    menu, ol, ul {
         margin: 0.5em 0;
         padding: 0 0 0 1em;
+        list-style: revert;
+
+        ::marker {
+            color: var(--c-text-2);
+        }
     }
 
     blockquote {
@@ -39,13 +44,36 @@
         background: linear-gradient(var(--c-primary-3), var(--c-primary-3)) no-repeat center bottom / 100% 40%;
     }
 
-    code, pre {
+    :not(pre) > code {
         padding: 0.1em 0.3em;
         border: 1px solid var(--c-border);
         border-radius: 4px;
         background-color: var(--c-bg-3);
-        font-family: SFMono-Regular, "Fira Code", "JetBrains Mono", "Cascadia Code", Monaco, "Noto Sans Mono", Consolas, "Droid Sans Mono", "HarmonyOS_Medium", monospace;
         font-size: 0.9em;
+    }
+
+    pre {
+        overflow: auto;
+        margin-block: 1em;
+        padding: 1em;
+        border-radius: 8px;
+        background-color: var(--c-bg-3);
+        font-size: 0.9em;
+        line-height: 1.4;
+
+        > code > .line {
+            padding-inline-start: 1.5rem;
+            position: relative;
+
+            &::before {
+                content: attr(line);
+                position: absolute;
+                left: 0;
+                width: 1rem;
+                text-align: right;
+                color: var(--c-text-3);
+            }
+        }
     }
 
     &.md-story {

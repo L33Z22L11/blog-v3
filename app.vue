@@ -5,6 +5,7 @@
         <main>
             <NuxtPage />
         </main>
+        <ZFooter />
     </div>
     <ZAside />
 </template>
@@ -19,7 +20,7 @@
     >aside {
         position: sticky;
         top: 0;
-        width: 240px;
+        width: 256px;
         height: 100dvh;
     }
 
@@ -33,5 +34,9 @@
     #z-aside {
         display: none;
     }
+}
+
+main {
+    min-height: calc(100dvh - 25rem);
 }
 </style>

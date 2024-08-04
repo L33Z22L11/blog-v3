@@ -4,7 +4,7 @@ const props = defineProps({
         type: Number,
         required: true,
     },
-    per_page: {
+    perPage: {
         type: Number,
         required: true,
     },
@@ -16,7 +16,7 @@ const props = defineProps({
 
 const emit = defineEmits(['page-change'])
 
-const totalPages = computed(() => Math.ceil(props.total / props.per_page))
+const totalPages = computed(() => Math.ceil(props.total / props.perPage))
 
 function goToPage(page: number) {
     if (page >= 1 && page <= totalPages.value) {

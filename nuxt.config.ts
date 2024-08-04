@@ -23,6 +23,8 @@ export default defineNuxtConfig({
 
     appConfig: blogConfig,
 
+    compatibilityDate: '2024-08-03',
+
     components: [
         { path: '~/components/particle', prefix: 'Z' },
         { path: '~/components/zhilu', prefix: 'ZL' },
@@ -41,6 +43,8 @@ export default defineNuxtConfig({
     },
 
     srcDir: './',
+
+    ssr: false,
 
     vite: {
         css: {
@@ -73,14 +77,21 @@ export default defineNuxtConfig({
         classSuffix: '',
     },
 
+    content: {
+        highlight: {
+            theme: {
+                default: 'one-light',
+                dark: 'one-dark-pro',
+            },
+        },
+    },
+
     image: {
         domains: blogConfig.imageDomains,
         format: ['avif', 'webp'],
     },
 
-    site: {
-        url: blogConfig.url,
-    },
+    ogImage: { enabled: false },
 
-    compatibilityDate: '2024-07-23',
+    site: { url: blogConfig.url },
 })

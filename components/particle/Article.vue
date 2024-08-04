@@ -113,7 +113,7 @@ function getPostTime(date: string) {
     }
 
     @media (max-width: $breakpoint-phone) {
-        position: relative;
+        position: static;
         width: 100%;
         height: auto;
         max-width: none;
