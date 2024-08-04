@@ -1,15 +1,48 @@
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content'
 
-function sortByUpdated(list: ParsedContent[]): ParsedContent[] {
+const appConfig = useAppConfig()
+
+const route = useRoute()
+const router = useRouter()
+
+const page = computed(() => Number.parseInt(route.params.page || '1', 10))
+const perPage = appConfig.indexGenerator.per_page
+
+function indexFilter(list: ParsedContent[]) {
+    const sortedList = sortByOrder(list)
+    const startIndex = (page.value - 1) * perPage
+    const endIndex = startIndex + perPage
+
+    return sortedList.slice(startIndex, endIndex)
+}
+
+function sortByOrder(list: ParsedContent[]): ParsedContent[] {
     return list.slice().sort((a, b) => new Date(b.updated || b.date).getTime() - new Date(a.updated || b.date).getTime())
+}
+
+function onPageChange(newPage: number) {
+    router.push({ params: { page: newPage } })
 }
 </script>
 
 <template>
-    <div class="wrapper">
+    <div class="post-list">
         <ContentList v-slot="{ list }" path="/">
-            <ZArticle v-for="article in sortByUpdated(list)" :key="article._path" v-bind="article" :to="article._path" />
+            <ZArticle v-for="article in indexFilter(list)" :key="article._path" v-bind="article" :to="article._path" />
         </ContentList>
+        <ZPagination
+            v-if="appConfig.indexGenerator.pagination"
+            :total="list.length"
+            :per_page="appConfig.indexGenerator.per_page"
+            :current_page="page"
+            @page-change="onPageChange"
+        />
     </div>
 </template>
+
+<style lang="scss" scoped>
+.post-list {
+    margin: 1rem;
+}
+</style>

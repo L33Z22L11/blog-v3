@@ -5,12 +5,12 @@ const sidebarStore = useSidebarStore()
 
 <template>
     <aside id="z-sidebar" :class="{ show: sidebarStore.isOpen }">
-        <header class="aside-header">
+        <header class="sidebar-header">
             <ZLIcon />
-            <span>{{ appConfig.author.name }}</span>
+            <span>{{ appConfig.title }}</span>
             <Icon name="ph:x" class="close-sidebar" @click="sidebarStore.toggle()" />
         </header>
-        <nav class="aside-nav">
+        <nav class="sidebar-nav">
             <template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">
                 <h2 v-if="group.title">
                     {{ group.title }}
@@ -26,7 +26,7 @@ const sidebarStore = useSidebarStore()
                 </ul>
             </template>
         </nav>
-        <footer class="aside-footer">
+        <footer class="sidebar-footer">
             <ZThemeToggle />
             <br>
             <p>{{ appConfig.footer.copyright }}<br>{{ appConfig.footer.message }}</p>
@@ -42,10 +42,6 @@ const sidebarStore = useSidebarStore()
     display: grid;
     grid-template-rows: auto 1fr auto;
     position: sticky;
-    min-width: 240px;
-    border-right: 1px solid var(--c-border);
-    background-color: var(--c-bg-2);
-    inset-block: 0;
 
     .close-sidebar {
         display: none;
@@ -69,6 +65,7 @@ const sidebarStore = useSidebarStore()
         min-width: auto;
         max-width: 100vw;
         box-shadow: 0 0 48px -36px;
+        background-color: var(--c-bg-2);
         transition: left 0.2s;
         z-index: 3;
 
@@ -103,7 +100,7 @@ const sidebarStore = useSidebarStore()
     }
 }
 
-.aside-header {
+.sidebar-header {
     display: grid;
     grid-template-columns: 1.5rem 1fr auto;
     align-items: center;
@@ -113,7 +110,7 @@ const sidebarStore = useSidebarStore()
     font-weight: 600;
 }
 
-.aside-nav {
+.sidebar-nav {
     overflow: auto;
     padding: 0.5rem;
 
@@ -167,7 +164,7 @@ const sidebarStore = useSidebarStore()
     }
 }
 
-.aside-footer {
+.sidebar-footer {
     padding: 0.5rem;
     font-size: 0.8em;
     line-height: 1.5;

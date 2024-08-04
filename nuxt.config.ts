@@ -1,22 +1,27 @@
+import blogConfig from './blog.config'
+
 export default defineNuxtConfig({
     app: {
         rootId: 'z-root',
         head: {
             htmlAttrs: {
-                lang: 'zh',
+                lang: blogConfig.lang,
             },
             link: [
+                ...blogConfig.injectHeadLinks,
                 {
                     rel: 'icon',
-                    href: 'https://blog.zhilu.cyou/static/icon.png',
+                    href: blogConfig.favicon,
                 },
             ],
             templateParams: {
                 separator: '|',
             },
-            titleTemplate: '%s %separator 纸鹿 (@L33Z22L11)',
+            titleTemplate: `%s %separator ${blogConfig.title}`,
         },
     },
+
+    appConfig: blogConfig,
 
     components: [
         { path: '~/components/particle', prefix: 'Z' },
@@ -69,14 +74,12 @@ export default defineNuxtConfig({
     },
 
     image: {
-        domains: [
-            'blog.zhilu.cyou',
-        ],
+        domains: blogConfig.imageDomains,
         format: ['avif', 'webp'],
     },
 
     site: {
-        url: 'https://zhilu.cyou',
+        url: blogConfig.url,
     },
 
     compatibilityDate: '2024-07-23',

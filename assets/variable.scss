@@ -1,18 +1,21 @@
+$breakpoint-phone: 512px;
 $breakpoint-mobile: 768px;
+$breakpoint-widescreen: 1200px;
 
 @mixin dark-theme {
     --c-text-1: hsl(0deg 0% 90%);
     --c-text-2: hsl(0deg 0% 50%);
     --c-text-3: hsl(0deg 0% 40%);
-    --c-bg-1: hsl(0deg 0% 0%);
+    --c-bg-1: hsl(0deg 0% 10%);
     --c-bg-2: hsl(0deg 0% 7%);
     --c-bg-3: hsl(0deg 0% 15%);
     --c-border: hsl(0deg 0% 20%);
     --c-bg-a50: hsl(0deg 0% 0% / 50%);
+    --c-bg-a100: hsl(0deg 0% 0% / 100%);
     --c-primary-1: hsl(220deg 100% 70%);
     --c-primary-2: hsl(210deg 100% 70% / 30%);
     --c-primary-3: hsl(215deg 100% 60% / 20%);
-    --c-primary-soft: hsl(220deg 100% 95% / 10%);
+    --c-primary-soft: hsl(220deg 100% 95% / 15%);
 }
 
 :root,
@@ -21,14 +24,15 @@ $breakpoint-mobile: 768px;
     --c-text-2: hsl(0deg 0% 50%);
     --c-text-3: hsl(0deg 0% 70%);
     --c-bg-1: hsl(0deg 0% 100%);
-    --c-bg-2: hsl(200deg 20% 97%);
+    --c-bg-2: hsl(200deg 20% 98%);
     --c-bg-3: hsl(200deg 10% 94%);
-    --c-border: hsl(200deg 20% 90%);
+    --c-border: hsl(200deg 5% 90%);
     --c-bg-a50: hsl(0deg 0% 100% / 50%);
+    --c-bg-a100: hsl(0deg 0% 100% / 100%);
     --c-primary-1: hsl(220deg 100% 55%);
     --c-primary-2: hsl(210deg 100% 50% / 30%);
     --c-primary-3: hsl(215deg 100% 60% / 15%);
-    --c-primary-soft: hsl(240deg 20% 20% / 5%);
+    --c-primary-soft: hsl(240deg 20% 20% / 10%);
 }
 
 .dark {

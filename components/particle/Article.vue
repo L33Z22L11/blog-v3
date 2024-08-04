@@ -24,18 +24,20 @@ function getPostTime(date: string) {
 
 <template>
     <ZRawLink class="article-card">
-        <div class="article-header">
-            <time v-if="publishedLabel !== updatedLabel" :datetime="updated">
-                {{ updatedLabel }}</time>
-            <time :datetime="date">{{ publishedLabel }}</time>
-        </div>
-        <h2 class="article-title">
-            {{ title }}
-        </h2>
-        <p class="article-descrption">
-            {{ description }}
-        </p>
         <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" />
+        <article>
+            <h2 class="article-title">
+                {{ title }}
+            </h2>
+            <p class="article-descrption">
+                {{ description }}
+            </p>
+            <div class="article-info">
+                <time v-if="publishedLabel !== updatedLabel" :datetime="updated">
+                    {{ updatedLabel }}</time>
+                <time :datetime="date">{{ publishedLabel }}</time>
+            </div>
+        </article>
     </ZRawLink>
 </template>
 
@@ -44,21 +46,34 @@ function getPostTime(date: string) {
     display: block;
     position: relative;
     overflow: hidden;
-    padding: 8px;
-    border-radius: 8px;
-    text-shadow: 0 0 4px var(--c-bg-1), 0 0 8px var(--c-bg-1);
+    border-radius: 12px;
+    box-shadow: 0 1px 2px var(--c-border);
+    background-color: var(--c-bg-1);
     transition: all 0.2s;
 
     &:hover {
-        background-color: var(--c-primary-soft);
+        box-shadow: 0 0.5rem 1rem var(--c-border);
+        transform: translateY(-4px);
+
+        .article-cover {
+            opacity: 1;
+        }
     }
 
-    >* {
-        margin: 8px;
+    & + & {
+        margin-top: 1rem;
+    }
+
+    >article {
+        padding: 0.5rem 1rem;
+
+        > * {
+            margin: 0.7rem 0;
+        }
     }
 }
 
-.article-header {
+.article-info {
     display: flex;
     gap: 0.8em;
     font-size: 0.8em;
@@ -75,23 +90,41 @@ function getPostTime(date: string) {
 }
 
 .article-descrption {
+    font-size: 0.9em;
     color: var(--c-text-2);
 }
 
 .article-cover {
     position: absolute;
+    opacity: 0.8;
     top: 0;
     right: 0;
-    width: 30%;
+    width: min(320px, 50%);
     height: 100%;
     margin: 0;
-    mask: linear-gradient(to right, transparent, var(--c-bg-a50));
+    mask: linear-gradient(to right, transparent, var(--c-bg-1) 50%);
     transition: 0.2s;
     object-fit: cover;
-    z-index: -1;
-}
 
-.article-title {
-    text-shadow: 0 0 4px var(--c-bg-1), 0 0 8px var(--c-bg-1);
+    & + * {
+        position: relative;
+        width: 60%;
+        text-shadow: 0 0 0.5rem var(--c-bg-1), 0 0 1rem var(--c-bg-1);
+    }
+
+    @media (max-width: $breakpoint-phone) {
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-width: none;
+        max-height: 256px;
+        aspect-ratio: 2.4;
+        margin-bottom: -10%;
+        mask: linear-gradient(var(--c-bg-1) 50%, transparent);
+
+        & + * {
+            width: auto;
+        }
+    }
 }
 </style>

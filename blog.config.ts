@@ -1,9 +1,14 @@
+import type BlogConfigProps from './types/blog.config'
 import type { NavGroup } from './types/nav'
 
-export default defineAppConfig({
+export default <BlogConfigProps>{
+    title: '纸鹿摸鱼处',
     author: {
-        name: '纸鹿摸鱼处',
+        name: '纸鹿',
     },
+    lang: 'zh-CN',
+    favicon: 'https://blog.zhilu.cyou/static/icon.png',
+    url: 'https://blog.zhilu.cyou',
     description: '纸鹿至麓不知路，支炉制露不止漉。',
     footer: {
         copyright: `© ${new Date().getFullYear()} 纸鹿本鹿`,
@@ -25,4 +30,22 @@ export default defineAppConfig({
             ],
         },
     ],
-})
+    imageDomains: [
+        'blog.zhilu.cyou',
+        // '7.isyangs.cn',
+    ],
+    injectHeadLinks: [
+        {
+            rel: 'stylesheet',
+            href: '//s1.hdslb.com/bfs/static/jinkela/long/font/medium.css',
+            media: 'none',
+            onload: 'this.media="all"',
+        },
+    ],
+
+    indexGenerator: {
+        // pagination: true,
+        per_page: 10,
+        order_by: 'date',
+    },
+}

@@ -6,22 +6,32 @@
             <NuxtPage />
         </main>
     </div>
+    <ZAside />
 </template>
 
 <style lang="scss">
 #z-root {
     display: flex;
+    grid-template-columns: 1fr minmax(200px, 720px) 1fr;
     justify-content: center;
-    height: 100vh;
-    height: 100dvh;
+    gap: 1rem;
+
+    >aside {
+        position: sticky;
+        top: 0;
+        width: 240px;
+        height: 100dvh;
+    }
 
     >.content {
-        flex-grow: 1;
-        overflow: auto;
+        flex-shrink: 3;
+        width: 720px;
+    }
+}
 
-        main {
-            padding: 1rem 5vw;
-        }
+@media (max-width: $breakpoint-widescreen) {
+    #z-aside {
+        display: none;
     }
 }
 </style>

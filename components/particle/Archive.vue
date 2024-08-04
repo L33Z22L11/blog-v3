@@ -36,7 +36,7 @@ function getPostTime(date: string) {
     display: block;
     position: relative;
     overflow: hidden;
-    padding: 8px;
+    padding: 0.4rem 0.8rem;
     border-radius: 8px;
     transition: all 0.2s;
 
@@ -46,6 +46,10 @@ function getPostTime(date: string) {
         .article-cover {
             width: 50%;
         }
+    }
+
+    & + & {
+        margin-top: 2px;
     }
 
     >* {

@@ -15,8 +15,9 @@ a {
 }
 
 :root {
-    background-color: var(--c-bg-1);
-    font-family: system-ui, sans-serif;
+    background-color: var(--c-bg-2);
+    font-family: "HarmonyOS_Medium", system-ui, sans-serif;
+    font-synthesis: style;
     color: var(--c-text-1);
     scrollbar-color: var(--c-text-3) var(--c-bg-2);
 }
@@ -28,14 +29,6 @@ code, pre {
 
 ::selection {
     background-color: var(--c-primary-2);
-}
-
-p {
-    line-height: 1.4;
-
-    & + & {
-        margin-top: 0.5em;
-    }
 }
 
 mark {

@@ -18,8 +18,7 @@ const sidebarStore = useSidebarStore()
     top: 0;
     height: 48px;
     padding-inline: 1rem;
-    background-color: var(--c-bg-a50);
-    backdrop-filter: blur(1rem);
+    backdrop-filter: blur(0.5rem);
     font-weight: 600;
     z-index: 1;
 
