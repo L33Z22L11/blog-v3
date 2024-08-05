@@ -136,7 +136,7 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 
 - 安装 Zsh 和常用插件
   {% copy sudo pacman -S zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting prefix:$ %}
-- 安装 Powerlevel10k 主题 
+- 安装 Powerlevel10k 主题
   {% copy yay -S zsh-theme-powerlevel10k-bin-git prefix:$ %}
 - 设置本用户的默认 Shell 为 Zsh
   {% copy chsh -s /usr/bin/zsh prefix:$ %}
@@ -198,4 +198,10 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 
 可以参照 {% post_link 2023/archlinux-beautify %} 继续优化体验。
 
-{% link /2023/archlinux-beautify Arch Linux 易用性及美化 icon:https://7.isyangs.cn/24/666400971559b-24.jpg %}
+::md-link-card
+---
+icon: https://7.isyangs.cn/24/666400971559b-24.jpg
+title: Arch Linux 易用性及美化
+link: /2023/archlinux-beautify
+---
+::

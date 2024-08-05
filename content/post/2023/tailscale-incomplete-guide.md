@@ -20,7 +20,13 @@ Tailscale是一款虚拟组网软件，它不需要公网IP地址，也不会像
 
 这篇教程挺不错的，可以阅读一下：
 
-{% link https://www.ghostchu.com/4200/tailscale-%e5%ae%89%e5%88%a9%e6%8c%87%e5%8d%97-%e5%bf%ab%e9%80%9f%e5%90%91%e4%bd%a0%e7%9a%84%e5%a5%bd%e5%8f%8b%e6%8e%a8%e9%94%80-tailscale/ Tailscale 安利指南 - 快速向你的好友推销 Tailscale icon:https://wsrv.nl/?url=github.com/Ghost-chu.png %}
+::md-link-card
+---
+icon: https://wsrv.nl/?url=github.com/Ghost-chu.png
+title: Tailscale 安利指南 - 快速向你的好友推销 Tailscale
+link: https://www.ghostchu.com/4200/tailscale-%e5%ae%89%e5%88%a9%e6%8c%87%e5%8d%97-%e5%bf%ab%e9%80%9f%e5%90%91%e4%bd%a0%e7%9a%84%e5%a5%bd%e5%8f%8b%e6%8e%a8%e9%94%80-tailscale/
+---
+::
 
 ## 安装
 

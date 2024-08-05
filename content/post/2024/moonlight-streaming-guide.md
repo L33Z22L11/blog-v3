@@ -31,17 +31,41 @@ sticky: 50
 
 更推荐使用 Sunshine 作为服务端，Sunshine的默认配置可以很好地工作，一般不需要修改。
 
-{% link https://app.lizardbyte.dev/Sunshine/?lng=zh-CN Sunshine 官网 icon:https://docs.lizardbyte.dev/projects/sunshine/en/latest/_static/sunshine.png %}
+::md-link-card
+---
+icon: https://docs.lizardbyte.dev/projects/sunshine/en/latest/_static/sunshine.png
+title: Sunshine 官网
+link: https://app.lizardbyte.dev/Sunshine/?lng=zh-CN
+---
+::
 
 ## 客户端
 
 使用 Moonlight 作为串流的客户端。可以参考B站上阿西西的教程。
 
-{% link https://moonlight-stream.org/ Moonlight 官网 icon:https://moonlight-stream.org/images/moonlight.svg %}
+::md-link-card
+---
+icon: https://moonlight-stream.org/images/moonlight.svg
+title: Moonlight 官网
+link: https://moonlight-stream.org/
+---
+::
 
-{% link https://github.com/Axixi2233/moonlight-android Moonlight Android阿西西修改版 icon:https://github.githubassets.com/favicons/favicon.svg %}
+::md-link-card
+---
+icon: https://github.githubassets.com/favicons/favicon.svg
+title: Moonlight Android阿西西修改版
+link: https://github.com/Axixi2233/moonlight-android
+---
+::
 
-{% link https://space.bilibili.com/16893379/video 阿西西的日常 - 哔哩哔哩 icon:https://image.baidu.com/search/down?url=https://i1.hdslb.com/bfs/face/b41566f47ea0d0f1e35ed54521c849c68c026892.jpg@120w %}
+::md-link-card
+---
+icon: https://image.baidu.com/search/down?url=https://i1.hdslb.com/bfs/face/b41566f47ea0d0f1e35ed54521c849c68c026892.jpg@120w
+title: 阿西西的日常 - 哔哩哔哩
+link: https://space.bilibili.com/16893379/video
+---
+::
 
 在 Moonlight 客户端中应该可以看到主机，在 Sunshine Web 控制台中输入 PIN 以配对。请在客户端设置中选择**合适的串流分辨率**和帧数。
 
@@ -49,7 +73,13 @@ sticky: 50
 
 通过“虚拟显示器”功能，可以在串流时关闭真实屏幕，从而实现隐私屏。
 
-{% link https://www.amyuni.com/forum/viewtopic.php?t=3030 USB 虚拟显示器驱动 icon:https://www.amyuni.com//images/favicon.png %}
+::md-link-card
+---
+icon: https://www.amyuni.com//images/favicon.png
+title: USB 虚拟显示器驱动
+link: https://www.amyuni.com/forum/viewtopic.php?t=3030
+---
+::
 
 这个帖子提供了 `usbmmidd_v2.zip` 下载。将它解压到一个安全的地方，比如 `D:\Software\` ，双击 `usbmmidd.bat` 安装。
 
@@ -80,7 +110,13 @@ sticky: 50
 
 参考千雪的这篇文章。
 
-{% link https://blog.chyk.ink/2024/05/12/linux-virtual-display-sunshine/ 📲 在 Linux 上使用 Sunshine 把安卓平板作为虚拟副屏，画面清晰延迟极低 icon:https://q1.qlogo.cn/g?b=qq&nk=3526514925&s=3 %}
+::md-link-card
+---
+icon: https://q1.qlogo.cn/g?b=qq&nk=3526514925&s=3
+title: 📲 在 Linux 上使用 Sunshine 把安卓平板作为虚拟副屏，画面清晰延迟极低
+link: https://blog.chyk.ink/2024/05/12/linux-virtual-display-sunshine/
+---
+::
 
 ## 触摸优化
 
@@ -88,7 +124,13 @@ sticky: 50
 
 Moonlight 修改版（下载链接在视频简介）支持 Windows 多点触控。
 
-{% link https://www.bilibili.com/video/BV1Si4y1Y7Jb/ 使用触摸界面串流原神 icon:https://www.bilibili.com/favicon.ico %}
+::md-link-card
+---
+icon: https://www.bilibili.com/favicon.ico
+title: 使用触摸界面串流原神
+link: https://www.bilibili.com/video/BV1Si4y1Y7Jb/
+---
+::
 
   - 在安卓设置中开启 Moonlight 物理键盘的无障碍功能，即可将安卓设备上的快捷键操作重定向到串流主机上。
   - 如果想唤出设备输入法键盘，可以在 Moonlight 修改版设置中启用 “快捷选项”。

@@ -21,11 +21,23 @@ references:
 
 无巧不成书，在我写这篇文章的同日，央广网也发布了相关文章。
 
-{% link https://mp.weixin.qq.com/s/TVIAlq9cdcjmSaYRScYM_g App自动续费 “进坑”容易“出坑”难！记者调查→ icon:https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/Bcnwtg51vpWftdhUkP4Us7LPW5GoMLd13rMBXKJrNgLNFOYuicrBjBN9AyzWQd6Jm50V5WyiaBJVKlhgP4jm0F0w/0 %}
+::md-link-card
+---
+icon: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/Bcnwtg51vpWftdhUkP4Us7LPW5GoMLd13rMBXKJrNgLNFOYuicrBjBN9AyzWQd6Jm50V5WyiaBJVKlhgP4jm0F0w/0
+title: App自动续费 “进坑”容易“出坑”难！记者调查→
+link: https://mp.weixin.qq.com/s/TVIAlq9cdcjmSaYRScYM_g
+---
+::
 
 前一天，也有文章从自动扣费套路讲到「老年人在网络付费方面应受到特殊保护」。
 
-{% link https://mp.weixin.qq.com/s/eldcP5_iVAZH6TlF_4zD_A 看账单惊呆！父母“上瘾”，凌晨3点还在打钱，一个月消费数千元…… icon:https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/wlCrBZoK8HGKibibrZBXcyf4EUbmkg5AkycfXaQejfGHKHulE4OrfibRyPkdT0RKNgslI27ow6IJSQ7STtl443uqA/0 %}
+::md-link-card
+---
+icon: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/wlCrBZoK8HGKibibrZBXcyf4EUbmkg5AkycfXaQejfGHKHulE4OrfibRyPkdT0RKNgslI27ow6IJSQ7STtl443uqA/0
+title: 看账单惊呆！父母“上瘾”，凌晨3点还在打钱，一个月消费数千元……
+link: https://mp.weixin.qq.com/s/eldcP5_iVAZH6TlF_4zD_A
+---
+::
 
 ## 家中老人被华为宰了
 
@@ -71,7 +83,13 @@ references:
 
 即使华为想趟这趟浑水，它也是**十分有「原则」**的：如果扣款时间超过了15日，或者是包月套餐，那么不予退款。例如这个黑猫投诉上的案例，消费者诉以真挚情感，华为诚恳道歉也要按「原则」办事——不予退款。
 
-{% link https://tousu.sina.com.cn/complaint/view/17364703362/ 不知情情况下自动扣费，要求返还扣费 icon:https://img0.baidu.com/it/u=1939131275,3604285917&fm=253 %}
+::md-link-card
+---
+icon: https://img0.baidu.com/it/u=1939131275,3604285917&fm=253
+title: 不知情情况下自动扣费，要求返还扣费
+link: https://tousu.sina.com.cn/complaint/view/17364703362/
+---
+::
 
 我在尝试退费的过程中也遇到了困难，**智能客服甚至把「云空间自动扣费退款」设置为了热门问题，真是揣着明白装糊涂啊**，最终由于不符合条件无法退款。阅读了上面这个投诉案例，看到了华为所坚持的「原则」，我更灰心了。最终放弃了无谓的挣扎，只能以一首打油诗结束本文了。
 

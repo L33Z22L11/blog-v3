@@ -87,7 +87,13 @@ KazariEX 指出，我给主题提交 PR 之后，虽然使用了相应关键词�
 
 我在上一篇文章中吐槽 Stylelint 和 pnpm 之后，KazariEX 写了一篇博客文章，讲述自己在开发过程中配置、使用 CSS 的习惯。
 
-{% link https://bikari.top/book/daily/44dc7f8 个人向 CSS 编码风格汇总 icon:https://cdn.libravatar.org/avatar/ecb2ea87c4532f007838d86d02798f89 %}
+::md-link-card
+---
+icon: https://cdn.libravatar.org/avatar/ecb2ea87c4532f007838d86d02798f89
+title: 个人向 CSS 编码风格汇总
+link: https://bikari.top/book/daily/44dc7f8
+---
+::
 
 按照这个教程，我在个人主页开发过程中成功引入并配置了 Stylelint。
 
@@ -101,7 +107,13 @@ shamefully-hoist=true
 
 Shawn 看到了我的上一篇文章，写了一篇在 Windows 上使用 clangd 的文章。
 
-{% link https://shawn.thisis.host/2024/clang-config/ Windows 下配置 Clang 和 clangd icon:https://wsrv.nl/?url=github.com/ShawnJeffersonWang.png %}
+::md-link-card
+---
+icon: https://wsrv.nl/?url=github.com/ShawnJeffersonWang.png
+title: Windows 下配置 Clang 和 clangd
+link: https://shawn.thisis.host/2024/clang-config/
+---
+::
 
 我在 Linux 上安装了 Clang 和 clangd 后就能正常使用了。但我在 Windows 上只安装了 LLVM 和 clangd，当时应该是没有安装 [MSVC](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/) 和 MS Build 工具，所以才没有成功。
 

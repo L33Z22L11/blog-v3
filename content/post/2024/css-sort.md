@@ -59,7 +59,13 @@ hexo : 无法将“hexo”项识别为 cmdlet、函数、脚本文件或可运�
 
 #### 看看 hexo-server-live
 
-{% link https://github.com/KazariEX/hexo-server-live KazariEX/hexo-server-live icon:https://github.githubassets.com/favicons/favicon.svg %}
+::md-link-card
+---
+icon: https://github.githubassets.com/favicons/favicon.svg
+title: KazariEX/hexo-server-live
+link: https://github.com/KazariEX/hexo-server-live
+---
+::
 
 同时，KazariEX 向我推荐了一个 Hexo 插件，用于在本地文件更新后自动刷新预览。我的评价是好用爱用。{% emoji blobcat ablobcatattentionreverse %}再看是 KazariEX 写的，更喜欢了。
 

@@ -28,7 +28,7 @@ function onPageChange(newPage: number) {
 
 <template>
     <div class="post-list">
-        <ContentList v-slot="{ list }" path="/">
+        <ContentList v-slot="{ list }" path="/post/">
             <ZArticle v-for="article in indexFilter(list)" :key="article._path" v-bind="article" :to="article._path" />
         </ContentList>
         <ZPagination

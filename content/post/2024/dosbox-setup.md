@@ -68,13 +68,25 @@ D:
 
 ## 使用网页版 DOSBox
 
-{% link https://dosasm.github.io/dosrun/ Playground - An x86 assembly playGround in JSDos environment icon:https://dosasm.github.io/dosrun/favicon.ico %}
+::md-link-card
+---
+icon: https://dosasm.github.io/dosrun/favicon.ico
+title: Playground - An x86 assembly playGround in JSDos environment
+link: https://dosasm.github.io/dosrun/
+---
+::
 
 这个网站通过 js-dos 模拟 DOS 环境，提供了 DOS 编程练习功能，还附有一份 [帮助文档](https://dosasm.github.io/docs/tutorial-playGround/playGround)。网站托管在 GitHub Pages 上，有概率无法访问。
 
 你也可以在CO导航的“校友推荐”板块中找到这个网站。
 
-{% link https://cooo.site/ CO导航 - 西邮导航服务 icon:https://cooo.site/favicon.ico %}
+::md-link-card
+---
+icon: https://cooo.site/favicon.ico
+title: CO导航 - 西邮导航服务
+link: https://cooo.site/
+---
+::
 
 ## 在 VS Code 中使用 DOSBox
 

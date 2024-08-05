@@ -75,7 +75,7 @@ description             Windows 11
 
 ### 重启到指定 EFI 启动项
 
-```batch reboot-to-xxxxx.bat
+```bat reboot-to-xxxxx.bat
 rem 使用管理员权限运行此脚本
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd","/c %~s0 ::","","runas",1)(window.close) && exit
 rem 将 Linux Boot Manager 设置为下次启动项

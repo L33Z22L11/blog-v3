@@ -28,17 +28,17 @@ references:
 Get-ChildItem -Filter "*.md" -Recurse | ForEach-Object {
     $filePath = $_.FullName
     $match = Select-String -Path $filePath -Pattern "date: 2020-" -Quiet
-    
+
     if ($match) {
         # 获取文件名
         $fileName = $_.Name
-        
+
         # 创建目标目录
         $targetDirectory = "2020"
         if (-not (Test-Path -Path $targetDirectory)) {
             New-Item -ItemType Directory -Path $targetDirectory | Out-Null
         }
-        
+
         # 移动文件
         Move-Item -Path $filePath -Destination (Join-Path -Path $targetDirectory -ChildPath $fileName) -Verbose
     }
@@ -55,23 +55,24 @@ Hexo 会自动给文章链接带上子文件夹的名称，所以在 `_config.ym
 
 ```yaml _config.stellar.yml
 site_tree:
-  error_page:
-    leftbar: recent, timeline, notice_404
+    error_page:
+        leftbar: recent, timeline, notice_404
 ```
 
 ```yaml source/_data/widgets.yml
 notice_404:
-  layout: markdown
-  content: |
-    <!-- Notice 还没想好，以后再写吧 -->
-    <script src="/static/handler-404.js"></script>
+    layout: markdown
+    content: |
+        <!-- Notice 还没想好，以后再写吧 -->
+        <script src="/static/handler-404.js"></script>
 ```
 
 用正则表达式匹配、替换，就完成了重定向。
 
 ```js static/handler-404.js
-let newPath = location.pathname.match(/^(\/\d{4})\d{2}(\/.*)/)
-if (newPath) location.href = newPath[1] + newPath[2]
+const newPath = location.pathname.match(/^(\/\d{4})\d{2}(\/.*)/)
+if (newPath)
+    location.href = newPath[1] + newPath[2]
 ```
 
 Over.

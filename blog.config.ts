@@ -1,4 +1,4 @@
-import type BlogConfigProps from './types/blog.config'
+// import type BlogConfigProps from './types/blog.config'
 import type { NavGroup } from './types/nav'
 
 const author = {
@@ -8,7 +8,7 @@ const author = {
     homepage: 'https://zhilu.cyou',
 }
 
-export default <BlogConfigProps>{
+export default {
     title: '纸鹿摸鱼处',
     description: '纸鹿至麓不知路，支炉制露不止漉。',
     author,

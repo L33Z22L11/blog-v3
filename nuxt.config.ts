@@ -5,7 +5,7 @@ export default defineNuxtConfig({
         rootId: 'z-root',
         head: {
             htmlAttrs: {
-                lang: blogConfig.lang,
+                lang: blogConfig.language,
             },
             link: [
                 ...blogConfig.injectHeadLinks,
@@ -26,7 +26,7 @@ export default defineNuxtConfig({
     compatibilityDate: '2024-08-03',
 
     components: [
-        { path: '~/components/particle', prefix: 'Z' },
+        { path: '~/components/partial', prefix: 'Z' },
         { path: '~/components/zhilu', prefix: 'ZL' },
         '~/components',
     ],
@@ -36,13 +36,13 @@ export default defineNuxtConfig({
         '@/assets/article.scss',
     ],
 
-    devtools: { enabled: false },
-
     experimental: {
         viewTransition: true,
     },
 
-    srcDir: './',
+    future: {
+        compatibilityVersion: 4,
+    },
 
     ssr: false,
 
@@ -78,7 +78,33 @@ export default defineNuxtConfig({
     },
 
     content: {
+        locales: [
+            blogConfig.language,
+        ],
         highlight: {
+            langs: [
+                'bat',
+                'c',
+                'cpp',
+                'css',
+                'html',
+                'ini',
+                'js',
+                'json',
+                'log',
+                'makefile',
+                'matlab',
+                'md',
+                'mdc',
+                'powershell',
+                'python',
+                'shell',
+                'ssh-config',
+                'ts',
+                'vue',
+                'xml',
+                'yaml',
+            ],
             theme: {
                 default: 'one-light',
                 dark: 'one-dark-pro',

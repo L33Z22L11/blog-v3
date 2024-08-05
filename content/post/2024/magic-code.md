@@ -88,7 +88,13 @@ nav.list.forEach((list, i) => {
 
 其实也可以用 `createElement()` 和 `appendChild()` 来生成 HTML，或者 Vue 的组件也很方便。不过，用原生 JavaScript 写出来了这些，感觉还是挺奇妙的。
 
-{% link https://cooo.site/ CO导航 - 西邮导航服务 icon:https://cooo.site/favicon.ico %}
+::md-link-card
+---
+icon: https://cooo.site/favicon.ico
+title: CO导航 - 西邮导航服务
+link: https://cooo.site/
+---
+::
 
 ## 面向函数而不是面向过程
 
@@ -121,7 +127,13 @@ const galleryFlated = Object.entries(gallery).flatMap(([vol, picInfos]) =>
   })))
 ```
 
-{% link https://exam.thisis.host 考试时钟 icon:https://exam.thisis.host/favicon.ico %}
+::md-link-card
+---
+icon: https://exam.thisis.host/favicon.ico
+title: 考试时钟
+link: https://exam.thisis.host
+---
+::
 
 ## 总结
 

@@ -230,4 +230,10 @@ function updateSST() {
 
 当然了，点击“阅读原文”，你也可以访问到它如今的模样。也许就在一个小时后，某个角落还有一场考试呢。
 
-{% link https://exam.thisis.host 考试时钟 icon:https://exam.thisis.host/favicon.ico %}
+::md-link-card
+---
+icon: https://exam.thisis.host/favicon.ico
+title: 考试时钟
+link: https://exam.thisis.host
+---
+::

@@ -60,7 +60,13 @@ tags: [教程, 系统, Windows, 存储]
 > - 我怎么把我的某个分区扩大/缩小一点？
 > - 有没有什么办法把 C 盘一些占空间又不能动的东西移到别处去？
 
-{% link https://www.criwits.top/missing/manage-storage.html 成为空间管理大师 - 你缺失的那门计算机课 icon:https://www.criwits.top/missing/favicon.png %}
+::md-link-card
+---
+icon: https://www.criwits.top/missing/favicon.png
+title: 成为空间管理大师 - 你缺失的那门计算机课
+link: https://www.criwits.top/missing/manage-storage.html
+---
+::
 
 文章中也讲述了 C 盘中各文件夹的作用。例如 QQ、微信会将用户数据存在“文档”文件夹中，这是符合 Windows 规范的做法，但一些用户会选择将体积较大“文档”文件夹移动到 D 盘，反而违背了 Windows 多用户的文件夹整洁性。
 
@@ -108,4 +114,10 @@ WizTree 是一款可视化的硬盘空间分析工具。用它可以快速查看
 
 再次推荐《你缺失的那门计算机课》，由浅入深，无论你是电脑小白还是系统高手，都可以收获颇丰。
 
-{% link https://www.criwits.top/missing/ 你缺失的那门计算机课 icon:https://www.criwits.top/missing/favicon.png %}
+::md-link-card
+---
+icon: https://www.criwits.top/missing/favicon.png
+title: 你缺失的那门计算机课
+link: https://www.criwits.top/missing/
+---
+::

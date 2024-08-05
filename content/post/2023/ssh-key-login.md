@@ -34,7 +34,7 @@ ED225519 类型的密钥综合性能更好。
 
 在 SSH 配置文件中按照以下格式添加条目，即可直接通过 Host 项的名字连接，还能在 `ssh` 命令输到一半时按 Tab 键自动补全：
 
-```ssh_config ~/.ssh/config
+```ssh-config ~/.ssh/config
 Host zhilu-server
 	Hostname 1.1.1.1
 	Port 8022
@@ -47,4 +47,12 @@ Host zhilu-server
 
 ## 关于 SSH 的更多玩法
 
-{% link https://yuuu.org/post/64202.html ssh 知识整理 | 微霞 icon:https://cdn.yuuu.org/img/favicon-192x192.png %}
+::md-link-card
+---
+icon: https://cdn.yuuu.org/img/favicon-192x192.png
+title: ssh 知识整理 | 微霞
+link: https://yuuu.org/post/64202.html
+---
+::
+
+:ZSidebar

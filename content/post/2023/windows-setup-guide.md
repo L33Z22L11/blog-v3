@@ -115,7 +115,6 @@ tags: [教程, 系统, Windows]
 - 输入`oobe\BypassNRO.cmd`并按下回车，电脑会重启
 - 在联网界面中，点击“我没有Internet连接”和“继续执行受限设置”
 
-
 ## ❽ 设置非中文用户名和空密码
 
 在使用bypassnro绕过联网后，你就可以设置非中文用户名和空密码了。设置用户名和密码的步骤如下：
@@ -176,7 +175,7 @@ HEU KMS Activator是一款用于激活Windows的工具。
 
 换源结束后，你可以尝试运行以下命令，学习winget的使用：
 
-```batch
+```bat
 winget install 7zip
 winget install vscode
 winget search qq
