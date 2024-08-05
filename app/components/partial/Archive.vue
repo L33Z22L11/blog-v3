@@ -10,7 +10,7 @@ const datetime = computed(() => format(new Date(props.date), 'MM-dd'))
 <template>
     <li class="article-line">
         <time :datetime="date">{{ datetime }}</time>
-        <ZRawLink class="article-link" :to="link">
+        <ZRawLink class="article-link gradient-card" :to="link">
             <span class="article-title">
                 {{ title }}
             </span>
@@ -24,8 +24,16 @@ const datetime = computed(() => format(new Date(props.date), 'MM-dd'))
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    gap: 1rem;
-    text-shadow: 0 0 4px var(--c-bg-1), 0 0 8px var(--c-bg-1);
+    gap: 0.5rem;
+    text-shadow: 0 0 4px var(--c-bg-1);
+
+    @media (max-width: $breakpoint-mobile) {
+        font-size: 0.9em;
+    }
+
+    @media (max-width: $breakpoint-phone) {
+        font-size: 0.8em;
+    }
 
     & + & {
         margin-top: 4px;
@@ -42,16 +50,10 @@ const datetime = computed(() => format(new Date(props.date), 'MM-dd'))
 }
 
 .article-link {
-    display: block;
-    position: relative;
     overflow: hidden;
     padding: 0.3rem 0.6rem;
-    border-radius: 8px;
-    transition: all 0.2s;
 
     &:hover {
-        background: var(--c-primary-soft);
-
         .article-cover {
             width: 50%;
         }

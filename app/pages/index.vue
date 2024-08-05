@@ -3,6 +3,7 @@ import type { ParsedContent } from '@nuxt/content'
 
 const appConfig = useAppConfig()
 
+useHead({ title: '' })
 const route = useRoute()
 const router = useRouter()
 

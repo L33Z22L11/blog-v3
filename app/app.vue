@@ -1,42 +1,50 @@
 <template>
     <ZSidebar />
-    <div class="content">
-        <ZHeader />
+    <div id="content">
         <main>
+            <ZHeader />
             <NuxtPage />
+            <ZFooter />
         </main>
-        <ZFooter />
+        <ZAside v-if="$route.meta.aside !== false" />
     </div>
-    <ZAside />
 </template>
 
 <style lang="scss">
 #z-root {
     display: flex;
-    grid-template-columns: 1fr minmax(200px, 720px) 1fr;
     justify-content: center;
     gap: 1rem;
 
-    >aside {
+    aside {
+        flex-shrink: 0;
         position: sticky;
         top: 0;
         width: 256px;
         height: 100dvh;
+
+        @media (max-width: $breakpoint-widescreen) {
+            flex-shrink: 1;
+
+            &#z-aside {
+                display: none;
+            }
+        }
     }
 
-    >.content {
+    >#content {
+        display: flex;
         flex-shrink: 3;
-        width: 720px;
-    }
-}
+        gap: inherit;
+        width: $breakpoint-widescreen;
 
-@media (max-width: $breakpoint-widescreen) {
-    #z-aside {
-        display: none;
+        >main {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+            min-height: calc(100vh + 5rem);
+        }
     }
-}
-
-main {
-    min-height: calc(100dvh - 25rem);
 }
 </style>

@@ -1,6 +1,6 @@
-# 纸鹿的个人网站
+# 纸鹿摸鱼处（三代目）
 
-这是我的个人网站，基于 Nuxt.js，与 [@KazariEX](https://github.com/KazariEX) 一起构建。
+基于 Nuxt.js 构建的个人博客。
 
 ## 快速开始
 

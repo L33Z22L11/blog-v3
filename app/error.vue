@@ -26,3 +26,12 @@ const handleError = () => clearError({ redirect: '/' })
         </main>
     </div>
 </template>
+
+<style scoped lang="scss">
+.error-message {
+    pre {
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+}
+</style>

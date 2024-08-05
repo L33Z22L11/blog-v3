@@ -18,6 +18,9 @@ const appConfig = useAppConfig()
                     </li>
                 </ul>
             </div>
+            <div />
+            <div />
+            <div />
         </nav>
         <br>
         <p>
@@ -36,7 +39,7 @@ const appConfig = useAppConfig()
 
     .footer-nav {
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
         gap: 2rem;
         margin-block: 1rem;
         flex-wrap: wrap;

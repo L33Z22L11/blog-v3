@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content'
 
+useHead({ title: '归档' })
 function sortByDate(list: ParsedContent[]) {
     return list.slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }

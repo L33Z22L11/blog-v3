@@ -1,10 +1,12 @@
-export interface NavItem {
+interface NavItem {
     icon: string
     text: string
     url: string
 }
 
-export interface NavGroup {
+interface NavGroup {
     title: string
     items: NavItem[]
 }
+
+export type Nav = NavItem[] | NavGroup[]
