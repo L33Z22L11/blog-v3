@@ -19,7 +19,7 @@ tags: [教程, Windows, 安卓, 互联, 互传, 网络, 系统, 远程]
 ### 以电脑为服务端
 
 - 如果有Python，可以在文件夹内运行命令`python -m http.server`，其他设备浏览器输入电脑IP地址的8000端口即可访问，适合少量大文件的分发。
-- SMB文件共享：参阅[Windows 文件共享](/202310/tailscale-incomplete-guide/#Windows-文件共享)一节的内容(内网无需安装Tailscale)，手机可以安装猫头鹰文件查看/下载。
+- SMB文件共享：参阅{% post_link /2023/tailscale-incomplete-guide/#Windows-文件共享 Windows 文件共享 %}一节的内容(内网无需安装Tailscale)，手机可以安装猫头鹰文件查看/下载。
 - Windows就近共享：在手机上安装[NearShare](https://nearshare.shortdev.de/)或者[AndDrop](https://www.appinn.com/anddrop/)。
 - macOS隔空投送：安卓手机可以安装[AndDrop](https://www.appinn.com/anddrop/)。
 - ToDesk、向日葵具有传输文件的功能，QQ也有直接查看电脑文件的功能，但升级后砍了。
@@ -30,7 +30,7 @@ tags: [教程, Windows, 安卓, 互联, 互传, 网络, 系统, 远程]
 - [文件闪传](https://skyhacker2.github.io/blog/index.html?projects/%E6%96%87%E4%BB%B6%E9%97%AA%E4%BC%A0.md)：通过网页管理手机文件。
 - [简朴](https://github.com/ismartcoding/plain-app/blob/main/README_zh_CN.md)：浏览器管理手机文件。
 - [猫头鹰文件](https://www.skyjos.cn/owlfiles/)：可访问FTP/SFTP/WebDAV/SMB服务器，也可以自建SMB服务器。
-- Tailscale：右键，选设备，发送！参阅[传送文件](/202310/tailscale-incomplete-guide/#%E4%BC%A0%E9%80%81%E6%96%87%E4%BB%B6)一节的内容。
+- Tailscale：右键，选设备，发送！参阅{% post_link /2023/tailscale-incomplete-guide/#传送文件 传送文件 %}一节的内容。
 
 ### 对等传输
 

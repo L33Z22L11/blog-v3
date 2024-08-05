@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    {
+      "source": "/:path(20.*)",
+      "destination": "/post/:path"
+    }
+  ]
+}
