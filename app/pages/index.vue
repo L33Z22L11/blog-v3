@@ -1,30 +1,34 @@
 <script setup lang="ts">
-import type { ParsedContent, QueryBuilderParams } from '@nuxt/content'
-
 useHead({ title: '' })
 const appConfig = useAppConfig()
 const route = useRoute()
 const router = useRouter()
 
-const page = ref(Number.parseInt(route.query.page as string || '1', 10))
 const perPage = appConfig.indexGenerator.perPage || 10
 const orderBy = ref(route.query.order as string || appConfig.indexGenerator.orderBy || 'date')
 
-const archiveQuery: QueryBuilderParams = { path: '/post', sort: [{ [orderBy.value]: -1 }] }
+const { data } = await useAsyncData(
+    'index_post',
+    () => queryContent('/post').sort({ [orderBy.value]: -1 }).find(),
+)
 
-function pageFilter(list: ParsedContent[]) {
-    return list.filter((_, index) => index >= (page.value - 1) * perPage && index < page.value * perPage)
-}
+const list = computed(() => data.value || [])
 
-function onPageChange(newPage: number) {
+const { page, totalPages, pagedList } = usePagination(list, {
+    initialPage: Number(route.query.page) || 1,
+    perPage,
+})
+
+watch(page, (newPage) => {
     router.push({ query: { page: newPage } })
-    page.value = newPage
-}
+})
 </script>
 
 <template>
     <div class="gradient-card active">
-        <h3><Icon name="ph:lego-duotone" size="1.5rem" /> 本站仍处于开发阶段</h3>
+        <h3>
+            <Icon name="ph:lego-duotone" size="1.5rem" /> 本站仍处于开发阶段
+        </h3>
         <p>
             站点开源在 <ZLink to="https://github.com/L33Z22L11/blog-v3">
                 L33Z22L11/blog-v3
@@ -32,16 +36,8 @@ function onPageChange(newPage: number) {
         </p>
     </div>
     <div class="post-list">
-        <ContentList v-slot="{ list }" :query="archiveQuery">
-            <ZArticle v-for="article in pageFilter(list)" :key="article._path" v-bind="article" :to="article._path" />
-            <ZPagination
-                v-if="appConfig.indexGenerator?.pagination !== false"
-                :current-page="page"
-                :per-page="perPage"
-                :total-items="list.length"
-                @page-change="onPageChange"
-            />
-        </ContentList>
+        <ZArticle v-for="article in pagedList" :key="article._path" v-bind="article" :to="article._path" />
+        <ZPagination v-model="page" :per-page :total-pages />
     </div>
 </template>
 

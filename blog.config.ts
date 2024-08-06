@@ -16,25 +16,34 @@ export default {
     favicon: 'https://blog.zhilu.cyou/static/icon.png',
     url: 'https://blog.zhilu.cyou',
     nav: <Nav> [
-        { title: '', items: [
-            { icon: 'ph:files-duotone', text: '文章', url: '/' },
-            { icon: 'ph:link-duotone', text: '友链', url: '/link' },
-            { icon: 'ph:archive-duotone', text: '归档', url: '/archive' },
-            { icon: 'ph:identification-card-duotone', text: '个人主页', url: 'https://zhilu.cyou/', external: true },
-        ] },
-        { title: '社交', items: [
-            { icon: 'ri:qq-fill', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd', external: true },
-            { icon: 'ph:github-logo-duotone', text: 'Github', url: 'https://github.com/L33Z22L11', external: true },
-        ] },
+        {
+            title: '',
+            items: [
+                { icon: 'ph:files-duotone', text: '文章', url: '/' },
+                { icon: 'ph:link-duotone', text: '友链', url: '/link' },
+                { icon: 'ph:archive-duotone', text: '归档', url: '/archive' },
+                { icon: 'ph:identification-card-duotone', text: '个人主页', url: 'https://zhilu.cyou/', external: true },
+            ],
+        },
+        {
+            title: '社交',
+            items: [
+                { icon: 'ri:qq-fill', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd', external: true },
+                { icon: 'ph:github-logo-duotone', text: 'Github', url: 'https://github.com/L33Z22L11', external: true },
+            ],
+        },
     ],
     footer: {
         copyright: `© ${new Date().getFullYear()} 纸鹿本鹿`,
         nav: <Nav>[
-            { title: '探索', items: [
-                { icon: 'ph:link-bold', text: '友链', url: '/link' },
-                { icon: 'ph:subway-fill', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
-                { icon: 'ph:flying-saucer-fill', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
-            ] },
+            {
+                title: '探索',
+                items: [
+                    { icon: 'ph:link-bold', text: '友链', url: '/link' },
+                    { icon: 'ph:subway-fill', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
+                    { icon: 'ph:flying-saucer-fill', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
+                ],
+            },
             { title: '社交', items: [
                 { icon: 'ri:github-fill', text: 'L33Z22L11', url: 'https://github.com/L33Z22L11' },
                 { icon: 'ri:qq-fill', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
@@ -56,7 +65,6 @@ export default {
         { rel: 'stylesheet', href: '//s1.hdslb.com/bfs/static/jinkela/long/font/medium.css', media: 'none', onload: 'this.media="all"' },
     ],
     indexGenerator: {
-        // pagination: true,
         perPage: 10,
         orderBy: 'date',
     },

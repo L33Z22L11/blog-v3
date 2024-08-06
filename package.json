@@ -13,16 +13,18 @@
   },
   "dependencies": {
     "date-fns": "^3.6.0",
-    "tippy.js": "^6.3.7"
+    "tippy.js": "^6.3.7",
+    "vue": "^3.4.36",
+    "vue-router": "^4.4.2"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.24.0",
+    "@antfu/eslint-config": "^2.24.1",
     "@nuxt/content": "^2.13.2",
-    "@nuxt/icon": "^1.4.3",
+    "@nuxt/icon": "^1.4.5",
     "@nuxt/image": "^1.7.0",
     "@nuxtjs/color-mode": "^3.4.2",
     "@nuxtjs/seo": "2.0.0-rc.16",
-    "@pinia/nuxt": "^0.5.2",
+    "@pinia/nuxt": "^0.5.3",
     "@vueuse/core": "^10.11.0",
     "@vueuse/nuxt": "^10.11.0",
     "@zinkawaii/stylelint-config": "^0.1.5",

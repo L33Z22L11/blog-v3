@@ -1,42 +1,46 @@
 <script setup lang="ts">
-import type { ParsedContent, QueryBuilderParams } from '@nuxt/content'
-
 useHead({ title: '归档' })
 const appConfig = useAppConfig()
 const route = useRoute()
 
-const orderBy = ref(route.query.order as string || appConfig.indexGenerator.orderBy || 'date')
+const orderBy = computed(() => (route.query.order as string || appConfig.indexGenerator.orderBy || 'date'))
 
-const archiveQuery: QueryBuilderParams = { path: '/post', sort: [{ [orderBy.value]: -1 }] }
+const { data } = await useAsyncData(
+    'index_post',
+    () => queryContent('/post').sort({ [orderBy.value]: -1 }).find(),
+)
 
-function groupByYear(list: ParsedContent[]): Partial<Record<string, ParsedContent[]>> {
-    return Object.groupBy(list, article => new Date(article[orderBy.value]).getFullYear())
-}
+const list = computed(() => data.value || [])
+
+const groupedList = computed(
+    () => Object.entries(Object.groupBy(
+        list.value,
+        article => new Date(article[orderBy.value]).getFullYear(),
+    )).reverse(),
+)
 </script>
 
 <template>
     <div class="archive">
-        <ContentList v-slot="{ list }" :query="archiveQuery">
-            <div
-                v-for="year in Object.keys(groupByYear(list)).reverse()"
-                :key="year"
-                class="archive-group"
-            >
-                <h2 class="archive-year">
-                    {{ year }}
-                    <span class="archive-count">{{ groupByYear(list)[year]?.length }}</span>
-                </h2>
-                <ul class="archive-list">
-                    <ZArchive
-                        v-for="article in groupByYear(list)[year]"
-                        :key="article._path"
-                        v-bind="article"
-                        :to="article._path"
-                        :use-updated="orderBy === 'updated'"
-                    />
-                </ul>
-            </div>
-        </ContentList>
+        <div
+            v-for="[year, yearGroup] in groupedList"
+            :key="year"
+            class="archive-group"
+        >
+            <h2 class="archive-year">
+                {{ year }}
+                <span class="archive-count">{{ yearGroup!.length }}</span>
+            </h2>
+            <ul class="archive-list">
+                <ZArchive
+                    v-for="article in yearGroup"
+                    :key="article._path"
+                    v-bind="article"
+                    :to="article._path"
+                    :use-updated="orderBy === 'updated'"
+                />
+            </ul>
+        </div>
     </div>
 </template>
 

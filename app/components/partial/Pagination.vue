@@ -1,44 +1,33 @@
 <script setup lang="ts">
-const props = defineProps<{
-    currentPage: number
-    totalItems: number
+defineProps<{
+    totalPages: number
     perPage: number
 }>()
 
-const emit = defineEmits<{
-    (event: 'pageChange', page: number): void
-}>()
-
-const totalPages = Math.ceil(props.totalItems / props.perPage)
-
-function changePage(newPage: number) {
-    if (newPage >= 1 && newPage <= totalPages) {
-        emit('pageChange', newPage)
-    }
-}
+const page = defineModel<number>(/* { required: true } */)
 </script>
 
 <template>
     <nav class="pagination">
         <ZButton
-            :disabled="currentPage <= 1"
+            :disabled="page <= 1"
             class="pagination-button"
             icon="ph:arrow-fat-left-duotone"
-            @click="changePage(currentPage - 1)"
+            @click="page--"
         />
         <span class="pagination-info">
-            第 {{ currentPage }} / {{ totalPages }} 页
+            第 {{ page }} / {{ totalPages }} 页
         </span>
         <ZButton
-            :disabled="currentPage >= totalPages"
+            :disabled="page >= totalPages"
             class="pagination-button"
             icon="ph:arrow-fat-right-duotone"
-            @click="changePage(currentPage + 1)"
+            @click="page++"
         />
     </nav>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .pagination {
     display: flex;
     align-items: center;
