@@ -10,28 +10,41 @@ const handleError = () => clearError({ redirect: '/' })
 
 <template>
     <ZSidebar />
-    <div class="content">
-        <ZHeader />
+    <div id="content">
         <main>
-            <div>
-                <ZTitle>出错了 - {{ error?.statusCode }}</ZTitle>
-                <div class="error-message">
-                    <pre>{{ error?.message }}</pre>
-                </div>
-                <br>
+            <ZHeader />
+            <div class="app-error">
+                <Icon name="solar:siren-rounded-bold-duotone" />
+                <h2>出错了 - {{ error?.statusCode }}</h2>
+                <pre>{{ error?.message }}</pre>
                 <ZButton @click="handleError">
                     返回主页
                 </ZButton>
             </div>
+            <ZFooter />
         </main>
+        <ZAside v-if="$route.meta.aside !== false" />
     </div>
 </template>
 
-<style scoped lang="scss">
-.error-message {
+<style lang="scss">
+.app-error {
+    text-align: center;
+    color: var(--c-text-3);
+
+    >* {
+        margin: 2rem auto;
+    }
+
+    >.iconify {
+        font-size: 5rem;
+    }
+
     pre {
+        padding: 1rem;
         white-space: pre-wrap;
         word-break: break-all;
+        text-align: left;
     }
 }
 </style>

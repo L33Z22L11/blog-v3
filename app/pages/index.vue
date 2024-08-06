@@ -1,41 +1,44 @@
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content'
-
-const appConfig = useAppConfig()
+import type { ParsedContent, QueryBuilderParams } from '@nuxt/content'
 
 useHead({ title: '' })
+const appConfig = useAppConfig()
 const route = useRoute()
 const router = useRouter()
 
-const page = computed(() => Number.parseInt(route.params.page || '1', 10))
-const perPage = appConfig.indexGenerator.perPage
+const page = ref(Number.parseInt(route.query.page as string || '1', 10))
+const perPage = appConfig.indexGenerator.perPage || 10
+const orderBy = ref(route.query.order as string || appConfig.indexGenerator.orderBy || 'date')
 
-function indexFilter(list: ParsedContent[]) {
-    const sortedList = sortByOrder(list)
-    const startIndex = (page.value - 1) * perPage
-    const endIndex = startIndex + perPage
+const archiveQuery: QueryBuilderParams = { path: '/post', sort: [{ [orderBy.value]: -1 }] }
 
-    return sortedList.slice(startIndex, endIndex)
-}
-
-function sortByOrder(list: ParsedContent[]): ParsedContent[] {
-    return list.slice().sort((a, b) => new Date(b.updated || b.date).getTime() - new Date(a.updated || b.date).getTime())
+function pageFilter(list: ParsedContent[]) {
+    return list.filter((_, index) => index >= (page.value - 1) * perPage && index < page.value * perPage)
 }
 
 function onPageChange(newPage: number) {
-    router.push({ params: { page: newPage } })
+    router.push({ query: { page: newPage } })
+    page.value = newPage
 }
 </script>
 
 <template>
+    <div class="gradient-card active">
+        <h3><Icon name="ph:lego-duotone" size="1.5rem" /> 本站仍处于开发阶段</h3>
+        <p>
+            站点开源在 <ZLink to="https://github.com/L33Z22L11/blog-v3">
+                L33Z22L11/blog-v3
+            </ZLink>，不代表最终呈现样式。
+        </p>
+    </div>
     <div class="post-list">
-        <ContentList v-slot="{ list }" path="/post/">
-            <ZArticle v-for="article in indexFilter(list)" :key="article._path" v-bind="article" :to="article._path" />
+        <ContentList v-slot="{ list }" :query="archiveQuery">
+            <ZArticle v-for="article in pageFilter(list)" :key="article._path" v-bind="article" :to="article._path" />
             <ZPagination
                 v-if="appConfig.indexGenerator?.pagination !== false"
-                :total="list.length"
-                :per-page="appConfig.indexGenerator.perPage"
-                :current_page="page"
+                :current-page="page"
+                :per-page="perPage"
+                :total-items="list.length"
                 @page-change="onPageChange"
             />
         </ContentList>
@@ -45,5 +48,10 @@ function onPageChange(newPage: number) {
 <style lang="scss" scoped>
 .post-list {
     margin: 1rem;
+}
+
+.gradient-card {
+    margin: 1rem;
+    padding: 1rem;
 }
 </style>

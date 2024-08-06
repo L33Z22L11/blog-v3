@@ -76,7 +76,7 @@ mark {
         z-index: -1;
     }
 
-    &:hover, .active {
+    &:hover, &.active {
         background-position: 0;
 
         &::before {

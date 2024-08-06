@@ -1,40 +1,38 @@
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content'
+import type { ParsedContent, QueryBuilderParams } from '@nuxt/content'
 
 useHead({ title: '归档' })
-function sortByDate(list: ParsedContent[]) {
-    return list.slice().sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-}
+const appConfig = useAppConfig()
+const route = useRoute()
 
-function groupByYear(list: ParsedContent[]) {
-    return list.reduce((acc: Record<string, ParsedContent[]>, article) => {
-        const year = new Date(article.date).getFullYear()
-        if (!acc[year]) {
-            acc[year] = []
-        }
-        acc[year].push(article)
-        return acc
-    }, {})
+const orderBy = ref(route.query.order as string || appConfig.indexGenerator.orderBy || 'date')
+
+const archiveQuery: QueryBuilderParams = { path: '/post', sort: [{ [orderBy.value]: -1 }] }
+
+function groupByYear(list: ParsedContent[]): Partial<Record<string, ParsedContent[]>> {
+    return Object.groupBy(list, article => new Date(article[orderBy.value]).getFullYear())
 }
 </script>
 
 <template>
     <div class="archive">
-        <ContentList v-slot="{ list }" path="/post/">
+        <ContentList v-slot="{ list }" :query="archiveQuery">
             <div
-                v-for="year in Object.keys(groupByYear(sortByDate(list))).sort((a, b) => b - a)"
+                v-for="year in Object.keys(groupByYear(list)).reverse()"
                 :key="year"
                 class="archive-group"
             >
                 <h2 class="archive-year">
                     {{ year }}
+                    <span class="archive-count">{{ groupByYear(list)[year]?.length }}</span>
                 </h2>
                 <ul class="archive-list">
                     <ZArchive
-                        v-for="article in groupByYear(sortByDate(list))[year]"
+                        v-for="article in groupByYear(list)[year]"
                         :key="article._path"
                         v-bind="article"
-                        :link="article._path"
+                        :to="article._path"
+                        :use-updated="orderBy === 'updated'"
                     />
                 </ul>
             </div>
@@ -69,6 +67,14 @@ function groupByYear(list: ParsedContent[]) {
     -webkit-text-stroke: 1px var(--c-text-3);
 }
 
+.archive-count {
+    position: absolute;
+    right: 0;
+}
+
 .archive-list {
+    li + li {
+        margin-top: 4px;
+    }
 }
 </style>

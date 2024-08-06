@@ -22,4 +22,11 @@ function timeElapse(date, maxDepth = 2) {
     return timeString || '刚刚'
 }
 
-export { timeElapse }
+function isSameYear(date1, date2) {
+    return new Date (date1).getFullYear() === new Date (date2).getFullYear()
+}
+
+export {
+    isSameYear,
+    timeElapse,
+}

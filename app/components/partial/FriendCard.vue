@@ -12,8 +12,9 @@ const tip = joinWithBR(props.desc, props.link, props.comment)
 
 onMounted(() => {
     tippy(unrefElement(card), {
-        content: tip,
         allowHTML: true,
+        delay: [200, 0],
+        content: tip,
     })
 })
 </script>

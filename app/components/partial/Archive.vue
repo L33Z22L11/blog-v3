@@ -1,19 +1,38 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
+import tippy from 'tippy.js'
+import 'tippy.js/dist/tippy.css'
 import type ArticleProps from '~/types/article'
 
-const props = defineProps<ArticleProps>()
+const props = defineProps<{
+    to?: string
+    useUpdated?: boolean
+} & ArticleProps>()
 
-const datetime = computed(() => format(new Date(props.date), 'MM-dd'))
+const labelDate = props.useUpdated ? props.updated : props.date
+const dateLabel = computed(() => format(new Date(labelDate), 'MM-dd'))
+const auxDateLabel = computed(() => format(new Date(props.date), isSameYear(props.updated, props.date) ? 'MM-dd' : 'yyyy-MM-dd'))
+
+const articleCard = ref<HTMLAnchorElement>()
+const tip = joinWithBR(props.excerpt || props.description, props.link || props.to)
+
+onMounted(() => {
+    tippy(unrefElement(articleCard), {
+        allowHTML: true,
+        content: tip,
+        delay: [200, 0],
+    })
+})
 </script>
 
 <template>
     <li class="article-line">
-        <time :datetime="date">{{ datetime }}</time>
-        <ZRawLink class="article-link gradient-card" :to="link">
+        <time :datetime="labelDate">{{ dateLabel }}</time>
+        <ZRawLink ref="articleCard" class="article-link gradient-card" :to="to">
             <span class="article-title">
                 {{ title }}
             </span>
+            <time v-if="useUpdated" class="aux-date" :datetime="labelDate">·{{ auxDateLabel }}</time>
             <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" />
         </ZRawLink>
     </li>
@@ -35,11 +54,8 @@ const datetime = computed(() => format(new Date(props.date), 'MM-dd'))
         font-size: 0.8em;
     }
 
-    & + & {
-        margin-top: 4px;
-    }
-
     time {
+        display: inline-block;
         color: var(--c-text-3);
         transition: color 0.2s;
     }
@@ -56,6 +72,7 @@ const datetime = computed(() => format(new Date(props.date), 'MM-dd'))
     &:hover {
         .article-cover {
             width: 50%;
+            object-position: center 44%;
         }
     }
 }
