@@ -1,5 +1,5 @@
-function timeElapse(date, maxDepth = 2) {
-    const msecPast = Date.now() - date
+function timeElapse(date: Date, maxDepth = 2) {
+    const msecPast = Date.now() - date.getTime()
     const intervals = [
         { label: '年', msec: 1000 * 60 * 60 * 24 * 365.2422 },
         { label: '个月', msec: 1000 * 60 * 60 * 24 * 30.44 },
@@ -22,7 +22,7 @@ function timeElapse(date, maxDepth = 2) {
     return timeString || '刚刚'
 }
 
-function isSameYear(date1, date2) {
+function isSameYear(date1: string | Date, date2: string | Date) {
     return new Date(date1).getFullYear() === new Date(date2).getFullYear()
 }
 

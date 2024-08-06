@@ -4,7 +4,7 @@ import tippy from 'tippy.js'
 const asideTest = ref<HTMLElement>()
 
 onMounted(() => {
-    tippy(asideTest.value, {
+    tippy(asideTest.value!, {
         content: '你知道得太多了。',
     })
 })

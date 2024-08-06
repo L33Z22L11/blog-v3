@@ -4,7 +4,7 @@ defineProps<{
     perPage: number
 }>()
 
-const page = defineModel<number>(/* { required: true } */)
+const page = defineModel<number>({ required: true })
 </script>
 
 <template>

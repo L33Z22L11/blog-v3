@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { group } from 'radash'
+
 useHead({ title: '归档' })
 const appConfig = useAppConfig()
 const route = useRoute()
@@ -13,7 +15,7 @@ const { data } = await useAsyncData(
 const list = computed(() => data.value || [])
 
 const groupedList = computed(
-    () => Object.entries(Object.groupBy(
+    () => Object.entries(group(
         list.value,
         article => new Date(article[orderBy.value]).getFullYear(),
     )).reverse(),

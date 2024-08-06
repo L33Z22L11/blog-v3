@@ -13,9 +13,10 @@
   },
   "dependencies": {
     "date-fns": "^3.6.0",
+    "radash": "^12.1.0",
     "tippy.js": "^6.3.7",
     "vue": "^3.4.36",
-    "vue-router": "^4.4.2"
+    "vue-router": "^4.4.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.24.1",
