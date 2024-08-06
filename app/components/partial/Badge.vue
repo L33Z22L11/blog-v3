@@ -17,7 +17,7 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
-.badge {
+.domain {
     display: inline-flex;
     align-items: center;
     border: 1px solid var(--c-border);

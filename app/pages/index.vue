@@ -31,14 +31,14 @@ function onPageChange(newPage: number) {
     <div class="post-list">
         <ContentList v-slot="{ list }" path="/post/">
             <ZArticle v-for="article in indexFilter(list)" :key="article._path" v-bind="article" :to="article._path" />
+            <ZPagination
+                v-if="appConfig.indexGenerator?.pagination !== false"
+                :total="list.length"
+                :per-page="appConfig.indexGenerator.perPage"
+                :current_page="page"
+                @page-change="onPageChange"
+            />
         </ContentList>
-        <ZPagination
-            v-if="appConfig.indexGenerator.pagination"
-            :total="list.length"
-            :per-page="appConfig.indexGenerator.perPage"
-            :current_page="page"
-            @page-change="onPageChange"
-        />
     </div>
 </template>
 

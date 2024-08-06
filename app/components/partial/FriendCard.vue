@@ -6,7 +6,9 @@ import type { Link } from '~/types/friend'
 const props = defineProps<Link>()
 const card = ref<HTMLElement>()
 
-const tip = `${props.desc ? `${props.desc}<br>` : ''}${props.link}`
+const mainDomain = getMainDomain(props.link)
+
+const tip = joinWithBR(props.desc, props.link, props.comment)
 
 onMounted(() => {
     tippy(unrefElement(card), {
@@ -18,10 +20,12 @@ onMounted(() => {
 
 <template>
     <ZRawLink ref="card" class="card gradient-card" :to="props.link">
-        <img class="icon" :src="props.icon" alt="Icon">
+        <NuxtImg class="icon" :src="props.icon" alt="Icon" />
         <div class="card-info">
-            <span class="name">{{ props.name }}</span>
-            <span v-if="props.desc" class="desc">{{ props.desc }}</span>
+            <p><span class="name">{{ props.name }}</span> <span class="title">{{ title }}</span></p>
+            <span class="domain" :class="{ 'domain-zhilu': mainDomain === 'thisis.host' }">
+                {{ mainDomain }}
+            </span>
         </div>
     </ZRawLink>
 </template>
@@ -51,17 +55,20 @@ onMounted(() => {
 
 .card-info {
     display: grid;
-    place-self: center;
+    justify-items: start;
+    gap: 2px;
 
-    .name {
-        font-weight: 600;
+    .title {
+        font-size: 0.8em;
+        color: var(--c-text-3);
     }
 
-    .desc {
-        flex-grow: 1;
-        margin-bottom: 0.5em;
+    .domain {
+        opacity: 0.5;
+        padding: 0 0.2em;
+        border-radius: 4px;
+        background: var(--c-primary-soft);
         font-size: 0.8em;
-        color: var(--vp-c-text-3);
     }
 }
 </style>
