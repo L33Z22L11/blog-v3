@@ -8,7 +8,7 @@ defineProps<ButtonProps>()
 </script>
 
 <template>
-    <ZRawLink class="button">
+    <button class="button">
         <div class="button-main">
             <Icon v-if="icon" :name="icon" />
             {{ text }}
@@ -17,7 +17,7 @@ defineProps<ButtonProps>()
         <div v-if="desc" class="button-desc">
             {{ desc }}
         </div>
-    </ZRawLink>
+    </button>
 </template>
 
 <style scoped lang="scss">

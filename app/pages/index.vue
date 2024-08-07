@@ -13,11 +13,11 @@ const orderBy = useRouteQuery<OrderType>(
 const { data } = await useAsyncData(
     'index_post',
     () => queryContent('/post').find(),
-    { default: () => [] }
+    { default: () => [] },
 )
 
-const list = computed(() => data.value.sort(
-    (a, b) => b[orderBy.value].localeCompare(a[orderBy.value])
+const list = computed(() => data.value.toSorted(
+    (a, b) => b[orderBy.value].localeCompare(a[orderBy.value]),
 ))
 
 const { page, totalPages, pagedList } = usePagination(list, {

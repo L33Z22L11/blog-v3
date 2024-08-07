@@ -7,17 +7,17 @@ const appConfig = useAppConfig()
 
 const orderBy = useRouteQuery<OrderType>(
     'order',
-    () => appConfig.indexGenerator.orderBy as OrderType || 'date'
-);
+    () => appConfig.indexGenerator.orderBy as OrderType || 'date',
+)
 
 const { data } = await useAsyncData(
     'index_post',
     () => queryContent('/post').find(),
-    { default: () => [] }
+    { default: () => [] },
 )
 
-const list = computed(() => data.value.sort(
-    (a, b) => b[orderBy.value].localeCompare(a[orderBy.value])
+const list = computed(() => data.value.toSorted(
+    (a, b) => b[orderBy.value].localeCompare(a[orderBy.value]),
 ))
 
 const groupedList = computed(
