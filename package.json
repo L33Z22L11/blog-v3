@@ -5,13 +5,16 @@
   "private": true,
   "packageManager": "pnpm@9.6.0",
   "scripts": {
-    "prepare": "nuxt prepare",
-    "dev": "nuxt dev --host",
-    "generate": "nuxt generate",
+    "prepare": "nuxi prepare",
+    "preview": "nuxi preview",
+    "dev": "nuxi dev --host",
+    "generate": "nuxi generate",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@vueuse/core": "^10.11.0",
+    "@vueuse/router": "^10.11.0",
     "date-fns": "^3.6.0",
     "radash": "^12.1.0",
     "tippy.js": "^6.3.7",
@@ -26,7 +29,6 @@
     "@nuxtjs/color-mode": "^3.4.2",
     "@nuxtjs/seo": "2.0.0-rc.16",
     "@pinia/nuxt": "^0.5.3",
-    "@vueuse/core": "^10.11.0",
     "@vueuse/nuxt": "^10.11.0",
     "@zinkawaii/stylelint-config": "^0.1.5",
     "nuxt": "^3.12.4",

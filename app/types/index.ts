@@ -4,10 +4,6 @@ declare module 'vue-router' {
     }
 }
 
-type OrderType =
-    'date' |
-    'updated'
-
-export type {
-    OrderType,
-}
+export type OrderType =
+    | 'date'
+    | 'updated'

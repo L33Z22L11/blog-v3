@@ -1,24 +1,24 @@
 <script setup lang="ts">
 import { group } from 'radash'
+import type { OrderType } from '~/types'
 
 useHead({ title: '归档' })
 const appConfig = useAppConfig()
-const route = useRoute()
-const router = useRouter()
 
-const orderBy = ref(route.query.order as string || appConfig.indexGenerator.orderBy || 'date')
+const orderBy = useRouteQuery<OrderType>(
+    'order',
+    () => appConfig.indexGenerator.orderBy as OrderType || 'date'
+);
 
 const { data } = await useAsyncData(
     'index_post',
-    () => queryContent('/post').sort({ [orderBy.value]: -1 }).find(),
-    { watch: [orderBy] },
+    () => queryContent('/post').find(),
+    { default: () => [] }
 )
 
-watch(orderBy, () => {
-    router.push({ query: { order: orderBy.value } })
-})
-
-const list = computed(() => data.value || [])
+const list = computed(() => data.value.sort(
+    (a, b) => b[orderBy.value].localeCompare(a[orderBy.value])
+))
 
 const groupedList = computed(
     () => Object.entries(group(

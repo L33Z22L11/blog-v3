@@ -3,31 +3,26 @@ import type { OrderType } from '~/types'
 
 useHead({ title: '' })
 const appConfig = useAppConfig()
-const route = useRoute()
-const router = useRouter()
 
 const perPage = appConfig.indexGenerator.perPage || 10
-const orderBy = ref(route.query.order as OrderType || appConfig.indexGenerator.orderBy || 'date')
+const orderBy = useRouteQuery<OrderType>(
+    'order',
+    () => appConfig.indexGenerator.orderBy as OrderType || 'date',
+)
 
 const { data } = await useAsyncData(
     'index_post',
     () => queryContent('/post').sort({ [orderBy.value]: -1 }).find(),
-    { watch: [orderBy] },
+    { default: () => [] }
 )
 
-watch(orderBy, () => {
-    router.push({ query: { order: orderBy.value } })
-})
-
-const list = computed(() => data.value || [])
+const list = computed(() => data.value.sort(
+    (a, b) => b[orderBy.value].localeCompare(a[orderBy.value])
+))
 
 const { page, totalPages, pagedList } = usePagination(list, {
-    initialPage: Number(route.query.page) || 1,
     perPage,
-})
-
-watch(page, (newPage) => {
-    router.push({ query: { page: newPage } })
+    query: true,
 })
 </script>
 
