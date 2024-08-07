@@ -3,4 +3,11 @@ declare module 'vue-router' {
         headerText?: string
     }
 }
-export {}
+
+type OrderType =
+    'date' |
+    'updated'
+
+export type {
+    OrderType,
+}

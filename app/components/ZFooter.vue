@@ -22,7 +22,6 @@ const appConfig = useAppConfig()
             <div />
             <div />
         </nav>
-        <br>
         <p>
             {{ appConfig.footer.copyright }}<br>
             {{ appConfig.footer.message }}

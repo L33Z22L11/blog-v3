@@ -9,15 +9,15 @@ const props = defineProps<{
     useUpdated?: boolean
 } & ArticleProps>()
 
-const labelDate = props.useUpdated ? props.updated : props.date
-const dateLabel = computed(() => format(new Date(labelDate), 'MM-dd'))
-const auxDateLabel = computed(() => format(new Date(props.date), isSameYear(props.updated, props.date) ? 'MM-dd' : 'yyyy-MM-dd'))
+const mainDate = computed(() => (props.useUpdated ? props.updated : props.date))
+const dateLabel = computed(() => format(new Date(mainDate.value), 'MM-dd'))
+const auxDateLabel = computed(() => (format(new Date(props.date), isSameYear(props.updated, props.date) ? 'MM-dd' : 'yyyy-MM-dd')))
 
 const articleCard = ref<HTMLAnchorElement>()
 const tip = joinWithBR(props.excerpt || props.description, props.link || props.to)
 
 onMounted(() => {
-    tippy(unrefElement(articleCard), {
+    tippy(unrefElement(articleCard)!, {
         allowHTML: true,
         content: tip,
         delay: [200, 0],
@@ -27,12 +27,12 @@ onMounted(() => {
 
 <template>
     <li class="article-line">
-        <time :datetime="labelDate">{{ dateLabel }}</time>
+        <time :datetime="mainDate">{{ dateLabel }}</time>
         <ZRawLink ref="articleCard" class="article-link gradient-card" :to="to">
             <span class="article-title">
                 {{ title }}
             </span>
-            <time v-if="useUpdated" class="aux-date" :datetime="labelDate">·{{ auxDateLabel }}</time>
+            <time v-if="useUpdated && dateLabel !== auxDateLabel" class="aux-date" :datetime="date"> · {{ auxDateLabel }}</time>
             <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" />
         </ZRawLink>
     </li>
@@ -44,6 +44,7 @@ onMounted(() => {
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: 0.5rem;
+    margin: 4px 0;
     text-shadow: 0 0 4px var(--c-bg-1);
 
     @media (max-width: $breakpoint-mobile) {

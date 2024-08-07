@@ -40,6 +40,7 @@ defineProps<LinkGroup>()
     text-align: center;
     color: transparent;
     transition: color 0.2s;
+    z-index: -1;
     -webkit-text-stroke: 1px var(--c-text-3);
 }
 

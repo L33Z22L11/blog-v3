@@ -4,13 +4,19 @@ import { group } from 'radash'
 useHead({ title: '归档' })
 const appConfig = useAppConfig()
 const route = useRoute()
+const router = useRouter()
 
-const orderBy = computed(() => (route.query.order as string || appConfig.indexGenerator.orderBy || 'date'))
+const orderBy = ref(route.query.order as string || appConfig.indexGenerator.orderBy || 'date')
 
 const { data } = await useAsyncData(
     'index_post',
     () => queryContent('/post').sort({ [orderBy.value]: -1 }).find(),
+    { watch: [orderBy] },
 )
+
+watch(orderBy, () => {
+    router.push({ query: { order: orderBy.value } })
+})
 
 const list = computed(() => data.value || [])
 
@@ -24,6 +30,7 @@ const groupedList = computed(
 
 <template>
     <div class="archive">
+        <ZOrderToggle v-model="orderBy" />
         <div
             v-for="[year, yearGroup] in groupedList"
             :key="year"
@@ -70,17 +77,12 @@ const groupedList = computed(
     font-size: 5rem;
     color: transparent;
     transition: color 0.2s;
+    z-index: -1;
     -webkit-text-stroke: 1px var(--c-text-3);
 }
 
 .archive-count {
     position: absolute;
     right: 0;
-}
-
-.archive-list {
-    li + li {
-        margin-top: 4px;
-    }
 }
 </style>

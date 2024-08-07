@@ -27,6 +27,9 @@ const sidebarStore = useSidebarStore()
         </nav>
         <footer class="sidebar-footer">
             <ZThemeToggle />
+            <ZLink class="footer-link" :to="appConfig.sidebar.footerLink.url">
+                {{ appConfig.sidebar.footerLink.text }}
+            </ZLink>
         </footer>
     </aside>
     <Transition>
@@ -165,5 +168,10 @@ const sidebarStore = useSidebarStore()
     line-height: 1.5;
     text-align: center;
     color: var(--c-text-2);
+
+    .footer-link {
+        display: inline-block;
+        margin: 1rem;
+    }
 }
 </style>

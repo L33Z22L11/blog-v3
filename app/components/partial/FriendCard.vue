@@ -4,14 +4,14 @@ import 'tippy.js/dist/tippy.css'
 import type { Link } from '~/types/friend'
 
 const props = defineProps<Link>()
-const card = ref<HTMLElement>()
+const friendCard = ref<HTMLElement>()
 
 const mainDomain = getMainDomain(props.link)
 
 const tip = joinWithBR(props.desc, props.link, props.comment)
 
 onMounted(() => {
-    tippy(unrefElement(card), {
+    tippy(unrefElement(friendCard)!, {
         allowHTML: true,
         delay: [200, 0],
         content: tip,
@@ -20,7 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <ZRawLink ref="card" class="card gradient-card" :to="props.link">
+    <ZRawLink ref="friendCard" class="friend-card gradient-card" :to="props.link">
         <NuxtImg class="icon" :src="props.icon" alt="Icon" />
         <div class="card-info">
             <p><span class="name">{{ props.name }}</span> <span class="title">{{ title }}</span></p>
@@ -32,7 +32,7 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
-.card {
+.friend-card {
     display: flex;
     align-items: center;
     gap: 0.5rem;

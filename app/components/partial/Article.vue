@@ -3,7 +3,7 @@ import { format, formatDistanceToNow } from 'date-fns'
 import { zhCN } from 'date-fns/locale'
 import type ArticleProps from '~/types/article'
 
-const props = defineProps<ArticleProps>()
+const props = defineProps < { useUpdated: boolean } & ArticleProps>()
 
 const publishedLabel = getPostTime(props.date)
 const updatedLabel = getPostTime(props.updated)
@@ -33,9 +33,12 @@ function getPostTime(date: string) {
                 {{ description }}
             </p>
             <div class="article-info">
+                <time v-if="!useUpdated" :datetime="date">
+                    <Icon name="solar:calendar-add-bold-duotone" /> {{ publishedLabel }}</time>
                 <time v-if="publishedLabel !== updatedLabel" :datetime="updated">
-                    {{ updatedLabel }}</time>
-                <time :datetime="date">{{ publishedLabel }}</time>
+                    <Icon name="solar:pen-2-bold-duotone" /> {{ updatedLabel }}</time>
+                <time v-if="useUpdated" :datetime="date">
+                    <Icon name="solar:calendar-add-bold-duotone" /> {{ publishedLabel }}</time>
             </div>
         </article>
     </ZRawLink>
@@ -78,6 +81,11 @@ function getPostTime(date: string) {
     gap: 0.8em;
     font-size: 0.8em;
     color: var(--c-text-2);
+
+    .iconify {
+        font-size: 1.2em;
+        vertical-align: middle;
+    }
 
     >time + time {
         color: var(--c-text-3);

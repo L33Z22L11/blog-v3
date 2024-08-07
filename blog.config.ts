@@ -27,6 +27,12 @@ export default {
             { icon: 'ph:github-logo-duotone', text: 'Github', url: 'https://github.com/L33Z22L11', external: true },
         ] },
     ],
+    sidebar: {
+        footerLink: {
+            text: 'L33Z22L11/blog-v3',
+            url: 'https://github.com/L33Z22L11/blog-v3',
+        },
+    },
     footer: {
         copyright: `© ${new Date().getFullYear()} 纸鹿本鹿`,
         nav: <Nav>[

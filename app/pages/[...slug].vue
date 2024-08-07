@@ -1,18 +1,28 @@
+<script setup>
+const route = useRoute()
+const { data } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
+
+const event = useRequestEvent()
+if (data.value === undefined)
+    setResponseStatus(event, 404)
+</script>
+
 <template>
-    <ContentDoc>
-        <template #default="{ doc }">
-            <article class="article" :class="{ 'md-story': doc.type === 'story' }">
-                <ZTitle>{{ doc.title }}</ZTitle>
-                <ContentRenderer class="md-text" :value="doc" />
-            </article>
-        </template>
+    <ContentRenderer :value="data">
+        <h1>{{ data.title }}</h1>
+        <ContentRendererMarkdown
+            class="md-text article"
+            :class="{ 'md-story': data.type === 'story' }"
+            :value="data"
+            tag="article"
+        />
         <template #empty>
             <div class="app-error">
                 <Icon name="solar:confounded-square-bold-duotone" />
-                <p>内容为空</p>
+                <p>内容为空或不存在</p>
             </div>
         </template>
-    </ContentDoc>
+    </ContentRenderer>
 </template>
 
 <style lang="scss" scoped>

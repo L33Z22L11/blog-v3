@@ -41,6 +41,7 @@ const handleError = () => clearError({ redirect: '/' })
     }
 
     pre {
+        width: fit-content;
         padding: 1rem;
         white-space: pre-wrap;
         word-break: break-all;
