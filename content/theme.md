@@ -1,7 +1,6 @@
 ---
 title: 主题
-date: 2077-01-01
-updated: 2077-01-01
+breadcrumb: false
 ---
 
 ## 灵感来源

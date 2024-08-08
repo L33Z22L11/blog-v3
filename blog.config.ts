@@ -54,6 +54,9 @@ export default {
         message: '',
     },
 
+    hideContentPrefixes: [
+        '/posts',
+    ],
     imageDomains: [
         'blog.zhilu.cyou',
         // '7.isyangs.cn',
