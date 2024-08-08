@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import tippy from 'tippy.js'
 
-const asideStore = useAsideStore()
+const UIStore = useUIStore()
 const asideTest = ref<HTMLElement>()
 
 onMounted(() => {
@@ -12,23 +12,31 @@ onMounted(() => {
 </script>
 
 <template>
-    <aside id="z-aside" :class="{ show: asideStore.isOpen }">
-        <div class="widget">
-            <h3 class="widget-title">
-                右侧栏
-            </h3>
-            <div ref="asideTest" class="card gradient-card">
-                <p>我是一个右侧栏，正如你所见，我是一个还没有开发好的右侧栏。</p>
+    <aside id="z-aside" :class="{ show: UIStore.asideOpen }">
+        <div class="container">
+            <div class="widget">
+                <h3 class="widget-title">
+                    右侧栏
+                </h3>
+                <div ref="asideTest" class="card gradient-card">
+                    <p>我是一个右侧栏，正如你所见，我是一个还没有开发好的右侧栏。</p>
+                </div>
             </div>
         </div>
     </aside>
     <Transition>
-        <div v-if="asideStore.isOpen" id="z-aside-bgmask" @click="asideStore.toggle()" />
+        <div v-if="UIStore.asideOpen" id="z-aside-bgmask" @click="UIStore.toggleAside" />
     </Transition>
 </template>
 
 <style scoped lang="scss">
 #z-aside {
+    overflow: auto;
+
+    .container {
+        margin: 0.5rem;
+    }
+
     &.v-enter-active,
     &.v-leave-active {
         transition: opacity 0.2s;
@@ -41,22 +49,24 @@ onMounted(() => {
 
     @media (max-width: $breakpoint-widescreen) {
         position: fixed;
+        top: 0;
         right: -100vw;
         width: 320px;
-        height: auto;
         min-width: auto;
         max-width: 100%;
-        padding: 0.5rem;
-        border-radius: 1rem;
-        box-shadow: 0 0 48px -36px;
-        background-color: var(--c-bg-a75);
-        backdrop-filter: blur(0.5rem);
         transition: right 0.2s;
         z-index: 2;
 
+        .container {
+            padding: 0.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 48px -36px;
+            background-color: var(--c-bg-a75);
+            backdrop-filter: blur(0.5rem);
+        }
+
         &.show {
             right: 0;
-            margin: 1em;
         }
     }
 }

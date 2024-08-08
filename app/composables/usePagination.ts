@@ -10,14 +10,14 @@ export default function<T>(list: MaybeRefOrGetter<T[]>, options?: UsePaginationO
         perPage = 10,
         query = false,
     } = options ?? {}
+    const totalPages = Math.ceil(toValue(list).length / perPage) || 1
     const page = query
         ? useRouteQuery(
             'page',
             initialPage,
-            { transform: val => Number(val) },
+            { transform: val => val < 1 || val > totalPages ? 1 : val },
         )
         : ref(initialPage)
-    const totalPages = Math.ceil(toValue(list).length / perPage)
     const pagedList = computed(() => {
         const start = (page.value - 1) * perPage
         return toValue(list).slice(start, start + perPage)

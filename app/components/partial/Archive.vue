@@ -51,10 +51,6 @@ onMounted(() => {
         font-size: 0.9em;
     }
 
-    @media (max-width: $breakpoint-phone) {
-        font-size: 0.8em;
-    }
-
     time {
         display: inline-block;
         color: var(--c-text-3);
@@ -72,6 +68,7 @@ onMounted(() => {
 
     &:hover {
         .article-cover {
+            opacity: 1;
             width: 50%;
             object-position: center 44%;
         }
@@ -80,6 +77,7 @@ onMounted(() => {
 
 .article-cover {
     position: absolute;
+    opacity: 0.8;
     top: 0;
     right: 0;
     width: min(50%, 180px);

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
-const sidebarStore = useSidebarStore()
+const UIStore = useUIStore()
 </script>
 
 <template>
-    <aside id="z-sidebar" :class="{ show: sidebarStore.isOpen }">
+    <aside id="z-sidebar" :class="{ show: UIStore.sidebarOpen }">
         <header class="sidebar-header">
             <ZLIcon />
             <span>{{ appConfig.title }}</span>
-            <Icon name="ph:x" class="close-sidebar" @click="sidebarStore.toggle()" />
+            <Icon name="ph:x" class="close-sidebar" @click="UIStore.toggleSidebar" />
         </header>
         <nav class="sidebar-nav">
             <template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">
@@ -33,7 +33,7 @@ const sidebarStore = useSidebarStore()
         </footer>
     </aside>
     <Transition>
-        <div v-if="sidebarStore.isOpen" id="z-sidebar-bgmask" @click="sidebarStore.toggle()" />
+        <div v-if="UIStore.sidebarOpen" id="z-sidebar-bgmask" @click="UIStore.toggleSidebar" />
     </Transition>
 </template>
 
@@ -64,7 +64,8 @@ const sidebarStore = useSidebarStore()
         min-width: auto;
         max-width: 100vw;
         box-shadow: 0 0 48px -36px;
-        background-color: var(--c-bg-2);
+        background-color: var(--c-bg-a75);
+        backdrop-filter: blur(0.5rem);
         transition: left 0.2s;
         z-index: 3;
 

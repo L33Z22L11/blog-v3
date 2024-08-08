@@ -53,6 +53,10 @@ defineProps<LinkGroup>()
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 0.5rem;
     margin: 1rem auto;
+
+    @media (width <= 460px) {
+        width: 75%;
+    }
 }
 
 .friend-card > a {

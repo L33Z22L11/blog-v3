@@ -24,6 +24,12 @@ const { page, totalPages, pagedList } = usePagination(list, {
     perPage,
     query: true,
 })
+
+useHead({ title: () => page.value > 1 ? `第${page.value}页` : '' })
+
+watch(page, () => {
+    scrollTo(0, 0)
+})
 </script>
 
 <template>
@@ -33,7 +39,6 @@ const { page, totalPages, pagedList } = usePagination(list, {
         </p>
     </div>
     <div class="post-list">
-        <ZPagination v-model="page" :per-page :total-pages />
         <ZOrderToggle v-model="orderBy" class="order-toggle" />
         <ZArticle
             v-for="article in pagedList"

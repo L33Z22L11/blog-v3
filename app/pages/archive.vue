@@ -56,7 +56,7 @@ const groupedList = computed(
 <style lang="scss" scoped>
 .archive {
     margin: 1rem;
-    mask: linear-gradient(var(--c-bg-1) 50%, var(--c-bg-a50));
+    mask: linear-gradient(var(--c-bg-1) 50%, #fff3);
 }
 
 .archive-group {

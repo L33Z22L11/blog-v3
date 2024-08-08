@@ -31,7 +31,7 @@ aside {
 
 #content {
     display: flex;
-    gap: inherit;
+    gap: 0.5rem;
     width: $breakpoint-widescreen;
 
     @media (max-width: $breakpoint-widescreen) {

@@ -42,9 +42,9 @@ export default {
                 { icon: 'ph:flying-saucer-bold', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
             ] },
             { title: '社交', items: [
-                { icon: 'ri:github-fill', text: 'L33Z22L11', url: 'https://github.com/L33Z22L11' },
-                { icon: 'ri:qq-fill', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
-                { icon: 'ph:mailbox-fill', text: author.email, url: `mailto:${author.email}` },
+                { icon: 'ph:github-logo-bold', text: 'L33Z22L11', url: 'https://github.com/L33Z22L11' },
+                { icon: 'ri:qq-line', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
+                { icon: 'ph:envelope-simple-bold', text: author.email, url: `mailto:${author.email}` },
             ] },
             { title: '信息', items: [
                 { icon: 'ph:swatches-bold', text: '主题灵感源自Stellar', url: '/theme' },

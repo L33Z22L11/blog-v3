@@ -4,16 +4,15 @@ withDefaults(defineProps<{
 }>(), {
     hasAside: true,
 })
-const sidebarStore = useSidebarStore()
-const asideStore = useAsideStore()
+const UIStore = useUIStore()
 </script>
 
 <template>
     <div id="z-panel" :class="{ 'has-aside': hasAside }">
-        <button id="toggle-sidebar" :class="{ active: sidebarStore.isOpen }" @click="sidebarStore.toggle">
+        <button id="toggle-sidebar" :class="{ active: UIStore.sidebarOpen }" @click="UIStore.toggleSidebar">
             <Icon name="ph:sidebar-duotone" />
         </button>
-        <button v-if="hasAside" id="toggle-aside" :class="{ active: asideStore.isOpen }" @click="asideStore.toggle">
+        <button v-if="hasAside" id="toggle-aside" :class="{ active: UIStore.asideOpen }" @click="UIStore.toggleAside">
             <Icon name="ph:align-right-duotone" />
         </button>
     </div>
@@ -28,7 +27,7 @@ const asideStore = useAsideStore()
     border-radius: 0.5rem;
     background-color: var(--c-bg-a50);
     backdrop-filter: blur(0.5rem);
-    z-index: 2;
+    z-index: 3;
 
     @media (min-width: $breakpoint-widescreen) {
         display: none;
@@ -41,7 +40,7 @@ const asideStore = useAsideStore()
     }
 
     &:has(.active) {
-        box-shadow: 2px 4px 0.5rem rgb(0 0 0 / 25%);
+        box-shadow: 0 0 0.5rem light-dark(var(--c-text-3), var(--c-primary-2));
     }
 }
 
@@ -56,7 +55,6 @@ const asideStore = useAsideStore()
 button {
     display: block;
     padding: 0.5rem;
-    padding: auto;
     transition: 0.2s;
     cursor: pointer;
 
@@ -66,12 +64,13 @@ button {
     }
 
     &.active {
-        background-color: var(--c-bg-1);
+        background-color: light-dark(var(--c-bg-1), var(--c-primary-3));
         color: var(--c-primary-1);
     }
 }
 
 .iconify {
+    display: block;
     font-size: 1.5rem;
 }
 </style>
