@@ -61,7 +61,7 @@ onMounted(() => {
             padding: 0.5rem;
             border-radius: 1rem;
             box-shadow: 0 0 48px -36px;
-            background-color: var(--c-bg-a75);
+            background-color: var(--ld-blur-bg);
             backdrop-filter: blur(0.5rem);
         }
 

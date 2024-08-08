@@ -22,6 +22,7 @@ aside {
     position: sticky;
     top: 0;
     width: 256px;
+    height: 100vh;
     height: 100dvh;
 
     @media (max-width: $breakpoint-widescreen) {

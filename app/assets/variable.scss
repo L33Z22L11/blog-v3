@@ -17,6 +17,8 @@ $breakpoint-widescreen: 1080px;
     --c-primary-2: hsl(210deg 100% 70% / 30%);
     --c-primary-3: hsl(215deg 100% 60% / 20%);
     --c-primary-soft: hsl(220deg 100% 95% / 15%);
+    --ld-blur-bg: var(--c-bg-a50);
+    --ld-hl-bg: var(--c-primary-3);
 }
 
 :root,
@@ -36,6 +38,8 @@ $breakpoint-widescreen: 1080px;
     --c-primary-3: hsl(215deg 100% 60% / 15%);
     --c-primary-soft: hsl(240deg 20% 20% / 10%);
     --c-accent-1: hsl(180deg 70% 60%);
+    --ld-blur-bg: var(--c-bg-a75);
+    --ld-hl-bg: var(--c-bg-1);
 }
 
 .dark {

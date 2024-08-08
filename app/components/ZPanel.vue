@@ -40,7 +40,7 @@ const UIStore = useUIStore()
     }
 
     &:has(.active) {
-        box-shadow: 0 0 0.5rem light-dark(var(--c-text-3), var(--c-primary-2));
+        box-shadow: 0 0 0.5rem var(--c-text-2);
     }
 }
 
@@ -64,7 +64,7 @@ button {
     }
 
     &.active {
-        background-color: light-dark(var(--c-bg-1), var(--c-primary-3));
+        background-color: var(--ld-hl-bg);
         color: var(--c-primary-1);
     }
 }

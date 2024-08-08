@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { group } from 'radash'
+import { alphabetical, group } from 'radash'
 import type { OrderType } from '~/types'
 
 useHead({ title: '归档' })
@@ -16,8 +16,10 @@ const { data } = await useAsyncData(
     { default: () => [] },
 )
 
-const list = computed(() => data.value.toSorted(
-    (a, b) => b[orderBy.value].localeCompare(a[orderBy.value]),
+const list = computed(() => alphabetical(
+    data.value,
+    item => item[orderBy.value],
+    'desc',
 ))
 
 const groupedList = computed(

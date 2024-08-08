@@ -64,7 +64,7 @@ const UIStore = useUIStore()
         min-width: auto;
         max-width: 100vw;
         box-shadow: 0 0 48px -36px;
-        background-color: var(--c-bg-a75);
+        background-color: var(--ld-blur-bg);
         backdrop-filter: blur(0.5rem);
         transition: left 0.2s;
         z-index: 3;
