@@ -33,16 +33,17 @@ defineProps<ButtonProps>()
     transition: background-color 0.2s;
     cursor: pointer;
 
-    &:disabled {
-        cursor: not-allowed;
-    }
-
     & + & {
         margin-left: 0.8em;
     }
 
     &:hover {
         background-color: var(--c-bg-3);
+    }
+
+    &:disabled {
+        background-color: initial;
+        cursor: not-allowed;
     }
 }
 

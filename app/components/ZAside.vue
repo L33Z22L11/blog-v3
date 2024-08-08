@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import tippy from 'tippy.js'
 
+const asideStore = useAsideStore()
 const asideTest = ref<HTMLElement>()
 
 onMounted(() => {
@@ -11,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <aside id="z-aside">
+    <aside id="z-aside" :class="{ show: asideStore.isOpen }">
         <div class="widget">
             <h3 class="widget-title">
                 右侧栏
@@ -21,9 +22,66 @@ onMounted(() => {
             </div>
         </div>
     </aside>
+    <Transition>
+        <div v-if="asideStore.isOpen" id="z-aside-bgmask" @click="asideStore.toggle()" />
+    </Transition>
 </template>
 
 <style scoped lang="scss">
+#z-aside {
+    &.v-enter-active,
+    &.v-leave-active {
+        transition: opacity 0.2s;
+    }
+
+    &.v-enter-from,
+    &.v-leave-to {
+        opacity: 0;
+    }
+
+    @media (max-width: $breakpoint-widescreen) {
+        position: fixed;
+        right: -100vw;
+        width: 320px;
+        height: auto;
+        min-width: auto;
+        max-width: 100%;
+        padding: 0.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 48px -36px;
+        background-color: var(--c-bg-a75);
+        backdrop-filter: blur(0.5rem);
+        transition: right 0.2s;
+        z-index: 2;
+
+        &.show {
+            right: 0;
+            margin: 1em;
+        }
+    }
+}
+
+#z-aside-bgmask {
+    position: fixed;
+    inset: 0;
+    backdrop-filter: contrast(0.8) brightness(0.9);
+    z-index: 1;
+
+    &.v-enter-active,
+    &.v-leave-active {
+        transition: opacity 0.2s;
+    }
+
+    &.v-enter-from,
+    &.v-leave-to {
+        opacity: 0;
+    }
+
+    @media (min-width: $breakpoint-widescreen) {
+        display: none;
+    }
+}
+
 .widget {
     margin: 1rem 0;
 }

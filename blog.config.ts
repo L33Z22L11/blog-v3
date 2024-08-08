@@ -38,8 +38,8 @@ export default {
         nav: <Nav>[
             { title: '探索', items: [
                 { icon: 'ph:link-bold', text: '友链', url: '/link' },
-                { icon: 'ph:subway-fill', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
-                { icon: 'ph:flying-saucer-fill', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
+                { icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
+                { icon: 'ph:flying-saucer-bold', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
             ] },
             { title: '社交', items: [
                 { icon: 'ri:github-fill', text: 'L33Z22L11', url: 'https://github.com/L33Z22L11' },
@@ -47,8 +47,8 @@ export default {
                 { icon: 'ph:mailbox-fill', text: author.email, url: `mailto:${author.email}` },
             ] },
             { title: '信息', items: [
-                { icon: 'ph:swatches-fill', text: '主题灵感源自Stellar', url: '/theme' },
-                { icon: 'ph:certificate-fill', text: '萌ICP备20246888号', url: 'https://icp.gov.moe/?keyword=20246888' },
+                { icon: 'ph:swatches-bold', text: '主题灵感源自Stellar', url: '/theme' },
+                { icon: 'ph:certificate-bold', text: '萌ICP备20246888号', url: 'https://icp.gov.moe/?keyword=20246888' },
             ] },
         ],
         message: '',

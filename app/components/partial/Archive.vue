@@ -32,7 +32,7 @@ onMounted(() => {
             <span class="article-title">
                 {{ title }}
             </span>
-            <time v-if="useUpdated && dateLabel !== auxDateLabel" class="aux-date" :datetime="date"> · {{ auxDateLabel }}</time>
+            <time v-if="useUpdated && dateLabel !== auxDateLabel" class="aux-date" :datetime="date">／{{ auxDateLabel }}</time>
             <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" />
         </ZRawLink>
     </li>

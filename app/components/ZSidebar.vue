@@ -41,7 +41,6 @@ const sidebarStore = useSidebarStore()
 #z-sidebar {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    position: sticky;
 
     .close-sidebar {
         display: none;

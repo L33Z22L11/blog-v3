@@ -1,8 +1,8 @@
 <template>
     <ZSidebar />
+    <ZPanel :has-aside="$route.meta.aside" />
     <div id="content">
         <main>
-            <ZHeader />
             <NuxtPage />
             <ZFooter />
         </main>
@@ -26,10 +26,6 @@ aside {
 
     @media (max-width: $breakpoint-widescreen) {
         flex-shrink: 0.2;
-
-        &#z-aside {
-            display: none;
-        }
     }
 }
 
@@ -37,6 +33,10 @@ aside {
     display: flex;
     gap: inherit;
     width: $breakpoint-widescreen;
+
+    @media (max-width: $breakpoint-widescreen) {
+        display: block;
+    }
 
     >main {
         flex-grow: 1;

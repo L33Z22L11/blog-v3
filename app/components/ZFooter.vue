@@ -18,9 +18,6 @@ const appConfig = useAppConfig()
                     </li>
                 </ul>
             </div>
-            <div />
-            <div />
-            <div />
         </nav>
         <p>
             {{ appConfig.footer.copyright }}<br>
@@ -31,16 +28,15 @@ const appConfig = useAppConfig()
 
 <style lang="scss" scoped>
 .z-footer {
-    margin: 4rem 1rem;
+    margin: 3rem 1rem;
     background-color: var(--c-bg-2);
     font-size: 0.9em;
     color: var(--c-text-2);
 
     .footer-nav {
         display: flex;
-        justify-content: space-between;
-        gap: 2rem;
-        margin-block: 1rem;
+        gap: 5vw;
+        padding-block: 3rem;
         flex-wrap: wrap;
 
         h3 {
@@ -52,8 +48,10 @@ const appConfig = useAppConfig()
             display: flex;
             align-items: center;
             gap: 0.3em;
+            width: fit-content;
             padding: 0.3em 0.5em;
             border-radius: 0.5em;
+            font-size: 0.9em;
             transition: background-color 0.2s, color 0.1s;
 
             &:hover {

@@ -35,6 +35,11 @@ menu, ol, ul {
     background-color: var(--c-primary-2);
 }
 
+button {
+    background: none;
+    font: inherit;
+}
+
 mark {
     background: linear-gradient(var(--c-primary-2), var(--c-primary-2)) no-repeat left bottom / 100% 0.3em;
     text-decoration: none;

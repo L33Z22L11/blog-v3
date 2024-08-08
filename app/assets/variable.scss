@@ -28,9 +28,9 @@ $breakpoint-widescreen: 1080px;
     --c-bg-2: hsl(200deg 20% 98%);
     --c-bg-3: hsl(200deg 10% 94%);
     --c-border: hsl(200deg 5% 90%);
-    --c-bg-a50: hsl(0deg 0% 100% / 50%);
-    --c-bg-a75: hsl(0deg 0% 100% / 75%);
-    --c-bg-a100: hsl(0deg 0% 100% / 0%);
+    --c-bg-a50: hsl(200deg 20% 98% / 50%);
+    --c-bg-a75: hsl(200deg 20% 98% / 75%);
+    --c-bg-a100: hsl(200deg 20% 98% / 0%);
     --c-primary-1: hsl(220deg 100% 55%);
     --c-primary-2: hsl(210deg 100% 50% / 30%);
     --c-primary-3: hsl(215deg 100% 60% / 15%);
@@ -40,4 +40,6 @@ $breakpoint-widescreen: 1080px;
 
 .dark {
     @include dark-theme;
+
+    color-scheme: dark;
 }

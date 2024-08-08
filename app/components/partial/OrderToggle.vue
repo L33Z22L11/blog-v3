@@ -18,9 +18,11 @@ function switchOrder() {
 </script>
 
 <template>
-    <div class="order-toggle" @click="switchOrder">
-        <Icon name="ph:sort-ascending-bold" />
-        <span class="order-text">{{ orderMap[orderBy] }}</span>
+    <div class="order-toggle">
+        <button @click="switchOrder">
+            <Icon name="ph:sort-ascending-bold" />
+            <span class="order-text">{{ orderMap[orderBy] }}</span>
+        </button>
     </div>
 </template>
 
@@ -29,13 +31,19 @@ function switchOrder() {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 0.2rem;
-    color: var(--c-text-3);
-    transition: color 0.1s;
-    cursor: pointer;
+    margin-block: 1rem;
 
-    &:hover {
-        color: var(--c-primary-1);
+    > button {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+        color: var(--c-text-3);
+        transition: color 0.1s;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--c-primary-1);
+        }
     }
 }
 </style>

@@ -60,7 +60,7 @@ const groupedList = computed(
 }
 
 .archive-group {
-    position: relative;
+    // position: relative;
     margin: 1rem 0;
 
     &:hover > .archive-year {
@@ -71,7 +71,7 @@ const groupedList = computed(
 .archive-year {
     position: sticky;
     opacity: 0.5;
-    top: 3rem;
+    top: 0;
     margin-bottom: -2rem;
     mask: linear-gradient(var(--c-bg-1) 50%, transparent);
     font-size: 5rem;

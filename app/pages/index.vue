@@ -32,8 +32,9 @@ const { page, totalPages, pagedList } = usePagination(list, {
             <Icon name="ph:lego-duotone" /> 本站仍处于开发阶段，不代表最终呈现样式。
         </p>
     </div>
-    <ZOrderToggle v-model="orderBy" class="order-toggle" />
     <div class="post-list">
+        <ZPagination v-model="page" :per-page :total-pages />
+        <ZOrderToggle v-model="orderBy" class="order-toggle" />
         <ZArticle
             v-for="article in pagedList"
             :key="article._path"
@@ -47,17 +48,17 @@ const { page, totalPages, pagedList } = usePagination(list, {
 
 <style lang="scss" scoped>
 .notify {
+    position: sticky;
+    top: 0;
     margin: 1rem;
     padding: 1rem;
+    backdrop-filter: blur(2px);
+    z-index: 1;
 
     .iconify {
         font-size: 1.2em;
         vertical-align: middle;
     }
-}
-
-.order-toggle {
-    margin: 1rem;
 }
 
 .post-list {
