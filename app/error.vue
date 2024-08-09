@@ -12,7 +12,6 @@ const handleError = () => clearError({ redirect: '/' })
     <ZSidebar />
     <div id="content">
         <main>
-            <ZHeader />
             <div class="app-error">
                 <Icon name="solar:siren-rounded-bold-duotone" />
                 <h2>出错了 - {{ error?.statusCode }}</h2>

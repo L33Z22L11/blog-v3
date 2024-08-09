@@ -23,14 +23,14 @@ export default {
     url: 'https://blog.zhilu.cyou',
     nav: <Nav> [
         { title: '', items: [
-            { icon: 'ph:files-duotone', text: '文章', url: '/' },
-            { icon: 'ph:link-duotone', text: '友链', url: '/link' },
-            { icon: 'ph:archive-duotone', text: '归档', url: '/archive' },
-            { icon: 'ph:identification-card-duotone', text: '个人主页', url: 'https://zhilu.cyou/', external: true },
+            { icon: 'ph:files-bold', text: '文章', url: '/' },
+            { icon: 'ph:link-bold', text: '友链', url: '/link' },
+            { icon: 'ph:archive-bold', text: '归档', url: '/archive' },
         ] },
-        { title: '社交', items: [
-            { icon: 'ri:qq-fill', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd', external: true },
-            { icon: 'ph:github-logo-duotone', text: 'Github', url: 'https://github.com/L33Z22L11', external: true },
+        { title: '周边', items: [
+            { icon: 'ph:identification-card-bold', text: '个人主页', url: 'https://zhilu.cyou/', external: true },
+            { icon: 'ri:qq-line', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd', external: true },
+            { icon: 'ph:github-logo-bold', text: 'Github', url: 'https://github.com/L33Z22L11', external: true },
         ] },
     ],
     sidebar: {

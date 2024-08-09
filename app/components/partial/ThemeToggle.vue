@@ -79,6 +79,7 @@ onMounted(() => {
         }
 
         &.active {
+            box-shadow: 0 0 0.5rem var(--c-border);
             background-color: var(--c-bg-1);
             color: var(--c-text-1);
             cursor: auto;

@@ -5,11 +5,6 @@ const UIStore = useUIStore()
 
 <template>
     <aside id="z-sidebar" :class="{ show: UIStore.sidebarOpen }">
-        <!-- <header class="sidebar-header">
-            <ZLIcon />
-            <span>{{ appConfig.title }}</span>
-            <Icon name="ph:x" class="close-sidebar" @click="UIStore.toggleSidebar" />
-        </header> -->
         <ZLHeader class="sidebar-header" />
         <nav class="sidebar-nav">
             <template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">
@@ -42,7 +37,7 @@ const UIStore = useUIStore()
 #z-sidebar {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    margin-inline: 0.5rem;
+    margin-inline: 1rem;
 
     .close-sidebar {
         display: none;
@@ -104,7 +99,6 @@ const UIStore = useUIStore()
 
 .sidebar-nav {
     overflow: auto;
-    padding: 0.5rem;
 
     h3 {
         margin: 2rem 0 1rem 1rem;
@@ -113,13 +107,13 @@ const UIStore = useUIStore()
     }
 
     li {
-        margin: 6px 0;
+        margin: 0.5rem 0;
 
         >a {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 6px 12px;
+            padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             transition: background-color 0.2s, color 0.1s;
 

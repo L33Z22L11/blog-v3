@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { da } from 'date-fns/locale'
 import { alphabetical, sort } from 'radash'
 import type { OrderType } from '~/types'
 
@@ -25,20 +26,22 @@ const list = computed(() => alphabetical(
 
 const { page, totalPages, pagedList } = usePagination(list, {
     perPage,
-    query: true,
+    bindQuery: true,
 })
 
 useHead({ title: () => page.value > 1 ? `第${page.value}页` : '' })
 
-watch(page, () => {
-    scrollTo(0, 0)
+onMounted(() => {
+    watch(page, () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+    })
 })
 </script>
 
 <template>
     <div class="notify gradient-card active">
         <p>
-            <Icon name="ph:lego-duotone" /> 本站仍处于开发阶段，不代表最终呈现样式。
+            <Icon name="ph:lego-bold" /> 本站仍处于开发阶段，不代表最终呈现样式。
         </p>
     </div>
     <div class="post-list">

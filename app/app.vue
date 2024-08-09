@@ -14,7 +14,6 @@
 #z-root {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
 }
 
 aside {

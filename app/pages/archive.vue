@@ -74,7 +74,7 @@ const groupedList = computed(
     position: sticky;
     opacity: 0.5;
     top: 0;
-    margin-bottom: -2rem;
+    margin-bottom: -0.5em;
     mask: linear-gradient(var(--c-bg-1) 50%, transparent);
     font-size: 5rem;
     color: transparent;
