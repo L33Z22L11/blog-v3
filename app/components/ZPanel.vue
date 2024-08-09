@@ -1,10 +1,7 @@
 <script setup lang="ts">
-withDefaults(defineProps<{
-    hasAside: boolean
-}>(), {
-    hasAside: true,
-})
+const route = useRoute()
 const UIStore = useUIStore()
+const hasAside = computed(() => route.meta.aside !== false)
 </script>
 
 <template>

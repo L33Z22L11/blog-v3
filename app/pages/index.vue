@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { da } from 'date-fns/locale'
-import { alphabetical, sort } from 'radash'
+import { alphabetical } from 'radash'
 import type { OrderType } from '~/types'
 
 useHead({ title: '' })
+definePageMeta({
+    aside: ['blog_log', 'connectivity'],
+})
 const appConfig = useAppConfig()
 
 const perPage = appConfig.indexGenerator.perPage || 10
@@ -41,7 +43,7 @@ onMounted(() => {
 <template>
     <div class="notify gradient-card active">
         <p>
-            <Icon name="ph:lego-bold" /> 本站仍处于开发阶段，不代表最终呈现样式。
+            <Icon name="ph:lego-b" /> 本站仍处于开发阶段，不代表最终呈现样式。
         </p>
     </div>
     <div class="post-list">

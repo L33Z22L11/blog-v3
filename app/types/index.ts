@@ -1,6 +1,6 @@
 declare module 'vue-router' {
     interface RouteMeta {
-        aside?: boolean
+        aside?: Array<string> | boolean
     }
 }
 

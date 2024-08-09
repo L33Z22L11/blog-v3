@@ -7,6 +7,7 @@ export default interface ArticleProps {
     updated?: string
     category?: string[]
     tags?: string[]
+    type?: 'tech' | 'story' | undefined
     cover?: string
     banner?: string
 }

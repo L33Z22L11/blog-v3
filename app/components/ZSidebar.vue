@@ -37,7 +37,7 @@ const UIStore = useUIStore()
 #z-sidebar {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    margin-inline: 1rem;
+    padding-inline: 1rem;
 
     .close-sidebar {
         display: none;
@@ -58,8 +58,7 @@ const UIStore = useUIStore()
         position: fixed;
         left: -100vw;
         width: 320px;
-        min-width: auto;
-        max-width: 100vw;
+        max-width: 100%;
         box-shadow: 0 0 48px -36px;
         background-color: var(--ld-blur-bg);
         backdrop-filter: blur(0.5rem);

@@ -1,3 +1,6 @@
+import { format, formatDistanceToNow } from 'date-fns'
+import { zhCN } from 'date-fns/locale'
+
 function timeElapse(date: Date, maxDepth = 2) {
     const msecPast = Date.now() - date.getTime()
     const intervals = [
@@ -22,11 +25,26 @@ function timeElapse(date: Date, maxDepth = 2) {
     return timeString || '刚刚'
 }
 
+function getPostTime(date: string) {
+    const postDate = new Date(date)
+    const now = new Date()
+    if (postDate.getTime() > now.getTime() - 1000 * 60 * 60 * 24 * 7) {
+        return formatDistanceToNow(postDate, { addSuffix: true, locale: zhCN })
+    }
+    else if (postDate.getFullYear() === now.getFullYear()) {
+        return format(postDate, 'M月d日')
+    }
+    else {
+        return format(postDate, 'yy年M月d日')
+    }
+}
+
 function isSameYear(date1: string | Date, date2: string | Date) {
     return new Date(date1).getFullYear() === new Date(date2).getFullYear()
 }
 
 export {
+    getPostTime,
     isSameYear,
     timeElapse,
 }

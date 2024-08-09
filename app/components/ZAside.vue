@@ -3,6 +3,9 @@ import tippy from 'tippy.js'
 
 const UIStore = useUIStore()
 const asideTest = ref<HTMLElement>()
+const route = useRoute()
+
+const widgets = computed(() => (route.meta.aside || []) as string[])
 
 onMounted(() => {
     tippy(asideTest.value!, {
@@ -20,6 +23,9 @@ onMounted(() => {
                 </h3>
                 <div ref="asideTest" class="card gradient-card">
                     <p>我是一个右侧栏，正如你所见，我是一个还没有开发好的右侧栏。</p>
+                    <p v-if="widgets.length">
+                        而且这个页面会有 {{ widgets.join('、') }} 组件，但以后再写吧。
+                    </p>
                 </div>
             </div>
         </div>
@@ -52,8 +58,10 @@ onMounted(() => {
         top: 0;
         right: -100vw;
         width: 320px;
-        min-width: auto;
+        height: auto;
         max-width: 100%;
+        max-height: 100vh;
+        max-height: 100dvh;
         transition: right 0.2s;
         z-index: 2;
 

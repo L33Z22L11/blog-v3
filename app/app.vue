@@ -1,6 +1,6 @@
 <template>
     <ZSidebar />
-    <ZPanel :has-aside="$route.meta.aside" />
+    <ZPanel />
     <div id="content">
         <main>
             <NuxtPage />
@@ -20,12 +20,12 @@ aside {
     flex-shrink: 0;
     position: sticky;
     top: 0;
-    width: 256px;
+    width: 280px;
     height: 100vh;
     height: 100dvh;
 
     @media (max-width: $breakpoint-widescreen) {
-        // flex-shrink: 0.2;
+        flex-shrink: 0.5;
     }
 }
 

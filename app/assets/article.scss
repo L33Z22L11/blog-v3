@@ -53,7 +53,6 @@
     }
 
     pre {
-        overflow: auto;
         margin-block: 1em;
         padding: 1em;
         border-radius: 8px;
@@ -62,7 +61,7 @@
         line-height: 1.4;
 
         > code > .line {
-            padding-inline-start: 1.5rem;
+            padding-inline-start: 1.8rem;
             position: relative;
 
             &::before {

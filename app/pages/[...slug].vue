@@ -2,6 +2,10 @@
 const route = useRoute()
 const { data } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
 
+definePageMeta({
+    aside: ['toc'],
+})
+
 const event = useRequestEvent()
 if (data.value === undefined)
     setResponseStatus(event, 404)
@@ -9,7 +13,7 @@ if (data.value === undefined)
 
 <template>
     <ContentRenderer :value="data">
-        <h1>{{ data.title }}</h1>
+        <MdPostHeader v-bind="data" />
         <ContentRendererMarkdown
             class="md-text article"
             :class="{ 'md-story': data.type === 'story' }"

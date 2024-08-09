@@ -7,7 +7,7 @@
   "scripts": {
     "prepare": "nuxi prepare",
     "preview": "nuxi preview",
-    "dev": "nuxi dev --host",
+    "dev": "nuxi dev --open --host",
     "generate": "nuxi generate",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"

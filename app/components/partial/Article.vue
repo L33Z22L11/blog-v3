@@ -1,25 +1,10 @@
 <script setup lang="ts">
-import { format, formatDistanceToNow } from 'date-fns'
-import { zhCN } from 'date-fns/locale'
 import type ArticleProps from '~/types/article'
 
 const props = defineProps < { useUpdated: boolean } & ArticleProps>()
 
 const publishedLabel = getPostTime(props.date)
 const updatedLabel = getPostTime(props.updated)
-function getPostTime(date: string) {
-    const postDate = new Date(date)
-    const now = new Date()
-    if (postDate.getTime() > now.getTime() - 1000 * 60 * 60 * 24 * 7) {
-        return formatDistanceToNow(postDate, { addSuffix: true, locale: zhCN })
-    }
-    else if (postDate.getFullYear() === now.getFullYear()) {
-        return format(postDate, 'M月d日')
-    }
-    else {
-        return format(postDate, 'yy年M月d日')
-    }
-}
 </script>
 
 <template>
