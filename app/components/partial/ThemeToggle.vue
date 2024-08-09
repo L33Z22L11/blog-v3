@@ -8,15 +8,15 @@ const themeToggle = ref<Array<HTMLDivElement> | null>(null)
 
 const themes: Themes = {
     light: {
-        icon: 'ph:sun-duotone',
+        icon: 'ph:sun-bold',
         tip: '浅色模式',
     },
     system: {
-        icon: 'ph:monitor-duotone',
+        icon: 'ph:monitor-bold',
         tip: '跟随系统',
     },
     dark: {
-        icon: 'ph:moon-duotone',
+        icon: 'ph:moon-bold',
         tip: '深色模式',
     },
 }

@@ -56,6 +56,11 @@ mark {
     }
 }
 
+@font-face {
+    font-family: AlimamaFangYuanTi;
+    src: url("/fonts/AlimamaFangYuanTi.woff2");
+}
+
 .text-primary {
     color: var(--c-primary-1);
 }

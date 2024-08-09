@@ -37,6 +37,7 @@ const handleError = () => clearError({ redirect: '/' })
     }
 
     >.iconify {
+        margin-top: 1.5em;
         font-size: 5rem;
     }
 

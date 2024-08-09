@@ -14,7 +14,7 @@
 #z-root {
     display: flex;
     justify-content: center;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 aside {
@@ -26,7 +26,7 @@ aside {
     height: 100dvh;
 
     @media (max-width: $breakpoint-widescreen) {
-        flex-shrink: 0.2;
+        // flex-shrink: 0.2;
     }
 }
 

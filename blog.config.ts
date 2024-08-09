@@ -9,7 +9,13 @@ const author = {
 
 export default {
     title: '纸鹿摸鱼处',
-    description: '纸鹿至麓不知路，支炉制露不止漉。',
+    description: '纸鹿本鹿的个人博客，分享技术与生活。折腾不止，摸鱼生活——摸门🙏🏻',
+    header: {
+        logo: 'https://wsrv.nl/?url=github.com/L33Z22L11.png',
+        text: true,
+        subtitle: '纸鹿至麓不知路，支炉制露不止漉',
+        emojiTail: ['📄', '🦌', '🙌', '🐟', '🏖️'],
+    },
     author,
     language: 'zh-CN',
     timezone: 'Asia/Shanghai',

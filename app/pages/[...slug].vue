@@ -19,7 +19,7 @@ if (data.value === undefined)
         <template #empty>
             <div class="app-error">
                 <Icon name="solar:confounded-square-bold-duotone" />
-                <p>内容为空或不存在</p>
+                <p>内容为空或页面不存在</p>
             </div>
         </template>
     </ContentRenderer>
