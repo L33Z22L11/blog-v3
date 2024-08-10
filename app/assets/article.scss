@@ -52,29 +52,6 @@
         font-size: 0.9em;
     }
 
-    pre {
-        margin-block: 1em;
-        padding: 1em;
-        border-radius: 8px;
-        background-color: var(--c-bg-3);
-        font-size: 0.9em;
-        line-height: 1.4;
-
-        > code > .line {
-            padding-inline-start: 1.8rem;
-            position: relative;
-
-            &::before {
-                content: attr(line);
-                position: absolute;
-                left: 0;
-                width: 1rem;
-                text-align: right;
-                color: var(--c-text-3);
-            }
-        }
-    }
-
     &.md-story {
         h1, h2, h3, h4, h5, h6 {
             text-align: center;

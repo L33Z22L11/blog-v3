@@ -1,42 +1,44 @@
 <script setup lang="ts">
-defineProps({
-    code: {
-        type: String,
-        default: '',
-    },
-    language: {
-        type: String,
-        default: null,
-    },
-    filename: {
-        type: String,
-        default: null,
-    },
-    highlights: {
-        type: Array as () => number[],
-        default: () => [],
-    },
-    meta: {
-        type: String,
-        default: null,
-    },
-    class: {
-        type: String,
-        default: null,
-    },
-})
+withDefaults(defineProps<{
+    code?: string;
+    language?: string;
+    filename?: string;
+    highlights?: () => number[];
+    meta?: string;
+}>(), {
+    code: '',
+    highlights: () => [],
+});
 </script>
 
 <template>
-    <pre :class="$props.class"><slot /></pre>
+    <figure class="z-codeblock">
+        <pre><slot /></pre>
+    </figure>
 </template>
 
-<style scoped>
-pre {
-    white-space: pre-wrap;
+<style lang="scss" scoped>
+.z-codeblock {
+    overflow: auto;
+    margin-block: 1em;
+    padding: 1em;
+    border-radius: 8px;
+    background-color: var(--c-bg-3);
+    font-size: 0.9em;
+    line-height: 1.4;
 }
 
-pre code .line {
-    display: block;
+:deep(.line) {
+    padding-inline-start: 1.8rem;
+    position: relative;
+
+    &::before {
+        content: attr(line);
+        position: absolute;
+        left: 0;
+        width: 1rem;
+        text-align: right;
+        color: var(--c-text-3);
+    }
 }
 </style>
