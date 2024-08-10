@@ -1,14 +1,14 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
-    code?: string;
-    language?: string;
-    filename?: string;
-    highlights?: () => number[];
-    meta?: string;
+    code?: string
+    language?: string
+    filename?: string
+    highlights?: () => number[]
+    meta?: string
 }>(), {
     code: '',
     highlights: () => [],
-});
+})
 </script>
 
 <template>
@@ -19,6 +19,7 @@ withDefaults(defineProps<{
 
 <style lang="scss" scoped>
 .z-codeblock {
+    display: flex;
     overflow: auto;
     margin-block: 1em;
     padding: 1em;
@@ -26,6 +27,12 @@ withDefaults(defineProps<{
     background-color: var(--c-bg-3);
     font-size: 0.9em;
     line-height: 1.4;
+}
+
+// 使内容失去宽度，由 flex 全权 grow
+pre {
+    flex-grow: 1;
+    width: 0;
 }
 
 :deep(.line) {

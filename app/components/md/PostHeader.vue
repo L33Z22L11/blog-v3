@@ -93,12 +93,15 @@ const updatedLabel = getPostTime(props.updated ?? '0')
 }
 
 .post-nav {
-    padding: 1em 1rem;
-    font-size: 0.8rem;
+    padding: 0.8em 1rem;
+
+    >* {
+        font-size: 0.8rem;
+    }
 
     .post-info {
         display: flex;
         gap: 1em;
     }
 }
-</style>"
+</style>

@@ -1,21 +1,23 @@
 <template>
     <ZSidebar />
-    <main class="main">
-        <NuxtPage />
-        <ZFooter />
-    </main>
-    <ZAside v-if="$route.meta.aside !== false" />
+    <div id="content">
+        <main>
+            <NuxtPage />
+            <ZFooter />
+        </main>
+        <ZAside v-if="$route.meta.aside !== false" />
+    </div>
     <ZPanel />
 </template>
 
 <style lang="scss">
+// Nuxt 根元素 id
 #z-root {
     display: flex;
-    gap: 0.5rem;
-    max-width: $breakpoint-widescreen + 280px;
-    margin-inline: auto;
+    justify-content: center;
 }
 
+// 合并处理 #z-sidebar, #z-aside
 aside {
     flex-shrink: 0;
     position: sticky;
@@ -29,10 +31,16 @@ aside {
     }
 }
 
-.main {
-    container: main / inline-size;
-    flex: 1;
+#content {
+    display: flex;
+
+    // 若设置的是 max-width，则内部 main 宽度为 fit-content，可能无法撑满
     width: $breakpoint-widescreen;
-    min-height: calc(100vh + 5rem);
+
+    // 若内部元素横向撑开，可设置 width: 0;
+    > main {
+        flex-grow: 1;
+        min-height: calc(100vh + 5rem);
+    }
 }
 </style>
