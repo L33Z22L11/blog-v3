@@ -75,6 +75,10 @@ export default {
     injectHeadLinks: [
         { rel: 'stylesheet', href: '//s1.hdslb.com/bfs/static/jinkela/long/font/medium.css', media: 'none', onload: 'this.media="all"' },
     ],
+    injectHeadScripts: [
+        { 'src': 'https://zhi.zhilu.cyou/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41' },
+        { 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}' },
+    ],
     indexGenerator: {
         perPage: 10,
         orderBy: 'date',

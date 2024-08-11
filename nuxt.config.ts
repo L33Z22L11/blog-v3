@@ -18,6 +18,9 @@ export default defineNuxtConfig({
                 separator: '|',
             },
             titleTemplate: `%s %separator ${blogConfig.title}`,
+            script: [
+                ...blogConfig.injectHeadScripts,
+            ],
         },
     },
 
