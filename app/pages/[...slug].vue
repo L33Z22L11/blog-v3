@@ -1,5 +1,6 @@
 <script setup>
 const route = useRoute()
+const appConfig = useAppConfig()
 const { data } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
 useHead({
     title: data.value?.title,
@@ -33,6 +34,8 @@ if (data.value === undefined)
             </div>
         </template>
     </ContentRenderer>
+    <div id="tk-comment" />
+    <ZComment />
 </template>
 
 <style lang="scss" scoped>

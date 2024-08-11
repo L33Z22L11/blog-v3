@@ -60,6 +60,11 @@ export default {
         message: '',
     },
 
+    twikoo: {
+        js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.36/dist/twikoo.all.min.js',
+        envId: 'https://twikoo.zhilu.cyou',
+    },
+
     hideContentPrefixes: [
         '/posts',
     ],

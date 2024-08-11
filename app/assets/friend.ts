@@ -234,8 +234,8 @@ export default <LinkGroup[]>[
             {
                 name: '清羽飞扬',
                 desc: '柳影曳曳，清酒孤灯，扬笔撒墨，心境如霜',
-                link: 'https://blog.qyliu.fun/',
-                icon: 'https://blog.qyliu.fun/info/avatar.ico',
+                link: 'https://blog.liushen.fun/',
+                icon: 'https://blog.liushen.fun/info/avatar.ico',
                 comment: '武理工学长，西安老乡。',
             },
             {

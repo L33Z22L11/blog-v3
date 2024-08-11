@@ -18,7 +18,7 @@ export default {
         },
         {
             date: '2024-08-11',
-            content: '使用 Nuxt Content 重构博客',
+            content: 'Nuxt Content 重构博客上线',
         },
         {
             date: '{{ new Date() }}',
