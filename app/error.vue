@@ -5,6 +5,9 @@ defineProps({
     error: Object as () => NuxtError,
 })
 
+definePageMeta({
+    aside: ['blog_log'],
+})
 const handleError = () => clearError({ redirect: '/' })
 </script>
 
@@ -40,6 +43,7 @@ const handleError = () => clearError({ redirect: '/' })
         font-size: 5rem;
     }
 
+    // 短则居中，长则换行
     pre {
         width: fit-content;
         padding: 1rem;

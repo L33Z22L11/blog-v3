@@ -87,7 +87,7 @@ KazariEX 指出，我给主题提交 PR 之后，虽然使用了相应关键词�
 
 我在上一篇文章中吐槽 Stylelint 和 pnpm 之后，KazariEX 写了一篇博客文章，讲述自己在开发过程中配置、使用 CSS 的习惯。
 
-::md-link-card
+::LinkCard
 ---
 icon: https://cdn.libravatar.org/avatar/ecb2ea87c4532f007838d86d02798f89
 title: 个人向 CSS 编码风格汇总
@@ -107,7 +107,7 @@ shamefully-hoist=true
 
 Shawn 看到了我的上一篇文章，写了一篇在 Windows 上使用 clangd 的文章。
 
-::md-link-card
+::LinkCard
 ---
 icon: https://wsrv.nl/?url=github.com/ShawnJeffersonWang.png
 title: Windows 下配置 Clang 和 clangd

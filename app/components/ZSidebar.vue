@@ -7,6 +7,11 @@ const UIStore = useUIStore()
     <aside id="z-sidebar" :class="{ show: UIStore.sidebarOpen }">
         <ZLHeader class="sidebar-header" />
         <nav class="sidebar-nav">
+            <div class="notify gradient-card active">
+                <p>
+                    <Icon name="ph:lego-bold" /> 本站仍处于开发阶段，不代表最终呈现样式。
+                </p>
+            </div>
             <template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">
                 <h3 v-if="group.title">
                     {{ group.title }}
@@ -37,7 +42,6 @@ const UIStore = useUIStore()
 #z-sidebar {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    padding-inline: 1rem;
 
     .close-sidebar {
         display: none;
@@ -96,8 +100,23 @@ const UIStore = useUIStore()
     }
 }
 
+.notify {
+    position: sticky;
+    margin: 1rem 0.5rem;
+    padding: 0.5rem;
+    backdrop-filter: blur(2px);
+    font-size: 0.9em;
+    z-index: 1;
+
+    .iconify {
+        font-size: 1.2em;
+        vertical-align: middle;
+    }
+}
+
 .sidebar-nav {
     overflow: auto;
+    padding: 0 0.5rem;
 
     h3 {
         margin: 2rem 0 1rem 1rem;
@@ -148,15 +167,14 @@ const UIStore = useUIStore()
 }
 
 .sidebar-footer {
-    padding: 0.5rem;
+    padding-top: 1rem;
     font-size: 0.8em;
-    line-height: 1.5;
     text-align: center;
     color: var(--c-text-2);
 
     .footer-link {
         display: inline-block;
-        margin: 1rem;
+        margin: 1rem 0;
     }
 }
 </style>

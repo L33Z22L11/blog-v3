@@ -20,7 +20,7 @@ Tailscale是一款虚拟组网软件，它不需要公网IP地址，也不会像
 
 这篇教程挺不错的，可以阅读一下：
 
-::md-link-card
+::LinkCard
 ---
 icon: https://wsrv.nl/?url=github.com/Ghost-chu.png
 title: Tailscale 安利指南 - 快速向你的好友推销 Tailscale

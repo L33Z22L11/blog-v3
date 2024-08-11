@@ -10,18 +10,6 @@
         vertical-align: middle;
     }
 
-    :where(p,li,ul,table):not([class]) a:not([class]) {
-        padding: 0 2px;
-        border-radius: 4px;
-        background: linear-gradient(var(--c-primary-3), var(--c-primary-3)) no-repeat center bottom / 100% 2px;
-        color: var(--c-primary-1);
-        transition: 0.2s;
-
-        &:hover {
-            background-size: 100% 100%;
-        }
-    }
-
     menu, ol, ul {
         margin: 0.5em 0;
         padding: 0 0 0 1em;

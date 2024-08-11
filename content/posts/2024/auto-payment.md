@@ -21,7 +21,7 @@ references:
 
 无巧不成书，在我写这篇文章的同日，央广网也发布了相关文章。
 
-::md-link-card
+::LinkCard
 ---
 icon: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/Bcnwtg51vpWftdhUkP4Us7LPW5GoMLd13rMBXKJrNgLNFOYuicrBjBN9AyzWQd6Jm50V5WyiaBJVKlhgP4jm0F0w/0
 title: App自动续费 “进坑”容易“出坑”难！记者调查→
@@ -31,7 +31,7 @@ link: https://mp.weixin.qq.com/s/TVIAlq9cdcjmSaYRScYM_g
 
 前一天，也有文章从自动扣费套路讲到「老年人在网络付费方面应受到特殊保护」。
 
-::md-link-card
+::LinkCard
 ---
 icon: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/wlCrBZoK8HGKibibrZBXcyf4EUbmkg5AkycfXaQejfGHKHulE4OrfibRyPkdT0RKNgslI27ow6IJSQ7STtl443uqA/0
 title: 看账单惊呆！父母“上瘾”，凌晨3点还在打钱，一个月消费数千元……
@@ -83,7 +83,7 @@ link: https://mp.weixin.qq.com/s/eldcP5_iVAZH6TlF_4zD_A
 
 即使华为想趟这趟浑水，它也是**十分有「原则」**的：如果扣款时间超过了15日，或者是包月套餐，那么不予退款。例如这个黑猫投诉上的案例，消费者诉以真挚情感，华为诚恳道歉也要按「原则」办事——不予退款。
 
-::md-link-card
+::LinkCard
 ---
 icon: https://img0.baidu.com/it/u=1939131275,3604285917&fm=253
 title: 不知情情况下自动扣费，要求返还扣费

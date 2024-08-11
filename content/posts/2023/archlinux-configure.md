@@ -198,7 +198,7 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 
 可以参照 {% post_link 2023/archlinux-beautify %} 继续优化体验。
 
-::md-link-card
+::LinkCard
 ---
 icon: https://7.isyangs.cn/24/666400971559b-24.jpg
 title: Arch Linux 易用性及美化

@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import tippy from 'tippy.js'
+import { LazyWidgetBlogLog, LazyWidgetTOC } from '#components'
 
 const UIStore = useUIStore()
 const asideTest = ref<HTMLElement>()
 const route = useRoute()
 
-const widgets = computed(() => (route.meta.aside || []) as string[])
+const widgetList = {
+    blog_log: LazyWidgetBlogLog,
+    toc: LazyWidgetTOC,
+}
+
+const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof widgetList>)
 
 onMounted(() => {
     tippy(asideTest.value!, {
@@ -17,16 +23,8 @@ onMounted(() => {
 <template>
     <aside id="z-aside" :class="{ show: UIStore.asideOpen }">
         <div class="container">
-            <div class="widget">
-                <h3 class="widget-title">
-                    右侧栏
-                </h3>
-                <div ref="asideTest" class="card gradient-card">
-                    <p>我是一个右侧栏，正如你所见，我是一个还没有开发好的右侧栏。</p>
-                    <p v-if="widgets.length">
-                        而且这个页面会有 {{ widgets.join('、') }} 组件，但以后再写吧。
-                    </p>
-                </div>
+            <div v-for="widget in widgets" :key="widget" class="widget">
+                <component :is="widgetList[widget]" />
             </div>
         </div>
     </aside>
@@ -40,6 +38,8 @@ onMounted(() => {
     overflow: auto;
 
     .container {
+        // BFC
+        overflow: auto;
         margin: 0.5rem;
     }
 
@@ -100,21 +100,21 @@ onMounted(() => {
     }
 }
 
-.widget {
+:deep(.widget) {
     margin: 0.5rem 0;
 
     & + & {
         margin-top: 1rem;
     }
-}
 
-.widget-title {
-    margin: 0.5rem;
-    font: inherit;
-    color: var(--c-text-3);
-}
+    > .widget-title {
+        margin: 0.5rem;
+        font: inherit;
+        color: var(--c-text-3);
+    }
 
-.card {
-    padding: 0.5rem;
+    > .widget-card {
+        padding: 0.5rem;
+    }
 }
 </style>

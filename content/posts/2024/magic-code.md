@@ -88,7 +88,7 @@ nav.list.forEach((list, i) => {
 
 其实也可以用 `createElement()` 和 `appendChild()` 来生成 HTML，或者 Vue 的组件也很方便。不过，用原生 JavaScript 写出来了这些，感觉还是挺奇妙的。
 
-::md-link-card
+::LinkCard
 ---
 icon: https://cooo.site/favicon.ico
 title: CO导航 - 西邮导航服务
@@ -127,7 +127,7 @@ const galleryFlated = Object.entries(gallery).flatMap(([vol, picInfos]) =>
   })))
 ```
 
-::md-link-card
+::LinkCard
 ---
 icon: https://exam.thisis.host/favicon.ico
 title: 考试时钟

@@ -32,7 +32,7 @@ tags: [教程, 软件, DOSBox]
 #### 修改显示大小
 
 > Alt-Enter 组合键可以切换全屏和窗口模式，但是全屏后任何焦点变化（打开开始菜单、切换窗口）都会导致退出全屏。
-> 
+>
 > 切换全屏和窗口模式时，会伴有屏幕分辨率切换，会短暂黑屏几秒，并且其他窗口大小会受到影响（未最大化的窗口缩小到640*400，即受到全屏时的分辨率限制）。因此建议通过修改配置文件来避免使用全屏模式。
 
 找到配置文件开头的这两行：
@@ -68,7 +68,7 @@ D:
 
 ## 使用网页版 DOSBox
 
-::md-link-card
+::LinkCard
 ---
 icon: https://dosasm.github.io/dosrun/favicon.ico
 title: Playground - An x86 assembly playGround in JSDos environment
@@ -80,7 +80,7 @@ link: https://dosasm.github.io/dosrun/
 
 你也可以在CO导航的“校友推荐”板块中找到这个网站。
 
-::md-link-card
+::LinkCard
 ---
 icon: https://cooo.site/favicon.ico
 title: CO导航 - 西邮导航服务

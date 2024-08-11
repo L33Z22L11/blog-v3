@@ -19,6 +19,7 @@ a {
     font-family: "HarmonyOS_Medium", system-ui, sans-serif;
     font-synthesis: style;
     color: var(--c-text-1);
+    scroll-behavior: smooth;
     scrollbar-color: var(--c-text-3) var(--c-bg-2);
 }
 
@@ -73,7 +74,10 @@ mark {
 .gradient-card {
     position: relative;
     border-radius: 0.5rem;
-    background: linear-gradient(60deg, var(--c-accent-1), var(--c-primary-2), transparent 70%) no-repeat 100% / 400%;
+
+    // 防止元素过大、系统缩放精度问题导致背景样式异常
+    background: no-repeat fixed 100% / 400%;
+    background-image: linear-gradient(60deg, var(--c-accent-1), var(--c-primary-2), transparent 70%);
     transition: all 0.2s;
     z-index: 0;
 

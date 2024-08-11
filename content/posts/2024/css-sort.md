@@ -59,7 +59,7 @@ hexo : 无法将“hexo”项识别为 cmdlet、函数、脚本文件或可运�
 
 #### 看看 hexo-server-live
 
-::md-link-card
+::LinkCard
 ---
 icon: https://github.githubassets.com/favicons/favicon.svg
 title: KazariEX/hexo-server-live
@@ -188,7 +188,7 @@ link: https://github.com/KazariEX/hexo-server-live
 于是，我着手研究 pnpm 全局包在远程 SSH 环境中的问题。在一次远程执行 `pnpm add -g pnpm` 后，我从报错中发现了端倪：
 
 ```log
-[ERROR] The configured global bin directory 
+[ERROR] The configured global bin directory
 "C:\Users\Zhilu\AppData\Local\pnpm" is not in PATH
 ```
 
@@ -279,7 +279,7 @@ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 
 再执行 `npm config get prefix` 一看：
 
-{% note color:red 
+{% note color:red
    npm&nbsp;配置的前缀竟然是&nbsp;<code>/usr</code>！
    所有 `/usr/bin`，即 `/bin` 下的所有程序都被修改了权限。我被一个简简单单的 `$(npm config get prefix)` 表达式蒙蔽，忽略了其中的风险。
  %}

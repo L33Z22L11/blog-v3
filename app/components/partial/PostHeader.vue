@@ -95,6 +95,8 @@ const updatedLabel = getPostTime(props.updated ?? '0')
 .post-nav {
     padding: 0.8em 1rem;
 
+    // 如果在父级设置字体尺寸，会影响祖先字体尺寸改变的行为
+    // 并且设置相对尺寸会导致过渡
     >* {
         font-size: 0.8rem;
     }

@@ -2,7 +2,7 @@
 title: Windows 终端体验优化指南
 description: 一篇优化 Windows Terminal 体验的指南，涵盖 PowerShell 增强、Oh My Posh 主题配置、集成 Git Bash 以及终端美化等方面。
 date: 2024-06-16 22:48:57
-updated: 2024-06-19 00:36:09
+updated: 2024-08-07 23:35:02
 image: https://7.isyangs.cn/24/6671b766a4312-24.jpg
 cover: https://7.isyangs.cn/24/6671b766a4312-24.jpg
 banner: https://7.isyangs.cn/24/6671b766a4312-24.jpg
@@ -56,6 +56,8 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 - 安装 oh-my-posh（参见 [官方文档](https://ohmyposh.dev/docs/installation/windows)）
   {% copy winget install JanDeDobbeleer.OhMyPosh prefix:PS&nbsp;> %}
 - 配置（参见 [官方文档](https://ohmyposh.dev/docs/installation/prompt)）
+  - 更改 PS 脚本执行策略
+    {% copy Set-ExecutionPolicy RemoteSigned prefix:PS(管理员)> %}
   - 新建 PS 配置文件
     {% copy New-Item -Path $PROFILE -Type File -Force prefix:PS&nbsp;> %}
   - 打开 PS 配置文件

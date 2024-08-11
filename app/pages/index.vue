@@ -35,17 +35,13 @@ useHead({ title: () => page.value > 1 ? `第${page.value}页` : '' })
 
 onMounted(() => {
     watch(page, () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.scrollTo({ top: 0 })
     })
 })
 </script>
 
 <template>
-    <div class="notify gradient-card active">
-        <p>
-            <Icon name="ph:lego-b" /> 本站仍处于开发阶段，不代表最终呈现样式。
-        </p>
-    </div>
+    <ZLHeader class="header" />
     <div class="post-list">
         <ZOrderToggle v-model="orderBy" class="order-toggle" />
         <ZArticle
@@ -60,17 +56,12 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-.notify {
-    position: sticky;
-    top: 0;
-    margin: 1rem;
-    padding: 1rem;
-    backdrop-filter: blur(2px);
-    z-index: 1;
+.header {
+    display: none;
+    margin-inline: 1rem;
 
-    .iconify {
-        font-size: 1.2em;
-        vertical-align: middle;
+    @media (max-width: $breakpoint-mobile) {
+        display: flex;
     }
 }
 

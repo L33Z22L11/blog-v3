@@ -17,6 +17,10 @@ export default {
             content: '更换框架为 Hexo，升级博客',
         },
         {
+            date: '2024-08-11',
+            content: '使用 Nuxt Content 重构博客',
+        },
+        {
             date: '{{ new Date() }}',
             content: `运营${timeElapse(timeEstablished)}，${timeElapse(timeUpdated)}更新，无要事相告`,
         },

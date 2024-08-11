@@ -47,7 +47,7 @@ Host zhilu-server
 
 ## 关于 SSH 的更多玩法
 
-::md-link-card
+::LinkCard
 ---
 icon: https://cdn.yuuu.org/img/favicon-192x192.png
 title: ssh 知识整理 | 微霞

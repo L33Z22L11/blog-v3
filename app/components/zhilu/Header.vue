@@ -33,7 +33,7 @@ const appConfig = useAppConfig()
     align-items: center;
     gap: 0.5em;
     position: relative;
-    margin: 2.5rem 0 1rem;
+    margin: 2.5rem 1rem 1rem;
 }
 
 .zl-logo {

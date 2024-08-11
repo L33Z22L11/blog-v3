@@ -1,6 +1,12 @@
 <script setup>
 const route = useRoute()
 const { data } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
+useHead({
+    title: data.value?.title,
+    meta: [
+        { name: 'description', content: data.value?.description },
+    ],
+})
 
 definePageMeta({
     aside: ['toc'],
@@ -13,7 +19,7 @@ if (data.value === undefined)
 
 <template>
     <ContentRenderer :value="data">
-        <MdPostHeader v-bind="data" />
+        <ZPostHeader v-bind="data" />
         <ContentRendererMarkdown
             class="md-text article"
             :class="{ 'md-story': data.type === 'story' }"
