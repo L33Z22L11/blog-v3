@@ -1,6 +1,5 @@
 <script setup>
 const route = useRoute()
-const appConfig = useAppConfig()
 const { data } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
 useHead({
     title: data.value?.title,
@@ -27,6 +26,7 @@ if (data.value === undefined)
             :value="data"
             tag="article"
         />
+        <ZComment />
         <template #empty>
             <div class="app-error">
                 <Icon name="solar:confounded-square-bold-duotone" />
@@ -34,8 +34,6 @@ if (data.value === undefined)
             </div>
         </template>
     </ContentRenderer>
-    <div id="tk-comment" />
-    <ZComment />
 </template>
 
 <style lang="scss" scoped>

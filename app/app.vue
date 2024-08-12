@@ -15,6 +15,7 @@
 #z-root {
     display: flex;
     justify-content: center;
+    gap: 1rem;
 }
 
 // 合并处理 #z-sidebar, #z-aside
@@ -33,6 +34,7 @@ aside {
 
 #content {
     display: flex;
+    gap: 1rem;
 
     // 若设置的是 max-width，则内部 main 宽度为 fit-content，可能无法撑满
     // 此时即使设置 flex-grow，也会影响 #sidebar 无法正确 shrink

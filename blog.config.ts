@@ -2,7 +2,7 @@ import type { Nav } from '~/types/nav'
 
 const author = {
     name: '纸鹿本鹿',
-    avatar: 'https://blog.zhilu.cyou/static/avatar.jpg',
+    avatar: 'https://www.zhilu.cyou/api/avatar.png',
     email: 'hi@zhilu.cyou',
     homepage: 'https://zhilu.cyou',
 }
@@ -19,8 +19,13 @@ export default {
     author,
     language: 'zh-CN',
     timezone: 'Asia/Shanghai',
-    favicon: 'https://blog.zhilu.cyou/static/icon.png',
+    favicon: 'https://www.zhilu.cyou/api/icon.png',
     url: 'https://blog.zhilu.cyou',
+    copyright: {
+        abbr: 'CC BY-NC-SA 4.0',
+        name: '署名-非商业性使用-相同方式共享 4.0 国际',
+        url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
+    },
     nav: <Nav> [
         { title: '', items: [
             { icon: 'ph:files-bold', text: '文章', url: '/' },
@@ -76,8 +81,8 @@ export default {
         { rel: 'stylesheet', href: '//s1.hdslb.com/bfs/static/jinkela/long/font/medium.css', media: 'none', onload: 'this.media="all"' },
     ],
     injectHeadScripts: [
-        { 'src': 'https://zhi.zhilu.cyou/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41' },
-        { 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}' },
+        { 'src': 'https://zhi.zhilu.cyou/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true },
+        { 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
     ],
     indexGenerator: {
         perPage: 10,

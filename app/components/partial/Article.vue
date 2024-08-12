@@ -31,6 +31,7 @@ const updatedLabel = getPostTime(props.updated)
 
 <style lang="scss" scoped>
 .article-card {
+    container-type: inline-size;
     display: block;
     position: relative;
     overflow: hidden;
@@ -105,7 +106,7 @@ const updatedLabel = getPostTime(props.updated)
         text-shadow: 0 0 0.5rem var(--c-bg-1), 0 0 1rem var(--c-bg-1);
     }
 
-    @media (max-width: $breakpoint-phone) {
+    @mixin cover-narrow {
         position: static;
         width: 100%;
         height: auto;
@@ -118,6 +119,14 @@ const updatedLabel = getPostTime(props.updated)
         & + * {
             width: auto;
         }
+    }
+
+    @media (max-width: $breakpoint-phone) {
+        @include cover-narrow;
+    }
+
+    @container (max-width: #{$breakpoint-phone}) {
+        @include cover-narrow;
     }
 }
 </style>
