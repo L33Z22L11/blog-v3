@@ -3,9 +3,7 @@ title: Arch Linux 易用性及美化
 description: Plasma 桌面环境下优化小键盘、触摸板行为，配置字体。
 date: 2023-07-24 21:27:45
 updated: 2024-05-13 22:21:16
-image: https://7.isyangs.cn/24/666400971559b-24.jpg
 cover: https://7.isyangs.cn/24/666400971559b-24.jpg
-banner: https://7.isyangs.cn/24/666400971559b-24.jpg
 categories: [经验分享]
 tags: [教程, archlinux, 系统]
 ---

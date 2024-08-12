@@ -3,9 +3,7 @@ title: 西邮Linux兴趣小组2022纳新面试题题解
 description: ' '
 date: 2022-11-19 22:32:46
 updated: 2023-07-30 11:45:33
-image: https://7.isyangs.cn/24/65a8dcfb2a43b-24.jpg
 cover: https://7.isyangs.cn/24/65a8dcfb2a43b-24.jpg
-banner: https://7.isyangs.cn/24/65a8dcfb2a43b-24.jpg
 categories: [代码]
 tags: [实验室, Lab, C语言]
 ---
@@ -130,7 +128,7 @@ print(len(str(2 ** 10000))) # 3011
 >     double collect;
 > } STRUCT;
 > int main(void) {
->     printf("sizeof (UNION) = %zu\n", sizeof(UNION)); 
+>     printf("sizeof (UNION) = %zu\n", sizeof(UNION));
 >     printf("sizeof (STRUCT) = %zu\n", sizeof(STRUCT));
 > }
 > ```
@@ -276,7 +274,7 @@ int main(void) {
 
 ## 8. 混乱中建立秩序
 
-> 你对排序算法了解多少呢?  
+> 你对排序算法了解多少呢?
 > 请谈谈你所了解的排序算法的思想、稳定性、时间复杂度、空间复杂度。
 >
 > 提示：动动你的小手敲出来更好哦~
@@ -318,7 +316,7 @@ int main(void) {
 
 ## 9. 手脑并用
 
-> 请实现ConvertAndMerge函数：  
+> 请实现ConvertAndMerge函数：
 > 拼接输入的两个字符串，并翻转拼接后得到的新字符串中所有字母的大小写。
 >
 > 提示:你需要为新字符串分配空间。
@@ -421,8 +419,8 @@ int main(int argc, char **argv) {
 
 ## 11. 奇怪的参数
 
-> 你了解argc和argv吗？  
-> 直接运行程序argc的值为什么是1？  
+> 你了解argc和argv吗？
+> 直接运行程序argc的值为什么是1？
 > 程序会出现死循环吗？
 >
 > ```c
@@ -580,8 +578,8 @@ int main() {
 > 你知道以下命令的含义和用法吗：
 >
 > 注：
-> > 嘿！你或许对Linux命令不是很熟悉，甚至你没听说过Linux。  
-> > 但别担心，这是选做题，不会对你的面试产生很大的影响！  
+> > 嘿！你或许对Linux命令不是很熟悉，甚至你没听说过Linux。
+> > 但别担心，这是选做题，不会对你的面试产生很大的影响！
 > > 了解Linux是加分项，但不了解也不扣分哦！
 > - `ls`
 > - `rm`
@@ -599,7 +597,7 @@ int main() {
 
 - 实用的网络工具有`nc`、`netstat`、`ping`等。
 
-> 恭喜你做到这里！你的坚持战胜了绝大多数看到这份试题的同学。  
-> 或许你自己对答题的表现不满意,但别担心，请自信一点呐。  
-> 坚持到达这里已经证明了你的优秀。  
+> 恭喜你做到这里！你的坚持战胜了绝大多数看到这份试题的同学。
+> 或许你自己对答题的表现不满意,但别担心，请自信一点呐。
+> 坚持到达这里已经证明了你的优秀。
 > 还在等什么,快带上你的笔记本电脑，来FZ103面试吧!

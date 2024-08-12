@@ -3,9 +3,7 @@ title: 西邮Linux兴趣小组2020纳新面试题题解
 description: ' '
 date: 2022-11-20 13:57:19
 updated: 2023-11-10 21:08:28
-image: https://7.isyangs.cn/24/65a8dcfb73493-24.jpg
 cover: https://7.isyangs.cn/24/65a8dcfb73493-24.jpg
-banner: https://7.isyangs.cn/24/65a8dcfb73493-24.jpg
 categories: [代码]
 tags: [实验室, Lab, C语言]
 ---
@@ -183,13 +181,13 @@ int main(int argc, char *argv[]) {
 
 > ```c
 > int* get_array() {
->     int array[1121]; 
+>     int array[1121];
 >     for (int i = 0; i < sizeof(array) / sizeof(int); i++) {
 >         array[i] = i;
 >     }
 >     return array;
 > }
-> int main(int argc, char *argv[]) { 
+> int main(int argc, char *argv[]) {
 >     int *p = get_array();
 > }
 > ```
@@ -199,14 +197,14 @@ int main(int argc, char *argv[]) {
 ```c
 #include <stdio.h>
 int* get_array() {
-    int array[1121]; 
+    int array[1121];
     for (int i = 0; i < sizeof(array) / sizeof(int); i++) {
         array[i] = i;
     }
     // How dare you return this!?
     return array;
 }
-int main(int argc, char *argv[]) { 
+int main(int argc, char *argv[]) {
     // get_array() returns the unusable address of a local variable,
     // the content of whom was discarded, but you can declare
     // a static variable in get_array() and return it to avoid so
@@ -218,8 +216,8 @@ int main(int argc, char *argv[]) {
 
 > ```c
 > int main(int argc, char *argv[]) {
->     char str[] = "XiyouLinuxGroup"; 
->     char *p = str; 
+>     char str[] = "XiyouLinuxGroup";
+>     char *p = str;
 >     char x[] = "XiyouLinuxGroup\t\106F\bamily";
 >     printf("%zu %zu %zu %zu\n", sizeof(str), sizeof(p),
 >                                 sizeof(x), strlen(x));
@@ -232,8 +230,8 @@ int main(int argc, char *argv[]) {
 ```c
 #include <stdio.h>
 int main(int argc, char *argv[]) {
-    char str[] = "XiyouLinuxGroup"; 
-    char *p = str; 
+    char str[] = "XiyouLinuxGroup";
+    char *p = str;
     char x[] = "XiyouLinuxGroup\t\106F\bamily";
     // XiyouLinuxGroup Family
     // sizeof(str) = 16, containing '\0' at the end
@@ -265,7 +263,7 @@ int main(int argc, char *argv[]) {
 >     printf("Waiting for y%du!\n", a);
 > }
 >   return 0;
-> } 
+> }
 > ```
 
 解读：
@@ -290,7 +288,7 @@ int main(int argc, char *argv[]) {
     printf("Waiting for y%du!\n", a);
 }
   return 0;
-} 
+}
 ```
 
 ## 9. 在下段程序中，我们可以通过第一步打印出`a`的地址，假如在你的机器上面打印结果是`0x7ffd737c6db4`；我们在第二步用`scanf`函数将这个地址值输入变量`c`中；第三步，随机输入一个数字，请问最终输出了什么结果，你知道其中的原理吗？
@@ -351,7 +349,7 @@ int main() {
     // It outputs a anoymous int array as a char array
     // using little-endian storing methods
     puts((char *)(int const[]){
-        // o y i X     n i L u     r G x u 
+        // o y i X     n i L u     r G x u
         0X6F796958, 0X6E694C75, 0X72477875,
         // 2 p u o (\0)2 1 0
         0X3270756F, 0X313230, 0X00000A});
@@ -372,11 +370,11 @@ int main() {
 >             if(str[key] > str[j]) {
 >                 key = j;
 >             }
->         } 
+>         }
 >         t = str[key];
 >         str[key] = str[i];
 >         str[i] = t;
->     } 
+>     }
 >     puts(str);
 >     return 0;
 > }

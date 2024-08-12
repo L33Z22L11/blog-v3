@@ -3,7 +3,6 @@ title: 假文件夹病毒真的会发作
 description: 2021年5月，高中校园发生假文件夹病毒事件，通过U盘传播，病毒伪装文件夹并定时删除数据。预防措施包括留意文件夹图标异常，安装杀毒软件并正确显示隐藏文件以识别和清除病毒。
 date: 2021-05-08 23:08:30
 updated: 2021-10-01 21:30:00
-image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26SuYFj0v7jz4Wpao1JAzlibcKia6mPLktFvKabXAcWOsZbxIB01DdGnCQ/640
 cover: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26SuYFj0v7jz4Wpao1JAzlibcKia6mPLktFvKabXAcWOsZbxIB01DdGnCQ/640
 categories: [经验分享]
 tags: [高中, Windows, 系统, 病毒]

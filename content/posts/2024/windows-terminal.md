@@ -3,9 +3,7 @@ title: Windows 终端体验优化指南
 description: 一篇优化 Windows Terminal 体验的指南，涵盖 PowerShell 增强、Oh My Posh 主题配置、集成 Git Bash 以及终端美化等方面。
 date: 2024-06-16 22:48:57
 updated: 2024-08-07 23:35:02
-image: https://7.isyangs.cn/24/6671b766a4312-24.jpg
 cover: https://7.isyangs.cn/24/6671b766a4312-24.jpg
-banner: https://7.isyangs.cn/24/6671b766a4312-24.jpg
 categories: [经验分享]
 tags: [教程, 系统, Windows, 终端]
 ---

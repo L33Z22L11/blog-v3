@@ -29,12 +29,18 @@ const props = defineProps<{
     width: 25em;
     max-width: 90%;
     margin: 1rem auto;
-    padding: 0.5rem;
+    padding: 0.5rem 0.8rem;
     border-radius: 0.5rem;
-    box-shadow: 2px 4px 1em var(--c-border);
+    box-shadow: 2px 4px 0.5em var(--c-border);
     background-color: var(--c-bg-1);
     font-size: 0.9em;
     line-height: initial;
+    transition: 0.2s;
+
+    &:hover {
+        box-shadow: 2px 1em 1em var(--c-border);
+        transform: translateY(-2px);
+    }
 }
 
 // 溢出显示省略号

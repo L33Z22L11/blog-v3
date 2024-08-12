@@ -28,7 +28,7 @@ aside {
     height: 100dvh;
 
     @media (max-width: $breakpoint-widescreen) {
-        flex-shrink: 0.5;
+        flex-shrink: 0.2;
     }
 }
 

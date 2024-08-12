@@ -3,9 +3,7 @@ title: 西邮Linux兴趣小组2021纳新面试题题解
 description: ' '
 date: 2022-11-20 12:52:52
 updated: 2023-07-30 11:45:33
-image: https://7.isyangs.cn/24/65a8dcfb647c2-24.jpg
 cover: https://7.isyangs.cn/24/65a8dcfb647c2-24.jpg
-banner: https://7.isyangs.cn/24/65a8dcfb647c2-24.jpg
 categories: [代码]
 tags: [实验室, Lab, C语言]
 ---
@@ -163,13 +161,13 @@ int ver = 123;
 void func1(int ver) {\
     // ver@func1
     ver++;
-    // ver@func1 = 1026 
+    // ver@func1 = 1026
     printf("ver = %d\n", ver);
     // ver@func1 is discarded
 }
 void func2(int *pr) {
     *pr = 1234;
-    // *pr@func2(as ver@loop in main) = 1234 
+    // *pr@func2(as ver@loop in main) = 1234
     printf("*pr = %d\n", *pr);
     pr = 5678;
     printf("ver = %d\n", ver);
@@ -245,7 +243,7 @@ void func(void) {
     int e = 2;
     // e = 0000 0000 0000 0000 0000 0000 0000 0010
     e = ~e | 6;
-    // e = 1111 1111 1111 1111 1111 1111 1111 1101 | 
+    // e = 1111 1111 1111 1111 1111 1111 1111 1101 |
     //     0000 0000 0000 0000 0000 0000 0000 0110
     //   = 1111 1111 1111 1111 1111 1111 1111 1111
     d = (d & 0xff) + 0x2022;
@@ -267,7 +265,7 @@ void func(void) {
 >     b[1][1] = 10;
 >     int *ptr = (int *)(&a + 1);
 >     printf("%d %d %d \n", a[2][1], **(a + 1), *(ptr - 1));
-> 
+>
 > }
 > ```
 
@@ -398,7 +396,7 @@ int main(void)
 > - 请判断下面的三种`Swap`的正误，分别分析他们的优缺点。
 > - 你知道这里的`do {...} while(0)`的作用吗？
 > - 你还有其他的方式实现`Swap`功能吗？
-> 
+>
 > ```c
 > #define Swap1(a, b, t)   \
 >     do {                 \
@@ -543,8 +541,8 @@ int main(void) {
 
 > 恭喜你做完了整套面试题，快来参加西邮Linux兴趣小组的面试吧！
 >
-> 西邮 Linux兴趣小组面试时间：  
-> 2021年10月25日至2021年10月31日晚8点。  
+> 西邮 Linux兴趣小组面试时间：
+> 2021年10月25日至2021年10月31日晚8点。
 > 听说面试来的早一点更能获得学长学姐的好感哦。
 >
 > 我们在FZ103等你！

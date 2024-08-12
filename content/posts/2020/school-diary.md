@@ -3,9 +3,7 @@ title: 高中无聊的日记节选
 description: 一名男高中生2020年6月至2021年9月的生活片段，包括与同桌一起分享日记、日常生活趣事、学业起伏、与同学互动以及心态变化等，展现了高中生活的多彩与挑战。
 date: 2020-06-14 15:27:00
 updated: 2021-09-25
-image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjwe8Uc32M5n1jGL4A9KgZZ0ZNicrEqwSQRtJ6yg5HicDxnVbSzkmTssX1hw/640
 cover: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjwe8Uc32M5n1jGL4A9KgZZ0ZNicrEqwSQRtJ6yg5HicDxnVbSzkmTssX1hw/640
-banner: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjwe8Uc32M5n1jGL4A9KgZZ0ZNicrEqwSQRtJ6yg5HicDxnVbSzkmTssX1hw/640
 type: story
 categories: [生活]
 tags: [高中, 说说, 校园]
@@ -76,13 +74,13 @@ tags: [高中, 说说, 校园]
 
 大史给我看了一张神秘的纸，纸上字体娟秀，满满洋溢之词……
 
-地理课终于知道该记什么了。 *(按：临近高二打算学理，不过文科也在认真听课)* 
+地理课终于知道该记什么了。 *(按：临近高二打算学理，不过文科也在认真听课)*
 
-> L：太惨了太无聊了这也。//酸。//地理课更名WZRY课。 *(按：有人地理课开黑。)* 
+> L：太惨了太无聊了这也。//酸。//地理课更名WZRY课。 *(按：有人地理课开黑。)*
 
 ### 20.7.20 一 晴
 
-建了个网管群，和朋友的MC群一起在校园表白墙上宣传，一起在公告栏上贴海报OHHHHH下学期还能骗骗学弟学妹。 *(按：后来发展为“野生技术协会”，截至2021.10.10已有162名成员)* 
+建了个网管群，和朋友的MC群一起在校园表白墙上宣传，一起在公告栏上贴海报OHHHHH下学期还能骗骗学弟学妹。 *(按：后来发展为“野生技术协会”，截至2021.10.10已有162名成员)*
 
 > L：说不定还能骗到手一个学妹[/滑稽]。
 

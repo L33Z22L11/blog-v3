@@ -3,9 +3,7 @@ title: 使用 ArchInstall 安装 Arch Linux
 description: 在2024年5月版的 Arch Linux 安装镜像的基础上，使用 ArchInstall 安装系统全过程。
 date: 2023-05-23 20:37:07
 updated: 2024-05-12 20:54:15
-image: https://7.isyangs.cn/24/66640095c770c-24.jpg
 cover: https://7.isyangs.cn/24/66640095c770c-24.jpg
-banner: https://7.isyangs.cn/24/66640095c770c-24.jpg
 categories: [经验分享]
 tags: [教程, archlinux, 系统]
 sticky: 20

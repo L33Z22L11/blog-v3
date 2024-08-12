@@ -47,6 +47,12 @@ export default defineNuxtConfig({
         compatibilityVersion: 4,
     },
 
+    routeRules: {
+        '/': { prerender: true },
+        '/atom.xml': { prerender: true },
+        '/sitemap.xml': { prerender: true },
+    },
+
     vite: {
         css: {
             preprocessorOptions: {
@@ -120,5 +126,8 @@ export default defineNuxtConfig({
 
     ogImage: { enabled: false },
 
-    site: { url: blogConfig.url },
+    site: {
+        name: blogConfig.title,
+        url: blogConfig.url,
+    },
 })

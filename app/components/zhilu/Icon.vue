@@ -1,5 +1,5 @@
 <template>
-    <NuxtImg class="icon" src="https://blog.zhilu.cyou/static/icon.png" alt="avatar_2019_03_01" />
+    <NuxtImg class="icon" src="https://www.zhilu.cyou/api/icon.png" alt="avatar_2019_03_01" />
 </template>
 
 <style scoped>

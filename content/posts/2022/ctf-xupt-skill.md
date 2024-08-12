@@ -3,9 +3,7 @@ title: 西邮网安技能赛WriteUp
 description: 主办方组织能力、办事水平有待提升。自此之后，作者再未参与过 CTF 赛事。
 date: 2022-11-05 23:13:52
 updated: 2022-12-04 22:18:50
-image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWSpuCJ6wj9ejjZz9Dp9l0NoRjRqXjZIibsKORpAk3WFEE4k5r02cdtXQ/640
 cover: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWSpuCJ6wj9ejjZz9Dp9l0NoRjRqXjZIibsKORpAk3WFEE4k5r02cdtXQ/640
-banner: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWSpuCJ6wj9ejjZz9Dp9l0NoRjRqXjZIibsKORpAk3WFEE4k5r02cdtXQ/640
 categories: [代码]
 tags: [大学, CTF]
 ---
@@ -49,9 +47,9 @@ tags: [大学, CTF]
 题目给出了一个流量包和文本文档：
 
 > 网络被黑客攻击了，有很多异常流量，并且发现了一串文本：
-> 
+>
 > \_SEWTRL\_T1S@N
-> 
+>
 > flag被打乱了，顺序藏在流量中
 
 使用Wireshark打开下载的流量文件，根据提示，乱序flag的顺序就藏在流量中，筛选出ping命令，发现TTL值与1~13一一对应。

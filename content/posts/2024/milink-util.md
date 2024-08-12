@@ -3,9 +3,7 @@ title: 小米电脑管家安装教程
 description: 非小米笔记本安装小米电脑管家的方法及功能介绍，推荐 MiLink NFC 项目实现小米设备的一碰连/一碰传功能。
 date: 2024-01-31 22:16:39
 updated: 2024-02-01 14:20:10
-image: https://7.isyangs.cn/24/6664009b29739-24.jpg
 cover: https://7.isyangs.cn/24/6664009b29739-24.jpg
-banner: https://7.isyangs.cn/24/6664009b29739-24.jpg
 categories: [经验分享]
 tags: [教程, 小米, 互联, 互传, 网络, 软件, 远程, 系统]
 ---

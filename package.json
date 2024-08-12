@@ -1,7 +1,7 @@
 {
   "name": "zhilu-blog",
   "type": "module",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "private": true,
   "packageManager": "pnpm@9.7.0",
   "scripts": {
@@ -22,7 +22,7 @@
     "vue-router": "^4.4.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.25.0",
+    "@antfu/eslint-config": "^2.25.1",
     "@nuxt/content": "^2.13.2",
     "@nuxt/icon": "^1.4.5",
     "@nuxt/image": "^1.7.0",
@@ -31,6 +31,7 @@
     "@pinia/nuxt": "^0.5.3",
     "@vueuse/nuxt": "^10.11.1",
     "@zinkawaii/stylelint-config": "^0.1.5",
+    "feed": "^4.2.2",
     "nuxt": "^3.12.4",
     "sass": "^1.77.8",
     "stylelint": "^16.8.1",

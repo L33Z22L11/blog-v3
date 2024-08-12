@@ -3,9 +3,7 @@ title: Linux QQ 崩溃解决办法
 description: 针对 Linux QQ 崩溃问题，给出了临时和长期解决办法。QQ 软件的崩溃数据会影响其正常运行。
 date: 2023-03-16 21:02:22
 updated: 2023-08-09 17:20:11
-image: https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
 cover: https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
-banner: https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
 categories: [经验分享]
 tags: [qq, 问题, 软件]
 references:

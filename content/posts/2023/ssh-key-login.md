@@ -3,9 +3,7 @@ title: SSH 免密登录
 description: 生成SSH密钥，启用公钥认证，将公钥添加至授权列表，实现 Windows/Linux/GitHub SSH 免密登录。
 date: 2023-12-25 16:15:00
 updated: 2024-05-30 00:40:31
-image: https://7.isyangs.cn/24/6664009c87ec5-24.jpg
 cover: https://7.isyangs.cn/24/6664009c87ec5-24.jpg
-banner: https://7.isyangs.cn/24/6664009c87ec5-24.jpg
 categories: [经验分享]
 tags: [教程, ssh, 远程]
 ---

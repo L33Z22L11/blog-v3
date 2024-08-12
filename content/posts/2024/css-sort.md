@@ -3,9 +3,7 @@ title: 从 CSS 排序折腾到 Stylelint 和 pnpm
 description: 试图不走寻常路，通过 pnpm 全局安装 Stylelint 实现 CSS 排序，却遭遇诸多挑战。理想的方案是否真的可行？
 date: 2024-05-21 22:44:44
 updated: 2024-05-25 15:56:33
-image: https://7.isyangs.cn/24/6664009e81625-24.jpg
 cover: https://7.isyangs.cn/24/6664009e81625-24.jpg
-banner: https://7.isyangs.cn/24/6664009e81625-24.jpg
 categories: [经验分享]
 tags: [软件, 问题]
 references:

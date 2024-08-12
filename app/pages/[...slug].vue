@@ -26,6 +26,7 @@ if (data.value === undefined)
             :value="data"
             tag="article"
         />
+        <ZPostFooter v-bind="data" />
         <ZComment />
         <template #empty>
             <div class="app-error">
