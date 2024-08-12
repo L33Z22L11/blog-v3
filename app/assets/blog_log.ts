@@ -21,7 +21,7 @@ export default {
             content: 'Nuxt Content 重构博客上线',
         },
         {
-            date: '{{ new Date() }}',
+            date: new Date(),
             content: `运营${timeElapse(timeEstablished)}，${timeElapse(timeUpdated)}更新，无要事相告`,
         },
         {

@@ -67,7 +67,7 @@ export default {
 
     twikoo: {
         js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.36/dist/twikoo.all.min.js',
-        envId: 'https://twikoo.zhilu.cyou',
+        envId: 'https://t12.zhilu.cyou',
     },
 
     hideContentPrefixes: [

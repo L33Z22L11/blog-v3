@@ -2,7 +2,7 @@
     line-height: 1.8;
     word-break: break-word;
 
-    h2, h3, h4, h5, h6 {
+    > * {
         margin: 1em 0;
     }
 
@@ -15,13 +15,12 @@
         padding: 0 0 0 1em;
         list-style: revert;
 
-        ::marker {
+        &::marker {
             color: var(--c-text-2);
         }
     }
 
     blockquote {
-        margin: 1em 0;
         padding: 0.5em 1em;
         border-left: 4px solid var(--c-border);
         border-radius: 4px;
@@ -40,9 +39,43 @@
         font-size: 0.9em;
     }
 
+    &:not(.md-story) > h2::before {
+        content: ".";
+        color: white;
+    }
+
+    &:not(.md-story) > :where(h2, h3, h4, h5, h6)::before {
+        content: "";
+        margin-right: 8px;
+        padding: 0 2px;
+        border-radius: 0.2rem;
+        background-color: var(--c-primary-1);
+    }
+
     &.md-story {
-        h1, h2, h3, h4, h5, h6 {
+        > h1, h2, h3, h4, h5, h6 {
+            position: relative;
             text-align: center;
+        }
+
+        > h2::before {
+            content: "";
+            position: absolute;
+            width: 2.5em;
+            height: 2.5em;
+            margin: -0.4em 0 0 -0.7em;
+            border-radius: 2.5em;
+            background-image: linear-gradient(var(--c-primary-3), transparent);
+            z-index: -1;
+        }
+
+        > h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 0.4em;
+            height: 0.7em;
+            background-color: var(--c-primary-3);
         }
 
         p {

@@ -1,35 +1,34 @@
 <script setup>
 const appConfig = useAppConfig()
 
-onMounted(() => {
-    const script = document.createElement('script')
-    script.src = appConfig.twikoo.js
-    script.type = 'text/javascript'
-    script.async = true
-    script.onload = () => {
-        window.twikoo.init({
-            envId: appConfig.twikoo.envId,
-            el: '#tk-comment',
-        })
-    }
-    script.onerror = () => {
-        console.error('Twikoo 评论区加载失败')
-    }
-    document.head.appendChild(script)
+function initTwikoo() {
+    window.twikoo.init({
+        envId: appConfig.twikoo.envId,
+        el: '#twikoo',
+    })
+}
+
+// 从其他页面路由至文章页面时，通过 onLoaded 事件初始化，onMounted 不起作用
+useScriptTag(appConfig.twikoo.js, () => initTwikoo(), {
+    defer: true,
+    onerror: () => {
+        console.error('Twikoo评论区加载失败')
+    },
 })
 
-onBeforeUnmount(() => {
-// 移除Twikoo脚本
-})
+// 在文章页面之间路由时不会触发 onLoaded 事件，需要手动初始化
+onMounted(() => initTwikoo())
 </script>
 
 <template>
     <section class="z-comment">
         <h3>评论区</h3>
         <ClientOnly>
-            <div id="tk-comment" />
+            <div id="twikoo" />
             <template #fallback>
-                <p><br>评论加载中...</p>
+                <p id="twikoo">
+                    评论加载中...
+                </p>
             </template>
         </ClientOnly>
     </section>
@@ -46,6 +45,8 @@ onBeforeUnmount(() => {
 }
 
 :deep(#twikoo) {
+    margin: 2em 0;
+
     .tk-admin-container {
         position: fixed;
         z-index: 1;

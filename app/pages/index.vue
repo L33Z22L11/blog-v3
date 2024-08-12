@@ -15,8 +15,11 @@ const orderBy = useRouteQuery<OrderType>(
 )
 
 const { data } = await useAsyncData(
-    'index_post',
-    () => queryContent().where({ _original_dir: { $eq: '/posts' } }).find(),
+    'posts_index',
+    () => queryContent()
+        .only(['title', 'description', 'date', 'updated', '_path', 'cover'])
+        .where({ _original_dir: { $eq: '/posts' } })
+        .find(),
     { default: () => [] },
 )
 

@@ -11,7 +11,7 @@ const timeline = blogLog.timeline
     <div class="widget-card">
         <ul>
             <li v-for="item in timeline" :key="item.date">
-                <small>{{ new Date(item.date).toLocaleDateString() }}</small><br>
+                <small>{{ new Date(item.date).toLocaleDateString('en-CA') }}</small><br>
                 {{ item.content }}
             </li>
         </ul>

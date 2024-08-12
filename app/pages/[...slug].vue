@@ -27,6 +27,7 @@ if (data.value === undefined)
             tag="article"
         />
         <ZPostFooter v-bind="data" />
+        <ZSurroundPost />
         <ZComment />
         <template #empty>
             <div class="app-error">

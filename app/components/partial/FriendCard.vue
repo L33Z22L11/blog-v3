@@ -20,7 +20,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <ZRawLink ref="friendCard" class="friend-card gradient-card" :to="props.link">
+    <!-- 覆盖掉 noreferrer，情绪价值给足 -->
+    <ZRawLink ref="friendCard" class="friend-card gradient-card" :to="props.link" rel="noopener">
         <NuxtImg class="icon" :src="props.icon" alt="Icon" />
         <div class="card-info">
             <p><span class="name">{{ props.name }}</span> <span class="title">{{ title }}</span></p>
