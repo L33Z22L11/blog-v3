@@ -3,7 +3,7 @@ const appConfig = useAppConfig()
 </script>
 
 <template>
-    <header class="zl-header">
+    <header class="zhilu-header">
         <div v-if="appConfig.header.emojiTail" class="emoji-tail">
             <span
                 v-for="(char, index) in appConfig.header.emojiTail"
@@ -11,8 +11,8 @@ const appConfig = useAppConfig()
                 :style="`--delay: ${index * .6 - 3}s`"
             >{{ char }}</span>
         </div>
-        <NuxtImg :src="appConfig.header.logo" class="zl-logo" :class="{ 'with-text': appConfig.header.text }" />
-        <div v-if="appConfig.header.text" class="zl-text">
+        <NuxtImg :src="appConfig.header.logo" class="zhilu-logo" :class="{ 'with-text': appConfig.header.text }" />
+        <div v-if="appConfig.header.text" class="zhilu-text">
             <div class="header-title">
                 <span
                     v-for="(char, index) in appConfig.title"
@@ -28,15 +28,16 @@ const appConfig = useAppConfig()
 </template>
 
 <style lang="scss">
-.zl-header {
+.zhilu-header {
     display: flex;
     align-items: center;
     gap: 0.5em;
     position: relative;
     margin: 2.5rem 1rem 1rem;
+    line-height: initial;
 }
 
-.zl-logo {
+.zhilu-logo {
     height: 3em;
 
     &.with-text {
@@ -109,7 +110,7 @@ const appConfig = useAppConfig()
     }
 }
 
-.zl-header:hover {
+.zhilu-header:hover {
     .emoji-tail {
         opacity: 0.5;
     }

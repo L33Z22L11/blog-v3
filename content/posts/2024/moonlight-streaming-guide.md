@@ -29,7 +29,7 @@ sticky: 50
 
 更推荐使用 Sunshine 作为服务端，Sunshine的默认配置可以很好地工作，一般不需要修改。
 
-::LinkCard
+::link-card
 ---
 icon: https://docs.lizardbyte.dev/projects/sunshine/en/latest/_static/sunshine.png
 title: Sunshine 官网
@@ -41,7 +41,7 @@ link: https://app.lizardbyte.dev/Sunshine/?lng=zh-CN
 
 使用 Moonlight 作为串流的客户端。可以参考B站上阿西西的教程。
 
-::LinkCard
+::link-card
 ---
 icon: https://moonlight-stream.org/images/moonlight.svg
 title: Moonlight 官网
@@ -49,7 +49,7 @@ link: https://moonlight-stream.org/
 ---
 ::
 
-::LinkCard
+::link-card
 ---
 icon: https://github.githubassets.com/favicons/favicon.svg
 title: Moonlight Android阿西西修改版
@@ -57,7 +57,7 @@ link: https://github.com/Axixi2233/moonlight-android
 ---
 ::
 
-::LinkCard
+::link-card
 ---
 icon: https://image.baidu.com/search/down?url=https://i1.hdslb.com/bfs/face/b41566f47ea0d0f1e35ed54521c849c68c026892.jpg@120w
 title: 阿西西的日常 - 哔哩哔哩
@@ -71,7 +71,7 @@ link: https://space.bilibili.com/16893379/video
 
 通过“虚拟显示器”功能，可以在串流时关闭真实屏幕，从而实现隐私屏。
 
-::LinkCard
+::link-card
 ---
 icon: https://www.amyuni.com//images/favicon.png
 title: USB 虚拟显示器驱动
@@ -108,7 +108,7 @@ link: https://www.amyuni.com/forum/viewtopic.php?t=3030
 
 参考千雪的这篇文章。
 
-::LinkCard
+::link-card
 ---
 icon: https://q1.qlogo.cn/g?b=qq&nk=3526514925&s=3
 title: 📲 在 Linux 上使用 Sunshine 把安卓平板作为虚拟副屏，画面清晰延迟极低
@@ -122,7 +122,7 @@ link: https://blog.chyk.ink/2024/05/12/linux-virtual-display-sunshine/
 
 Moonlight 修改版（下载链接在视频简介）支持 Windows 多点触控。
 
-::LinkCard
+::link-card
 ---
 icon: https://www.bilibili.com/favicon.ico
 title: 使用触摸界面串流原神

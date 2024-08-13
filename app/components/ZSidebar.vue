@@ -5,7 +5,7 @@ const UIStore = useUIStore()
 
 <template>
     <aside id="z-sidebar" :class="{ show: UIStore.sidebarOpen }">
-        <ZLHeader class="sidebar-header" />
+        <ZhiluHeader class="sidebar-header" />
         <nav class="sidebar-nav">
             <div class="notify gradient-card active">
                 <p>

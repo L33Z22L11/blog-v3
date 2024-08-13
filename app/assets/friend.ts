@@ -126,7 +126,7 @@ export default <LinkGroup[]>[
                 desc: 'Reverse - 智邮普创工作室安全组/Nepnep联合战队',
                 link: 'https://monoceros406.github.io/',
                 icon: 'https://q1.qlogo.cn/g?b=qq&nk=1295625063&s=4',
-                comment: '大学同级，网安Reverse学习中。',
+                comment: '大学学弟，网安Reverse学习中。',
             },
         ],
     },

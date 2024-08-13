@@ -70,4 +70,10 @@ guest ok = no
 
 ## 作为客户端
 
-{% link https://coda.world/linux-and-samba-share/ Linux 下访问 Samba 共享的几种姿势 icon:https://coda.world/favicon.ico %}
+::link-card
+---
+icon: https://coda.world/favicon.ico
+title: Linux 下访问 Samba 共享的几种姿势
+link: https://coda.world/linux-and-samba-share/
+---
+::

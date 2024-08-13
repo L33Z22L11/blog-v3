@@ -18,7 +18,7 @@ Tailscale是一款虚拟组网软件，它不需要公网IP地址，也不会像
 
 这篇教程挺不错的，可以阅读一下：
 
-::LinkCard
+::link-card
 ---
 icon: https://wsrv.nl/?url=github.com/Ghost-chu.png
 title: Tailscale 安利指南 - 快速向你的好友推销 Tailscale
@@ -35,11 +35,11 @@ Windows 在安装、登录之后建议在任务栏上右键图标，在“Prefer
 ## 常用命令
 
 - 检查Tailscale内网中到某主机的连通性，分为 DERP 中转和 IP 直连两种情况。
-  {% copy tailscale ping <host> prefix:$ %}
+  :copy{prefix="$" code="tailscale ping <host>"}
 - 检查本机的网络环境。
-  {% copy tailscale netcheck prefix:$ %}
+  :copy{prefix="$" code="tailscale netcheck"}
 - 登录新账号，也可以把获取到的登录链接发给他人帮忙登录。
-  {% copy tailscale login prefix:$ %}
+  :copy{prefix="$" code="tailscale login"}
 
 ## 重启服务
 
@@ -47,7 +47,7 @@ Windows 在安装、登录之后建议在任务栏上右键图标，在“Prefer
 
 特别地，如果在 SSH 中重启服务，请注意 SSH 中断会导致重启失败，无法进行后续连接，所以需要另起一个与 SSH 无关的进程。Linux 中可以使用 `screen` 命令，Windows 中可以执行这个脚本文件：
 
-```bat restart-tailscale.bat
+```bat [restart-tailscale.bat]
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd","/c %~s0 ::","","runas",1)(window.close) && exit
 powershell Invoke-WmiMethod Win32_Process Create \"powershell Restart-Service Tailscale\"
 ```

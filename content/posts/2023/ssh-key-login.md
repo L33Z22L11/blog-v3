@@ -12,7 +12,7 @@ tags: [教程, ssh, 远程]
 
 ED225519 类型的密钥综合性能更好。
 
-{% copy ssh-keygen -t ed25519 prefix:$ %}
+:copy{prefix="$" code="ssh-keygen -t ed25519"}
 
 连续按回车键即可。如果你想自定义生成内容，请使用 `ssh-keygen -t ed25519 -C "内容"`。生成好的**公钥**可以通过 `cat ~/.ssh/id_ed25519.pub` 查看。
 
@@ -20,7 +20,7 @@ ED225519 类型的密钥综合性能更好。
 
 如果服务端是 Windows OpenSSH，请将服务端 `%ProgramData%\ssh\sshd_config` 文件中的此行取消注释（需要管理员权限）：
 
-```sh %ProgramData%\ssh\sshd_config
+```sh [%ProgramData%\ssh\sshd_config]
 # PubkeyAuthentication yes
 ```
 
@@ -32,7 +32,7 @@ ED225519 类型的密钥综合性能更好。
 
 在 SSH 配置文件中按照以下格式添加条目，即可直接通过 Host 项的名字连接，还能在 `ssh` 命令输到一半时按 Tab 键自动补全：
 
-```ssh-config ~/.ssh/config
+```ssh-config [~/.ssh/config]
 Host zhilu-server
 	Hostname 1.1.1.1
 	Port 8022
@@ -45,7 +45,7 @@ Host zhilu-server
 
 ## 关于 SSH 的更多玩法
 
-::LinkCard
+::link-card
 ---
 icon: https://cdn.yuuu.org/img/favicon-192x192.png
 title: ssh 知识整理 | 微霞

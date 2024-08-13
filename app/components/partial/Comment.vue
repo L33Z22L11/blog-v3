@@ -2,7 +2,7 @@
 const appConfig = useAppConfig()
 
 function initTwikoo() {
-    window.twikoo.init({
+    window.twikoo?.init?.({
         envId: appConfig.twikoo.envId,
         el: '#twikoo',
     })

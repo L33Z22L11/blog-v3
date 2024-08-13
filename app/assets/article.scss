@@ -31,14 +31,6 @@
         background: linear-gradient(var(--c-primary-3), var(--c-primary-3)) no-repeat center bottom / 100% 40%;
     }
 
-    :not(pre) > code {
-        padding: 0.1em 0.3em;
-        border: 1px solid var(--c-border);
-        border-radius: 4px;
-        background-color: var(--c-bg-3);
-        font-size: 0.9em;
-    }
-
     &:not(.md-story) > h2::before {
         content: ".";
         color: white;

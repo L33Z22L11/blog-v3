@@ -53,13 +53,13 @@ Hexo 会自动给文章链接带上子文件夹的名称，所以在 `_config.ym
 
 通过主题提供的自定义侧栏 Widget 能力，我为 404 页面引入了自定义脚本，用于重定向旧链接。
 
-```yaml _config.stellar.yml
+```yaml [_config.stellar.yml]
 site_tree:
     error_page:
         leftbar: recent, timeline, notice_404
 ```
 
-```yaml source/_data/widgets.yml
+```yaml [source/_data/widgets.yml]
 notice_404:
     layout: markdown
     content: |
@@ -69,7 +69,7 @@ notice_404:
 
 用正则表达式匹配、替换，就完成了重定向。
 
-```js static/handler-404.js
+```js [static/handler-404.js]
 const newPath = location.pathname.match(/^(\/\d{4})\d{2}(\/.*)/)
 if (newPath)
     location.href = newPath[1] + newPath[2]
@@ -85,7 +85,7 @@ HTTP 状态码不该是 404，所以需要通过 Netlify 提供的 [重定向能
 
 在建博客时埋了一个坑，我的链接是 `:year:month/:title/`，而 Netlify 的 Placeholder 仅支持诸如 `:year/:month/:title/` 的形式，所以不能使用这种配置文件：
 
-```toml source/netlify.toml
+```toml [source/netlify.toml]
 [[redirects]]
 from = "/post/*"
 to = "/:splat"
@@ -97,7 +97,7 @@ to = "/:slug"
 
 所以我只能给每个博客 URL 分别设置重定向规则。为了获取先前的 URL 路径，我恢复了旧的 `permalink` 配置，把其中的 `:title` 改为 `:name`。
 
-```yaml _config.yml
+```yaml [_config.yml]
 permalink: :year:month/:name/
 # permalink: :title/
 ```
@@ -105,13 +105,13 @@ permalink: :year:month/:name/
 要一条一条写重定向规则，有点麻烦，可以这么做：
 
 - 尝试用命令生成先前博客链接路径和新的博客链接路径
-  {% copy hexo clean; hexo generate prefix:PS > %}
+  :copy{prefix="PS >" code="hexo clean; hexo generate"}
 - findstr 不完全支持 PCRE，可以用 `Select-String "\\\d{6}\\"` 代替
-  {% copy dir -s .\public\ | findstr -r &quot;\\[0-9][0-9][0-9][0-9][0-9][0-9]\\&quot; prefix:PS > %}
+  :copy{prefix="PS >" code='dir -s .\public\ | findstr -r "\\[0-9][0-9][0-9][0-9][0-9][0-9]\\"'}
 
 再用正则表达式稍微替换一下输出（不要忘了`/`），就能得到 Netlify 的重定向规则文件了。
 
-```toml source/_redirects
+```toml [source/_redirects]
 ……
 /202304/vscode-simple-config /2023/vscode-simple-config
 /202305/archinstall-guide /2023/archinstall-guide
@@ -122,7 +122,7 @@ permalink: :year:month/:name/
 
 如果 generate 的文件中没有 `_redirects` 文件，那就修改一下配置文件：
 
-```yaml _config.yml
+```yaml [_config.yml]
 include: [_redirects]
 ```
 

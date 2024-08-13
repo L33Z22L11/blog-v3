@@ -32,7 +32,12 @@ for (int i = 1, j, temp; i < entc; i++) {
 
 这里的排序的条件比较复杂，但是有效简化了排序的逻辑，不需要再写很多 if 语句来判断排序条件。
 
-{% link /2023/zls Linux 下简单 ls 命令的实现 %}
+::link-card
+---
+title: Linux 下简单 ls 命令的实现
+link: /2023/zls
+---
+::
 
 程序中关于参数解析的内容也比较有意思，使用了宏函数来解析参数，同时二进制标志位来存储参数。
 
@@ -43,25 +48,29 @@ for (int i = 1, j, temp; i < entc; i++) {
 他推荐我用 JS 的模板字符串来生成导航，但是遇到了一些问题，最后发现是生成的 HTML 标签没有正确闭合，导致浏览器报错。同时，由于我的导航项比较复杂，所以写出的模板生成器代码也很抽象。
 
 ```js
-let nav = {
-  name: "CO导航",
-  description: "",
-  list: [],
-  ele: document.getElementsByClassName("navlist"),
+const nav = {
+    name: 'CO导航',
+    description: '',
+    list: [],
+    ele: document.getElementsByClassName('navlist'),
 }
 
 nav.list[0] = [{
-  name: "线上课时", icon: "fa-solid fa-chalkboard-user", item: [
-    { text: "学习通", icon: "iconfont icon-chaoxing", link: "http://i.chaoxing.com/" },
-  ]
+    name: '线上课时',
+    icon: 'fa-solid fa-chalkboard-user',
+    item: [
+        { text: '学习通', icon: 'iconfont icon-chaoxing', link: 'http://i.chaoxing.com/' },
+    ]
 }, {
-  name: "西邮生活", icon: "fa-solid fa-school", item: [
-    { text: "我在校园", desc: "网页版登录", icon: "fa-solid fa-location-dot", js: "dialog.showMsg(this.textContent)" },
-  ]
+    name: '西邮生活',
+    icon: 'fa-solid fa-school',
+    item: [
+        { text: '我在校园', desc: '网页版登录', icon: 'fa-solid fa-location-dot', js: 'dialog.showMsg(this.textContent)' },
+    ]
 },]
 
 nav.list.forEach((list, i) => {
-  nav.ele[i].innerHTML = list.map(group => `
+    nav.ele[i].innerHTML = list.map(group => `
     <div class="card">
     <div class="between">
     <h4><i class="${group.icon} fa-space"></i>${group.name}</h4>
@@ -69,7 +78,7 @@ nav.list.forEach((list, i) => {
     </div>
     <div class="list">
     ${group.item.map(item => `
-      <a data-sub="${item.desc || ""}"
+      <a data-sub="${item.desc || ''}"
       ${item.js ? `onclick="${item.js}"` : `href="${item.link}"`}
     >${item.icon ? `<i class="${item.icon} fa-space"></i>` : ``}${item.text}</a>
     `).join(`\n`)}
@@ -88,7 +97,7 @@ nav.list.forEach((list, i) => {
 
 其实也可以用 `createElement()` 和 `appendChild()` 来生成 HTML，或者 Vue 的组件也很方便。不过，用原生 JavaScript 写出来了这些，感觉还是挺奇妙的。
 
-::LinkCard
+::link-card
 ---
 icon: https://cooo.site/favicon.ico
 title: CO导航 - 西邮导航服务
@@ -102,8 +111,8 @@ link: https://cooo.site/
 
 ```js
 const gallery = {
-  End22: [["呱唧", "山望", "2/12/16/HBqoL"], ["呱唧", "瞰林", "2/12/16/HBBGX"],],
-  Jan23: [["酸子", "云中印象", "3/01/03/E8Lwa"], ["酸子", "镜中暮", "3/01/03/E8HSK"],],
+    End22: [['呱唧', '山望', '2/12/16/HBqoL'], ['呱唧', '瞰林', '2/12/16/HBBGX'],],
+    Jan23: [['酸子', '云中印象', '3/01/03/E8Lwa'], ['酸子', '镜中暮', '3/01/03/E8HSK'],],
 }
 ```
 
@@ -111,10 +120,10 @@ const gallery = {
 
 ```js
 const galleryFlated = [
-  {vol: "End22", author: "呱唧", name: "山望", url: "https://ooo.0x0.ooo/2022/12/16/HBqoL.jpg"},
-  {vol: "End22", author: "呱唧", name: "瞰林", url: "https://ooo.0x0.ooo/2022/12/16/HBBGX.jpg"},
-  {vol: "Jan23", author: "酸子", name: "云中印象", url: "https://ooo.0x0.ooo/2023/01/03/E8Lwa.jpg"},
-  {vol: "Jan23", author: "酸子", name: "镜中暮", url: "https://ooo.0x0.ooo/2023/01/03/E8HSK.jpg"}
+    { vol: 'End22', author: '呱唧', name: '山望', url: 'https://ooo.0x0.ooo/2022/12/16/HBqoL.jpg' },
+    { vol: 'End22', author: '呱唧', name: '瞰林', url: 'https://ooo.0x0.ooo/2022/12/16/HBBGX.jpg' },
+    { vol: 'Jan23', author: '酸子', name: '云中印象', url: 'https://ooo.0x0.ooo/2023/01/03/E8Lwa.jpg' },
+    { vol: 'Jan23', author: '酸子', name: '镜中暮', url: 'https://ooo.0x0.ooo/2023/01/03/E8HSK.jpg' }
 ]
 ```
 
@@ -122,12 +131,15 @@ const galleryFlated = [
 
 ```js
 const galleryFlated = Object.entries(gallery).flatMap(([vol, picInfos]) =>
-  picInfos.map(([author, name, shortURL]) => ({
-    vol, author, name, url: `https://ooo.0x0.ooo/202${shortURL}.jpg`,
-  })))
+    picInfos.map(([author, name, shortURL]) => ({
+        vol,
+        author,
+        name,
+        url: `https://ooo.0x0.ooo/202${shortURL}.jpg`,
+    })))
 ```
 
-::LinkCard
+::link-card
 ---
 icon: https://exam.thisis.host/favicon.ico
 title: 考试时钟

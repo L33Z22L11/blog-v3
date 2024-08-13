@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import tippy from 'tippy.js'
 import { LazyWidgetBlogLog, LazyWidgetTOC } from '#components'
 
 const UIStore = useUIStore()
-const asideTest = ref<HTMLElement>()
 const route = useRoute()
 
 const widgetList = {
@@ -12,12 +10,6 @@ const widgetList = {
 }
 
 const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof widgetList>)
-
-onMounted(() => {
-    tippy(asideTest.value!, {
-        content: '你知道得太多了。',
-    })
-})
 </script>
 
 <template>
@@ -108,9 +100,30 @@ onMounted(() => {
     }
 
     > .widget-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
         margin: 0.5rem;
         font: inherit;
         color: var(--c-text-3);
+
+        > .buttons {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 1.2em;
+
+            > a {
+                display: flex;
+                align-items: center;
+                transition: 0.2s;
+            }
+
+            > [onclick]:hover, > [href]:hover {
+                color: var(--c-primary-1);
+                cursor: pointer;
+            }
+        }
     }
 
     > .widget-card {

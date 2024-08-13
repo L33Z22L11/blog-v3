@@ -96,7 +96,7 @@ const updatedLabel = getPostTime(props.updated)
     width: min(320px, 50%);
     height: 100%;
     margin: 0;
-    mask: linear-gradient(to right, transparent, var(--c-bg-1) 50%);
+    mask: linear-gradient(to right, transparent, #fff 50%);
     transition: 0.2s;
     object-fit: cover;
 
@@ -114,7 +114,7 @@ const updatedLabel = getPostTime(props.updated)
         max-height: 256px;
         aspect-ratio: 2.4;
         margin-bottom: -10%;
-        mask: linear-gradient(var(--c-bg-1) 50%, transparent);
+        mask: linear-gradient(#fff 50%, transparent);
 
         & + * {
             width: auto;

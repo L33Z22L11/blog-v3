@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ZLIcon, ZLIconOld, ZLink } from '#components'
+import { ZhiluIcon, ZhiluIconOld, ZLink } from '#components'
 
 const props = defineProps<{
     tag?: string
@@ -10,7 +10,7 @@ function render() {
     const { tag = 'div', content } = props
     return h({
         template: `<${tag}>${content}</${tag}>`,
-        components: { ZLIcon, ZLIconOld, ZLink },
+        components: { ZhiluIcon, ZhiluIconOld, ZLink },
     })
 }
 </script>

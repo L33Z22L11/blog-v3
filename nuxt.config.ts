@@ -30,7 +30,7 @@ export default defineNuxtConfig({
 
     components: [
         { path: '~/components/partial', prefix: 'Z' },
-        { path: '~/components/zhilu', prefix: 'ZL' },
+        { path: '~/components/zhilu', prefix: 'Zhilu', global: true },
         '~/components',
     ],
 
@@ -107,13 +107,14 @@ export default defineNuxtConfig({
                 'python',
                 'shell',
                 'ssh-config',
+                'toml',
                 'ts',
                 'vue',
                 'xml',
                 'yaml',
             ],
             theme: {
-                default: 'one-light',
+                default: 'catppuccin-latte',
                 dark: 'one-dark-pro',
             },
         },

@@ -12,7 +12,7 @@ tags: [教程, vscode, 软件]
 
 我个人喜好少而高效的配置，所以这里给出一个简单的配置，适用于大部分人。
 
-```json %APPDATA%/Code/User/settings.json
+```json [%APPDATA%/Code/User/settings.json]
 {
   "editor.fontLigatures": true,
   "editor.cursorBlinking": "phase",
@@ -25,7 +25,7 @@ tags: [教程, vscode, 软件]
   "terminal.integrated.smoothScrolling": true,
   "workbench.list.smoothScrolling": true,
   "workbench.editor.wrapTabs": true,
-  "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Chromium, IndentWidth: 4}",
+  "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Chromium, IndentWidth: 4}"
 }
 ```
 
@@ -37,7 +37,9 @@ tags: [教程, vscode, 软件]
 
 我常用的主题是 OneDark Pro，图标是 Material Icon Theme。
 
-```json %APPDATA%/Code/User/settings.json
+另外还有 Catppuccin Mocha 主题和图标包也十分推荐。
+
+```json [%APPDATA%/Code/User/settings.json]
 {
   // 设置编辑器字体
   "editor.fontFamily": "Sarasa Mono SC, Fira Code, JetBrains Mono, Consolas, 'monospace', system-ui, monospace, Symbols Nerd Font, JetBrainsMono Nerd Font, Hack Nerd Font",
@@ -56,7 +58,7 @@ tags: [教程, vscode, 软件]
   // 小地图高亮当前所在区域
   "editor.minimap.showSlider": "always",
   // 终端当前命令吸附至顶端
-  "terminal.integrated.stickyScroll.enabled": true,
+  "terminal.integrated.stickyScroll.enabled": true
 }
 ```
 
@@ -68,7 +70,7 @@ VS Code 1.90 集成终端乱码是一个 [<i class='fa-brands fa-github'></i> bu
 
 VS Code 里有许多有用的快捷键，比如 Ctrl+D 快速选中多个相同的文本。可以按 F1 或 Ctrl+Shift+P 打开命令面板，搜索你要执行的操作，可以查看或设置操作的快捷键。
 
-```json %APPDATA%/Code/User/settings.json
+```json [%APPDATA%/Code/User/settings.json]
 {
   // 启用 Ctrl+滚轮 缩放编辑器字体大小
   "editor.mouseWheelZoom": true,
@@ -77,7 +79,7 @@ VS Code 里有许多有用的快捷键，比如 Ctrl+D 快速选中多个相同�
   // 启用 Ctrl + 滚轮缩放终端字体大小
   "terminal.integrated.mouseWheelZoom": true,
   // 启用编辑器标签页自动换行，代替打开的标签页过多时标签页水平滚动的行为
-  "workbench.editor.wrapTabs": true,
+  "workbench.editor.wrapTabs": true
 }
 ```
 
@@ -85,7 +87,7 @@ VS Code 里有许多有用的快捷键，比如 Ctrl+D 快速选中多个相同�
 
 看起来更流畅了。
 
-```json %APPDATA%/Code/User/settings.json
+```json [%APPDATA%/Code/User/settings.json]
 {
   // 设置文本光标闪烁动画为渐变闪烁
   "editor.cursorBlinking": "phase",
@@ -96,7 +98,7 @@ VS Code 里有许多有用的快捷键，比如 Ctrl+D 快速选中多个相同�
   // 启用终端平滑滚动动画
   "terminal.integrated.smoothScrolling": true,
   // 启用工作台列表平滑滚动动画
-  "workbench.list.smoothScrolling": true,
+  "workbench.list.smoothScrolling": true
 }
 ```
 
@@ -108,7 +110,7 @@ VS Code 里有许多有用的快捷键，比如 Ctrl+D 快速选中多个相同�
 - 无意识的键入文本会导致代码损坏。如果你之后关闭了窗口，那么做出的修改难以复原。
 - 与保存时自动格式化功能冲突。相比于按格式化快捷键，按保存快捷键时自动格式化更方便，并且还能养成频繁保存的习惯。
 
-```json %APPDATA%/Code/User/settings.json
+```json [%APPDATA%/Code/User/settings.json]
 {
   // 保存时自动格式化，可按 Ctrl+K, Ctrl+Shift+S 保存时不格式化
   "editor.formatOnSave": true,
@@ -120,12 +122,12 @@ VS Code 里有许多有用的快捷键，比如 Ctrl+D 快速选中多个相同�
   "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Chromium, IndentWidth: 4}",
   // 设置 clangd 插件 include 路径
   "clangd.fallbackFlags": [
-    "-I${workspaceFolder}",
+    "-I${workspaceFolder}"
   ],
   // 设置 Git 相关自动操作
   "git.autofetch": true,
   "git.enableSmartCommit": true,
-  "git.confirmSync": false,
+  "git.confirmSync": false
 }
 ```
 
@@ -133,7 +135,7 @@ VS Code 里有许多有用的快捷键，比如 Ctrl+D 快速选中多个相同�
 
 这些项目可能会影响少数情况下的体验。
 
-```json %APPDATA%/Code/User/settings.json
+```json [%APPDATA%/Code/User/settings.json]
 {
   // 设置窗口标题栏样式，可以屏蔽 Linux 的默认 GTK 样式
   "window.titleBarStyle": "custom",
@@ -143,14 +145,14 @@ VS Code 里有许多有用的快捷键，比如 Ctrl+D 快速选中多个相同�
   "settingsSync.ignoredExtensions": [
     // 如在 Windows 上使用 C/C++，在 Linux 上使用 clangd
     "ms-vscode.cpptools",
-    "llvm-vs-code-extensions.vscode-clangd",
+    "llvm-vs-code-extensions.vscode-clangd"
   ],
   // 启用 Markdown 打字机模式，打字时当前行位于屏幕中央
   "[markdown]": {
     "editor.fontSize": 21,
-    "editor.cursorSurroundingLines": 5, // 较大的值会完全居中
+    "editor.cursorSurroundingLines": 5 // 较大的值会完全居中
   },
   // 只在按下 Ctrl+Alt 时显示行内代码提示
-  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.inlayHints.enabled": "offUnlessPressed"
 }
 ```

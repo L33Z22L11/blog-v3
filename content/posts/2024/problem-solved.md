@@ -58,20 +58,7 @@ KazariEX 指出，我给主题提交 PR 之后，虽然使用了相应关键词�
 
 思路是通过 JS 注入元素，通过 CSS 变量控制动画的参数。经过了许多修改优化，终于实现了以下效果：
 
-<header class="header" onclick="this.style.zoom = this.style.zoom ? '' : '2'">
-<div class="logo-wrap">
-<a class="avatar">
-<div class="bg" style="opacity: 0; background-image: url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div>
-<img class="avatar" src="https://cdn.libravatar.org/avatar/6790d5a0c7fbba6038a2bf4618cc24d9?s=480"></a>
-<a class="title">
-<div class="main" ff="title">纸鹿摸鱼处</div>
-<div class="sub normal cap">纸鹿至麓不知路，支炉制露不止漉</div>
-<div class="sub hover cap" style="opacity: 0;">折腾不止，摸鱼生活——摸门🙏🏻</div>
-</a>
-</div>
-</header>
-
-<center>点击可切换放大/缩小查看</center>
+:zhilu-header
 
 在制作动画的过程中，也遇到文字抖动、溢出边界、显示滚动条等问题，稍微做了些优化，如果你现在使用“检查元素”功能的话，会发现 `.emoji-tail` 采用了 Grid 布局方式，我最近愈发体会到 CSS Grid 的妙用了。
 
@@ -87,7 +74,7 @@ KazariEX 指出，我给主题提交 PR 之后，虽然使用了相应关键词�
 
 我在上一篇文章中吐槽 Stylelint 和 pnpm 之后，KazariEX 写了一篇博客文章，讲述自己在开发过程中配置、使用 CSS 的习惯。
 
-::LinkCard
+::link-card
 ---
 icon: https://cdn.libravatar.org/avatar/ecb2ea87c4532f007838d86d02798f89
 title: 个人向 CSS 编码风格汇总
@@ -99,7 +86,7 @@ link: https://bikari.top/book/daily/44dc7f8
 
 BTW，之前使用 pnpm 全局安装 Stylelint 时找不到依赖项，使用此配置可以提升依赖项到 `node_modules` 的根目录。
 
-```ini ~/.npmrc
+```ini [~/.npmrc]
 shamefully-hoist=true
 ```
 
@@ -107,7 +94,7 @@ shamefully-hoist=true
 
 Shawn 看到了我的上一篇文章，写了一篇在 Windows 上使用 clangd 的文章。
 
-::LinkCard
+::link-card
 ---
 icon: https://wsrv.nl/?url=github.com/ShawnJeffersonWang.png
 title: Windows 下配置 Clang 和 clangd

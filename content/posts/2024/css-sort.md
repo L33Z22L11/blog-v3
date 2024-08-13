@@ -57,7 +57,7 @@ hexo : 无法将“hexo”项识别为 cmdlet、函数、脚本文件或可运�
 
 #### 看看 hexo-server-live
 
-::LinkCard
+::link-card
 ---
 icon: https://github.githubassets.com/favicons/favicon.svg
 title: KazariEX/hexo-server-live
@@ -124,19 +124,19 @@ link: https://github.com/KazariEX/hexo-server-live
 
 更令人震惊的是，我 Linux 系统的主文件夹里出现了一个名为 `C:\\Users\\Zhilu\\.lingma` 的「灵」件夹（这和我 git clone 某人的仓库发现一个 D 盘路径名的文件夹一样炸裂）。再一看 VS Code 的配置文件，果然出现了一个被同步的配置项：
 
-```json settings.json
+```json [settings.json]
 {
-  "Lingma.LocalStoragePath": "C:\\Users\\Zhilu\\.lingma",
+  "Lingma.LocalStoragePath": "C:\\Users\\Zhilu\\.lingma"
 }
 ```
 
 只能先在同步配置中忽略这个配置项了。
 
-```json settings.json
+```json [settings.json]
 {
   "settingsSync.ignoredSettings": [
-    "Lingma.LocalStoragePath",
-  ],
+    "Lingma.LocalStoragePath"
+  ]
 }
 ```
 
@@ -146,28 +146,28 @@ link: https://github.com/KazariEX/hexo-server-live
 
 删除了配置文件里的无用配置项，我就着手全局安装 Stylelint 相关包了。
 
-{% copy pnpm i -g stylelint stylelint-config-standard stylelint-order prefix:$ %}
+:copy{prefix="$" code="pnpm i -g stylelint stylelint-config-standard stylelint-order"}
 
 我原本想在用户目录写 `~/stylelint.config.js` 或者 `~/.stylelintrc.js` 文件，就像 `~/.clang-format` 可以作为 `clangd` 的配置文件一样，但发现 VS Code 插件不读取用户目录的配置作为配置文件。
 
 我又尝试指定 `stylelint.configFile` 配置，但发现它不解析 `~`（tilde expansion，波浪线展开）或 `%UserProfile%`（变量），而是将其作为普通相对路径解析。最后，我通过指定 `stylelint.config` 而不是 `stylelint.configFile`，避免跨系统访问路径的错误。
 
-```json settings.json
+```json [settings.json]
 {
   "stylelint.config": {
     "plugins": [
-      "stylelint-order",
+      "stylelint-order"
     ],
-    "extends": "stylelint-config-standard",
-  },
+    "extends": "stylelint-config-standard"
+  }
 }
 ```
 
 在 Windows 和 Linux 上安装相关包后，VS Code 插件在 Windows 输出的大意是找不到 Stylelint 包，而在 Linux 上直接找不到 npm 程序本体（我只有 pnpm）。后来通过这个配置项，让 VS Code 插件寻找 pnpm 相关包：
 
-```json settings.json
+```json [settings.json]
 {
-  "stylelint.packageManager": "pnpm",
+  "stylelint.packageManager": "pnpm"
 }
 ```
 
@@ -198,7 +198,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 我使用这行命令试图查看 SSH 环境中的 PATH：
 
-{% copy ssh localhost -t &quot;echo &apos;$Env:PATH&apos;&quot; prefix:PS&nbsp;> %}
+:copy{prefix="PS>" code='ssh localhost -t "echo '$Env:PATH'"'}
 
 但输出一切正常，`C:\Users\Zhilu\AppData\Local\pnpm` 完好地存在于 PATH 中。
 
@@ -241,7 +241,7 @@ stylelint/vscode-stylelint 仓库的 Issue [#331](https://github.com/stylelint/v
 全局安装的 Stylelint 包似乎找不到各种东西。在 stylelint/stylelint 的另一个 Issue [#7297](https://github.com/stylelint/stylelint/issues/7297) 中，提出者给出了一个“dirty fix”：
 
 - 创建软链接 `/usr/node_modules` 指向 `/lib64/node_modules`。
-  {% copy sudo ln -s /lib64/node_modules /usr/node_modules prefix:$ %}
+  :copy{prefix="$" code="sudo ln -s /lib64/node_modules /usr/node_modules"}
 
 #### 如果 npm 被升级的话，也许就结束了吧
 
@@ -270,7 +270,7 @@ NVM，再见了。我要试试这个新方法。
 为什么这些文件的权限会被更改？我立刻使用 `less $HISTFILE` 工具，按 Shift+G 跳转到文件末，从后向前查看终端中输入命令的历史记录。经过查找，发现这条命令十分可疑：
 
 {% box color:yellow child:codeblock %}
-```sh 可疑命令
+```sh [可疑命令]
 sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 ```
 {% endbox %}
@@ -288,19 +288,19 @@ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 
 - 按照 {% post_link 2024/archlinux-boot-repair %} 一文中的方式挂载分区、进入系统。
 - 尝试恢复被修改的权限
-  {% copy chown -R root:root /usr/{lib/node_modules,bin,share} prefix:# %}
+  :copy{prefix="#" code="chown -R root:root /usr/{lib/node_modules,bin,share}"}
 - 尝试恢复部分关键程序的 setuid 位
-  {% copy chmod u+s /usr/bin/sudo /usr/bin/su prefix:# %}
+  :copy{prefix="#" code="chmod u+s /usr/bin/sudo /usr/bin/su"}
 - 建议切换到自己的用户上，实在切不了就算了
-  {% copy su <你的用户名> prefix:# %}
+  :copy{prefix="#" code="su <你的用户名>"}
   - 如果忘了自己的用户名，可以执行这个命令：
-    {% copy cat /etc/passwd | grep &quot;:1000&quot; prefix:# %}
+  :copy{prefix="#" code='cat /etc/passwd | grep ":1000"'}
 - 安装权限修复工具
-  {% copy yay -S pacman-fix-permissons prefix:$ %}
+  :copy{prefix="$" code="yay -S pacman-fix-permissons"}
 - 修复权限
-  {% copy sudo pacman-fix-permissions prefix:$ %}
+  :copy{prefix="$" code="sudo pacman-fix-permissions"}
 
-```log pacman-fix-permissions 的输出
+```log [pacman-fix-permissions 的输出]
 ……
 (854/860) zram-generator 1.1.2-1
 (855/860) zsh 5.9-5

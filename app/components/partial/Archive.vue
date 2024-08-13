@@ -83,7 +83,7 @@ onMounted(() => {
     width: min(50%, 180px);
     height: 100%;
     margin: 0;
-    mask: linear-gradient(to right, transparent, var(--c-bg-a50));
+    mask: linear-gradient(to right, transparent, #fff7);
     transition: 0.2s;
     object-fit: cover;
     z-index: -1;

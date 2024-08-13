@@ -74,7 +74,7 @@ export default {
         '/posts',
     ],
     imageDomains: [
-        'blog.zhilu.cyou',
+        // 'blog.zhilu.cyou',
         // '7.isyangs.cn',
     ],
     injectHeadLinks: [

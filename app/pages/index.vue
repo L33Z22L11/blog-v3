@@ -44,7 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <ZLHeader class="header" />
+    <ZhiluHeader class="header" />
     <div class="post-list">
         <ZOrderToggle v-model="orderBy" class="order-toggle" />
         <ZArticle

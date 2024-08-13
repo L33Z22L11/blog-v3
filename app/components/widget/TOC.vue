@@ -20,7 +20,15 @@ const toc = computed(() => data.value?.body?.toc)
     </DefineTemplate>
 
     <h3 class="widget-title">
-        文章目录
+        <span>文章目录</span>
+        <div class="buttons">
+            <ZRawLink onclick="window.scrollTo({ top: 0 })">
+                <Icon name="ph:arrow-circle-up-bold" />
+            </ZRawLink>
+            <ZRawLink to="#twikoo">
+                <Icon name="ph:chat-circle-text-bold" />
+            </ZRawLink>
+        </div>
     </h3>
     <div class="widget-card">
         <ReuseTemplate v-if="toc?.links?.length" :toc-item="toc.links" />

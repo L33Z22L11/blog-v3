@@ -25,7 +25,7 @@ a {
 
 code, pre {
     /* stylelint-disable-next-line font-family-name-quotes */
-    font-family: "Sarasa Mono SC", SFMono-Regular, "Fira Code", "JetBrains Mono", "Cascadia Code", Monaco, "Noto Sans Mono", Consolas, "monospace", monospace;
+    font-family: SFMono-Regular, "Fira Code", "JetBrains Mono", "Cascadia Code", Monaco, "Noto Sans Mono", Consolas, "monospace", monospace;
 }
 
 menu, ol, ul {
@@ -39,6 +39,11 @@ menu, ol, ul {
 button {
     background: none;
     font: inherit;
+}
+
+input {
+    font: inherit;
+    color: inherit;
 }
 
 mark {
@@ -97,5 +102,35 @@ mark {
             background-color: var(--c-bg-a75);
             transition: all 0.1s;
         }
+    }
+}
+
+// PURE CSS MAGIC!
+.scrollcheck-x {
+    --left-offset: 0;
+    --scrollbar-height: 24px;
+
+    overflow-x: auto;
+    animation: scrollcheck-x;
+    animation-timeline: scroll(x self);
+}
+
+@keyframes scrollcheck-x {
+    0% {
+        mask:
+            linear-gradient(to right, #fff 80%, transparent),
+            linear-gradient(to top, #fff var(--scrollbar-height), transparent var(--scrollbar-height));
+    }
+
+    1%, 99% {
+        mask:
+            linear-gradient(to right, #fff var(--left-offset), transparent var(--left-offset), #fff 20%, #fff 80%, transparent),
+            linear-gradient(to top, #fff var(--scrollbar-height), transparent var(--scrollbar-height));
+    }
+
+    100% {
+        mask:
+            linear-gradient(to right, #fff var(--left-offset), transparent var(--left-offset), #fff 20%),
+            linear-gradient(to top, #fff var(--scrollbar-height), transparent var(--scrollbar-height));
     }
 }

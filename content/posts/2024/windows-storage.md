@@ -58,7 +58,7 @@ tags: [教程, 系统, Windows, 存储]
 > - 我怎么把我的某个分区扩大/缩小一点？
 > - 有没有什么办法把 C 盘一些占空间又不能动的东西移到别处去？
 
-::LinkCard
+::link-card
 ---
 icon: https://www.criwits.top/missing/favicon.png
 title: 成为空间管理大师 - 你缺失的那门计算机课
@@ -112,7 +112,7 @@ WizTree 是一款可视化的硬盘空间分析工具。用它可以快速查看
 
 再次推荐《你缺失的那门计算机课》，由浅入深，无论你是电脑小白还是系统高手，都可以收获颇丰。
 
-::LinkCard
+::link-card
 ---
 icon: https://www.criwits.top/missing/favicon.png
 title: 你缺失的那门计算机课

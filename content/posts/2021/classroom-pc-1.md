@@ -177,7 +177,7 @@ tags: [高中, 电教, 校园]
 目标字节 = 班级 - 年级 * 22 + 79
 ```
 
-```bat 兼程楼教室IP获取.bat
+```bat [兼程楼教室IP获取.bat]
 @echo off
 title 兼程楼教室IP获取
 color 0a

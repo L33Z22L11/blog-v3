@@ -14,7 +14,7 @@ tags: [教程, 软件, DOSBox]
 - 下载 DOSBox 并安装。
   - [官网下载](https://www.dosbox.com/download.php#:~:text=Windows)
   - 如果你电脑具有较好的国际互联网接入环境，可以通过 WinGet 一键安装。
-    {% copy winget install dosbox prefix:PS&nbsp;> %}
+    :copy{prefix="PS>" code="winget install dosbox"}
 - 在以下地址之一下载 MASM 套件，解压到 `D:\Software\MASM`。
   - [dosasm/dosrun MASM-v5.00](https://github.com/dosasm/dosrun/tree/main/bundles/src/MASM-v5.00/masm)
   - [dosasm/dosrun MASM-v6.11](https://github.com/dosasm/dosrun/tree/main/bundles/src/MASM-v6.11/masm)
@@ -26,8 +26,8 @@ tags: [教程, 软件, DOSBox]
 
 - 在开始菜单中搜索“DOSBox 0.74-3 Options”打开。
 - 在“开始菜单>所有应用>DOSBox 0.74-3”中找到“DOSBox 0.74-3 Options”打开。
-- {% copy notepad %LocalAppData%\DOSBox\dosbox-0.74-3.conf prefix:CMD&nbsp;> %}
-- {% copy code $env:LOCALAPPDATA\DOSBox\dosbox-0.74-3.conf prefix:PS&nbsp;> %}
+- :copy{prefix="CMD>" code="notepad %LocalAppData%\DOSBox\dosbox-0.74-3.conf"}
+- :copy{prefix="PS>" code="code $env:LOCALAPPDATA\DOSBox\dosbox-0.74-3.conf"}
 
 #### 修改显示大小
 
@@ -37,7 +37,7 @@ tags: [教程, 软件, DOSBox]
 
 找到配置文件开头的这两行：
 
-```ini doxbox-0.74-3.conf
+```ini [doxbox-0.74-3.conf]
 windowresolution=original
 output=surface
 ```
@@ -53,7 +53,7 @@ output=surface
 
 在配置文件末尾，`[autoexec]` 一节下添加以下内容，参数中的文件夹路径可以随自己喜好修改：
 
-```ini doxbox-0.74-3.conf
+```ini [doxbox-0.74-3.conf]
 # 将 Windows 系统 D:\Software\MASM 文件夹挂载到 DOS 虚拟磁盘 C:
 MOUNT C D:\Software\MASM
 # 设置 C: 为 PATH，使得 MASM 文件夹中的程序在任何目录下都可调用
@@ -68,7 +68,7 @@ D:
 
 ## 使用网页版 DOSBox
 
-::LinkCard
+::link-card
 ---
 icon: https://dosasm.github.io/dosrun/favicon.ico
 title: Playground - An x86 assembly playGround in JSDos environment
@@ -80,7 +80,7 @@ link: https://dosasm.github.io/dosrun/
 
 你也可以在CO导航的“校友推荐”板块中找到这个网站。
 
-::LinkCard
+::link-card
 ---
 icon: https://cooo.site/favicon.ico
 title: CO导航 - 西邮导航服务
@@ -93,7 +93,7 @@ link: https://cooo.site/
 - 在 VS Code 中安装 [MASM/TASM 插件](https://marketplace.visualstudio.com/items?itemName=xsro.masm-tasm)。
 - 在扩展设置中，将“Masmtasm.ASM: Assembler（选择使用的汇编工具）”项更改为“MASM”。
   - 也可以直接在配置文件中添加以下内容：
-    ```json %APPDATA%/Code/User/settings.json
+    ```json [%APPDATA%/Code/User/settings.json]
       "masmtasm.ASM.assembler": "MASM",
     ```
 - 在 `.asm` 文件的编辑界面右键，可以看到运行调试相关的选项。
