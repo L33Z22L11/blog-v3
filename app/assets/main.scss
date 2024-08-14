@@ -19,12 +19,12 @@ a {
     --font-serif: "Noto Serif SC", serif;
     --font-monospace: sfmono-regular, "Fira Code", "JetBrains Mono", "Cascadia Code", monaco, "Noto Sans Mono", consolas, "monospace", monospace;
 
-    background-color: var(--c-bg-2);
+    background-color: var(--c-bg-1);
     font-family: var(--font-family);
     font-synthesis: style;
     color: var(--c-text-1);
     scroll-behavior: smooth;
-    scrollbar-color: var(--c-text-3) var(--c-bg-2);
+    scrollbar-color: var(--c-text-3) var(--c-bg-1);
 }
 
 code, pre {
@@ -46,7 +46,6 @@ button {
 }
 
 input {
-    background-color: var(--c-bg-1);
     font: inherit;
     color: inherit;
 }

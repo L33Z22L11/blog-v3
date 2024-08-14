@@ -37,7 +37,7 @@ function switchOrder() {
         display: flex;
         align-items: center;
         gap: 0.2rem;
-        color: var(--c-text-3);
+        color: var(--c-text-2);
         transition: color 0.1s;
         cursor: pointer;
 

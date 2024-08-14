@@ -81,12 +81,12 @@ onMounted(() => initTwikoo())
     }
 
     .tk-replies:not(.tk-replies-expand) {
-        mask: linear-gradient(var(--c-bg-1) 50%, transparent);
+        mask: linear-gradient(#fff 50%, transparent);
     }
 
     .tk-expand {
-        border-radius: 0.5em;
-        transition: 0.1s;
+        border-radius: 0.5rem;
+        transition: background-color 0.1s;
     }
 }
 </style>

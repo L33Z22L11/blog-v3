@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import tippy from 'tippy.js'
+import 'tippy.js/dist/tippy.css'
+
 withDefaults(defineProps<{
     code?: string
     language?: string
@@ -11,6 +14,26 @@ withDefaults(defineProps<{
 })
 
 const isWrap = ref(false)
+const codeblock = ref<HTMLElement>()
+const copyBtn = ref<HTMLElement>()
+async function copy() {
+    let msg = '已复制'
+    try {
+        await navigator.clipboard.writeText(codeblock.value!.textContent as string)
+    }
+    catch (e) {
+        msg = '复制失败'
+    }
+    finally {
+        tippy(copyBtn.value!, {
+            content: msg,
+            trigger: 'manual',
+            onShow(instance) {
+                setTimeout(() => instance.hide(), 1000)
+            },
+        }).show()
+    }
+}
 </script>
 
 <template>
@@ -18,11 +41,16 @@ const isWrap = ref(false)
         <figcaption v-if="filename">
             {{ filename }}
         </figcaption>
-        <button class="is-wrap" @click="isWrap = !isWrap">
-            {{ isWrap ? '换行' : '不换行' }}
-        </button>
         <span v-if="language" class="language">{{ language }}</span>
-        <pre class="scrollcheck-x" :class="{ wrap: isWrap }"><slot /></pre>
+        <div class="operations">
+            <button @click="isWrap = !isWrap">
+                {{ isWrap ? '横向滚动' : '自动换行' }}
+            </button>
+            <button ref="copyBtn" @click="copy">
+                复制
+            </button>
+        </div>
+        <pre ref="codeblock" class="scrollcheck-x" :class="{ wrap: isWrap }"><slot /></pre>
     </figure>
 </template>
 
@@ -31,7 +59,7 @@ const isWrap = ref(false)
     position: relative;
     margin-block: 1em;
     border-radius: 8px;
-    background-color: var(--c-bg-3);
+    background-color: var(--c-bg-2);
     font-size: 0.8125em;
     line-height: 1.4;
 
@@ -40,12 +68,7 @@ const isWrap = ref(false)
         margin-inline-start: 1em;
         padding: 0.2em 0.8em;
         border-radius: 0 0 8px 8px;
-        background-color: var(--c-primary-soft);
-    }
-
-    .is-wrap {
-        padding: 0.2em 0.8em;
-        color: var(--c-text-3);
+        background-color: var(--c-bg-3);
     }
 
     .language {
@@ -53,6 +76,37 @@ const isWrap = ref(false)
         top: 0.2em;
         right: 0.8em;
         color: var(--c-text-3);
+        transition: opacity 0.2s;
+    }
+
+    .operations {
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: 0;
+        transition: opacity 0.2s;
+        z-index: 1;
+
+        > button {
+            padding: 0.2em 0.8em;
+            color: var(--c-text-3);
+            transition: color 0.2s;
+            cursor: pointer;
+
+            &:hover {
+                color: var(--c-text-1);
+            }
+        }
+    }
+
+    &:hover {
+        .language {
+            opacity: 0;
+        }
+
+        .operations {
+            opacity: 1;
+        }
     }
 }
 
@@ -82,7 +136,7 @@ pre {
         left: 0;
         width: var(--line-number-width);
         padding: 0 1em 0 0.5em;
-        background-color: var(--c-bg-3);
+        background-color: var(--c-bg-2);
         text-align: right;
         color: var(--c-text-3);
     }

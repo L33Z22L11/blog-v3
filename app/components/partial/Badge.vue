@@ -17,7 +17,7 @@ defineProps<{
 </template>
 
 <style scoped lang="scss">
-.domain {
+.badge {
     display: inline-flex;
     align-items: center;
     border: 1px solid var(--c-border);
@@ -26,7 +26,7 @@ defineProps<{
     font-size: 0.9em;
     vertical-align: middle;
     color: var(--c-text-2);
-    transition: all 0.2s;
+    transition: color 0.2s;
 
     & + & {
         margin-left: 1em;

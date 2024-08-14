@@ -36,12 +36,13 @@ const updatedLabel = getPostTime(props.updated)
     position: relative;
     overflow: hidden;
     border-radius: 12px;
-    box-shadow: 0 1px 2px var(--c-border);
-    background-color: var(--c-bg-1);
+    box-shadow: 0 1px 2px var(--ld-shadow);
+    background-color: var(--ld-bg-card);
+    color: var(--c-text);
     transition: all 0.2s;
 
     &:hover {
-        box-shadow: 0 0.5rem 1rem var(--c-border);
+        box-shadow: 0 0.5rem 1rem var(--ld-shadow);
         transform: translateY(-4px);
 
         .article-cover {
@@ -92,13 +93,13 @@ const updatedLabel = getPostTime(props.updated)
     height: 100%;
     margin: 0;
     mask: linear-gradient(to right, transparent, #fff 50%);
-    transition: 0.2s;
+    transition: all 0.2s;
     object-fit: cover;
 
     & + * {
         position: relative;
         width: 60%;
-        text-shadow: 0 0 0.5rem var(--c-bg-1), 0 0 1rem var(--c-bg-1);
+        text-shadow: 0 0 0.5rem var(--ld-bg-card), 0 0 1rem var(--ld-bg-card);
     }
 
     @mixin cover-narrow {

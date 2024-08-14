@@ -34,7 +34,7 @@ defineProps<LinkGroup>()
     opacity: 0.5;
     top: 0;
     margin-bottom: -0.5em;
-    mask: linear-gradient(var(--c-bg-1) 50%, transparent);
+    mask: linear-gradient(#fff 50%, transparent);
     font-size: 5rem;
     text-align: center;
     color: transparent;

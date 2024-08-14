@@ -33,9 +33,11 @@ const updatedLabel = getPostTime(props.updated ?? '0')
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 1rem;
     margin: 0.5rem;
     border-radius: 1rem;
-    background-color: var(--c-bg-3);
+    background-color: var(--c-bg-2);
+    color: var(--c-text);
 
     @media (max-width: $breakpoint-mobile) {
         margin: 0;
@@ -47,7 +49,7 @@ const updatedLabel = getPostTime(props.updated ?? '0')
         overflow: hidden;
         min-height: 256px;
         max-height: 320px;
-        text-shadow: 0 0 0.5em #0005;
+        text-shadow: 0 0 0.5em var(--ld-shadow);
         color: white;
         transition: font-size 0.2s;
         z-index: 0;
@@ -88,12 +90,13 @@ const updatedLabel = getPostTime(props.updated ?? '0')
         position: absolute;
         inset: 0;
         backdrop-filter: blur(1rem);
-        mask: linear-gradient(transparent, var(--c-bg-1) 40%);
+        mask: linear-gradient(transparent, #fff 50%);
         z-index: -1;
     }
 }
 
 .post-nav {
+    opacity: 0.9;
     padding: 0.8em 1rem;
 
     // 如果在父级设置字体尺寸，会影响祖先字体尺寸改变的行为

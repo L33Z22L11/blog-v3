@@ -11,13 +11,13 @@ defineProps<{ to?: string }>()
 
 <style scoped lang="scss">
 .z-link {
+    border-radius: 0.3em;
     background: linear-gradient(var(--c-primary-3), var(--c-primary-3)) no-repeat center bottom / 100% 0.1em;
     text-decoration: none;
     color: var(--c-primary-1);
-    transition: 0.2s;
+    transition: background-size 0.2s;
 
     &:hover {
-        border-radius: 0.3em;
         background-size: 100% 100%;
     }
 }

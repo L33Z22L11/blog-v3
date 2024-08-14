@@ -3,32 +3,38 @@ $breakpoint-mobile: 768px;
 $breakpoint-widescreen: 1080px;
 
 @mixin dark-theme {
+    --c-text: hsl(0deg 0% 100%);
     --c-text-1: hsl(0deg 0% 90%);
     --c-text-2: hsl(0deg 0% 50%);
     --c-text-3: hsl(0deg 0% 40%);
-    --c-bg-1: hsl(0deg 0% 10%);
-    --c-bg-2: hsl(0deg 0% 7%);
-    --c-bg-3: hsl(0deg 0% 15%);
-    --c-border: hsl(0deg 0% 20%);
-    --c-bg-a50: hsl(0deg 0% 0% / 50%);
-    --c-bg-a75: hsl(0deg 0% 0% / 75%);
-    --c-bg-a100: hsl(0deg 0% 0% / 100%);
+    --c-bg: hsl(0deg 0% 7%);
+    --c-bg-1: hsl(220deg 10% 10%);
+    --c-bg-2: hsl(220deg 10% 14%);
+    --c-bg-3: hsl(220deg 10% 18%);
+    --c-border: hsl(220deg 10% 20%);
+    --c-bg-a50: hsl(220deg 10% 10% / 50%);
+    --c-bg-a75: hsl(220deg 10% 10% / 75%);
+    --c-bg-a100: hsl(220deg 10% 10% / 100%);
     --c-primary-1: hsl(220deg 100% 70%);
     --c-primary-2: hsl(210deg 100% 70% / 30%);
     --c-primary-3: hsl(215deg 100% 60% / 20%);
     --c-primary-soft: hsl(220deg 100% 95% / 15%);
-    --ld-blur-bg: var(--c-bg-a50);
-    --ld-hl-bg: var(--c-primary-3);
+    --ld-bg-blur: var(--c-bg-a50);
+    --ld-bg-card: var(--c-bg-3);
+    --ld-bg-hl: var(--c-primary-3);
+    --ld-shadow: var(--c-bg);
 }
 
 :root,
 .light {
+    --c-text: hsl(0deg 0% 0%);
     --c-text-1: hsl(0deg 0% 20%);
-    --c-text-2: hsl(0deg 0% 50%);
+    --c-text-2: hsl(0deg 0% 40%);
     --c-text-3: hsl(0deg 0% 70%);
-    --c-bg-1: hsl(0deg 0% 100%);
-    --c-bg-2: hsl(200deg 20% 98%);
-    --c-bg-3: hsl(200deg 10% 94%);
+    --c-bg: hsl(0deg 0% 100%);
+    --c-bg-1: hsl(220deg 20% 98%);
+    --c-bg-2: hsl(200deg 5% 95%);
+    --c-bg-3: hsl(200deg 10% 93%);
     --c-border: hsl(200deg 5% 90%);
     --c-bg-a50: hsl(200deg 20% 98% / 50%);
     --c-bg-a75: hsl(200deg 20% 98% / 75%);
@@ -38,8 +44,10 @@ $breakpoint-widescreen: 1080px;
     --c-primary-3: hsl(215deg 100% 60% / 15%);
     --c-primary-soft: hsl(240deg 20% 20% / 10%);
     --c-accent-1: hsl(180deg 70% 60%);
-    --ld-blur-bg: var(--c-bg-a75);
-    --ld-hl-bg: var(--c-bg-1);
+    --ld-bg-blur: var(--c-bg-a75);
+    --ld-bg-card: var(--c-bg);
+    --ld-bg-hl: var(--c-bg);
+    --ld-shadow: var(--c-primary-soft);
 }
 
 .dark {

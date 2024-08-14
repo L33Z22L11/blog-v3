@@ -35,6 +35,8 @@ const appConfig = useAppConfig()
     position: relative;
     margin: 2.5rem 1rem 1rem;
     line-height: initial;
+    color: var(--c-text);
+    user-select: none;
 }
 
 .zhilu-logo {
@@ -43,7 +45,7 @@ const appConfig = useAppConfig()
     &.with-text {
         aspect-ratio: 1;
         border-radius: 2em;
-        box-shadow: 2px 4px 0.5rem var(--c-border);
+        box-shadow: 2px 4px 1rem var(--ld-shadow);
     }
 }
 
@@ -61,8 +63,8 @@ const appConfig = useAppConfig()
 }
 
 .header-subtitle {
+    opacity: 0.5;
     font-size: 0.8em;
-    color: var(--c-text-2);
 }
 
 @keyframes vf-weight {

@@ -20,6 +20,10 @@ const timeline = blogLog.timeline
 
 <style scoped lang="scss">
 .widget-card {
-    line-height: 1.5;
+    background-color: var(--c-bg-2);
+}
+
+li {
+    margin: 0.5em 0;
 }
 </style>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const { data } = await useAsyncData(`surround-${route.path}`, () => queryContent()
-    .only(['_path', 'title', 'type'])
+    .only(['_path', 'title', 'date', 'type'])
     .sort({ date: 1 })
     .where({ _original_dir: { $eq: '/posts' } })
     .findSurround(route.path))
@@ -10,15 +10,27 @@ const [prev, next] = data.value ?? []
 
 <template>
     <div class="surround-post">
-        <ZRawLink :to="prev?._path" class="prev":class="{ story: prev?.type === 'story' }">
+        <ZRawLink :to="next?._path" class="next">
             <Icon name="solar:rewind-back-bold-duotone" />
-            <h4 class="title">
-                {{ prev?.title ?? '已抵达时间尽头' }}
+            <div v-if="next">
+                <h4 class="title" :class="{ story: next?.type === 'story' }">
+                    {{ next.title }}
+                </h4>
+                <time datetime="{{ next?.date }}">{{ getPostTime(next.date) }}</time>
+            </div>
+            <h4 v-else>
+                新故事即将发生
             </h4>
         </ZRawLink>
-        <ZRawLink :to="next?._path" class="next" :class="{ story: next?.type === 'story' }">
-            <h4 class="title">
-                {{ next?.title ?? '新故事即将发生' }}
+        <ZRawLink :to="prev?._path" class="prev">
+            <div v-if="prev">
+                <h4 class="title" :class="{ story: prev?.type === 'story' }">
+                    {{ prev.title }}
+                </h4>
+                <time datetime="{{ prev?.date }}">{{ getPostTime(prev.date) }}</time>
+            </div>
+            <h4 v-else>
+                已抵达时间尽头
             </h4>
             <Icon name="solar:rewind-forward-bold-duotone" />
         </ZRawLink>
@@ -43,11 +55,16 @@ const [prev, next] = data.value ?? []
             cursor: not-allowed;
         }
 
-        &.story {
+        time {
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+
+        .story {
             font-family: var(--font-serif);
         }
 
-        &.next {
+        &.prev {
             text-align: right;
         }
 
@@ -55,7 +72,7 @@ const [prev, next] = data.value ?? []
             flex-shrink: 0;
             opacity: 0.5;
             font-size: 2rem;
-            transition: all 0.2s;
+            transition: transform 0.2s;
         }
 
         &[href]:hover {

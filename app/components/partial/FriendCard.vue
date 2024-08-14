@@ -51,7 +51,7 @@ onMounted(() => {
     width: 3rem;
     height: 3rem;
     border-radius: 4rem;
-    box-shadow: 2px 4px 0.5rem var(--c-primary-soft);
+    box-shadow: 2px 4px 0.5rem var(--ld-shadow);
     background-color: white;
 }
 

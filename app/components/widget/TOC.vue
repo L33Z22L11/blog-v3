@@ -45,16 +45,15 @@ const toc = computed(() => data.value?.body?.toc)
 .widget-card {
     ul {
         padding-left: 0;
-        line-height: 1.5;
+        line-height: 1.8;
         list-style: none;
 
         li {
             padding-left: 0.5rem;
 
             a {
-                font-size: 0.9em;
                 color: var(--c-text-2);
-                transition: 0.2s;
+                transition: color 0.2s;
 
                 &:hover {
                     color: var(--c-text-1);

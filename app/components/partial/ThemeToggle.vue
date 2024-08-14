@@ -60,7 +60,7 @@ onMounted(() => {
     padding: 2px;
     border: 1px solid var(--c-border);
     border-radius: 1rem;
-    background-color: var(--c-bg-3);
+    background-color: var(--c-bg-2);
 
     > button {
         display: grid;
@@ -69,7 +69,7 @@ onMounted(() => {
         border-radius: 1rem;
         background: none;
         color: currentcolor;
-        transition: 0.1s;
+        transition: all 0.1s;
         cursor: pointer;
 
         &:hover {
@@ -78,8 +78,8 @@ onMounted(() => {
         }
 
         &.active {
-            box-shadow: 0 0 0.5rem var(--c-border);
-            background-color: var(--c-bg-1);
+            box-shadow: 0 0 0.5rem var(--ld-shadow);
+            background-color: var(--ld-bg-card);
             color: var(--c-text-1);
             cursor: auto;
         }

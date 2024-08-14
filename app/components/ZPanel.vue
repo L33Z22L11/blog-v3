@@ -37,7 +37,7 @@ const hasAside = computed(() => route.meta.aside !== false)
     }
 
     &:has(.active) {
-        box-shadow: 0 0 0.5rem var(--c-text-2);
+        box-shadow: 0 0 0.5rem var(--ld-shadow);
     }
 }
 
@@ -52,7 +52,7 @@ const hasAside = computed(() => route.meta.aside !== false)
 button {
     display: block;
     padding: 0.5rem;
-    transition: 0.2s;
+    transition: all 0.2s;
     cursor: pointer;
 
     &:hover {
@@ -61,7 +61,7 @@ button {
     }
 
     &.active {
-        background-color: var(--ld-hl-bg);
+        background-color: var(--ld-bg-hl);
         color: var(--c-primary-1);
     }
 }

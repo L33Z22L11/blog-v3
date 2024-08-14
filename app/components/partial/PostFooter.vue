@@ -43,7 +43,7 @@ const appConfig = useAppConfig()
     margin: 2rem 0.5rem;
     border: 1px solid var(--c-border);
     border-radius: 1rem;
-    background-color: var(--c-bg-3);
+    background-color: var(--c-bg-2);
 }
 
 section {

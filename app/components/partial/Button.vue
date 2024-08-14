@@ -27,8 +27,8 @@ defineProps<ButtonProps>()
     padding: 0.4em 0.6em;
     border: 1px solid var(--c-border);
     border-radius: 0.4em;
-    box-shadow: 0.05em 0.1em 0.5em var(--c-primary-soft);
-    background-color: var(--c-bg-1);
+    box-shadow: 0.05em 0.1em 0.5em var(--ld-shadow);
+    background-color: var(--ld-bg-card);
     transition: background-color 0.2s;
     cursor: pointer;
 
@@ -37,7 +37,7 @@ defineProps<ButtonProps>()
     }
 
     &:hover {
-        background-color: var(--c-bg-3);
+        background-color: var(--c-bg-2);
     }
 
     &:disabled {

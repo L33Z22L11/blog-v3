@@ -64,7 +64,7 @@ const groupedList = computed(
 <style lang="scss" scoped>
 .archive {
     margin: 1rem;
-    mask: linear-gradient(var(--c-bg-1) 50%, #fff3);
+    mask: linear-gradient(#fff 50%, #fff3);
 }
 
 .archive-group {
@@ -81,7 +81,7 @@ const groupedList = computed(
     opacity: 0.5;
     top: 0;
     margin-bottom: -0.5em;
-    mask: linear-gradient(var(--c-bg-1) 50%, transparent);
+    mask: linear-gradient(#fff 50%, transparent);
     font-size: 5rem;
     color: transparent;
     transition: color 0.2s;

@@ -26,19 +26,20 @@ function copy() {
     margin: 0.5rem 0;
     border: 1px solid var(--c-border);
     border-radius: 0.5em;
-    background-color: var(--c-bg-1);
+    background-color: var(--ld-bg-card);
     font-size: 0.8125em;
     line-height: 2.5;
 
     .snippet-prefix {
         padding: 0 1em;
         border-right: 1px solid var(--c-border);
-        background-color: var(--c-bg-3);
+        background-color: var(--c-bg-2);
         color: var(--c-text-2);
     }
 
     .code {
         flex: 1;
+        background-color: var(--ld-bg-card);
         white-space: nowrap;
         text-indent: 1em;
     }
@@ -50,7 +51,7 @@ function copy() {
         margin: 0 0.2em;
         padding: 0.5em;
         color: var(--c-text-2);
-        transition: 0.2s;
+        transition: color, 0.2s;
         cursor: pointer;
 
         &:hover {

@@ -11,15 +11,15 @@ defineProps<{
         <h2 class="poetry-title">
             {{ title }}
         </h2>
-        <h5 class="poetry-info">
+        <div class="title-like">
             {{ author }}
-        </h5>
+        </div>
         <div class="poetry-content">
             <slot />
         </div>
-        <h6 class="poetry-footer">
+        <div class="title-like">
             {{ footer }}
-        </h6>
+        </div>
     </section>
 </template>
 

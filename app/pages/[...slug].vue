@@ -24,25 +24,19 @@ if (data.value === undefined)
         <ZPostHeader v-bind="data" />
         <ZExcerpt v-if="excerpt" :excerpt />
         <ContentRendererMarkdown
-            class="md-text article"
+            class="article"
             :class="{ 'md-story': data.type === 'story' }"
             :value="data"
             tag="article"
         />
-        <ZPostFooter v-bind="data" />
-        <ZSurroundPost />
-        <ZComment />
         <template #empty>
             <div class="app-error">
                 <Icon name="solar:confounded-square-bold-duotone" />
                 <p>内容为空或页面不存在</p>
             </div>
         </template>
+        <ZPostFooter v-bind="data" />
+        <ZSurroundPost />
+        <ZComment />
     </ContentRenderer>
 </template>
-
-<style lang="scss" scoped>
-.md-text {
-    margin: 1rem;
-}
-</style>

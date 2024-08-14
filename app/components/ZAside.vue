@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { LazyWidgetBlogLog, LazyWidgetTOC } from '#components'
+import {
+    LazyWidgetBlogLog,
+    LazyWidgetConnectivity,
+    LazyWidgetTOC,
+} from '#components'
 
 const UIStore = useUIStore()
 const route = useRoute()
 
 const widgetList = {
     blog_log: LazyWidgetBlogLog,
+    connectivity: LazyWidgetConnectivity,
     toc: LazyWidgetTOC,
 }
 
@@ -61,7 +66,7 @@ const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof wi
             padding: 0.5rem;
             border-radius: 1rem;
             box-shadow: 0 0 48px -36px;
-            background-color: var(--ld-blur-bg);
+            background-color: var(--ld-bg-blur);
             backdrop-filter: blur(0.5rem);
         }
 
@@ -94,6 +99,7 @@ const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof wi
 
 :deep(.widget) {
     margin: 0.5rem 0;
+    font-size: 0.9em;
 
     & + & {
         margin-top: 1rem;
@@ -106,7 +112,7 @@ const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof wi
         gap: 0.5rem;
         margin: 0.5rem;
         font: inherit;
-        color: var(--c-text-3);
+        color: var(--c-text-2);
 
         > .buttons {
             display: flex;
@@ -115,7 +121,7 @@ const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof wi
             > a {
                 display: flex;
                 align-items: center;
-                transition: 0.2s;
+                transition: color 0.2s;
             }
 
             > [onclick]:hover, > [href]:hover {
@@ -126,7 +132,8 @@ const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof wi
     }
 
     > .widget-card {
-        padding: 0.5rem;
+        padding: 0.2rem 1rem;
+        border-radius: 0.8rem;
     }
 }
 </style>
