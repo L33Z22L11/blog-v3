@@ -57,10 +57,6 @@ const appConfig = useAppConfig()
                 background-color: var(--c-primary-soft);
                 color: var(--c-text-1);
             }
-
-            .iconify {
-                font-size: 1.2rem;
-            }
         }
     }
 }

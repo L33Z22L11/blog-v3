@@ -8,6 +8,20 @@ const appConfig = useAppConfig()
 
 <template>
     <div class="post-footer">
+        <section v-if="references" class="reference">
+            <div class="title">
+                参考链接
+            </div>
+            <div class="content">
+                <ul>
+                    <li v-for="(link, index) in references" :key="index">
+                        <ZLink :to="link.link">
+                            {{ link.title }}
+                        </ZLink>
+                    </li>
+                </ul>
+            </div>
+        </section>
         <section class="license">
             <div class="title">
                 许可协议
@@ -27,14 +41,20 @@ const appConfig = useAppConfig()
 <style lang="scss" scoped>
 .post-footer {
     margin: 2rem 0.5rem;
-    padding: 0.5rem 1rem;
     border: 1px solid var(--c-border);
     border-radius: 1rem;
     background-color: var(--c-bg-3);
 }
 
+section {
+    padding: 1rem;
+
+    & + & {
+        border-top: 1px solid var(--c-border);
+    }
+}
+
 .title {
-    margin: 0.5rem 0;
     font-size: 1.2rem;
     font-weight: bold;
 }
@@ -42,8 +62,8 @@ const appConfig = useAppConfig()
 .content {
     font-size: 0.9rem;
 
-    p {
-        margin: 0.5em 0;
+    > * {
+        margin-top: 0.5em;
     }
 }
 </style>

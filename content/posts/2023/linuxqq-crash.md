@@ -7,7 +7,8 @@ cover: https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
 categories: [经验分享]
 tags: [qq, 问题, 软件]
 references:
-  - "[AUR 中 linuxqq 的评论](https://aur.archlinux.org/packages/linuxqq)"
+  - title: AUR 中 linuxqq 的评论
+    link: https://aur.archlinux.org/packages/linuxqq
 ---
 
 ## 临时解决办法

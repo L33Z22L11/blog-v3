@@ -111,7 +111,6 @@ const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof wi
         > .buttons {
             display: flex;
             gap: 0.5rem;
-            font-size: 1.2em;
 
             > a {
                 display: flex;

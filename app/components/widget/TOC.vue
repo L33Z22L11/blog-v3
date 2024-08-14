@@ -2,8 +2,11 @@
 const route = useRoute()
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 
-const { data } = await useAsyncData(route.path, () =>
-    queryContent(route.path).findOne())
+const { data } = await useAsyncData(
+    route.path,
+    () => queryContent(route.path).findOne(),
+    { watch: () => route.path },
+)
 const toc = computed(() => data.value?.body?.toc)
 </script>
 

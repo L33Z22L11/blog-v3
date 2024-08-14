@@ -21,6 +21,7 @@ const UIStore = useUIStore()
                         <ZRawLink :to="item.url">
                             <Icon :name="item.icon" />
                             <span class="nav-text">{{ item.text }}</span>
+                            <Icon v-if="item?.external" class="external-tip" name="ph:arrow-up-right" />
                         </ZRawLink>
                     </li>
                 </ul>
@@ -107,11 +108,6 @@ const UIStore = useUIStore()
     backdrop-filter: blur(2px);
     font-size: 0.9em;
     z-index: 1;
-
-    .iconify {
-        font-size: 1.2em;
-        vertical-align: middle;
-    }
 }
 
 .sidebar-nav {
@@ -160,7 +156,7 @@ const UIStore = useUIStore()
 
             .external-tip {
                 opacity: 0.5;
-                font-size: 1rem;
+                font-size: 1em;
             }
         }
     }

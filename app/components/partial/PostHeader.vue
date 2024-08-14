@@ -79,6 +79,7 @@ const updatedLabel = getPostTime(props.updated ?? '0')
     line-height: 1.2;
 
     &.center {
+        font-family: var(--font-serif);
         text-align: center;
     }
 

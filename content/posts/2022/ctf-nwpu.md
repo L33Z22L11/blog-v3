@@ -12,11 +12,25 @@ tags: [大学, CTF]
 
 近日朋友们升入大学，纷纷购置笔记本电脑，我的消息列表就热闹了起来，但也无非安装软件、编程入门云云。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxhCN2mjo8oBibzT4ibhicJr13h1RBMVbSzpbWHpkibHhCq8je3A1AVyJrqw/640 小刘找到了我 width:360px %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxhCN2mjo8oBibzT4ibhicJr13h1RBMVbSzpbWHpkibHhCq8je3A1AVyJrqw/640
+mirror: true
+caption: 小刘找到了我
+width: 360px
+---
+::
 
 发现是西工大信安协会举办的密码学比赛，跟他简单解释了比赛要求后也没太多管。没想到，两天后他又来找我了。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxfyJqhYDHmO7cibo59vhTJSbfAyXp0xtfQfq47aS9VzvGUphEGMM7dFg/640 此时比赛刚刚开始 width:480px %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxfyJqhYDHmO7cibo59vhTJSbfAyXp0xtfQfq47aS9VzvGUphEGMM7dFg/640
+mirror: true
+caption: 此时比赛刚刚开始
+width: 480px
+---
+::
 
 于是我注册进入比赛系统，没想到还能混进排行榜。
 
@@ -71,11 +85,22 @@ tags: [大学, CTF]
 
 下载文件，得到1.png、2.png如图。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxN3KMylXfVNZjT5ES2ZO8ThdanDuylELo1mjHZmrfV0sEXYebaQyVDg/640 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxN3KMylXfVNZjT5ES2ZO8ThdanDuylELo1mjHZmrfV0sEXYebaQyVDg/640
+mirror: true
+---
+::
 
 利用PS，将碎纸片拼好，发现花的根茎能与纸片上字母的位置对应。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxCZZo7LKyPTicdJpbCmbyeNOYALnyI8cbbEsuLkpviaA7xYOUy0Hk0jCg/640 width:200px %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxCZZo7LKyPTicdJpbCmbyeNOYALnyI8cbbEsuLkpviaA7xYOUy0Hk0jCg/640
+mirror: true
+width: 200px
+---
+::
 
 根据“营养往上供给”，判断字符串为“SIKMB”（但不应该是B先出土而排前面吗），使用 https://www.sojson.com/md5/ ，得出答案。
 
@@ -236,7 +261,14 @@ console.log(originStr)
 
 下载文件，得到`招新宣传.pdf`如下。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx0iaRk8j1fd8A8CG465FTXchVPSZx6FoKZfOLugmwfc0bbVl7npuATWg/640 width:400px fancybox:true %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx0iaRk8j1fd8A8CG465FTXchVPSZx6FoKZfOLugmwfc0bbVl7npuATWg/640
+mirror: true
+width: 400px
+fancybox: true
+---
+::
 
 全选，复制粘贴到记事本，发现flag藏在几段文本的末尾。
 
@@ -275,15 +307,32 @@ QQ 群
 
 下载文件，得到`1.png`如下。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx8OK7t3MhFkFcb3PvREa1XrjBA0TN17FoDqBGbOd0anD2RtIoG6eaTw/640 width:400px %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx8OK7t3MhFkFcb3PvREa1XrjBA0TN17FoDqBGbOd0anD2RtIoG6eaTw/640
+mirror: true
+width: 400px
+---
+::
 
 提示湖下有东西，并且照片一般不用png格式。经搜索，猜测png尺寸被修改。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxcs7ZZeN0UutO5hNyCqrA5J1MN7Dn4sYryHiaarXQGVKdD3SicMUt6mOQ/640 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxcs7ZZeN0UutO5hNyCqrA5J1MN7Dn4sYryHiaarXQGVKdD3SicMUt6mOQ/640
+mirror: true
+---
+::
 
 使用 https://hexed.it/ ，将图片的高度(0x14~0x17)从0000 08C8修改为0000 0FC8，得到被隐藏的答案。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxgVAmCT6JfmaQNQVnJaHiaDzl3WVlTwjKRO8f3ibHzLDYkSia5TpBVL7Pg/640 fancybox:true %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxgVAmCT6JfmaQNQVnJaHiaDzl3WVlTwjKRO8f3ibHzLDYkSia5TpBVL7Pg/640
+mirror: true
+fancybox: true
+---
+::
 
 ## Section 3 隐约雷鸣
 
@@ -295,7 +344,12 @@ QQ 群
 
 压缩包格式选择了RAR (与其他题目不同)，并且提示需要使用WinRAR打开 (可能是考虑到电脑不自带RAR解压软件)。下载文件，由于我电脑装的是7-Zip软件，于是秒杀了。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxuVqzicCKo5G0011Vjy3XJLjlscibm3CTrrLFfjwxn7S7TzOtibBtNWj9Q/640 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxuVqzicCKo5G0011Vjy3XJLjlscibm3CTrrLFfjwxn7S7TzOtibBtNWj9Q/640
+mirror: true
+---
+::
 
 交替数据流~~检测阳性~~，就是使用NTFS文件系统中的Alternate Data Streams技术，把一个文件当成另一个文件的影子塞进去，表面只有一个文件，实际上还有隐藏的文件，需要使用“start 原文件名:隐藏文件名”打开。使用7-Zip直接打开flag.txt:hide.txt (WinRAR不会显示，并且会把正常文件连带隐藏文件一同解压出去)，得到答案。
 
@@ -311,11 +365,23 @@ QQ 群
 
 打开网页，等够时长，显示如下文本。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxGtFj5zxwSBqqqI6Ynz3yTSeysRcJmXloblTjVICxShaCTWibrnndOkA/640 width:300px %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxGtFj5zxwSBqqqI6Ynz3yTSeysRcJmXloblTjVICxShaCTWibrnndOkA/640
+mirror: true
+width: 300px
+---
+::
 
 打开开发工具，发现“B站”两个字中塞入了大量零宽字符。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxEQ2rh0AgOLXBcFdD7L1lMTVOLMQYHyia45r6wibu3RlsweoBPzdElc6w/640 width:400px %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxEQ2rh0AgOLXBcFdD7L1lMTVOLMQYHyia45r6wibu3RlsweoBPzdElc6w/640
+mirror: true
+width: 400px
+---
+::
 
 ```plain
 Flag?：B﻿‎‌﻿‏﻿‌﻿‎﻿﻿‌﻿‏‏﻿‏﻿﻿‎‎﻿‎‎‏﻿﻿﻿‎﻿‎﻿﻿‏﻿‎‎‌﻿‏‎﻿﻿﻿‌‏‎‎‎站关注"快乐滋崩在这里"啊喵( •̀ ω •́ )✧！
@@ -349,7 +415,13 @@ for data in range(8617600000001,8617700000000):
 print(correct)
 ```
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx8oDVicpWhxX0ticyCwiajDbuGw7wFy4l5TgbNY6ic3Nx3Xqib5eaM92umcw/640 显然，我没有设置中止循环的条件，有可能是因为我懒。 fancybox:true %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx8oDVicpWhxX0ticyCwiajDbuGw7wFy4l5TgbNY6ic3Nx3Xqib5eaM92umcw/640 显然，我没有设置中止循环的条件，有可能是因为我懒。
+mirror: true
+fancybox: true
+---
+::
 
 跑了五分钟，显示已得到答案。
 
@@ -385,7 +457,13 @@ YGNG
 
 正当我百思不得其解时，我又来了个神操作，问朋友进了比赛官方群，群里一份文件赫然醒目。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxnJNDHn6BBqWOcicJoc9b3LrJFXzOggXsPH5rJu3Mv3jmMciaP7GqTbSA/640 width:360px %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxnJNDHn6BBqWOcicJoc9b3LrJFXzOggXsPH5rJu3Mv3jmMciaP7GqTbSA/640
+mirror: true
+width: 360px
+---
+::
 
 题目怎么解我是看不来，但是答案知道了。
 
@@ -475,13 +553,30 @@ YGNG
 
 下载，得到 `1.png`、`2.png` 如下。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxsK3ceFN4bpVr2zxdyibkBzMM01YiaLuWFRK0MQeJyLcibHtIkDPic1cm4A/640 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxsK3ceFN4bpVr2zxdyibkBzMM01YiaLuWFRK0MQeJyLcibHtIkDPic1cm4A/640
+mirror: true
+---
+::
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxMPuCt6aJk2olkZt6JVQpqueUzwDMgPFicia2WzsuPfHG5DenFrxSmI6w/640 width:200px %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxMPuCt6aJk2olkZt6JVQpqueUzwDMgPFicia2WzsuPfHG5DenFrxSmI6w/640
+mirror: true
+width: 200px
+---
+::
 
 在PS中拼好。吐槽一句：太难拼了，有许多次线条可以完美对上，但是整体会错位。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxamDHEibTSOUVQ2t8cZr4icDGUYlkmTM0yZ7CZgm8R4qoFM8F4qQlibh7A/640 width:200px %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxamDHEibTSOUVQ2t8cZr4icDGUYlkmTM0yZ7CZgm8R4qoFM8F4qQlibh7A/640
+mirror: true
+width: 200px
+---
+::
 
 ## Section 1 与魔对谈
 
@@ -511,7 +606,14 @@ YGNG
 
 下载附件，得到校歌图片。
 
-{% image https://pic.baike.soso.com/ugc/baikepic2/0/20230422171906-1719590246_bmp_706_750_1590054.jpg/ 校歌.jpg(点击放大) width:400px fancybox:true %}
+::pic
+---
+src: https://pic.baike.soso.com/ugc/baikepic2/0/20230422171906-1719590246_bmp_706_750_1590054.jpg/
+caption: 校歌.jpg(点击放大)
+width: 400px
+fancybox: true
+---
+::
 
 ```plain
 翔巍北辈生先厚炼重飞－盛勇－万岳巡天飞方－泽国梁
@@ -530,4 +632,10 @@ hex(0o256624611407306323450125)
 
 至此，整个西北工业大学信息安全协会负责的第三届“探索解密”趣味密码比赛已经圆满结束。协会的学长学姐十分热情，即使我不是指定的参赛选手，也能得到他们的欢迎和耐心解答。感谢这位打工人学长和韩学姐，也感谢各位为了比赛默默付出的同好。Respect~
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxkHe6xGhJeRReACvRQ9nFSX0kyoq4ONgZegNBibl06Vc9TzSUEzXlJYA/640 width:300px %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxkHe6xGhJeRReACvRQ9nFSX0kyoq4ONgZegNBibl06Vc9TzSUEzXlJYA/640
+mirror: true
+width: 300px
+---
+::

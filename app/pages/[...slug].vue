@@ -1,10 +1,12 @@
 <script setup>
 const route = useRoute()
 const { data } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
+const excerpt = data.value?.description || data.value?.excerpt || ''
+
 useHead({
     title: data.value?.title,
     meta: [
-        { name: 'description', content: data.value?.description },
+        { name: 'description', content: excerpt },
     ],
 })
 
@@ -20,6 +22,7 @@ if (data.value === undefined)
 <template>
     <ContentRenderer :value="data">
         <ZPostHeader v-bind="data" />
+        <ZExcerpt v-if="excerpt" :excerpt />
         <ContentRendererMarkdown
             class="md-text article"
             :class="{ 'md-story': data.type === 'story' }"

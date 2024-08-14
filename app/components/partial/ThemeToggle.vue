@@ -61,7 +61,6 @@ onMounted(() => {
     border: 1px solid var(--c-border);
     border-radius: 1rem;
     background-color: var(--c-bg-3);
-    font-size: 1rem;
 
     > button {
         display: grid;

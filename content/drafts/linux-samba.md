@@ -3,14 +3,14 @@ title: Linux 下通过 Samba 共享文件夹
 description:
 date: 2024-08-04 21:11:03
 updated: 2024-08-11
-image:
 cover:
-banner:
 categories: [经验分享]
 tags: [教程, archlinux, samba, smb]
 references:
-  - "[smbpasswd - Samba man page](https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html)"
-  - "[Samba - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/Samba)"
+  - title: smbpasswd - Samba man page
+    link: https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html
+  - title: Samba - Arch Linux 中文维基
+    link: https://wiki.archlinuxcn.org/wiki/Samba
 ---
 
 SMB (Server Message Block) 是一种网络文件共享协议；Samba 是在 Linux 上实现 SMB/CIFS 的自由软件服务。

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const { data } = await useAsyncData(`surround-${route.path}`, () => queryContent()
-    .only(['_path', 'title'])
+    .only(['_path', 'title', 'type'])
     .sort({ date: 1 })
     .where({ _original_dir: { $eq: '/posts' } })
     .findSurround(route.path))
@@ -10,16 +10,16 @@ const [prev, next] = data.value ?? []
 
 <template>
     <div class="surround-post">
-        <ZRawLink :to="prev?._path" class="prev">
+        <ZRawLink :to="prev?._path" class="prev":class="{ story: prev?.type === 'story' }">
             <Icon name="solar:rewind-back-bold-duotone" />
-            <span class="title">
+            <h4 class="title">
                 {{ prev?.title ?? '已抵达时间尽头' }}
-            </span>
+            </h4>
         </ZRawLink>
-        <ZRawLink :to="next?._path" class="next">
-            <span class="title">
+        <ZRawLink :to="next?._path" class="next" :class="{ story: next?.type === 'story' }">
+            <h4 class="title">
                 {{ next?.title ?? '新故事即将发生' }}
-            </span>
+            </h4>
             <Icon name="solar:rewind-forward-bold-duotone" />
         </ZRawLink>
     </div>
@@ -43,11 +43,16 @@ const [prev, next] = data.value ?? []
             cursor: not-allowed;
         }
 
+        &.story {
+            font-family: var(--font-serif);
+        }
+
         &.next {
             text-align: right;
         }
 
         > .iconify {
+            flex-shrink: 0;
             opacity: 0.5;
             font-size: 2rem;
             transition: all 0.2s;

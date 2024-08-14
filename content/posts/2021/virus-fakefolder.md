@@ -15,7 +15,14 @@ tags: [高中, Windows, 系统, 病毒]
 2021年5月初，高二第二学期期中考试过后，在整理排版成绩单的过程中，同办公室的一名教师发现自己电脑除C盘之外，其他硬盘的文件均被删除。
 
 这名教师在发现文件消失后，立刻请本班的学生来恢复文件并杀毒。出于兴趣，笔者在检查该机时，发现硬盘根目录存在被Fakefolder（又名incaseformat）病毒感染的文件夹以及incaseformat.txt（病毒发作留下的文件）。被删除的数据很难恢复。
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26SuYFj0v7jz4Wpao1JAzlibcKia6mPLktFvKabXAcWOsZbxIB01DdGnCQ/640 参考图片 %}
+
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26SuYFj0v7jz4Wpao1JAzlibcKia6mPLktFvKabXAcWOsZbxIB01DdGnCQ/640
+mirror: true
+caption: 参考图片
+---
+::
 
 ## 病毒原理
 
@@ -31,7 +38,13 @@ tags: [高中, Windows, 系统, 病毒]
 
 病毒的辨识方法：被病毒感染的文件夹图标为“**上下打开**”样式（类似风琴包），而正常的文件夹图标为“**左右翻开**”样式（类似资料册、文件盒）。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26Iz5iaibw8n6R2icQ5VGk3jnaic4Zlvqsc3uarsjfIKdPbBzrYVNHZPLX8Q/640 假文件夹病毒图标（与XP系统相同） %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26Iz5iaibw8n6R2icQ5VGk3jnaic4Zlvqsc3uarsjfIKdPbBzrYVNHZPLX8Q/640
+mirror: true
+caption: 假文件夹病毒图标（与XP系统相同）
+---
+::
 
 若发现硬盘和U盘中的文件夹被感染，请及时安装杀毒软件进行杀毒。
 

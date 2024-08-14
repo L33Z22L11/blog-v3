@@ -6,9 +6,12 @@ updated: 2024-05-03 22:10:07
 categories: [经验分享]
 tags: [网站, 博客]
 references:
-  - "[如何写好博客？（或如何写好文章？）](https://pathos.page/blog/how-to-write-blog)"
-  - "[使用子文件夹管理 Hexo 文章且不改变文章永久链接](https://prinsss.github.io/hexo-posts-in-subfolder/)"
-  - "[更改Hugo博客的永久URL链接，并用Netlify实现旧博文跳转](https://thirdshire.com/simplify-permalinks/)"
+  - title: 如何写好博客？（或如何写好文章？）
+    link: https://pathos.page/blog/how-to-write-blog
+  - title: 使用子文件夹管理 Hexo 文章且不改变文章永久链接
+    link: https://prinsss.github.io/hexo-posts-in-subfolder/
+  - title: 更改Hugo博客的永久URL链接，并用Netlify实现旧博文跳转
+    link: https://thirdshire.com/simplify-permalinks/
 ---
 
 > 我的博客很少写关于折腾博客的内容，因为我不想让博客变成博客的博客。这次的行为仅服务于博客的后期维护。

@@ -17,7 +17,12 @@ type: story
 
 我没有JS基础，但我上路了。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26M22aKhJHOahC7fkdKpHsgTpQQgtia5uN4ROYAgd2bOzPD5Yzb0LOibgA/640 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26M22aKhJHOahC7fkdKpHsgTpQQgtia5uN4ROYAgd2bOzPD5Yzb0LOibgA/640
+mirror: true
+---
+::
 
 ## 01 “沉着冷静 诚信考试”
 
@@ -37,7 +42,12 @@ oncontextmenu = onkeydown = onselectstart = function () {
 
 文理分科，同时考试，但是生物的考试时间减到了90分钟。原本我是使用两个网页的，但我还想把它们整合在一起。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26uwQXSrqAB3cGgxiaribEOlqNmwNeMo4ricYwQ46RNAOhDdwdTrfXAj8Ug/640 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26uwQXSrqAB3cGgxiaribEOlqNmwNeMo4ricYwQ46RNAOhDdwdTrfXAj8Ug/640
+mirror: true
+---
+::
 
 对于我一个技术小白来说，需要一定的时间，后来索性高二高三文科理科全部都上了，反正功能写好，添加其他年级类型都是一行代码的事，造好轮子就能好好玩了。
 
@@ -78,11 +88,22 @@ function change(totype) {
 
 ## 03 “+ 临时”
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26pIgKjBOzFEukWd4qeG0FJ0zMLDGib2FPSB2Sx4GZyVQ6HYj0riadF3LA/640 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26pIgKjBOzFEukWd4qeG0FJ0zMLDGib2FPSB2Sx4GZyVQ6HYj0riadF3LA/640
+mirror: true
+---
+::
 
 这个功能的出现，来源于8月份的一个需求。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26YnrWGnH4B8Yd2HIhucGsVOFjicV7GBLicUZJRyCRsuNxqp2YvDz7UQVA/640 width:360px %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26YnrWGnH4B8Yd2HIhucGsVOFjicV7GBLicUZJRyCRsuNxqp2YvDz7UQVA/640
+mirror: true
+width: 360px
+---
+::
 
 调试的路已经被堵得差不多了，不好操作，当然我得亲自在后台添加科目了。
 
@@ -102,7 +123,12 @@ function setTemp(sh, sm, eh, em) {
 
 ## 04 “设置”
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26LPcetHfqN3WBXnTJFlxRhniazM2Z252ZPuL83XjTg33rmwCRqYfvCIw/640 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26LPcetHfqN3WBXnTJFlxRhniazM2Z252ZPuL83XjTg33rmwCRqYfvCIw/640
+mirror: true
+---
+::
 
 出于美观，时钟没有采用等宽字体，曾经出现过晚上“20:00”卡片膨胀到两行的情况；考试时有人觉得字体白色过于亮眼，有人喊反光看不清时间。最后也是为尝试与学习技术，做出了这个功能。
 
@@ -139,7 +165,12 @@ function relStyle(prop, delta, unit, minVal, maxVal) {
 
 ## 05 “调试”
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26mehLq3lf3sTzQHWvpeRyKUmeGicw21jwLXRKDw1Xlh7ZLTatzCbOgvw/640 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26mehLq3lf3sTzQHWvpeRyKUmeGicw21jwLXRKDw1Xlh7ZLTatzCbOgvw/640
+mirror: true
+---
+::
 
 只是为了测试考试时间轮换是否正常而写出来的功能。
 
@@ -180,8 +211,18 @@ updateTime()
 
 ## 06 “屏保预警已关闭”
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26bLneTF0W7MxS2gTbMX1TJvkZBKAtg9XPhZCPQ5xLeNxKPsY523q2wA/640 %}
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf263KJKOzpOq72iaCBuPkSuQyf15NTC4BqG95QHh9C07OUZY98YLRr9bow/640 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26bLneTF0W7MxS2gTbMX1TJvkZBKAtg9XPhZCPQ5xLeNxKPsY523q2wA/640
+mirror: true
+---
+::
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf263KJKOzpOq72iaCBuPkSuQyf15NTC4BqG95QHh9C07OUZY98YLRr9bow/640
+mirror: true
+---
+::
 
 屏保嘛，这种东西在考试时蹦出来让人很不舒服。
 
@@ -218,13 +259,23 @@ function updateSST() {
 
 ## 07 “帮助”
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26EhE9Y48oB1xb9sqiaRufQgEqOhmokE3q9msx3Tdx93h79u3UDSAmZRg/640? %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26EhE9Y48oB1xb9sqiaRufQgEqOhmokE3q9msx3Tdx93h79u3UDSAmZRg/640?
+mirror: true
+---
+::
 
 如图，遇到的一些意想不到的事情。
 
 ## 08 鸣谢
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26ld5srkslvdqrcYGwh9oqaIL1Nslk3fxaXDX8gfuTzgPuynt4GyiahpA/640 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26ld5srkslvdqrcYGwh9oqaIL1Nslk3fxaXDX8gfuTzgPuynt4GyiahpA/640
+mirror: true
+---
+::
 
 在接下任务，学习技术的过程中，我也认识了很多朋友，与许多社团建立了沟通与联系，这大约是我高中十分宝贵的经历。
 

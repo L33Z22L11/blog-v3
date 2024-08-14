@@ -17,10 +17,22 @@ tags: [大学, 校园, 拍照]
 
 为了丰富今日生活，特地在教室里换了个地方坐。下午前半场是计科专业导学，老师很亲近，学生们说话也很好听，真正问出了学习过程中困惑的问题（手动狗头）。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fanhCXLENPFNE8ERNJ9cAIZb1MIamYIRxUdd0iaPQa7OibDC6ZaaQ14VFuSUywib41QPLkj2o9fcaDCQ/640 一定是学习的吸引力吧 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fanhCXLENPFNE8ERNJ9cAIZb1MIamYIRxUdd0iaPQa7OibDC6ZaaQ14VFuSUywib41QPLkj2o9fcaDCQ/640
+mirror: true
+caption: 一定是学习的吸引力吧
+---
+::
 
 下午后半场是大学美育。小雨在下，教室前面的灯也关了，非常适合放松身心，恢复精力。左右护法表示用户体验尚可，刚刚他们问了下时间，调整了一下状态，继续放松身心了。
 
-{% image https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fanhCXLENPFNE8ERNJ9cAIZ9DxHLSmSNaqicliaia8PPrCrC53Dbud4icGth02JKXNCKh6UaZhDRob4eA/640 前排好像在学习 %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fanhCXLENPFNE8ERNJ9cAIZ9DxHLSmSNaqicliaia8PPrCrC53Dbud4icGth02JKXNCKh6UaZhDRob4eA/640
+mirror: true
+caption: 前排好像在学习
+---
+::
 
 总之，周四在FF305，在了又在。在听听不懂的课，在想想不尽的事，在摸摸不完的鱼，也，在过过得完的大学生活。

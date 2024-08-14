@@ -62,7 +62,7 @@ tags: [教程, vscode, 软件]
 }
 ```
 
-VS Code 1.90 集成终端乱码是一个 [<i class='fa-brands fa-github'></i> bug](https://github.com/microsoft/vscode/issues/211922)，可以通过设置 `terminal.integrated.shellIntegration.enabled` 为 `false` 来解决。
+VS Code 1.90 集成终端乱码是一个 [:icon{name="ri:github-fill"} bug](https://github.com/microsoft/vscode/issues/211922)，可以通过设置 `terminal.integrated.shellIntegration.enabled` 为 `false` 来解决。
 
 ### 便捷使用
 

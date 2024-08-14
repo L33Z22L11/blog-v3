@@ -7,7 +7,8 @@ cover: https://7.isyangs.cn/24/66714b1f0bc35-24.jpg
 categories: [生活]
 tags: [qq, 问题, 软件]
 references:
-  - "[Linux QQ 官网](https://im.qq.com/linuxqq/index.shtml)"
+  - title: Linux QQ 官网
+    link: https://im.qq.com/linuxqq/index.shtml
 type: story
 ---
 
@@ -17,7 +18,8 @@ type: story
 
 {% banner Linux&nbsp;QQ能打语音视频了！一文详解背后技术实现！
    原创　QQ音视频团队　腾讯云开发者　2024-06-18 08:43　北京
-   bg:https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/VY8SELNGe96D4BWicYxv0JgWsyvdCOq9qbpwmcjiaw8KJcvoeawYqAHHIUvOEq131W7FuLpKhpDrDnVfiahBf0ALg/0
+   bg:https://mmbiz.qpic.cn/mmbiz_jpg/VY8SELNGe96D4BWicYxv0JgWsyvdCOq9qbpwmcjiaw8KJcvoeawYqAHHIUvOEq131W7FuLpKhpDrDnVfiahBf0ALg/0
+   mirror: true
    link:https://mp.weixin.qq.com/s/M3-7XnNy30HprMpDsKBi7w
  %}
 {% endbanner %}
@@ -37,26 +39,33 @@ type: story
 
 再细看时，已经是半小时之后了，我留意到了「Linux QQ 官方」通过 PS 手段修改我封面的直接证据。
 
-{% image
-   https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
-   我的封面
-   fancybox:true
- %}
+::pic
+---
+src: https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
+caption: 我的封面
+fancybox: true
+---
+::
 
-{% image
-   https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/VY8SELNGe96D4BWicYxv0JgWsyvdCOq9qbpwmcjiaw8KJcvoeawYqAHHIUvOEq131W7FuLpKhpDrDnVfiahBf0ALg/0
-   标题后方可见PS痕迹，登录窗口头像左上方最甚👆
-   fancybox:true
- %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_jpg/VY8SELNGe96D4BWicYxv0JgWsyvdCOq9qbpwmcjiaw8KJcvoeawYqAHHIUvOEq131W7FuLpKhpDrDnVfiahBf0ALg/0
+mirror: true
+caption: 标题后方可见PS痕迹，登录窗口头像左上方最甚👆
+fancybox: true
+---
+::
 
 {% quot 我使用的背景图片来自 QQ 官网，所以我的这张封面是根据官网产品图片的二次创作，我本人当然也不反对二次创作再被官方使用。 %}
 
-{% image
-   https://im.qq.com/linuxqq/images/linuxqq/macbook_phone.png
-   我使用了 QQ 官网的这张图片
-   width:360px
-   fancybox:true
- %}
+::pic
+---
+src: https://im.qq.com/linuxqq/images/linuxqq/macbook_phone.png
+caption: 我使用了 QQ 官网的这张图片
+width: 360px
+fancybox: true
+---
+::
 
 ## 封面中的小问题
 
@@ -74,18 +83,23 @@ type: story
 
 Linux QQ 官方团队使用的封面中，背景里的 QQ 是旧版界面，新版登录界面上方的文字是彩色的「QQ9」而不是黑色的「QQ」。
 
-{% image
-   https://im.qq.com/linuxqq/images/new/login.png
-   新版 QQ 登录界面
-   width:240px
-   fancybox:true
- %}
+::pic
+---
+src: https://im.qq.com/linuxqq/images/new/login.png
+caption: 新版 QQ 登录界面
+width: 240px
+fancybox: true
+---
+::
 
-{% image
-   https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/VY8SELNGe96D4BWicYxv0JgWsyvdCOq9qbpwmcjiaw8KJcvoeawYqAHHIUvOEq131W7FuLpKhpDrDnVfiahBf0ALg/0
-   封面中使用了旧版、macOS 版 QQ 版本
-   fancybox:true
- %}
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_jpg/VY8SELNGe96D4BWicYxv0JgWsyvdCOq9qbpwmcjiaw8KJcvoeawYqAHHIUvOEq131W7FuLpKhpDrDnVfiahBf0ALg/0
+mirror: true
+caption: 封面中使用了旧版、macOS 版 QQ 版本
+fancybox: true
+---
+::
 
 ### 甚至还是 macOS 版
 

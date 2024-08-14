@@ -78,7 +78,29 @@ export default {
         // '7.isyangs.cn',
     ],
     injectHeadLinks: [
-        { rel: 'stylesheet', href: '//s1.hdslb.com/bfs/static/jinkela/long/font/medium.css', media: 'none', onload: 'this.media="all"' },
+        {
+            rel: 'preconnect',
+            href: 'https://s1.hdslb.com',
+        },
+        {
+            rel: 'stylesheet',
+            href: 'https://s1.hdslb.com/bfs/static/jinkela/long/font/medium.css',
+            media: 'none',
+            onload: 'this.media="all"',
+        },
+        {
+            rel: 'preconnect',
+            href: 'https://fonts.googleapis.com',
+        },
+        {
+            rel: 'preconnect',
+            href: 'https://fonts.gstatic.com',
+            crossorigin: true,
+        },
+        {
+            rel: 'stylesheet',
+            href: 'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap',
+        },
     ],
     injectHeadScripts: [
         { 'src': 'https://zhi.zhilu.cyou/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true },

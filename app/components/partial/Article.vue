@@ -68,11 +68,6 @@ const updatedLabel = getPostTime(props.updated)
     font-size: 0.8em;
     color: var(--c-text-2);
 
-    .iconify {
-        font-size: 1.2em;
-        vertical-align: middle;
-    }
-
     >time + time {
         color: var(--c-text-3);
     }

@@ -8,7 +8,14 @@ categories: [生活]
 tags: [幼儿园, 信]
 ---
 
-{% image https://7.isyangs.cn/24/668ba60f3d8f9-24.jpg 历经十几年，这封信依旧保存完好。 width:360px fancybox:true %}
+::pic
+---
+src: https://7.isyangs.cn/24/668ba60f3d8f9-24.jpg
+caption: 历经十几年，这封信依旧保存完好。
+width: 360px
+fancybox: true
+---
+::
 
 <!-- {% folding 文字稿 %}
 “妈”０６月２３日(妈收)

@@ -8,7 +8,8 @@ indent: true
 categories: [经验分享]
 tags: [病毒, Windows, 系统, 问题]
 references:
-  - "[TrueUpdate白加黑木马分析保姆级教程](https://www.cnblogs.com/VxerLee/p/17736138.html)"
+  - title: TrueUpdate白加黑木马分析保姆级教程
+    link: https://www.cnblogs.com/VxerLee/p/17736138.html
 ---
 
 ## 随机进程名大量占用CPU

@@ -29,7 +29,6 @@ defineProps<ButtonProps>()
     border-radius: 0.4em;
     box-shadow: 0.05em 0.1em 0.5em var(--c-primary-soft);
     background-color: var(--c-bg-1);
-    vertical-align: middle;
     transition: background-color 0.2s;
     cursor: pointer;
 
@@ -52,10 +51,6 @@ defineProps<ButtonProps>()
     align-items: center;
     justify-content: center;
     gap: 0.2em;
-
-    .iconify {
-        font-size: 1.2em;
-    }
 }
 
 .button-desc {

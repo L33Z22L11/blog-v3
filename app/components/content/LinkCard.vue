@@ -14,7 +14,7 @@ const props = defineProps<{
                 {{ props.title }}
             </div>
             <div class="link-card-description">
-                {{ props.description || props.link }}
+                {{ props.description || getDomain(props.link) }}
             </div>
         </div>
         <NuxtImg v-if="props.icon" class="link-card-icon" :src="props.icon" alt="icon" />
@@ -26,7 +26,7 @@ const props = defineProps<{
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    width: 25em;
+    width: 20rem;
     max-width: 90%;
     margin: 1rem auto;
     padding: 0.5rem 0.8rem;

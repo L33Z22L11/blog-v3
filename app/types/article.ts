@@ -1,5 +1,4 @@
 export default interface ArticleProps {
-    [key: string]: any
     title: string
     description?: string
     link?: string
@@ -9,5 +8,5 @@ export default interface ArticleProps {
     tags?: string[]
     type?: 'tech' | 'story' | undefined
     cover?: string
-    banner?: string
+    references?: { title: string, link: string }[]
 }

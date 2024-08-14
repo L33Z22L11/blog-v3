@@ -6,10 +6,6 @@
         margin: 1em 0;
     }
 
-    .iconify {
-        vertical-align: middle;
-    }
-
     menu, ol, ul {
         margin: 0.5em 0;
         padding: 0 0 0 1em;
@@ -47,6 +43,7 @@
     &.md-story {
         > h1, h2, h3, h4, h5, h6 {
             position: relative;
+            font-family: var(--font-serif);
             text-align: center;
         }
 

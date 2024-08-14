@@ -15,6 +15,11 @@ tags: [高中, 说说, 校园]
 
 我不难过了，毕竟坏成绩已从我的视线范围内消失了。
 
-![](https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjweNYr4bLDnz83cm1N2hg66zEmH2NQLV3uSOx2D9KZzo9m5I4yA1vsaaQ/640)
-
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjweNYr4bLDnz83cm1N2hg66zEmH2NQLV3uSOx2D9KZzo9m5I4yA1vsaaQ/640
+mirror: true
+caption:
+---
+::
 告诉自己不许emo，要快乐！

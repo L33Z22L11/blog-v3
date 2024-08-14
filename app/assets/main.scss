@@ -15,8 +15,12 @@ a {
 }
 
 :root {
+    --font-family: "HarmonyOS_Medium", system-ui, sans-serif;
+    --font-serif: "Noto Serif SC", serif;
+    --font-monospace: sfmono-regular, "Fira Code", "JetBrains Mono", "Cascadia Code", monaco, "Noto Sans Mono", consolas, "monospace", monospace;
+
     background-color: var(--c-bg-2);
-    font-family: "HarmonyOS_Medium", system-ui, sans-serif;
+    font-family: var(--font-family);
     font-synthesis: style;
     color: var(--c-text-1);
     scroll-behavior: smooth;
@@ -25,7 +29,7 @@ a {
 
 code, pre {
     /* stylelint-disable-next-line font-family-name-quotes */
-    font-family: SFMono-Regular, "Fira Code", "JetBrains Mono", "Cascadia Code", Monaco, "Noto Sans Mono", Consolas, "monospace", monospace;
+    font-family: var(--font-monospace);
 }
 
 menu, ol, ul {
@@ -42,6 +46,7 @@ button {
 }
 
 input {
+    background-color: var(--c-bg-1);
     font: inherit;
     color: inherit;
 }
@@ -67,21 +72,16 @@ mark {
     src: url("/fonts/AlimamaFangYuanTi.woff2");
 }
 
-.text-primary {
-    color: var(--c-primary-1);
-}
-
-.wrapper {
-    max-width: 768px;
-    margin: 0 auto;
+.iconify {
+    flex-shrink: 0;
+    font-size: 1.2em;
+    vertical-align: middle;
 }
 
 .gradient-card {
     position: relative;
     border-radius: 0.5rem;
-
-    // 防止元素过大、系统缩放精度问题导致背景样式异常
-    background: no-repeat fixed 100% / 400%;
+    background: no-repeat 100% / 400%;
     background-image: linear-gradient(60deg, var(--c-accent-1), var(--c-primary-2), transparent 70%);
     transition: all 0.2s;
     z-index: 0;
@@ -108,29 +108,39 @@ mark {
 // PURE CSS MAGIC!
 .scrollcheck-x {
     --left-offset: 0;
-    --scrollbar-height: 24px;
+    --guessed-scrollbar-width: 0.5rem;
 
     overflow-x: auto;
     animation: scrollcheck-x;
     animation-timeline: scroll(x self);
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        height: var(--guessed-scrollbar-width);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: var(--guessed-scrollbar-width);
+        background-color: var(--c-text-3);
+    }
 }
 
 @keyframes scrollcheck-x {
     0% {
         mask:
             linear-gradient(to right, #fff 80%, transparent),
-            linear-gradient(to top, #fff var(--scrollbar-height), transparent var(--scrollbar-height));
+            linear-gradient(to top, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
     }
 
     1%, 99% {
         mask:
             linear-gradient(to right, #fff var(--left-offset), transparent var(--left-offset), #fff 20%, #fff 80%, transparent),
-            linear-gradient(to top, #fff var(--scrollbar-height), transparent var(--scrollbar-height));
+            linear-gradient(to top, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
     }
 
     100% {
         mask:
             linear-gradient(to right, #fff var(--left-offset), transparent var(--left-offset), #fff 20%),
-            linear-gradient(to top, #fff var(--scrollbar-height), transparent var(--scrollbar-height));
+            linear-gradient(to top, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
     }
 }
