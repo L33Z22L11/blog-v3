@@ -43,7 +43,12 @@ function isSameYear(date1: string | Date, date2: string | Date) {
     return new Date(date1).getFullYear() === new Date(date2).getFullYear()
 }
 
+function delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 export {
+    delay,
     getPostTime,
     isSameYear,
     timeElapse,

@@ -80,9 +80,10 @@ const groupedList = computed(
     position: sticky;
     opacity: 0.5;
     top: 0;
-    margin-bottom: -0.5em;
+    margin-bottom: -0.3em;
     mask: linear-gradient(#fff 50%, transparent);
     font-size: 5rem;
+    line-height: 1;
     color: transparent;
     transition: color 0.2s;
     z-index: -1;

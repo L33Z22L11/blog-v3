@@ -44,27 +44,12 @@ const UIStore = useUIStore()
     display: grid;
     grid-template-rows: auto 1fr auto;
 
-    .close-sidebar {
-        display: none;
-        cursor: pointer;
-    }
-
-    &.v-enter-active,
-    &.v-leave-active {
-        transition: opacity 0.2s;
-    }
-
-    &.v-enter-from,
-    &.v-leave-to {
-        opacity: 0;
-    }
-
     @media (max-width: $breakpoint-mobile) {
         position: fixed;
-        left: -100vw;
+        left: -100%;
         width: 320px;
         max-width: 100%;
-        box-shadow: 0 0 48px -36px;
+        box-shadow: 0 0 1rem var(--ld-shadow);
         background-color: var(--ld-bg-blur);
         backdrop-filter: blur(0.5rem);
         transition: left 0.2s;
@@ -72,10 +57,6 @@ const UIStore = useUIStore()
 
         &.show {
             left: 0;
-
-            .close-sidebar {
-                display: block;
-            }
         }
     }
 }
@@ -83,7 +64,7 @@ const UIStore = useUIStore()
 #z-sidebar-bgmask {
     position: fixed;
     inset: 0;
-    backdrop-filter: contrast(0.8) brightness(0.9);
+    background-color: #0003;
     z-index: 2;
 
     &.v-enter-active,

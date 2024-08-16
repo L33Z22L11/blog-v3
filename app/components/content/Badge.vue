@@ -33,7 +33,7 @@ defineProps<{
     }
 
     &[href]:hover {
-        color: var(--c-text-1);
+        color: var(--c-text);
     }
 }
 

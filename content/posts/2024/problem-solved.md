@@ -68,7 +68,9 @@ KazariEX 指出，我给主题提交 PR 之后，虽然使用了相应关键词�
 
 目前个人主页还是毛坯状态，正在努力完善。
 
-&zwj;{% psw 正如博客写到这里的时候，已经是开题第六天晚上了。 %}
+::blur
+正如博客写到这里的时候，已经是开题第六天晚上了。
+::
 
 ## Stylelint
 
@@ -104,4 +106,6 @@ link: https://shawn.thisis.host/2024/clang-config/
 
 我在 Linux 上安装了 Clang 和 clangd 后就能正常使用了。但我在 Windows 上只安装了 LLVM 和 clangd，当时应该是没有安装 [MSVC](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/) 和 MS Build 工具，所以才没有成功。
 
-{% quot 问题：讲出来——然后解决了。 %}
+::quote
+问题：讲出来——然后解决了。
+::

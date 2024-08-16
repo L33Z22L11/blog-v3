@@ -37,7 +37,7 @@ menu, ol, ul {
 }
 
 ::selection {
-    background-color: var(--c-primary-2);
+    background-color: var(--c-primary-3);
 }
 
 button {
@@ -77,6 +77,20 @@ mark {
     vertical-align: middle;
 }
 
+// 一部分具有卡片样式的组件复用了此类
+.card {
+    overflow: hidden;
+    border-radius: 0.5em;
+    box-shadow: 0 0.1em 0.2em var(--ld-shadow);
+    background-color: var(--ld-bg-card);
+    transition: all 0.2s;
+
+    &:hover {
+        box-shadow: 0 0.5em 1em var(--ld-shadow);
+        transform: translateY(-2px);
+    }
+}
+
 .gradient-card {
     position: relative;
     border-radius: 0.5rem;
@@ -98,7 +112,7 @@ mark {
         background-position: 0;
 
         &::before {
-            background-color: var(--c-bg-a75);
+            background-color: var(--c-bg-a80);
             transition: all 0.1s;
         }
     }

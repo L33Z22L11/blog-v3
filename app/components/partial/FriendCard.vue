@@ -24,7 +24,7 @@ onMounted(() => {
     <ZRawLink ref="friendCard" class="friend-card gradient-card" :to="props.link" rel="noopener">
         <NuxtImg class="icon" :src="props.icon" alt="Icon" />
         <div class="card-info">
-            <p><span class="name">{{ props.name }}</span> <span class="title">{{ title }}</span></p>
+            <div><span class="name">{{ props.name }}</span> <span class="title">{{ title }}</span></div>
             <span class="domain" :class="{ 'domain-zhilu': mainDomain === 'thisis.host' }">
                 {{ mainDomain }}
             </span>

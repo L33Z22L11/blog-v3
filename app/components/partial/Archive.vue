@@ -53,13 +53,17 @@ onMounted(() => {
 
     time {
         display: inline-block;
-        color: var(--c-text-3);
-        transition: color 0.2s;
+        opacity: 0.4;
+        transition: opacity 0.2s;
     }
 
     &:hover > time {
-        color: var(--c-text-1);
+        opacity: 1;
     }
+}
+
+.article-title {
+    color: var(--c-text);
 }
 
 .article-link {

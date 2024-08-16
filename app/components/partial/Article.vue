@@ -8,7 +8,7 @@ const updatedLabel = getPostTime(props.updated)
 </script>
 
 <template>
-    <ZRawLink class="article-card">
+    <ZRawLink class="article-card card">
         <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" />
         <article>
             <h2 class="article-title">
@@ -34,17 +34,9 @@ const updatedLabel = getPostTime(props.updated)
     container-type: inline-size;
     display: block;
     position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 1px 2px var(--ld-shadow);
-    background-color: var(--ld-bg-card);
     color: var(--c-text);
-    transition: all 0.2s;
 
     &:hover {
-        box-shadow: 0 0.5rem 1rem var(--ld-shadow);
-        transform: translateY(-4px);
-
         .article-cover {
             opacity: 1;
         }
@@ -54,7 +46,7 @@ const updatedLabel = getPostTime(props.updated)
         margin-top: 1rem;
     }
 
-    >article {
+    > article {
         padding: 0.5rem 1rem;
 
         > * {

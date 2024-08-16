@@ -19,53 +19,36 @@ const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof wi
 
 <template>
     <aside id="z-aside" :class="{ show: UIStore.asideOpen }">
+        <Transition>
+            <div v-if="UIStore.asideOpen" id="z-aside-bgmask" @click="UIStore.toggleAside" />
+        </Transition>
         <div class="container">
             <div v-for="widget in widgets" :key="widget" class="widget">
                 <component :is="widgetList[widget]" />
             </div>
         </div>
     </aside>
-    <Transition>
-        <div v-if="UIStore.asideOpen" id="z-aside-bgmask" @click="UIStore.toggleAside" />
-    </Transition>
 </template>
 
 <style scoped lang="scss">
 #z-aside {
     overflow: auto;
-
-    .container {
-        // BFC
-        overflow: auto;
-        margin: 0.5rem;
-    }
-
-    &.v-enter-active,
-    &.v-leave-active {
-        transition: opacity 0.2s;
-    }
-
-    &.v-enter-from,
-    &.v-leave-to {
-        opacity: 0;
-    }
+    padding: 0.5rem;
 
     @media (max-width: $breakpoint-widescreen) {
         position: fixed;
         top: 0;
-        right: -100vw;
+        right: -100%;
         width: 320px;
         height: auto;
         max-width: 100%;
-        max-height: 100vh;
-        max-height: 100dvh;
+        max-height: 100%;
         transition: right 0.2s;
-        z-index: 2;
 
         .container {
             padding: 0.5rem;
             border-radius: 1rem;
-            box-shadow: 0 0 48px -36px;
+            box-shadow: 0 0 1rem var(--ld-shadow);
             background-color: var(--ld-bg-blur);
             backdrop-filter: blur(0.5rem);
         }
@@ -79,8 +62,7 @@ const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof wi
 #z-aside-bgmask {
     position: fixed;
     inset: 0;
-    backdrop-filter: contrast(0.8) brightness(0.9);
-    z-index: 1;
+    background-color: #0003;
 
     &.v-enter-active,
     &.v-leave-active {
@@ -134,6 +116,11 @@ const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof wi
     > .widget-card {
         padding: 0.2rem 1rem;
         border-radius: 0.8rem;
+        background-color: var(--c-bg-2);
+
+        p, li {
+            margin: 0.5em 0;
+        }
     }
 }
 </style>

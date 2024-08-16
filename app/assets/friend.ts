@@ -185,7 +185,7 @@ export default <LinkGroup[]>[
                 title: '部落阁',
                 desc: '一个闲聊萌新动漫技术交流站',
                 link: 'https://www.skira.top/',
-                icon: 'https://www.skira.top/img/lemonsuka.webp',
+                icon: 'https://wsrv.nl/?url=www.skira.top/img/lemonsuka.webp',
                 comment: '搞机发烧友，小众系统爱好者，前端研究员。',
             },
             {

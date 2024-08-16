@@ -26,8 +26,10 @@ references:
 
 ## 后续
 
-{% banner 封面被 LinuxQQ 官方用了，但是有一些小缺陷
-   bg:https://7.isyangs.cn/24/66714b1f0bc35-24.jpg
-   link:/2024/cover-copied/
- %}
-{% endbanner %}
+::link-banner
+---
+title: 封面被 LinuxQQ 官方用了，但是有一些小缺陷
+banner: https://7.isyangs.cn/24/66714b1f0bc35-24.jpg
+link: /2024/cover-copied/
+---
+::

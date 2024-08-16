@@ -16,6 +16,7 @@
     "@vueuse/core": "^10.11.1",
     "@vueuse/router": "^10.11.1",
     "date-fns": "^3.6.0",
+    "plain-shiki": "^0.0.2",
     "radash": "^12.1.0",
     "tippy.js": "^6.3.7",
     "vue": "^3.4.37",

@@ -208,7 +208,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 > C:\WINDOWS\system32;……C:\Program Files\Git\cmd;C:\Program Files\nodejs\;……{% mark %PNPM_HOME% %};……C:\Users\Zhilu\AppData\Roaming\npm;C:\Program Files\Neovim\bin;C:\Users\Zhilu\go\bin;C:\ProgramData\chocolatey\bin;
 
-看起来在本地环境中，`%PNPM_HOME%` 在 `$Env:PATH` 会被正常解析为 `C:\Users\Zhilu\AppData\Local\pnpm`，而在远程 SSH 环境中，`PATH` 中的 `%PNPM_HOME%` 项不能被正常解析。我向 pnpm 提出了 [Issue #8110](https://github.com/pnpm/pnpm/issues/8110) 反馈这个问题，{% psw 我并不清楚这个奇奇怪怪的问题应该向谁反馈，但 pnpm 应当做好这些情况的兼容 %}。 不过此时仓库有 1.5k 个未关闭的 Issue，也许我提出的问题得到回复的概率很渺茫。
+看起来在本地环境中，`%PNPM_HOME%` 在 `$Env:PATH` 会被正常解析为 `C:\Users\Zhilu\AppData\Local\pnpm`，而在远程 SSH 环境中，`PATH` 中的 `%PNPM_HOME%` 项不能被正常解析。我向 pnpm 提出了 [Issue #8110](https://github.com/pnpm/pnpm/issues/8110) 反馈这个问题，:blur{text="我并不清楚这个奇奇怪怪的问题应该向谁反馈，但 pnpm 应当做好这些情况的兼容"}。 不过此时仓库有 1.5k 个未关闭的 Issue，也许我提出的问题得到回复的概率很渺茫。
 
 ### 聪明一修
 
@@ -377,7 +377,9 @@ yes
 
 在使用 CSS Property Sorter 的过程中，我发现 CSS 的多层嵌套结构会被破坏，也找到了相关的 [Issue #11](https://github.com/enzo-mourany/css-property-sorter/issues/11)，于是换用了 Sort CSS，它支持在配置文件中修改排序策略。关于 CSS 排序工具的配置，最近一段时间也许就折腾到这儿了。既然 Stylelint 全局难以配置的话，就单独给未来的项目配置吧。
 
-{% psw 直到现在，我还没有在 Windows 上成功配置 clangd 环境。 %}
+::blur
+直到现在，我还没有在 Windows 上成功配置 clangd 环境。
+::
 
 ## 后续
 

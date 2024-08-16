@@ -1,0 +1,59 @@
+<script setup lang="ts">
+const props = defineProps<{
+    banner?: string
+    mirror?: boolean
+    title?: string
+    desc?: string
+    link: string
+}>()
+
+const src = (props?.mirror ? 'https://image.baidu.com/search/down?url=' : '') + props?.banner
+</script>
+
+<template>
+    <ZRawLink :to="link" target="_blank" class="link-banner card">
+        <NuxtImg v-if="banner" class="link-banner-bg" :src :alt="title" />
+        <div class="link-banner-header" />
+        <div class="link-banner-info">
+            <div class="link-banner-title">
+                {{ title }}
+            </div>
+            <div class="link-banner-desc">
+                {{ desc || getDomain(link) }}
+            </div>
+        </div>
+    </ZRawLink>
+</template>
+
+<style lang="scss" scoped>
+.link-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: $breakpoint-phone;
+    margin: 2rem auto;
+    line-height: initial;
+}
+
+.link-banner-bg {
+    aspect-ratio: 2.4;
+    margin-bottom: -5%;
+    mask: linear-gradient(#fff 50%, transparent);
+    object-fit: cover;
+}
+
+.link-banner-info {
+    padding: 0.5em 1em;
+}
+
+.link-banner-title {
+    font-size: 1.2em;
+    color: var(--c-text);
+}
+
+.link-banner-desc {
+    margin-top: 0.5em;
+    font-size: 0.8em;
+    color: var(--c-text-2);
+}
+</style>

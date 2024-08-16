@@ -15,7 +15,10 @@ const appConfig = useAppConfig()
             <div class="content">
                 <ul>
                     <li v-for="(link, index) in references" :key="index">
-                        <ZLink :to="link.link">
+                        <p v-if="typeof link === 'string'">
+                            {{ link }}
+                        </p>
+                        <ZLink v-else :to="link.link">
                             {{ link.title }}
                         </ZLink>
                     </li>
@@ -65,5 +68,9 @@ section {
     > * {
         margin-top: 0.5em;
     }
+}
+
+li {
+    margin: 0.5em 0;
 }
 </style>

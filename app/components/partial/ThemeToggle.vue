@@ -74,13 +74,13 @@ onMounted(() => {
 
         &:hover {
             background-color: var(--c-primary-soft);
-            color: var(--c-text-1);
+            color: var(--c-text);
         }
 
         &.active {
             box-shadow: 0 0 0.5rem var(--ld-shadow);
             background-color: var(--ld-bg-card);
-            color: var(--c-text-1);
+            color: var(--c-text);
             cursor: auto;
         }
     }

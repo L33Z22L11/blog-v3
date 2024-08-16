@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
     link: string
     title: string
     description?: string
@@ -8,16 +8,16 @@ const props = defineProps<{
 </script>
 
 <template>
-    <ZRawLink :href="props.link" target="_blank" class="link-card">
+    <ZRawLink :to="link" target="_blank" class="link-card card">
         <div class="link-card-info">
             <div class="link-card-title">
-                {{ props.title }}
+                {{ title }}
             </div>
             <div class="link-card-description">
-                {{ props.description || getDomain(props.link) }}
+                {{ description || getDomain(link) }}
             </div>
         </div>
-        <NuxtImg v-if="props.icon" class="link-card-icon" :src="props.icon" alt="icon" />
+        <NuxtImg v-if="icon" class="link-card-icon" :src="icon" alt="icon" />
     </ZRawLink>
 </template>
 
@@ -28,19 +28,10 @@ const props = defineProps<{
     gap: 0.5rem;
     width: 20rem;
     max-width: 90%;
-    margin: 1rem auto;
-    padding: 0.5rem 0.8rem;
-    border-radius: 0.5rem;
-    box-shadow: 2px 4px 0.5em var(--ld-shadow);
-    background-color: var(--ld-bg-card);
+    margin: 2rem auto;
+    padding: 0.5em 0.8em;
     font-size: 0.9em;
     line-height: initial;
-    transition: all 0.2s;
-
-    &:hover {
-        box-shadow: 2px 1em 1em var(--ld-shadow);
-        transform: translateY(-2px);
-    }
 }
 
 // 溢出显示省略号

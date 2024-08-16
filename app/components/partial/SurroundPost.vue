@@ -72,7 +72,7 @@ const [prev, next] = data.value ?? []
             flex-shrink: 0;
             opacity: 0.5;
             font-size: 2rem;
-            transition: transform 0.2s;
+            transition: all 0.2s;
         }
 
         &[href]:hover {
@@ -80,6 +80,7 @@ const [prev, next] = data.value ?? []
             color: var(--c-primary-1);
 
             > .iconify {
+                opacity: 0.2;
                 transform: scale(2);
             }
         }

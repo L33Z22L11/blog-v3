@@ -26,49 +26,49 @@ tags: [大学, 系统, 软件, 网站]
 
 这些网站会出现在浏览器地址栏的自动补全中。
 
-| 名称               | 描述                       | 网址                                           |
-| ------------------ | -------------------------- | ---------------------------------------------- |
-| 路由器管理         | 内网地址                   | {% hashtag 192.168.1.1 %}                      |
-| 去图图床           | 图床                       | {% hashtag 7tu.top %}                          |
-| draw.io            | 流程图制作                 | {% hashtag app.diagrams.net %}                 |
-| Netlify            | 前端项目部署               | {% hashtag app.netlify.com %}                  |
-| Internet Archive   | 互联网档案馆/网页时光机    | {% hashtag archive.org %}                      |
-| 哔哩哔哩           | 视频内容平台               | {% hashtag bilibili.com %}                     |
-| 纸鹿摸鱼处         | 个人博客                   | {% hashtag blog.zhilu.cyou %}                  |
-| CO导航             | 大学学习                   | {% hashtag cooo.site %}                        |
-| 微软Copilot        | 微软AI大模型               | {% hashtag copilot.microsoft.com %}            |
-| Cloudflare         | 云服务平台                 | {% hashtag dash.cloudflare.com %}              |
-| 腾讯文档           | 在线文档协作平台           | {% hashtag docs.qq.com/desktop %}              |
-| Edge Flags         | 微软Edge浏览器实验特性管理 | {% hashtag edge://flags %}                     |
-| Font Awesome Icons | 前端图标库                 | {% hashtag fontawesome.com/v6/search?m=free %} |
-| Github             | 项目托管平台               | {% hashtag github.com %}                       |
-| Google             | 搜索引擎                   | {% hashtag google.com %}                       |
-| HexEd.it           | 十六进制文件编辑器         | {% hashtag hexed.it %}                         |
-| 超星学习通         | 大学学习                   | {% hashtag i.chaoxing.com %}                   |
-| IconFont           | 前端图标字体库             | {% hashtag iconfont.cn %}                      |
-| 中国大学MOOC       | 大学学习                   | {% hashtag icourse163.org %}                   |
-| 老王图床           | 图床                       | {% hashtag img.gejiba.com %}                   |
-| 金山文档           | 在线文档协作平台           | {% hashtag kdocs.cn %}                         |
-| Tailscale          | 虚拟组网工具的Web面板      | {% hashtag login.tailscale.com %}              |
-| QQ邮箱             | 邮箱                       | {% hashtag mail.qq.com %}                      |
-| Gmail              | 谷歌邮箱                   | {% hashtag mail.google.com %}                  |
-| 微信公众平台       | 微信公众号管理             | {% hashtag mp.weixin.qq.com %}                 |
-| Zerotier           | 虚拟组网工具的Web面板      | {% hashtag my.zerotier.com %}                  |
-| Poe                | Quora旗下AI大模型平台      | {% hashtag poe.com %}                          |
-| 稿定在线PS         | PS网页版PhotoPea的国内代理 | {% hashtag ps.gaoding.com %}                   |
-| Z-Library          | 电子书下载                 | {% hashtag singlelogin.re %}                   |
-| UFO Test           | 屏幕测试                   | {% hashtag testufo.com %}                      |
-| IPv6 测试          | IPv6网络测试               | {% hashtag test-ipv6.com %}                    |
-| U校园              | 大学学习                   | {% hashtag u.unipus.cn/user/student %}         |
-| Vercel             | 前端项目部署               | {% hashtag vercel.com %}                       |
-| V2EX               | 开发者论坛                 | {% hashtag v2ex.com %}                         |
-| Wakatime           | 代码时长统计               | {% hashtag wakatime.com %}                     |
-| Telegram           | 聊天                       | {% hashtag web.telegram.org %}                 |
-| What's the Link?   | 下载链接内容预览           | {% hashtag whatslink.info %}                   |
-| 第二课堂           | 大学学习                   | {% hashtag win.9xueqi.com %}                   |
-| 文心一言           | 百度AI大模型               | {% hashtag yiyan.baidu.com %}                  |
-| Yesicon            | 前端图标库                 | {% hashtag yesicon.app %}                      |
-| 纸鹿小站           | 个人网站                   | {% hashtag zhilu.cyou %}                       |
+| 名称               | 描述                       | 网址                                            |
+| ------------------ | -------------------------- | ----------------------------------------------- |
+| 路由器管理         | 内网地址                   | :badge{text="192.168.1.1"}                      |
+| 去图图床           | 图床                       | :badge{text="7tu.top"}                          |
+| draw.io            | 流程图制作                 | :badge{text="app.diagrams.net"}                 |
+| Netlify            | 前端项目部署               | :badge{text="app.netlify.com"}                  |
+| Internet Archive   | 互联网档案馆/网页时光机    | :badge{text="archive.org"}                      |
+| 哔哩哔哩           | 视频内容平台               | :badge{text="bilibili.com"}                     |
+| 纸鹿摸鱼处         | 个人博客                   | :badge{text="blog.zhilu.cyou"}                  |
+| CO导航             | 大学学习                   | :badge{text="cooo.site"}                        |
+| 微软Copilot        | 微软AI大模型               | :badge{text="copilot.microsoft.com"}            |
+| Cloudflare         | 云服务平台                 | :badge{text="dash.cloudflare.com"}              |
+| 腾讯文档           | 在线文档协作平台           | :badge{text="docs.qq.com/desktop"}              |
+| Edge Flags         | 微软Edge浏览器实验特性管理 | :badge{text="edge://flags"}                     |
+| Font Awesome Icons | 前端图标库                 | :badge{text="fontawesome.com/v6/search?m=free"} |
+| Github             | 项目托管平台               | :badge{text="github.com"}                       |
+| Google             | 搜索引擎                   | :badge{text="google.com"}                       |
+| HexEd.it           | 十六进制文件编辑器         | :badge{text="hexed.it"}                         |
+| 超星学习通         | 大学学习                   | :badge{text="i.chaoxing.com"}                   |
+| IconFont           | 前端图标字体库             | :badge{text="iconfont.cn"}                      |
+| 中国大学MOOC       | 大学学习                   | :badge{text="icourse163.org"}                   |
+| 老王图床           | 图床                       | :badge{text="img.gejiba.com"}                   |
+| 金山文档           | 在线文档协作平台           | :badge{text="kdocs.cn"}                         |
+| Tailscale          | 虚拟组网工具的Web面板      | :badge{text="login.tailscale.com"}              |
+| QQ邮箱             | 邮箱                       | :badge{text="mail.qq.com"}                      |
+| Gmail              | 谷歌邮箱                   | :badge{text="mail.google.com"}                  |
+| 微信公众平台       | 微信公众号管理             | :badge{text="mp.weixin.qq.com"}                 |
+| Zerotier           | 虚拟组网工具的Web面板      | :badge{text="my.zerotier.com"}                  |
+| Poe                | Quora旗下AI大模型平台      | :badge{text="poe.com"}                          |
+| 稿定在线PS         | PS网页版PhotoPea的国内代理 | :badge{text="ps.gaoding.com"}                   |
+| Z-Library          | 电子书下载                 | :badge{text="singlelogin.re"}                   |
+| UFO Test           | 屏幕测试                   | :badge{text="testufo.com"}                      |
+| IPv6 测试          | IPv6网络测试               | :badge{text="test-ipv6.com"}                    |
+| U校园              | 大学学习                   | :badge{text="u.unipus.cn/user/student"}         |
+| Vercel             | 前端项目部署               | :badge{text="vercel.com"}                       |
+| V2EX               | 开发者论坛                 | :badge{text="v2ex.com"}                         |
+| Wakatime           | 代码时长统计               | :badge{text="wakatime.com"}                     |
+| Telegram           | 聊天                       | :badge{text="web.telegram.org"}                 |
+| What's the Link?   | 下载链接内容预览           | :badge{text="whatslink.info"}                   |
+| 第二课堂           | 大学学习                   | :badge{text="win.9xueqi.com"}                   |
+| 文心一言           | 百度AI大模型               | :badge{text="yiyan.baidu.com"}                  |
+| Yesicon            | 前端图标库                 | :badge{text="yesicon.app"}                      |
+| 纸鹿小站           | 个人网站                   | :badge{text="zhilu.cyou"}                       |
 
 ## 总结
 

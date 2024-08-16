@@ -22,8 +22,6 @@ defineProps<LinkGroup>()
 
 <style scoped lang="scss">
 .friend-group {
-    margin: 1rem;
-
     &:hover > .friend-title {
         color: var(--c-text-3);
     }
@@ -33,9 +31,10 @@ defineProps<LinkGroup>()
     position: sticky;
     opacity: 0.5;
     top: 0;
-    margin-bottom: -0.5em;
+    margin-bottom: -0.3em;
     mask: linear-gradient(#fff 50%, transparent);
     font-size: 5rem;
+    line-height: 1;
     text-align: center;
     color: transparent;
     transition: color 0.2s;

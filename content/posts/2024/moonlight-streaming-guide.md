@@ -16,11 +16,13 @@ sticky: 50
 
 和要串流的设备位于同一局域网，如果不是，请尝试使用 Tailscale 或者 Zerotier 进行虚拟组网，参见此教程：
 
-{% banner Tailscale 不完全使用指南
-   bg:https://7.isyangs.cn/24/6664009cce512-24.jpg
-   link:/2023/tailscale-incomplete-guide
- %}
-{% endbanner %}
+::link-banner
+---
+title: Tailscale 不完全使用指南
+banner: https://7.isyangs.cn/24/6664009cce512-24.jpg
+link: /2023/tailscale-incomplete-guide
+---
+::
 
 你也可以通过 IPv6 进行公网串流，但需要注意，“IPv6临时地址”特性或者防火墙可能会导致无法正常连接。
 

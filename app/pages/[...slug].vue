@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const route = useRoute()
 const { data } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
 const excerpt = data.value?.description || data.value?.excerpt || ''
@@ -10,13 +10,21 @@ useHead({
     ],
 })
 
+// 删除后目录点击就消失
 definePageMeta({
     aside: ['toc'],
 })
 
+watchImmediate(() => data.value?.aside, (aside) => {
+    route.meta.aside = aside ?? ['toc']
+})
+
 const event = useRequestEvent()
-if (data.value === undefined)
+if (data.value === undefined) {
     setResponseStatus(event, 404)
+    route.meta.title = '404'
+    route.meta.aside = ['blog_log']
+}
 </script>
 
 <template>
@@ -36,7 +44,7 @@ if (data.value === undefined)
             </div>
         </template>
         <ZPostFooter v-bind="data" />
-        <ZSurroundPost />
+        <ZSurroundPost v-if="data?._original_dir === '/posts'" />
         <ZComment />
     </ContentRenderer>
 </template>

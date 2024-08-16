@@ -16,22 +16,26 @@ type: story
 
 今天早上刷微信公众号，一篇文章吸引了我的注意力。
 
-{% banner Linux&nbsp;QQ能打语音视频了！一文详解背后技术实现！
-   原创　QQ音视频团队　腾讯云开发者　2024-06-18 08:43　北京
-   bg:https://mmbiz.qpic.cn/mmbiz_jpg/VY8SELNGe96D4BWicYxv0JgWsyvdCOq9qbpwmcjiaw8KJcvoeawYqAHHIUvOEq131W7FuLpKhpDrDnVfiahBf0ALg/0
-   mirror: true
-   link:https://mp.weixin.qq.com/s/M3-7XnNy30HprMpDsKBi7w
- %}
-{% endbanner %}
+::link-banner
+---
+title: Linux QQ能打语音视频了！一文详解背后技术实现！
+desc: 原创　QQ音视频团队　腾讯云开发者　2024-06-18 08:43　北京
+banner: https://mmbiz.qpic.cn/mmbiz_jpg/VY8SELNGe96D4BWicYxv0JgWsyvdCOq9qbpwmcjiaw8KJcvoeawYqAHHIUvOEq131W7FuLpKhpDrDnVfiahBf0ALg/0
+mirror: true
+link: https://mp.weixin.qq.com/s/M3-7XnNy30HprMpDsKBi7w
+---
+::
 
 这篇文章的封面怎么和我先前制作的这么相似？
 
-{% banner Linux&nbsp;QQ&nbsp;崩溃解决办法
-   原创　纸鹿本鹿　2023-03-16 21:02:22　纸鹿摸鱼处
-   bg:https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
-   link:/2023/linuxqq-crash/
- %}
-{% endbanner %}
+::link-banner
+---
+title: Linux QQ 崩溃解决办法
+desc: 原创　纸鹿本鹿　2023-03-16 21:02:22　纸鹿摸鱼处
+banner: https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
+link: /2023/linuxqq-crash/
+---
+::
 
 刚开始，我还在惊叹，我们的设计思路何其相似，这又何尝不是一种奇妙的缘分呢？虽然 Linux QQ 官方团队发布的公众号封面里，大标题「Linux QQ」背后的阴影有些奇怪，它使用的是不透明、模糊半径小的亮灰色阴影，而我使用的是模糊半径更大的半透明透明黑色阴影。
 
@@ -56,7 +60,9 @@ fancybox: true
 ---
 ::
 
-{% quot 我使用的背景图片来自 QQ 官网，所以我的这张封面是根据官网产品图片的二次创作，我本人当然也不反对二次创作再被官方使用。 %}
+::quote
+我使用的背景图片来自 QQ 官网，所以我的这张封面是根据官网产品图片的二次创作，我本人当然也不反对二次创作再被官方使用。
+::
 
 ::pic
 ---
@@ -113,7 +119,7 @@ fancybox: true
 
 ### 一些群友「抬杠」的论调
 
-我把这次事件分享给博客圈子「{% psw █年之约 %}」群友，哪怕我用陈述的口吻讲述客观事实，不夹杂主观情感，群友还在讲「让腾讯老总把位置让给你，不然难解心头之恨」之类煽动论调。
+我把这次事件分享给博客圈子「 :blur{text="█年之约"} 」群友，哪怕我用陈述的口吻讲述客观事实，不夹杂主观情感，群友还在讲「让腾讯老总把位置让给你，不然难解心头之恨」之类煽动论调。
 
 这让我感到不爽，哪怕是发几个表情包乐呵乐呵，或者单纯忽视都好，反而有人在煽动情绪。这佐证了「互联网的戾气真的越来越重了」。
 

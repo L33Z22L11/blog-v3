@@ -8,7 +8,7 @@ defineProps<ButtonProps>()
 </script>
 
 <template>
-    <button class="button">
+    <button class="button card">
         <div class="button-main">
             <Icon v-if="icon" :name="icon" />
             {{ text }}
@@ -22,22 +22,12 @@ defineProps<ButtonProps>()
 
 <style scoped lang="scss">
 .button {
-    display: inline-block;
-    align-items: center;
     padding: 0.4em 0.6em;
     border: 1px solid var(--c-border);
-    border-radius: 0.4em;
-    box-shadow: 0.05em 0.1em 0.5em var(--ld-shadow);
-    background-color: var(--ld-bg-card);
-    transition: background-color 0.2s;
     cursor: pointer;
 
     & + & {
         margin-left: 0.8em;
-    }
-
-    &:hover {
-        background-color: var(--c-bg-2);
     }
 
     &:disabled {

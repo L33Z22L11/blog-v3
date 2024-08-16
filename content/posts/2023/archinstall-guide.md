@@ -13,20 +13,19 @@ sticky: 20
 
 安装 Arch Linux 时务必小心！如果误操作可能会导致 Windows 系统无法启动。请留好 {% post_link 2023/windows-setup-guide %} 和 {% post_link 2024/archlinux-boot-repair %}，以备后日之用。
 
-{% grid %}
-<!-- cell -->
-{% banner
-   bg:https://7.isyangs.cn/24/65b66289c9a2e-24.jpg
-   link:/2023/windows-setup-guide
- %}
-{% endbanner %}
-<!-- cell -->
-{% banner
-   bg:https://7.isyangs.cn/24/66640097e0cbb-24.jpg
-   link:/2024/archlinux-boot-repair
- %}
-{% endbanner %}
-{% endgrid %}
+::link-banner
+---
+banner: https://7.isyangs.cn/24/65b66289c9a2e-24.jpg
+link: /2023/windows-setup-guide
+---
+::
+
+::link-banner
+---
+banner: https://7.isyangs.cn/24/66640097e0cbb-24.jpg
+link: /2024/archlinux-boot-repair
+---
+::
 
 ### 制作安装镜像
 

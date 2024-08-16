@@ -14,9 +14,9 @@ const toc = computed(() => data.value?.body?.toc)
     <DefineTemplate v-slot="{ tocItem }">
         <ul>
             <li v-for="(entry, index) in tocItem" :key="index">
-                <a :href="`#${entry?.id}`">
+                <NuxtLink :to="`#${entry?.id}`">
                     {{ entry.text }}
-                </a>
+                </NuxtLink>
                 <ReuseTemplate v-if="entry.children?.length" :toc-item="entry.children" />
             </li>
         </ul>
@@ -33,7 +33,7 @@ const toc = computed(() => data.value?.body?.toc)
             </ZRawLink>
         </div>
     </h3>
-    <div class="widget-card">
+    <div class="widget-body">
         <ReuseTemplate v-if="toc?.links?.length" :toc-item="toc.links" />
         <p v-else>
             暂无目录信息
@@ -42,21 +42,24 @@ const toc = computed(() => data.value?.body?.toc)
 </template>
 
 <style lang="scss" scoped>
-.widget-card {
+.widget-body {
     ul {
         padding-left: 0;
-        line-height: 1.8;
         list-style: none;
 
         li {
             padding-left: 0.5rem;
 
             a {
+                display: block;
+                padding: 0.2em 0.5em;
+                border-radius: 0.5em;
                 color: var(--c-text-2);
-                transition: color 0.2s;
+                transition: all 0.2s;
 
                 &:hover {
-                    color: var(--c-text-1);
+                    background-color: var(--c-primary-soft);
+                    color: var(--c-text);
                 }
             }
         }

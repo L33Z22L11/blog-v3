@@ -17,13 +17,3 @@ const timeline = blogLog.timeline
         </ul>
     </div>
 </template>
-
-<style scoped lang="scss">
-.widget-card {
-    background-color: var(--c-bg-2);
-}
-
-li {
-    margin: 0.5em 0;
-}
-</style>

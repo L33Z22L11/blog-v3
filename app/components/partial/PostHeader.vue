@@ -49,7 +49,7 @@ const updatedLabel = getPostTime(props.updated ?? '0')
         overflow: hidden;
         min-height: 256px;
         max-height: 320px;
-        text-shadow: 0 0 0.5em var(--ld-shadow);
+        text-shadow: 0 1px 1px #0003, 0 1px 2px #0003;
         color: white;
         transition: font-size 0.2s;
         z-index: 0;

@@ -189,10 +189,12 @@ winget remove 7zip
 
 在安装软件后，你可以按照你的喜好和需求来使用你的磁盘分区。但是，我建议你遵循以下原则，以提高磁盘的性能和管理：
 
-{% banner Windows&nbsp;空间管理/清理指南
-   bg:https://7.isyangs.cn/24/669776aed29f4-24.jpg
-   link:/2024/windows-storage
- %}
-{% endbanner %}
+::link-banner
+---
+title: Windows 空间管理/清理指南
+banner: https://7.isyangs.cn/24/669776aed29f4-24.jpg
+link: /2024/windows-storage
+---
+::
 
 {% emoji blobcat ablobcatheart %} 最后，祝你有一个愉快的Windows使用体验，我的朋友。

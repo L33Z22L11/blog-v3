@@ -1,12 +1,14 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import friends from '~/assets/friend'
-
-useHead({ title: '友链' })
-definePageMeta({
-    aside: false,
-})
 </script>
 
 <template>
     <ZFriendGroup v-for="friendGroup in friends" :key="friendGroup.name" v-bind="friendGroup" />
 </template>
+
+<style scoped lang="scss">
+:deep(ul) {
+    padding: 0;
+    list-style: none;
+}
+</style>
