@@ -15,46 +15,46 @@ tags: [教程, termux, 软件]
 ## 更换为国内镜像源及升级
 
 - 选择单个国内镜像源
-  :copy{prefix="$" code="termux-change-repo"}
+  :copy{prompt="$" command="termux-change-repo"}
 - 包列表会自动更新，可以直接升级
-  :copy{prefix="$" code="pkg upgrade"}
+  :copy{prompt="$" command="pkg upgrade"}
 - 此时 `termux-change-repo` 也会更新，你可以重新选择镜像群组
-  :copy{prefix="$" code="termux-change-repo"}
+  :copy{prompt="$" command="termux-change-repo"}
 - 启用 root 和 x11 仓库
-  :copy{prefix="$" code="pkg install root-repo x11-repo"}
+  :copy{prompt="$" command="pkg install root-repo x11-repo"}
 
 ## 安装 SSH
 
 - 安装 OpenSSH
-  :copy{prefix="$" code="pkg install openssh"}
+  :copy{prompt="$" command="pkg install openssh"}
   - 如果报错可能是因为没有执行 `pkg upgrade`。
 - 设置密码
-  :copy{prefix="$" code="passwd"}
+  :copy{prompt="$" command="passwd"}
 - 启动 SSH 服务
-  :copy{prefix="$" code="sshd"}
+  :copy{prompt="$" command="sshd"}
 - 如果想要在 Termux 启动后自动启动 `sshd`，可以执行：
-  :copy{prefix='echo "sshd" >> ~/../usr/etc/profile' code="$2"}
+  :copy{prefix='echo "sshd" >> ~/../usr/etc/profile' command="$2"}
 
 ## 使用 Pacman 包管理器(可选)
 
 - 安装 Pacman
-  :copy{prefix="$" code="pkg install pacman"}
+  :copy{prompt="$" command="pkg install pacman"}
 - 初始化 Pacman
-  :copy{prefix="$" code="pacman-key --init && pacman-key --populate"}
+  :copy{prompt="$" command="pacman-key --init && pacman-key --populate"}
 - 更新
-  :copy{prefix="$" code="pacman -Syyu"}
+  :copy{prompt="$" command="pacman -Syyu"}
 
 如果安装遇到 `<filename> exists in filesystem` 问题，可以在安装时添加 `--overwrite="*"` 参数。
 
 ## 修改欢迎语(Message of the day)
 
 - 安装 Vim
-  :copy{prefix="$" code="pkg install vim"}
+  :copy{prompt="$" command="pkg install vim"}
   - 也可以使用已安装的 Nano 编辑器。
 - 拟定欢迎语
   - 我使用[TextKool](https://textkool.com/en/ascii-art-generator?font=ANSI%20Shadow)生成了艺术字。
 - 将欢迎语写入 MOTD 文件
-  :copy{prefix="$" code="vim ~/../usr/etc/motd"}
+  :copy{prompt="$" command="vim ~/../usr/etc/motd"}
 
 ## 安装 Termux:Styling 以更换主题和字体
 
@@ -68,15 +68,15 @@ tags: [教程, termux, 软件]
 ## 安装 Zsh
 
 - 安装 Zsh 和补全插件
-  :copy{prefix="$" code="pkg install git zsh zsh-completions"}
+  :copy{prompt="$" command="pkg install git zsh zsh-completions"}
 - 安装 Zsh 自动建议
-  :copy{prefix="$" code="git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions"}
+  :copy{prompt="$" command="git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions"}
 - 安装 Zsh 语法高亮
-  :copy{prefix="$" code="git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting"}
+  :copy{prompt="$" command="git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting"}
 - 安装 Zsh 主题
-  :copy{prefix="$" code="git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k"}
+  :copy{prompt="$" command="git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k"}
 - 向 `~/.zshrc` 添加内容：
-  :copy{prefix="$" code="vim ~/.zshrc"}
+  :copy{prompt="$" command="vim ~/.zshrc"}
 
 ```sh [~/.zshrc]
 HISTFILE=~/.histfile
@@ -105,7 +105,7 @@ alias grep='grep --color=auto'
 ```
 
 - 设置默认 Shell 并进入
-  :copy{prefix="$" code="chsh -s zsh && exec zsh"}
+  :copy{prompt="$" command="chsh -s zsh && exec zsh"}
   其他 Linux 发行版的终端名称应当是绝对路径（如 `/usr/bin/zsh`）而不是别名（如 `zsh`）。
 - 初次启动时会进入 Powerlevel10k 的配置界面
   - 配置结束后，你也可以通过 `p10k configure` 重新配置主题。
@@ -113,12 +113,12 @@ alias grep='grep --color=auto'
 ## 安装 Termux:X11 图形界面
 
 - 安装 Termux:X11 支持包
-  :copy{prefix="$" code="pkg install termux-x11-nightly"}
+  :copy{prompt="$" command="pkg install termux-x11-nightly"}
 - 在手机上安装对应的 [APK文件](https://github.com/termux/termux-x11/releases/tag/nightly)。
 - 安装 Xfce4 桌面环境，也可以选择其他桌面环境
-  :copy{prefix="$" code="pkg install xfce4 xfce4-goodies"}
+  :copy{prompt="$" command="pkg install xfce4 xfce4-goodies"}
 - 以后可以使用此命令启动桌面环境进程，亦可将此命令写在脚本中，方便启动。
-  :copy{prefix='termux-x11 :1 -xstartup "dbus-launch --exit-with-session xfce4-session"' code="$2"}
+  :copy{prefix='termux-x11 :1 -xstartup "dbus-launch --exit-with-session xfce4-session"' command="$2"}
 
 ## 更多
 

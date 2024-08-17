@@ -121,7 +121,7 @@ width: 200px
 
 下载文件，得到base23.cpp、output.txt如下。
 
-{% folding child:codeblock base23.cpp %}
+::accordion{nopadding summary="base23.cpp"}
 ```cpp
 #include <iostream>
 #include <string>
@@ -185,9 +185,9 @@ int main()
     return 0;
 }
 ```
-{% endfolding %}
+::
 
-``` [plain output.txt]
+```plain [output.txt]
 1WYq1Nb5aSOhTz9qTuOhTmvbhj==
 ```
 
@@ -493,7 +493,7 @@ width: 360px
 
 下载文件，得到歌词.txt如下。
 
-{% folding child:codeblock 歌词.txt %}
+::accordion{nopadding summary="歌词.txt"}
 ```plain
 55m96bif6L+H5rKz5rupDW==
 5rSb5aSp5L6dL2lsZW0N
@@ -538,7 +538,7 @@ width: 360px
 5LiA5Y675YWl6IuN5aSpDQ==
 6IuN5aSp6L+c5q+U5rW35pu06L+c
 ```
-{% endfolding %}
+::
 
 判断为Base64编码，使用 https://c.runoob.com/front-end/693/ 可以整段解码。根据Base64编码原理，Base64中间不会出现等号占位符，所以等号附近可能有隐藏信息。
 使用 https://blog.csdn.net/qq_51550750/article/details/122813934 提供的程序，很快拿到了隐藏的答案。

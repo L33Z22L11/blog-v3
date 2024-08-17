@@ -35,11 +35,11 @@ Windows 在安装、登录之后建议在任务栏上右键图标，在“Prefer
 ## 常用命令
 
 - 检查Tailscale内网中到某主机的连通性，分为 DERP 中转和 IP 直连两种情况。
-  :copy{prefix="$" code="tailscale ping <host>"}
+  :copy{prompt="$" command="tailscale ping <host>"}
 - 检查本机的网络环境。
-  :copy{prefix="$" code="tailscale netcheck"}
+  :copy{prompt="$" command="tailscale netcheck"}
 - 登录新账号，也可以把获取到的登录链接发给他人帮忙登录。
-  :copy{prefix="$" code="tailscale login"}
+  :copy{prompt="$" command="tailscale login"}
 
 ## 重启服务
 

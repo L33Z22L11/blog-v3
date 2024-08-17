@@ -14,7 +14,7 @@ tags: [教程, 软件, DOSBox]
 - 下载 DOSBox 并安装。
   - [官网下载](https://www.dosbox.com/download.php#:~:text=Windows)
   - 如果你电脑具有较好的国际互联网接入环境，可以通过 WinGet 一键安装。
-    :copy{prefix="PS>" code="winget install dosbox"}
+    :copy{prompt="PS>" command="winget install dosbox"}
 - 在以下地址之一下载 MASM 套件，解压到 `D:\Software\MASM`。
   - [dosasm/dosrun MASM-v5.00](https://github.com/dosasm/dosrun/tree/main/bundles/src/MASM-v5.00/masm)
   - [dosasm/dosrun MASM-v6.11](https://github.com/dosasm/dosrun/tree/main/bundles/src/MASM-v6.11/masm)
@@ -26,8 +26,8 @@ tags: [教程, 软件, DOSBox]
 
 - 在开始菜单中搜索“DOSBox 0.74-3 Options”打开。
 - 在“开始菜单>所有应用>DOSBox 0.74-3”中找到“DOSBox 0.74-3 Options”打开。
-- :copy{prefix="CMD>" code="notepad %LocalAppData%\DOSBox\dosbox-0.74-3.conf"}
-- :copy{prefix="PS>" code="code $env:LOCALAPPDATA\DOSBox\dosbox-0.74-3.conf"}
+- :copy{prompt="CMD>" command="notepad %LocalAppData%\DOSBox\dosbox-0.74-3.conf"}
+- :copy{prompt="PS>" command="code $env:LOCALAPPDATA\DOSBox\dosbox-0.74-3.conf"}
 
 #### 修改显示大小
 

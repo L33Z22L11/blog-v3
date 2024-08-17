@@ -1,27 +1,31 @@
 <script setup lang="ts">
 defineProps<{
-    prefix?: string
-    code: string
+    prompt?: string
+    command: string
 }>()
 const text = ref<HTMLInputElement>()
 function copy() {
-    navigator.clipboard.writeText(text.value!.value)
+    try {
+        navigator.clipboard.writeText(text.value!.value)
+    }
+    catch (e) {
+        text.value!.select()
+        document.execCommand('copy')
+    }
 }
 </script>
 
 <template>
-    <code class="copy">
-        <span v-if="prefix" class="snippet-prefix">{{ prefix }}</span>
-        <input ref="text" class="code check-x" :value="code">
-        <div class="copy-btn" @click="copy"><Icon name="ph:copy-bold" size="1.2em" /></div>
+    <code class="command">
+        <span v-if="prompt" class="prompt">{{ prompt }}</span>
+        <input ref="text" class="code check-x" :value="command">
+        <div class="copy" @click="copy"><Icon name="ph:copy-bold" size="1.2em" /></div>
     </code>
 </template>
 
 <style lang="scss" scoped>
-.copy {
+.command {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     overflow: hidden;
     margin: 0.5rem 0;
     border: 1px solid var(--c-border);
@@ -30,7 +34,8 @@ function copy() {
     font-size: 0.8125em;
     line-height: 2.5;
 
-    .snippet-prefix {
+    .prompt {
+        flex-shrink: 0;
         padding: 0 1em;
         border-right: 1px solid var(--c-border);
         background-color: var(--c-bg-2);
@@ -38,13 +43,14 @@ function copy() {
     }
 
     .code {
-        flex: 1;
+        // flex-grow: 1 会在窄宽度下溢出
+        width: 100%;
         background-color: var(--ld-bg-card);
         white-space: nowrap;
         text-indent: 1em;
     }
 
-    .copy-btn {
+    .copy {
         display: inline-flex;
         align-items: center;
         height: 2.5em;

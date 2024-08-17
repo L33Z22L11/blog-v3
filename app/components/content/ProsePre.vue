@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Clipboard from 'clipboard'
 import tippy from 'tippy.js'
 import 'tippy.js/dist/tippy.css'
 
@@ -16,24 +17,24 @@ withDefaults(defineProps<{
 const isWrap = ref(false)
 const codeblock = ref<HTMLElement>()
 const copyBtn = ref<HTMLElement>()
-async function copy() {
-    let msg = '已复制'
-    try {
-        await navigator.clipboard.writeText(codeblock.value!.textContent as string)
-    }
-    catch (e) {
-        msg = '复制失败'
-    }
-    finally {
-        tippy(copyBtn.value!, {
-            content: msg,
-            trigger: 'manual',
-            onShow(instance) {
-                setTimeout(() => instance.hide(), 1000)
-            },
-        }).show()
-    }
+
+function showTooltip(message: string) {
+    tippy(copyBtn.value!, {
+        content: message,
+        trigger: 'manual',
+        onShow(instance) {
+            setTimeout(() => instance.hide(), 1000)
+        },
+    }).show()
 }
+
+onMounted(() => {
+    const clipboard = new Clipboard(copyBtn.value!, {
+        text: () => codeblock.value!.textContent as string,
+    })
+    clipboard.on('success', () => showTooltip('已复制'))
+    clipboard.on('error', () => showTooltip('复制失败'))
+})
 </script>
 
 <template>
@@ -60,7 +61,7 @@ async function copy() {
     margin-block: 1em;
     border-radius: 8px;
     background-color: var(--c-bg-2);
-    font-size: 0.8125em;
+    font-size: 0.8125rem;
     line-height: 1.4;
 
     figcaption {
@@ -68,7 +69,7 @@ async function copy() {
         margin-inline-start: 1em;
         padding: 0.2em 0.8em;
         border-radius: 0 0 8px 8px;
-        background-color: var(--c-bg-3);
+        background-color: var(--c-border);
     }
 
     .language {

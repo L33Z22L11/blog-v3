@@ -20,7 +20,7 @@ active: 2
 ```
 
 #tab2
-:copy{prefix="QQ群" code="169994096"}
+:copy{prompt="QQ群" command="169994096"}
 
 #tab3
 申请要求：原则上多数独立博客的友链要求一致，可以参考 [加入开往](https://www.travellings.cn/docs/join) 页面的规则。

@@ -14,7 +14,7 @@ defineProps<{
 <style scoped lang="scss">
 .blur {
     transition: filter 0.2s;
-    filter: blur(0.5em);
+    filter: blur(4px);
 
     &:hover {
         filter: blur(0);

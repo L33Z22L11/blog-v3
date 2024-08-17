@@ -69,7 +69,6 @@ const [prev, next] = data.value ?? []
         }
 
         > .iconify {
-            flex-shrink: 0;
             opacity: 0.5;
             font-size: 2rem;
             transition: all 0.2s;

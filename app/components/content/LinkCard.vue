@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-    <ZRawLink :to="link" target="_blank" class="link-card card">
+    <ZRawLink :to="link" class="link-card card">
         <div class="link-card-info">
             <div class="link-card-title">
                 {{ title }}

@@ -13,12 +13,12 @@ references:
 
 ## 临时解决办法
 
-:copy{prefix="$" code="rm -r ~/.config/QQ/crash_files"}
+:copy{prompt="$" command="rm -r ~/.config/QQ/crash_files"}
 
 ## 长期解决办法
 
 在执行临时办法后，执行以下命令：
-:copy{prefix="$" code="mkdir -m 444 ~/.config/QQ/crash_files"}
+:copy{prompt="$" command="mkdir -m 444 ~/.config/QQ/crash_files"}
 
 ## 点评
 

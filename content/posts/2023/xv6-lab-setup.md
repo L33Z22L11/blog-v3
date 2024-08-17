@@ -16,7 +16,7 @@ tags: [实验室, Lab]
 ## 环境配置
 
 - 安装依赖：
-  :copy{prefix="$" code="sudo pacman -S risc-v qemu-system-riscv"}
+  :copy{prompt="$" command="sudo pacman -S risc-v qemu-system-riscv"}
 
 如果克隆的是2021版的仓库，需要修改Makefile：
 

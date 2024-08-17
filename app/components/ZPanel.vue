@@ -56,7 +56,7 @@ button {
     cursor: pointer;
 
     &:hover {
-        background-color: var(--c-bg-a50);
+        background-color: var(--c-bg-a80);
         color: var(--c-primary-1);
     }
 

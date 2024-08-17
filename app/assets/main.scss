@@ -1,3 +1,19 @@
+:root {
+    --font-family: "HarmonyOS_Medium", system-ui, sans-serif;
+    --font-serif: "Noto Serif SC", serif;
+    --font-monospace: "SFMono-Regular", "Fira Code", "JetBrains Mono", "Cascadia Code", "Monaco", "Noto Sans Mono", "Consolas", "monospace", monospace;
+
+    // 兼容了一点 IE
+    background-color: hsl(220deg 20% 98%);
+    background-color: var(--c-bg-1);
+    font-family: sans-serif;
+    font-family: var(--font-family);
+    font-synthesis: style;
+    color: var(--c-text-1);
+    scroll-behavior: smooth;
+    scrollbar-color: var(--c-text-3) var(--c-bg-1);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -14,21 +30,7 @@ a {
     -webkit-tap-highlight-color: var(--c-primary-3);
 }
 
-:root {
-    --font-family: "HarmonyOS_Medium", system-ui, sans-serif;
-    --font-serif: "Noto Serif SC", serif;
-    --font-monospace: sfmono-regular, "Fira Code", "JetBrains Mono", "Cascadia Code", monaco, "Noto Sans Mono", consolas, "monospace", monospace;
-
-    background-color: var(--c-bg-1);
-    font-family: var(--font-family);
-    font-synthesis: style;
-    color: var(--c-text-1);
-    scroll-behavior: smooth;
-    scrollbar-color: var(--c-text-3) var(--c-bg-1);
-}
-
 code, pre {
-    /* stylelint-disable-next-line font-family-name-quotes */
     font-family: var(--font-monospace);
 }
 
@@ -71,6 +73,7 @@ mark {
     src: url("/fonts/AlimamaFangYuanTi.woff2");
 }
 
+// Iconify 图标复用了此类
 .iconify {
     flex-shrink: 0;
     font-size: 1.2em;
@@ -82,6 +85,7 @@ mark {
     overflow: hidden;
     border-radius: 0.5em;
     box-shadow: 0 0.1em 0.2em var(--ld-shadow);
+    background-color: #fff;
     background-color: var(--ld-bg-card);
     transition: all 0.2s;
 
@@ -118,6 +122,7 @@ mark {
     }
 }
 
+// 横向滚动遮罩
 // PURE CSS MAGIC!
 .scrollcheck-x {
     --left-offset: 0;

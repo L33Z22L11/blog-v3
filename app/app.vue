@@ -1,7 +1,8 @@
 <template>
+    <ZSkipToContent />
     <ZSidebar />
     <div id="content">
-        <main>
+        <main id="main-content">
             <NuxtPage />
             <ZFooter />
         </main>
@@ -16,6 +17,7 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
+    min-width: 0;
 }
 
 // 合并处理 #z-sidebar, #z-aside
@@ -40,11 +42,16 @@ aside {
     // 此时即使设置 flex-grow，也会影响 #sidebar 无法正确 shrink
     width: $breakpoint-widescreen;
 
-    // 使内容失去宽度，由 flex 全权 grow，从而正确计算宽度
-    // 设置 contain: inline-size 也可，但兼容性不佳
+    // 解决父级 flexbox 设置 justify-content: center 时溢出左侧消失的问题
+    min-width: 0;
+
+    // 为了使内容正确计算宽度而不横向溢出，方法有三：
+    // 1. 设置 min-width: 0
+    // 2. 使内容失去宽度，由 flex 全权 grow
+    // 3. 设置 contain: inline-size 也可，但兼容性不佳
     > main {
         flex-grow: 1;
-        width: 0;
+        min-width: 0;
         min-height: calc(100vh + 5rem);
     }
 }

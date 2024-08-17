@@ -34,6 +34,7 @@ const updatedLabel = getPostTime(props.updated)
     container-type: inline-size;
     display: block;
     position: relative;
+    border-radius: 0.8rem;
     color: var(--c-text);
 
     &:hover {

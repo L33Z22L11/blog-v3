@@ -1,6 +1,6 @@
 ---
 title: 西邮Linux兴趣小组2020纳新面试题题解
-description: ' '
+description: ''
 date: 2022-11-20 13:57:19
 updated: 2023-11-10 21:08:28
 cover: https://7.isyangs.cn/24/65a8dcfb73493-24.jpg
@@ -402,16 +402,16 @@ int main() {
 > 请通过命令创建一个目录，在该目录中创建几个后缀为`.Linux`的文件，然后通过命令查询这几个文件的基本属性信息（如文件大小，文件创建时间等），之后使用命令查看该目录下文件名含有“`.Linux`”的文件的数量（不包括子目录下的文件），把得到的数字写入到一个文件中，最后删除此目录。
 
 - 创建目录
-  :copy{prefix="$" code="mkdir my_directory"}
+  :copy{prompt="$" command="mkdir my_directory"}
 - 进入目录
-  :copy{prefix="$" code="cd my_directory"}
+  :copy{prompt="$" command="cd my_directory"}
 - 创建后缀为.Linux的文件
-  :copy{prefix="$" code="touch file{1,2,3}.Linux"}
+  :copy{prompt="$" command="touch file{1,2,3}.Linux"}
 - 查询文件的基本属性信息
-  :copy{prefix="$" code="ls -l file*.Linux"}
+  :copy{prompt="$" command="ls -l file*.Linux"}
 - 查看包含".Linux"的文件数量
-  :copy{prefix="$" code="ls -l file*.Linux | wc -l > file_count.txt"}
+  :copy{prompt="$" command="ls -l file*.Linux | wc -l > file_count.txt"}
 - 查看文件数量
-  :copy{prefix="$" code="cat file_count.txt"}
+  :copy{prompt="$" command="cat file_count.txt"}
 - 删除目录及其内容
-  :copy{prefix="$" code="cd .. && rm -r my_directory"}
+  :copy{prompt="$" command="cd .. && rm -r my_directory"}

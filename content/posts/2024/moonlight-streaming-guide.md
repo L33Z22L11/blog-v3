@@ -103,7 +103,7 @@ link: https://www.amyuni.com/forum/viewtopic.php?t=3030
   - 多执行一次“关闭虚拟显示器”是为了防止虚拟显示器多开导致串流主机分辨率异常且操作卡顿。
   - `rundll32 user32.dll,LockWorkStation` 是为了在结束串流后锁定电脑。**注意，串流暂停或结束后电脑声音将不通过串流设备播放。**
 - 工作目录：usbmmidd 解压后所在目录
-  :copy{code="D:\Software\usbmmidd_v2\"}
+  :copy{command="D:\Software\usbmmidd_v2\"}
 
 点击“保存”按钮，你应该能看到串流列表里多了刚刚添加的“隐私串流”应用。
 

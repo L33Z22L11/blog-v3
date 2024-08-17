@@ -146,7 +146,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 删除了配置文件里的无用配置项，我就着手全局安装 Stylelint 相关包了。
 
-:copy{prefix="$" code="pnpm i -g stylelint stylelint-config-standard stylelint-order"}
+:copy{prompt="$" command="pnpm i -g stylelint stylelint-config-standard stylelint-order"}
 
 我原本想在用户目录写 `~/stylelint.config.js` 或者 `~/.stylelintrc.js` 文件，就像 `~/.clang-format` 可以作为 `clangd` 的配置文件一样，但发现 VS Code 插件不读取用户目录的配置作为配置文件。
 
@@ -198,7 +198,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 我使用这行命令试图查看 SSH 环境中的 PATH：
 
-:copy{prefix="PS>" code='ssh localhost -t "echo '$Env:PATH'"'}
+:copy{prompt="PS>" code='ssh localhost -t "echo '$Env:PATH'"'}
 
 但输出一切正常，`C:\Users\Zhilu\AppData\Local\pnpm` 完好地存在于 PATH 中。
 
@@ -241,7 +241,7 @@ stylelint/vscode-stylelint 仓库的 Issue [#331](https://github.com/stylelint/v
 全局安装的 Stylelint 包似乎找不到各种东西。在 stylelint/stylelint 的另一个 Issue [#7297](https://github.com/stylelint/stylelint/issues/7297) 中，提出者给出了一个“dirty fix”：
 
 - 创建软链接 `/usr/node_modules` 指向 `/lib64/node_modules`。
-  :copy{prefix="$" code="sudo ln -s /lib64/node_modules /usr/node_modules"}
+  :copy{prompt="$" command="sudo ln -s /lib64/node_modules /usr/node_modules"}
 
 #### 如果 npm 被升级的话，也许就结束了吧
 
@@ -288,17 +288,17 @@ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 
 - 按照 {% post_link 2024/archlinux-boot-repair %} 一文中的方式挂载分区、进入系统。
 - 尝试恢复被修改的权限
-  :copy{prefix="#" code="chown -R root:root /usr/{lib/node_modules,bin,share}"}
+  :copy{prompt="#" command="chown -R root:root /usr/{lib/node_modules,bin,share}"}
 - 尝试恢复部分关键程序的 setuid 位
-  :copy{prefix="#" code="chmod u+s /usr/bin/sudo /usr/bin/su"}
+  :copy{prompt="#" command="chmod u+s /usr/bin/sudo /usr/bin/su"}
 - 建议切换到自己的用户上，实在切不了就算了
-  :copy{prefix="#" code="su <你的用户名>"}
+  :copy{prompt="#" command="su <你的用户名>"}
   - 如果忘了自己的用户名，可以执行这个命令：
-  :copy{prefix="#" code='cat /etc/passwd | grep ":1000"'}
+  :copy{prompt="#" code='cat /etc/passwd | grep ":1000"'}
 - 安装权限修复工具
-  :copy{prefix="$" code="yay -S pacman-fix-permissons"}
+  :copy{prompt="$" command="yay -S pacman-fix-permissons"}
 - 修复权限
-  :copy{prefix="$" code="sudo pacman-fix-permissions"}
+  :copy{prompt="$" command="sudo pacman-fix-permissions"}
 
 ```log [pacman-fix-permissions 的输出]
 ……

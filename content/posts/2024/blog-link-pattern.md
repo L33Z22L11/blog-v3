@@ -108,9 +108,9 @@ permalink: :year:month/:name/
 要一条一条写重定向规则，有点麻烦，可以这么做：
 
 - 尝试用命令生成先前博客链接路径和新的博客链接路径
-  :copy{prefix="PS >" code="hexo clean; hexo generate"}
+  :copy{prompt="PS >" command="hexo clean; hexo generate"}
 - findstr 不完全支持 PCRE，可以用 `Select-String "\\\d{6}\\"` 代替
-  :copy{prefix="PS >" code='dir -s .\public\ | findstr -r "\\[0-9][0-9][0-9][0-9][0-9][0-9]\\"'}
+  :copy{prompt="PS >" code='dir -s .\public\ | findstr -r "\\[0-9][0-9][0-9][0-9][0-9][0-9]\\"'}
 
 再用正则表达式稍微替换一下输出（不要忘了`/`），就能得到 Netlify 的重定向规则文件了。
 

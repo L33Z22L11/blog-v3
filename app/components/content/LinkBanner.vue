@@ -11,7 +11,7 @@ const src = (props?.mirror ? 'https://image.baidu.com/search/down?url=' : '') + 
 </script>
 
 <template>
-    <ZRawLink :to="link" target="_blank" class="link-banner card">
+    <ZRawLink :to="link" class="link-banner card">
         <NuxtImg v-if="banner" class="link-banner-bg" :src :alt="title" />
         <div class="link-banner-header" />
         <div class="link-banner-info">

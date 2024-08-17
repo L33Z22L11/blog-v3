@@ -20,7 +20,7 @@ tags: [教程, 系统, Windows, 终端]
 虽然 Windows 会在即将推出的版本加上 sudo，但目前还没有，需要通过安装 gsudo 来添加 sudo 支持。
 
 - 安装 gsudo
-  :copy{prefix="PS>" code="winget install gsudo"}
+  :copy{prompt="PS>" command="winget install gsudo"}
 
 ### 如果使用 Windows Powershell
 
@@ -29,14 +29,14 @@ tags: [教程, 系统, Windows, 终端]
 PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是旧版本的 PSReadLine 模块，需要强制更新。
 
 - 安装新版 PSReadLine 模块
-  :copy{prefix="PS>" code="sudo Install-Module PSReadLine -Force"}
+  :copy{prompt="PS>" command="sudo Install-Module PSReadLine -Force"}
 
 ### 启用自动补全
 
 - 打开 PS 配置文件
-  :copy{prefix="PS>" code="notepad $PROFILE"}
+  :copy{prompt="PS>" command="notepad $PROFILE"}
   - 也可以更改系统全局配置文件
-  :copy{prefix="PS>" code="sudo notepad $PSHOME\profile.ps1"}
+  :copy{prompt="PS>" command="sudo notepad $PSHOME\profile.ps1"}
 - 添加以下内容
   ```powershell [$PROFILE]
   # 按 Tab 键显示补全菜单，按方向键切换选项
@@ -52,14 +52,14 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 ### Oh My Posh
 
 - 安装 oh-my-posh（参见 [官方文档](https://ohmyposh.dev/docs/installation/windows)）
-  :copy{prefix="PS>" code="winget install JanDeDobbeleer.OhMyPosh"}
+  :copy{prompt="PS>" command="winget install JanDeDobbeleer.OhMyPosh"}
 - 配置（参见 [官方文档](https://ohmyposh.dev/docs/installation/prompt)）
   - 更改 PS 脚本执行策略
-  :copy{prefix="PS(管理员)>" code="Set-ExecutionPolicy RemoteSigned"}
+  :copy{prompt="PS(管理员)>" command="Set-ExecutionPolicy RemoteSigned"}
   - 新建 PS 配置文件
-  :copy{prefix="PS>" code="New-Item -Path $PROFILE -Type File -Force"}
+  :copy{prompt="PS>" command="New-Item -Path $PROFILE -Type File -Force"}
   - 打开 PS 配置文件
-  :copy{prefix="PS>" code="notepad $PROFILE"}
+  :copy{prompt="PS>" command="notepad $PROFILE"}
   - 在文件中添加以下内容
     ```powershell [$PROFILE]
     oh-my-posh init pwsh | Invoke-Expression
@@ -81,10 +81,10 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 
 - 打开 Windows Terminal 设置
 - 配置文件 - 添加新配置文件
-  - :copy{prefix="名称" code="Git Bash"}
-  - :copy{prefix="命令" code="%ProgramFiles%\Git\bin\bash.exe --login -i"}
-  - :copy{prefix="启动目录" code="%USERPROFILE%"}
-  - :copy{prefix="图标" code="%ProgramFiles%\Git\mingw64\share\git\git-for-windows.ico"}
+  - :copy{prompt="名称" command="Git Bash"}
+  - :copy{prompt="命令" command="%ProgramFiles%\Git\bin\bash.exe --login -i"}
+  - :copy{prompt="启动目录" command="%USERPROFILE%"}
+  - :copy{prompt="图标" command="%ProgramFiles%\Git\mingw64\share\git\git-for-windows.ico"}
 
 ## 美化
 
