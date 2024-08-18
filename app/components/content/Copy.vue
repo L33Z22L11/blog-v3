@@ -3,23 +3,20 @@ defineProps<{
     prompt?: string
     command: string
 }>()
-const text = ref<HTMLInputElement>()
-function copy() {
-    try {
-        navigator.clipboard.writeText(text.value!.value)
-    }
-    catch (e) {
-        text.value!.select()
-        document.execCommand('copy')
-    }
-}
+
+const commandInput = ref<HTMLInputElement>()
+const copyBtn = ref<HTMLElement>()
+
+onMounted(() => {
+    copy(copyBtn.value!, commandInput.value!)
+})
 </script>
 
 <template>
     <code class="command">
         <span v-if="prompt" class="prompt">{{ prompt }}</span>
-        <input ref="text" class="code check-x" :value="command">
-        <div class="copy" @click="copy"><Icon name="ph:copy-bold" size="1.2em" /></div>
+        <input ref="commandInput" class="code check-x" :value="command">
+        <button ref="copyBtn" class="copy"><Icon name="ph:copy-bold" /></button>
     </code>
 </template>
 

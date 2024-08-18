@@ -17,7 +17,7 @@ const orderBy = useRouteQuery<OrderType>(
 const { data } = await useAsyncData(
     'posts_index',
     () => queryContent()
-        .only(['title', 'description', 'date', 'updated', '_path', 'cover'])
+        .only(['title', 'description', 'date', 'updated', 'categories', '_path', 'cover'])
         .where({ _original_dir: { $eq: '/posts' } })
         .find(),
     { default: () => [] },
@@ -44,7 +44,9 @@ onMounted(() => {
 </script>
 
 <template>
-    <ZhiluHeader class="header" />
+    <ZRawLink to="/">
+        <ZhiluHeader class="header" />
+    </ZRawLink>
     <div class="post-list">
         <ZOrderToggle v-model="orderBy" class="order-toggle" />
         <ZArticle

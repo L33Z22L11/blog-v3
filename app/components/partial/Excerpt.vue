@@ -10,7 +10,7 @@ const caret = ref('')
 
 if (appConfig.excerpt?.animation !== false) {
     excerpt.value = ''
-    caret.value = ref(appConfig.excerpt?.caret ?? '_')
+    caret.value = appConfig.excerpt?.caret ?? '_'
     onMounted(async () => {
         for (const char of props.excerpt) {
             excerpt.value += char
@@ -23,20 +23,23 @@ if (appConfig.excerpt?.animation !== false) {
 
 <template>
     <div class="md-excerpt gradient-card">
-        <Icon name="ph:highlighter-bold" size="1.2em" />&nbsp;
-        {{ excerpt }}{{ caret }}
+        <Icon name="ph:highlighter-bold" />{{ excerpt }}{{ caret }}
     </div>
 </template>
 
 <style lang="scss" scoped>
 .md-excerpt {
-    opacity: 0.4;
     margin: 1rem;
     padding: 0.5rem;
     font-size: 0.9em;
+    color: var(--c-text-2);
+
+    .iconify {
+        margin-right: 0.3em;
+    }
 
     &:hover {
-        opacity: 1;
+        color: inherit;
     }
 }
 </style>

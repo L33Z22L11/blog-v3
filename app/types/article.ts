@@ -4,7 +4,7 @@ export default interface ArticleProps {
     link?: string
     date?: string
     updated?: string
-    category?: string[]
+    categories?: string[]
     tags?: string[]
     type?: 'tech' | 'story' | undefined
     cover?: string

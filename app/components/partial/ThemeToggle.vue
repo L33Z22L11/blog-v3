@@ -1,26 +1,13 @@
 <script setup lang="ts">
 import tippy from 'tippy.js'
 import 'tippy.js/dist/tippy.css'
-import type { ThemeType, Themes } from '~/types/theme'
 
+const appConfig = useAppConfig()
 const colorMode = useColorMode()
-const themeToggle = ref<Array<HTMLDivElement> | null>(null)
+const themeToggle = ref<HTMLDivElement[] | undefined>()
 
-const themes: Themes = {
-    light: {
-        icon: 'ph:sun-bold',
-        tip: '浅色模式',
-    },
-    system: {
-        icon: 'ph:monitor-bold',
-        tip: '跟随系统',
-    },
-    dark: {
-        icon: 'ph:moon-bold',
-        tip: '深色模式',
-    },
-}
-
+const themes = appConfig.themes
+type ThemeType = keyof typeof themes
 function toggleTheme(key: ThemeType) {
     colorMode.preference = key
 }
@@ -28,10 +15,7 @@ function toggleTheme(key: ThemeType) {
 onMounted(() => {
     themeToggle.value?.forEach((button, index) => {
         const key = Object.keys(themes)[index] as ThemeType
-        const tip = themes[key].tip
-        tippy(button, {
-            content: tip,
-        })
+        tippy(button, { content: themes[key].tip })
     })
 })
 </script>

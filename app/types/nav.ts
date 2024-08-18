@@ -4,9 +4,7 @@ interface NavItem {
     url: string
 }
 
-interface NavGroup {
+export type Nav = {
     title: string
     items: NavItem[]
-}
-
-export type Nav = NavItem[] | NavGroup[]
+}[]

@@ -14,9 +14,10 @@ const toc = computed(() => data.value?.body?.toc)
     <DefineTemplate v-slot="{ tocItem }">
         <ul>
             <li v-for="(entry, index) in tocItem" :key="index">
-                <NuxtLink :to="`#${entry?.id}`">
+                <!-- 若使用 NuxtLink 则键盘焦点不会切换 -->
+                <a :href="`#${entry?.id}`">
                     {{ entry.text }}
-                </NuxtLink>
+                </a>
                 <ReuseTemplate v-if="entry.children?.length" :toc-item="entry.children" />
             </li>
         </ul>

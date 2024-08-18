@@ -1,7 +1,11 @@
 import { Feed } from 'feed'
-import { getQuery, setHeader } from 'h3'
+import { setHeader } from 'h3'
 import blogConfig from '~~/blog.config'
 import { serverQueryContent } from '#content/server'
+
+function getUrl(path: string | undefined) {
+    return new URL(path ?? '', blogConfig.url).toString()
+}
 
 export default defineEventHandler(async (event) => {
     const feed = new Feed({
@@ -9,16 +13,16 @@ export default defineEventHandler(async (event) => {
         title: blogConfig.title,
         updated: new Date(),
         generator: 'https://github.com/L33Z22L11/blog-v3',
-        language: blogConfig.language,
-        feedLinks: {
-            atom: 'atom.xml',
-        },
         author: {
             ...blogConfig.author,
             link: blogConfig.author.homepage,
         },
         link: blogConfig.url,
+        feedLinks: {
+            atom: getUrl('atom.xml'),
+        },
         description: blogConfig.description,
+        language: blogConfig.language,
         image: blogConfig.author.avatar,
         favicon: blogConfig.favicon,
         copyright: blogConfig.copyright.abbr,
@@ -32,8 +36,8 @@ export default defineEventHandler(async (event) => {
     posts.forEach(async (post) => {
         feed.addItem({
             title: post.title ?? '',
-            id: post._path,
-            link: post._path ?? '',
+            id: getUrl(post._path),
+            link: getUrl(post._path) ?? '',
             date: new Date(post.updated),
             description: post.description.toString(),
             category: post.categories,

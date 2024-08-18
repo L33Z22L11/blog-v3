@@ -102,7 +102,6 @@ const appConfig = useAppConfig()
     font-size: 4rem;
     transition: opacity 1s;
     filter: blur(2px);
-    pointer-events: none;
     z-index: -2;
 
     >* {

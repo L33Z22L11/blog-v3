@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import Clipboard from 'clipboard'
-import tippy from 'tippy.js'
-import 'tippy.js/dist/tippy.css'
-
 withDefaults(defineProps<{
     code?: string
     language?: string
@@ -15,25 +11,11 @@ withDefaults(defineProps<{
 })
 
 const isWrap = ref(false)
-const codeblock = ref<HTMLElement>()
-const copyBtn = ref<HTMLElement>()
-
-function showTooltip(message: string) {
-    tippy(copyBtn.value!, {
-        content: message,
-        trigger: 'manual',
-        onShow(instance) {
-            setTimeout(() => instance.hide(), 1000)
-        },
-    }).show()
-}
+const elCodeblock = ref<HTMLElement>()
+const elCopyBtn = ref<HTMLElement>()
 
 onMounted(() => {
-    const clipboard = new Clipboard(copyBtn.value!, {
-        text: () => codeblock.value!.textContent as string,
-    })
-    clipboard.on('success', () => showTooltip('已复制'))
-    clipboard.on('error', () => showTooltip('复制失败'))
+    copy(elCopyBtn.value!, elCodeblock.value!)
 })
 </script>
 
@@ -42,16 +24,20 @@ onMounted(() => {
         <figcaption v-if="filename">
             {{ filename }}
         </figcaption>
+
         <span v-if="language" class="language">{{ language }}</span>
+
         <div class="operations">
             <button @click="isWrap = !isWrap">
                 {{ isWrap ? '横向滚动' : '自动换行' }}
             </button>
-            <button ref="copyBtn" @click="copy">
+            <button ref="elCopyBtn">
                 复制
             </button>
         </div>
-        <pre ref="codeblock" class="scrollcheck-x" :class="{ wrap: isWrap }"><slot /></pre>
+
+        <!-- 嘿嘿，不要换行 -->
+        <pre ref="elCodeblock" class="scrollcheck-x" :class="{ wrap: isWrap }"><slot /></pre>
     </figure>
 </template>
 

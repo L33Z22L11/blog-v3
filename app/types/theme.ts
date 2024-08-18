@@ -1,5 +1,4 @@
-export type ThemeType = 'system' | 'light' | 'dark'
-export type Themes = Record<ThemeType, {
+export type Themes = Record<string, {
     icon: string
     tip: string
 }>

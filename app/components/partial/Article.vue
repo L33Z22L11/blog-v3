@@ -3,8 +3,14 @@ import type ArticleProps from '~/types/article'
 
 const props = defineProps < { useUpdated: boolean } & ArticleProps>()
 
+const appConfig = useAppConfig()
+
 const publishedLabel = getPostTime(props.date)
 const updatedLabel = getPostTime(props.updated)
+
+// const categoryLabel = props.categories?.[0]
+// const catagoryColor = appConfig.article.categories?.[categoryLabel]?.color
+// const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
 </script>
 
 <template>
@@ -19,11 +25,25 @@ const updatedLabel = getPostTime(props.updated)
             </p>
             <div class="article-info">
                 <time v-if="!useUpdated" :datetime="date">
-                    <Icon name="solar:calendar-add-bold-duotone" /> {{ publishedLabel }}</time>
+                    <Icon name="solar:calendar-add-bold-duotone" />
+                    {{ publishedLabel }}
+                </time>
                 <time v-if="publishedLabel !== updatedLabel" :datetime="updated">
-                    <Icon name="solar:pen-2-bold-duotone" /> {{ updatedLabel }}</time>
+                    <Icon name="solar:pen-2-bold-duotone" />
+                    {{ updatedLabel }}
+                </time>
                 <time v-if="useUpdated" :datetime="date">
-                    <Icon name="solar:calendar-add-bold-duotone" /> {{ publishedLabel }}</time>
+                    <Icon name="solar:calendar-add-bold-duotone" />
+                    {{ publishedLabel }}
+                </time>
+                <!-- <span
+                    v-if="categoryLabel"
+                    class="article-category"
+                    :style="{ '--cg-color': categoryColor }"
+                >
+                    <Icon :name="categoryIcon" />
+                    {{ categoryLabel }}
+                </span> -->
             </div>
         </article>
     </ZRawLink>
@@ -75,6 +95,10 @@ const updatedLabel = getPostTime(props.updated)
 .article-descrption {
     font-size: 0.9em;
     color: var(--c-text-2);
+}
+
+.article-category {
+    color: var(--cg-color);
 }
 
 .article-cover {

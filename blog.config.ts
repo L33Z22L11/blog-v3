@@ -1,10 +1,11 @@
 import type { Nav } from '~/types/nav'
+import type { Themes } from '~/types/theme'
 
 const author = {
     name: '纸鹿本鹿',
     avatar: 'https://www.zhilu.cyou/api/avatar.png',
     email: 'hi@zhilu.cyou',
-    homepage: 'https://zhilu.cyou',
+    homepage: 'https://zhilu.cyou/',
 }
 
 export default {
@@ -20,7 +21,7 @@ export default {
     language: 'zh-CN',
     timezone: 'Asia/Shanghai',
     favicon: 'https://www.zhilu.cyou/api/icon.png',
-    url: 'https://blog.zhilu.cyou',
+    url: 'https://blog.zhilu.cyou/',
     copyright: {
         abbr: 'CC BY-NC-SA 4.0',
         name: '署名-非商业性使用-相同方式共享 4.0 国际',
@@ -63,6 +64,29 @@ export default {
             ] },
         ],
         message: '',
+    },
+
+    themes: <Themes> {
+        light: {
+            icon: 'ph:sun-bold',
+            tip: '浅色模式',
+        },
+        system: {
+            icon: 'ph:monitor-bold',
+            tip: '跟随系统',
+        },
+        dark: {
+            icon: 'ph:moon-bold',
+            tip: '深色模式',
+        },
+    },
+
+    article: {
+        categories: {
+            经验分享: { icon: '', color: '#3af' },
+            生活: { icon: '', color: '#3ba' },
+            代码: { icon: '', color: '#77f' },
+        },
     },
 
     twikoo: {

@@ -71,7 +71,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 中文睡醒刚下床，微信电话铃声就响个不停，接听却没声音。打字吧：
 
-{% timeline %}
+::timeline
 <!-- node Yuanfang -->
 哥😭我给虚拟机编译内核，`make install` 时候 `/boot` 分区满了，我不敢整，怕搞崩，你能来给扩容一下不🥹
 <!-- node Yuanfang -->
@@ -88,7 +88,7 @@ link: https://github.com/KazariEX/hexo-server-live
 鹿神，快来救我
 <!-- node Yuanfang -->
 我整了快两个点，不会搞😿😿
-{% endtimeline %}
+::
 
 我去了实验室，检查他虚拟机的 `/boot` 分区有 1 GiB，但编译出的 Initrd 文件太大，只得由挂载分区改为普通文件夹并放入原先内容，重新编译才解决问题。顺带一提，他向 Linux 内核提交的 [代码](https://lore.kernel.org/all/20240509044323.247606-1-yf768672249@gmail.com/) 成功合并进了主分支。
 
