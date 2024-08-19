@@ -49,7 +49,7 @@ export default {
         copyright: `© ${new Date().getFullYear()} 纸鹿本鹿`,
         nav: <Nav>[
             { title: '探索', items: [
-                { icon: 'ph:link-bold', text: '友链', url: '/link' },
+                // { icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
                 { icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
                 { icon: 'ph:flying-saucer-bold', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
             ] },

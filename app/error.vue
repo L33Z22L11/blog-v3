@@ -5,9 +5,9 @@ defineProps({
     error: Object as () => NuxtError,
 })
 
-definePageMeta({
-    aside: ['blog_log'],
-})
+const route = useRoute()
+route.meta.aside = ['blog_log']
+
 const handleError = () => clearError({ redirect: '/' })
 </script>
 

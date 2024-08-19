@@ -1,13 +1,15 @@
 <script setup lang="ts">
+import type { ImgService } from '~/composables/useImg'
+
 const props = defineProps<{
     src: string
-    mirror?: boolean
+    mirror?: ImgService
     caption?: string
     width?: string
     fancybox?: boolean
 }>()
 
-const src = (props.mirror ? 'https://image.baidu.com/search/down?url=' : '') + props.src
+const src = useImgService(props.src, props.mirror)
 </script>
 
 <template>

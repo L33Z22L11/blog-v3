@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import tippy from 'tippy.js'
 import 'tippy.js/dist/tippy.css'
-import type { Link } from '~/types/friend'
+import type { Friend } from '~/types/friend'
 
-const props = defineProps<Link>()
+const props = defineProps<Friend>()
 const friendCard = ref<HTMLElement>()
 
 const mainDomain = getMainDomain(props.link)
@@ -48,10 +48,10 @@ onMounted(() => {
 }
 
 .icon {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 4rem;
-    box-shadow: 2px 4px 0.5rem var(--ld-shadow);
+    width: 3em;
+    height: 3em;
+    border-radius: 4em;
+    box-shadow: 2px 4px 0.5em var(--ld-shadow);
     background-color: white;
 }
 

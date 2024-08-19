@@ -1,4 +1,4 @@
-export interface Link {
+export interface Friend {
     icon: string
     name: string
     title?: string
@@ -7,8 +7,8 @@ export interface Link {
     comment?: string
 }
 
-export interface LinkGroup {
+export interface FriendGroup {
     name: string
     desc?: string
-    items: Link[]
+    items: Friend[]
 }

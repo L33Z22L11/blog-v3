@@ -62,7 +62,8 @@ link: https://github.com/Axixi2233/moonlight-android
 
 ::link-card
 ---
-icon: https://image.baidu.com/search/down?url=https://i1.hdslb.com/bfs/face/b41566f47ea0d0f1e35ed54521c849c68c026892.jpg@120w
+icon: https://i1.hdslb.com/bfs/face/b41566f47ea0d0f1e35ed54521c849c68c026892.jpg@120w
+mirror: true
 title: 阿西西的日常 - 哔哩哔哩
 link: https://space.bilibili.com/16893379/video
 ---

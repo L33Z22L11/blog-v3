@@ -1,10 +1,15 @@
 <script setup lang="ts">
-defineProps<{
+import type { ImgService } from '~/composables/useImg'
+
+const props = defineProps<{
     link: string
     title: string
     description?: string
     icon?: string
+    mirror?: ImgService
 }>()
+
+const src = useImgService(props.icon, props.mirror)
 </script>
 
 <template>
@@ -17,7 +22,7 @@ defineProps<{
                 {{ description || getDomain(link) }}
             </div>
         </div>
-        <NuxtImg v-if="icon" class="link-card-icon" :src="icon" alt="icon" />
+        <NuxtImg v-if="src" class="link-card-icon" :src :alt="title" />
     </ZRawLink>
 </template>
 

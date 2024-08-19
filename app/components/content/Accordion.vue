@@ -28,7 +28,7 @@ details {
             font-weight: bold;
             color: inherit;
 
-            &::after {
+            &::before {
                 content: "收起";
             }
         }
@@ -40,10 +40,11 @@ details {
         transition: all 0.2s;
         cursor: pointer;
 
-        &::after {
+        &::before {
             content: "展开";
             float: right;
             opacity: 0.5;
+            margin-left: 0.5em;
             font-weight: normal;
             transition: color 0.2s;
         }

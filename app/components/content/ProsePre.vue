@@ -14,9 +14,7 @@ const isWrap = ref(false)
 const elCodeblock = ref<HTMLElement>()
 const elCopyBtn = ref<HTMLElement>()
 
-onMounted(() => {
-    copy(elCopyBtn.value!, elCodeblock.value!)
-})
+useCopy(elCopyBtn, elCodeblock)
 </script>
 
 <template>

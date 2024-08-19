@@ -1,20 +1,18 @@
 <script lang="ts" setup>
-import type { LinkGroup } from '~/types/friend'
-
-defineProps<LinkGroup>()
+import allMyFriends from '~/assets/friend'
 </script>
 
 <template>
-    <div class="friend-group">
+    <div v-for="group in allMyFriends" :key="group.name" class="friend-group" v-bind="group">
         <h2 class="friend-title">
-            {{ name }}
+            {{ group.name }}
         </h2>
         <p class="friend-desc">
-            {{ desc }}
+            {{ group.desc }}
         </p>
         <ul class="friend-list">
-            <li v-for="friend in items" :key="friend.name" class="friend-card">
-                <ZFriendCard v-bind="friend" />
+            <li v-for="friend in group.items" :key="friend.name" class="friend-card">
+                <FriendCard v-bind="friend" />
             </li>
         </ul>
     </div>

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import tippy from 'tippy.js'
-import 'tippy.js/dist/tippy.css'
-
 const props = defineProps<{
     text: string
     tip?: string
@@ -10,24 +7,18 @@ const props = defineProps<{
 }>()
 
 const tip = ref<HTMLElement>()
-
+const tooltipText = props.tip || (props.copy ? '点击复制' : '')
 const icon = props.icon || (props.copy ? 'ph:copy' : 'ph:question')
 
-const tooltipText = props.tip || (props.copy ? '点击复制' : '')
-
-onMounted(() => {
-    tippy(tip.value!, {
-        content: tooltipText,
-    })
-    if (props.copy)
-        copy(tip.value!, tip.value!)
-})
+useTooltip(tip, tooltipText)
+if (props.copy)
+    useCopy(tip, tip)
 </script>
 
 <template>
     <span ref="tip" class="tip">
-        {{ text }}
-        <Icon :name="icon" class="tip-icon" />
+        <!-- 元素间不留空格 -->
+        {{ text }}<Icon :name="icon" class="tip-icon" />
     </span>
 </template>
 

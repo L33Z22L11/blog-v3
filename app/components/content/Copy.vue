@@ -7,9 +7,7 @@ defineProps<{
 const commandInput = ref<HTMLInputElement>()
 const copyBtn = ref<HTMLElement>()
 
-onMounted(() => {
-    copy(copyBtn.value!, commandInput.value!)
-})
+useCopy(copyBtn, commandInput)
 </script>
 
 <template>

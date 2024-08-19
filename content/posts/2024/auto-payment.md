@@ -22,7 +22,8 @@ references:
 
 ::link-card
 ---
-icon: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/Bcnwtg51vpWftdhUkP4Us7LPW5GoMLd13rMBXKJrNgLNFOYuicrBjBN9AyzWQd6Jm50V5WyiaBJVKlhgP4jm0F0w/0
+icon: https://mmbiz.qpic.cn/mmbiz_png/Bcnwtg51vpWftdhUkP4Us7LPW5GoMLd13rMBXKJrNgLNFOYuicrBjBN9AyzWQd6Jm50V5WyiaBJVKlhgP4jm0F0w/0
+mirror: true
 title: App自动续费 “进坑”容易“出坑”难！记者调查→
 link: https://mp.weixin.qq.com/s/TVIAlq9cdcjmSaYRScYM_g
 ---
@@ -32,7 +33,8 @@ link: https://mp.weixin.qq.com/s/TVIAlq9cdcjmSaYRScYM_g
 
 ::link-card
 ---
-icon: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/wlCrBZoK8HGKibibrZBXcyf4EUbmkg5AkycfXaQejfGHKHulE4OrfibRyPkdT0RKNgslI27ow6IJSQ7STtl443uqA/0
+icon: https://mmbiz.qpic.cn/mmbiz_png/wlCrBZoK8HGKibibrZBXcyf4EUbmkg5AkycfXaQejfGHKHulE4OrfibRyPkdT0RKNgslI27ow6IJSQ7STtl443uqA/0
+mirror: true
 title: 看账单惊呆！父母“上瘾”，凌晨3点还在打钱，一个月消费数千元……
 link: https://mp.weixin.qq.com/s/eldcP5_iVAZH6TlF_4zD_A
 ---

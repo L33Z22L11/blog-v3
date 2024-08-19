@@ -48,7 +48,6 @@ export default defineNuxtConfig({
     },
 
     routeRules: {
-        '/': { prerender: true },
         '/atom.xml': { prerender: true },
         '/sitemap.xml': { prerender: true },
     },
@@ -74,6 +73,7 @@ export default defineNuxtConfig({
         '@nuxt/image',
         '@nuxtjs/color-mode',
         '@nuxtjs/seo',
+        '@nuxtjs/sitemap',
         '@pinia/nuxt',
         '@vueuse/nuxt',
     ],

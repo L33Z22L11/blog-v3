@@ -1,6 +1,6 @@
-import type { LinkGroup } from '~/types/friend'
+import type { FriendGroup } from '~/types/friend'
 
-export default <LinkGroup[]>[
+export default <FriendGroup[]> [
     {
         name: '朋友',
         desc: '纸鹿和朋友在现实生活中关系很好。虽然他们可能在互联网上不太活跃。',
@@ -320,6 +320,14 @@ export default <LinkGroup[]>[
                 link: 'https://blog.ahzoo.cn/',
                 icon: 'https://blog.ahzoo.cn/avatar.webp',
                 comment: '技术笔记。',
+            },
+            {
+                name: 'iMaeGoo',
+                title: '空间站',
+                desc: '虹墨空间站',
+                link: 'https://www.imaegoo.com/',
+                icon: 'https://www.imaegoo.com/images/avatar.jpg',
+                comment: '前端折腾。',
             },
         ],
     },

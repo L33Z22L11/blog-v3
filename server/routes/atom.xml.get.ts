@@ -37,9 +37,9 @@ export default defineEventHandler(async (event) => {
         feed.addItem({
             title: post.title ?? '',
             id: getUrl(post._path),
-            link: getUrl(post._path) ?? '',
+            link: getUrl(post._path),
             date: new Date(post.updated),
-            description: post.description.toString(),
+            description: post.description,
             category: post.categories,
             image: post.cover,
             author: post.author || blogConfig.author.name,
