@@ -5,7 +5,7 @@ function render() {
     if (!slotContent)
         return <span>时间线为空</span>
 
-    return slotContent.map((node) => {
+    return slotContent.map((node: VNode) => {
         const textContent = node.children?.default?.()[0].children || ''
         const match = textContent?.match?.(/^\{(.*?)\}$/)
         return match

@@ -10,11 +10,14 @@ const props = defineProps<{
 } & ArticleProps>()
 
 const mainDate = computed(() => (props.useUpdated ? props.updated : props.date))
-const dateLabel = computed(() => format(new Date(mainDate.value), 'MM-dd'))
-const auxDateLabel = computed(() => (format(new Date(props.date), isSameYear(props.updated, props.date) ? 'MM-dd' : 'yyyy-MM-dd')))
+const dateLabel = computed(() => format(new Date(mainDate.value ?? 0), 'MM-dd'))
+const auxDateLabel = computed(() => format(
+    new Date(props.date ?? 0),
+    isSameYear(props.updated, props.date) ? 'MM-dd' : 'yyyy-MM-dd',
+))
 
 const articleCard = ref<HTMLAnchorElement>()
-const tip = joinWithBR(props.excerpt || props.description, props.link || props.to)
+const tip = joinWithBR(props.description, props.link || props.to)
 
 onMounted(() => {
     tippy(unrefElement(articleCard)!, {

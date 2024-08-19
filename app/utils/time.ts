@@ -1,7 +1,11 @@
 import { format, formatDistanceToNow } from 'date-fns'
 import { zhCN } from 'date-fns/locale'
 
-function timeElapse(date: Date, maxDepth = 2) {
+export function delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+export function timeElapse(date: Date, maxDepth = 2) {
     const msecPast = Date.now() - date.getTime()
     const intervals = [
         { label: '年', msec: 1000 * 60 * 60 * 24 * 365.2422 },
@@ -25,7 +29,7 @@ function timeElapse(date: Date, maxDepth = 2) {
     return timeString || '刚刚'
 }
 
-function getPostTime(date: string) {
+export function getPostTime(date: string) {
     const postDate = new Date(date)
     const now = new Date()
     if (postDate.getTime() > now.getTime() - 1000 * 60 * 60 * 24 * 7) {
@@ -39,17 +43,6 @@ function getPostTime(date: string) {
     }
 }
 
-function isSameYear(date1: string | Date, date2: string | Date) {
-    return new Date(date1).getFullYear() === new Date(date2).getFullYear()
-}
-
-function delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms))
-}
-
-export {
-    delay,
-    getPostTime,
-    isSameYear,
-    timeElapse,
+export function isSameYear(date1: string | undefined, date2: string | undefined) {
+    return new Date(date1 ?? 0).getFullYear() === new Date(date2 ?? 0).getFullYear()
 }

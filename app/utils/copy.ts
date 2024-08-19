@@ -12,8 +12,10 @@ export function showTooltip(el: HTMLElement, message: string, timeout = 1000) {
     }).show()
 }
 
-export function copy(elTrigger: HTMLElement, elTarget: HTMLElement) {
-    const text = elTarget?.value ?? elTarget?.textContent ?? ''
+export function copy(elTrigger: HTMLElement, elTarget: HTMLInputElement | HTMLElement) {
+    const text = elTarget instanceof HTMLInputElement
+        ? elTarget.value
+        : elTarget?.textContent ?? ''
     const clipboard = new ClipboardJS(elTrigger, { text })
     clipboard.on('success', () => showTooltip(elTrigger, '已复制'))
     clipboard.on('error', () => showTooltip(elTrigger, '复制失败'))

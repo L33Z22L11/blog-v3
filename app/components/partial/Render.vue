@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ZhiluIcon, ZhiluIconOld, ZLink } from '#components'
+import { ZLink, ZhiluIcon, ZhiluIconOld } from '#components'
 
 const props = defineProps<{
     tag?: string

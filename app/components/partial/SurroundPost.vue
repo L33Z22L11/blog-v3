@@ -1,39 +1,44 @@
 <script setup lang="ts">
 const route = useRoute()
+
 const { data } = await useAsyncData(`surround-${route.path}`, () => queryContent()
     .only(['_path', 'title', 'date', 'type'])
     .sort({ date: 1 })
     .where({ _original_dir: { $eq: '/posts' } })
     .findSurround(route.path))
+
 const [prev, next] = data.value ?? []
 </script>
 
 <template>
     <div class="surround-post">
-        <ZRawLink :to="next?._path" class="next">
+        <ZRawLink v-if="next" :to="next?._path" class="next">
             <Icon name="solar:rewind-back-bold-duotone" />
-            <div v-if="next">
+            <div>
                 <h4 class="title" :class="{ story: next?.type === 'story' }">
                     {{ next.title }}
                 </h4>
-                <time datetime="{{ next?.date }}">{{ getPostTime(next.date) }}</time>
+                <time datetime="{{ next?.date }}">{{ getPostTime(next.date ?? 0) }}</time>
             </div>
-            <h4 v-else>
-                新故事即将发生
-            </h4>
         </ZRawLink>
-        <ZRawLink :to="prev?._path" class="prev">
-            <div v-if="prev">
+        <div v-else class="disabled">
+            <Icon name="solar:document-add-bold-duotone" />
+            新故事即将发生
+        </div>
+
+        <ZRawLink v-if="prev" :to="prev?._path" class="prev">
+            <div>
                 <h4 class="title" :class="{ story: prev?.type === 'story' }">
                     {{ prev.title }}
                 </h4>
-                <time datetime="{{ prev?.date }}">{{ getPostTime(prev.date) }}</time>
+                <time datetime="{{ prev?.date }}">{{ getPostTime(prev.date ?? 0) }}</time>
             </div>
-            <h4 v-else>
-                已抵达时间尽头
-            </h4>
             <Icon name="solar:rewind-forward-bold-duotone" />
         </ZRawLink>
+        <div v-else class="disabled">
+            已抵达博客尽头
+            <Icon name="solar:reel-bold-duotone" />
+        </div>
     </div>
 </template>
 
@@ -44,15 +49,19 @@ const [prev, next] = data.value ?? []
     gap: 1rem;
     margin: 3rem 1rem;
 
-    >a {
+    > * {
         display: flex;
         align-items: center;
         gap: 0.5em;
         transition: all 0.2s;
 
-        &:not([href]) {
+        &.disabled {
             color: var(--c-text-3);
-            cursor: not-allowed;
+            user-select: none;
+
+            > .iconify {
+                opacity: 0.8;
+            }
         }
 
         time {

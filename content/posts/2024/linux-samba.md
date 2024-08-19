@@ -11,9 +11,13 @@ references:
     link: https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html
   - title: Samba - Arch Linux 中文维基
     link: https://wiki.archlinuxcn.org/wiki/Samba
+
+draft: true
 ---
 
 SMB (Server Message Block) 是一种网络文件共享协议；Samba 是在 Linux 上实现 SMB/CIFS 的自由软件服务。
+
+如果要在 Windows 上使用 SMB 共享文件夹，请参阅 [Tailscale 不完全使用指南 # Windows 文件共享](/2023/tailscale-incomplete-guide)。
 
 ## 简单传输文件
 

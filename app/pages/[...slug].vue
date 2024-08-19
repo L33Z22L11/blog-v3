@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const { data } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
-const excerpt = data.value?.description || data.value?.excerpt || ''
+const excerpt = data.value?.description || ''
 
 useHead({
     title: data.value?.title,
@@ -21,7 +21,7 @@ watchImmediate(() => data.value?.aside, (aside) => {
 
 const event = useRequestEvent()
 if (data.value === undefined) {
-    setResponseStatus(event, 404)
+    setResponseStatus(event!, 404)
     route.meta.title = '404'
     route.meta.aside = ['blog_log']
 }
@@ -33,7 +33,7 @@ if (data.value === undefined) {
         <ZExcerpt v-if="excerpt" :excerpt />
         <ContentRendererMarkdown
             class="article"
-            :class="{ 'md-story': data.type === 'story' }"
+            :class="{ 'md-story': data!.type === 'story' }"
             :value="data"
             tag="article"
         />

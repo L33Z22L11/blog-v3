@@ -42,9 +42,10 @@ defineProps<{
 
 .link-card-title {
     display: -webkit-box;
-    -webkit-box-orient: vertical;
     overflow: hidden;
+    -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
 }
 
 // 内部需要是块元素
