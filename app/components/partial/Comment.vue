@@ -62,6 +62,10 @@ onMounted(() => initTwikoo())
 
     .tk-content {
         margin-top: 0.1rem;
+
+        img {
+            border-radius: 0.5em;
+        }
     }
 
     p {

@@ -8,7 +8,7 @@ const friendCard = ref<HTMLElement>()
 
 const mainDomain = getMainDomain(props.link)
 
-const tip = joinWithBR(props.desc, props.link, props.comment)
+const tip = joinWithBR(props.desc, `${props.date ?? ''} ${props.link}`, props.comment)
 
 onMounted(() => {
     tippy(unrefElement(friendCard)!, {
@@ -61,8 +61,8 @@ onMounted(() => {
     gap: 2px;
 
     .title {
+        opacity: 0.4;
         font-size: 0.8em;
-        color: var(--c-text-3);
     }
 
     .domain {

@@ -4,6 +4,7 @@ export interface Friend {
     title?: string
     desc?: string
     link: string
+    date: string
     comment?: string
 }
 

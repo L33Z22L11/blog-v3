@@ -16,7 +16,7 @@
         color: var(--c-text);
     }
 
-    :where(menu, ol, ul ):not([class]) {
+    :where(menu, ol, ul):not([class]) {
         margin-block: 0.5em;
         padding: 0 0 0 1em;
         list-style: revert;

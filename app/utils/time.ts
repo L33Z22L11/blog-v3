@@ -29,7 +29,9 @@ export function timeElapse(date: Date, maxDepth = 2) {
     return timeString || '刚刚'
 }
 
-export function getPostTime(date: string) {
+export function getPostTime(date: string | undefined) {
+    if (!date)
+        return ''
     const postDate = new Date(date)
     const now = new Date()
     if (postDate.getTime() > now.getTime() - 1000 * 60 * 60 * 24 * 7) {

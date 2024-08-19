@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { ImgService } from '~/composables/useImg'
-
 const props = defineProps<{
     src: string
     mirror?: ImgService
@@ -9,7 +7,7 @@ const props = defineProps<{
     fancybox?: boolean
 }>()
 
-const src = useImgService(props.src, props.mirror)
+const src = genImgUrl(props.src, props.mirror)
 </script>
 
 <template>

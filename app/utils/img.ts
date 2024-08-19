@@ -5,10 +5,10 @@ const services = {
 
 export type ImgService = keyof typeof services | boolean
 
-export function useImgService(src: string | undefined, service: ImgService | undefined) {
+export function genImgUrl(src: string | undefined, service: ImgService | undefined) {
     if (!src || !service)
         return src
     if (service === true)
-        return Object.values(services)[0] + encodeURIComponent(src)
-    return services[service] + encodeURIComponent(src)
+        return Object.values(services)[0] + src
+    return services[service] + src
 }
