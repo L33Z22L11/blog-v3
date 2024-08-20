@@ -10,7 +10,7 @@ function render() {
         const match = textContent?.match?.(/^\{(.*?)\}$/)
         return match
             ? <div class="timeline-caption">{match[1]}</div>
-            : <div class="timeline-body">{node}</div>
+            : <div class="timeline-body card">{node}</div>
     })
 }
 </script>
@@ -21,17 +21,48 @@ function render() {
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .timeline {
+    position: relative;
+    padding-left: 1.5em;
     font-size: 0.9em;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0.5em;
+        bottom: 0;
+        left: 0.5em;
+        width: 0.3em;
+        background-color: var(--c-primary-soft);
+    }
 }
 
-.timeline-caption {
-    margin-bottom: 8px;
-    font-style: italic;
-}
+:deep() {
+    .timeline-caption {
+        opacity: 0.8;
+        font-size: 0.9em;
 
-.timeline-body {
-    margin-bottom: 16px;
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0.3em;
+            width: 0.8em;
+            height: 0.8em;
+            margin-top: 0.5em;
+            border-radius: 1em;
+            background-color: var(--c-text-2);
+        }
+    }
+
+    .timeline-body {
+        width: fit-content;
+        margin-bottom: 1em;
+        padding: 0 1em;
+
+        p {
+            text-indent: 0;
+        }
+    }
 }
 </style>

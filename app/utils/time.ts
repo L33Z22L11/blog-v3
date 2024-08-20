@@ -5,7 +5,11 @@ export function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-export function timeElapse(date: Date, maxDepth = 2) {
+export function timeElapse(date: Date | string | undefined, maxDepth = 2) {
+    if (!date)
+        return ''
+    if (typeof date === 'string')
+        date = new Date(date)
     const msecPast = Date.now() - date.getTime()
     const intervals = [
         { label: '年', msec: 1000 * 60 * 60 * 24 * 365.2422 },

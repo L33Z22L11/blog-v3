@@ -52,6 +52,12 @@ export default defineNuxtConfig({
         '/sitemap.xml': { prerender: true },
     },
 
+    runtimeConfig: {
+        public: {
+            buildTime: new Date().toISOString(),
+        },
+    },
+
     vite: {
         css: {
             preprocessorOptions: {

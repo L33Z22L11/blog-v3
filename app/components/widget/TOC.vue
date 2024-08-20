@@ -5,7 +5,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 const { data } = await useAsyncData(
     route.path,
     () => queryContent(route.path).findOne(),
-    { watch: () => route.path },
+    { watch: [() => route.path] },
 )
 const toc = computed(() => data.value?.body?.toc)
 </script>
@@ -26,17 +26,18 @@ const toc = computed(() => data.value?.body?.toc)
     <h3 class="widget-title">
         <span>文章目录</span>
         <div class="buttons">
-            <ZRawLink onclick="window.scrollTo({ top: 0 })">
+            <!-- use <a> for anchor -->
+            <a href="#main-content">
                 <Icon name="ph:arrow-circle-up-bold" />
-            </ZRawLink>
-            <ZRawLink to="#twikoo">
+            </a>
+            <a href="#twikoo">
                 <Icon name="ph:chat-circle-text-bold" />
-            </ZRawLink>
+            </a>
         </div>
     </h3>
     <div class="widget-body">
         <ReuseTemplate v-if="toc?.links?.length" :toc-item="toc.links" />
-        <p v-else>
+        <p v-else class="no-toc">
             暂无目录信息
         </p>
     </div>
@@ -65,5 +66,11 @@ const toc = computed(() => data.value?.body?.toc)
             }
         }
     }
+}
+
+.no-toc {
+    padding: 1em;
+    text-align: center;
+    color: var(--c-text-3);
 }
 </style>

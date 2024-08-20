@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import type { ParsedContent } from '@nuxt/content'
+import type { ArticleCategory } from '~/types/article'
 import type ArticleProps from '~/types/article'
 
 const props = defineProps<ParsedContent & ArticleProps>()
-
+const appConfig = useAppConfig()
 const publishedLabel = getPostTime(props.date ?? '0')
 const updatedLabel = getPostTime(props.updated ?? '0')
+
+const categoryLabel = props.categories?.[0] as ArticleCategory
+const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
 </script>
 
 <template>
@@ -17,6 +21,10 @@ const updatedLabel = getPostTime(props.updated ?? '0')
                     <Icon name="solar:calendar-add-bold-duotone" /> {{ publishedLabel }}</time>
                 <time v-if="updated" :datetime="updated">
                     <Icon name="solar:pen-2-bold-duotone" /> {{ updatedLabel }}</time>
+                <span v-if="categoryLabel" class="article-category">
+                    <Icon :name="categoryIcon" />
+                    {{ categoryLabel }}
+                </span>
                 <span class="wordcount">
                     <!-- <Icon name="solar:text-bold-duotone" /> {{ getWordCount(props.body) }} -->
                 </span>
@@ -107,7 +115,9 @@ const updatedLabel = getPostTime(props.updated ?? '0')
 
     .post-info {
         display: flex;
-        gap: 1em;
+        gap: 0.5em 1.2em;
+        column-gap: clamp(1em, 3cqw, 1.5em);
+        flex-wrap: wrap;
     }
 }
 </style>

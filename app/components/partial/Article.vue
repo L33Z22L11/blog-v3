@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ArticleCategory } from '~/types/article'
 import type ArticleProps from '~/types/article'
 
 const props = defineProps < { useUpdated: boolean } & ArticleProps>()
@@ -8,9 +9,9 @@ const appConfig = useAppConfig()
 const publishedLabel = getPostTime(props.date)
 const updatedLabel = getPostTime(props.updated)
 
-// const categoryLabel = props.categories?.[0]
-// const catagoryColor = appConfig.article.categories?.[categoryLabel]?.color
-// const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
+const categoryLabel = props.categories?.[0] as ArticleCategory
+const categoryColor = appConfig.article.categories?.[categoryLabel]?.color
+const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
 </script>
 
 <template>
@@ -36,14 +37,14 @@ const updatedLabel = getPostTime(props.updated)
                     <Icon name="solar:calendar-add-bold-duotone" />
                     {{ publishedLabel }}
                 </time>
-                <!-- <span
+                <span
                     v-if="categoryLabel"
                     class="article-category"
                     :style="{ '--cg-color': categoryColor }"
                 >
                     <Icon :name="categoryIcon" />
                     {{ categoryLabel }}
-                </span> -->
+                </span>
             </div>
         </article>
     </ZRawLink>
@@ -78,13 +79,11 @@ const updatedLabel = getPostTime(props.updated)
 
 .article-info {
     display: flex;
-    gap: 0.8em;
+    gap: 0.5em 1.2em;
+    column-gap: clamp(1em, 3cqw, 1.5em);
     font-size: 0.8em;
+    flex-wrap: wrap;
     color: var(--c-text-2);
-
-    >time + time {
-        color: var(--c-text-3);
-    }
 }
 
 .article-title {

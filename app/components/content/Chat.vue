@@ -1,0 +1,64 @@
+<script lang="tsx" setup>
+const slots = defineSlots()
+function render() {
+    const slotContent = slots.default?.()
+    if (!slotContent)
+        return <span>无会话内容</span>
+
+    return slotContent.map((node: VNode) => {
+        const textContent = node.children?.default?.()[0].children || ''
+        const match = textContent?.match?.(/^\{(.*?)\}$/)
+        const matchMyself = match?.[1]?.match?.(/^\((.*?)\)$/)
+        return matchMyself
+            ? <div class="chat-caption chat-myself">{matchMyself[1]}</div>
+            : match
+                ? <div class="chat-caption">{match[1]}</div>
+                : <div class="chat-body">{node}</div>
+    })
+}
+</script>
+
+<template>
+    <div class="chat">
+        <render />
+    </div>
+</template>
+
+<style scoped lang="scss">
+.chat {
+    margin-inline: 2vw;
+    font-size: 0.9em;
+}
+
+:deep() {
+    .chat-caption {
+        opacity: 0.8;
+        font-size: 0.9em;
+    }
+
+    .chat-body {
+        // BFC
+        overflow: hidden;
+        width: fit-content;
+        margin-bottom: 1em;
+        padding: 0 1em;
+        border-radius: 0.2em 1em 1em;
+        background-color: var(--c-bg-2);
+
+        p {
+            text-indent: 0;
+        }
+    }
+
+    .chat-myself {
+        text-align: right;
+
+        & + .chat-body {
+            width: fit-content;
+            margin-left: auto;
+            border-radius: 1em 0.2em 1em 1em;
+            background-color: var(--c-primary-3);
+        }
+    }
+}
+</style>

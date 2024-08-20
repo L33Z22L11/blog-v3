@@ -7,7 +7,7 @@ const props = defineProps<{
     link: string
 }>()
 
-const src = genImgUrl(props.banner, props.mirror)
+const src = getImgUrl(props.banner, props.mirror)
 </script>
 
 <template>

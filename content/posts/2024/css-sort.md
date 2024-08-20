@@ -71,22 +71,38 @@ link: https://github.com/KazariEX/hexo-server-live
 
 中文睡醒刚下床，微信电话铃声就响个不停，接听却没声音。打字吧：
 
-::timeline
-<!-- node Yuanfang -->
+::chat
+
+{Yuanfang}
+
 哥😭我给虚拟机编译内核，`make install` 时候 `/boot` 分区满了，我不敢整，怕搞崩，你能来给扩容一下不🥹
-<!-- node Yuanfang -->
+
+{Yuanfang}
+
 📞通话时长 00:22
-<!-- node 我 -->
+
+{()}
+
 你耳机是不是没电了
-<!-- node 我 -->
+
+{()}
+
 我刚下床
-<!-- node Yuanfang -->
+
+{Yuanfang}
+
 📞通话时长 00:41
-<!-- node Yuanfang -->
+
+{Yuanfang}
+
 怪事，我耳机麦克风好像坏了
-<!-- node Yuanfang -->
+
+{Yuanfang}
+
 鹿神，快来救我
-<!-- node Yuanfang -->
+
+{Yuanfang}
+
 我整了快两个点，不会搞😿😿
 ::
 
@@ -198,7 +214,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 我使用这行命令试图查看 SSH 环境中的 PATH：
 
-:copy{prompt="PS>" code='ssh localhost -t "echo '$Env:PATH'"'}
+:copy{prompt="PS>" command='ssh localhost -t "echo '$Env:PATH'"'}
 
 但输出一切正常，`C:\Users\Zhilu\AppData\Local\pnpm` 完好地存在于 PATH 中。
 
@@ -294,7 +310,7 @@ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 - 建议切换到自己的用户上，实在切不了就算了
   :copy{prompt="#" command="su <你的用户名>"}
   - 如果忘了自己的用户名，可以执行这个命令：
-  :copy{prompt="#" code='cat /etc/passwd | grep ":1000"'}
+  :copy{prompt="#" command='cat /etc/passwd | grep ":1000"'}
 - 安装权限修复工具
   :copy{prompt="$" command="yay -S pacman-fix-permissons"}
 - 修复权限

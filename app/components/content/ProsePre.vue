@@ -112,6 +112,12 @@ pre {
     }
 }
 
+:deep(pre:not(:has(.line))) {
+    --line-number-width: 0;
+
+    padding-inline: 2em;
+}
+
 :deep(.line) {
     padding: 0 1em 0 var(--line-number-width);
 

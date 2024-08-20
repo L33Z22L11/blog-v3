@@ -9,6 +9,9 @@ const author = {
 }
 
 export default {
+
+    // basic
+
     title: '纸鹿摸鱼处',
     description: '纸鹿本鹿的个人博客，分享技术与生活。折腾不止，摸鱼生活——摸门🙏🏻',
     header: {
@@ -27,24 +30,17 @@ export default {
         name: '署名-非商业性使用-相同方式共享 4.0 国际',
         url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
     },
-    nav: <Nav> [
-        { title: '', items: [
-            { icon: 'ph:files-bold', text: '文章', url: '/' },
-            { icon: 'ph:link-bold', text: '友链', url: '/link' },
-            { icon: 'ph:archive-bold', text: '归档', url: '/archive' },
-        ] },
-        { title: '周边', items: [
-            { icon: 'ph:identification-card-bold', text: '个人主页', url: 'https://zhilu.cyou/', external: true },
-            { icon: 'ri:qq-line', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd', external: true },
-            { icon: 'ph:github-logo-bold', text: 'Github', url: 'https://github.com/L33Z22L11', external: true },
-        ] },
-    ],
-    sidebar: {
-        footerLink: {
-            text: 'L33Z22L11/blog-v3',
-            url: 'https://github.com/L33Z22L11/blog-v3',
+
+    // items
+
+    article: {
+        categories: {
+            经验分享: { icon: 'solar:cursor-bold-duotone', color: '#3af' },
+            生活: { icon: 'solar:star-fall-2-bold-duotone', color: '#3ba' },
+            代码: { icon: 'solar:code-bold-duotone', color: '#77f' },
         },
     },
+
     footer: {
         copyright: `© ${new Date().getFullYear()} 纸鹿本鹿`,
         nav: <Nav>[
@@ -66,6 +62,26 @@ export default {
         message: '',
     },
 
+    nav: <Nav>[
+        { title: '', items: [
+            { icon: 'ph:files-bold', text: '文章', url: '/' },
+            { icon: 'ph:link-bold', text: '友链', url: '/link' },
+            { icon: 'ph:archive-bold', text: '归档', url: '/archive' },
+        ] },
+        { title: '周边', items: [
+            { icon: 'ph:identification-card-bold', text: '个人主页', url: 'https://zhilu.cyou/', external: true },
+            { icon: 'ri:qq-line', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd', external: true },
+            { icon: 'ph:github-logo-bold', text: 'Github', url: 'https://github.com/L33Z22L11', external: true },
+        ] },
+    ],
+
+    sidebar: {
+        footerLink: {
+            text: 'L33Z22L11/blog-v3',
+            url: 'https://github.com/L33Z22L11/blog-v3',
+        },
+    },
+
     themes: <Themes> {
         light: {
             icon: 'ph:sun-bold',
@@ -81,26 +97,22 @@ export default {
         },
     },
 
-    article: {
-        categories: {
-            经验分享: { icon: '', color: '#3af' },
-            生活: { icon: '', color: '#3ba' },
-            代码: { icon: '', color: '#77f' },
-        },
-    },
-
-    twikoo: {
-        js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.36/dist/twikoo.all.min.js',
-        envId: 'https://t12.zhilu.cyou',
-    },
+    // others
 
     hideContentPrefixes: [
         '/posts',
     ],
+
     imageDomains: [
         // 'blog.zhilu.cyou',
         // '7.isyangs.cn',
     ],
+
+    indexGenerator: {
+        perPage: 10,
+        orderBy: 'date',
+    },
+
     injectHeadLinks: [
         {
             rel: 'preconnect',
@@ -126,12 +138,14 @@ export default {
             href: 'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap',
         },
     ],
+
     injectHeadScripts: [
         { 'src': 'https://zhi.zhilu.cyou/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true },
         { 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
     ],
-    indexGenerator: {
-        perPage: 10,
-        orderBy: 'date',
+
+    twikoo: {
+        js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.36/dist/twikoo.all.min.js',
+        envId: 'https://t12.zhilu.cyou',
     },
 }

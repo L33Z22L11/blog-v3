@@ -7,7 +7,7 @@ const props = defineProps<{
     fancybox?: boolean
 }>()
 
-const src = genImgUrl(props.src, props.mirror)
+const src = getImgUrl(props.src, props.mirror)
 </script>
 
 <template>

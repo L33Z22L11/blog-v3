@@ -7,7 +7,7 @@ const props = defineProps<{
     mirror?: ImgService
 }>()
 
-const src = genImgUrl(props.icon, props.mirror)
+const src = getImgUrl(props.icon, props.mirror)
 </script>
 
 <template>

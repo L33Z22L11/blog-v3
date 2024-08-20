@@ -24,7 +24,7 @@ UEFI 引导中，可以有多个启动项，比如 Windows Boot Manager、Linux 
 
 执行此命令，你会看到类似以下内容：
 
-```
+```plaintext
 固件启动管理器
 ---------------------
 标识符                  {fwbootmgr}
@@ -73,7 +73,7 @@ description             Windows 11
 
 ### 重启到指定 EFI 启动项
 
-```bat [reboot-to-xxxxx.bat]
+```bat [reboot-to-some-entry.bat]
 rem 使用管理员权限运行此脚本
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd","/c %~s0 ::","","runas",1)(window.close) && exit
 rem 将 Linux Boot Manager 设置为下次启动项
@@ -92,7 +92,7 @@ shutdown -r -t 0
 
 执行此命令后，会得到如下所示的 EFI 启动项列表：
 
-```
+```plaintext
 BootCurrent: 0005
 BootOrder: 0001,0005,0004,2001
 Boot0001* Windows Boot Manager  HD(1,GPT,04f43acd-5a75-4946-b8eb-8c2b4aa000c3,0x800,0x100000)/\EFI\Microsoft\Boot\bootmgfw.efi
@@ -103,7 +103,7 @@ Boot2001* EFI USB Device        RC
 
 ### 重启到指定 EFI 启动项
 
-:copy{prompt="$" command="sudo efibootmgr -n XXXX # 例如 0005"}
+:copy{prompt="$" command="sudo efibootmgr -n 四位数序号"}
 
 ### 修改 Linux Boot Manager 的下一次启动项/默认启动项
 
@@ -113,7 +113,7 @@ Boot2001* EFI USB Device        RC
 
 执行此命令后，可以列出如下所示的启动项列表：
 
-```
+```plaintext
          type: Boot Loader Specification Type #1 (.conf)
         title: Arch Linux (default) (selected)
            id: 10-arch.conf
