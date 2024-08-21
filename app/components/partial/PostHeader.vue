@@ -5,8 +5,8 @@ import type ArticleProps from '~/types/article'
 
 const props = defineProps<ParsedContent & ArticleProps>()
 const appConfig = useAppConfig()
-const publishedLabel = getPostTime(props.date ?? '0')
-const updatedLabel = getPostTime(props.updated ?? '0')
+const publishedLabel = getPostTime(props.date)
+const updatedLabel = getPostTime(props.updated)
 
 const categoryLabel = props.categories?.[0] as ArticleCategory
 const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon

@@ -9,6 +9,7 @@ const page = defineModel<number>({ required: true })
 
 <template>
     <nav class="pagination">
+        <!-- BUG: SSG 下携带 URL 参数访问时 disabled 属性不更新 -->
         <ZButton
             :disabled="page <= 1"
             class="pagination-button"

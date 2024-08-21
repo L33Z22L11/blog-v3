@@ -162,3 +162,27 @@ mark {
             linear-gradient(to top, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
     }
 }
+
+[data-nuxt-img][data-error="1"] {
+    // TODO: 修复路由时无 [data-nuxt-img][data-error="1"]
+    content: "";
+    container-type: inline-size;
+    position: relative;
+
+    &::before {
+        content: attr(alt);
+        display: grid;
+        place-items: center;
+        position: absolute;
+        overflow: visible;
+        inset: 0;
+        padding: 0.1em;
+        background-color: var(--c-border);
+        font: bold 5em var(--font-serif);
+        font-size: max(20cqw, 2em);
+        line-height: 1;
+        text-shadow: none;
+        color: var(--c-primary-soft);
+        z-index: 1;
+    }
+}

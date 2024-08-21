@@ -49,7 +49,7 @@ onMounted(() => {
     </ZRawLink>
     <div class="post-list">
         <ZOrderToggle v-model="orderBy" class="order-toggle" />
-        <!-- TODO: 修好这个报错 -->
+        <!-- FIXME: Type mismatch -->
         <ZArticle
             v-for="article in pagedList"
             :key="article._path"

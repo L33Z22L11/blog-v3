@@ -23,7 +23,7 @@ const bloglog = [
     },
     {
         date: new Date().toLocaleDateString('en-CA'),
-        content: `运营${timeElapse(timeEstablished)}，${timeElapse(timeUpdated)}更新，无要事相告`,
+        content: `运营${timeElapse(timeEstablished)}，${timeElapse(timeUpdated)}前更新，无要事相告`,
     },
     {
         date: '2030-08-10',

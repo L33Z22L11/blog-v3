@@ -49,6 +49,7 @@ const groupedList = computed(
                 <span class="archive-count">{{ yearGroup!.length }}</span>
             </h2>
             <ul class="archive-list">
+                <!-- FIXME: Type mismatch -->
                 <ZArchive
                     v-for="article in yearGroup"
                     :key="article._path"

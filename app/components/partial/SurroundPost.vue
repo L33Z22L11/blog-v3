@@ -18,7 +18,7 @@ const [prev, next] = data.value ?? []
                 <h4 class="title" :class="{ story: next?.type === 'story' }">
                     {{ next.title }}
                 </h4>
-                <time datetime="{{ next?.date }}">{{ getPostTime(next.date ?? 0) }}</time>
+                <time :datetime="next?.date">{{ getPostTime(next.date) }}</time>
             </div>
         </ZRawLink>
         <div v-else class="disabled">
@@ -31,7 +31,7 @@ const [prev, next] = data.value ?? []
                 <h4 class="title" :class="{ story: prev?.type === 'story' }">
                     {{ prev.title }}
                 </h4>
-                <time datetime="{{ prev?.date }}">{{ getPostTime(prev.date ?? 0) }}</time>
+                <time :datetime="prev?.date">{{ getPostTime(prev.date) }}</time>
             </div>
             <Icon name="solar:rewind-forward-bold-duotone" />
         </ZRawLink>

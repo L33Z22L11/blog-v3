@@ -11,7 +11,7 @@ const updatedLabel = getPostTime(props.updated)
 
 const categoryLabel = props.categories?.[0] as ArticleCategory
 const categoryColor = appConfig.article.categories?.[categoryLabel]?.color
-const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
+const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel]?.icon)
 </script>
 
 <template>
@@ -42,6 +42,7 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
                     class="article-category"
                     :style="{ '--cg-color': categoryColor }"
                 >
+                    <!-- BUG: SSG 下携带 URL 参数访问时 name 属性不更新 -->
                     <Icon :name="categoryIcon" />
                     {{ categoryLabel }}
                 </span>

@@ -10,11 +10,12 @@ const props = defineProps<{
 } & ArticleProps>()
 
 const mainDate = computed(() => (props.useUpdated ? props.updated : props.date))
-const dateLabel = computed(() => format(new Date(mainDate.value ?? 0), 'MM-dd'))
-const auxDateLabel = computed(() => format(
-    new Date(props.date ?? 0),
-    isSameYear(props.updated, props.date) ? 'MM-dd' : 'yyyy-MM-dd',
-))
+const dateLabel = computed(() => mainDate.value
+    ? format(new Date(mainDate.value), 'MM-dd')
+    : '')
+const auxDateLabel = computed(() => props.date
+    ? format(new Date(props.date), isSameYear(props.updated, props.date) ? 'MM-dd' : 'yyyy-MM-dd')
+    : '')
 
 const articleCard = ref<HTMLAnchorElement>()
 const tip = joinWithBR(props.description, props.link || props.to)
@@ -35,7 +36,8 @@ onMounted(() => {
             <span class="article-title">
                 {{ title }}
             </span>
-            <time v-if="useUpdated && dateLabel !== auxDateLabel" class="aux-date" :datetime="date">／{{ auxDateLabel }}</time>
+            <time v-if="useUpdated && date && dateLabel !== auxDateLabel" class="aux-date" :datetime="date">
+                ／{{ auxDateLabel }}</time>
             <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" />
         </ZRawLink>
     </li>
