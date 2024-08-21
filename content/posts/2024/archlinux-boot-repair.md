@@ -49,7 +49,7 @@ tags: [教程, 系统, archlinux]
   - 如果提醒无法锁定数据库，可以删除锁文件
   :copy{prompt="#" command="rm /var/lib/pacman/db.lck"}
   - 如果提醒某文件已存在，可以强制覆盖
-  :copy{prompt="#" command='pacman -Syu --overwrite "*"'}
+  :copy{prompt="#" command="pacman -Syu --overwrite &quot;*&quot;"}
 
 ## 修复引导
 

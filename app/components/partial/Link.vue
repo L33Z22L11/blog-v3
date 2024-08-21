@@ -25,5 +25,6 @@ defineProps<{ to?: string }>()
 .iconify.external {
     font-size: 0.8em;
     vertical-align: text-top;
+    color: var(--c-primary-2);
 }
 </style>

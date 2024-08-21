@@ -187,7 +187,7 @@ int main()
 ```
 ::
 
-```plain [output.txt]
+``` [output.txt]
 1WYq1Nb5aSOhTz9qTuOhTmvbhj==
 ```
 
@@ -235,7 +235,7 @@ encode(flag,41,47,58)
 
 虽然这个也看不太懂，但应该也是对文本做了映射，先将源代码的flag设为charsets的内容，执行，得到如下字符串：
 
-```plain
+```
 $4n|{ud!1k*8ra(yh%5o<-ve@2l+9sb)zi^6p>}wf#3m=_tc/0j&7q?,xg
 ```
 
@@ -272,7 +272,7 @@ fancybox: true
 
 全选，复制粘贴到记事本，发现flag藏在几段文本的末尾。
 
-```plain
+```
 西北工业大学信息安全协会招新宣传
 协会简介
 西北工业大学信息安全协会（NPUSEC）是于 2014 年成立的技术型学生社团，
@@ -383,7 +383,7 @@ width: 400px
 ---
 ::
 
-```plain
+```
 Flag?：B﻿‎‌﻿‏﻿‌﻿‎﻿﻿‌﻿‏‏﻿‏﻿﻿‎‎﻿‎‎‏﻿﻿﻿‎﻿‎﻿﻿‏﻿‎‎‌﻿‏‎﻿﻿﻿‌‏‎‎‎站关注"快乐滋崩在这里"啊喵( •̀ ω •́ )✧！
 ```
 
@@ -437,7 +437,7 @@ fancybox: true
 
 下载，得到小美的纸条.txt。
 
-```plain [小美的纸条.txt]
+``` [小美的纸条.txt]
 . . . .    .－.   －. .    . . .－
 －   . .－.   . . .－   －. . .   . . . .   －.－－
 .－.   . .－.   . . .－   －－.   －.－－
@@ -447,7 +447,7 @@ fancybox: true
 
 判断为摩斯密码，使用 https://www.lddgo.net/encrypt/morse ，逐行解密得到文本如下。
 
-```plain
+```
 HRDV
 TFVBHY
 RFVGY
@@ -467,7 +467,7 @@ width: 360px
 
 题目怎么解我是看不来，但是答案知道了。
 
-```plain
+```
 . . . .    .－.   －. .    . . .－
 －   . .－.   . . .－   －. . .   . . . .   －.－－
 .－.   . .－.   . . .－   －－.   －.－－
@@ -494,7 +494,7 @@ width: 360px
 下载文件，得到歌词.txt如下。
 
 ::accordion{nopadding summary="歌词.txt"}
-```plain
+```
 55m96bif6L+H5rKz5rupDW==
 5rSb5aSp5L6dL2lsZW0N
 6aOO5oqK5oiR5LiN5oOz55+l6YGT55qE5LqL5oOF5ZGK6K+J5oiRDW==
@@ -615,7 +615,7 @@ fancybox: true
 ---
 ::
 
-```plain
+```
 翔巍北辈生先厚炼重飞－盛勇－万岳巡天飞方－泽国梁
 ２５６６２４６１１４０７３０６３２３４５０１２５
 ```

@@ -226,7 +226,7 @@ export default <FriendGroup[]> [
                 link: 'https://www.naokuo.top/',
                 icon: 'https://cdn.cbd.int/naokuo-blog/img/about/avatar-512x512.png',
                 date: '2024-02-18',
-                comment: '折腾博客。他的博客打开有声音！！！',
+                comment: '折腾博客。',
             },
             {
                 name: '晓空',

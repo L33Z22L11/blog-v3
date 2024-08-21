@@ -50,7 +50,6 @@ onMounted(() => {
     align-items: center;
     gap: 0.5rem;
     margin: 4px 0;
-    text-shadow: 0 0 4px var(--c-bg-1);
 
     @media (max-width: $breakpoint-mobile) {
         font-size: 0.9em;

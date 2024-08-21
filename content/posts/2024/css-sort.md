@@ -214,7 +214,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 我使用这行命令试图查看 SSH 环境中的 PATH：
 
-:copy{prompt="PS>" command='ssh localhost -t "echo '$Env:PATH'"'}
+:copy{prompt="PS>" command="ssh localhost -t &quot;echo '$Env:PATH'&quot;"}
 
 但输出一切正常，`C:\Users\Zhilu\AppData\Local\pnpm` 完好地存在于 PATH 中。
 
@@ -310,7 +310,7 @@ sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 - 建议切换到自己的用户上，实在切不了就算了
   :copy{prompt="#" command="su <你的用户名>"}
   - 如果忘了自己的用户名，可以执行这个命令：
-  :copy{prompt="#" command='cat /etc/passwd | grep ":1000"'}
+  :copy{prompt="#" command="cat /etc/passwd | grep &quot;:1000&quot;"}
 - 安装权限修复工具
   :copy{prompt="$" command="yay -S pacman-fix-permissons"}
 - 修复权限

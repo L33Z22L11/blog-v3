@@ -102,9 +102,7 @@ pre {
     padding: 1rem 0;
 
     &.wrap {
-        margin-left: 4ch;
         white-space: pre-wrap;
-        text-indent: -4ch;
 
         :deep(.line) {
             display: block;
@@ -115,7 +113,7 @@ pre {
 :deep(pre:not(:has(.line))) {
     --line-number-width: 0;
 
-    padding-inline: 2em;
+    padding-inline: 1em;
 }
 
 :deep(.line) {

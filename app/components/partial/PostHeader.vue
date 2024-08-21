@@ -13,7 +13,7 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
 </script>
 
 <template>
-    <div class="post-header" :class="{ 'has-cover': cover }">
+    <div class="post-header">
         <NuxtImg v-if="cover" class="post-cover" :src="cover" :alt="title" />
         <div class="post-nav">
             <div class="post-info">
@@ -52,7 +52,7 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
         border-radius: 0;
     }
 
-    &.has-cover {
+    &:has(.post-cover) {
         position: relative;
         overflow: hidden;
         min-height: 256px;
@@ -79,10 +79,13 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
     height: 100%;
     object-fit: cover;
     z-index: -1;
+
+    & ~ .post-title {
+        background-image: linear-gradient(transparent, #0003, #0005);
+    }
 }
 
 .post-title {
-    position: relative;
     padding: 0.8em 1rem;
     font-size: 1.8em;
     font-weight: 700;
@@ -91,15 +94,6 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
     &.center {
         font-family: var(--font-serif);
         text-align: center;
-    }
-
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        backdrop-filter: blur(1rem);
-        mask: linear-gradient(transparent, #fff 50%);
-        z-index: -1;
     }
 }
 

@@ -58,16 +58,16 @@ Hexo 会自动给文章链接带上子文件夹的名称，所以在 `_config.ym
 
 ```yaml [_config.stellar.yml]
 site_tree:
-    error_page:
-        leftbar: recent, timeline, notice_404
+  error_page:
+    leftbar: recent, timeline, notice_404
 ```
 
 ```yaml [source/_data/widgets.yml]
 notice_404:
-    layout: markdown
-    content: |
-        <!-- Notice 还没想好，以后再写吧 -->
-        <script src="/static/handler-404.js"></script>
+  layout: markdown
+  content: |
+    <!-- Notice 还没想好，以后再写吧 -->
+    <script src="/static/handler-404.js"></script>
 ```
 
 用正则表达式匹配、替换，就完成了重定向。
@@ -110,7 +110,7 @@ permalink: :year:month/:name/
 - 尝试用命令生成先前博客链接路径和新的博客链接路径
   :copy{prompt="PS >" command="hexo clean; hexo generate"}
 - findstr 不完全支持 PCRE，可以用 `Select-String "\\\d{6}\\"` 代替
-  :copy{prompt="PS >" command='dir -s .\public\ | findstr -r "\\[0-9][0-9][0-9][0-9][0-9][0-9]\\"'}
+  :copy{prompt="PS >" command="dir -s .\public\ | findstr -r &quot;\\[0-9][0-9][0-9][0-9][0-9][0-9]\\&quot;"}
 
 再用正则表达式稍微替换一下输出（不要忘了`/`），就能得到 Netlify 的重定向规则文件了。
 

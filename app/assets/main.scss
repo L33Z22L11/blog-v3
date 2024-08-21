@@ -163,26 +163,27 @@ mark {
     }
 }
 
-[data-nuxt-img][data-error="1"] {
-    // TODO: 修复路由时无 [data-nuxt-img][data-error="1"]
-    content: "";
-    container-type: inline-size;
-    position: relative;
+// fallback
+img {
+    display: inline-block;
+    transform: scale(1);
+
+    &::before {
+        position: absolute;
+        inset: 0;
+    }
 
     &::before {
         content: attr(alt);
         display: grid;
-        place-items: center;
-        position: absolute;
+        place-content: center;
         overflow: visible;
-        inset: 0;
-        padding: 0.1em;
+        padding: 0.5em;
         background-color: var(--c-border);
-        font: bold 5em var(--font-serif);
-        font-size: max(20cqw, 2em);
-        line-height: 1;
+        font: bold 1.5rem/1 var(--font-serif);
+        word-break: normal;
+        text-align: center;
         text-shadow: none;
         color: var(--c-primary-soft);
-        z-index: 1;
     }
 }

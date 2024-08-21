@@ -120,7 +120,7 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
     }
 
     @mixin cover-narrow {
-        position: static;
+        position: initial;
         width: 100%;
         height: auto;
         max-width: none;

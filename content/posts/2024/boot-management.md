@@ -24,7 +24,7 @@ UEFI 引导中，可以有多个启动项，比如 Windows Boot Manager、Linux 
 
 执行此命令，你会看到类似以下内容：
 
-```plaintext
+```
 固件启动管理器
 ---------------------
 标识符                  {fwbootmgr}
@@ -92,7 +92,7 @@ shutdown -r -t 0
 
 执行此命令后，会得到如下所示的 EFI 启动项列表：
 
-```plaintext
+```
 BootCurrent: 0005
 BootOrder: 0001,0005,0004,2001
 Boot0001* Windows Boot Manager  HD(1,GPT,04f43acd-5a75-4946-b8eb-8c2b4aa000c3,0x800,0x100000)/\EFI\Microsoft\Boot\bootmgfw.efi
@@ -113,7 +113,7 @@ Boot2001* EFI USB Device        RC
 
 执行此命令后，可以列出如下所示的启动项列表：
 
-```plaintext
+```
          type: Boot Loader Specification Type #1 (.conf)
         title: Arch Linux (default) (selected)
            id: 10-arch.conf
