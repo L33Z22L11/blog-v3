@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import type { ParsedContent } from '@nuxt/content'
+import type ArticleProps from '~/types/article'
+
 const route = useRoute()
 
 const { data } = await useAsyncData(`surround-${route.path}`, () => queryContent()
@@ -8,37 +11,38 @@ const { data } = await useAsyncData(`surround-${route.path}`, () => queryContent
     .findSurround(route.path))
 
 const [prev, next] = data.value ?? []
+
+const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
+    post: ParsedContent & ArticleProps | null
+    icon: string
+    fallbackIcon: string
+    fallbackText: string
+}>()
 </script>
 
 <template>
-    <div class="surround-post">
-        <ZRawLink v-if="next" :to="next?._path" class="next">
-            <Icon name="solar:rewind-back-bold-duotone" />
+    <DefineTemplate v-slot="{ post, icon, fallbackIcon, fallbackText }">
+        <ZRawLink :to="post?._path">
+            <Icon :name="post ? icon : fallbackIcon" />
             <div>
-                <h4 class="title" :class="{ story: next?.type === 'story' }">
-                    {{ next.title }}
+                <h4 class="title" :class="{ 'text-story': post?.type === 'story' }">
+                    {{ post?.title || fallbackText }}
                 </h4>
-                <time :datetime="next?.date">{{ getPostTime(next.date) }}</time>
+                <time v-if="post" :datetime="post.date">{{ getPostTime(post.date) }}</time>
             </div>
         </ZRawLink>
-        <div v-else class="disabled">
-            <Icon name="solar:document-add-bold-duotone" />
-            新故事即将发生
-        </div>
+    </DefineTemplate>
 
-        <ZRawLink v-if="prev" :to="prev?._path" class="prev">
-            <div>
-                <h4 class="title" :class="{ story: prev?.type === 'story' }">
-                    {{ prev.title }}
-                </h4>
-                <time :datetime="prev?.date">{{ getPostTime(prev.date) }}</time>
-            </div>
-            <Icon name="solar:rewind-forward-bold-duotone" />
-        </ZRawLink>
-        <div v-else class="disabled">
-            已抵达博客尽头
-            <Icon name="solar:reel-bold-duotone" />
-        </div>
+    <div class="surround-post">
+        <!-- FIXME: Type mismatch -->
+        <ReuseTemplate
+            :post="next" icon="solar:rewind-back-bold-duotone"
+            fallback-icon="solar:document-add-bold-duotone" fallback-text="新故事即将发生"
+        />
+        <ReuseTemplate
+            :post="prev" class="rtl" icon="solar:rewind-forward-bold-duotone"
+            fallback-icon="solar:reel-bold-duotone" fallback-text="已抵达博客尽头"
+        />
     </div>
 </template>
 
@@ -49,13 +53,13 @@ const [prev, next] = data.value ?? []
     gap: 1rem;
     margin: 3rem 1rem;
 
-    > * {
+    > a {
         display: flex;
         align-items: center;
         gap: 0.5em;
         transition: all 0.2s;
 
-        &.disabled {
+        &:not([href]) {
             color: var(--c-text-3);
             user-select: none;
 
@@ -69,12 +73,8 @@ const [prev, next] = data.value ?? []
             font-size: 0.8rem;
         }
 
-        .story {
-            font-family: var(--font-serif);
-        }
-
-        &.prev {
-            text-align: right;
+        &.rtl {
+            direction: rtl;
         }
 
         > .iconify {

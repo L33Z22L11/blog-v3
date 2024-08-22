@@ -18,7 +18,7 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
     <ZRawLink class="article-card card">
         <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" />
         <article>
-            <h2 class="article-title">
+            <h2 class="article-title" :class="{ 'text-story': type === 'story' }">
                 {{ title }}
             </h2>
             <p class="article-descrption">
@@ -89,7 +89,7 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
 
 .article-title {
     font-size: 1.2em;
-    font-weight: normal;
+    font-weight: 600;
 }
 
 .article-descrption {

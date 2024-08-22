@@ -95,11 +95,13 @@ useCopy(elCopyBtn, elCodeblock)
     }
 }
 
+// 未指定语言
 pre {
-    --line-number-width: 4em;
+    // 如果填写 0 会在 calc() 时出错
+    --line-number-width: 0px;
 
     overflow: auto;
-    padding: 1rem 0;
+    padding: 1rem;
 
     &.wrap {
         white-space: pre-wrap;
@@ -110,25 +112,23 @@ pre {
     }
 }
 
-:deep(pre:not(:has(.line))) {
-    --line-number-width: 0;
+// 指定语言
+.shiki > pre {
+    --line-number-width: 4em;
 
-    padding-inline: 1em;
+    padding-left: var(--line-number-width);
 }
 
-:deep(.line) {
-    padding: 0 1em 0 var(--line-number-width);
-
-    &::before {
-        content: attr(line);
-        position: absolute;
-        left: 0;
-        width: var(--line-number-width);
-        padding: 0 1em 0 0.5em;
-        background-color: var(--c-bg-2);
-        text-align: right;
-        color: var(--c-text-3);
-    }
+// 行号
+:deep(.line::before) {
+    content: attr(line);
+    position: absolute;
+    left: 0;
+    width: var(--line-number-width);
+    padding: 0 1em 0 0.5em;
+    background-color: var(--c-bg-2);
+    text-align: right;
+    color: var(--c-text-3);
 }
 
 .scrollcheck-x {

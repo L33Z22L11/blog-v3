@@ -35,6 +35,7 @@ const activeTab = ref(props.active ?? 1)
 
 .tabs {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 0.5em;
     position: relative;

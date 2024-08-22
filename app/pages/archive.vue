@@ -16,7 +16,7 @@ const orderBy = useRouteQuery<OrderType>(
 const { data } = await useAsyncData(
     'posts_archive',
     () => queryContent()
-        .only(['title', 'date', 'updated', '_path', 'description', 'cover'])
+        .only(['title', 'description', 'date', 'updated', '_path', 'cover'])
         .where({ _original_dir: { $eq: '/posts' } })
         .find(),
     { default: () => [] },

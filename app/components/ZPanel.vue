@@ -5,7 +5,7 @@ const hasAside = computed(() => route.meta.aside !== false)
 </script>
 
 <template>
-    <div id="z-panel" :class="{ 'has-aside': hasAside }">
+    <div id="z-panel" :class="{ 'has-active': UIStore.sidebarOpen || UIStore.asideOpen }">
         <button id="toggle-sidebar" :class="{ active: UIStore.sidebarOpen }" @click="UIStore.toggleSidebar">
             <Icon name="ph:sidebar-duotone" />
         </button>
@@ -30,13 +30,7 @@ const hasAside = computed(() => route.meta.aside !== false)
         display: none;
     }
 
-    &:not(.has-aside) {
-        @media (min-width: $breakpoint-mobile) {
-            display: none;
-        }
-    }
-
-    &:has(.active) {
+    &.has-active {
         box-shadow: 0 0 0.5rem var(--ld-shadow);
     }
 }

@@ -21,8 +21,8 @@ onMounted(() => {
 
 <template>
     <!-- 覆盖掉 noreferrer，情绪价值给足 -->
-    <ZRawLink ref="friendCard" class="friend-card gradient-card" :to="props.link" rel="noopener">
-        <NuxtImg class="icon" :src="props.icon" :alt="name" />
+    <ZRawLink ref="friendCard" class="friend-card gradient-card" :to="link" rel="noopener">
+        <NuxtImg class="icon" :src="icon" :alt="name" />
         <div class="card-info">
             <div><span class="name">{{ name }}</span> <span class="title">{{ title }}</span></div>
             <span class="domain" :class="{ 'domain-zhilu': mainDomain === 'thisis.host' }">

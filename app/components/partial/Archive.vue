@@ -33,7 +33,7 @@ onMounted(() => {
     <li class="article-line">
         <time :datetime="mainDate">{{ dateLabel }}</time>
         <ZRawLink ref="articleCard" class="article-link gradient-card" :to="to">
-            <span class="article-title">
+            <span class="article-title" :class="{ 'text-story': type === 'story' }">
                 {{ title }}
             </span>
             <time v-if="useUpdated && date && dateLabel !== auxDateLabel" class="aux-date" :datetime="date">

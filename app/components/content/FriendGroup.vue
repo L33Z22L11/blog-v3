@@ -20,6 +20,7 @@ import allMyFriends from '~/assets/friend'
 
 <style scoped lang="scss">
 .friend-group {
+    // position: relative;
     margin: 2rem 0;
 
     &:hover > .friend-title {

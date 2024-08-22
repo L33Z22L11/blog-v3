@@ -13,7 +13,8 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
 </script>
 
 <template>
-    <div class="post-header">
+    <!-- 💩夸克浏览器，桌面端只有IE不支持 :has() 了 -->
+    <div class="post-header" :class="{ 'has-cover': cover }">
         <NuxtImg v-if="cover" class="post-cover" :src="cover" :alt="title" />
         <div class="post-nav">
             <div class="post-info">
@@ -30,7 +31,7 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
                 </span>
             </div>
         </div>
-        <h2 class="post-title" :class="{ 'text-revert': props.revert, 'center': props.type === 'story' }">
+        <h2 class="post-title" :class="{ 'text-story text-center': type === 'story', 'text-revert': revert }">
             {{ title }}
         </h2>
     </div>
@@ -52,7 +53,7 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
         border-radius: 0;
     }
 
-    &:has(.post-cover) {
+    &.has-cover {
         position: relative;
         overflow: hidden;
         min-height: 256px;
@@ -62,12 +63,16 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
         transition: font-size 0.2s;
         z-index: 0;
 
-        &.text-revert {
-            color: #333;
-        }
-
         &:hover {
             font-size: 0.8em;
+        }
+
+        .post-title {
+            background-image: linear-gradient(transparent, #0003, #0005);
+
+            &.text-revert {
+                color: #333;
+            }
         }
     }
 }
@@ -79,10 +84,6 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
     height: 100%;
     object-fit: cover;
     z-index: -1;
-
-    & ~ .post-title {
-        background-image: linear-gradient(transparent, #0003, #0005);
-    }
 }
 
 .post-title {
@@ -90,11 +91,6 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
     font-size: 1.8em;
     font-weight: 700;
     line-height: 1.2;
-
-    &.center {
-        font-family: var(--font-serif);
-        text-align: center;
-    }
 }
 
 .post-nav {
