@@ -44,7 +44,7 @@ if (data.value === undefined) {
             </div>
         </template>
         <ZPostFooter v-bind="data" />
-        <ZSurroundPost v-if="data?._original_dir === '/posts'" />
+        <ZSurroundPost />
         <ZComment />
     </ContentRenderer>
 </template>

@@ -236,8 +236,9 @@ fancybox: true
 
 ::pic
 ---
-src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW1jMicEUkwohzUAa6qXBAHzzEme1p3hNg26NIibZfLbyJLyEuia9HDUoyA/640 好耶，是netcat
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW1jMicEUkwohzUAa6qXBAHzzEme1p3hNg26NIibZfLbyJLyEuia9HDUoyA/640
 mirror: true
+caption: 好耶，是netcat
 fancybox: true
 ---
 ::

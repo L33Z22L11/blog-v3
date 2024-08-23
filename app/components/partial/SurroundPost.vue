@@ -33,14 +33,14 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
         </ZRawLink>
     </DefineTemplate>
 
-    <div class="surround-post">
+    <div v-if="prev || next" class="surround-post">
         <!-- FIXME: Type mismatch -->
         <ReuseTemplate
             :post="next" icon="solar:rewind-back-bold-duotone"
             fallback-icon="solar:document-add-bold-duotone" fallback-text="新故事即将发生"
         />
         <ReuseTemplate
-            :post="prev" class="rtl" icon="solar:rewind-forward-bold-duotone"
+            :post="prev" class="align-right" icon="solar:rewind-forward-bold-duotone"
             fallback-icon="solar:reel-bold-duotone" fallback-text="已抵达博客尽头"
         />
     </div>
@@ -73,8 +73,9 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
             font-size: 0.8rem;
         }
 
-        &.rtl {
-            direction: rtl;
+        &.align-right {
+            flex-direction: row-reverse;
+            text-align: right;
         }
 
         > .iconify {

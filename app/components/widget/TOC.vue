@@ -54,13 +54,17 @@ const toc = computed(() => data.value?.body?.toc)
 
             a {
                 display: block;
+                overflow: hidden;
                 padding: 0.2em 0.5em;
                 border-radius: 0.5em;
+                white-space: nowrap;
+                text-overflow: ellipsis;
                 color: var(--c-text-2);
                 transition: all 0.2s;
 
                 &:hover {
                     background-color: var(--c-primary-soft);
+                    white-space: normal;
                     color: var(--c-text);
                 }
             }

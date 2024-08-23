@@ -24,7 +24,10 @@ onMounted(() => {
     <ZRawLink ref="friendCard" class="friend-card gradient-card" :to="link" rel="noopener">
         <NuxtImg class="icon" :src="icon" :alt="name" />
         <div class="card-info">
-            <div><span class="name">{{ name }}</span> <span class="title">{{ title }}</span></div>
+            <div class="name-title">
+                <span class="name">{{ name }}</span>
+                <span class="title">{{ title }}</span>
+            </div>
             <span class="domain" :class="{ 'domain-zhilu': mainDomain === 'thisis.host' }">
                 {{ mainDomain }}
             </span>
@@ -40,10 +43,14 @@ onMounted(() => {
     width: fit-content;
     margin: 1rem auto;
     padding: 0.5rem;
-    line-height: 1.2em;
+    line-height: initial;
 
     &:hover {
         transform: translateY(-2px);
+    }
+
+    @media (max-width: $breakpoint-phone) {
+        flex-direction: column;
     }
 }
 
@@ -56,13 +63,23 @@ onMounted(() => {
 }
 
 .card-info {
-    display: grid;
-    justify-items: start;
-    gap: 2px;
+    @media (max-width: $breakpoint-phone) {
+        text-align: center;
 
-    .title {
-        opacity: 0.4;
-        font-size: 0.8em;
+        .name-title {
+            flex-direction: column;
+        }
+    }
+
+    .name-title {
+        display: flex;
+        align-items: center;
+        gap: 0 0.2em;
+
+        .title {
+            opacity: 0.4;
+            font-size: 0.8em;
+        }
     }
 
     .domain {

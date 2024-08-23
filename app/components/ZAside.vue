@@ -114,7 +114,7 @@ const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof wi
     }
 
     > .widget-card {
-        padding: 0.2rem 1rem;
+        padding: 0.2rem 0.8rem;
         border-radius: 0.8rem;
         background-color: var(--c-bg-2);
 

@@ -24,7 +24,7 @@ defineProps<{
     border-radius: 4px;
     background-color: var(--c-bg-3);
     font-size: 0.9em;
-    vertical-align: middle;
+    line-height: normal;
     color: var(--c-text-2);
     transition: color 0.2s;
 
@@ -59,6 +59,6 @@ defineProps<{
 }
 
 .badge-text {
-    margin: 0.2em 0.4em;
+    margin: 0 0.4em;
 }
 </style>

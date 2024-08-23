@@ -3,7 +3,7 @@ const appConfig = useAppConfig()
 </script>
 
 <template>
-    <header class="zhilu-header">
+    <ZRawLink class="zhilu-header">
         <div v-if="appConfig.header.emojiTail" class="emoji-tail">
             <span
                 v-for="(char, index) in appConfig.header.emojiTail"
@@ -24,7 +24,7 @@ const appConfig = useAppConfig()
                 {{ appConfig.header.subtitle }}
             </div>
         </div>
-    </header>
+    </ZRawLink>
 </template>
 
 <style lang="scss">
@@ -68,43 +68,30 @@ const appConfig = useAppConfig()
 }
 
 @keyframes vf-weight {
-    0% {
-        font-weight: 600;
-    }
-
-    38.2% {
-        font-weight: 300;
-    }
-
-    100% {
-        font-weight: 900;
-    }
+    0% { font-weight: 600; }
+    38.2% { font-weight: 300; }
+    100% { font-weight: 900; }
 }
 
 @keyframes vf-bevel {
-    from {
-        font-variation-settings: "BEVL" 100;
-    }
-
-    to {
-        font-variation-settings: "BEVL" 1;
-    }
+    from { font-variation-settings: "BEVL" 100; }
+    to { font-variation-settings: "BEVL" 1; }
 }
 
 .emoji-tail {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    align-content: center;
-    justify-items: center;
+    place-content: center;
     position: absolute;
     opacity: 0.2;
     inset: 0;
     font-size: 4rem;
     transition: opacity 1s;
     filter: blur(2px);
+    pointer-events: none;
     z-index: -2;
 
-    >* {
+    > * {
         animation: 5s infinite alternate emoji-floating;
         animation-delay: var(--delay);
         animation-play-state: paused;

@@ -44,9 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <ZRawLink to="/">
-        <ZhiluHeader class="header" />
-    </ZRawLink>
+    <ZhiluHeader class="header" to="/" />
     <div class="post-list">
         <ZOrderToggle v-model="orderBy" class="order-toggle" />
         <!-- FIXME: Type mismatch -->
@@ -68,6 +66,7 @@ onMounted(() => {
 
     @media (max-width: $breakpoint-mobile) {
         display: flex;
+        align-items: center;
     }
 }
 

@@ -36,35 +36,27 @@ width: 480px
 
 下面是 WriteUp 环节。
 
-## Section 1 签到
-
-:badge{text="9.15 10:38:44"}
+## Section 1 签到 :badge{text="9.15 10:38:44"}
 
 > 欢迎来到第三届“探索解密”趣味密码比赛，请关注微信公众号：`网联三航安守四方`，发送`探索解密`来获取 flag 并填写至下方输入框内来得分！~~签完小M就不用倒立洗头啦( •̀ ω •́ )✧~~
 
 按照操作，获得答案。
 
-## Section 1 小猪别跑
-
-:badge{text="9.15 10:40:11"}
+## Section 1 小猪别跑 :badge{text="9.15 10:40:11"}
 
 > 去年逃跑的小猪被抓到了，可怜的它被做成了：
 > `BABBAAABAAABABBABBBABABABAABAAAAAABAAAAAAAABAABBBAABBAB`
 
 根据特征搜索，判断是培根密码。使用 https://wtool.com.cn/baconian.html ，得出答案。
 
-## Section 2 我是福瑞兽
-
-:badge{text="9.15 10:45:49"}
+## Section 2 我是福瑞兽 :badge{text="9.15 10:45:49"}
 
 > 我是一只可爱的福瑞兽，听我说：
 >`~呜嗷嗷嗷嗷呜啊嗷啊呜呜嗷呜呜~嗷嗷~啊嗷啊呜嗷嗷~嗷~嗷~呜呜嗷呜啊嗷嗷嗷呜啊呜~啊呜嗷呜呜啊啊啊~啊嗷啊呜~呜啊~~嗷~呜嗷~~啊嗷嗷嗷呜呜~啊嗷呜嗷呜呜啊~呜啊啊嗷啊呜~啊呜~~嗷~呜嗷呜嗷嗷嗷嗷嗷呜啊嗷~啊呜嗷呜呜啊呜啊啊啊嗷啊呜~~啊啊~嗷~呜嗷啊呜呜嗷嗷嗷呜啊呜啊嗷呜嗷呜呜~呜啊呜啊嗷啊呜嗷呜~呜~嗷~呜呜呜啊嗷嗷嗷嗷呜呜呜嗷啊呜嗷呜呜~呜呜嗷啊`
 
 判断为兽语加密，使用 http://hi.pcmoe.net/roar.html ，得出答案。
 
-## Section 1 百家姓
-
-:badge{text="9.15 10:51:15"}
+## Section 1 百家姓 :badge{text="9.15 10:51:15"}
 
 > 你会读百家姓吗？
 > `郑郑郑窦郑钱郑王王水吴王郑冯郑钱王周吴苏李钱王李吴苏王陈李赵王吴王孙吴苏郑云李周郑章郑吴李苏王章`
@@ -75,9 +67,7 @@ width: 480px
 
 判断为磁力链接，打开下载工具下载，提示“Invalid info_hash”，因此不是磁力链接。尝试十六进制转换为ASCII字符串，使用 https://www.sojson.com/hexadecimal.html ，得出答案。
 
-## Section 2 PAPER
-
-:badge{text="9.15 12:12:42"}
+## Section 2 PAPER :badge{text="9.15 12:12:42"}
 
 > 咚咚咚，小可的门前出现了四块被撕碎的信纸和刚从泥土中连根拔起的花，看起来这朵花的根部从土壤中吸取了大的营养往上供给才开出了如此漂亮的花朵，但信纸和花有什么关系呢？
 >
@@ -104,18 +94,14 @@ width: 200px
 
 根据“营养往上供给”，判断字符串为“SIKMB”（但不应该是B先出土而排前面吗），使用 https://www.sojson.com/md5/ ，得出答案。
 
-## Section 4 Notes
-
-:badge{text="9.15 12:15:05"}
+## Section 4 Notes :badge{text="9.15 12:15:05"}
 
 > Do You Know Music?
 > `‖‖‖♬♩‖‖‖¶♯‖‖‖♬♭‖‖‖♬♫‖‖‖♫♪♯♭♪§♯♯♪♭♯♭§♪♫♬‖♩♪§∮‖§♪♬♪♬§♪♬♪♬♯‖§‖∮‖‖‖♫♫♪==`
 
 根据特征搜索，判断为音符加密。使用 https://www.qqxiuzi.cn/bianma/wenbenjiami.php?s=yinyue ，得出答案。
 
-## Section 1 BASE233
-
-:badge{text="9.15 15:59:48"}
+## Section 1 BASE233 :badge{text="9.15 15:59:48"}
 
 > 聪明的小M魔改出了一种新的编码方式，你要不要来看看？
 
@@ -205,9 +191,7 @@ console.log(originStr)
 
 运行，得到正常的Base64字符串`ZmxhZ3syMzNfbWVhbnNfbG9sfQ==`，使用 https://www.sojson.com/base64.html ，得出答案。
 
-## Section 2 你会求逆元吗？
-
-:badge{text="9.15 16:50:10"}
+## Section 2 你会求逆元吗？ :badge{text="9.15 16:50:10"}
 
 > 见附件。
 
@@ -253,9 +237,7 @@ console.log(originStr)
 
 大写字母似乎未经过映射，照搬下来，得到答案。
 
-## Section 2 协会招新
-
-:badge{text="9.15 17:02:08"}
+## Section 2 协会招新 :badge{text="9.15 17:02:08"}
 
 > 西工大信安协会发出了一份招新宣传，你要不要来看看？
 
@@ -299,9 +281,7 @@ QQ 群
 
 拼凑起来，得到答案。
 
-## Section 3 图书馆的水下
-
-:badge{text="9.15 17:13:30"}
+## Section 3 图书馆的水下 :badge{text="9.15 17:13:30"}
 
 > 西工大长安校区图书馆从“航"字汲取设计灵感，力图创造出一种昂扬向上，鹰击长空的建筑形态。其四面环湖，但是你知道湖下有什么吗？
 
@@ -334,9 +314,7 @@ fancybox: true
 ---
 ::
 
-## Section 3 隐约雷鸣
-
-:badge{text="9.15 17:42:03"}
+## Section 3 隐约雷鸣 :badge{text="9.15 17:42:03"}
 
 > 小M在看完《言叶之庭》之后久久不能忘怀，他把心里埋藏已久的秘密藏在剧中最喜欢的诗句中。
 >
@@ -353,9 +331,7 @@ mirror: true
 
 交替数据流~~检测阳性~~，就是使用NTFS文件系统中的Alternate Data Streams技术，把一个文件当成另一个文件的影子塞进去，表面只有一个文件，实际上还有隐藏的文件，需要使用“start 原文件名:隐藏文件名”打开。使用7-Zip直接打开flag.txt:hide.txt (WinRAR不会显示，并且会把正常文件连带隐藏文件一同解压出去)，得到答案。
 
-## Section 2 隐藏在主播背后的秘密
-
-:badge{text="9.15 19:24:55"}
+## Section 2 隐藏在主播背后的秘密 :badge{text="9.15 19:24:55"}
 
 > 小 M 发现自己每天看的主播竟然是一名大歌手，于是他专门为主播制作了一个网站并且放上了最喜欢的主播的歌。你要不要也去听一听？网址：`https://maze.qwq.cc/`
 >
@@ -389,9 +365,7 @@ Flag?：B﻿‎‌﻿‏﻿‌﻿‎﻿﻿‌﻿‏‏﻿‏﻿﻿‎‎﻿‎�
 
 经过搜索，查到这种加密方式 https://zhuanlan.zhihu.com/p/87919817 。使用 https://yuanfux.github.io/zero-width-web/ ，对这些不可见的零宽字符解密，得到答案。
 
-## Section 4 黑客小子
-
-:badge{text="9.15 19:31:09"}
+## Section 4 黑客小子 :badge{text="9.15 19:31:09"}
 
 > 小M最近刚看了一篇发表于USENIX Security 2021的论文，论文发现苹果AirDrop隔空投送功能可以向陌生人泄露AirDrop发起者或接收者的电话号码和电子邮箱。小A经过一番努力，获得了隔壁室友手机在AirDrop时传输的手机号哈希值，你能帮帮他继续获得室友的手机号吗？小M只知道隔壁室友的手机卡是首批大王卡号段。
 >
@@ -417,17 +391,16 @@ print(correct)
 
 ::pic
 ---
-src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx8oDVicpWhxX0ticyCwiajDbuGw7wFy4l5TgbNY6ic3Nx3Xqib5eaM92umcw/640 显然，我没有设置中止循环的条件，有可能是因为我懒。
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx8oDVicpWhxX0ticyCwiajDbuGw7wFy4l5TgbNY6ic3Nx3Xqib5eaM92umcw/640
 mirror: true
+caption: 显然，我没有设置中止循环的条件，有可能是因为我懒。
 fancybox: true
 ---
 ::
 
 跑了五分钟，显示已得到答案。
 
-## Section 3 键盘中的爱讯号
-
-:badge{text="9.15 19:33:59"}
+## Section 3 键盘中的爱讯号 :badge{text="9.15 19:33:59"}
 
 > 小明与女朋友吵架了，女朋友给小明了一张小纸条，说只要小明能读懂这句话的意思就和小明和好，你能帮帮小明吗？附件：
 >
@@ -484,9 +457,7 @@ width: 360px
 
 火速提交loveu，下一关[/doge]。
 
-## Section 4 白鸟过河滩
-
-:badge{text="9.15 20:02:03"}
+## Section 4 白鸟过河滩 :badge{text="9.15 20:02:03"}
 
 > 风把我不想知道的事情告诉我🎶河把我不想忘记的故事也带走🎶
 > [点击播放完整曲目](https://www.bilibili.com/video/BV19Z4y1b7qe)
@@ -543,9 +514,7 @@ width: 360px
 判断为Base64编码，使用 https://c.runoob.com/front-end/693/ 可以整段解码。根据Base64编码原理，Base64中间不会出现等号占位符，所以等号附近可能有隐藏信息。
 使用 https://blog.csdn.net/qq_51550750/article/details/122813934 提供的程序，很快拿到了隐藏的答案。
 
-## Section 1 DICE
-
-:badge{text="9.15 21:32:49"}
+## Section 1 DICE :badge{text="9.15 21:32:49"}
 
 > 最近小可身边的怪事一件接一件，而今天小可收到了九个奇怪的骰子，但是它们看起来不是用来玩的。。。
 >
@@ -578,9 +547,7 @@ width: 200px
 ---
 ::
 
-## Section 1 与魔对谈
-
-:badge{text="9.16 12:59:48"}
+## Section 1 与魔对谈 :badge{text="9.16 12:59:48"}
 
 > 彼岸两生花，佛魔一念间。佛曰：善，魔曰：恶。那么，
 >
@@ -594,9 +561,7 @@ width: 200px
 
 使用 https://ctf.bugku.com/tool/todousharp ，解出答案。
 
-## Section 3 校歌
-
-:badge{text="9.16 18:40:04"}
+## Section 3 校歌 :badge{text="9.16 18:40:04"}
 
 > 你还记得校歌怎么唱么？来试试：
 >
@@ -626,7 +591,7 @@ hex(0o256624611407306323450125)
 #'0x5765313076334e5055'
 ```
 
-使用Python转换为十六进制，再使用https://www.sojson.com/hexadecimal.html将十六进制转换为字符串，得到答案。
+使用 Python 转换为十六进制，再使用 https://www.sojson.com/hexadecimal.html 将十六进制转换为字符串，得到答案。
 
 ## 写在最后
 

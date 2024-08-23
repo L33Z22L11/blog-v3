@@ -9,9 +9,10 @@
     font-family: sans-serif;
     font-family: var(--font-family);
     font-synthesis: style;
+    line-height: 1.4;
     color: var(--c-text-1);
     scroll-behavior: smooth;
-    scrollbar-color: var(--c-text-3) var(--c-bg-1);
+    scrollbar-color: var(--c-text-3) transparent;
 }
 
 * {
@@ -31,6 +32,7 @@ a {
 }
 
 code, pre {
+    font-family: "Fira Code", "JetBrains Mono", "Cascadia Code", "Noto Sans Mono", Consolas, monospace;
     font-family: var(--font-monospace);
 }
 
@@ -123,6 +125,7 @@ mark {
 
     &:hover, &.active {
         background-position: 0;
+        color: var(--c-text-1);
 
         &::before {
             background-color: var(--c-bg-a80);

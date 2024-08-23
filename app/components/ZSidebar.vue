@@ -5,9 +5,7 @@ const UIStore = useUIStore()
 
 <template>
     <aside id="z-sidebar" :class="{ show: UIStore.sidebarOpen }">
-        <ZRawLink class="sidebar-header" to="/">
-            <ZhiluHeader />
-        </ZRawLink>
+        <ZhiluHeader class="sidebar-header" to="/" />
         <nav class="sidebar-nav">
             <div class="notify gradient-card active">
                 <p>
@@ -31,9 +29,11 @@ const UIStore = useUIStore()
         </nav>
         <footer class="sidebar-footer">
             <ZThemeToggle />
-            <ZLink class="footer-link" :to="appConfig.sidebar.footerLink.url">
-                {{ appConfig.sidebar.footerLink.text }}
-            </ZLink>
+            <div class="footer-link">
+                <ZLink :to="appConfig.sidebar.footerLink.url">
+                    {{ appConfig.sidebar.footerLink.text }}
+                </ZLink>
+            </div>
         </footer>
     </aside>
     <Transition>
@@ -45,15 +45,18 @@ const UIStore = useUIStore()
 #z-sidebar {
     display: grid;
     grid-template-rows: auto 1fr auto;
+    color: var(--c-text-2);
 
     @media (max-width: $breakpoint-mobile) {
         position: fixed;
         left: -100%;
         width: 320px;
         max-width: 100%;
+        padding: 0 0.5rem;
         box-shadow: 0 0 1rem var(--ld-shadow);
         background-color: var(--ld-bg-blur);
         backdrop-filter: blur(0.5rem);
+        color: inherit;
         transition: left 0.2s;
         z-index: 3;
 
@@ -86,32 +89,32 @@ const UIStore = useUIStore()
 
 .notify {
     position: sticky;
-    margin: 1rem 0.5rem;
-    padding: 0.5rem;
+    margin: 1em 0.2em;
+    padding: 0.5em;
     backdrop-filter: blur(2px);
-    font-size: 0.9em;
     z-index: 1;
 }
 
 .sidebar-nav {
     overflow: auto;
     padding: 0 0.5rem;
+    font-size: 0.9em;
 
     h3 {
-        margin: 2rem 0 1rem 1rem;
+        margin: 2em 0 1em 1em;
         font: inherit;
         color: var(--c-text-2);
     }
 
     li {
-        margin: 0.5rem 0;
+        margin: 0.5em 0;
 
         >a {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
+            gap: 0.5em;
+            padding: 0.5em 1em;
+            border-radius: 0.5em;
             transition: background-color 0.2s, color 0.1s;
 
             &:hover {
@@ -120,17 +123,18 @@ const UIStore = useUIStore()
 
             &.router-link-active {
                 background-color: var(--c-primary-soft);
+                color: var(--c-text);
 
                 &::after {
                     content: "⦁";
-                    width: 1rem;
+                    width: 1em;
                     text-align: center;
                     color: var(--c-text-3);
                 }
             }
 
             .iconify {
-                font-size: 1.5rem;
+                font-size: 1.5em;
             }
 
             .nav-text {

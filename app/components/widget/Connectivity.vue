@@ -17,7 +17,6 @@
 .gbc-bg {
     position: relative;
     overflow: hidden;
-    line-height: 1.5;
     z-index: 0;
 
     &::before {
@@ -32,6 +31,7 @@
 }
 
 .m-finger::before, .m-finger::after {
+    // 文明用语😋
     content: "\1F595";
 }
 </style>

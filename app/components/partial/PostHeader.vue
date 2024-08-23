@@ -14,7 +14,7 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
 
 <template>
     <!-- 💩夸克浏览器，桌面端只有IE不支持 :has() 了 -->
-    <div class="post-header" :class="{ 'has-cover': cover }">
+    <div class="post-header" :class="{ 'has-cover': cover, 'text-revert': cover_revert }">
         <NuxtImg v-if="cover" class="post-cover" :src="cover" :alt="title" />
         <div class="post-nav">
             <div class="post-info">
@@ -31,7 +31,7 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
                 </span>
             </div>
         </div>
-        <h2 class="post-title" :class="{ 'text-story text-center': type === 'story', 'text-revert': revert }">
+        <h2 class="post-title" :class="{ 'text-story text-center': type === 'story' }">
             {{ title }}
         </h2>
     </div>
@@ -69,9 +69,14 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
 
         .post-title {
             background-image: linear-gradient(transparent, #0003, #0005);
+        }
 
-            &.text-revert {
-                color: #333;
+        &.text-revert {
+            text-shadow: 0 0 2px #fff, 0 1px 0.5em #fff;
+            color: #333;
+
+            .post-title {
+                background-image: linear-gradient(transparent, #fff3, #fff5);
             }
         }
     }

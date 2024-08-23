@@ -12,5 +12,6 @@ export default interface ArticleProps {
     tags?: string[]
     type?: 'tech' | 'story' | undefined
     cover?: string
+    cover_revert?: boolean
     references?: ({ title: string, link: string } & string)[]
 }

@@ -40,6 +40,7 @@ function render() {
         // BFC
         overflow: hidden;
         width: fit-content;
+        max-width: 90%;
         margin-bottom: 1em;
         padding: 0 1em;
         border-radius: 0.2em 1em 1em;

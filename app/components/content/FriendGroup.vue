@@ -50,12 +50,13 @@ import allMyFriends from '~/assets/friend'
 
 .friend-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
     gap: 0.5rem;
     margin: 1rem auto;
 
-    @media (width <= 460px) {
-        width: 75%;
+    @media (max-width: $breakpoint-phone) {
+        grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+        font-size: 0.9em;
     }
 }
 

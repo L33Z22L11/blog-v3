@@ -31,9 +31,9 @@ tags: [教程, termux, 软件]
 - 设置密码
   :copy{prompt="$" command="passwd"}
 - 启动 SSH 服务
-  :copy{prompt="$" command="sshd"}
+  :copy{prompt="$" ="sshd"}
 - 如果想要在 Termux 启动后自动启动 `sshd`，可以执行：
-  :copy{prefix='echo "sshd" >> ~/../usr/etc/profile' command="$2"}
+  :copy{prompt="$" command="echo &quot;sshd&quot; >> ~/../usr/etc/profile"}
 
 ## 使用 Pacman 包管理器(可选)
 
@@ -118,7 +118,7 @@ alias grep='grep --color=auto'
 - 安装 Xfce4 桌面环境，也可以选择其他桌面环境
   :copy{prompt="$" command="pkg install xfce4 xfce4-goodies"}
 - 以后可以使用此命令启动桌面环境进程，亦可将此命令写在脚本中，方便启动。
-  :copy{prefix='termux-x11 :1 -xstartup "dbus-launch --exit-with-session xfce4-session"' command="$2"}
+  :copy{prompt="$" command="termux-x11 :1 -xstartup &quot;dbus-launch --exit-with-session xfce4-session&quot;"}
 
 ## 更多
 

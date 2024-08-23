@@ -30,6 +30,7 @@ const src = getImgUrl(props.src, props.mirror)
 
     figcaption {
         font-size: 0.8rem;
+        color: var(--c-text-3);
     }
 }
 </style>

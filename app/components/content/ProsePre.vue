@@ -19,20 +19,22 @@ useCopy(elCopyBtn, elCodeblock)
 
 <template>
     <figure class="z-codeblock">
+        <div class="codeblock-header">
+            <div class="operations">
+                <button @click="isWrap = !isWrap">
+                    {{ isWrap ? '横向滚动' : '自动换行' }}
+                </button>
+                <button ref="elCopyBtn">
+                    复制
+                </button>
+            </div>
+        </div>
+
         <figcaption v-if="filename">
             {{ filename }}
         </figcaption>
 
         <span v-if="language" class="language">{{ language }}</span>
-
-        <div class="operations">
-            <button @click="isWrap = !isWrap">
-                {{ isWrap ? '横向滚动' : '自动换行' }}
-            </button>
-            <button ref="elCopyBtn">
-                复制
-            </button>
-        </div>
 
         <!-- 嘿嘿，不要换行 -->
         <pre ref="elCodeblock" class="scrollcheck-x" :class="{ wrap: isWrap }"><slot /></pre>
@@ -48,38 +50,51 @@ useCopy(elCopyBtn, elCodeblock)
     font-size: 0.8125rem;
     line-height: 1.4;
 
+    .codeblock-header {
+        gap: 0.5em;
+        position: sticky;
+        top: 0;
+        height: 0;
+        background: linear-gradient(var(--c-bg-2), transparent);
+        z-index: 2;
+    }
+
     figcaption {
         display: inline-block;
-        margin-inline-start: 1em;
+        flex-shrink: 0;
+        position: sticky;
+        top: 0;
+        margin: 0 1em;
         padding: 0.2em 0.8em;
         border-radius: 0 0 8px 8px;
         background-color: var(--c-border);
+        z-index: 1;
     }
 
-    .language {
+    .language, .operations {
         position: absolute;
-        top: 0.2em;
-        right: 0.8em;
-        color: var(--c-text-3);
+        opacity: 0.4;
+        right: 0;
+        padding: 0.2em 0.8em;
         transition: opacity 0.2s;
     }
 
     .operations {
-        position: absolute;
+        gap: 0.5em 1em;
         opacity: 0;
-        top: 0;
-        right: 0;
-        transition: opacity 0.2s;
-        z-index: 1;
 
         > button {
-            padding: 0.2em 0.8em;
-            color: var(--c-text-3);
-            transition: color 0.2s;
+            opacity: 0.4;
+            color: inherit;
+            transition: opacity 0.2s;
             cursor: pointer;
 
             &:hover {
-                color: var(--c-text);
+                opacity: 1;
+            }
+
+            & + button {
+                margin-left: 1em;
             }
         }
     }
