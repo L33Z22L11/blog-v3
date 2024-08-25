@@ -1,8 +1,8 @@
 ---
 title: Linux 下通过 Samba 共享文件夹
-description:
+description: Linux 作为 SMB 协议服务器，向其他设备提供共享文件夹服务。
 date: 2024-08-04 21:11:03
-updated: 2024-08-11
+updated: 2024-08-23 17:47:03
 cover:
 categories: [经验分享]
 tags: [教程, archlinux, samba, smb]
@@ -11,9 +11,9 @@ references:
     link: https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html
   - title: Samba - Arch Linux 中文维基
     link: https://wiki.archlinuxcn.org/wiki/Samba
-
-draft: true
 ---
+
+> 文章暂未完成。
 
 SMB (Server Message Block) 是一种网络文件共享协议；Samba 是在 Linux 上实现 SMB/CIFS 的自由软件服务。
 
@@ -55,21 +55,23 @@ sudo vim /etc/samba/smb.conf
 
 ```ini
 [global]
-workgroup = WORKGROUP
-server string = Arch Linux Server
-netbios name = Arch
-security = user
-map to guest = bad user
-guest ok = yes
-guest only = yes
+# workgroup = WORKGROUP
+# server string = Arch Linux Server
+# netbios name = Arch
+# security = user
+# map to guest = bad user
+# guest ok = yes
+# guest only = yes
 
 [share_folder_display_name] # 文件夹显示名称
+# comment = guest share
 path = /path/to/share
-valid users = username_in_system # 允许访问的用户
-browseable = yes
-read only = no
+public = yes
+# valid users = username_in_system # 允许访问的用户
+# browseable = yes
+# read only = no
 writable = yes
-guest ok = no
+# guest ok = no
 ```
 
 ## 作为客户端
