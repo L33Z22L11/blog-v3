@@ -3,7 +3,7 @@ const _appConfig = useAppConfig()
 export type ArticleCategory = keyof typeof _appConfig.article.categories & string
 
 export default interface ArticleProps {
-    title: string
+    title?: string
     description?: string
     link?: string
     date?: string

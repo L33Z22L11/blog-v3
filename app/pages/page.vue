@@ -9,10 +9,7 @@ definePageMeta({
 const appConfig = useAppConfig()
 
 const perPage = appConfig.indexGenerator.perPage || 10
-const orderBy = useRouteQuery<OrderType>(
-    'order',
-    () => appConfig.indexGenerator.orderBy as OrderType || 'date',
-)
+const orderBy = ref<OrderType>(appConfig.indexGenerator.orderBy as OrderType || 'date')
 
 const { data } = await useAsyncData(
     'posts_index',
@@ -31,11 +28,12 @@ const list = computed(() => alphabetical(
 
 const { page, totalPages, pagedList } = usePagination(list, {
     perPage,
-    bindQuery: true,
+    bindParam: 'id',
 })
 
 useHead({ title: () => page.value > 1 ? `第${page.value}页` : '' })
 
+// 兼容 SSR
 onMounted(() => {
     watch(page, () => {
         window.scrollTo({ top: 0 })
@@ -47,14 +45,7 @@ onMounted(() => {
     <ZhiluHeader class="header" to="/" />
     <div class="post-list">
         <ZOrderToggle v-model="orderBy" class="order-toggle" />
-        <!-- FIXME: Type mismatch -->
-        <ZArticle
-            v-for="article in pagedList"
-            :key="article._path"
-            v-bind="article"
-            :to="article._path"
-            :use-updated="orderBy === 'updated'"
-        />
+        <NuxtPage :list="pagedList" :order-by />
         <ZPagination v-model="page" :per-page :total-pages />
     </div>
 </template>

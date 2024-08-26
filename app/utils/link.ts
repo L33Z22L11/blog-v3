@@ -5,10 +5,14 @@ export function getDomain(url: string) {
 export function getMainDomain(url: string): string {
     const domain = getDomain(url)
     const parts = domain.split('.')
-    const partLength = (partIndex: number) => parts.at(partIndex)?.length ?? 0
-    if (partLength(-1) > 3)
+    const getPartLength = (partIndex: number) => {
+        // Array.prototype.at() -> Chrome 92+
+        const seg = parts.length
+        return parts[(partIndex % seg + seg) % seg]?.length ?? 0
+    }
+    if (getPartLength(-1) > 3)
         return parts.slice(-2).join('.')
-    if (partLength(-2) <= 3) {
+    if (getPartLength(-2) <= 3) {
         return parts.slice(-3).join('.')
     }
     return parts.slice(-2).join('.')

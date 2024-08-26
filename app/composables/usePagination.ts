@@ -1,23 +1,28 @@
 interface UsePaginationOptions {
     initialPage?: number
     perPage?: number
-    bindQuery?: boolean
+    bindParam?: string | false
 }
 
-export default function<T>(list: MaybeRefOrGetter<T[]>, options?: UsePaginationOptions) {
+export default function<T> (list: MaybeRefOrGetter<T[]>, options?: UsePaginationOptions) {
     const {
         initialPage = 1,
         perPage = 10,
-        bindQuery = false,
+        bindParam = false,
     } = options ?? {}
 
     const totalPages = Math.ceil(toValue(list).length / perPage) || initialPage
 
-    const page = bindQuery
-        ? useRouteQuery(
-            'page',
+    const page = bindParam
+        ? useRouteParams(
+            bindParam,
             initialPage,
-            { transform: val => val >= 1 && val <= totalPages ? Number(val) : initialPage },
+            {
+                transform(val) {
+                    const page = Number(val)
+                    return page >= 1 && page <= totalPages ? page : initialPage
+                },
+            },
         )
         : ref(initialPage)
 
@@ -26,9 +31,7 @@ export default function<T>(list: MaybeRefOrGetter<T[]>, options?: UsePaginationO
         return toValue(list).slice(start, start + perPage)
     })
 
-    watch(list, () => {
-        page.value = initialPage
-    })
+    // 不应在此处 watch list
 
     return {
         totalPages,

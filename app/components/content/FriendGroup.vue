@@ -3,7 +3,7 @@ import allMyFriends from '~/assets/friend'
 </script>
 
 <template>
-    <div v-for="group in allMyFriends" :key="group.name" class="friend-group" v-bind="group">
+    <div v-for="group in allMyFriends" :key="group.name" class="friend-group">
         <h2 class="friend-title">
             {{ group.name }}
         </h2>
