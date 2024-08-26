@@ -99,6 +99,10 @@ export default {
 
     // others
 
+    feed: {
+        limit: 50,
+    },
+
     hideContentPrefixes: [
         '/posts',
     ],

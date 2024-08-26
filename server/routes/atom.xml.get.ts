@@ -3,7 +3,7 @@ import { setHeader } from 'h3'
 import blogConfig from '~~/blog.config'
 import { serverQueryContent } from '#content/server'
 
-function getUrl(path: string | undefined) {
+function getUrl(path?: string) {
     return new URL(path ?? '', blogConfig.url).toString()
 }
 
@@ -31,6 +31,7 @@ export default defineEventHandler(async (event) => {
     const posts = await serverQueryContent(event)
         .where({ _original_dir: { $eq: '/posts' } })
         .sort({ updated: -1 })
+        .limit(blogConfig.feed.limit)
         .find()
 
     posts.forEach(async (post) => {

@@ -1,11 +1,12 @@
 import { format, formatDistanceToNow } from 'date-fns'
+import { getTimezoneOffset } from 'date-fns-tz'
 import { zhCN } from 'date-fns/locale'
 
 export function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-export function timeElapse(date: Date | string | undefined, maxDepth = 2) {
+export function timeElapse(date?: Date | string, maxDepth = 2) {
     if (!date)
         return ''
     if (typeof date === 'string')
@@ -33,12 +34,18 @@ export function timeElapse(date: Date | string | undefined, maxDepth = 2) {
     return timeString || '刚刚'
 }
 
-export function getPostTime(date: string | undefined) {
+export function getPostTime(date?: string) {
     if (!date)
         return ''
-    const postDate = new Date(date)
+
+    const { timezone } = useAppConfig()
+    const postDate = new Date(new Date(date).getTime() - getTimezoneOffset(timezone))
+
     const now = new Date()
-    if (postDate.getTime() > now.getTime() - 1000 * 60 * 60 * 24 * 7) {
+
+    const isWithinAWeek = postDate.getTime() > now.getTime() - 1000 * 60 * 60 * 24 * 7
+
+    if (isWithinAWeek) {
         return formatDistanceToNow(postDate, { addSuffix: true, locale: zhCN })
     }
     else if (postDate.getFullYear() === now.getFullYear()) {
@@ -48,7 +55,6 @@ export function getPostTime(date: string | undefined) {
         return format(postDate, 'yy年M月d日')
     }
 }
-
-export function isSameYear(date1: string | undefined, date2: string | undefined) {
+export function isSameYear(date1?: string, date2?: string) {
     return new Date(date1 ?? 0).getFullYear() === new Date(date2 ?? 0).getFullYear()
 }

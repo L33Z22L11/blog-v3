@@ -5,7 +5,7 @@ const services = {
 
 export type ImgService = keyof typeof services | boolean
 
-export function getImgUrl(src: string | undefined, service: ImgService | undefined) {
+export function getImgUrl(src?: string, service?: ImgService) {
     if (!src || !service)
         return src
     if (service === true)

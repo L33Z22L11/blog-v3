@@ -28,6 +28,6 @@ export function getDomainType(mainDomain: string): string | null {
             return null
     }
 }
-export function isExtLink(url: string | undefined): boolean {
+export function isExtLink(url?: string) {
     return Boolean(url?.match?.(':'))
 }

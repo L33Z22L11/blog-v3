@@ -6,7 +6,8 @@ function render() {
         return <span>无会话内容</span>
 
     return slotContent.map((node: VNode) => {
-        const textContent = node.children?.default?.()[0].children || ''
+        // WARN: 此处使用了非标准的 v-slot:default
+        const textContent = (node.children as any)?.default?.()[0].children || ''
         const match = textContent?.match?.(/^\{(.*?)\}$/)
         const matchMyself = match?.[1]?.match?.(/^\((.*?)\)$/)
         return matchMyself
