@@ -1,29 +1,29 @@
 import type { TocLink } from '@nuxt/content'
 
-type TOCOffsetList = {
+interface TocOffset {
     id: string
     offsetTop: number
-}[]
+}
 
-export function useTOCAutoHighlight(toc: TocLink[]) {
+export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
     const activeTocItem = ref<string | null>(null)
-    const tocOffsets = ref<TOCOffsetList>([])
-    const flattenTOC = (toc: TocLink[], offsetList: TOCOffsetList = []): TOCOffsetList => {
+
+    const flattenToc = (toc: TocLink[], offsetList: TocOffset[] = []) => {
         toc.forEach((item) => {
             const element = document?.getElementById(item.id)
             if (element)
                 offsetList.push({ id: item.id, offsetTop: element.offsetTop })
             if (item.children?.length)
-                flattenTOC(item.children, offsetList)
+                flattenToc(item.children, offsetList)
         })
         return offsetList
     }
 
-    const calculateOffsets = () => {
-        tocOffsets.value = flattenTOC(toc)
-    }
+    const tocOffsets = computedWithControl(() => toValue(toc), () => {
+        return flattenToc(toValue(toc))
+    })
 
-    const updateActiveTOC = () => {
+    const updateActiveToc = () => {
         const scrollPosition = window.scrollY // 添加偏移量？
 
         // 使用副本而不是直接 reverse
@@ -40,22 +40,8 @@ export function useTOCAutoHighlight(toc: TocLink[]) {
         // }
     }
 
-    onMounted(() => {
-        calculateOffsets()
-        window.addEventListener('scroll', updateActiveTOC, { passive: true })
-        window.addEventListener('resize', calculateOffsets)
-    })
-
-    onBeforeUnmount(() => {
-        window.removeEventListener('scroll', updateActiveTOC)
-        window.removeEventListener('resize', calculateOffsets)
-    })
-
-    watch(
-        () => toc,
-        calculateOffsets,
-        { deep: true, immediate: true },
-    )
+    useEventListener('scroll', updateActiveToc, { passive: true })
+    useEventListener('resize', () => tocOffsets.trigger())
 
     return {
         activeTocItem,

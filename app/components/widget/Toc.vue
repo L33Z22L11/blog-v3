@@ -8,7 +8,7 @@ const { data } = await useAsyncData(
     { watch: [() => route.path] },
 )
 const toc = computed(() => data.value?.body?.toc)
-const { activeTocItem } = useTOCAutoHighlight(toc.value?.links ?? [])
+const { activeTocItem } = useTocAutoHighlight(() => toc.value?.links ?? [])
 </script>
 
 <template>

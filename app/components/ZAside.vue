@@ -1,20 +1,21 @@
 <script setup lang="ts">
+import { pascal } from 'radash'
 import {
     LazyWidgetBlogLog,
     LazyWidgetConnectivity,
-    LazyWidgetTOC,
+    LazyWidgetToc,
 } from '#components'
 
 const UIStore = useUIStore()
 const route = useRoute()
 
 const widgetList = {
-    blog_log: LazyWidgetBlogLog,
-    connectivity: LazyWidgetConnectivity,
-    toc: LazyWidgetTOC,
+    LazyWidgetBlogLog,
+    LazyWidgetConnectivity,
+    LazyWidgetToc,
 }
 
-const widgets = computed(() => (route.meta.aside || []) as Array<keyof typeof widgetList>)
+const widgets = computed(() => (route.meta.aside || []).map(n => `LazyWidget${pascal(n)}` as keyof typeof widgetList))
 </script>
 
 <template>
