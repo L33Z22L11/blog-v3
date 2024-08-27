@@ -37,7 +37,9 @@ useCopy(elCopyBtn, elCodeblock)
         <span v-if="language" class="language">{{ language }}</span>
 
         <!-- 嘿嘿，不要换行 -->
-        <pre ref="elCodeblock" class="scrollcheck-x" :class="{ wrap: isWrap }"><slot /></pre>
+        <pre
+            ref="elCodeblock" class="scrollcheck-x" :class="{ wrap: isWrap }"
+        ><slot /></pre>
     </figure>
 </template>
 

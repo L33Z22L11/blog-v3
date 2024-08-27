@@ -31,9 +31,9 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
                 </span>
             </div>
         </div>
-        <h2 class="post-title" :class="{ 'text-story text-center': type === 'story' }">
+        <h1 class="post-title" :class="{ 'text-story text-center': type === 'story' }">
             {{ title }}
-        </h2>
+        </h1>
     </div>
 </template>
 

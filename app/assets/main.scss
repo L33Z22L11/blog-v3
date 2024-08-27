@@ -11,6 +11,7 @@
     font-synthesis: style;
     line-height: 1.4;
     color: var(--c-text-1);
+    transition: background-color 0.2s;
     scroll-behavior: smooth;
     scrollbar-color: var(--c-text-3) transparent;
 }

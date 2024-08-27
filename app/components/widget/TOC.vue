@@ -8,19 +8,18 @@ const { data } = await useAsyncData(
     { watch: [() => route.path] },
 )
 const toc = computed(() => data.value?.body?.toc)
+const { activeTocItem } = useTOCAutoHighlight(toc.value?.links ?? [])
 </script>
 
 <template>
     <DefineTemplate v-slot="{ tocItem }">
-        <ul>
-            <li v-for="(entry, index) in tocItem" :key="index">
+        <ol>
+            <li v-for="(entry, index) in tocItem" :key="index" :class="{ active: entry.id === activeTocItem }">
                 <!-- 若使用 NuxtLink 则键盘焦点不会切换 -->
-                <a :href="`#${entry?.id}`">
-                    {{ entry.text }}
-                </a>
+                <a :href="`#${entry?.id}`">{{ entry.text }}</a>
                 <ReuseTemplate v-if="entry.children?.length" :toc-item="entry.children" />
             </li>
-        </ul>
+        </ol>
     </DefineTemplate>
 
     <h3 class="widget-title">
@@ -45,12 +44,44 @@ const toc = computed(() => data.value?.body?.toc)
 
 <style lang="scss" scoped>
 .widget-body {
-    ul {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0.3rem;
+        width: 2px;
+        border-radius: 1rem;
+        background-color: var(--c-bg-3);
+    }
+
+    ol {
         padding-left: 0;
         list-style: none;
 
         li {
-            padding-left: 0.5rem;
+            padding-left: 1em;
+            color: var(--c-text-2);
+
+            &:not(:has(.active)) {
+                font-size: 0.95em;
+                color: var(--c-text-3);
+            }
+
+            &.active {
+                font-size: 1em;
+                color: var(--c-text);
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0.3rem;
+                    height: 1em;
+                    padding: 0.8rem 1px;
+                    border-radius: 1rem;
+                    background-color: var(--c-primary-1);
+                }
+            }
 
             a {
                 display: block;
@@ -59,7 +90,6 @@ const toc = computed(() => data.value?.body?.toc)
                 border-radius: 0.5em;
                 white-space: nowrap;
                 text-overflow: ellipsis;
-                color: var(--c-text-2);
                 transition: all 0.2s;
 
                 &:hover {

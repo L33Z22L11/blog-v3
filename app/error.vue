@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { type BundledLanguage, type BundledTheme, createHighlighter } from 'shiki'
+import { createPlainShiki } from 'plain-shiki'
 import type { NuxtError } from '#app'
 
 defineProps({
@@ -9,6 +11,29 @@ const route = useRoute()
 route.meta.aside = ['blog_log']
 
 const handleError = () => clearError({ redirect: '/' })
+
+// TODO: Shiki 高亮错误信息
+const elMsg = ref<HTMLElement>()
+
+const hlLang = 'log'
+const hlTheme: Record<string, BundledTheme> = {
+    default: 'catppuccin-latte',
+    dark: 'one-dark-pro',
+}
+
+const shiki = await createHighlighter({
+    langs: [hlLang],
+    themes: Object.values(hlTheme),
+})
+
+const plainShiki = createPlainShiki(shiki)
+
+onMounted(() => {
+    plainShiki.mount(elMsg.value!, {
+        lang: hlLang,
+        themes: hlTheme,
+    })
+})
 </script>
 
 <template>
@@ -18,7 +43,7 @@ const handleError = () => clearError({ redirect: '/' })
             <div class="app-error">
                 <Icon name="solar:siren-rounded-bold-duotone" />
                 <h2>出错了 - {{ error?.statusCode }}</h2>
-                <pre>{{ error?.message }}</pre>
+                <pre ref="elMsg">{{ error?.message }}</pre>
                 <ZButton @click="handleError">
                     返回主页
                 </ZButton>
