@@ -20,6 +20,7 @@ const scroll = ref(true)
     position: relative;
     margin: 1rem;
     font-size: 0.9em;
+    line-height: 1.4;
 
     table.scroll {
         display: block;
@@ -56,16 +57,15 @@ const scroll = ref(true)
 
         tr {
             transition: background-color 0.2s;
-        }
 
-        tr:hover {
-            background-color: var(--c-bg-2);
+            &:hover {
+                background-color: var(--c-bg-2);
+            }
         }
 
         th, td {
             padding: 0.5em 0.8em;
             border: 1px solid var(--c-border);
-            line-height: 1.4;
         }
     }
 }

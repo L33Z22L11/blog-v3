@@ -5,8 +5,8 @@ defineProps<{ to?: string }>()
 <template>
     <ZRawLink class="z-link" :to="to">
         <slot />
+        <Icon v-if="isExtLink(to)" class="external" name="ph:arrow-up-right" />
     </ZRawLink>
-    <Icon v-if="isExtLink(to)" class="external" name="ph:arrow-up-right" />
 </template>
 
 <style scoped lang="scss">

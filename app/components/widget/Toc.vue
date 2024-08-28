@@ -50,7 +50,7 @@ const { activeTocItem } = useTocAutoHighlight(() => toc.value?.links ?? [])
         content: "";
         position: absolute;
         inset: 0.3rem;
-        width: 2px;
+        width: 3px;
         border-radius: 1rem;
         background-color: var(--c-bg-3);
     }
@@ -77,7 +77,8 @@ const { activeTocItem } = useTocAutoHighlight(() => toc.value?.links ?? [])
                     position: absolute;
                     left: 0.3rem;
                     height: 1em;
-                    padding: 0.8rem 1px;
+                    margin: 0.2rem 0;
+                    padding: 0.6rem 1.5px;
                     border-radius: 1rem;
                     background-color: var(--c-primary-1);
                 }
