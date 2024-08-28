@@ -16,6 +16,7 @@ definePageMeta({
 })
 
 watchImmediate(() => data.value?.aside, (aside) => {
+    route.meta.hideAside = data.value?.hideAside
     route.meta.aside = aside ?? ['toc']
 })
 

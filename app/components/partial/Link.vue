@@ -1,12 +1,15 @@
 <script setup lang="ts">
-defineProps<{ to?: string }>()
+defineProps<{
+    to?: string
+    rel?: string
+}>()
 </script>
 
 <template>
-    <ZRawLink class="z-link" :to="to">
+    <ZRawLink class="z-link" :to :rel>
         <slot />
-        <Icon v-if="isExtLink(to)" class="external" name="ph:arrow-up-right" />
     </ZRawLink>
+    <Icon v-if="isExtLink(to)" class="external" name="ph:arrow-up-right" />
 </template>
 
 <style scoped lang="scss">

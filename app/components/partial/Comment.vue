@@ -52,6 +52,10 @@ onMounted(() => initTwikoo())
         z-index: 1;
     }
 
+    .tk-input {
+        font-family: var(--font-monospace);
+    }
+
     .tk-time {
         color: var(--c-text-3);
     }
@@ -90,7 +94,6 @@ onMounted(() => initTwikoo())
 
         > li {
             margin: 0.2em 0;
-
 
             &::marker {
                 font-size: 0.8em;

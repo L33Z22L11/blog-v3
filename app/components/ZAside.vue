@@ -15,7 +15,8 @@ const widgetList = {
     LazyWidgetToc,
 }
 
-const widgets = computed(() => (route.meta.aside || []).map(n => `LazyWidget${pascal(n)}` as keyof typeof widgetList))
+const widgets = computed(() => (route.meta.aside || []).map(componentAlias =>
+    `LazyWidget${pascal(componentAlias)}` as keyof typeof widgetList))
 </script>
 
 <template>
@@ -25,7 +26,8 @@ const widgets = computed(() => (route.meta.aside || []).map(n => `LazyWidget${pa
         </Transition>
         <div class="container">
             <div v-for="widget in widgets" :key="widget" class="widget">
-                <component :is="widgetList[widget]" />
+                <!-- 更换页面时通过 key 更新这些组件，防止旧数据导致问题 -->
+                <component :is="widgetList[widget]" :key="$route.path" />
             </div>
         </div>
     </aside>

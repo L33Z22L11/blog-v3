@@ -1,6 +1,7 @@
 declare module 'vue-router' {
     interface RouteMeta {
-        aside?: string[]
+        hideAside?: boolean
+        aside: string[]
     }
 }
 

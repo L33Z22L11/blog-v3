@@ -50,20 +50,21 @@ onMounted(() => {
             </div>
             <ZFooter />
         </main>
-        <ZAside v-if="$route.meta.aside !== false" />
+        <ZAside v-if="!$route.meta.hideAside" />
     </div>
 </template>
 
 <style lang="scss">
+// [...slug].vue #empty 复用了此样式
 .app-error {
     text-align: center;
     color: var(--c-text-3);
 
-    >* {
+    > * {
         margin: 2rem auto;
     }
 
-    >.iconify {
+    > .iconify {
         margin-top: 1.5em;
         font-size: 5rem;
     }

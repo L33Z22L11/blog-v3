@@ -2,11 +2,13 @@
 const route = useRoute()
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 
+// 如果此处出问题，还会影响到文章获取
+// 若 watch route.path，SSG 下文章间路由时新文章数据会写入老文章键中
 const { data } = await useAsyncData(
     route.path,
     () => queryContent(route.path).findOne(),
-    { watch: [() => route.path] },
 )
+
 const toc = computed(() => data.value?.body?.toc)
 const { activeTocItem } = useTocAutoHighlight(() => toc.value?.links ?? [])
 </script>

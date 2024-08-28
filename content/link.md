@@ -1,6 +1,6 @@
 ---
 title: 友链
-aside: false
+hideAside: true
 ---
 
 :friend-group

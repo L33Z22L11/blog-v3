@@ -160,8 +160,8 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 
   bindkey '^[[H' beginning-of-line
   bindkey '^[[F' end-of-line
-  bindkey "^[[1;5C" forward-word
-  bindkey "^[[1;5D" backward-word
+  bindkey '^[[1;5C' forward-word
+  bindkey '^[[1;5D' backward-word
   bindkey '^H' backward-kill-word
   bindkey '^[[3~' delete-char
 
@@ -169,7 +169,7 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 
   alias ls='ls --color=auto'
   alias ll='ls -alFh --time-style=iso'
-  alias ip='ip --color=auto'
+  alias ip='ip --color'
   alias grep='grep --color=auto'
   ```
 

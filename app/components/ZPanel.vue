@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const UIStore = useUIStore()
-const hasAside = computed(() => route.meta.aside !== false)
+const hasAside = computed(() => route.meta.aside.length && !route.meta.hideAside)
 </script>
 
 <template>
