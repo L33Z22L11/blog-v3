@@ -94,7 +94,7 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
 .post-title {
     padding: 0.8em 1rem;
     font-size: 1.8em;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.2;
 }
 

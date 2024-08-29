@@ -89,7 +89,7 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
 
 .article-title {
     font-size: 1.2em;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .article-descrption {

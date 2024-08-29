@@ -120,11 +120,11 @@ export default {
     injectHeadLinks: [
         {
             rel: 'preconnect',
-            href: 'https://s1.hdslb.com',
+            href: 'https://cdn-font.hyperos.mi.com',
         },
         {
             rel: 'stylesheet',
-            href: 'https://s1.hdslb.com/bfs/static/jinkela/long/font/medium.css',
+            href: 'https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap',
             media: 'none',
             onload: 'this.media="all"',
         },

@@ -9,19 +9,14 @@ function initTwikoo() {
 }
 
 // 从其他页面路由至文章页面时，通过 onLoaded 事件初始化，onMounted 不起作用
-useScriptTag(appConfig.twikoo.js, () => initTwikoo(), {
-    defer: true,
-    onerror: () => {
-        console.error('Twikoo评论区加载失败')
-    },
-})
-
+useScriptTag(appConfig.twikoo.js, () => initTwikoo(), { defer: true })
 // 在文章页面之间路由时不会触发 onLoaded 事件，需要手动初始化
 onMounted(() => initTwikoo())
 </script>
 
 <template>
-    <section class="z-comment">
+    <!-- FIXME: 刷新时不添加 class="light" -->
+    <section class="z-comment" :class="{ light: $colorMode.value === 'light' }">
         <h3>评论区</h3>
         <ClientOnly>
             <div id="twikoo" />
@@ -72,6 +67,15 @@ onMounted(() => initTwikoo())
         }
     }
 
+    .tk-comments-title {
+        font-weight: 500;
+    }
+
+    pre {
+        border-radius: 0.5rem;
+        font-size: 0.9em;
+    }
+
     p {
         margin: 0.2em 0;
     }
@@ -115,4 +119,9 @@ onMounted(() => initTwikoo())
         transition: background-color 0.1s;
     }
 }
+
+// TODO: 评论区代码块深浅色切换
+// .light :deep(#twikoo) pre {
+//     filter: invert(1);
+// }
 </style>

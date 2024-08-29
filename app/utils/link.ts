@@ -2,7 +2,7 @@ export function getDomain(url: string) {
     const match = url.match(/^(?:https?:\/\/)?(?:www\.)?([^/:]+)/i)
     return match?.[1] ?? url
 }
-export function getMainDomain(url: string): string {
+export function getMainDomain(url: string) {
     const domain = getDomain(url)
     const parts = domain.split('.')
     const getPartLength = (partIndex: number) => {
@@ -18,7 +18,7 @@ export function getMainDomain(url: string): string {
     return parts.slice(-2).join('.')
 }
 
-export function getDomainType(mainDomain: string): string | null {
+export function getDomainType(mainDomain: string) {
     switch (mainDomain) {
         case 'github.io':
             return 'github'

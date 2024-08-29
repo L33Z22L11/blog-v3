@@ -14,7 +14,7 @@ export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
             const element = document?.getElementById(item.id)
             if (element)
                 offsetList.push({ id: item.id, offsetTop: element.offsetTop })
-            if (item.children?.length)
+            if (item.children)
                 flattenToc(item.children, offsetList)
         })
         return offsetList
@@ -26,7 +26,9 @@ export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
     )
 
     const updateActiveToc = () => {
-        const scrollPosition = window.scrollY // 添加偏移量？
+        const scrollMargin = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('scroll-margin-top'))
+
+        const scrollPosition = window.scrollY + (scrollMargin || 64)
 
         // 使用副本而不是直接 reverse
         const currentItem = [...tocOffsets.value]

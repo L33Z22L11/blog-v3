@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { TocLink } from '@nuxt/content'
+
 const route = useRoute()
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 
@@ -11,15 +13,28 @@ const { data } = await useAsyncData(
 
 const toc = computed(() => data.value?.body?.toc)
 const { activeTocItem } = useTocAutoHighlight(() => toc.value?.links ?? [])
+
+function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
+    if (entry.id === activeId)
+        return true
+    return entry.children?.some(child => hasActiveChild(child, activeId)) ?? false
+}
 </script>
 
 <template>
     <DefineTemplate v-slot="{ tocItem }">
         <ol>
-            <li v-for="(entry, index) in tocItem" :key="index" :class="{ active: entry.id === activeTocItem }">
-                <!-- 若使用 NuxtLink 则键盘焦点不会切换 -->
+            <li
+                v-for="(entry, index) in tocItem as TocLink[]"
+                :key="index"
+                :class="{
+                    'has-active': hasActiveChild(entry, activeTocItem),
+                    'active': entry.id === activeTocItem,
+                }"
+            >
+                <!-- 使用 <a> 确保键盘焦点切换 -->
                 <a :href="`#${entry?.id}`">{{ entry.text }}</a>
-                <ReuseTemplate v-if="entry.children?.length" :toc-item="entry.children" />
+                <ReuseTemplate v-if="entry.children" :toc-item="entry.children" />
             </li>
         </ol>
     </DefineTemplate>
@@ -37,7 +52,7 @@ const { activeTocItem } = useTocAutoHighlight(() => toc.value?.links ?? [])
         </div>
     </h3>
     <div class="widget-body">
-        <ReuseTemplate v-if="toc?.links?.length" :toc-item="toc.links" />
+        <ReuseTemplate v-if="toc?.links" :toc-item="toc.links" />
         <p v-else class="no-toc">
             暂无目录信息
         </p>
@@ -62,28 +77,25 @@ const { activeTocItem } = useTocAutoHighlight(() => toc.value?.links ?? [])
         list-style: none;
 
         li {
-            padding-left: 1em;
-            color: var(--c-text-2);
+            opacity: 0.67;
+            padding-left: 0.8rem;
+            font-size: 0.95em;
+            color: var(--c-text);
 
-            &:not(:has(.active)) {
-                font-size: 0.95em;
-                color: var(--c-text-3);
+            &.has-active {
+                opacity: 1;
+                font-size: 1em;
             }
 
-            &.active {
-                font-size: 1em;
-                color: var(--c-text);
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    left: 0.3rem;
-                    height: 1em;
-                    margin: 0.2rem 0;
-                    padding: 0.6rem 1.5px;
-                    border-radius: 1rem;
-                    background-color: var(--c-primary-1);
-                }
+            &.active::before {
+                content: "";
+                position: absolute;
+                left: 0.3rem;
+                height: 1em;
+                margin: 0.2rem 0;
+                padding: 0.6rem 1.5px;
+                border-radius: 1rem;
+                background-color: var(--c-primary-1);
             }
 
             a {
@@ -101,6 +113,11 @@ const { activeTocItem } = useTocAutoHighlight(() => toc.value?.links ?? [])
                     color: var(--c-text);
                 }
             }
+        }
+
+        .active {
+            opacity: 1;
+            font-size: 1em;
         }
     }
 }

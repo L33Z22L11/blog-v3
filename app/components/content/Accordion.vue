@@ -25,7 +25,7 @@ details {
 
     &[open] {
         summary {
-            font-weight: bold;
+            font-weight: 600;
             color: inherit;
 
             &::before {

@@ -1,7 +1,7 @@
 :root {
-    --font-family: "HarmonyOS_Medium", system-ui, sans-serif;
+    --font-family: "MiSans VF", system-ui, sans-serif;
     --font-serif: "Noto Serif SC", serif;
-    --font-monospace: "SFMono-Regular", "Fira Code", "JetBrains Mono", "Cascadia Code", "Monaco", "monospace", "Noto Sans Mono", "Consolas", "HarmonyOS_Medium", system-ui, monospace;
+    --font-monospace: "SFMono-Regular", "Fira Code", "JetBrains Mono", "Cascadia Code", "Menlo", "Monaco", "monospace", "Noto Sans Mono", "Consolas", "MiSans VF", system-ui, monospace;
 
     // 兼容了一点 IE
     background-color: hsl(220deg 20% 98%);
@@ -33,8 +33,12 @@ a {
 }
 
 code, pre {
-    font-family: "Fira Code", "JetBrains Mono", "Cascadia Code", "Noto Sans Mono", Consolas, monospace;
+    font-family: "Cascadia Code", "Noto Sans Mono", Consolas, monospace;
     font-family: var(--font-monospace);
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+    font-weight: 500;
 }
 
 menu, ol, ul {
