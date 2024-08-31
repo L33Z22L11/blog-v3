@@ -8,16 +8,16 @@ defineProps<{
 
 <template>
     <section class="poetry">
-        <h2 class="poetry-title">
+        <h2 class="poetry-title text-center">
             {{ title }}
         </h2>
-        <div class="title-like">
+        <div class="text-center">
             {{ author }}
         </div>
         <div class="poetry-content">
             <slot />
         </div>
-        <div class="title-like">
+        <div class="text-center">
             {{ footer }}
         </div>
     </section>

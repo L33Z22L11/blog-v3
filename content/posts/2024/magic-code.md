@@ -136,7 +136,8 @@ const galleryFlated = Object.entries(gallery).flatMap(([vol, picInfos]) =>
         author,
         name,
         url: `https://ooo.0x0.ooo/202${shortURL}.jpg`,
-    })))
+    }))
+)
 ```
 
 ::link-card

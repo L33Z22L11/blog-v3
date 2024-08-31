@@ -5,8 +5,8 @@ import type ArticleProps from '~/types/article'
 
 const props = defineProps<ParsedContent & ArticleProps>()
 const appConfig = useAppConfig()
-const publishedLabel = getPostTime(props.date)
-const updatedLabel = getPostTime(props.updated)
+const publishedLabel = getPostDate(props.date)
+const updatedLabel = getPostDate(props.updated)
 
 const categoryLabel = props.categories?.[0] as ArticleCategory
 const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
@@ -94,7 +94,6 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
 .post-title {
     padding: 0.8em 1rem;
     font-size: 1.8em;
-    font-weight: 600;
     line-height: 1.2;
 }
 

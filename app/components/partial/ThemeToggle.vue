@@ -26,6 +26,8 @@ onMounted(() => {
             v-for="(themeData, key) in themes"
             :key="key"
             ref="themeToggle"
+            type="button"
+            :aria-label="themeData.tip"
             :class="{ active: colorMode.preference === key }"
             @click="toggleTheme(key)"
         >

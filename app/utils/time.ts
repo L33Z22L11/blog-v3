@@ -2,10 +2,6 @@ import { format, formatDistanceToNow } from 'date-fns'
 import { getTimezoneOffset } from 'date-fns-tz'
 import { zhCN } from 'date-fns/locale'
 
-export function delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms))
-}
-
 export function timeElapse(date?: Date | string, maxDepth = 2) {
     if (!date)
         return ''
@@ -34,7 +30,7 @@ export function timeElapse(date?: Date | string, maxDepth = 2) {
     return timeString || '刚刚'
 }
 
-export function getPostTime(date?: string) {
+export function getPostDate(date?: string) {
     if (!date)
         return ''
 

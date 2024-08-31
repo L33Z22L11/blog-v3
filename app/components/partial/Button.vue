@@ -8,7 +8,7 @@ defineProps<ButtonProps>()
 </script>
 
 <template>
-    <button class="button card">
+    <button class="button card" type="button">
         <div class="button-main">
             <Icon v-if="icon" :name="icon" />
             {{ text }}

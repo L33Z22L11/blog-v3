@@ -1,4 +1,5 @@
 <template>
+    <NuxtLoadingIndicator />
     <ZSkipToContent />
     <ZSidebar />
     <div id="content">

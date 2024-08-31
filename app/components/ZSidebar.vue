@@ -4,6 +4,9 @@ const UIStore = useUIStore()
 </script>
 
 <template>
+    <Transition>
+        <div v-if="UIStore.sidebarOpen" id="z-sidebar-bgmask" @click="UIStore.toggleSidebar" />
+    </Transition>
     <aside id="z-sidebar" :class="{ show: UIStore.sidebarOpen }">
         <ZhiluHeader class="sidebar-header" to="/" />
         <nav class="sidebar-nav">
@@ -16,7 +19,7 @@ const UIStore = useUIStore()
                 <h3 v-if="group.title">
                     {{ group.title }}
                 </h3>
-                <ul>
+                <menu>
                     <li v-for="(item, itemIndex) in group.items" :key="itemIndex">
                         <ZRawLink :to="item.url">
                             <Icon :name="item.icon" />
@@ -24,7 +27,7 @@ const UIStore = useUIStore()
                             <Icon v-if="item?.external" class="external-tip" name="ph:arrow-up-right" />
                         </ZRawLink>
                     </li>
-                </ul>
+                </menu>
             </template>
         </nav>
         <footer class="sidebar-footer">
@@ -36,9 +39,6 @@ const UIStore = useUIStore()
             </div>
         </footer>
     </aside>
-    <Transition>
-        <div v-if="UIStore.sidebarOpen" id="z-sidebar-bgmask" @click="UIStore.toggleSidebar" />
-    </Transition>
 </template>
 
 <style scoped lang="scss">
@@ -58,7 +58,7 @@ const UIStore = useUIStore()
         backdrop-filter: blur(0.5rem);
         color: inherit;
         transition: left 0.2s;
-        z-index: 3;
+        z-index: 100;
 
         &.show {
             left: 0;
@@ -70,7 +70,7 @@ const UIStore = useUIStore()
     position: fixed;
     inset: 0;
     background-color: #0003;
-    z-index: 2;
+    z-index: 100;
 
     &.v-enter-active,
     &.v-leave-active {
@@ -115,22 +115,18 @@ const UIStore = useUIStore()
             gap: 0.5em;
             padding: 0.5em 1em;
             border-radius: 0.5em;
-            transition: background-color 0.2s, color 0.1s;
+            transition: all 0.2s;
 
-            &:hover {
-                background-color: var(--c-primary-soft);
-            }
-
-            &.router-link-active {
+            &:hover, &.router-link-active {
                 background-color: var(--c-primary-soft);
                 color: var(--c-text);
+            }
 
-                &::after {
-                    content: "⦁";
-                    width: 1em;
-                    text-align: center;
-                    color: var(--c-text-3);
-                }
+            &.router-link-active::after {
+                content: "⦁";
+                width: 1em;
+                text-align: center;
+                color: var(--c-text-3);
             }
 
             .iconify {

@@ -67,8 +67,8 @@ onMounted(() => initTwikoo())
         }
     }
 
-    .tk-comments-title {
-        font-weight: 500;
+    .tk-comments-title, .tk-nick > strong {
+        font-weight: var(--font-weight-medium);
     }
 
     pre {

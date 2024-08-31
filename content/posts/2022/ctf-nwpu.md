@@ -107,7 +107,7 @@ width: 200px
 
 下载文件，得到base23.cpp、output.txt如下。
 
-::accordion{nopadding summary="base23.cpp"}
+::folding{nopadding summary="base23.cpp"}
 ```cpp
 #include <iostream>
 #include <string>
@@ -464,7 +464,7 @@ width: 360px
 
 下载文件，得到歌词.txt如下。
 
-::accordion{nopadding summary="歌词.txt"}
+::folding{nopadding summary="歌词.txt"}
 ```
 55m96bif6L+H5rKz5rupDW==
 5rSb5aSp5L6dL2lsZW0N

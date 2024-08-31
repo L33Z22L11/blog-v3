@@ -58,8 +58,8 @@ section {
 }
 
 .title {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: var(--font-weight-medium);
+    color: var(--c-text);
 }
 
 .content {

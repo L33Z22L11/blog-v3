@@ -25,7 +25,6 @@ details {
 
     &[open] {
         summary {
-            font-weight: 600;
             color: inherit;
 
             &::before {
@@ -36,8 +35,9 @@ details {
 
     summary {
         padding: 0.5em 0.8em;
+        font-weight: var(--font-weight-bold);
         color: var(--c-text-2);
-        transition: all 0.2s;
+        transition: color 0.2s;
         cursor: pointer;
 
         &::before {

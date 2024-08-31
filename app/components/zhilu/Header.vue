@@ -11,7 +11,12 @@ const appConfig = useAppConfig()
                 :style="`--delay: ${index * .6 - 3}s`"
             >{{ char }}</span>
         </div>
-        <NuxtImg :src="appConfig.header.logo" class="zhilu-logo" :class="{ 'with-text': appConfig.header.text }" />
+        <NuxtImg
+            :src="appConfig.header.logo"
+            class="zhilu-logo"
+            :class="{ 'with-text': appConfig.header.text }"
+            :alt="appConfig.title"
+        />
         <div v-if="appConfig.header.text" class="zhilu-text">
             <div class="header-title">
                 <span
@@ -47,6 +52,11 @@ const appConfig = useAppConfig()
         border-radius: 2em;
         box-shadow: 2px 4px 1rem var(--ld-shadow);
     }
+}
+
+@font-face {
+    font-family: AlimamaFangYuanTi;
+    src: url("/fonts/AlimamaFangYuanTi.woff2");
 }
 
 .header-title {

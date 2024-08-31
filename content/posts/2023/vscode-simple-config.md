@@ -50,7 +50,7 @@ tags: [教程, vscode, 软件]
   // 将编辑器中的空格渲染为“·”，并隐藏字词之间的单个空格
   "editor.renderWhitespace": "boundary",
   // 设置终端字体大小
-  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontSize": 15,
   // 编辑器小地图显示色块而不是字符
   "editor.minimap.renderCharacters": false,
   // 放大小地图

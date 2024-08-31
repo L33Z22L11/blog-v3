@@ -17,7 +17,7 @@ const icon = props.icon || 'ph:chat-centered-text-duotone'
 <style lang="scss" scoped>
 .quote {
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: var(--font-weight-medium);
     color: var(--c-text-2);
 
     &:hover {
@@ -31,7 +31,7 @@ const icon = props.icon || 'ph:chat-centered-text-duotone'
         width: 100%;
         margin-bottom: -2.5rem;
         mask: linear-gradient(#fff 50%, transparent);
-        font: 5rem;
+        font: 5rem/normal;
         transition: transform 0.2s;
         z-index: -1;
     }

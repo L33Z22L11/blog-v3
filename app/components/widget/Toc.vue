@@ -43,10 +43,10 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
         <span>文章目录</span>
         <div class="buttons">
             <!-- use <a> for anchor -->
-            <a href="#main-content">
+            <a href="#main-content" aria-label="返回开头">
                 <Icon name="ph:arrow-circle-up-bold" />
             </a>
-            <a href="#twikoo">
+            <a href="#twikoo" aria-label="评论区">
                 <Icon name="ph:chat-circle-text-bold" />
             </a>
         </div>
@@ -72,52 +72,46 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
         background-color: var(--c-bg-3);
     }
 
-    ol {
-        padding-left: 0;
-        list-style: none;
+    li {
+        opacity: 0.6;
+        padding-left: 0.8rem;
+        font-size: 0.94em;
+        color: var(--c-text);
+        transition: opacity 0.2s;
 
-        li {
-            opacity: 0.67;
-            padding-left: 0.8rem;
-            font-size: 0.95em;
-            color: var(--c-text);
-
-            &.has-active {
-                opacity: 1;
-                font-size: 1em;
-            }
-
-            &.active::before {
-                content: "";
-                position: absolute;
-                left: 0.3rem;
-                height: 1em;
-                margin: 0.2rem 0;
-                padding: 0.6rem 1.5px;
-                border-radius: 1rem;
-                background-color: var(--c-primary-1);
-            }
-
-            a {
-                display: block;
-                overflow: hidden;
-                padding: 0.2em 0.5em;
-                border-radius: 0.5em;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                transition: all 0.2s;
-
-                &:hover {
-                    background-color: var(--c-primary-soft);
-                    white-space: normal;
-                    color: var(--c-text);
-                }
-            }
+        &:hover {
+            opacity: 0.94;
         }
 
-        .active {
+        &.has-active, &.active {
             opacity: 1;
             font-size: 1em;
+        }
+
+        &.active::before {
+            content: "";
+            position: absolute;
+            left: 0.3rem;
+            height: 1em;
+            margin: 0.2rem 0;
+            padding: 0.6rem 1.5px;
+            border-radius: 1rem;
+            background-color: var(--c-primary-1);
+        }
+
+        a {
+            display: block;
+            overflow: hidden;
+            padding: 0.2em 0.5em;
+            border-radius: 0.5em;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            transition: all 0.2s;
+
+            &:hover {
+                background-color: var(--c-primary-soft);
+                white-space: normal;
+            }
         }
     }
 }

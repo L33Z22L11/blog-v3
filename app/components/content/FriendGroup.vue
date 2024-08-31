@@ -10,11 +10,11 @@ import allMyFriends from '~/assets/friend'
         <p class="friend-desc">
             {{ group.desc }}
         </p>
-        <ul class="friend-list">
+        <menu class="friend-list">
             <li v-for="friend in group.items" :key="friend.name" class="friend-card">
                 <FriendCard v-bind="friend" />
             </li>
-        </ul>
+        </menu>
     </div>
 </template>
 

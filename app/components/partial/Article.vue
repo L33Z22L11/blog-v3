@@ -6,8 +6,8 @@ const props = defineProps < { useUpdated: boolean } & ArticleProps>()
 
 const appConfig = useAppConfig()
 
-const publishedLabel = getPostTime(props.date)
-const updatedLabel = getPostTime(props.updated)
+const publishedLabel = getPostDate(props.date)
+const updatedLabel = getPostDate(props.updated)
 
 const categoryLabel = props.categories?.[0] as ArticleCategory
 const categoryColor = appConfig.article.categories?.[categoryLabel]?.color
@@ -89,7 +89,8 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
 
 .article-title {
     font-size: 1.2em;
-    font-weight: 500;
+    font-weight: var(--font-weight-normal);
+    color: var(--c-text);
 }
 
 .article-descrption {

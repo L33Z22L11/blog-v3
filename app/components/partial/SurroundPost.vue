@@ -28,7 +28,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
                 <h4 class="title" :class="{ 'text-story': post?.type === 'story' }">
                     {{ post?.title || fallbackText }}
                 </h4>
-                <time v-if="post" :datetime="post.date">{{ getPostTime(post.date) }}</time>
+                <time v-if="post" :datetime="post.date">{{ getPostDate(post.date) }}</time>
             </div>
         </ZRawLink>
     </DefineTemplate>

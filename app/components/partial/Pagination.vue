@@ -14,6 +14,7 @@ const page = defineModel<number>({ required: true })
             :disabled="page <= 1"
             class="pagination-button"
             icon="ph:arrow-fat-left-duotone"
+            aria-label="上一页"
             @click="page--"
         />
         <span class="pagination-info">
@@ -23,6 +24,7 @@ const page = defineModel<number>({ required: true })
             :disabled="page >= totalPages"
             class="pagination-button"
             icon="ph:arrow-fat-right-duotone"
+            aria-label="下一页"
             @click="page++"
         />
     </nav>

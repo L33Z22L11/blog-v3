@@ -1,11 +1,9 @@
 import type { TocLink } from '@nuxt/content'
-import { throttle } from 'radash'
 
 interface TocOffset {
     id: string
     offsetTop: number
 }
-
 export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
     const activeTocItem = ref<string | null>(null)
 
@@ -43,8 +41,6 @@ export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
         //     activeElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
         // }
     }
-
-    const autoThrottle = (fn: () => void) => throttle({ interval: 50 }, fn)
 
     useEventListener('scroll', autoThrottle(updateActiveToc), { passive: true })
     useEventListener('resize', autoThrottle(() => tocOffsets.trigger()))

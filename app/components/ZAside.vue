@@ -47,6 +47,7 @@ const widgets = computed(() => (route.meta.aside || []).map(componentAlias =>
         max-width: 100%;
         max-height: 100%;
         transition: right 0.2s;
+        z-index: 100;
 
         .container {
             padding: 0.5rem;

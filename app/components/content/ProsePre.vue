@@ -19,6 +19,7 @@ useCopy(elCopyBtn, elCodeblock)
 
 <template>
     <figure class="z-codeblock">
+        <!-- 改变 DOM 顺序会改变 z-index -->
         <div class="codeblock-header">
             <div class="operations">
                 <button @click="isWrap = !isWrap">
@@ -37,9 +38,7 @@ useCopy(elCopyBtn, elCodeblock)
         <span v-if="language" class="language">{{ language }}</span>
 
         <!-- 嘿嘿，不要换行 -->
-        <pre
-            ref="elCodeblock" class="scrollcheck-x" :class="{ wrap: isWrap }"
-        ><slot /></pre>
+        <pre ref="elCodeblock" class="scrollcheck-x" :class="{ wrap: isWrap }"><slot /></pre>
     </figure>
 </template>
 
@@ -84,6 +83,8 @@ useCopy(elCopyBtn, elCodeblock)
     .operations {
         gap: 0.5em 1em;
         opacity: 0;
+        border-radius: 0 0 8px 8px;
+        background-color: var(--c-bg-2);
 
         > button {
             opacity: 0.4;

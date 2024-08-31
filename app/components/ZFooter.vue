@@ -9,14 +9,14 @@ const appConfig = useAppConfig()
                 <h3 v-if="group.title">
                     {{ group.title }}
                 </h3>
-                <ul>
+                <menu>
                     <li v-for="(item, itemIndex) in group.items" :key="itemIndex">
                         <ZRawLink :to="item.url">
                             <Icon :name="item.icon" />
                             <span class="nav-text">{{ item.text }}</span>
                         </ZRawLink>
                     </li>
-                </ul>
+                </menu>
             </div>
         </nav>
         <p>

@@ -5,9 +5,6 @@ const excerpt = data.value?.description || ''
 
 useHead({
     title: data.value?.title,
-    meta: [
-        { name: 'description', content: excerpt },
-    ],
 })
 
 // 删除后目录点击就消失

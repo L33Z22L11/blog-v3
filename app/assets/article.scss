@@ -13,6 +13,7 @@
     }
 
     > h1, h2, h3, h4, h5, h6 {
+        font-weight: var(--font-weight-medium);
         color: var(--c-text);
     }
 
@@ -66,7 +67,7 @@
         h1, h2, h3, h4, h5, h6, .title-like {
             position: relative;
             font-family: var(--font-serif);
-            font-weight: 600;
+            font-weight: bolder;
             text-align: center;
         }
 

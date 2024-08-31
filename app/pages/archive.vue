@@ -48,7 +48,7 @@ const groupedList = computed(
                 {{ year }}
                 <span class="archive-count">{{ yearGroup!.length }}</span>
             </h2>
-            <ul class="archive-list">
+            <menu class="archive-list">
                 <ZArchive
                     v-for="article in yearGroup"
                     :key="article._path"
@@ -56,7 +56,7 @@ const groupedList = computed(
                     :to="article._path"
                     :use-updated="orderBy === 'updated'"
                 />
-            </ul>
+            </menu>
         </div>
     </div>
 </template>

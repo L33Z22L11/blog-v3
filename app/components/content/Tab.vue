@@ -5,7 +5,8 @@ const props = defineProps<{
     active?: number
 }>()
 
-const activeTab = ref(props.active ?? 1)
+// 使用 v-bind:active 以传递 Number 值
+const activeTab = ref(Number(props.active) || 1)
 </script>
 
 <template>
@@ -14,6 +15,7 @@ const activeTab = ref(props.active ?? 1)
             <button
                 v-for="(tab, index) in tabs"
                 :key="index"
+                type="button"
                 :class="{ active: activeTab === index + 1 }"
                 @click="activeTab = index + 1"
             >

@@ -37,7 +37,7 @@ onMounted(() => {
                 {{ title }}
             </span>
             <time v-if="useUpdated && date && dateLabel !== auxDateLabel" class="aux-date" :datetime="date">
-                ／{{ auxDateLabel }}</time>
+                &nbsp;{{ auxDateLabel }}</time>
             <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" />
         </ZRawLink>
     </li>
@@ -58,7 +58,13 @@ onMounted(() => {
     time {
         display: inline-block;
         opacity: 0.4;
+        font-family: var(--font-monospace);
         transition: opacity 0.2s;
+
+        &.aux-date {
+            font-size: 0.8em;
+            vertical-align: middle;
+        }
     }
 
     &:hover > time {
