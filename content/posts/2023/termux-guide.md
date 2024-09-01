@@ -31,7 +31,7 @@ tags: [教程, termux, 软件]
 - 设置密码
   :copy{prompt="$" command="passwd"}
 - 启动 SSH 服务
-  :copy{prompt="$" ="sshd"}
+  :copy{prompt="$" command="sshd"}
 - 如果想要在 Termux 启动后自动启动 `sshd`，可以执行：
   :copy{prompt="$" command="echo &quot;sshd&quot; >> ~/../usr/etc/profile"}
 

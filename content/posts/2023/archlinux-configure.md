@@ -2,7 +2,7 @@
 title: Arch Linux 初步配置
 description: 在 Arch Linux 系统上安装配置必备软件，如蓝牙、Yay、Zsh、输入法等。
 date: 2023-06-24 09:31:15
-updated: 2024-05-27 00:26:18
+updated: 2024-09-01 19:17:36
 cover: https://7.isyangs.cn/24/6664009851eb0-24.jpg
 categories: [经验分享]
 tags: [教程, archlinux, 系统]
@@ -119,7 +119,7 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 
   :copy{prompt="$" command="yay -S visual-studio-code-bin"}
 
-## V2$(echo r)aya-
+## V2$(echo r)aya
 
 需要先安装浏览器，或者局域网下其他设备访问本设备的 2017 端口的 Web 控制台。
 
@@ -128,6 +128,29 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 - 启动 V2$(echo r)aya 服务并设置开机启动
   :copy{prompt="$" command="sudo systemctl enable --now v2$(echo r)aya"}
 
+如果遇到问题，可以手动安装。
+
+- 切换到 yay/v2$(echo r)aya 目录
+  :copy{prompt="$" command="cd ~/.cache/yay/v2$(echo r)aya-bin"}
+- 编辑 PKGBUILD 文件
+  :copy{prompt="$" command="vim PKGBUILD"}
+- 删除报错的 `armv6h` 架构，并保存退出
+  ```ini [PKGBUILD]
+  arch=('x86_64') # 主要保留 x86_64 架构即可
+  ```
+- 编译安装
+  :copy{prompt="$" command="GOPROXY=http://goproxy.cn makepkg -si"}
+- 启动 V2$(echo r)aya 服务并设置开机启动
+
+随后点击图标会自动访问 `http://127.0.0.1:2017`，配置即可。
+
+- 点击右上角的“设置”
+- 透明Proxy/系统Proxy：`启用: 分流规则与规则端口所选规则一致`
+- 透明Proxy/系统Proxy实现方式：`tproxy`
+- 规则端口的分流模式：`Mainland 白名单模式`
+- 点击“保存并应用”
+- 在左上角启停 V2$(echo r)aya
+
 ## Zsh
 
 大多数 Zsh 主题需要 Nerd 字体才能显示图标。
@@ -135,7 +158,7 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 - 安装 Zsh 和常用插件
   :copy{prompt="$" command="sudo pacman -S zsh zsh-completions zsh-autosuggestions zsh-syntax-highlighting"}
 - 安装 Powerlevel10k 主题
-  :copy{prompt="$" command="yay -S zsh-theme-powerlevel10k-bin-git"}
+  :copy{prompt="$" command="yay -S zsh-theme-powerlevel10k"}
 - 设置本用户的默认 Shell 为 Zsh
   :copy{prompt="$" command="chsh -s /usr/bin/zsh"}
 - 编辑 `~/.zshrc`
@@ -194,11 +217,9 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 
 ## 继续优化其他体验
 
-可以参照 {% post_link 2023/archlinux-beautify %} 继续优化体验。
-
-::link-card
+::link-banner
 ---
-icon: https://7.isyangs.cn/24/666400971559b-24.jpg
+banner: https://7.isyangs.cn/24/666400971559b-24.jpg
 title: Arch Linux 易用性及美化
 link: /2023/archlinux-beautify
 ---

@@ -353,7 +353,7 @@ export default <FriendGroup[]> [
                 link: 'https://blog.ahzoo.cn/',
                 icon: 'https://blog.ahzoo.cn/avatar.webp',
                 date: '2024-08-02',
-                comment: '技术笔记。',
+                comment: 'Nuxt博客，技术笔记。',
             },
             {
                 name: 'iMaeGoo',
@@ -380,6 +380,14 @@ export default <FriendGroup[]> [
                 icon: 'https://oss-cdn.bsgun.cn/logo/avatar.256.png',
                 date: '2024-08-20',
                 comment: '博客折腾。',
+            },
+            {
+                name: '徐徐爱coding',
+                desc: '一个精美的个人博客,记录平时的学习笔记',
+                link: 'https://www.xu69.com',
+                icon: 'https://www.xu69.com/xu-resource/ico.png',
+                date: '2024-09-01',
+                comment: 'Nuxt博客，前端技术笔记。',
             },
         ],
     },

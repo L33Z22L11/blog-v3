@@ -189,11 +189,11 @@ Ventoy 需要加载自定义证书文件才能在启用“安全启动”特性�
 
 如果你是 Nvidia 显卡用户，在一会的 SDDM 登录界面中，左上角的 Session 菜单中应当选择 `Plasma(X11)` 选项，而不是 Wayland 环境。
 
-可以参照 {% post_link 2023/archlinux-configure %} 进行后续配置。
+可以参照此文章进行后续配置。
 
-::link-card
+::link-banner
 ---
-icon: https://7.isyangs.cn/24/6664009851eb0-24.jpg
+banner: https://7.isyangs.cn/24/6664009851eb0-24.jpg
 title: Arch Linux 初步配置
 link: /2023/archlinux-configure
 ---
