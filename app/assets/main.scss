@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5, h6, strong {
 
 a {
     text-decoration: none;
-    color: inherit;
+    color: currentcolor;
 }
 
 code, pre {
@@ -60,7 +60,11 @@ menu, ol, ul {
 button, input, textarea {
     background: none;
     font: inherit;
-    color: inherit;
+    color: currentcolor;
+
+    &:disabled {
+        color: var(--c-text-3);
+    }
 }
 
 mark {

@@ -39,7 +39,7 @@ if (appConfig.excerpt?.animation !== false) {
     }
 
     &:hover {
-        color: inherit;
+        color: currentcolor;
     }
 }
 </style>

@@ -48,8 +48,8 @@ onMounted(() => {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    gap: 0.5rem;
-    margin: 4px 0;
+    gap: 0.5em;
+    margin: 0.2em 0;
 
     @media (max-width: $breakpoint-mobile) {
         font-size: 0.9em;
@@ -78,7 +78,7 @@ onMounted(() => {
 
 .article-link {
     overflow: hidden;
-    padding: 0.3rem 0.6rem;
+    padding: 0.3em 0.6em;
 
     &:hover {
         .article-cover {

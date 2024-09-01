@@ -56,7 +56,7 @@ const UIStore = useUIStore()
         box-shadow: 0 0 1rem var(--ld-shadow);
         background-color: var(--ld-bg-blur);
         backdrop-filter: blur(0.5rem);
-        color: inherit;
+        color: currentcolor;
         transition: left 0.2s;
         z-index: 100;
 

@@ -88,7 +88,7 @@ useCopy(elCopyBtn, elCodeblock)
 
         > button {
             opacity: 0.4;
-            color: inherit;
+            color: currentcolor;
             transition: opacity 0.2s;
             cursor: pointer;
 

@@ -1,5 +1,4 @@
 import { format, formatDistanceToNow } from 'date-fns'
-import { getTimezoneOffset } from 'date-fns-tz'
 import { zhCN } from 'date-fns/locale'
 
 export function timeElapse(date?: Date | string, maxDepth = 2) {
@@ -34,9 +33,7 @@ export function getPostDate(date?: string) {
     if (!date)
         return ''
 
-    const { timezone } = useAppConfig()
-    const postDate = new Date(new Date(date).getTime() - getTimezoneOffset(timezone))
-
+    const postDate = new Date(date)
     const now = new Date()
 
     const isWithinAWeek = postDate.getTime() > now.getTime() - 1000 * 60 * 60 * 24 * 7

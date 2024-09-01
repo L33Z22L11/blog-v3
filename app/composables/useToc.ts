@@ -4,12 +4,13 @@ interface TocOffset {
     id: string
     offsetTop: number
 }
+
 export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
     const activeTocItem = ref<string | null>(null)
 
     const flattenToc = (toc: TocLink[], offsetList: TocOffset[] = []) => {
         toc.forEach((item) => {
-            const element = document?.getElementById(item.id)
+            const element = document.getElementById(item.id)
             if (element)
                 offsetList.push({ id: item.id, offsetTop: element.offsetTop })
             if (item.children)
@@ -35,15 +36,18 @@ export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
 
         activeTocItem.value = currentItem?.id || null
 
-        // TODO: 滚动到当前 item
-        // const activeElement = document.querySelector(`#toc a[href="#${activeTocItem.value}"]`)
+        // TODO: 滚动到当前 item，这样写不够优雅
+        // const activeElement = document.querySelector(`#z-aside a[href="#${activeTocItem.value}"]`)
         // if (activeElement) {
-        //     activeElement.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        //     // BUG: 使用 `scrollIntoView` 或此函数有小概率触发文章持续缓慢滚动
+        //     // BUG: 触发目录滚动时会打断文章滚动
+        //     activeElement.scrollIntoViewIfNeeded({ behavior: 'smooth', block: 'center' })
         // }
     }
 
-    useEventListener('scroll', autoThrottle(updateActiveToc), { passive: true })
+    useEventListener('scroll', autoThrottle(() => updateActiveToc()), { passive: true })
     useEventListener('resize', autoThrottle(() => tocOffsets.trigger()))
+    useEventListener('load', autoThrottle(() => tocOffsets.trigger()))
 
     return {
         activeTocItem,

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const UIStore = useUIStore()
-const hasAside = computed(() => route.meta.aside.length && !route.meta.hideAside)
+const hasAside = computed(() => route.meta.aside && !route.meta.hideAside)
 </script>
 
 <template>
@@ -24,7 +24,7 @@ const hasAside = computed(() => route.meta.aside.length && !route.meta.hideAside
     border-radius: 0.5rem;
     background-color: var(--c-bg-a50);
     backdrop-filter: blur(0.5rem);
-    z-index: 3;
+    z-index: 100;
 
     @media (min-width: $breakpoint-widescreen) {
         display: none;

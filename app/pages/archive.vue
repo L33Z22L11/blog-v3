@@ -8,7 +8,7 @@ definePageMeta({
 })
 const appConfig = useAppConfig()
 
-const orderBy = useRouteQuery<OrderType>(
+const orderBy = useRouteQuery(
     'order',
     () => appConfig.indexGenerator.orderBy as OrderType || 'date',
 )
@@ -64,7 +64,7 @@ const groupedList = computed(
 <style lang="scss" scoped>
 .archive {
     margin: 1rem;
-    mask: linear-gradient(#fff 50%, #fff3);
+    mask: linear-gradient(#fff 50%, #fff5);
 }
 
 .archive-group {

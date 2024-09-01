@@ -38,7 +38,7 @@ const icon = props.icon || 'ph:chat-centered-text-duotone'
 
     :deep(p) {
         flex-grow: 1;
-        padding: 1rem;
+        padding: 1rem 0;
         text-indent: 0;
     }
 }
