@@ -3,6 +3,8 @@ import blogConfig from '~~/blog.config'
 
 const timezoneOffset = getTimezoneOffset(blogConfig.timezone)
 
+// TODO: 从文件属性中读取创建和修改时间 (Git 不存储文件时间戳)
+
 export default defineNitroPlugin((nitroApp) => {
     nitroApp.hooks.hook('content:file:afterParse', (file) => {
         if (file.date) {

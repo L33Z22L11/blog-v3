@@ -5,7 +5,7 @@
     word-break: break-word;
 
     > * {
-        margin: 1em 0;
+        margin: 1rem 0;
     }
 
     p {
@@ -13,6 +13,7 @@
     }
 
     > h1, h2, h3, h4, h5, h6 {
+        margin: 1.2em 0;
         font-weight: var(--font-weight-medium);
         color: var(--c-text);
     }

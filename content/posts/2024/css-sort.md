@@ -51,7 +51,7 @@ hexo : 无法将“hexo”项识别为 cmdlet、函数、脚本文件或可运�
 
 ### 下午四点，KazariEX 让我充满动力：起床干活！
 
-今天早上满课，12:30 又有 C++ 实验，下机之后就只想睡大觉~~，但想到了「Stylelint」，于是又睡大觉~~。（通义灵码干的，或许赛博生命体也爱睡大觉）
+今天早上满课，12:30 又有 C++ 实验，下机之后就只想睡大觉，~~但想到了「Stylelint」，于是又睡大觉~~。（通义灵码干的，或许赛博生命体也爱睡大觉）
 
 睡觉前，在 KazariEX 的群里从前端页面布局耗时聊到 CSS 插件。睡醒后，我提到了 CSS 声明顺序整理，KazariEX 就推荐了 [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)，我模糊回忆起之前浅尝辄止的经历。**无论如何，再试试吧。**
 
@@ -65,7 +65,7 @@ link: https://github.com/KazariEX/hexo-server-live
 ---
 ::
 
-同时，KazariEX 向我推荐了一个 Hexo 插件，用于在本地文件更新后自动刷新预览。我的评价是好用爱用。{% emoji blobcat ablobcatattentionreverse %}再看是 KazariEX 写的，更喜欢了。
+同时，KazariEX 向我推荐了一个 Hexo 插件，用于在本地文件更新后自动刷新预览。我的评价是好用爱用。😋再看是 KazariEX 写的，更喜欢了。
 
 ### 同时也是被 Yuanfang 拉着帮忙的纸鹿
 
@@ -128,7 +128,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 ## 装了又装，想想还是全局安装
 
-**历经千辛万苦，终于在自己的实验室工位上坐定了。**{% emoji blobcat blobcatnotlikethis %}
+😓**历经千辛万苦，终于在自己的实验室工位上坐定了。**
 
 下午起床时受到 KazariEX 的启发，此时我就有了一个伟大的设想：使用一个跨平台、弱侵入性、配置少的方案，让 Stylelint 能在 Windows 和 Linux 上同时工作，并且能在没有 `.stylelintrc` 配置文件的环境下（老项目/零散文件）格式化 CSS 代码。
 
@@ -193,7 +193,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 我移除了 `stylelint.packageManager` 配置项，并尝试使用 npm 全局安装这些包，之前的问题在 Windows 上都解决了。所以 pnpm 呀，你还是把全局包交给 npm 来管理吧。
 
-上手体验了一下。我的 CSS 代码飘红一片。{% emoji blobcat blobcatgooglytrash %}修吧修吧。
+上手体验了一下。我的 CSS 代码飘红一片。修吧修吧。😢
 
 ## SSH 连接 Localhost，然后探寻 $Env:PATH 的秘密
 
@@ -224,7 +224,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 > C:\WINDOWS\system32;……C:\Program Files\Git\cmd;C:\Program Files\nodejs\;……{% mark %PNPM_HOME% %};……C:\Users\Zhilu\AppData\Roaming\npm;C:\Program Files\Neovim\bin;C:\Users\Zhilu\go\bin;C:\ProgramData\chocolatey\bin;
 
-看起来在本地环境中，`%PNPM_HOME%` 在 `$Env:PATH` 会被正常解析为 `C:\Users\Zhilu\AppData\Local\pnpm`，而在远程 SSH 环境中，`PATH` 中的 `%PNPM_HOME%` 项不能被正常解析。我向 pnpm 提出了 [Issue #8110](https://github.com/pnpm/pnpm/issues/8110) 反馈这个问题，:blur{text="我并不清楚这个奇奇怪怪的问题应该向谁反馈，但 pnpm 应当做好这些情况的兼容"}。 不过此时仓库有 1.5k 个未关闭的 Issue，也许我提出的问题得到回复的概率很渺茫。
+看起来在本地环境中，`%PNPM_HOME%` 在 `$Env:PATH` 会被正常解析为 `C:\Users\Zhilu\AppData\Local\pnpm`，而在远程 SSH 环境中，`PATH` 中的 `%PNPM_HOME%` 项不能被正常解析。我向 pnpm 提出了 [Issue #8110](https://github.com/pnpm/pnpm/issues/8110) 反馈这个问题，<blur>我并不清楚这个奇奇怪怪的问题应该向谁反馈，但 pnpm 应当做好这些情况的兼容</blur>。不过此时仓库有 1.5k 个未关闭的 Issue，也许我提出的问题得到回复的概率很渺茫。
 
 ### 聪明一修
 
@@ -285,22 +285,23 @@ NVM，再见了。我要试试这个新方法。
 
 为什么这些文件的权限会被更改？我立刻使用 `less $HISTFILE` 工具，按 Shift+G 跳转到文件末，从后向前查看终端中输入命令的历史记录。经过查找，发现这条命令十分可疑：
 
-{% box color:yellow child:codeblock %}
 ```sh [可疑命令]
 sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 ```
-{% endbox %}
 
 再执行 `npm config get prefix` 一看：
 
-{% note color:red
-   npm&nbsp;配置的前缀竟然是&nbsp;<code>/usr</code>！
-   所有 `/usr/bin`，即 `/bin` 下的所有程序都被修改了权限。我被一个简简单单的 `$(npm config get prefix)` 表达式蒙蔽，忽略了其中的风险。
- %}
+::alert{type="error"}
+#title
+npm 配置的前缀竟然是 `/usr`！
+
+#default
+所有 `/usr/bin`，即 `/bin` 下的所有程序都被修改了权限。我被一个简简单单的 `$(npm config get prefix)` 表达式蒙蔽，忽略了其中的风险。
+::
 
 众所周知，`/bin` 下的程序各有各的权限设置，修改它们权限的愚蠢程度与 `chmod -R 777 /` 相当。（另一个愚蠢的错误是在 WSL 里执行 `rm -rf /`，它并不安全，因为 Windows 文件挂载在 `/mnt` 下。）
 
-还能怎么办，修呗。{% emoji blobcat blobcatgooglycry %}
+🥺还能怎么办，修呗。
 
 - 按照 {% post_link 2024/archlinux-boot-repair %} 一文中的方式挂载分区、进入系统。
 - 尝试恢复被修改的权限
@@ -362,7 +363,7 @@ yes
 
 为什么我当时没看见这条评论？我用自己的电脑打开评论区，发现 DISQUS 评论区居然由于网络问题没能加载出来。
 
-<center>{% emoji blobcat blobcatflip height:5em %}</center>
+<center style="font-size: 5em;">😾</center>
 
 再看到博客作者在文中提到（sudo 方法）“**但之后会产生一系列其他的权限问题，简直是后患无穷**”，在文中末尾用大大大标题讲（自己给出的方法）“**Have Fun～**”“**精彩！**”，简直是一种莫大的讽刺。
 
@@ -370,9 +371,9 @@ yes
 
 如果你从文章开头跳转而来，可以选择 [返回开头重新阅读](#)。
 
-{% note 写这篇文章已耗费12小时 color:blue
-   这是 Wakatime 插件统计的结果，AFK 并不会增加统计时间。
- %}
+::alert{type="warning" title="写这篇文章已耗费12小时"}
+这是 Wakatime 插件统计的结果，AFK 并不会增加统计时间。
+::
 
 说实话，为了 Stylelint 官方文档中未提到的配置方法，整个配置过程耗费了大量时间，并且遇到了很多 Stylelint 本体之外的问题，甚至大多还是未解决的 Issue。我只得重新思考“最佳实践”。
 

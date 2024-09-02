@@ -11,8 +11,7 @@ defineProps<ButtonProps>()
     <button class="button card" type="button">
         <div class="button-main">
             <Icon v-if="icon" :name="icon" />
-            {{ text }}
-            <slot />
+            <slot>{{ text }}</slot>
         </div>
         <div v-if="desc" class="button-desc">
             {{ desc }}

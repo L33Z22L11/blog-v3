@@ -144,7 +144,7 @@ Ubuntu 系统。实例名叫 Windows Server。
 winget remove nodejs
 ```
 
-又报错了。{% emoji blobcat blobcatcaged %}
+🥺又报错了。
 
 这台电脑虽然是 Windows 11，但是已经很久没更新了，不支持软件包安装程序提供的 winget 命令。从系统设置卸载吧。
 

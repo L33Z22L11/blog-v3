@@ -6,8 +6,7 @@ defineProps<{
 
 <template>
     <span class="blur">
-        {{ text }}
-        <slot />
+        <slot>{{ text }}</slot>
     </span>
 </template>
 

@@ -167,4 +167,4 @@ link: https://www.bilibili.com/video/BV1Si4y1Y7Jb/
 
 上文提到的 [Moonlight 修改版](#触摸优化) 支持全功能键盘，可以支持更多功能。
 
-{% emoji blobcat ablobcatrainbow %} 享受你的串流体验吧！
+😆享受你的串流体验吧！

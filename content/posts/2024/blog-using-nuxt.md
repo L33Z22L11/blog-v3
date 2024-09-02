@@ -2,7 +2,8 @@
 title: 博客进化：从 Hexo 到 Nuxt Content
 description: 抬笔一挥，便洒出占半的前端样式代码。开发功能并不慢，样式优化与问题修复却很耗时间。博客前端的现代化转型，且听我话其分晓。
 date: 2024-08-27 18:30:55
-updated: 2024-09-02 02:06:17
+updated: 2024-09-02 17:35:10
+cover: https://7.isyangs.cn/24/66d4c3ea35003-24.jpg
 categories: [经验分享]
 tags: [网站, 博客]
 type: story
@@ -36,9 +37,11 @@ KazariEX 见此情况，几次建议我使用 Nuxt.js 重构博客并手写主�
 
 ## 功能开发
 
-### 样式
+### 样式预处理
 
 在开发过程中，我选择基于自己修改的 Stellar 主题编写样式。通过 `tokei ./app` 统计，博客前端排除空行后大约有4000行代码，其中大约一半是样式代码。
+
+我选择了 SCSS 作为样式预处理器，主要使用 SCSS 的嵌套声明块、`@mixin` 和少量用于媒体查询的宽度变量。
 
 有群友提出使用原子化 CSS，有助于减少样式代码量。我认为原子化 CSS 能处理简易样式，但不适合设计导向或复杂样式，「风记星辰」的站长「宇」也支持我的观点。
 
@@ -192,7 +195,7 @@ Stellar 主题使用 Grid 布局，而我选择借鉴 Vitepress 默认主题的 
 
 ## 兼容优化
 
-### 样式
+### 样式特性
 
 当然，也少不了我们的老伙计——安卓上的夸克浏览器。
 
@@ -254,7 +257,7 @@ KazariEX 猜我没学过数据库，因为我犯了类似 `select *` 的错误�
 
 ### 来自未来的文章
 
-YAML 会以 UTC 时区解析 Front Matter 中的时间，刚更新的文章常常显示为“未来8小时后”，但我希望以本地时区解析。刚开始修改了 `getPostDate()` 函数，但语义化的 `<time datetime="...">` 标签依旧不符合规范，因此编写了这个 Nitro 插件用于修正时区。
+YAML 会以 UTC 时区解析 Front Matter 中的时间，刚更新的文章常常显示为“未来8小时后”，但我希望以本地时区解析。刚开始修改了 `getPostDate()` 函数，但语义化的 ~~`<time datetime="{{ date }}">`~~ `<time :datetime="date">` 标签依旧不符合规范，因此编写了这个 Nitro 插件用于修正时区。
 
 ```ts [server/plugins/fixPostTimezone.ts]
 import { getTimezoneOffset } from 'date-fns-tz'
@@ -276,8 +279,68 @@ export default defineNitroPlugin((nitroApp) => {
 
 Nuxt 虽然是热更新，但我甚至重启开发环境都不能确保其生效，必须手动清除缓存。
 
+### 颜色追求
+
+::alert
+#title
+行内代码 `inline-code` 的需求
+#default
+其 `border-color` 和 `background-color` 应跟随文本颜色变化。
+::
+
+刚开始想直接使用 `rgba(currentcolor, 0.2)` 这种写法，但一方面 SCSS 会检查函数参数个数，它由于不符合要求；另一方面 CSS 也只能支持 `rgba(var(--color), 0.2)` 这种语法。故只能使用 `#{"rgba(var(--color), 0.2)"}` 的形式绕过检查。同时还要通过 JS 计算出当前颜色，并且在切换深色模式后还需要重新计算值，可谓十分不优雅。
+
+::tab{:tabs='["旧代码", "新代码"]' center}
+#tab1
+```vue [ProseCodeInline.vue]
+<script setup lang="tsx">
+const code = ref<HTMLElement>()
+const color = ref<string>()
+onMounted(() => {
+    const rgbColorStr = getComputedStyle(code.value!).color
+    color.value = rgbColorStr.match(/\d+/g)!.map(Number).join(',')
+})
+</script>
+
+<template>
+    <code ref="code" :style="{ '--color': color }"><slot /></code>
+</template>
+
+<style scoped lang="scss">
+code {
+    padding: 0.1em 0.3em;
+    border: 1px solid #{"rgba(var(--color), 0.2)"};
+    border-radius: 4px;
+    background-color: #{"rgba(var(--color), 0.05)"};
+    font-size: 0.875em;
+}
+</style>
+```
+
+#tab2
+```vue [ProseCodeInline.vue]
+<template>
+    <code><slot /></code>
+</template>
+
+<style scoped lang="scss">
+code {
+    padding: 0.1em 0.3em;
+    border: 1px solid var(--c-border);
+    border-color: color-mix(in srgb, currentcolor 10%, transparent);
+    border-radius: 4px;
+    background-color: var(--c-bg-2);
+    background-color: color-mix(in srgb, currentcolor 5%, transparent);
+    font-size: 0.875em;
+}
+</style>
+```
+::
+
+后来，KazariEX 提到了 CSS `color-mix()` 函数，我认为他又一次给出了真正优雅的答案。至于兼容性？不担心的，通过上文「多个声明语句渐进覆盖」的方法即可解决。
+
 ## 阶段总结
 
 经过约一个月/200小时的开发，我的博客由 Hexo 转为基于 Nuxt Content 开发的项目。项目选型、主要功能完成后，我选择不断优化已有代码，修复 Bug、优化性能、语义化和兼容性。我认为，开发就是不断的做加法和减法，在项目起步阶段，减法比加法更重要，这样才有利于后续功能的扩展，而不是面对「独木桥上架起的二层小洋房」发呆。
 
-仍有一些期待的功能尚未完成。
+我认为，博客的精髓在于内容，技术与框架不过是其内在的骨架，样式也仅为锦上添花之笔，**真正优秀的博客并不会因为架构、样式的陈旧或简单而蒙尘**。我还会持续投入后续的内容创作与功能建构，以期形成自己的独特表达。

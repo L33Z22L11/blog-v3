@@ -8,11 +8,11 @@ categories: [经验分享]
 tags: [教程, 系统, Windows]
 ---
 
-{% note color:blue
-   内容使用AI辅助生成，但经过修改和验证以保证可用性。
- %}
+::alert{title="提示"}
+内容使用AI辅助生成，但经过修改和验证以保证可用性。
+::
 
-> {% emoji blobcat ablobcatattentionreverse %} 请你使用Markdown语法写一篇关于Windows安装的博客，内容大致如下:
+> 🤖请你使用Markdown语法写一篇关于Windows安装的博客，内容大致如下:
 > 1. 用Ventoy给U盘制作引导盘。
 > 2. 下载微PE和Windows安装镜像。
 > 3. 将重要文件备份到非C盘分区。
@@ -28,7 +28,7 @@ tags: [教程, 系统, Windows]
 > 12. 安装驱动。
 > 13. 存储分区规划:程序默认安装在C盘，个人文件独立一盘，数据如游戏、虚拟机等独立一盘。
 
-## ❶ 给U盘安装ventoy
+## 给U盘安装ventoy
 
 首先，你需要一个空的或者可以格式化的U盘，容量至少8GB。给你的U盘安装ventoy后，就可以在U盘上放置多个ISO文件，并且可以从中启动。安装ventoy的步骤如下：
 
@@ -36,7 +36,7 @@ tags: [教程, 系统, Windows]
 - 运行ventoy的安装程序，选择你的U盘，然后点击“安装”按钮
 - 等待安装完成，然后点击“确定”按钮
 
-## ❷ 下载微PE和Windows安装镜像
+## 下载微PE和Windows安装镜像
 
 ### 微PE镜像
 
@@ -47,20 +47,20 @@ tags: [教程, 系统, Windows]
 
 ### Windows 镜像
 
-{% note color:warning
-   品牌笔记本一般有官方的恢复镜像，请优先使用OEM提供的镜像重装系统。
- %}
+::alert{type="warning"}
+品牌笔记本一般有官方的恢复镜像，请优先使用OEM提供的镜像重装系统。
+::
 
 - 访问[Windows 11 下载页面](https://www.microsoft.com/zh-cn/software-download/windows11)。
 - 在“下载 Windows 11 磁盘映像 (ISO)”一栏中选择下载“Windows 11 (multi-edition ISO)”，点击“下载”按钮。
 - 在“选择产品语言”中找到“简体中文”，点击“确认”按钮。
 - 点击“64-bit Download”按钮，将ISO文件下载到U盘。
 
-## ❸ 备份文件到非C盘
+## 备份文件到非C盘
 
 在安装Windows之前，你需要备份你的重要文件到非C盘，以免在格式化C盘的时候丢失数据。你可以直接复制粘贴到其他分区，或者使用其他软件来进行备份。
 
-## ❹ 启动ventoy U盘的微PE
+## 启动 Ventoy U盘的微PE
 
 接下来，你需要从你的ventoy U盘启动微PE，这样你就可以在没有安装Windows的情况下进行一些操作。启动微PE的步骤如下：
 
@@ -68,11 +68,11 @@ tags: [教程, 系统, Windows]
 - 在ventoy的界面上，选择你放置在U盘上的微PE的ISO镜像文件，然后按两下回车键
 - 等待微PE加载完成，然后进入桌面
 
-## ❺ 划分EFI分区和系统分区到合适大小(可选)
+## 划分EFI分区和系统分区到合适大小(可选)
 
-{% note color:warning
-   这是一个可选步骤，如果你不熟悉硬盘分区，请不要尝试。
- %}
+::alert{type="warning"}
+这是一个可选步骤，如果你不熟悉硬盘分区，请不要尝试。
+::
 
 你可以使用DiskGenius重新划分EFI分区和系统分区，以便于安装Windows。EFI分区用于存放启动文件，系统分区用于存放Windows系统。划分分区的步骤如下：
 
@@ -90,7 +90,7 @@ tags: [教程, 系统, Windows]
   - 卷标：Win11
 - 最后，你需要点击“保存”按钮，然后点击“确定”按钮，等待分区完成
 
-## ❻ 使用Dism++释放Windows专业版映像
+## 使用Dism++释放Windows专业版映像
 
 在分区完成后，你需要使用Dism++来释放Windows的映像文件到你刚刚划分的系统分区。释放映像的步骤如下：
 
@@ -102,9 +102,11 @@ tags: [教程, 系统, Windows]
 - 勾选“格式化”“添加引导”，然后点击“确定”按钮
 - 等待释放完成，然后重启电脑
 
-## ❼ 使用bypassnro绕过联网
+## 使用bypassnro绕过联网
 
-> 在Windows的安装界面中，你需要使用bypassnro这个工具来绕过联网的要求，这样你就可以自己指定用户文件夹名称，而不是微软账号（+86手机号或者QQ邮箱）前5位，还可以设置非中文用户名和空密码。
+::alert
+在Windows的安装界面中，你需要使用bypassnro这个工具来绕过联网的要求，这样你就可以自己指定用户文件夹名称，而不是微软账号（+86手机号或者QQ邮箱）前5位，还可以设置非中文用户名和空密码。
+::
 
 使用bypassnro的步骤如下：
 
@@ -113,7 +115,7 @@ tags: [教程, 系统, Windows]
 - 输入`oobe\BypassNRO.cmd`并按下回车，电脑会重启
 - 在联网界面中，点击“我没有Internet连接”和“继续执行受限设置”
 
-## ❽ 设置非中文用户名和空密码
+## 设置非中文用户名和空密码
 
 在使用bypassnro绕过联网后，你就可以设置非中文用户名和空密码了。设置用户名和密码的步骤如下：
 
@@ -122,7 +124,7 @@ tags: [教程, 系统, Windows]
 - 在弹出的窗口中，不要选择任何安全问题，而是直接点击“跳过”按钮
 - 等待Windows完成设置，然后进入桌面，**联网**
 
-## ❾ 非全局登录微软账户
+## 非全局登录微软账户
 
 在进入Windows桌面后，你可以在Edge浏览器中登录你的微软账户，而不是在Windows的账户设置中登录。这样你就可以**避免本地账户的密码被变更为微软账户的密码**。随后，你可以设置你的Windows的密码和Windows hello，以增加你的电脑的安全性。Windows hello是一种可以让你使用面部识别，指纹识别，或者PIN码来解锁你的电脑的功能。设置密码和Windows hello的步骤如下：
 
@@ -132,7 +134,7 @@ tags: [教程, 系统, Windows]
 - 在弹出的窗口中，选择你想要使用的Windows hello的方式，比如“面部识别”或者“指纹识别”或者“PIN码”，然后按照提示进行设置
 - 等待Windows hello设置完成，然后关闭窗口
 
-## ❿ 使用Office Tool Plus安装Office
+## 使用Office Tool Plus安装Office
 
 你可以使用Office Tool Plus安装Office，这是一款可以让你自定义安装Office的工具，可以让你选择你想要的Office版本，语言，组件，等等。安装Office的步骤如下：
 
@@ -150,7 +152,7 @@ tags: [教程, 系统, Windows]
   :copy{command="ospp /inslicid MondoVolume /sethst:kms.03k.org /setprt:1688 /act"}
 - 等待Office激活成功
 
-## ⓫ 使用HEU KMS Activator激活Windows
+## 使用HEU KMS Activator激活Windows
 
 HEU KMS Activator是一款用于激活Windows的工具。
 
@@ -163,11 +165,11 @@ HEU KMS Activator是一款用于激活Windows的工具。
   - 关闭“实时防护”
 - 点击“开始”按钮，等待激活成功
 
-## ⓬ 使用winget安装常用软件并更换为USTC源(可选)
+## 使用winget安装常用软件并更换为USTC源(可选)
 
-{% note color:blue
-   这是一个可选步骤，如果你喜欢命令行风格的程序安装/升级/卸载操作，值得一试。
- %}
+::alert
+这是一个可选步骤，如果你喜欢命令行风格的程序安装/升级/卸载操作，值得一试。
+::
 
 你可以使用winget这个工具来安装一些常用的软件，这是一款可以让你从命令行安装软件的工具，可以让你快速地安装和更新软件。为了提高下载速度，你可以把winget的源更换为USTC源，这是一个由中国科学技术大学提供的镜像源。按照[USTC WinGet 源使用帮助](https://mirrors.ustc.edu.cn/help/winget-source.html)中的方法进行换源操作。
 
@@ -181,11 +183,11 @@ winget upgrade --all
 winget remove 7zip
 ```
 
-## ⓭ 安装驱动
+## 安装驱动
 
-{% emoji blobcat ablobcatrainbow %} 你可能已经注意到，在刚刚的操作过程中，电脑出现了一些异常反应。这是由于Windows联网后在自动安装驱动。现在，你可以补齐剩下的驱动了。
+🤔你可能已经注意到，在刚刚的操作过程中，电脑出现了一些异常反应。这是由于Windows联网后在自动安装驱动。现在，你可以补齐剩下的驱动了。
 
-## ⓮ 合理的分区使用方式
+## 合理的分区使用方式
 
 在安装软件后，你可以按照你的喜好和需求来使用你的磁盘分区。但是，我建议你遵循以下原则，以提高磁盘的性能和管理：
 
@@ -197,4 +199,4 @@ link: /2024/windows-storage
 ---
 ::
 
-{% emoji blobcat ablobcatheart %} 最后，祝你有一个愉快的Windows使用体验，我的朋友。
+🩷最后，祝你有一个愉快的Windows使用体验，我的朋友。
