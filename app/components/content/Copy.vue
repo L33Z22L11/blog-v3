@@ -53,10 +53,9 @@ useCopy(copyBtn, commandInput)
         padding: 0.5em;
         color: var(--c-text-2);
         transition: color, 0.2s;
-        cursor: pointer;
 
         &:hover {
-            color: var(--c-primary-1);
+            color: var(--c-primary);
         }
     }
 }

@@ -3,6 +3,7 @@ import { pascal } from 'radash'
 import {
     LazyWidgetBlogLog,
     LazyWidgetConnectivity,
+    LazyWidgetGithubCard,
     LazyWidgetToc,
 } from '#components'
 
@@ -12,11 +13,13 @@ const route = useRoute()
 const widgetList = {
     LazyWidgetBlogLog,
     LazyWidgetConnectivity,
+    LazyWidgetGithubCard,
     LazyWidgetToc,
 }
 
 const widgets = computed(() => (route.meta.aside || []).map(componentAlias =>
-    `LazyWidget${pascal(componentAlias)}` as keyof typeof widgetList))
+    `LazyWidget${pascal(componentAlias)}` as keyof typeof widgetList),
+)
 </script>
 
 <template>
@@ -84,10 +87,9 @@ const widgets = computed(() => (route.meta.aside || []).map(componentAlias =>
 }
 
 :deep(.widget) {
-    margin: 0.5rem 0;
     font-size: 0.9em;
 
-    & + & {
+    & + .widget {
         margin-top: 1rem;
     }
 
@@ -111,8 +113,7 @@ const widgets = computed(() => (route.meta.aside || []).map(componentAlias =>
             }
 
             > [onclick]:hover, > [href]:hover {
-                color: var(--c-primary-1);
-                cursor: pointer;
+                color: var(--c-primary);
             }
         }
     }

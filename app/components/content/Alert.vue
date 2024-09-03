@@ -12,22 +12,22 @@ const props = withDefaults(defineProps<{
 const typeMap = {
     tip: {
         icon: 'ph:notepad-bold',
-        color: 'var(--c-primary-1)',
+        color: 'var(--c-primary)',
         title: '提醒',
     },
     info: {
         icon: 'ph-info-bold',
-        color: 'var(--c-text-2)',
+        color: 'currentColor',
         title: '信息',
     },
     warning: {
         icon: 'ph:warning-bold',
-        color: '#f63',
+        color: '#f80',
         title: '警告',
     },
     error: {
         icon: 'ph:x-circle-bold',
-        color: '#f30',
+        color: '#f33',
         title: '错误',
     },
 }
@@ -60,7 +60,9 @@ const title = computed(() => props.title || defaultTitle)
 <style lang="scss" scoped>
 .alert {
     padding: 0.2em 0.8em;
-    background-image: radial-gradient(circle at 10% -20em, var(--color), transparent 25em);
+    background-image:
+        radial-gradient(circle at 6em -20em, var(--color), transparent 24em),
+        linear-gradient(var(--color) -2000%, transparent);
     font-size: 0.9em;
 
     .alert-title {

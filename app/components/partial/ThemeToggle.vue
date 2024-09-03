@@ -53,13 +53,10 @@ onMounted(() => {
         place-items: center;
         padding: 4px 1rem;
         border-radius: 1rem;
-        background: none;
-        color: currentcolor;
         transition: all 0.1s;
-        cursor: pointer;
 
         &:hover {
-            background-color: var(--c-primary-soft);
+            background-color: var(--c-primary-3);
             color: var(--c-text-1);
         }
 

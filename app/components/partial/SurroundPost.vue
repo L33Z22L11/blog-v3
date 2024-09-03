@@ -86,7 +86,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 
         &[href]:hover {
             gap: 0;
-            color: var(--c-primary-1);
+            color: var(--c-primary);
 
             > .iconify {
                 opacity: 0.2;

@@ -96,7 +96,7 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
             margin: 0.2rem 0;
             padding: 0.6rem 1.5px;
             border-radius: 1rem;
-            background-color: var(--c-primary-1);
+            background-color: var(--c-primary);
         }
 
         a {
@@ -109,7 +109,7 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
             transition: all 0.2s;
 
             &:hover {
-                background-color: var(--c-primary-soft);
+                background-color: var(--c-primary-3);
                 white-space: normal;
             }
         }

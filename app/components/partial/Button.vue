@@ -24,7 +24,6 @@ defineProps<ButtonProps>()
     padding: 0.4em 0.6em;
     border: 1px solid var(--c-border);
     line-height: normal;
-    cursor: pointer;
 
     & + & {
         margin-left: 0.8em;

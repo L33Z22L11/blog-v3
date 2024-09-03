@@ -24,7 +24,7 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
             <p class="article-descrption">
                 {{ description }}
             </p>
-            <div class="article-info">
+            <div class="article-info" data-allow-mismatch>
                 <time v-if="!useUpdated" :datetime="date">
                     <Icon name="solar:calendar-add-bold-duotone" />
                     {{ publishedLabel }}
@@ -42,7 +42,6 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
                     class="article-category"
                     :style="{ '--cg-color': categoryColor }"
                 >
-                    <!-- BUG: SSG 下携带 URL 参数访问时 name 属性不更新 -->
                     <Icon :name="categoryIcon" />
                     {{ categoryLabel }}
                 </span>

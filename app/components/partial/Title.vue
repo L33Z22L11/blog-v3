@@ -37,7 +37,7 @@ defineProps<{
     height: 1em;
     margin-right: 4px;
     border-radius: 8px;
-    background-color: var(--c-primary-1);
+    background-color: var(--c-primary);
     vertical-align: middle;
 }
 </style>

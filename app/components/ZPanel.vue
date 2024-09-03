@@ -47,16 +47,15 @@ button {
     display: block;
     padding: 0.5rem;
     transition: all 0.2s;
-    cursor: pointer;
 
     &:hover {
         background-color: var(--c-bg-a80);
-        color: var(--c-primary-1);
+        color: var(--c-primary);
     }
 
     &.active {
-        background-color: var(--ld-bg-hl);
-        color: var(--c-primary-1);
+        background-color: var(--ld-bg-active);
+        color: var(--c-primary);
     }
 }
 

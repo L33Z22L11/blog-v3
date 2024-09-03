@@ -222,7 +222,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 后来，我通过 SSH 连接后执行 `$Env:PATH`，终于露出了它的本来面目：
 
-> C:\WINDOWS\system32;……C:\Program Files\Git\cmd;C:\Program Files\nodejs\;……{% mark %PNPM_HOME% %};……C:\Users\Zhilu\AppData\Roaming\npm;C:\Program Files\Neovim\bin;C:\Users\Zhilu\go\bin;C:\ProgramData\chocolatey\bin;
+> C:\WINDOWS\system32;……C:\Program Files\Git\cmd;C:\Program Files\nodejs\;……<mark>%PNPM_HOME%</mark>;……C:\Users\Zhilu\AppData\Roaming\npm;C:\Program Files\Neovim\bin;C:\Users\Zhilu\go\bin;C:\ProgramData\chocolatey\bin;
 
 看起来在本地环境中，`%PNPM_HOME%` 在 `$Env:PATH` 会被正常解析为 `C:\Users\Zhilu\AppData\Local\pnpm`，而在远程 SSH 环境中，`PATH` 中的 `%PNPM_HOME%` 项不能被正常解析。我向 pnpm 提出了 [Issue #8110](https://github.com/pnpm/pnpm/issues/8110) 反馈这个问题，<blur>我并不清楚这个奇奇怪怪的问题应该向谁反馈，但 pnpm 应当做好这些情况的兼容</blur>。不过此时仓库有 1.5k 个未关闭的 Issue，也许我提出的问题得到回复的概率很渺茫。
 
@@ -303,7 +303,7 @@ npm 配置的前缀竟然是 `/usr`！
 
 🥺还能怎么办，修呗。
 
-- 按照 {% post_link 2024/archlinux-boot-repair %} 一文中的方式挂载分区、进入系统。
+- 按照 [Arch Linux 启动引导修复](/2024/archlinux-boot-repair) 一文中的方式挂载分区、进入系统。
 - 尝试恢复被修改的权限
   :copy{prompt="#" command="chown -R root:root /usr/{lib/node_modules,bin,share}"}
 - 尝试恢复部分关键程序的 setuid 位

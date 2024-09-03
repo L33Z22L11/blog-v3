@@ -86,7 +86,7 @@ powershell Invoke-WmiMethod Win32_Process Create \"powershell Restart-Service Ta
 
 ### 在移动端访问
 
-可以使用猫头鹰文件、MixExplorer、VLC 等软件，它们都支持 SMB 协议访问共享文件夹。你可以参考 {% post_link 2024/link-util %}。
+可以使用猫头鹰文件、MixExplorer、VLC 等软件，它们都支持 SMB 协议访问共享文件夹。你可以参考 [电脑连接手机，手机给电脑传文件……](/2024/link-util)。
 
 ## Windows OpenSSH
 
@@ -107,4 +107,4 @@ powershell Invoke-WmiMethod Win32_Process Create \"powershell Restart-Service Ta
 
 ## Moonlight 串流
 
-参见教程 {% post_link 2024/moonlight-streaming-guide %}。
+参见教程 [Moonlight 串流指南] (/2024/moonlight-streaming-guide)。

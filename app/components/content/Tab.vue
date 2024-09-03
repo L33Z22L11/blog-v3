@@ -62,10 +62,9 @@ button {
     border-radius: 0.4em;
     color: var(--c-text-2);
     transition: all 0.2s;
-    cursor: pointer;
 
     &:hover {
-        background-color: var(--c-primary-soft);
+        background-color: var(--c-primary-3);
         color: var(--c-text);
     }
 
@@ -84,7 +83,7 @@ button {
             left: 0.8em;
             height: 2px;
             border-radius: 1em;
-            background-color: var(--c-primary-1);
+            background-color: var(--c-primary);
             z-index: 1;
         }
     }

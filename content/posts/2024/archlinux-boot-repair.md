@@ -10,7 +10,7 @@ tags: [教程, 系统, archlinux]
 
 ## 制作启动盘、进入并联网
 
-参见 {% post_link 2023/archinstall-guide %} 的“安装前准备”一节。
+参见 [使用 ArchInstall 安装 Arch Linux](/2023/archinstall-guide) 的“安装前准备”一节。
 
 ## 挂载分区、进入系统
 

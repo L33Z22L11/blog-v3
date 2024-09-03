@@ -62,8 +62,7 @@ details {
             padding: 0;
 
             > * {
-                /* stylelint-disable-next-line declaration-no-important */
-                margin: 0 !important;
+                margin: 0;
             }
         }
     }

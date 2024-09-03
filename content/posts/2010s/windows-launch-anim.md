@@ -12,4 +12,11 @@ tags: [Windows, 说说]
 - 使用PS CS5纵向合并图片，大小200*21000像素，导出为bmp文件
 - 使用软媒美化大师导入开机动画即可
 
-{% video bilibili:BV1nkGFetEks width:60% ratio:2/3 %}
+::video-embed
+---
+type: bilibili
+id: BV1nkGFetEks
+width: 60%
+ratio: 2/3
+---
+::

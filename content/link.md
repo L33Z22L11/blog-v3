@@ -51,7 +51,7 @@ active: 2
   - 可以参考 [加入开往](https://www.travellings.cn/docs/join) 页面的规则
 - 申请方式：在评论区留言或发送邮件到 :tip{text="hi@zhilu.cyou" copy}
   - 标题注明 `友链申请: 你的昵称`
-  - 以 :tip{text="任意形式" tip="指向信息的 URL、自然语言、编程语言"} 附上友链信息
+  - 以 :tip[任意形式]{tip="指向信息的 URL、自然语言、编程语言"} 附上友链信息
     ```ts
     export default <Friend> {
         name: '昵称/博客名称', // 昵称优先

@@ -7,6 +7,7 @@ useHead({
     title: data.value?.title,
 })
 
+// FIXME: 这里的代码肯定有问题，不行得换一种写法
 // 删除后目录点击就消失
 definePageMeta({
     aside: ['toc'],
@@ -32,7 +33,7 @@ if (data.value === undefined) {
         <ContentRendererMarkdown
             class="article"
             :class="{ 'md-story': data!.type === 'story' }"
-            :value="data"
+            :value="data!"
             tag="article"
         />
         <template #empty>

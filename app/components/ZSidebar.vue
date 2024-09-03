@@ -118,7 +118,7 @@ const UIStore = useUIStore()
             transition: all 0.2s;
 
             &:hover, &.router-link-active {
-                background-color: var(--c-primary-soft);
+                background-color: var(--c-primary-3);
                 color: var(--c-text);
             }
 

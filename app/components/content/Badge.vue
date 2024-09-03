@@ -20,8 +20,10 @@ defineProps<{
     display: inline-flex;
     align-items: center;
     border: 1px solid var(--c-border);
+    border-color: color-mix(in srgb, currentcolor 10%, transparent);
     border-radius: 4px;
     background-color: var(--c-bg-3);
+    background-color: color-mix(in srgb, currentcolor 5%, transparent);
     font-size: 0.9em;
     line-height: normal;
     color: var(--c-text-2);

@@ -83,14 +83,12 @@ useCopy(elCopyBtn, elCodeblock)
     .operations {
         gap: 0.5em 1em;
         opacity: 0;
-        border-radius: 0 0 8px 8px;
+        border-radius: 0 8px 8px;
         background-color: var(--c-bg-2);
 
         > button {
             opacity: 0.4;
-            color: currentcolor;
             transition: opacity 0.2s;
-            cursor: pointer;
 
             &:hover {
                 opacity: 1;

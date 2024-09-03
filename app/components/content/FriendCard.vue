@@ -86,7 +86,7 @@ onMounted(() => {
         opacity: 0.5;
         padding: 0 0.2em;
         border-radius: 4px;
-        background: var(--c-primary-soft);
+        background: var(--c-primary-3);
         font-size: 0.8em;
     }
 }

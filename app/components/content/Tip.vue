@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-    text: string
+    text?: string
     tip?: string
     icon?: string
     copy?: boolean
@@ -18,7 +18,8 @@ if (props.copy)
 <template>
     <span ref="tip" class="tip">
         <!-- 元素间不留空格 -->
-        {{ text }}<Icon :name="icon" class="tip-icon" />
+        <slot>{{ text }}</slot>
+        <Icon :name="icon" class="tip-icon" />
     </span>
 </template>
 

@@ -11,11 +11,13 @@ sticky: 20
 
 ## 安装前准备
 
-安装 Arch Linux 时务必小心！如果误操作可能会导致 Windows 系统无法启动。请留好 {% post_link 2023/windows-setup-guide %} 和 {% post_link 2024/archlinux-boot-repair %}，以备后日之用。
+安装 Arch Linux 时务必小心！如果误操作可能会导致 Windows 系统无法启动。请留好以下两篇文章，以备后日之用。
 
 ::link-banner
 ---
 banner: https://7.isyangs.cn/24/65b66289c9a2e-24.jpg
+title: Windows 安装指南
+desc: 使用 Ventoy、微 PE、Dism++ 安装系统，绕过账户限制并激活 Office 与 Windows，合理分区布局使数据安全有序。
 link: /2023/windows-setup-guide
 ---
 ::
@@ -24,6 +26,8 @@ link: /2023/windows-setup-guide
 ---
 banner: https://7.isyangs.cn/24/66640097e0cbb-24.jpg
 link: /2024/archlinux-boot-repair
+title: Arch Linux 启动引导修复
+desc: 可以修复绝大多数 Arch Linux 无法启动的问题。
 ---
 ::
 

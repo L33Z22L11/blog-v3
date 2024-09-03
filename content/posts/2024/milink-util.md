@@ -10,7 +10,7 @@ tags: [教程, 小米, 互联, 互传, 网络, 软件, 远程, 系统]
 
 ## 视频教程
 
-{% video bilibili:BV17F4m137ng %}
+:video-embed{type="bilibili" id="BV17F4m137ng"}
 
 ## 小米电脑管家
 

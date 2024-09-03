@@ -39,10 +39,9 @@ function switchOrder() {
         gap: 0.2rem;
         color: var(--c-text-2);
         transition: color 0.1s;
-        cursor: pointer;
 
         &:hover {
-            color: var(--c-primary-1);
+            color: var(--c-primary);
         }
     }
 }

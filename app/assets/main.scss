@@ -6,7 +6,7 @@
     --font-weight-medium: 450;
     --font-weight-bold: 500;
 
-    -webkit-tap-highlight-color: var(--c-primary-3);
+    -webkit-tap-highlight-color: var(--c-primary-2);
 
     // 兼容了一点 IE
     background-color: hsl(220deg 20% 98%);
@@ -32,7 +32,7 @@
 }
 
 ::selection {
-    background-color: var(--c-primary-3);
+    background-color: var(--c-primary-2);
 }
 
 h1, h2, h3, h4, h5, h6, strong {
@@ -61,16 +61,18 @@ button, input, textarea {
     background: none;
     font: inherit;
     color: currentcolor;
+    cursor: pointer;
 
     &:disabled {
         color: var(--c-text-3);
+        cursor: not-allowed;
     }
 }
 
 mark {
-    background: linear-gradient(var(--c-primary-2), var(--c-primary-2)) no-repeat left bottom / 100% 0.3em;
+    background: linear-gradient(var(--c-primary-1), var(--c-primary-1)) no-repeat left bottom / 100% 0.3em;
     text-decoration: none;
-    color: var(--c-primary-1);
+    color: var(--c-primary);
     transition: 0.2s;
     animation: line-spread 0.5s;
 
@@ -118,7 +120,7 @@ mark {
     position: relative;
     border-radius: 0.5rem;
     background: no-repeat 100% / 400%;
-    background-image: linear-gradient(45deg, var(--c-accent-1), var(--c-primary-2) 40%, transparent 50%);
+    background-image: linear-gradient(45deg, var(--c-accent), var(--c-primary-1) 40%, transparent 50%);
     transition: all 0.5s;
     z-index: 0;
 
@@ -185,6 +187,47 @@ mark {
     }
 }
 
+.scrollcheck-y {
+    // 如果填写 0 会在 calc() 时出错
+    --top-offset: 0px;
+    --guessed-scrollbar-width: 0.5rem;
+    --fadeout-height: 2rem;
+
+    overflow-y: auto;
+    animation: scrollcheck-y;
+    animation-timeline: scroll(y self);
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        height: var(--guessed-scrollbar-width);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: var(--guessed-scrollbar-width);
+        background-color: var(--c-text-3);
+    }
+}
+
+@keyframes scrollcheck-y {
+    0% {
+        mask:
+            linear-gradient(to bottom, #fff calc(100% - var(--fadeout-height)), transparent),
+            linear-gradient(to left, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+    }
+
+    1%, 99% {
+        mask:
+            linear-gradient(to bottom, #fff var(--top-offset), transparent var(--top-offset), #fff calc(var(--top-offset) + var(--fadeout-height)), #fff calc(100% - var(--fadeout-height)), transparent),
+            linear-gradient(to left, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+    }
+
+    100% {
+        mask:
+            linear-gradient(to bottom, #fff var(--top-offset), transparent var(--top-offset), #fff calc(var(--top-offset) + var(--fadeout-height))),
+            linear-gradient(to left, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+    }
+}
+
 // fallback
 img {
     display: inline-block;
@@ -206,6 +249,6 @@ img {
         word-break: normal;
         text-align: center;
         text-shadow: none;
-        color: var(--c-primary-soft);
+        color: var(--c-primary-3);
     }
 }
