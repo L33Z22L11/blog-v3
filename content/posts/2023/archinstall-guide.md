@@ -51,7 +51,7 @@ Ventoy 需要加载自定义证书文件才能在启用“安全启动”特性�
 
 ### 联网
 
-:copy{prompt="#" command="ping -c 4 1.1.1.1"}
+:copy{prompt="#"}[ping -c 4 1.1.1.1]
 测试网络，如果无报错，可以跳过此节。
 
 #### 通过数据线共享手机网络
@@ -65,45 +65,45 @@ Ventoy 需要加载自定义证书文件才能在启用“安全启动”特性�
 #### 连接WiFi
 
 - 部分电脑会限制无线网卡，故建议先执行命令解锁 WiFi
-  :copy{prompt="#" command="rfkill unblock wifi"}
+  :copy{prompt="#"}[rfkill unblock wifi]
 - 进入联网工具
-  :copy{prompt="#" command="iwctl"}
+  :copy{prompt="#"}[iwctl]
 - 扫描 WiFi
-  :copy{prompt="[iwd]#" command="station wlan0 scan"}
+  :copy{prompt="[iwd]#"}[station wlan0 scan]
 - 查看 WiFi 列表
-  :copy{prompt="[iwd]#" command="station wlan0 get-networks"}
+  :copy{prompt="[iwd]#"}[station wlan0 get-networks]
 - 连接 WiFi
-  :copy{prompt="[iwd]#" command="station wlan0 connect [SSID]"}
+  :copy{prompt="[iwd]#"}[station wlan0 connect [SSID]]
   - 可以按 Tab 键补全 SSID（WiFi 名称）。
   - 安装镜像的 TTY 终端没有中文字体，不支持中文显示，所以用户可能无法区分中文名称的 WiFi。
 - 退出 iwctl
-  :copy{prompt="[iwd]#" command="exit"}
+  :copy{prompt="[iwd]#"}[exit]
 
 ### 检查硬盘分区
 
 如果你的电脑上安装了 Windows，建议提前在 Windows 中留出安装系统的硬盘分区，你也可以使用 PE 系统来管理硬盘分区。
 
 - 列出硬盘分区
-  :copy{prompt="#" command="lsblk -o+LABEL,FSTYPE"}
+  :copy{prompt="#"}[lsblk -o+LABEL,FSTYPE]
 - 若有必要，创建新的硬盘分区
-  :copy{prompt="#" command="cfdisk /dev/[driver]"}
+  :copy{prompt="#"}[cfdisk /dev/[driver]]
   - Driver（硬盘驱动器）名称应当类似于 sda、nvme0n1 等。
 - 如有必要，格式化分区
-  :copy{prompt="#" command="mkfs.btrfs /dev/[partition]"}
+  :copy{prompt="#"}[mkfs.btrfs /dev/[partition]]
   - 如果格式化失败，确认不含重要数据后，加上 `-f` 选项强制格式化。
 
 ## 换源
 
 使用 Reflector 更新源，可以使安装速度更快。
 
-:copy{prompt="#" command="reflector --verbose --country China --sort rate --save /etc/pacman.d/mirrorlist"}
+:copy{prompt="#"}[reflector --verbose --country China --sort rate --save /etc/pacman.d/mirrorlist]
 
 换源后，请**不要**在 ArchInstall 中设置 Mirrors 选项。
 
 ## 使用 ArchInstall 安装
 
 - 进入安装工具
-  :copy{prompt="#" command="archinstall"}
+  :copy{prompt="#"}[archinstall]
   - 如果等待时间过长，可以按 Ctrl-C 组合键中断，然后重新执行命令。
   - 如果多次尝试都不能进入安装界面，那么建议更换网络环境再试。
 

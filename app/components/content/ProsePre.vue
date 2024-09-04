@@ -135,6 +135,12 @@ pre {
     padding-left: var(--line-number-width);
 }
 
+// 高亮
+:deep(.line.highlight) {
+    border-radius: 0.2em;
+    background-color: var(--c-primary-soft);
+}
+
 // 行号
 :deep(.line::before) {
     content: attr(line);

@@ -44,7 +44,7 @@
     }
 
     strong {
-        background: linear-gradient(var(--c-primary-2), var(--c-primary-2)) no-repeat center bottom / 100% 30%;
+        background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 30%;
     }
 
     del {
@@ -79,7 +79,7 @@
             height: 2.5em;
             margin: -0.4em 0 0 -0.7em;
             border-radius: 2.5em;
-            background-image: linear-gradient(var(--c-primary-2), transparent);
+            background-image: linear-gradient(var(--c-primary-soft), transparent);
             z-index: -1;
         }
 
@@ -89,7 +89,7 @@
             bottom: 0;
             width: 0.4em;
             height: 0.7em;
-            background-color: var(--c-primary-2);
+            background-color: var(--c-primary-soft);
         }
 
         p {

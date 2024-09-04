@@ -44,16 +44,14 @@ const title = computed(() => props.title || defaultTitle)
 </script>
 
 <template>
-    <div class="alert card" :class="type" :style="{ '--color': color }">
+    <div class="alert card" :style="{ '--color': color }">
         <div class="alert-title">
             <Icon :name="icon" />
             <slot name="title">
                 {{ title }}
             </slot>
         </div>
-        <p>
-            <slot>{{ text }}</slot>
-        </p>
+        <slot><p>{{ text }}</p></slot>
     </div>
 </template>
 
@@ -61,7 +59,7 @@ const title = computed(() => props.title || defaultTitle)
 .alert {
     padding: 0.2em 0.8em;
     background-image:
-        radial-gradient(circle at 6em -20em, var(--color), transparent 24em),
+        radial-gradient(circle at 4em -25em, var(--color), transparent 30em),
         linear-gradient(var(--color) -2000%, transparent);
     font-size: 0.9em;
 

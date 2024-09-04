@@ -35,7 +35,7 @@ function render() {
         bottom: 0;
         left: 0.5em;
         width: 0.3em;
-        background-color: var(--c-primary-3);
+        background-color: var(--c-bg-soft);
     }
 }
 

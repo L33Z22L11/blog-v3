@@ -23,10 +23,10 @@ const widgets = computed(() => (route.meta.aside || []).map(componentAlias =>
 </script>
 
 <template>
+    <Transition>
+        <div v-if="UIStore.asideOpen" id="z-aside-bgmask" @click="UIStore.toggleAside" />
+    </Transition>
     <aside id="z-aside" :class="{ show: UIStore.asideOpen }">
-        <Transition>
-            <div v-if="UIStore.asideOpen" id="z-aside-bgmask" @click="UIStore.toggleAside" />
-        </Transition>
         <div class="container">
             <div v-for="widget in widgets" :key="widget" class="widget">
                 <!-- 更换页面时通过 key 更新这些组件，防止旧数据导致问题 -->
@@ -70,6 +70,7 @@ const widgets = computed(() => (route.meta.aside || []).map(componentAlias =>
     position: fixed;
     inset: 0;
     background-color: #0003;
+    z-index: 100;
 
     &.v-enter-active,
     &.v-leave-active {

@@ -59,7 +59,7 @@ function render() {
             width: fit-content;
             margin-left: auto;
             border-radius: 1em 0.2em 1em 1em;
-            background-color: var(--c-primary-2);
+            background-color: var(--c-primary-soft);
         }
     }
 }

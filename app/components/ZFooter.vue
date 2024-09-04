@@ -54,7 +54,7 @@ const appConfig = useAppConfig()
             transition: background-color 0.2s, color 0.1s;
 
             &:hover {
-                background-color: var(--c-primary-3);
+                background-color: var(--c-bg-soft);
                 color: var(--c-text);
             }
         }

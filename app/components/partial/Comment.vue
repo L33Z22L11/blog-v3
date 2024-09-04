@@ -4,7 +4,7 @@ const appConfig = useAppConfig()
 function initTwikoo() {
     window.twikoo?.init?.({
         envId: appConfig.twikoo.envId,
-        el: '#twikoo',
+        el: '#tcomment',
     })
 }
 
@@ -16,10 +16,10 @@ onMounted(() => initTwikoo())
 
 <template>
     <!-- FIXME: 刷新时不添加 class="light" -->
-    <section class="z-comment" :class="{ light: $colorMode.value === 'light' }">
+    <section class="z-comment" :class="{ light: $colorMode.value === 'light' }" data-allow-mismatch="class">
         <h3>评论区</h3>
         <ClientOnly>
-            <div id="twikoo" />
+            <div id="tcomment" />
             <template #fallback>
                 <p id="twikoo">
                     评论加载中...

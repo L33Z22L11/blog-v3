@@ -11,16 +11,15 @@ $breakpoint-widescreen: 1080px;
     --c-bg-1: hsl(220deg 10% 10%);
     --c-bg-2: hsl(220deg 10% 14%);
     --c-bg-3: hsl(220deg 10% 18%);
+    --c-bg-soft: hsl(220deg 100% 95% / 15%);
     --c-border: hsl(220deg 10% 20%);
     --c-bg-a50: hsl(220deg 10% 10% / 50%);
     --c-bg-a80: hsl(220deg 10% 10% / 80%);
     --c-primary: hsl(220deg 100% 70%);
-    --c-primary-1: hsl(215deg 100% 70% / 50%);
-    --c-primary-2: hsl(210deg 100% 60% / 30%);
-    --c-primary-3: hsl(220deg 100% 95% / 15%);
+    --c-primary-soft: hsl(220deg 100% 60% / 30%);
     --ld-bg-blur: var(--c-bg-a50);
     --ld-bg-card: var(--c-bg-3);
-    --ld-bg-active: var(--c-primary-2);
+    --ld-bg-active: var(--c-primary-soft);
     --ld-shadow: var(--c-bg);
 }
 
@@ -32,20 +31,19 @@ $breakpoint-widescreen: 1080px;
     --c-text-3: hsl(0deg 0% 70%);
     --c-bg: hsl(0deg 0% 100%);
     --c-bg-1: hsl(220deg 20% 98%);
-    --c-bg-2: hsl(200deg 5% 95%);
-    --c-bg-3: hsl(200deg 10% 93%);
-    --c-border: hsl(200deg 5% 90%);
-    --c-bg-a50: hsl(200deg 20% 98% / 50%);
-    --c-bg-a80: hsl(200deg 20% 98% / 80%);
+    --c-bg-2: hsl(220deg 10% 95%);
+    --c-bg-3: hsl(220deg 10% 90%);
+    --c-bg-soft: hsl(220deg 20% 20% / 10%);
+    --c-border: hsl(220deg 10% 91%);
+    --c-bg-a50: hsl(220deg 20% 98% / 50%);
+    --c-bg-a80: hsl(220deg 20% 98% / 80%);
     --c-primary: hsl(220deg 100% 55%);
-    --c-primary-1: hsl(215deg 100% 50% / 30%);
-    --c-primary-2: hsl(215deg 100% 60% / 15%);
-    --c-primary-3: hsl(220deg 20% 20% / 10%);
+    --c-primary-soft: hsl(220deg 100% 60% / 15%);
     --c-accent: hsl(180deg 70% 60%);
     --ld-bg-blur: var(--c-bg-a80);
     --ld-bg-card: var(--c-bg);
     --ld-bg-active: var(--c-bg);
-    --ld-shadow: var(--c-primary-3);
+    --ld-shadow: var(--c-bg-soft);
 }
 
 .dark {

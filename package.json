@@ -21,13 +21,13 @@
     "plain-shiki": "^0.0.2",
     "radash": "^12.1.0",
     "tippy.js": "^6.3.7",
-    "vue": "^3.5.0",
+    "vue": "^3.5.1",
     "vue-router": "^4.4.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.0.0",
+    "@antfu/eslint-config": "^3.2.0",
     "@nuxt/content": "^2.13.2",
-    "@nuxt/icon": "^1.5.0",
+    "@nuxt/icon": "^1.5.1",
     "@nuxt/image": "^1.8.0",
     "@nuxtjs/color-mode": "^3.4.4",
     "@nuxtjs/seo": "2.0.0-rc.18",
@@ -35,8 +35,8 @@
     "@vueuse/nuxt": "^10.11.1",
     "@zinkawaii/stylelint-config": "^0.1.5",
     "feed": "^4.2.2",
-    "nuxt": "^3.13.0",
-    "sass": "^1.77.8",
+    "nuxt": "^3.13.1",
+    "sass": "^1.78.0",
     "stylelint": "^16.9.0",
     "typescript": "^5.5.4"
   }

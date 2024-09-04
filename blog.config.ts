@@ -130,18 +130,31 @@ export default {
             media: 'none',
             onload: 'this.media="all"',
         },
+        // {
+        //     rel: 'preconnect',
+        //     href: 'https://fonts.googleapis.com',
+        // },
+        // {
+        //     rel: 'preconnect',
+        //     href: 'https://fonts.gstatic.com',
+        //     crossorigin: true,
+        // },
+        // {
+        //     rel: 'stylesheet',
+        //     href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap',
+        // },
         {
             rel: 'preconnect',
-            href: 'https://fonts.googleapis.com',
+            href: 'https://fonts.loli.net',
         },
         {
             rel: 'preconnect',
-            href: 'https://fonts.gstatic.com',
+            href: 'https://gstatic.loli.net',
             crossorigin: true,
         },
         {
             rel: 'stylesheet',
-            href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap',
+            href: 'https://fonts.loli.net/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap',
         },
         // {
         //     rel: 'stylesheet',

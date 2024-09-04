@@ -109,7 +109,7 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
             transition: all 0.2s;
 
             &:hover {
-                background-color: var(--c-primary-3);
+                background-color: var(--c-bg-soft);
                 white-space: normal;
             }
         }

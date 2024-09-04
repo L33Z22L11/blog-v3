@@ -1,8 +1,14 @@
 <script setup lang="ts">
-defineProps<{
+const props = withDefaults(defineProps<{
+    noprompt?: boolean
     prompt?: string
-    command: string
-}>()
+    command?: string
+}>(), {
+    prompt: '$',
+})
+
+const slot = defineSlots()
+const command = computed(() => slot.default?.()[0].children ?? props.command)
 
 const commandInput = ref<HTMLInputElement>()
 const copyBtn = ref<HTMLElement>()
@@ -12,7 +18,7 @@ useCopy(copyBtn, commandInput)
 
 <template>
     <code class="command">
-        <span v-if="prompt" class="prompt">{{ prompt }}</span>
+        <span v-if="!noprompt" class="prompt">{{ prompt }}</span>
         <input ref="commandInput" class="code check-x" :value="command">
         <button ref="copyBtn" class="copy"><Icon name="ph:copy-bold" /></button>
     </code>

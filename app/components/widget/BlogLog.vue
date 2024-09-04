@@ -39,7 +39,7 @@ const bloglog = [
     <!-- TODO: timeline style -->
     <div class="widget-card">
         <ul>
-            <li v-for="(item, index) in bloglog" :key="index" data-allow-mismatch>
+            <li v-for="(item, index) in bloglog" :key="index" data-allow-mismatch="text">
                 <small>{{ item.date }}</small><br>
                 {{ item.content }}
             </li>

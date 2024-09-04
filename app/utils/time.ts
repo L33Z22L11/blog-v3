@@ -29,25 +29,31 @@ export function timeElapse(date?: Date | string, maxDepth = 2) {
     return timeString || '刚刚'
 }
 
-export function getPostDate(date?: string) {
+export function getPostDate(date?: string | Date) {
     if (!date)
         return ''
 
-    const postDate = new Date(date)
+    if (typeof date === 'string')
+        date = new Date(date)
     const now = new Date()
 
-    const isWithinAWeek = postDate.getTime() > now.getTime() - 1000 * 60 * 60 * 24 * 7
-
+    const isWithinAWeek = now.getTime() - date.getTime() < 1000 * 60 * 60 * 24 * 7
     if (isWithinAWeek) {
-        return formatDistanceToNow(postDate, { addSuffix: true, locale: zhCN })
+        return formatDistanceToNow(date, { addSuffix: true, locale: zhCN })
     }
-    else if (postDate.getFullYear() === now.getFullYear()) {
-        return format(postDate, 'M月d日')
+    else if (isSameYear(now, date)) {
+        return format(date, 'M月d日')
     }
     else {
-        return format(postDate, 'yy年M月d日')
+        return format(date, 'yy年M月d日')
     }
 }
-export function isSameYear(date1?: string, date2?: string) {
-    return new Date(date1 ?? 0).getFullYear() === new Date(date2 ?? 0).getFullYear()
+export function isSameYear(date1?: string | Date, date2?: string | Date) {
+    if (!date1 || !date2)
+        return false
+    if (typeof date1 === 'string')
+        date1 = new Date(date1)
+    if (typeof date2 === 'string')
+        date2 = new Date(date2)
+    return date1.getFullYear() === date2.getFullYear()
 }

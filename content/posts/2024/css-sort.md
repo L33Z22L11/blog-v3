@@ -162,7 +162,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 删除了配置文件里的无用配置项，我就着手全局安装 Stylelint 相关包了。
 
-:copy{prompt="$" command="pnpm i -g stylelint stylelint-config-standard stylelint-order"}
+:copy[pnpm i -g stylelint stylelint-config-standard stylelint-order]
 
 我原本想在用户目录写 `~/stylelint.config.js` 或者 `~/.stylelintrc.js` 文件，就像 `~/.clang-format` 可以作为 `clangd` 的配置文件一样，但发现 VS Code 插件不读取用户目录的配置作为配置文件。
 
@@ -214,7 +214,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 我使用这行命令试图查看 SSH 环境中的 PATH：
 
-:copy{prompt="PS>" command="ssh localhost -t &quot;echo '$Env:PATH'&quot;"}
+:copy{prompt="PS>"}[ssh localhost -t "echo '$Env:PATH'"]
 
 但输出一切正常，`C:\Users\Zhilu\AppData\Local\pnpm` 完好地存在于 PATH 中。
 
@@ -257,7 +257,7 @@ stylelint/vscode-stylelint 仓库的 Issue [#331](https://github.com/stylelint/v
 全局安装的 Stylelint 包似乎找不到各种东西。在 stylelint/stylelint 的另一个 Issue [#7297](https://github.com/stylelint/stylelint/issues/7297) 中，提出者给出了一个“dirty fix”：
 
 - 创建软链接 `/usr/node_modules` 指向 `/lib64/node_modules`。
-  :copy{prompt="$" command="sudo ln -s /lib64/node_modules /usr/node_modules"}
+  :copy[sudo ln -s /lib64/node_modules /usr/node_modules]
 
 #### 如果 npm 被升级的话，也许就结束了吧
 
@@ -299,23 +299,23 @@ npm 配置的前缀竟然是 `/usr`！
 所有 `/usr/bin`，即 `/bin` 下的所有程序都被修改了权限。我被一个简简单单的 `$(npm config get prefix)` 表达式蒙蔽，忽略了其中的风险。
 ::
 
-众所周知，`/bin` 下的程序各有各的权限设置，修改它们权限的愚蠢程度与 `chmod -R 777 /` 相当。（另一个愚蠢的错误是在 WSL 里执行 `rm -rf /`，它并不安全，因为 Windows 文件挂载在 `/mnt` 下。）
+众所周知，`/bin` 下的程序各有各的权限设置，修改它们权限的愚蠢程度与 `chmod -R 777 /` 相当。（另一个我听说的愚蠢的错误是在 WSL 里执行 `rm -rf /`，它并不安全，因为 Windows 文件挂载在 `/mnt` 下。）
 
 🥺还能怎么办，修呗。
 
 - 按照 [Arch Linux 启动引导修复](/2024/archlinux-boot-repair) 一文中的方式挂载分区、进入系统。
 - 尝试恢复被修改的权限
-  :copy{prompt="#" command="chown -R root:root /usr/{lib/node_modules,bin,share}"}
+  :copy{prompt="#"}[chown -R root:root /usr/{lib/node_modules,bin,share}]
 - 尝试恢复部分关键程序的 setuid 位
-  :copy{prompt="#" command="chmod u+s /usr/bin/sudo /usr/bin/su"}
+  :copy{prompt="#"}[chmod u+s /usr/bin/sudo /usr/bin/su]
 - 建议切换到自己的用户上，实在切不了就算了
-  :copy{prompt="#" command="su <你的用户名>"}
+  :copy{prompt="#"}[su <你的用户名>]
   - 如果忘了自己的用户名，可以执行这个命令：
-  :copy{prompt="#" command="cat /etc/passwd | grep &quot;:1000&quot;"}
+  :copy{prompt="#"}[cat /etc/passwd | grep ":1000"]
 - 安装权限修复工具
-  :copy{prompt="$" command="yay -S pacman-fix-permissons"}
+  :copy[yay -S pacman-fix-permissons]
 - 修复权限
-  :copy{prompt="$" command="sudo pacman-fix-permissions"}
+  :copy[sudo pacman-fix-permissions]
 
 ```log [pacman-fix-permissions 的输出]
 ……

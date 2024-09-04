@@ -2,6 +2,7 @@ interface NavItem {
     icon: string
     text: string
     url: string
+    external?: boolean
 }
 
 export type Nav = {
