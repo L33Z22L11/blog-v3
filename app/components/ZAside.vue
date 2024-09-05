@@ -3,30 +3,32 @@ import { pascal } from 'radash'
 import {
     LazyWidgetBlogLog,
     LazyWidgetConnectivity,
+    LazyWidgetEmpty,
     LazyWidgetGithubCard,
     LazyWidgetToc,
 } from '#components'
 
 const UIStore = useUIStore()
-const route = useRoute()
 
 const widgetList = {
     LazyWidgetBlogLog,
     LazyWidgetConnectivity,
+    LazyWidgetEmpty,
     LazyWidgetGithubCard,
     LazyWidgetToc,
 }
 
-const widgets = computed(() => (route.meta.aside || []).map(componentAlias =>
+const widgets = computed(() => (UIStore.aside || []).map(componentAlias =>
     `LazyWidget${pascal(componentAlias)}` as keyof typeof widgetList),
 )
 </script>
 
 <template>
     <Transition>
-        <div v-if="UIStore.asideOpen" id="z-aside-bgmask" @click="UIStore.toggleAside" />
+        <div v-if="UIStore.isAsideOpen" id="z-aside-bgmask" @click="UIStore.toggleAside" />
     </Transition>
-    <aside id="z-aside" :class="{ show: UIStore.asideOpen }">
+    <!-- 如果为空数组则隐藏 -->
+    <aside v-if="UIStore.aside?.length" id="z-aside" :class="{ show: UIStore.isAsideOpen }">
         <div class="container">
             <div v-for="widget in widgets" :key="widget" class="widget">
                 <!-- 更换页面时通过 key 更新这些组件，防止旧数据导致问题 -->

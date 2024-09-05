@@ -1,28 +1,36 @@
+export type Aside = string[]
+
 export const useUIStore = defineStore('UI', () => {
-    const sidebarOpen = ref(false)
-    const asideOpen = ref(false)
+    const isSidebarOpen = ref(false)
+    const isAsideOpen = ref(false)
 
-    // 切换 sidebar 的打开状态
+    // 为空数组时占位，为 false 时隐藏
+    const aside = ref<Aside>([])
+
     const toggleSidebar = () => {
-        if (asideOpen.value) {
-            asideOpen.value = false
+        if (isAsideOpen.value) {
+            isAsideOpen.value = false
         }
-        sidebarOpen.value = !sidebarOpen.value
+        isSidebarOpen.value = !isSidebarOpen.value
     }
 
-    // 切换 aside 的打开状态
     const toggleAside = () => {
-        if (sidebarOpen.value) {
-            sidebarOpen.value = false
+        if (isSidebarOpen.value) {
+            isSidebarOpen.value = false
         }
-        asideOpen.value = !asideOpen.value
+        isAsideOpen.value = !isAsideOpen.value
     }
 
-    // 返回状态和方法
+    const setAside = (newAside: Aside) => {
+        aside.value = newAside ?? []
+    }
+
     return {
-        sidebarOpen,
-        asideOpen,
+        isSidebarOpen,
+        isAsideOpen,
+        aside,
         toggleSidebar,
         toggleAside,
+        setAside,
     }
 })

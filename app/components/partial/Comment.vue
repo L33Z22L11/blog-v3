@@ -4,7 +4,7 @@ const appConfig = useAppConfig()
 function initTwikoo() {
     window.twikoo?.init?.({
         envId: appConfig.twikoo.envId,
-        el: '#tcomment',
+        el: '#twikoo',
     })
 }
 
@@ -19,7 +19,7 @@ onMounted(() => initTwikoo())
     <section class="z-comment" :class="{ light: $colorMode.value === 'light' }" data-allow-mismatch="class">
         <h3>评论区</h3>
         <ClientOnly>
-            <div id="tcomment" />
+            <div id="twikoo" />
             <template #fallback>
                 <p id="twikoo">
                     评论加载中...

@@ -1,3 +1,4 @@
+import type { AppConfig } from 'nuxt/schema'
 import type { Nav } from '~/types/nav'
 import type { Themes } from '~/types/theme'
 
@@ -8,7 +9,7 @@ const author = {
     homepage: 'https://zhilu.cyou/',
 }
 
-export default {
+export default <AppConfig> {
 
     // basic
 
@@ -42,7 +43,7 @@ export default {
     },
 
     footer: {
-        copyright: `© ${new Date().getFullYear()} 纸鹿本鹿`,
+        copyright: `© ${new Date().getFullYear()} ${author.name}`,
         nav: <Nav>[
             { title: '探索', items: [
                 // { icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
@@ -137,7 +138,6 @@ export default {
         // {
         //     rel: 'preconnect',
         //     href: 'https://fonts.gstatic.com',
-        //     crossorigin: true,
         // },
         // {
         //     rel: 'stylesheet',
@@ -150,7 +150,6 @@ export default {
         {
             rel: 'preconnect',
             href: 'https://gstatic.loli.net',
-            crossorigin: true,
         },
         {
             rel: 'stylesheet',

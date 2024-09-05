@@ -3,13 +3,12 @@ import { alphabetical } from 'radash'
 import type { OrderType } from '~/types'
 
 useHead({ title: '' })
-definePageMeta({
-    aside: ['blog_log', 'connectivity'],
-})
 const appConfig = useAppConfig()
-
+const UIStore = useUIStore()
 const perPage = appConfig.indexGenerator.perPage || 10
 const orderBy = ref<OrderType>(appConfig.indexGenerator.orderBy as OrderType || 'date')
+
+UIStore.setAside(['blog_log', 'connectivity'])
 
 const { data } = await useAsyncData(
     'posts_index',

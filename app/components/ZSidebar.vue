@@ -7,9 +7,9 @@ const UIStore = useUIStore()
 
 <template>
     <Transition>
-        <div v-if="UIStore.sidebarOpen" id="z-sidebar-bgmask" @click="UIStore.toggleSidebar" />
+        <div v-if="UIStore.isSidebarOpen" id="z-sidebar-bgmask" @click="UIStore.toggleSidebar" />
     </Transition>
-    <aside id="z-sidebar" :class="{ show: UIStore.sidebarOpen }">
+    <aside id="z-sidebar" :class="{ show: UIStore.isSidebarOpen }">
         <ZhiluHeader class="sidebar-header" to="/" />
         <nav class="sidebar-nav">
             <div class="notify gradient-card active">

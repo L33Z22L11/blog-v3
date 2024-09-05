@@ -1,15 +1,14 @@
 <script setup lang="ts">
-const route = useRoute()
 const UIStore = useUIStore()
-const hasAside = computed(() => route.meta.aside && !route.meta.hideAside)
+const hasAside = computed(() => UIStore.aside?.length)
 </script>
 
 <template>
-    <div id="z-panel" :class="{ 'has-active': UIStore.sidebarOpen || UIStore.asideOpen }">
-        <button id="toggle-sidebar" :class="{ active: UIStore.sidebarOpen }" @click="UIStore.toggleSidebar">
+    <div id="z-panel" :class="{ 'has-active': UIStore.isSidebarOpen || UIStore.isAsideOpen }">
+        <button id="toggle-sidebar" :class="{ active: UIStore.isSidebarOpen }" @click="UIStore.toggleSidebar">
             <Icon name="ph:sidebar-duotone" />
         </button>
-        <button v-if="hasAside" id="toggle-aside" :class="{ active: UIStore.asideOpen }" @click="UIStore.toggleAside">
+        <button v-if="hasAside" id="toggle-aside" :class="{ active: UIStore.isAsideOpen }" @click="UIStore.toggleAside">
             <Icon name="ph:align-right-duotone" />
         </button>
     </div>

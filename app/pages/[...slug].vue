@@ -1,5 +1,9 @@
 <script setup lang="ts">
 const route = useRoute()
+const UIStore = useUIStore()
+
+UIStore.setAside(['toc'])
+
 const { data } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
 const excerpt = data.value?.description || ''
 
@@ -7,27 +11,21 @@ useHead({
     title: data.value?.title,
 })
 
-// FIXME: 这里的代码肯定有问题，不行得换一种写法
-// 删除后目录点击就消失
-definePageMeta({
-    aside: ['toc'],
-})
-
-watchImmediate(() => data.value?.aside, (aside) => {
-    route.meta.hideAside = data.value?.hideAside
-    route.meta.aside = aside ?? ['toc']
-})
+if (data.value?.aside) {
+    UIStore.setAside(data.value.aside)
+}
 
 const event = useRequestEvent()
 if (data.value === undefined) {
     setResponseStatus(event!, 404)
     route.meta.title = '404'
-    route.meta.aside = ['blog_log']
+    UIStore.setAside (['blog_log'])
 }
 </script>
 
 <template>
     <ContentRenderer :value="data">
+        <!-- FIXME: Type mismatch -->
         <ZPostHeader v-bind="data" />
         <ZExcerpt v-if="excerpt" :excerpt />
         <ContentRendererMarkdown
@@ -42,8 +40,9 @@ if (data.value === undefined) {
                 <p>内容为空或页面不存在</p>
             </div>
         </template>
+        <!-- FIXME: Type mismatch -->
         <ZPostFooter v-bind="data" />
         <ZSurroundPost />
-        <ZComment />
+        <ZComment :key="route.path" />
     </ContentRenderer>
 </template>

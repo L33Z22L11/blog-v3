@@ -7,8 +7,8 @@ defineProps({
     error: Object as () => NuxtError,
 })
 
-const route = useRoute()
-route.meta.aside = ['blog_log']
+const UIStore = useUIStore()
+UIStore.setAside(['blog_log'])
 
 const handleError = () => clearError({ redirect: '/' })
 

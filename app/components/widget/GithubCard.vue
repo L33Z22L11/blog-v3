@@ -4,12 +4,33 @@ const { data } = await useAsyncData(route.path, () => queryContent(route.path).f
 const repo = data.value?.github
 </script>
 
-<!-- TODO: add github card -->
 <template>
     <h3 class="widget-title">
         GitHub 仓库
     </h3>
-    <div class="widget-card">
-        {{ repo }}
+    <div class="widget-body">
+        <ZRawLink class="card" :to="repo.url">
+            <div class="name">
+                {{ repo.name }}
+            </div>
+            <div class="desc">
+                {{ repo.description }}
+            </div>
+        </ZRawLink>
     </div>
 </template>
+
+<style scoped lang="scss">
+.card {
+    padding: 0.5rem 0.8rem;
+
+    .name {
+        margin: 0.2rem 0;
+    }
+
+    .desc {
+        opacity: 0.8;
+        font-size: 0.8rem;
+    }
+}
+</style>

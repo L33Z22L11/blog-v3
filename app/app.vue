@@ -7,7 +7,7 @@
             <NuxtPage />
             <ZFooter />
         </main>
-        <ZAside v-if="!$route.meta.hideAside" />
+        <ZAside />
     </div>
     <ZPanel />
 </template>

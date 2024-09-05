@@ -3,10 +3,11 @@ import { alphabetical, group } from 'radash'
 import type { OrderType } from '~/types'
 
 useHead({ title: '归档' })
-definePageMeta({
-    aside: ['blog_log'],
-})
+
 const appConfig = useAppConfig()
+const UIStore = useUIStore()
+
+UIStore.setAside(['blog_log'])
 
 const orderBy = useRouteQuery(
     'order',
