@@ -8,7 +8,7 @@ defineProps<ButtonProps>()
 </script>
 
 <template>
-    <button class="button card" type="button">
+    <button class="button" type="button">
         <div class="button-main">
             <Icon v-if="icon" :name="icon" />
             <slot>{{ text }}</slot>
@@ -23,7 +23,11 @@ defineProps<ButtonProps>()
 .button {
     padding: 0.4em 0.6em;
     border: 1px solid var(--c-border);
+    border-radius: 0.5em;
+    box-shadow: 0 2px 0.5em var(--ld-shadow);
+    background-color: var(--ld-bg-card);
     line-height: normal;
+    cursor: pointer;
 
     & + & {
         margin-left: 0.8em;

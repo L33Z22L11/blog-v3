@@ -7,7 +7,8 @@ cover: https://7.isyangs.cn/24/6664009a7190a-24.jpg
 categories: [代码]
 tags: [实验室, Lab, C语言]
 references:
-  - "adlternative, zhoukuo123, Y7n05h, fansehep, hiixfj, Vincil Lau, yegetables. [设计一个 C 语言的动态扩容缓冲区](https://plan.xiyoulinux.com/project/strbuf/). 2023-01-01 (CC BY-SA 4.0)"
+  - link: https://plan.xiyoulinux.com/project/strbuf/
+    title: 设计一个 C 语言的动态扩容缓冲区
 ---
 
 ## 设计一个 C 语言的动态扩容缓冲区
@@ -18,16 +19,16 @@ references:
 >
 > ```c
 > struct strbuf {
->   int len;     //当前缓冲区（字符串）长度
->   int alloc;   //当前缓冲区（字符串）容量
->   char *buf;   //缓冲区（字符串）
+>     int len;     //当前缓冲区（字符串）长度
+>     int alloc;   //当前缓冲区（字符串）容量
+>     char *buf;   //缓冲区（字符串）
 > };
 > ```
 >
 > **HINT**
 >
 > - `strbuf`的成员`len`代表的是`buf`缓冲区的长度，每次我们将字符串追加入`strbuf`中，我们都应该使用 `strbuf_setlen()`去更新`strbuf`的长度`len`，注意`123\0456`的长度不是 3，而是 7。
-> - `strbuf`的成员`alloc`代表的是`buf`缓冲区的容量，也就是我们每次动态分配的数组大小，每当我们需要向`sb`内追加一个字符串，我们需要计算当前的字符串长度加上追加的字符串长度，如果超过了当前的容量，我们就需要把容量扩大一倍，然后将字符串添加进去。s
+> - `strbuf`的成员`alloc`代表的是`buf`缓冲区的容量，也就是我们每次动态分配的数组大小，每当我们需要向`sb`内追加一个字符串，我们需要计算当前的字符串长度加上追加的字符串长度，如果超过了当前的容量，我们就需要把容量扩大一倍，然后将字符串添加进去。
 
 ### Part 2A
 

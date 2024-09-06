@@ -167,7 +167,7 @@ export default <AppConfig> {
     ],
 
     twikoo: {
-        js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.36/dist/twikoo.all.min.js',
-        envId: 'https://t12.zhilu.cyou',
+        js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.39/dist/twikoo.all.min.js',
+        envId: 'https://twikoo.zhilu.cyou',
     },
 }

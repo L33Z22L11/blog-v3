@@ -91,7 +91,8 @@ const appConfig = useAppConfig()
 .emoji-tail {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    place-content: center;
+    align-content: center;
+    justify-items: center;
     position: absolute;
     opacity: 0.2;
     inset: 0;

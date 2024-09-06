@@ -4,6 +4,7 @@ description: 零基础高中生因技术名声被选中参加全国网络安全�
 date: 2021-10-20
 updated: 2021-11-07 14:08:00
 cover: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fYUK7hslxhyibEjh7Yc4MRhRz0OWyVibZnk89pSH7aeFkXicBOS42b6hjUJfx1x9S4CgkSCQaZrMoWWg/640
+type: story
 categories: [生活]
 tags: [高中, CTF, 电教]
 ---

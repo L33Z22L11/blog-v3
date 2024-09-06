@@ -19,7 +19,7 @@ const appConfig = useAppConfig()
                             {{ link }}
                         </p>
                         <ZLink v-else :to="link.link">
-                            {{ link.title }}
+                            {{ link?.title ?? link.link }}
                         </ZLink>
                     </li>
                 </ul>

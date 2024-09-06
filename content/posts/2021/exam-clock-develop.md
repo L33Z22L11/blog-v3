@@ -4,16 +4,16 @@ description: 为应对考试场景而开发并不断优化升级“考试时钟�
 date: 2021-10-01 21:30:00
 updated: 2021-11-07 14:08:00
 cover: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26M22aKhJHOahC7fkdKpHsgTpQQgtia5uN4ROYAgd2bOzPD5Yzb0LOibgA/640
+type: story
 categories: [代码]
 tags: [高中, 电教, 校园]
-type: story
 ---
 
 [查看原文](https://mp.weixin.qq.com/s/5yjgVwLOTYRhmXWOmBalOA)
 
-> 考试时钟是宝中各年级相互借鉴学习的产物。2021年3月19日，为照顾看不清挂钟的学生，2020级要求在考试时在班级一体机上展示时间。2021年3月23日。2019级年级张主任询问我是否可以为考试制作科目倒计时。历经几天时间，考试时钟在2019级的大型考试上与大家见面了，随后它又经过了几次升级、界面变化，如2021年4月26日使用了卡片排版。2021年6月25日，考试时钟受到2020级几名电教管理员的推荐，开始在2020级大型考试上使用。2021年8月1日，考试时钟被外部机构“借用”一次。2021年9月18日，考试时钟支持手动添加一场科目。在这期间，我学到了许多知识，也十分感谢各位的支持。
->
-> 野生技协TECHYES群公告
+::alert{title="野生技协TECHYES群公告"}
+考试时钟是宝中各年级相互借鉴学习的产物。2021年3月19日，为照顾看不清挂钟的学生，2020级要求在考试时在班级一体机上展示时间。2021年3月23日。2019级年级张主任询问我是否可以为考试制作科目倒计时。历经几天时间，考试时钟在2019级的大型考试上与大家见面了，随后它又经过了几次升级、界面变化，如2021年4月26日使用了卡片排版。2021年6月25日，考试时钟受到2020级几名电教管理员的推荐，开始在2020级大型考试上使用。2021年8月1日，考试时钟被外部机构“借用”一次。2021年9月18日，考试时钟支持手动添加一场科目。在这期间，我学到了许多知识，也十分感谢各位的支持。
+::
 
 我没有JS基础，但我上路了。
 
@@ -117,7 +117,7 @@ function setTemp(sh, sm, eh, em) {
     em = prompt('考试结束时间所在的分钟', 0)
     $(prompt('考试科目名称', '临时'), `${today}T${fixDigit(sh)}:${fixDigit(sm)}`, `${today}T${fixDigit(eh)}:${fixDigit(em)}`)
     alert(`考试科目：${subject}\n起止时间：${
-     getClock(start)}~${getClock(end)}`)
+        getClock(start)}~${getClock(end)}`)
 }
 ```
 
@@ -196,7 +196,7 @@ else {
         if (now.getHours() == 19) {
             now.setHours(31)
             today = `${fixDigit(now.getMonth() + 1)
-                 }-${fixDigit(now.getDate())}`
+            }-${fixDigit(now.getDate())}`
         }
         // 调试模式速度设置
         // now.setMinutes(now.getMinutes() + 1);

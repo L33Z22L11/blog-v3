@@ -4,12 +4,12 @@ description: 怀疑 Linux QQ 团队使用了作者的封面图片，严谨求证
 date: 2024-06-18 13:23:05
 updated: 2024-06-18 17:23:24
 cover: https://7.isyangs.cn/24/66714b1f0bc35-24.jpg
+type: story
 categories: [生活]
 tags: [qq, 问题, 软件]
 references:
   - title: Linux QQ 官网
     link: https://im.qq.com/linuxqq/index.shtml
-type: story
 ---
 
 ## 发现相似封面

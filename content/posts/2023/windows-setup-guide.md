@@ -193,8 +193,9 @@ winget remove 7zip
 
 ::link-banner
 ---
-title: Windows 空间管理/清理指南
 banner: https://7.isyangs.cn/24/669776aed29f4-24.jpg
+title: Windows 空间管理/清理指南
+desc: “软件装D盘”是且仅是旧日的经验之谈，如果想让电脑用起来更顺手，“无为而治”或许是个好选择。
 link: /2024/windows-storage
 ---
 ::

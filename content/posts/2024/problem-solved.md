@@ -3,9 +3,9 @@ title: 有问题，就要讲出来。
 description: 讲出来，修好了学校不通的路，解决了别人和我使用博客主题时遇到的问题，用 Nuxt.js 重构了个人网站，也配好了 Stylelint 和 Windows 上的 clangd。
 date: 2024-06-04 08:02:36
 updated: 2024-06-11 01:06:28
+type: story
 categories: [生活]
 tags: [问题, 校园, 系统, 朋友]
-type: story
 ---
 
 ## 此路不通

@@ -8,7 +8,7 @@ categories: [代码]
 tags: [大学, CTF]
 ---
 
-> [查看原文](https://mp.weixin.qq.com/s/oGf660AaxTQS_10qUoUaow)
+[查看原文](https://mp.weixin.qq.com/s/oGf660AaxTQS_10qUoUaow)
 
 近日朋友们升入大学，纷纷购置笔记本电脑，我的消息列表就热闹了起来，但也无非安装软件、编程入门云云。
 

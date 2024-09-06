@@ -13,8 +13,9 @@ tags: [教程, tailscale, 软件, 远程]
 Tailscale是一款虚拟组网软件，它不需要公网IP地址，也不会像内网穿透软件过于依赖转发服务器的带宽，只需要安装、登录，你在Internet上的设备就会出现在同一局域网下。
 
 > 工作原理：
-> [How Tailscale works](https://tailscale.com/blog/how-tailscale-works)
-> [How NAT traversal works](https://tailscale.com/blog/how-nat-traversal-works)
+>
+> - [How Tailscale works](https://tailscale.com/blog/how-tailscale-works)
+> - [How NAT traversal works](https://tailscale.com/blog/how-nat-traversal-works)
 
 这篇教程挺不错的，可以阅读一下：
 
@@ -107,4 +108,10 @@ powershell Invoke-WmiMethod Win32_Process Create \"powershell Restart-Service Ta
 
 ## Moonlight 串流
 
-参见教程 [Moonlight 串流指南] (/2024/moonlight-streaming-guide)。
+::link-banner
+---
+banner: https://7.isyangs.cn/24/6664009b8f999-24.jpg
+title: Moonlight 串流指南
+desc: 服务端Sunshine设置、客户端分辨率调整、隐私屏功能实现及触摸优化。
+link: /2024/moonlight-streaming-guide
+---
