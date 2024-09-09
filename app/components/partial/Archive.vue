@@ -17,11 +17,11 @@ const auxDateLabel = computed(() => props.date
     ? format(new Date(props.date), isSameYear(props.updated, props.date) ? 'MM-dd' : 'yyyy-MM-dd')
     : '')
 
-const articleCard = ref<HTMLAnchorElement>()
+const archiveItem = ref<HTMLAnchorElement>()
 const tip = joinWithBR(props.description, props.link || props.to)
 
 onMounted(() => {
-    tippy(unrefElement(articleCard)!, {
+    tippy(unrefElement(archiveItem)!, {
         allowHTML: true,
         content: tip,
         delay: [200, 0],
@@ -32,13 +32,13 @@ onMounted(() => {
 <template>
     <li class="article-line">
         <time :datetime="mainDate">{{ dateLabel }}</time>
-        <ZRawLink ref="articleCard" class="article-link gradient-card" :to="to">
+        <ZRawLink ref="archiveItem" class="article-link gradient-card" :to="to">
             <span class="article-title" :class="{ 'text-story': type === 'story' }">
                 {{ title }}
             </span>
             <time v-if="useUpdated && date && dateLabel !== auxDateLabel" class="aux-date" :datetime="date">
                 &nbsp;{{ auxDateLabel }}</time>
-            <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" />
+            <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" loading="lazy" />
         </ZRawLink>
     </li>
 </template>

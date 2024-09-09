@@ -17,7 +17,7 @@ const orderBy = useRouteQuery(
 const { data } = await useAsyncData(
     'posts_archive',
     () => queryContent()
-        .only(['title', 'description', 'date', 'updated', '_path', 'cover'])
+        .only(['_path', 'categories', 'cover', 'date', 'description', 'title', 'updated'])
         .where({ _original_dir: { $eq: '/posts' } })
         .find(),
     { default: () => [] },
@@ -47,7 +47,7 @@ const groupedList = computed(
         >
             <h2 class="archive-year">
                 {{ year }}
-                <span class="archive-count">{{ yearGroup!.length }}</span>
+                <span class="archive-count">{{ yearGroup?.length }}</span>
             </h2>
             <menu class="archive-list">
                 <ZArchive

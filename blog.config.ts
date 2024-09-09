@@ -1,4 +1,3 @@
-import type { AppConfig } from 'nuxt/schema'
 import type { Nav } from '~/types/nav'
 import type { Themes } from '~/types/theme'
 
@@ -9,7 +8,7 @@ const author = {
     homepage: 'https://zhilu.cyou/',
 }
 
-export default <AppConfig> {
+export default {
 
     // basic
 
@@ -36,9 +35,9 @@ export default <AppConfig> {
 
     article: {
         categories: {
-            经验分享: { icon: 'solar:cursor-bold-duotone', color: '#3af' },
-            生活: { icon: 'solar:star-fall-2-bold-duotone', color: '#3ba' },
-            代码: { icon: 'solar:code-bold-duotone', color: '#77f' },
+            经验分享: { icon: 'ph:mouse-bold', color: '#3af' },
+            生活: { icon: 'ph:shooting-star-bold', color: '#3ba' },
+            代码: { icon: 'ph:code-bold', color: '#77f' },
         },
     },
 

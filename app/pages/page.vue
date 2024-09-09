@@ -13,7 +13,7 @@ UIStore.setAside(['blog_log', 'connectivity'])
 const { data } = await useAsyncData(
     'posts_index',
     () => queryContent()
-        .only(['title', 'description', 'date', 'updated', 'categories', '_path', 'cover'])
+        .only(['_path', 'categories', 'cover', 'date', 'description', 'readingTime', 'title', 'updated'])
         .where({ _original_dir: { $eq: '/posts' } })
         .find(),
     { default: () => [] },

@@ -5,7 +5,7 @@ import type ArticleProps from '~/types/article'
 const route = useRoute()
 
 const { data } = await useAsyncData(`surround-${route.path}`, () => queryContent()
-    .only(['_path', 'title', 'date', 'type'])
+    .only(['_path', 'date', 'title', 'type'])
     .sort({ date: 1 })
     .where({ _original_dir: { $eq: '/posts' } })
     .findSurround(route.path))

@@ -23,6 +23,7 @@ const bloglog = [
     },
     {
         date: new Date().toLocaleDateString('en-CA'),
+        // TODO: 全站字数
         content: `运营${timeElapse(timeEstablished)}，${timeElapse(timeUpdated)}前更新，无要事相告`,
     },
     {

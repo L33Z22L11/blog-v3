@@ -19,15 +19,15 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
         <div class="post-nav">
             <div class="post-info">
                 <time v-if="date" :datetime="date">
-                    <Icon name="solar:calendar-add-bold-duotone" /> {{ publishedLabel }}</time>
+                    <Icon name="ph:calendar-dots" /> {{ publishedLabel }}</time>
                 <time v-if="updated" :datetime="updated">
-                    <Icon name="solar:pen-2-bold-duotone" /> {{ updatedLabel }}</time>
+                    <Icon name="ph:calendar-plus-bold" /> {{ updatedLabel }}</time>
                 <span v-if="categoryLabel" class="article-category">
                     <Icon :name="categoryIcon" />
                     {{ categoryLabel }}
                 </span>
                 <span class="wordcount">
-                    <!-- <Icon name="solar:text-bold-duotone" /> {{ getWordCount(props.body) }} -->
+                    <Icon name="ph:paragraph-bold" /> {{ readingTime.words }} 字
                 </span>
             </div>
         </div>
@@ -112,6 +112,12 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
         gap: 0.5em 1.2em;
         column-gap: clamp(1em, 3cqw, 1.5em);
         flex-wrap: wrap;
+
+        > * {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2em;
+        }
     }
 }
 </style>

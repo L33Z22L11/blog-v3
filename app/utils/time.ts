@@ -1,4 +1,4 @@
-import { format, formatDistanceToNow } from 'date-fns'
+import { format, formatDistance, formatDistanceToNow } from 'date-fns'
 import { zhCN } from 'date-fns/locale'
 
 export function timeElapse(date?: Date | string, maxDepth = 2) {
@@ -47,6 +47,10 @@ export function getPostDate(date?: string | Date) {
     else {
         return format(date, 'yy年M月d日')
     }
+}
+
+export function getReadingTime(ms: number): string {
+    return formatDistanceToNow(new Date().getTime() - ms, { locale: zhCN })
 }
 export function isSameYear(date1?: string | Date, date2?: string | Date) {
     if (!date1 || !date2)

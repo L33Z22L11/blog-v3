@@ -10,9 +10,9 @@ type: story
 
 aside: [toc, github_card]
 github:
-    name: L33Z22L11/blog-v3
-    description: 基于 Nuxt Content 的博客主题，使用 Nuxt 3 构建。
-    url: https://github.com/L33Z22L11/blog-v3
+  name: L33Z22L11/blog-v3
+  description: 基于 Nuxt Content 的博客主题，使用 Nuxt 3 构建。
+  url: https://github.com/L33Z22L11/blog-v3
 ---
 
 ::alert{type="warning" title="技术提醒"}

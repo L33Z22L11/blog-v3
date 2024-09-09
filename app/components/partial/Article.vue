@@ -16,7 +16,7 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
 
 <template>
     <ZRawLink class="article-card card">
-        <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" />
+        <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" loading="lazy" />
         <article>
             <h2 class="article-title" :class="{ 'text-story': type === 'story' }">
                 {{ title }}
@@ -26,15 +26,15 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
             </p>
             <div class="article-info" data-allow-mismatch>
                 <time v-if="!useUpdated" :datetime="date">
-                    <Icon name="solar:calendar-add-bold-duotone" />
+                    <Icon name="ph:calendar-dots-bold" />
                     {{ publishedLabel }}
                 </time>
                 <time v-if="publishedLabel !== updatedLabel" :datetime="updated">
-                    <Icon name="solar:pen-2-bold-duotone" />
+                    <Icon name="ph:calendar-plus-bold" />
                     {{ updatedLabel }}
                 </time>
                 <time v-if="useUpdated" :datetime="date">
-                    <Icon name="solar:calendar-add-bold-duotone" />
+                    <Icon name="ph:calendar-dots-bold" />
                     {{ publishedLabel }}
                 </time>
                 <span
@@ -44,6 +44,10 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
                 >
                     <Icon :name="categoryIcon" />
                     {{ categoryLabel }}
+                </span>
+                <span class="article-words">
+                    <Icon name="ph:paragraph-bold" />
+                    {{ readingTime?.words }}字
                 </span>
             </div>
         </article>
@@ -84,6 +88,12 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
     font-size: 0.8em;
     flex-wrap: wrap;
     color: var(--c-text-2);
+
+    > * {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.2em;
+    }
 }
 
 .article-title {

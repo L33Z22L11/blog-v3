@@ -99,6 +99,13 @@ export default defineNuxtConfig({
                 dark: 'one-dark-pro',
             },
         },
+        markdown: {
+            remarkPlugins: ['remark-reading-time'],
+        },
+    },
+
+    icon: {
+        serverBundle: 'auto',
     },
 
     image: {

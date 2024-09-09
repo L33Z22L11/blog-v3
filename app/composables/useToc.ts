@@ -46,6 +46,7 @@ export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
     }
 
     useEventListener('scroll', autoThrottle(() => updateActiveToc()), { passive: true })
+    // TODO: use useElementSize()
     useEventListener('resize', autoThrottle(() => tocOffsets.trigger()))
     useEventListener('load', autoThrottle(() => tocOffsets.trigger()))
 

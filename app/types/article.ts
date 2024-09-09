@@ -1,3 +1,5 @@
+import type { ReadTimeResults } from 'reading-time'
+
 const _appConfig = useAppConfig()
 
 export type ArticleCategory = keyof typeof _appConfig.article.categories & string
@@ -14,4 +16,5 @@ export default interface ArticleProps {
     cover?: string
     cover_revert?: boolean
     references?: ({ title: string, link: string } & string)[]
+    readingTime: ReadTimeResults
 }
