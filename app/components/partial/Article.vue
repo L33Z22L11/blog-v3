@@ -29,7 +29,7 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
                     <Icon name="ph:calendar-dots-bold" />
                     {{ publishedLabel }}
                 </time>
-                <time v-if="publishedLabel !== updatedLabel" :datetime="updated">
+                <time v-if="isTimeDiffSignificant(date, updated)" :datetime="updated">
                     <Icon name="ph:calendar-plus-bold" />
                     {{ updatedLabel }}
                 </time>

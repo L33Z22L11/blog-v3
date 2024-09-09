@@ -36,7 +36,7 @@ onMounted(() => {
             <span class="article-title" :class="{ 'text-story': type === 'story' }">
                 {{ title }}
             </span>
-            <time v-if="useUpdated && date && dateLabel !== auxDateLabel" class="aux-date" :datetime="date">
+            <time v-if="useUpdated && isTimeDiffSignificant(date, updated)" class="aux-date" :datetime="date">
                 &nbsp;{{ auxDateLabel }}</time>
             <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" loading="lazy" />
         </ZRawLink>

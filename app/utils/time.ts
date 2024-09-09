@@ -1,4 +1,4 @@
-import { format, formatDistance, formatDistanceToNow } from 'date-fns'
+import { differenceInMilliseconds, format, formatDistanceToNow } from 'date-fns'
 import { zhCN } from 'date-fns/locale'
 
 export function timeElapse(date?: Date | string, maxDepth = 2) {
@@ -33,11 +33,9 @@ export function getPostDate(date?: string | Date) {
     if (!date)
         return ''
 
-    if (typeof date === 'string')
-        date = new Date(date)
     const now = new Date()
 
-    const isWithinAWeek = now.getTime() - date.getTime() < 1000 * 60 * 60 * 24 * 7
+    const isWithinAWeek = differenceInMilliseconds(now, date) < 1000 * 60 * 60 * 24 * 7
     if (isWithinAWeek) {
         return formatDistanceToNow(date, { addSuffix: true, locale: zhCN })
     }
@@ -52,6 +50,23 @@ export function getPostDate(date?: string | Date) {
 export function getReadingTime(ms: number): string {
     return formatDistanceToNow(new Date().getTime() - ms, { locale: zhCN })
 }
+
+export function isTimeDiffSignificant(
+    date1?: string | Date,
+    date2?: string | Date,
+    // 对于时间差的敏感程度，0~1 之间
+    threshold: number = 0.6,
+) {
+    if (!date1 || !date2)
+        return false
+
+    const now = new Date()
+
+    const diff1 = differenceInMilliseconds(now, date1)
+    const diff2 = differenceInMilliseconds(now, date2)
+    return diff1 / diff2 < threshold || diff2 / diff1 < threshold
+}
+
 export function isSameYear(date1?: string | Date, date2?: string | Date) {
     if (!date1 || !date2)
         return false
