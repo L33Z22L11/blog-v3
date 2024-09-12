@@ -6,7 +6,7 @@ updated: 2024-05-12 20:54:15
 cover: https://7.isyangs.cn/24/66640095c770c-24.jpg
 categories: [经验分享]
 tags: [教程, archlinux, 系统]
-sticky: 20
+recommend: 20
 ---
 
 ## 安装前准备

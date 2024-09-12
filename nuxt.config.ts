@@ -48,7 +48,9 @@ export default defineNuxtConfig({
     },
 
     routeRules: {
+        '/api/total-words': { prerender: true },
         '/atom.xml': { prerender: true },
+        '/sitemap.xml': { prerender: true },
     },
 
     runtimeConfig: {

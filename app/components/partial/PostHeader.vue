@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content'
 import type { ArticleCategory } from '~/types/article'
 import type ArticleProps from '~/types/article'
 
-const props = defineProps<ParsedContent & ArticleProps>()
+const props = defineProps<ArticleProps>()
 const appConfig = useAppConfig()
 const publishedLabel = getPostDate(props.date)
 const updatedLabel = getPostDate(props.updated)
 
 const categoryLabel = props.categories?.[0] as ArticleCategory
 const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
+
+const postDate = ref<HTMLElement>()
+const postUpdated = ref<HTMLElement>()
+
+useTooltip(postDate, getLocaleDatetime(props.date))
+useTooltip(postUpdated, getLocaleDatetime(props.updated))
 </script>
 
 <template>
@@ -18,9 +23,9 @@ const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
         <NuxtImg v-if="cover" class="post-cover" :src="cover" :alt="title" />
         <div class="post-nav">
             <div class="post-info">
-                <time v-if="date" :datetime="date">
+                <time v-if="date" ref="postDate" :datetime="date">
                     <Icon name="ph:calendar-dots" /> {{ publishedLabel }}</time>
-                <time v-if="updated" :datetime="updated">
+                <time v-if="updated" ref="postUpdated" :datetime="updated">
                     <Icon name="ph:calendar-plus-bold" /> {{ updatedLabel }}</time>
                 <span v-if="categoryLabel" class="article-category">
                     <Icon :name="categoryIcon" />

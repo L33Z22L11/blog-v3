@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content'
 import type ArticleProps from '~/types/article'
 
 const route = useRoute()
@@ -10,10 +9,10 @@ const { data } = await useAsyncData(`surround-${route.path}`, () => queryContent
     .where({ _original_dir: { $eq: '/posts' } })
     .findSurround(route.path))
 
-const [prev, next] = data.value ?? []
+const [prev = null, next = null] = data.value ?? []
 
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
-    post: ParsedContent & ArticleProps | null
+    post: ArticleProps | null
     icon: string
     fallbackIcon: string
     fallbackText: string
@@ -34,7 +33,6 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
     </DefineTemplate>
 
     <div v-if="prev || next" class="surround-post">
-        <!-- FIXME: Type mismatch -->
         <ReuseTemplate
             :post="next" icon="solar:rewind-back-bold-duotone"
             fallback-icon="solar:document-add-bold-duotone" fallback-text="新故事即将发生"

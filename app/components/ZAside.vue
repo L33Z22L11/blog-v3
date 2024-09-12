@@ -1,17 +1,19 @@
 <script setup lang="ts">
-import { pascal } from 'radash'
 import {
     LazyWidgetBlogLog,
+    LazyWidgetBlogStats,
     LazyWidgetConnectivity,
     LazyWidgetEmpty,
     LazyWidgetGithubCard,
     LazyWidgetToc,
 } from '#components'
+import { pascal } from 'radash'
 
 const UIStore = useUIStore()
 
 const widgetList = {
     LazyWidgetBlogLog,
+    LazyWidgetBlogStats,
     LazyWidgetConnectivity,
     LazyWidgetEmpty,
     LazyWidgetGithubCard,

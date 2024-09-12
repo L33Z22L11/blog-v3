@@ -9,7 +9,7 @@ tags: [tailscale, moonlight, sunshine, 网络, 远程, 教程]
 references:
   - title: 用 Sunshine + Moonlight 打造带有“隐私模式”的游戏串流服务
     link: https://www.xkww3n.cyou/2023/09/18/sunshine-moonlight-game-streaming-privately/
-sticky: 50
+recommend: 50
 ---
 
 ## 环境

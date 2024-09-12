@@ -1,34 +1,15 @@
 import { differenceInMilliseconds, format, formatDistanceToNow } from 'date-fns'
 import { zhCN } from 'date-fns/locale'
 
-export function timeElapse(date?: Date | string, maxDepth = 2) {
+export function getLocaleDatetime(date?: string | Date) {
     if (!date)
         return ''
+
     if (typeof date === 'string')
         date = new Date(date)
-    const msecPast = Date.now() - date.getTime()
-    const intervals = [
-        { label: '年', msec: 1000 * 60 * 60 * 24 * 365.2422 },
-        { label: '个月', msec: 1000 * 60 * 60 * 24 * 30.44 },
-        { label: '天', msec: 1000 * 60 * 60 * 24 },
-        { label: '小时', msec: 1000 * 60 * 60 },
-        { label: '分钟', msec: 1000 * 60 },
-        { label: '秒', msec: 1000 },
-    ]
-    let timeString = ''
-    let msecRemained = msecPast
-    for (const interval of intervals) {
-        const count = Math.floor(msecRemained / interval.msec)
-        if (count >= 1) {
-            timeString += `${count}${interval.label}`
-            msecRemained -= count * interval.msec
-            if (--maxDepth <= 0)
-                break
-        }
-    }
-    return timeString || '刚刚'
-}
 
+    return format(date, 'yyyy-MM-dd HH:mm:ss')
+}
 export function getPostDate(date?: string | Date) {
     if (!date)
         return ''
@@ -75,4 +56,32 @@ export function isSameYear(date1?: string | Date, date2?: string | Date) {
     if (typeof date2 === 'string')
         date2 = new Date(date2)
     return date1.getFullYear() === date2.getFullYear()
+}
+
+export function timeElapse(date?: Date | string, maxDepth = 2) {
+    if (!date)
+        return ''
+    if (typeof date === 'string')
+        date = new Date(date)
+    const msecPast = Date.now() - date.getTime()
+    const intervals = [
+        { label: '年', msec: 1000 * 60 * 60 * 24 * 365.2422 },
+        { label: '个月', msec: 1000 * 60 * 60 * 24 * 30.44 },
+        { label: '天', msec: 1000 * 60 * 60 * 24 },
+        { label: '小时', msec: 1000 * 60 * 60 },
+        { label: '分钟', msec: 1000 * 60 },
+        { label: '秒', msec: 1000 },
+    ]
+    let timeString = ''
+    let msecRemained = msecPast
+    for (const interval of intervals) {
+        const count = Math.floor(msecRemained / interval.msec)
+        if (count >= 1) {
+            timeString += `${count}${interval.label}`
+            msecRemained -= count * interval.msec
+            if (--maxDepth <= 0)
+                break
+        }
+    }
+    return timeString || '刚刚'
 }

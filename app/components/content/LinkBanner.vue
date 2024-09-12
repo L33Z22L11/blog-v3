@@ -11,7 +11,7 @@ const src = getImgUrl(props.banner, props.mirror)
 </script>
 
 <template>
-    <ZRawLink :to="link" class="link-banner card">
+    <ZRawLink :to="link" class="link-banner card" :title>
         <NuxtImg v-if="banner" class="link-banner-bg" :src :alt="title" />
         <div class="link-banner-header" />
         <div class="link-banner-info">

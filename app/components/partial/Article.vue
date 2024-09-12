@@ -2,7 +2,7 @@
 import type { ArticleCategory } from '~/types/article'
 import type ArticleProps from '~/types/article'
 
-const props = defineProps < { useUpdated: boolean } & ArticleProps>()
+const props = defineProps < { useUpdated?: boolean } & ArticleProps>()
 
 const appConfig = useAppConfig()
 
@@ -15,7 +15,7 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
 </script>
 
 <template>
-    <ZRawLink class="article-card card">
+    <ZRawLink class="article-card card" :title>
         <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" loading="lazy" />
         <article>
             <h2 class="article-title" :class="{ 'text-story': type === 'story' }">
@@ -25,15 +25,15 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
                 {{ description }}
             </p>
             <div class="article-info" data-allow-mismatch>
-                <time v-if="!useUpdated" :datetime="date">
+                <time v-if="!useUpdated" :datetime="date" :title="getLocaleDatetime(date)">
                     <Icon name="ph:calendar-dots-bold" />
                     {{ publishedLabel }}
                 </time>
-                <time v-if="isTimeDiffSignificant(date, updated)" :datetime="updated">
+                <time v-if="isTimeDiffSignificant(date, updated)" :datetime="updated" :title="getLocaleDatetime(updated)">
                     <Icon name="ph:calendar-plus-bold" />
                     {{ updatedLabel }}
                 </time>
-                <time v-if="useUpdated" :datetime="date">
+                <time v-if="useUpdated" :datetime="date" :title="getLocaleDatetime(date)">
                     <Icon name="ph:calendar-dots-bold" />
                     {{ publishedLabel }}
                 </time>
@@ -59,6 +59,7 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
     container-type: inline-size;
     display: block;
     position: relative;
+    margin: 1rem 0;
     border-radius: 0.8rem;
     color: var(--c-text);
 
@@ -66,10 +67,6 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
         .article-cover {
             opacity: 1;
         }
-    }
-
-    & + & {
-        margin-top: 1rem;
     }
 
     > article {

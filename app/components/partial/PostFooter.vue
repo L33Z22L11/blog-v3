@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content'
 import type ArticleProps from '~/types/article'
 
-defineProps<ArticleProps & ParsedContent>()
+defineProps<ArticleProps>()
 const appConfig = useAppConfig()
 </script>
 

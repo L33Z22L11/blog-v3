@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { ParsedContent } from '@nuxt/content'
-import type ArticleProps from '~/types/article'
 import type { OrderType } from '~/types'
+import type ArticleProps from '~/types/article'
 
 defineProps<{
-    list: (ParsedContent & ArticleProps)[]
+    list: (ArticleProps)[]
     orderBy: OrderType
 }>()
 

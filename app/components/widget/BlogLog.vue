@@ -1,10 +1,7 @@
 <script setup lang="ts">
-const runtimeConfig = useRuntimeConfig()
+const timeEstablished = useAppConfig().timeEstablished
 
-const timeEstablished = '2019-07-20'
-const timeUpdated = runtimeConfig.public.buildTime as string
-
-const bloglog = [
+const blogLog = [
     {
         date: timeEstablished,
         content: '发布第一篇文章',
@@ -22,11 +19,6 @@ const bloglog = [
         content: 'Nuxt Content 重构博客上线',
     },
     {
-        date: new Date().toLocaleDateString('en-CA'),
-        // TODO: 全站字数
-        content: `运营${timeElapse(timeEstablished)}，${timeElapse(timeUpdated)}前更新，无要事相告`,
-    },
-    {
         date: '2030-08-10',
         content: '域名到期，预计会提前重定向迁移，届时会通知友链中的各位',
     },
@@ -40,7 +32,7 @@ const bloglog = [
     <!-- TODO: timeline style -->
     <div class="widget-card">
         <ul>
-            <li v-for="(item, index) in bloglog" :key="index" data-allow-mismatch="text">
+            <li v-for="(item, index) in blogLog" :key="index">
                 <small>{{ item.date }}</small><br>
                 {{ item.content }}
             </li>

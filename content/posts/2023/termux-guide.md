@@ -6,6 +6,7 @@ updated: 2024-04-28 20:25:16
 cover: https://7.isyangs.cn/24/6664009d45024-24.jpg
 categories: [经验分享]
 tags: [教程, termux, 软件]
+recommend: true
 ---
 
 ## 安装 Termux

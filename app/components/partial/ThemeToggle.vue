@@ -12,6 +12,7 @@ function toggleTheme(key: ThemeType) {
     colorMode.preference = key
 }
 
+// TODO: 使用 useTooltip()
 onMounted(() => {
     themeToggle.value?.forEach((button, index) => {
         const key = Object.keys(themes)[index] as ThemeType

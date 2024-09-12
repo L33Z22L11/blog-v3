@@ -25,7 +25,6 @@ if (data.value === undefined) {
 
 <template>
     <ContentRenderer :value="data">
-        <!-- FIXME: Type mismatch -->
         <ZPostHeader v-bind="data" />
         <ZExcerpt v-if="excerpt" :excerpt />
         <ContentRendererMarkdown
@@ -40,7 +39,6 @@ if (data.value === undefined) {
                 <p>内容为空或页面不存在</p>
             </div>
         </template>
-        <!-- FIXME: Type mismatch -->
         <ZPostFooter v-bind="data" />
         <ZSurroundPost />
         <ZComment :key="route.path" />

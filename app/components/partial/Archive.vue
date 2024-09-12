@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
 import tippy from 'tippy.js'
-import 'tippy.js/dist/tippy.css'
 import type ArticleProps from '~/types/article'
+import 'tippy.js/dist/tippy.css'
 
 const props = defineProps<{
     to?: string

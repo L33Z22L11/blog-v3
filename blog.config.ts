@@ -14,22 +14,23 @@ export default {
 
     title: '纸鹿摸鱼处',
     description: '纸鹿本鹿的个人博客，分享技术与生活。折腾不止，摸鱼生活——摸门🙏🏻',
+    author,
+    copyright: {
+        abbr: 'CC BY-NC-SA 4.0',
+        name: '署名-非商业性使用-相同方式共享 4.0 国际',
+        url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
+    },
+    favicon: 'https://www.zhilu.cyou/api/icon.png',
     header: {
         logo: 'https://wsrv.nl/?url=github.com/L33Z22L11.png',
         text: true,
         subtitle: '纸鹿至麓不知路，支炉制露不止漉',
         emojiTail: ['📄', '🦌', '🙌', '🐟', '🏖️'],
     },
-    author,
     language: 'zh-CN',
+    timeEstablished: '2019-07-20',
     timezone: 'Asia/Shanghai',
-    favicon: 'https://www.zhilu.cyou/api/icon.png',
     url: 'https://blog.zhilu.cyou/',
-    copyright: {
-        abbr: 'CC BY-NC-SA 4.0',
-        name: '署名-非商业性使用-相同方式共享 4.0 国际',
-        url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
-    },
 
     // items
 
