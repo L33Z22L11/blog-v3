@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const timeEstablished = useAppConfig().timeEstablished as string
 const timeUpdated = useRuntimeConfig().public.buildTime as string
-const totalWords = await $fetch('/api/total-words')
+const { data: totalWords } = await useFetch('/api/total-words')
 
 const blogStats = [{
     title: '运营时长',
@@ -19,7 +19,7 @@ const blogStats = [{
     <h3 class="widget-title">
         博客统计
     </h3>
-    <div class="widget-body">
+    <div class="widget-card">
         <ul>
             <li v-for="(item, index) in blogStats" :key="index" data-allow-mismatch>
                 <small>{{ item.title }}</small><br>
@@ -38,6 +38,7 @@ ul {
 
     >li {
         flex: 1;
+        white-space: nowrap;
     }
 }
 </style>
