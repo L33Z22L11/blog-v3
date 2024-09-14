@@ -76,12 +76,12 @@ export function timeElapse(date?: Date | string, maxDepth = 2) {
     let msecRemained = msecPast
     for (const interval of intervals) {
         const count = Math.floor(msecRemained / interval.msec)
-        if (count >= 1) {
-            timeString += `${count}${interval.label}`
-            msecRemained -= count * interval.msec
-            if (--maxDepth <= 0)
-                break
-        }
+        if (count <= 0)
+            continue
+        timeString += `${count}${interval.label}`
+        msecRemained -= count * interval.msec
+        if (--maxDepth <= 0)
+            break
     }
     return timeString || '刚刚'
 }

@@ -59,6 +59,9 @@ onMounted(() => {
         display: inline-block;
         opacity: 0.4;
         font-family: var(--font-monospace);
+
+        // 解决移动端 Edge 字体尺寸不准导致的换行溢出
+        white-space: nowrap;
         transition: opacity 0.2s;
 
         &.aux-date {

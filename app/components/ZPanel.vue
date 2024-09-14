@@ -23,6 +23,7 @@ const hasAside = computed(() => UIStore.aside?.length)
     border-radius: 0.5rem;
     background-color: var(--c-bg-a50);
     backdrop-filter: blur(0.5rem);
+    font-size: 1.4rem;
     z-index: 100;
 
     @media (min-width: $breakpoint-widescreen) {
@@ -56,10 +57,5 @@ button {
         background-color: var(--ld-bg-active);
         color: var(--c-primary);
     }
-}
-
-.iconify {
-    display: block;
-    font-size: 1.5rem;
 }
 </style>

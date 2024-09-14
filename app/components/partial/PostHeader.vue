@@ -22,9 +22,9 @@ useTooltip(postUpdated, getLocaleDatetime(props.updated))
     <div class="post-header" :class="{ 'has-cover': cover, 'text-revert': cover_revert }">
         <NuxtImg v-if="cover" class="post-cover" :src="cover" :alt="title" />
         <div class="post-nav">
-            <div class="post-info">
+            <div v-if="!hideInfo" class="post-info">
                 <time v-if="date" ref="postDate" :datetime="date">
-                    <Icon name="ph:calendar-dots" /> {{ publishedLabel }}</time>
+                    <Icon name="ph:calendar-dots-bold" /> {{ publishedLabel }}</time>
                 <time v-if="updated" ref="postUpdated" :datetime="updated">
                     <Icon name="ph:calendar-plus-bold" /> {{ updatedLabel }}</time>
                 <span v-if="categoryLabel" class="article-category">
@@ -117,12 +117,6 @@ useTooltip(postUpdated, getLocaleDatetime(props.updated))
         gap: 0.5em 1.2em;
         column-gap: clamp(1em, 3cqw, 1.5em);
         flex-wrap: wrap;
-
-        > * {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.2em;
-        }
     }
 }
 </style>

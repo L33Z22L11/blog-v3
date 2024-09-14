@@ -6,6 +6,7 @@ updated: 2024-06-08 00:04:21
 cover: https://7.isyangs.cn/24/65a8dcff71bdf-24.jpg
 categories: [经验分享]
 tags: [教程, vscode, 软件]
+recommend: true
 ---
 
 ## 精简版
@@ -42,7 +43,7 @@ tags: [教程, vscode, 软件]
 ```json [%APPDATA%/Code/User/settings.json]
 {
   // 设置编辑器字体
-  "editor.fontFamily": "Sarasa Mono SC, Fira Code, JetBrains Mono, Menlo, Monaco, Consolas, 'monospace', system-ui, monospace, Symbols Nerd Font, FiraCode Nerd Font, JetBrainsMono Nerd Font, Hack Nerd Font",
+  "editor.fontFamily": "Sarasa Mono SC, Fira Code, JetBrains Mono, Menlo, Monaco, Consolas, 'monospace', system-ui, monospace, Symbols Nerd Font, FiraCode Nerd Font, JetBrainsMono Nerd Font, CaskaydiaCove Nerd Font, Hack Nerd Font",
   // 启用字体连字特性
   "editor.fontLigatures": true,
   // 设置编辑器字体大小

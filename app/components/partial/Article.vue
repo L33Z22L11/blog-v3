@@ -85,12 +85,6 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
     font-size: 0.8em;
     flex-wrap: wrap;
     color: var(--c-text-2);
-
-    > * {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.2em;
-    }
 }
 
 .article-title {

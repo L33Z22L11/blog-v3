@@ -2,7 +2,7 @@
 title: Windows 终端体验优化指南
 description: 一篇优化 Windows Terminal 体验的指南，涵盖 PowerShell 增强、Oh My Posh 主题配置、集成 Git Bash 以及终端美化等方面。
 date: 2024-06-16 22:48:57
-updated: 2024-08-07 23:35:02
+updated: 2024-09-14 19:57:42
 cover: https://7.isyangs.cn/24/6671b766a4312-24.jpg
 categories: [经验分享]
 tags: [教程, 系统, Windows, 终端]
@@ -31,9 +31,12 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 
 - 安装新版 PSReadLine 模块
   :copy{prompt="PS>"}[sudo Install-Module PSReadLine -Force]
+  如果第一次执行时提示安装 NuGet 提供程序，那么可能需要再次执行命令才能安装 PSReadLine。
 
 ### 启用自动补全
 
+- 新建 PS 配置文件的文件夹，若已存在可以忽略
+  :copy{prompt="PS>"}[mkdir $PROFILE/..]
 - 打开 PS 配置文件
   :copy{prompt="PS>"}[notepad $PROFILE]
   - 也可以更改系统全局配置文件
@@ -56,9 +59,7 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
   :copy{prompt="PS>"}[winget install JanDeDobbeleer.OhMyPosh]
 - 配置（参见 [官方文档](https://ohmyposh.dev/docs/installation/prompt)）
   - 更改 PS 脚本执行策略
-  :copy{prompt="PS(管理员)>"}[Set-ExecutionPolicy RemoteSigned]
-  - 新建 PS 配置文件
-  :copy{prompt="PS>"}[New-Item -Path $PROFILE -Type File -Force]
+  :copy{prompt="PS>"}[sudo Set-ExecutionPolicy RemoteSigned]
   - 打开 PS 配置文件
   :copy{prompt="PS>"}[notepad $PROFILE]
   - 在文件中添加以下内容

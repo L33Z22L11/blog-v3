@@ -40,16 +40,14 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
     </DefineTemplate>
 
     <h3 class="widget-title">
-        <span>文章目录</span>
-        <div class="buttons">
-            <!-- use <a> for anchor -->
-            <a href="#main-content" aria-label="返回开头">
-                <Icon name="ph:arrow-circle-up-bold" />
-            </a>
-            <a href="#twikoo" aria-label="评论区">
-                <Icon name="ph:chat-circle-text-bold" />
-            </a>
-        </div>
+        <span class="title">文章目录</span>
+        <!-- use <a> for anchor -->
+        <a href="#main-content" aria-label="返回开头">
+            <Icon name="ph:arrow-circle-up-bold" />
+        </a>
+        <a href="#twikoo" aria-label="评论区">
+            <Icon name="ph:chat-circle-text-bold" />
+        </a>
     </h3>
     <div class="widget-body">
         <ReuseTemplate v-if="toc?.links" :toc-item="toc.links" />

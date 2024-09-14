@@ -1,6 +1,6 @@
 ---
 title: 主题
-breadcrumb: false
+hideInfo: true
 ---
 
 ## 灵感来源

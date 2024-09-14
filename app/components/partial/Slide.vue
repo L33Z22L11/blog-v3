@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import Autoplay from 'embla-carousel-autoplay'
 import emblaCarouselVue from 'embla-carousel-vue'
-import type { EmblaOptionsType } from 'embla-carousel'
 import type ArticleProps from '~/types/article'
 
 defineProps<{ list: ArticleProps[] }>()
 
-const emblaOptions = reactive<EmblaOptionsType>({
-    loop: true,
+const [emblaRef, emblaApi] = emblaCarouselVue({
     dragFree: true,
-})
-
-const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions, [Autoplay()])
+    loop: true,
+}, [Autoplay({
+    stopOnInteraction: false,
+    stopOnMouseEnter: true,
+})])
 </script>
 
 <template>
@@ -37,10 +37,10 @@ const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions, [Autoplay()])
                     </div>
                 </ZRawLink>
             </div>
-            <ZButton class="embla-button prev" @click="emblaApi.scrollPrev()">
+            <ZButton class="embla-button prev" @click="emblaApi!.scrollPrev()">
                 <Icon name="ph:caret-left-bold" />
             </ZButton>
-            <ZButton class="embla-button next" @click="emblaApi.scrollNext()">
+            <ZButton class="embla-button next" @click="emblaApi!.scrollNext()">
                 <Icon name="ph:caret-right-bold" />
             </ZButton>
         </div>
@@ -48,14 +48,17 @@ const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions, [Autoplay()])
 </template>
 
 <style lang="scss" scoped>
+.z-slide {
+    margin: 1rem;
+}
+
 .z-slide-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
+    gap: 2rem;
     overflow: hidden;
     height: 3rem;
-    margin: 1rem;
     margin-bottom: -0.2rem;
     mask: linear-gradient(#fff, transparent);
     color: var(--c-text-3);
@@ -69,7 +72,7 @@ const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions, [Autoplay()])
 }
 
 .embla {
-    --fadeout-width: 2rem;
+    --fadeout-width: 1.5rem;
 
     display: flex;
     align-items: center;
@@ -79,8 +82,17 @@ const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions, [Autoplay()])
 
     .embla-button {
         position: absolute;
-        &.prev { left: 0; }
-        &.next { right: 0; }
+        opacity: 0;
+        transition: opacity 0.2s;
+
+        &.prev { left: 1rem; }
+        &.next { right: 1rem; }
+    }
+
+    &:hover {
+        .embla-button {
+            opacity: 1;
+        }
     }
 }
 
@@ -108,13 +120,14 @@ const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions, [Autoplay()])
         }
 
         .info {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
             position: absolute;
             opacity: 0;
             inset: 0;
             padding: 1em;
+            backdrop-filter: brightness(0.8) saturate(10) contrast(0.8) blur(2em);
             text-align: center;
             color: #fff;
             transition: opacity 0.2s;
@@ -122,7 +135,6 @@ const [emblaRef, emblaApi] = emblaCarouselVue(emblaOptions, [Autoplay()])
 
         &:hover > .info {
             opacity: 1;
-            backdrop-filter: brightness(0.8) saturate(10) contrast(0.8) blur(2em);
         }
     }
 }

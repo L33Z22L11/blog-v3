@@ -302,8 +302,8 @@ KazariEX 猜我没学过数据库，因为我犯了类似 `select *` 的错误�
 YAML 会以 UTC 时区解析 Front Matter 中的时间，刚更新的文章常常显示来自“8小时后”，但我希望以本地时区解析。刚开始修改了 `getPostDate()` 函数，但语义化的 ~~`<time datetime="{{ date }}">`~~ `<time :datetime="date">` 标签依旧不符合规范，因此编写了这个 Nitro 插件用于修正时区。
 
 ```ts [server/plugins/fixPostTimezone.ts]
-import { getTimezoneOffset } from 'date-fns-tz'
 import blogConfig from '~~/blog.config'
+import { getTimezoneOffset } from 'date-fns-tz'
 
 const timezoneOffset = getTimezoneOffset(blogConfig.timezone)
 

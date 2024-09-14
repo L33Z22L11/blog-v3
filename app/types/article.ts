@@ -16,6 +16,7 @@ export interface CustomArticleProps {
     type: 'tech' | 'story'
     cover: string
     cover_revert: boolean
+    hideInfo: boolean
     recommend: number | boolean
     references: { title: string, link: string }[]
     readingTime: ReadTimeResults

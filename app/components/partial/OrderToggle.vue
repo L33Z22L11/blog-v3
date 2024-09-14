@@ -20,8 +20,7 @@ function switchOrder() {
 <template>
     <div class="order-toggle">
         <button @click="switchOrder">
-            <Icon name="ph:sort-ascending-bold" />
-            <span class="order-text">{{ orderMap[orderBy] }}</span>
+            <Icon name="ph:sort-ascending-bold" /> <span class="order-text">{{ orderMap[orderBy] }}</span>
         </button>
     </div>
 </template>
@@ -34,9 +33,6 @@ function switchOrder() {
     margin-block: 1rem;
 
     > button {
-        display: flex;
-        align-items: center;
-        gap: 0.2rem;
         color: var(--c-text-2);
         transition: color 0.1s;
 

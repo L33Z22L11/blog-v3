@@ -70,6 +70,10 @@ button, input, textarea {
         color: var(--c-text-3);
         cursor: not-allowed;
     }
+
+    .iconify:only-child {
+        display: block;
+    }
 }
 
 mark {
@@ -101,7 +105,7 @@ mark {
 .iconify {
     flex-shrink: 0;
     font-size: 1.2em;
-    vertical-align: middle;
+    vertical-align: text-bottom;
 }
 
 // 一部分具有卡片样式的组件复用了此类

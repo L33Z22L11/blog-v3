@@ -22,7 +22,7 @@ export default {
     },
     favicon: 'https://www.zhilu.cyou/api/icon.png',
     header: {
-        logo: 'https://wsrv.nl/?url=github.com/L33Z22L11.png',
+        logo: 'https://weavatar.com/avatar/47c0f2e82b76d9b10eb3023df9e02e4e3fdbeaf5b74b842063f207971e7fbe7b?s=160',
         text: true,
         subtitle: '纸鹿至麓不知路，支炉制露不止漉',
         emojiTail: ['📄', '🦌', '🙌', '🐟', '🏖️'],
@@ -131,30 +131,32 @@ export default {
             media: 'none',
             onload: 'this.media="all"',
         },
-        // {
-        //     rel: 'preconnect',
-        //     href: 'https://fonts.googleapis.com',
-        // },
-        // {
-        //     rel: 'preconnect',
-        //     href: 'https://fonts.gstatic.com',
-        // },
-        // {
-        //     rel: 'stylesheet',
-        //     href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap',
-        // },
         {
             rel: 'preconnect',
-            href: 'https://fonts.loli.net',
+            href: 'https://fonts.googleapis.cn',
         },
         {
             rel: 'preconnect',
-            href: 'https://gstatic.loli.net',
+            href: 'https://fonts.gstatic.cn',
         },
         {
             rel: 'stylesheet',
-            href: 'https://fonts.loli.net/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap',
+            href: 'https://fonts.googleapis.cn/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap',
+            media: 'none',
+            onload: 'this.media="all"',
         },
+        // {
+        //     rel: 'preconnect',
+        //     href: 'https://fonts.loli.net',
+        // },
+        // {
+        //     rel: 'preconnect',
+        //     href: 'https://gstatic.loli.net',
+        // },
+        // {
+        //     rel: 'stylesheet',
+        //     href: 'https://fonts.loli.net/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap',
+        // },
         // {
         //     rel: 'stylesheet',
         //     href: 'https://gcore.jsdelivr.net/npm/nerdfonts-web/nf.min.css',

@@ -1,6 +1,7 @@
 ---
 title: 友链
 aside: []
+hideInfo: true
 ---
 
 :friend-group

@@ -52,8 +52,6 @@ useCopy(copyBtn, commandInput)
     }
 
     .copy {
-        display: inline-flex;
-        align-items: center;
         height: 2.5em;
         margin: 0 0.2em;
         padding: 0.5em;

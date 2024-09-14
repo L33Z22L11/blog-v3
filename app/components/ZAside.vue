@@ -91,6 +91,7 @@ const widgets = computed(() => (UIStore.aside || []).map(componentAlias =>
     }
 }
 
+// 对于标准 widget 的规范样式
 :deep(.widget) {
     font-size: 0.9em;
 
@@ -107,19 +108,16 @@ const widgets = computed(() => (UIStore.aside || []).map(componentAlias =>
         font: inherit;
         color: var(--c-text-2);
 
-        > .buttons {
-            display: flex;
-            gap: 0.5rem;
+        > .title {
+            flex-grow: 1;
+        }
 
-            > a {
-                display: flex;
-                align-items: center;
-                transition: color 0.2s;
-            }
+        a {
+            transition: color 0.2s;
+        }
 
-            > [onclick]:hover, > [href]:hover {
-                color: var(--c-primary);
-            }
+        > [onclick]:hover, > [href]:hover {
+            color: var(--c-primary);
         }
     }
 
