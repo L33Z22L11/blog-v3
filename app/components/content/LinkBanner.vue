@@ -19,7 +19,7 @@ const src = getImgUrl(props.banner, props.mirror)
                 {{ title }}
             </div>
             <div class="link-banner-desc">
-                {{ desc || getDomain(link) }}
+                {{ desc ?? getDomain(link) }}
             </div>
         </div>
     </ZRawLink>

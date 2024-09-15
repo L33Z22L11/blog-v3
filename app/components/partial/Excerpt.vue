@@ -10,8 +10,8 @@ const caret = ref('')
 
 if (appConfig.excerpt?.animation !== false) {
     excerpt.value = ''
-    caret.value = appConfig.excerpt?.caret ?? '_'
     onMounted(async () => {
+        caret.value = appConfig.excerpt?.caret ?? '_'
         for (const char of props.excerpt) {
             excerpt.value += char
             await delay(50)

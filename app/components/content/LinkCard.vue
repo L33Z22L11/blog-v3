@@ -17,7 +17,7 @@ const src = getImgUrl(props.icon, props.mirror)
                 {{ title }}
             </div>
             <div class="link-card-description">
-                {{ description || getDomain(link) }}
+                {{ description ?? getDomain(link) }}
             </div>
         </div>
         <NuxtImg v-if="src" class="link-card-icon" :src :alt="title" />

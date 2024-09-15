@@ -33,7 +33,10 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
                 >
                     <NuxtImg class="cover" :src="article.cover" alt="" />
                     <div class="info">
-                        {{ article.title }}
+                        <div>{{ article.title }}</div>
+                        <div class="desc">
+                            {{ getPostDate(article.date) }}
+                        </div>
                     </div>
                 </ZRawLink>
             </div>
@@ -122,8 +125,9 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
 
         .info {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: space-evenly;
             position: absolute;
             opacity: 0;
             inset: 0;
@@ -132,6 +136,11 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
             text-align: center;
             color: #fff;
             transition: opacity 0.2s;
+
+            .desc {
+                opacity: 0.5;
+                font-size: 0.8em;
+            }
         }
 
         &:hover > .info {
