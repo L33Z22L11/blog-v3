@@ -5,10 +5,21 @@ const hasAside = computed(() => UIStore.aside?.length)
 
 <template>
     <div id="z-panel" :class="{ 'has-active': UIStore.isSidebarOpen || UIStore.isAsideOpen }">
-        <button id="toggle-sidebar" :class="{ active: UIStore.isSidebarOpen }" @click="UIStore.toggleSidebar">
+        <button
+            id="toggle-sidebar"
+            :class="{ active: UIStore.isSidebarOpen }"
+            aria-label="切换菜单"
+            @click="UIStore.toggleSidebar"
+        >
             <Icon name="ph:sidebar-duotone" />
         </button>
-        <button v-if="hasAside" id="toggle-aside" :class="{ active: UIStore.isAsideOpen }" @click="UIStore.toggleAside">
+        <button
+            v-if="hasAside"
+            id="toggle-aside"
+            :class="{ active: UIStore.isAsideOpen }"
+            aria-label="切换侧边栏"
+            @click="UIStore.toggleAside"
+        >
             <Icon name="ph:align-right-duotone" />
         </button>
     </div>

@@ -239,6 +239,9 @@ mark {
 // fallback
 img {
     display: inline-block;
+
+    // 🔥🦊😡
+    overflow: clip;
     transform: scale(1);
 
     &::before {

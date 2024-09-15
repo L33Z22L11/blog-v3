@@ -1,14 +1,15 @@
 <script setup lang="ts">
 const route = useRoute()
-const UIStore = useUIStore()
 
+const UIStore = useUIStore()
 UIStore.setAside(['toc'])
 
 const { data } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
 const excerpt = data.value?.description || ''
 
-useHead({
+useSeoMeta({
     title: data.value?.title,
+    description: excerpt,
 })
 
 if (data.value?.aside) {

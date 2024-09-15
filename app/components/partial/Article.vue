@@ -16,7 +16,7 @@ const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel
 
 <template>
     <ZRawLink class="article-card card" :title>
-        <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" loading="lazy" />
+        <NuxtImg v-if="cover" class="article-cover" :src="cover" alt="" />
         <article>
             <h2 class="article-title" :class="{ 'text-story': type === 'story' }">
                 {{ title }}

@@ -2,12 +2,14 @@
 import { alphabetical, sort } from 'radash'
 import type { OrderType } from '~/types'
 
-useHead({ title: '' })
 const appConfig = useAppConfig()
-const UIStore = useUIStore()
+useSeoMeta({
+    description: appConfig.description,
+})
 const perPage = appConfig.indexGenerator.perPage || 10
 const orderBy = ref<OrderType>(appConfig.indexGenerator.orderBy as OrderType || 'date')
 
+const UIStore = useUIStore()
 UIStore.setAside(['blog_log', 'blog_stats', 'connectivity'])
 
 const { data } = await useAsyncData(
@@ -36,7 +38,9 @@ const slideList = computed(() => sort(
     true,
 ))
 
-useHead({ title: () => page.value > 1 ? `第${page.value}页` : '' })
+useSeoMeta({
+    title: () => page.value > 1 ? `第${page.value}页` : '',
+})
 
 // 兼容 SSR
 onMounted(() => {

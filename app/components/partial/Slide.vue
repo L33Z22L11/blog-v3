@@ -31,16 +31,17 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
                     class="slide-item"
                     :to="article._path"
                 >
-                    <NuxtImg class="cover" :src="article.cover" :alt="article.title" />
+                    <NuxtImg class="cover" :src="article.cover" alt="" />
                     <div class="info">
                         {{ article.title }}
                     </div>
                 </ZRawLink>
             </div>
-            <ZButton class="embla-button prev" @click="emblaApi!.scrollPrev()">
-                <Icon name="ph:caret-left-bold" />
-            </ZButton>
-            <ZButton class="embla-button next" @click="emblaApi!.scrollNext()">
+            <ZButton
+                class="embla-button prev" aria-label="上一页" icon="ph:caret-left-bold"
+                @click="emblaApi!.scrollPrev()"
+            />
+            <ZButton class="embla-button next" aria-label="下一页" @click="emblaApi!.scrollNext()">
                 <Icon name="ph:caret-right-bold" />
             </ZButton>
         </div>

@@ -2,17 +2,18 @@
 import { alphabetical, group } from 'radash'
 import type { OrderType } from '~/types'
 
-useHead({ title: '归档' })
-
 const appConfig = useAppConfig()
-const UIStore = useUIStore()
-
-UIStore.setAside(['blog_log'])
-
+useSeoMeta({
+    title: '归档',
+    description: `${appConfig.title}的所有文章归档。`,
+})
 const orderBy = useRouteQuery(
     'order',
     () => appConfig.indexGenerator.orderBy as OrderType || 'date',
 )
+
+const UIStore = useUIStore()
+UIStore.setAside(['blog_log'])
 
 const { data } = await useAsyncData(
     'posts_archive',

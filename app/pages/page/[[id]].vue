@@ -8,6 +8,7 @@ defineProps<{
 }>()
 
 definePageMeta({
+    // 放在 page.vue 中会出问题
     alias: ['/'],
 })
 </script>
