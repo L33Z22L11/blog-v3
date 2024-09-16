@@ -16,12 +16,12 @@ if (data.value?.aside) {
     UIStore.setAside(data.value.aside)
 }
 
-const event = useRequestEvent()
-if (data.value === undefined) {
-    setResponseStatus(event!, 404)
-    route.meta.title = '404'
-    UIStore.setAside (['blog_log'])
-}
+// const event = useRequestEvent()
+// if (data.value === undefined) {
+//     setResponseStatus(event!, 404)
+//     route.meta.title = '404'
+//     UIStore.setAside (['blog_log'])
+// }
 </script>
 
 <template>
@@ -30,7 +30,7 @@ if (data.value === undefined) {
         <ZExcerpt v-if="excerpt" :excerpt />
         <ContentRendererMarkdown
             class="article"
-            :class="{ 'md-story': data!.type === 'story' }"
+            :class="{ 'md-story': data?.type === 'story' }"
             :value="data!"
             tag="article"
         />

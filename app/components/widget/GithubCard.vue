@@ -9,7 +9,7 @@ const repo = data.value?.github
         GitHub 仓库
     </h3>
     <div class="widget-body">
-        <ZRawLink class="card" :to="repo.url">
+        <ZRawLink v-if="repo" class="card" :to="repo.url">
             <div class="name">
                 {{ repo.name }}
             </div>
