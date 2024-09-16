@@ -94,7 +94,7 @@ link: https://cooo.site/
 - 在扩展设置中，将“Masmtasm.ASM: Assembler（选择使用的汇编工具）”项更改为“MASM”。
   - 也可以直接在配置文件中添加以下内容：
     ```json [%APPDATA%/Code/User/settings.json]
-      "masmtasm.ASM.assembler": "MASM",
+    { "masmtasm.ASM.assembler": "MASM" }
     ```
 - 在 `.asm` 文件的编辑界面右键，可以看到运行调试相关的选项。
 

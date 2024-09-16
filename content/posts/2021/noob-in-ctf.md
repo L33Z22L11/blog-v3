@@ -28,7 +28,7 @@ setlnterval(function () {
     if (count < 10000) {
         // 在网页中更新模拟点击次数
         count++;
-        ...
+        // ...
 ```
 
 祝我好运。

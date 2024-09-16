@@ -40,6 +40,7 @@ https://blog.zhilu.cyou
 │   ├── stores # 状态管理
 │   ├── types # 类型定义
 │   ├── utils # 工具函数
+│   ├── app.config.ts # 前端配置
 │   ├── app.vue # 布局
 │   └── error.vue # 错误页
 ├── content # 文章
@@ -58,7 +59,7 @@ https://blog.zhilu.cyou
 │   │   └── hide-content-prefixes.ts # 美化文章链接
 │   └── routes # 路由
 │       └── atom.get.ts # Atom 订阅源
-├── blog.config.ts # 博客配置
+├── blog.config.ts # 博客公共配置
 └── nuxt.config.ts # Nuxt 配置
 ```
 

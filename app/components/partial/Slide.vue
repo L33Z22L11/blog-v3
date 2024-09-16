@@ -31,7 +31,7 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
                     class="slide-item"
                     :to="article._path"
                 >
-                    <NuxtImg class="cover" :src="article.cover" alt="" />
+                    <NuxtImg class="cover" :src="article.cover" :alt="article.title" />
                     <div class="info">
                         <div>{{ article.title }}</div>
                         <div class="desc">

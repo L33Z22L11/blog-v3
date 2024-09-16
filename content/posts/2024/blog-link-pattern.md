@@ -114,7 +114,7 @@ permalink: :year:month/:name/
 
 再用正则表达式稍微替换一下输出（不要忘了`/`），就能得到 Netlify 的重定向规则文件了。
 
-```toml [source/_redirects]
+``` [source/_redirects]
 ……
 /202304/vscode-simple-config /2023/vscode-simple-config
 /202305/archinstall-guide /2023/archinstall-guide

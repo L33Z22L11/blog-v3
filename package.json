@@ -23,10 +23,10 @@
     "plain-shiki": "^0.0.2",
     "radash": "^12.1.0",
     "tippy.js": "^6.3.7",
-    "vue": "^3.5.5"
+    "vue": "^3.5.6"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.6.0",
+    "@antfu/eslint-config": "^3.6.2",
     "@nuxt/content": "^2.13.2",
     "@nuxt/icon": "^1.5.1",
     "@nuxt/image": "^1.8.0",
@@ -37,7 +37,7 @@
     "@zinkawaii/stylelint-config": "^0.1.5",
     "eslint": "^9.10.0",
     "feed": "^4.2.2",
-    "nuxt": "^3.13.1",
+    "nuxt": "^3.13.2",
     "remark-reading-time": "^2.0.1",
     "sass": "^1.78.0",
     "stylelint": "^16.9.0",

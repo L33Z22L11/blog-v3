@@ -8,23 +8,29 @@ export default defineNuxtConfig({
                 lang: blogConfig.language,
             },
             link: [
-                ...blogConfig.injectHeadLinks,
-                {
-                    rel: 'icon',
-                    href: blogConfig.favicon,
-                },
+                { rel: 'icon', href: blogConfig.favicon },
+                { rel: 'preconnect', href: 'https://cdn-font.hyperos.mi.com' },
+                // 浏览器渲染中文 VF 字重有问题
+                // https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap
+                { rel: 'stylesheet', href: 'https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap', media: 'none', onload: 'this.media="all"' },
+                { rel: 'preconnect', href: 'https://fonts.googleapis.cn' },
+                { rel: 'preconnect', href: 'https://fonts.gstatic.cn' },
+                { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap', media: 'none', onload: 'this.media="all"' },
+                // { rel: 'preconnect', href: 'https://fonts.loli.net' },
+                // { rel: 'preconnect', href: 'https://gstatic.loli.net' },
+                // { rel: 'stylesheet', href: 'https://fonts.loli.net/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap', media: 'none', onload: 'this.media="all"' },
+                // { rel: 'stylesheet', href: 'https://gcore.jsdelivr.net/npm/nerdfonts-web/nf.min.css' },
             ],
             templateParams: {
                 separator: '|',
             },
             titleTemplate: `%s %separator ${blogConfig.title}`,
             script: [
-                ...blogConfig.injectHeadScripts,
+                { 'src': 'https://zhi.zhilu.cyou/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true },
+                { 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
             ],
         },
     },
-
-    appConfig: blogConfig,
 
     compatibilityDate: '2024-08-03',
 
@@ -111,7 +117,10 @@ export default defineNuxtConfig({
     },
 
     image: {
-        domains: blogConfig.imageDomains,
+        domains: [
+            // 'config.zhilu.cyou',
+            // '7.isyangs.cn',
+        ],
         format: ['avif', 'webp'],
     },
 

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ArticleCategory } from '~/types/article'
 import type ArticleProps from '~/types/article'
 
 const props = defineProps<ArticleProps>()
@@ -7,8 +6,8 @@ const appConfig = useAppConfig()
 const publishedLabel = getPostDate(props.date)
 const updatedLabel = getPostDate(props.updated)
 
-const categoryLabel = props.categories?.[0] as ArticleCategory
-const categoryIcon = appConfig.article.categories?.[categoryLabel]?.icon
+const categoryLabel = props.categories?.[0]
+const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
 
 const postDate = ref<HTMLElement>()
 const postUpdated = ref<HTMLElement>()

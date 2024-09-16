@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { alphabetical, group } from 'radash'
-import type { OrderType } from '~/types'
 
 const appConfig = useAppConfig()
 useSeoMeta({
@@ -9,7 +8,7 @@ useSeoMeta({
 })
 const orderBy = useRouteQuery(
     'order',
-    () => appConfig.indexGenerator.orderBy as OrderType || 'date',
+    () => appConfig.indexGenerator.orderBy || 'date',
 )
 
 const UIStore = useUIStore()

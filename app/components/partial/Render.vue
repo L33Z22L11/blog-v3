@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ZLink, ZhiluIcon, ZhiluIconOld } from '#components'
+import { ZhiluIcon, ZhiluIconOld, ZLink } from '#components'
 
 const props = defineProps<{
     tag?: string
     content: string
 }>()
 
-function render() {
+function el() {
     const { tag = 'div', content } = props
     return h({
         template: `<${tag}>${content}</${tag}>`,
@@ -16,5 +16,5 @@ function render() {
 </script>
 
 <template>
-    <render />
+    <el />
 </template>

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import tippy from 'tippy.js'
-import 'tippy.js/dist/tippy.css'
 import type { Friend } from '~/types/friend'
+import 'tippy.js/dist/tippy.css'
 
 const props = defineProps<Friend>()
 const friendCard = ref<HTMLElement>()

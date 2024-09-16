@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const timeEstablished = useAppConfig().timeEstablished as string
-const timeUpdated = useRuntimeConfig().public.buildTime as string
+const timeEstablished = useAppConfig().timeEstablished
+const timeUpdated = useRuntimeConfig().public.buildTime
 const { data: totalWords } = await useFetch('/api/total-words')
 
 const blogStats = [{

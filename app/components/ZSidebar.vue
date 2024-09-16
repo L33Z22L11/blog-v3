@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { Nav } from '~/types/nav'
-
 const appConfig = useAppConfig()
 const UIStore = useUIStore()
 </script>
@@ -17,7 +15,7 @@ const UIStore = useUIStore()
                     <Icon name="ph:lego-bold" /> 本站仍处于开发阶段，不代表最终呈现样式。
                 </p>
             </div>
-            <template v-for="(group, groupIndex) in appConfig.nav as Nav" :key="groupIndex">
+            <template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">
                 <h3 v-if="group.title">
                     {{ group.title }}
                 </h3>

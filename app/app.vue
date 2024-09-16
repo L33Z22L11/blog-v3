@@ -29,6 +29,7 @@ aside {
     width: 280px;
     height: 100vh;
     height: 100dvh;
+    scrollbar-width: thin;
 
     @media (max-width: $breakpoint-widescreen) {
         flex-shrink: 0.2;

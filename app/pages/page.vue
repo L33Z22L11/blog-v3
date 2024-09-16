@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { alphabetical, sort } from 'radash'
-import type { OrderType } from '~/types'
 
 const appConfig = useAppConfig()
 useSeoMeta({
     description: appConfig.description,
 })
 const perPage = appConfig.indexGenerator.perPage || 10
-const orderBy = ref<OrderType>(appConfig.indexGenerator.orderBy as OrderType || 'date')
+const orderBy = ref(appConfig.indexGenerator.orderBy || 'date')
 
 const UIStore = useUIStore()
 UIStore.setAside(['blog_log', 'blog_stats', 'connectivity'])

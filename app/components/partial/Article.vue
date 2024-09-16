@@ -1,22 +1,21 @@
 <script setup lang="ts">
-import type { ArticleCategory } from '~/types/article'
 import type ArticleProps from '~/types/article'
 
-const props = defineProps < { useUpdated?: boolean } & ArticleProps>()
+const props = defineProps< { useUpdated?: boolean } & ArticleProps>()
 
 const appConfig = useAppConfig()
 
 const publishedLabel = getPostDate(props.date)
 const updatedLabel = getPostDate(props.updated)
 
-const categoryLabel = props.categories?.[0] as ArticleCategory
-const categoryColor = appConfig.article.categories?.[categoryLabel]?.color
-const categoryIcon = computed(() => appConfig.article.categories?.[categoryLabel]?.icon)
+const categoryLabel = props.categories?.[0]
+const categoryColor = appConfig.article.categories[categoryLabel!]?.color
+const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
 </script>
 
 <template>
     <ZRawLink class="article-card card" :title>
-        <NuxtImg v-if="cover" class="article-cover" :src="cover" alt="" />
+        <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" />
         <article>
             <h2 class="article-title" :class="{ 'text-story': type === 'story' }">
                 {{ title }}

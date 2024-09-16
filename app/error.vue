@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { type BundledLanguage, type BundledTheme, createHighlighter } from 'shiki'
-import { createPlainShiki } from 'plain-shiki'
 import type { NuxtError } from '#app'
+import { createPlainShiki } from 'plain-shiki'
+import { type BundledTheme, createHighlighter } from 'shiki'
 
 defineProps({
     error: Object as () => NuxtError,

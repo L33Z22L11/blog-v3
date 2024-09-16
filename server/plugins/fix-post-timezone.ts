@@ -3,7 +3,7 @@ import { getTimezoneOffset } from 'date-fns-tz'
 
 const timezoneOffset = getTimezoneOffset(blogConfig.timezone)
 
-// TODO: 从文件属性中读取创建和修改时间 (Git 不存储文件时间戳)
+// TODO: 从 Git 提交记录中读取创建和修改时间
 
 export default defineNitroPlugin((nitroApp) => {
     nitroApp.hooks.hook('content:file:afterParse', (file) => {

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { OrderType } from '~/types'
+import type { ArticleOrderType } from '~/types/article'
 import type ArticleProps from '~/types/article'
 
 defineProps<{
-    list: (ArticleProps)[]
-    orderBy: OrderType
+    list: ArticleProps[]
+    orderBy: ArticleOrderType
 }>()
 
 definePageMeta({

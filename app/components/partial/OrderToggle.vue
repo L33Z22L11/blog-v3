@@ -1,9 +1,7 @@
 <script setup lang="ts">
-const orderMap = {
-    date: '创建日期',
-    updated: '更新日期',
-    // title: '标题',
-}
+const appConfig = useAppConfig()
+
+const orderMap = appConfig.article.order
 
 const orderBy = defineModel<keyof typeof orderMap>({
     required: true,
