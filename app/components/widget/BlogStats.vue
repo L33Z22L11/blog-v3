@@ -1,7 +1,10 @@
 <script setup lang="ts">
-const timeEstablished = useAppConfig().timeEstablished
-const timeUpdated = useRuntimeConfig().public.buildTime
-const { data: totalWords } = await useFetch('/api/total-words')
+const appConfig = useAppConfig()
+const runtimeConfig = useRuntimeConfig()
+
+const timeEstablished = appConfig.timeEstablished
+const timeUpdated = runtimeConfig.public.buildTime
+const totalWords = ref('约8万')
 
 const blogStats = [{
     title: '运营时长',
@@ -13,12 +16,20 @@ const blogStats = [{
     title: '总字数',
     content: totalWords,
 }]
+
+onMounted(async () => {
+    const { data: stats } = await useFetch('/api/stats')
+    if (stats.value) {
+        totalWords.value = formatNumber(stats.value.totalWords)
+    }
+})
 </script>
 
 <template>
     <h3 class="widget-title">
         博客统计
     </h3>
+
     <div class="widget-card">
         <ul>
             <li v-for="(item, index) in blogStats" :key="index" data-allow-mismatch>

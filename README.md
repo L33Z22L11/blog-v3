@@ -52,15 +52,16 @@ https://blog.zhilu.cyou
 │   └── fonts # 字体
 ├── server # 服务端
 │   ├── api # 接口
-│   │   └── total-words.get.ts # 全站总字数
+│   │   └── stats.get.ts # 博客静态统计
 │   ├── plugins # Nitro 插件
 │   │   ├── anti-mirror.ts # 恶意反代跳转
 │   │   ├── fix-post-date.ts # 修复文章时区
 │   │   └── fix-post-path.ts # 美化文章链接
 │   └── routes # 路由
-│       └── atom.get.ts # Atom 订阅源
+│       └── atom.xml.get.ts # Atom 订阅源
 ├── blog.config.ts # 博客公共配置
-└── nuxt.config.ts # Nuxt 配置
+├── nuxt.config.ts # Nuxt 配置
+└── vercel.json # Vercel 配置
 ```
 
 ## 快速开始

@@ -1,0 +1,22 @@
+{
+  "headers": [
+    {
+      "source": "/api/stats",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "source": "/atom.xml",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/atom+xml"
+        }
+      ]
+    }
+  ]
+}

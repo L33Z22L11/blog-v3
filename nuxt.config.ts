@@ -54,7 +54,7 @@ export default defineNuxtConfig({
     },
 
     routeRules: {
-        '/api/total-words': { prerender: true },
+        '/api/stats': { prerender: true },
         '/atom.xml': { prerender: true },
         '/sitemap.xml': { prerender: true },
     },
@@ -62,6 +62,9 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             buildTime: new Date().toISOString(),
+            // TODO: add stats
+            // totalPosts: 0,
+            // totalWords: 0,
         },
     },
 

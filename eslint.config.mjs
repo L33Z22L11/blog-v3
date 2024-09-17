@@ -5,6 +5,7 @@ export default antfu({
         indent: 4,
     },
     rules: {
+        'json/indent': ['error', 2],
         'jsonc/indent': ['error', 2],
         'yaml/indent': ['error', 2],
     },

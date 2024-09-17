@@ -65,21 +65,21 @@ export function timeElapse(date?: Date | string, maxDepth = 2) {
         date = new Date(date)
     const msecPast = Date.now() - date.getTime()
     const intervals = [
-        { label: '年', msec: 1000 * 60 * 60 * 24 * 365.2422 },
-        { label: '个月', msec: 1000 * 60 * 60 * 24 * 30.44 },
-        { label: '天', msec: 1000 * 60 * 60 * 24 },
-        { label: '小时', msec: 1000 * 60 * 60 },
-        { label: '分钟', msec: 1000 * 60 },
-        { label: '秒', msec: 1000 },
+        { label: '年', threshold: 1000 * 60 * 60 * 24 * 365.2422 },
+        { label: '个月', threshold: 1000 * 60 * 60 * 24 * 30.44 },
+        { label: '天', threshold: 1000 * 60 * 60 * 24 },
+        { label: '小时', threshold: 1000 * 60 * 60 },
+        { label: '分钟', threshold: 1000 * 60 },
+        { label: '秒', threshold: 1000 },
     ]
     let timeString = ''
     let msecRemained = msecPast
     for (const interval of intervals) {
-        const count = Math.floor(msecRemained / interval.msec)
+        const count = Math.floor(msecRemained / interval.threshold)
         if (count <= 0)
             continue
         timeString += `${count}${interval.label}`
-        msecRemained -= count * interval.msec
+        msecRemained -= count * interval.threshold
         if (--maxDepth <= 0)
             break
     }

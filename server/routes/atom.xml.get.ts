@@ -1,7 +1,6 @@
 import { serverQueryContent } from '#content/server'
 import blogConfig from '~~/blog.config'
 import { Feed } from 'feed'
-import { setHeader } from 'h3'
 
 function getUrl(path?: string) {
     return new URL(path ?? '', blogConfig.url).toString()

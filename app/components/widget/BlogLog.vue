@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const timeEstablished = useAppConfig().timeEstablished
+const appConfig = useAppConfig()
+const timeEstablished = appConfig.timeEstablished
 
 const blogLog = [
     {
