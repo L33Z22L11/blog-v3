@@ -24,17 +24,18 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
                 {{ description }}
             </p>
             <div class="article-info" data-allow-mismatch>
-                <time v-if="!useUpdated" :datetime="date" :title="getLocaleDatetime(date)">
+                <time v-if="date" :datetime="date" :title="getLocaleDatetime(date)">
                     <Icon name="ph:calendar-dots-bold" />
                     {{ publishedLabel }}
                 </time>
-                <time v-if="isTimeDiffSignificant(date, updated)" :datetime="updated" :title="getLocaleDatetime(updated)">
+                <time
+                    v-if="isTimeDiffSignificant(date, updated)"
+                    :class="{ 'use-updated': useUpdated }"
+                    :datetime="updated"
+                    :title="getLocaleDatetime(updated)"
+                >
                     <Icon name="ph:calendar-plus-bold" />
                     {{ updatedLabel }}
-                </time>
-                <time v-if="useUpdated" :datetime="date" :title="getLocaleDatetime(date)">
-                    <Icon name="ph:calendar-dots-bold" />
-                    {{ publishedLabel }}
                 </time>
                 <span
                     v-if="categoryLabel"
@@ -44,9 +45,9 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
                     <Icon :name="categoryIcon" />
                     {{ categoryLabel }}
                 </span>
-                <span class="article-words">
+                <span v-if="readingTime?.words" class="article-words">
                     <Icon name="ph:paragraph-bold" />
-                    {{ readingTime?.words }}字
+                    {{ readingTime.words }}字
                 </span>
             </div>
         </article>
@@ -84,6 +85,14 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
     font-size: 0.8em;
     flex-wrap: wrap;
     color: var(--c-text-2);
+
+    &:empty {
+        display: none;
+    }
+
+    .use-updated {
+        order: -1;
+    }
 }
 
 .article-title {

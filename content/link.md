@@ -19,9 +19,9 @@ active: 2
 
 ```yaml
 - name: 纸鹿摸鱼处 # 可选：纸鹿本鹿
+  desc: 纸鹿至麓不知路，支炉制露不止漉
   link: https://blog.zhilu.cyou
   icon: https://www.zhilu.cyou/api/avatar.png
-  desc: 纸鹿至麓不知路，支炉制露不止漉
   feed: https://blog.zhilu.cyou/atom.xml
 ```
 
@@ -61,7 +61,8 @@ active: 2
         icon: '头像/站点图标', // 呼吁不使用 jsDelivr/npm 镜像作为图床
     }
     ```
-    如果你的昵称和博客名称不同，还能通过 `title: 博客别称` 提供后缀
+    - 如果你的昵称和博客名称不同，可通过 `title: 博客别称` 提供后缀
+    - 可通过 `archs: ['技术架构', '部署服务']` 提供博客架构信息
 - 信息可能会被适当修改，以保证展示效果
 
 :::friend-card
@@ -71,6 +72,7 @@ title: 摸鱼处
 desc: 纸鹿至麓不知路，支炉制露不止漉
 link: https://blog.zhilu.cyou
 icon: https://www.zhilu.cyou/api/avatar.png
+archs: [Nuxt, Vercel]
 ---
 :::
 ::

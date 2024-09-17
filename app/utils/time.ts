@@ -8,7 +8,7 @@ export function getLocaleDatetime(date?: string | Date) {
     if (typeof date === 'string')
         date = new Date(date)
 
-    return format(date, 'yyyy-MM-dd HH:mm:ss')
+    return format(date, 'yyyy年M月d日 E HH:mm:ss', { locale: zhCN })
 }
 export function getPostDate(date?: string | Date) {
     if (!date)
@@ -65,6 +65,7 @@ export function timeElapse(date?: Date | string, maxDepth = 2) {
         date = new Date(date)
     const msecPast = Date.now() - date.getTime()
     const intervals = [
+        { label: '世纪', threshold: 1000 * 60 * 60 * 24 * 365.2422 * 100 },
         { label: '年', threshold: 1000 * 60 * 60 * 24 * 365.2422 },
         { label: '个月', threshold: 1000 * 60 * 60 * 24 * 30.44 },
         { label: '天', threshold: 1000 * 60 * 60 * 24 },

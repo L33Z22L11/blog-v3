@@ -1,5 +1,6 @@
 export function formatNumber(num: number) {
     const intervals = [
+        { label: '万亿', threshold: 1e12 },
         { label: '亿', threshold: 1e8 },
         { label: '万', threshold: 1e4 },
     ]

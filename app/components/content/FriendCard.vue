@@ -24,16 +24,24 @@ onMounted(() => {
     <!-- 覆盖掉 noreferrer，情绪价值给足 -->
     <ZRawLink ref="friendCard" class="friend-card gradient-card" :to="link" rel="noopener">
         <NuxtImg class="icon" :src="icon" :alt="name" />
-        <div class="card-info">
+        <div class="card-content">
             <div class="name-title">
                 <span class="name">{{ name }}</span>
                 <span class="title">{{ title }}</span>
             </div>
-            <!-- TODO: 网站技术架构图标 with title attr -->
             <!-- TODO: 域名Provider图标 with title attr -->
-            <span class="domain" :class="{ 'domain-zhilu': mainDomain === 'thisis.host' }">
-                {{ mainDomain }}
-            </span>
+            <div class="domain-arch">
+                <span class="domain" :class="{ 'domain-zhilu': mainDomain === 'thisis.host' }">
+                    {{ mainDomain }}
+                </span>
+                <Icon
+                    v-for="arch in archs"
+                    :key="arch"
+                    class="arch"
+                    :name="getArchIcon(arch)"
+                    :title="arch"
+                />
+            </div>
         </div>
     </ZRawLink>
 </template>
@@ -50,6 +58,18 @@ onMounted(() => {
 
     &:hover {
         transform: translateY(-2px);
+
+        .domain-arch {
+            opacity: 1;
+            font-size: 0.75em;
+            letter-spacing: -0.03em;
+        }
+
+        .arch {
+            opacity: 0.6;
+            max-width: 5em;
+            transition: max-width 0.5s;
+        }
     }
 
     @media (max-width: $breakpoint-phone) {
@@ -65,7 +85,7 @@ onMounted(() => {
     background-color: white;
 }
 
-.card-info {
+.card-content {
     @media (max-width: $breakpoint-phone) {
         text-align: center;
 
@@ -85,12 +105,25 @@ onMounted(() => {
         }
     }
 
-    .domain {
+    .domain-arch {
         opacity: 0.5;
+        max-width: 100%;
+        font-size: 0.8em;
+        white-space: nowrap;
+        transition: all 0.5s;
+    }
+
+    .domain {
         padding: 0 0.2em;
         border-radius: 4px;
         background: var(--c-bg-soft);
-        font-size: 0.8em;
+    }
+
+    .arch {
+        opacity: 0;
+        max-width: 0;
+        margin-left: 0.2em;
+        transition: all 0.5s;
     }
 }
 </style>
