@@ -29,9 +29,10 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
                     v-for="(article, index) in list"
                     :key="index"
                     class="slide-item"
+                    :title="article.description"
                     :to="article._path"
                 >
-                    <NuxtImg class="cover" :src="article.cover" :alt="article.title" />
+                    <NuxtImg class="cover" :src="article.image" :alt="article.title" />
                     <div class="info">
                         <div>{{ article.title }}</div>
                         <div class="desc">

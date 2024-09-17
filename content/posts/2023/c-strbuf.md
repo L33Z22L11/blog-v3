@@ -3,7 +3,7 @@ title: 简单实现C语言字符串缓冲区
 description: 设计一个C语言的动态扩容缓冲区，是西邮 Linux 兴趣小组的 Lab 报告。
 date: 2023-01-01 23:58:33
 updated: 2023-07-30 11:45:33
-cover: https://7.isyangs.cn/24/6664009a7190a-24.jpg
+image: https://7.isyangs.cn/24/6664009a7190a-24.jpg
 categories: [代码]
 tags: [实验室, Lab, C语言]
 references:

@@ -3,7 +3,7 @@ title: 运营商又想多收话费了
 description: 亲身经历的三个电信服务案例，揭示了三大运营商诱导扣费的问题。
 date: 2024-02-23 18:32:25
 updated: 2024-03-01 23:55:19
-cover: https://7.isyangs.cn/24/6664009994d5d-24.jpg
+image: https://7.isyangs.cn/24/6664009994d5d-24.jpg
 type: story
 categories: [生活]
 tags: [大学, 问题]

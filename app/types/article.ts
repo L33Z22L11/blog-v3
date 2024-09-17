@@ -12,7 +12,7 @@ export interface CustomArticleProps {
     categories: [ArticleCategory, ...string[]]
     tags: string[]
     type: 'tech' | 'story'
-    cover: string
+    image: string
     cover_revert: boolean
     hideInfo: boolean
     recommend: number | boolean

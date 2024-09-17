@@ -8,21 +8,20 @@ export const useUIStore = defineStore('UI', () => {
     const aside = ref<Aside>([])
 
     const toggleSidebar = () => {
-        if (isAsideOpen.value) {
+        if (isAsideOpen.value)
             isAsideOpen.value = false
-        }
         isSidebarOpen.value = !isSidebarOpen.value
     }
 
     const toggleAside = () => {
-        if (isSidebarOpen.value) {
+        if (isSidebarOpen.value)
             isSidebarOpen.value = false
-        }
         isAsideOpen.value = !isAsideOpen.value
     }
 
-    const setAside = (newAside: Aside) => {
-        aside.value = newAside ?? []
+    const setAside = (newAside?: Aside) => {
+        if (newAside)
+            aside.value = newAside ?? []
     }
 
     return {

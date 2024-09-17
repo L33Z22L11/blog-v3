@@ -3,7 +3,7 @@ title: 混入西工大，打 CTF 上大分！
 description: 西工大第三届“探索·解密”趣味密码比赛-个人WriteUp。由西北工业大学信息安全协会负责的第三届“探索·解密”趣味密码比赛主要有Crypto、Misc方向的CTF题型，难度较易，适合入门。
 date: 2022-09-06 21:02:00
 updated: 2024-02-03 19:55:49
-cover: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxO0L3rLIJL5ND6KbbEBBonjHsEDXVNEW6iacNG6k39x74MAibRa9KM8Fw/0
+image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxO0L3rLIJL5ND6KbbEBBonjHsEDXVNEW6iacNG6k39x74MAibRa9KM8Fw/0
 categories: [代码]
 tags: [大学, CTF]
 ---

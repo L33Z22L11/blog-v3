@@ -8,6 +8,7 @@ const friendCard = ref<HTMLElement>()
 
 const mainDomain = getMainDomain(props.link)
 
+// TODO: 优化鼠标悬浮提示
 const tip = joinWithBR(props.desc, `${props.date ?? ''} ${props.link}`, props.comment)
 
 onMounted(() => {
@@ -28,6 +29,8 @@ onMounted(() => {
                 <span class="name">{{ name }}</span>
                 <span class="title">{{ title }}</span>
             </div>
+            <!-- TODO: 网站技术架构图标 with title attr -->
+            <!-- TODO: 域名Provider图标 with title attr -->
             <span class="domain" :class="{ 'domain-zhilu': mainDomain === 'thisis.host' }">
                 {{ mainDomain }}
             </span>

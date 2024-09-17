@@ -88,6 +88,7 @@ export default defineNuxtConfig({
         '@nuxtjs/seo',
         '@pinia/nuxt',
         '@vueuse/nuxt',
+        '@zinkawaii/nuxt-shiki',
     ],
 
     colorMode: {
@@ -125,6 +126,13 @@ export default defineNuxtConfig({
     },
 
     ogImage: { enabled: false },
+
+    shiki: {
+        bundledThemes: ['catppuccin-latte', 'one-dark-pro'],
+        bundledLangs: ['log'],
+        defaultTheme: 'catppuccin-latte',
+        defaultLang: 'log',
+    },
 
     site: {
         name: blogConfig.title,

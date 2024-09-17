@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const route = useRoute()
-const { data } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
-const repo = data.value?.github
+const { data: post } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
+const repo = post.value?.github
 </script>
 
 <template>

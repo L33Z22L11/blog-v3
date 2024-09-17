@@ -3,7 +3,7 @@ title: Moonlight 串流指南
 description: 服务端Sunshine设置、客户端分辨率调整、隐私屏功能实现及触摸优化。
 date: 2024-01-18 18:58:55
 updated: 2024-07-08 12:51:35
-cover: https://7.isyangs.cn/24/6664009b8f999-24.jpg
+image: https://7.isyangs.cn/24/6664009b8f999-24.jpg
 categories: [经验分享]
 tags: [tailscale, moonlight, sunshine, 网络, 远程, 教程]
 references:

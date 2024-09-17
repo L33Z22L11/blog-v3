@@ -42,7 +42,7 @@ export default defineEventHandler(async (event) => {
             date: new Date(post.updated),
             description: post.description,
             category: post.categories,
-            image: post.cover,
+            image: post.image,
             author: post.author || blogConfig.author.name,
             published: new Date(post.date),
             copyright: post.copyright || blogConfig.copyright.abbr,

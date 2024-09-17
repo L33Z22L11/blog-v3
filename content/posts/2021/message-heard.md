@@ -3,7 +3,7 @@ title: 听说了两个关于我的消息
 description: 在进入高三忙碌阶段后得知的两个趣闻轶事。
 date: 2021-11-07 14:08:00
 updated: 2021-11-07 14:08:00
-cover: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fZclobj17h7XiawIziavdejl55ziahIqnyXrJV1YibpXxSZNMj6yybyo5ic6pF5f1K6NulElicVCCnDeaiag/640
+image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fZclobj17h7XiawIziavdejl55ziahIqnyXrJV1YibpXxSZNMj6yybyo5ic6pF5f1K6NulElicVCCnDeaiag/640
 type: story
 categories: [生活]
 tags: [高中, 说说, 校园]

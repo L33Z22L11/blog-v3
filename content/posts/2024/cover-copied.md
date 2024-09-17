@@ -3,7 +3,7 @@ title: 封面被 Linux QQ 官方用了，但是有一些小缺陷
 description: 怀疑 Linux QQ 团队使用了作者的封面图片，严谨求证后发现事实确实如此，并且因此找到了 Linux QQ 官网的 bug。
 date: 2024-06-18 13:23:05
 updated: 2024-06-18 17:23:24
-cover: https://7.isyangs.cn/24/66714b1f0bc35-24.jpg
+image: https://7.isyangs.cn/24/66714b1f0bc35-24.jpg
 type: story
 categories: [生活]
 tags: [qq, 问题, 软件]

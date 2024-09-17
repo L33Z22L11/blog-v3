@@ -66,6 +66,9 @@ importers:
       '@vueuse/nuxt':
         specifier: ^10.11.1
         version: 10.11.1(magicast@0.3.5)(nuxt@3.13.2(@parcel/watcher@2.4.1)(@types/node@22.5.5)(eslint@9.10.0(jiti@1.21.6))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.21.3)(sass@1.78.0)(stylelint@16.9.0(typescript@5.6.2))(terser@5.32.0)(typescript@5.6.2)(vite@5.4.5(@types/node@22.5.5)(sass@1.78.0)(terser@5.32.0))(webpack-sources@3.2.3))(rollup@4.21.3)(vue@3.5.6(typescript@5.6.2))(webpack-sources@3.2.3)
+      '@zinkawaii/nuxt-shiki':
+        specifier: ^0.6.0
+        version: 0.6.0(magicast@0.3.5)(rollup@4.21.3)(webpack-sources@3.2.3)
       '@zinkawaii/stylelint-config':
         specifier: ^0.1.5
         version: 0.1.5(postcss-html@1.7.0)(postcss@8.4.47)(stylelint@16.9.0(typescript@5.6.2))
@@ -1637,6 +1640,9 @@ packages:
 
   '@vueuse/shared@11.1.0':
     resolution: {integrity: sha512-YUtIpY122q7osj+zsNMFAfMTubGz0sn5QzE5gPzAIiCmtt2ha3uQUY1+JPyL4gRCTsLPX82Y9brNbo/aqlA91w==}
+
+  '@zinkawaii/nuxt-shiki@0.6.0':
+    resolution: {integrity: sha512-Yo7WiJ8s2fKy+zdsKoSZBLozEcNdkIOalc0zCu+tg3CsBb+VrJjsQ+k3AWhASWHzC8qLcPKw8N3pJYUhds8pxA==}
 
   '@zinkawaii/stylelint-config@0.1.5':
     resolution: {integrity: sha512-N9Uajjwm1oH7IXChaI8v4PT/v0g6PlwKfP9fOmESd0Krv5gZFk7umVO25SpJSctQTtt43037zwDQjdQA1LdrLQ==}
@@ -7325,6 +7331,17 @@ snapshots:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+
+  '@zinkawaii/nuxt-shiki@0.6.0(magicast@0.3.5)(rollup@4.21.3)(webpack-sources@3.2.3)':
+    dependencies:
+      '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.21.3)(webpack-sources@3.2.3)
+      knitwork: 1.1.0
+      shiki: 1.17.7
+    transitivePeerDependencies:
+      - magicast
+      - rollup
+      - supports-color
+      - webpack-sources
 
   '@zinkawaii/stylelint-config@0.1.5(postcss-html@1.7.0)(postcss@8.4.47)(stylelint@16.9.0(typescript@5.6.2))':
     dependencies:

@@ -3,13 +3,13 @@ import type ArticleProps from '~/types/article'
 
 const route = useRoute()
 
-const { data } = await useAsyncData(`surround-${route.path}`, () => queryContent()
+const { data: surrounds } = await useAsyncData(`surround-${route.path}`, () => queryContent()
     .only(['_path', 'date', 'title', 'type'])
     .sort({ date: 1 })
     .where({ _original_dir: { $eq: '/posts' } })
     .findSurround(route.path))
 
-const [prev = null, next = null] = data.value ?? []
+const [prev = null, next = null] = surrounds.value ?? []
 
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
     post: ArticleProps | null

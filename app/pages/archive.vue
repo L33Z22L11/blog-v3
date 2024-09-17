@@ -14,24 +14,24 @@ const orderBy = useRouteQuery(
 const UIStore = useUIStore()
 UIStore.setAside(['blog_log'])
 
-const { data } = await useAsyncData(
+const { data: listRaw } = await useAsyncData(
     'posts_archive',
     () => queryContent()
-        .only(['_path', 'cover', 'date', 'description', 'title', 'updated'])
+        .only(['_path', 'image', 'date', 'description', 'title', 'updated'])
         .where({ _original_dir: { $eq: '/posts' } })
         .find(),
     { default: () => [] },
 )
 
-const list = computed(() => alphabetical(
-    data.value,
+const listSorted = computed(() => alphabetical(
+    listRaw.value,
     item => item[orderBy.value],
     'desc',
 ))
 
-const groupedList = computed(
+const listGrouped = computed(
     () => Object.entries(group(
-        list.value,
+        listSorted.value,
         article => new Date(article[orderBy.value]).getFullYear(),
     )).reverse(),
 )
@@ -41,7 +41,7 @@ const groupedList = computed(
     <div class="archive">
         <ZOrderToggle v-model="orderBy" />
         <div
-            v-for="[year, yearGroup] in groupedList"
+            v-for="[year, yearGroup] in listGrouped"
             :key="year"
             class="archive-group"
         >

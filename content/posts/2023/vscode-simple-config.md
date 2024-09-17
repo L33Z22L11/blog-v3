@@ -3,7 +3,7 @@ title: VS Code 简单配置项
 description: 简单配置 VS Code，启用字体连字、平滑滚动、自动换行等功能，并设置 C 格式化风格，提升编辑器体验。
 date: 2023-04-13 20:05:50
 updated: 2024-06-08 00:04:21
-cover: https://7.isyangs.cn/24/65a8dcff71bdf-24.jpg
+image: https://7.isyangs.cn/24/65a8dcff71bdf-24.jpg
 categories: [经验分享]
 tags: [教程, vscode, 软件]
 recommend: true

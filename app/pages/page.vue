@@ -11,28 +11,28 @@ const orderBy = ref(appConfig.indexGenerator.orderBy || 'date')
 const UIStore = useUIStore()
 UIStore.setAside(['blog_log', 'blog_stats', 'connectivity'])
 
-const { data } = await useAsyncData(
+const { data: listRaw } = await useAsyncData(
     'posts_index',
     () => queryContent()
-        .only(['_path', 'categories', 'cover', 'date', 'description', 'readingTime', 'recommend', 'title', 'updated'])
+        .only(['_path', 'categories', 'image', 'date', 'description', 'readingTime', 'recommend', 'title', 'updated'])
         .where({ _original_dir: { $eq: '/posts' } })
         .find(),
     { default: () => [] },
 )
 
-const list = computed(() => alphabetical(
-    data.value,
+const listSorted = computed(() => alphabetical(
+    listRaw.value,
     item => item[orderBy.value],
     'desc',
 ))
 
-const { page, totalPages, pagedList } = usePagination(list, {
+const { page, totalPages, pagedList } = usePagination(listSorted, {
     perPage,
     bindParam: 'id',
 })
 
-const slideList = computed(() => sort(
-    data.value.filter(item => item?.recommend),
+const listRecommended = computed(() => sort(
+    listRaw.value.filter(item => item?.recommend),
     post => post.recommend,
     true,
 ))
@@ -51,7 +51,7 @@ onMounted(() => {
 
 <template>
     <ZhiluHeader class="header" to="/" />
-    <ZSlide v-if="page === 1" :list="slideList" />
+    <ZSlide v-if="page === 1" :list="listRecommended" />
     <div class="post-list">
         <ZOrderToggle v-model="orderBy" class="order-toggle" />
         <NuxtPage :list="pagedList" :order-by />

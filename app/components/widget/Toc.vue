@@ -6,12 +6,12 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 
 // 如果此处出问题，还会影响到文章获取
 // 若 watch route.path，SSG 下文章间路由时新文章数据会写入老文章键中
-const { data } = await useAsyncData(
+const { data: post } = await useAsyncData(
     route.path,
     () => queryContent(route.path).findOne(),
 )
 
-const toc = computed(() => data.value?.body?.toc)
+const toc = computed(() => post.value?.body?.toc)
 const { activeTocItem } = useTocAutoHighlight(() => toc.value?.links ?? [])
 
 function hasActiveChild(entry: TocLink, activeId: string | null): boolean {

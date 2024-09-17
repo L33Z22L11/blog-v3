@@ -34,6 +34,7 @@
     "@nuxtjs/seo": "2.0.0-rc.18",
     "@pinia/nuxt": "^0.5.4",
     "@vueuse/nuxt": "^10.11.1",
+    "@zinkawaii/nuxt-shiki": "^0.6.0",
     "@zinkawaii/stylelint-config": "^0.1.5",
     "eslint": "^9.10.0",
     "feed": "^4.2.2",

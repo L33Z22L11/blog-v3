@@ -3,7 +3,7 @@ title: 西邮网安技能赛WriteUp
 description: 主办方组织能力、办事水平有待提升。自此之后，作者再未参与过 CTF 赛事。
 date: 2022-11-05 23:13:52
 updated: 2022-12-04 22:18:50
-cover: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWSpuCJ6wj9ejjZz9Dp9l0NoRjRqXjZIibsKORpAk3WFEE4k5r02cdtXQ/640
+image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWSpuCJ6wj9ejjZz9Dp9l0NoRjRqXjZIibsKORpAk3WFEE4k5r02cdtXQ/640
 categories: [代码]
 tags: [大学, CTF]
 ---

@@ -24,41 +24,41 @@ https://blog.zhilu.cyou
 ```sh
 .
 ├── app # 前端
-│   ├── assets # 资源文件
-│   ├── components # 组件
-│   │   ├── content # 内容组件
-│   │   ├── patial # 模块组件
-│   │   ├── widgets # 小组件
-│   │   ├── zhilu # 个人 VI 组件
-│   │   └── ... # 布局组件
-│   ├── composables # 组合式函数
-│   ├── pages # 页面
-│   │   ├── page.vue # 首页
-│   │   ├── page/[[id]].vue # 首页动态路由
-│   │   ├── archive.vue # 归档
-│   │   └── [...slug].vue # 正文、404
-│   ├── stores # 状态管理
-│   ├── types # 类型定义
-│   ├── utils # 工具函数
-│   ├── app.config.ts # 前端配置
-│   ├── app.vue # 布局
-│   └── error.vue # 错误页
+│   ├── assets # 资源文件
+│   ├── components # 组件
+│   │   ├── content # 内容组件
+│   │   ├── patial # 模块组件
+│   │   ├── widgets # 小组件
+│   │   ├── zhilu # 个人 VI 组件
+│   │   └── ... # 布局组件
+│   ├── composables # 组合式函数
+│   ├── pages # 页面
+│   │   ├── page.vue # 首页
+│   │   ├── page/[[id]].vue # 首页动态路由
+│   │   ├── archive.vue # 归档
+│   │   └── [...slug].vue # 正文、404
+│   ├── stores # 状态管理
+│   ├── types # 类型定义
+│   ├── utils # 工具函数
+│   ├── app.config.ts # 前端配置
+│   ├── app.vue # 布局
+│   └── error.vue # 错误页
 ├── content # 文章
-│   ├── drafts # 草稿
-│   ├── posts # 文章
-│   ├── link.md # 友链
-│   └── theme.md # 主题介绍
+│   ├── drafts # 草稿
+│   ├── posts # 文章
+│   ├── link.md # 友链
+│   └── theme.md # 主题介绍
 ├── public # 静态资源
-│   └── fonts # 字体
+│   └── fonts # 字体
 ├── server # 服务端
-│   ├── api # 接口
-│   │   └── total-words.get.ts # 全站总字数
-│   ├── plugins # Nitro 插件
-│   │   ├── anti-mirror.ts # 恶意反代跳转
-│   │   ├── fix-post-timezone.ts # 修复文章时区
-│   │   └── hide-content-prefixes.ts # 美化文章链接
-│   └── routes # 路由
-│       └── atom.get.ts # Atom 订阅源
+│   ├── api # 接口
+│   │   └── total-words.get.ts # 全站总字数
+│   ├── plugins # Nitro 插件
+│   │   ├── anti-mirror.ts # 恶意反代跳转
+│   │   ├── fix-post-date.ts # 修复文章时区
+│   │   └── fix-post-path.ts # 美化文章链接
+│   └── routes # 路由
+│       └── atom.get.ts # Atom 订阅源
 ├── blog.config.ts # 博客公共配置
 └── nuxt.config.ts # Nuxt 配置
 ```

@@ -3,7 +3,7 @@ title: Tailscale 不完全使用指南
 description: Tailscale 搭建虚拟局域网，支持多设备间轻松实现 Windows 文件共享、SSH 访问、远程桌面及 Moonlight 游戏串流。
 date: 2023-10-08 10:34:00
 updated: 2024-05-16 08:30:47
-cover: https://7.isyangs.cn/24/6664009cce512-24.jpg
+image: https://7.isyangs.cn/24/6664009cce512-24.jpg
 categories: [经验分享]
 tags: [教程, tailscale, 软件, 远程]
 recommend: true

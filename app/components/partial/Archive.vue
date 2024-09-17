@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { format } from 'date-fns'
-import tippy from 'tippy.js'
 import type ArticleProps from '~/types/article'
-import 'tippy.js/dist/tippy.css'
 
 const props = defineProps<{
     to?: string
@@ -18,27 +16,18 @@ const auxDateLabel = computed(() => props.date
     : '')
 
 const archiveItem = ref<HTMLAnchorElement>()
-const tip = joinWithBR(props.description, props.link || props.to)
-
-onMounted(() => {
-    tippy(unrefElement(archiveItem)!, {
-        allowHTML: true,
-        content: tip,
-        delay: [200, 0],
-    })
-})
 </script>
 
 <template>
     <li class="article-line">
         <time :datetime="mainDate">{{ dateLabel }}</time>
-        <ZRawLink ref="archiveItem" class="article-link gradient-card" :to="to">
+        <ZRawLink ref="archiveItem" class="article-link gradient-card" :to :title="description">
             <span class="article-title" :class="{ 'text-story': type === 'story' }">
                 {{ title }}
             </span>
             <time v-if="useUpdated && isTimeDiffSignificant(date, updated)" class="aux-date" :datetime="date">
                 &nbsp;{{ auxDateLabel }}</time>
-            <NuxtImg v-if="cover" class="article-cover" :src="cover" :alt="title" loading="lazy" />
+            <NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" loading="lazy" />
         </ZRawLink>
     </li>
 </template>
@@ -60,7 +49,7 @@ onMounted(() => {
         opacity: 0.4;
         font-family: var(--font-monospace);
 
-        // 解决移动端 Edge 字体尺寸不准导致的换行溢出
+        // 缓解移动端 Edge 字体尺寸不准导致的换行溢出
         white-space: nowrap;
         transition: opacity 0.2s;
 

@@ -3,7 +3,7 @@ title: Windows 安装指南
 description: 使用 Ventoy、微 PE、Dism++ 安装系统，绕过账户限制并激活 Office 与 Windows，合理分区布局使数据安全有序。
 date: 2023-09-24 12:00:00
 updated: 2024-02-26 20:35:32
-cover: https://7.isyangs.cn/24/65b66289c9a2e-24.jpg
+image: https://7.isyangs.cn/24/65b66289c9a2e-24.jpg
 categories: [经验分享]
 tags: [教程, 系统, Windows]
 recommend: true

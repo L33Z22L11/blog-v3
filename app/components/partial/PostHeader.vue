@@ -11,6 +11,7 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
 
 const postDate = ref<HTMLElement>()
 const postUpdated = ref<HTMLElement>()
+// TODO: Update reason display
 
 useTooltip(postDate, getLocaleDatetime(props.date))
 useTooltip(postUpdated, getLocaleDatetime(props.updated))
@@ -18,8 +19,8 @@ useTooltip(postUpdated, getLocaleDatetime(props.updated))
 
 <template>
     <!-- 💩夸克浏览器，桌面端只有IE不支持 :has() 了 -->
-    <div class="post-header" :class="{ 'has-cover': cover, 'text-revert': cover_revert }">
-        <NuxtImg v-if="cover" class="post-cover" :src="cover" :alt="title" />
+    <div class="post-header" :class="{ 'has-cover': image, 'text-revert': cover_revert }">
+        <NuxtImg v-if="image" class="post-cover" :src="image" :alt="title" />
         <div class="post-nav">
             <div v-if="!hideInfo" class="post-info">
                 <time v-if="date" ref="postDate" :datetime="date">

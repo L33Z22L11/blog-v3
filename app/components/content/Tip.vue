@@ -11,8 +11,7 @@ const tooltipText = props.tip || (props.copy ? '点击复制' : '')
 const icon = props.icon || (props.copy ? 'ph:copy' : 'ph:question')
 
 useTooltip(tip, tooltipText)
-if (props.copy)
-    useCopy(tip, tip)
+props.copy && useCopy(tip, tip)
 </script>
 
 <template>

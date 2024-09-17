@@ -3,7 +3,7 @@ title: 周四在FF305，在了又在。
 description: 2022年10月8日，周六调休，按周四课表在FF305度过一天，经历刺激小测验、亲切导学和轻松美育课，体验大学生活的多彩瞬间。
 date: 2022-10-08 18:01:00
 updated: 2022-10-08 18:01:00
-cover: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fanhCXLENPFNE8ERNJ9cAIZgBT0gb6K2IefVfqokxbo6DhCpQscdEdktPR0jCvafyZesFxmxgLfQg/0
+image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fanhCXLENPFNE8ERNJ9cAIZgBT0gb6K2IefVfqokxbo6DhCpQscdEdktPR0jCvafyZesFxmxgLfQg/0
 type: story
 categories: [生活]
 tags: [大学, 校园, 拍照]
