@@ -12,6 +12,8 @@ interface DomainType {
     tip: string
 }
 
+const noRouterExtensions = ['.css', '.csv', '.gif', '.ico', '.jpg', '.js', '.json', '.png', '.svg', '.txt', '.xml']
+
 export function getDomain(url: string) {
     const match = url.match(/^(?:https?:\/\/)?(?:www\.)?([^/:]+)/i)
     return match?.[1] ?? url
@@ -36,5 +38,9 @@ export function getDomainType(mainDomain: string) {
     return domainType[mainDomain]
 }
 export function isExtLink(url?: string) {
-    return Boolean(url?.match?.(':'))
+    if (!url)
+        return false
+
+    return url.includes(':')
+        || noRouterExtensions.some(ext => url.endsWith(ext))
 }

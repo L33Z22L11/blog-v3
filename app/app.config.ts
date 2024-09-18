@@ -22,7 +22,7 @@ export default defineAppConfig({
         copyright: `© ${new Date().getFullYear()} ${blogConfig.author.name}`,
         nav: <Nav>[
             { title: '探索', items: [
-                // { icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
+                { icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
                 { icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
                 { icon: 'ph:flying-saucer-bold', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
             ] },
