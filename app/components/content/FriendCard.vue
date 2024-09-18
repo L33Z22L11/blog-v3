@@ -7,9 +7,14 @@ const props = defineProps<Friend>()
 const friendCard = ref<HTMLElement>()
 
 const mainDomain = getMainDomain(props.link)
+const domainType = getDomainType(mainDomain)
 
 // TODO: 优化鼠标悬浮提示
-const tip = joinWithBR(props.desc, `${props.date ?? ''} ${props.link}`, props.comment)
+const tip = joinWithBR(
+    props.desc,
+    `${props.date ?? ''} ${props.link}`,
+    `${props.comment ? `备注：${props.comment}` : ''}`,
+)
 
 onMounted(() => {
     tippy(unrefElement(friendCard)!, {
@@ -31,8 +36,9 @@ onMounted(() => {
             </div>
             <!-- TODO: 域名Provider图标 with title attr -->
             <div class="domain-arch">
-                <span class="domain" :class="{ 'domain-zhilu': mainDomain === 'thisis.host' }">
-                    {{ mainDomain }}
+                <span class="domain" :title="domainType?.tip">
+                    <span>{{ mainDomain }}</span>
+                    <Icon v-if="domainType" class="domain-mark" :name="domainType.icon" />
                 </span>
                 <Icon
                     v-for="arch in archs"
@@ -117,6 +123,11 @@ onMounted(() => {
         padding: 0 0.2em;
         border-radius: 4px;
         background: var(--c-bg-soft);
+    }
+
+    .domain-mark {
+        font-size: 0.4rem;
+        vertical-align: super;
     }
 
     .arch {

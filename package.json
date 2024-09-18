@@ -6,9 +6,10 @@
   "packageManager": "pnpm@9.10.0",
   "scripts": {
     "prepare": "nuxi prepare",
-    "preview": "nuxi preview",
-    "dev": "nuxi dev --host",
+    "dev": "nuxi dev --no-qr --host",
+    "build": "cross-env NODE_OPTIONS='--no-deprecation' nuxi build",
     "generate": "nuxi generate",
+    "preview": "nuxi preview",
     "lint": "eslint --ignore-pattern '/.nuxt/*' --ignore-pattern '/public/*' .",
     "lint:fix": "eslint --fix --ignore-pattern '/.nuxt/*' --ignore-pattern '/public/*' ."
   },
@@ -36,6 +37,7 @@
     "@vueuse/nuxt": "^10.11.1",
     "@zinkawaii/nuxt-shiki": "^0.6.0",
     "@zinkawaii/stylelint-config": "^0.1.5",
+    "cross-env": "^7.0.3",
     "eslint": "^9.10.0",
     "feed": "^4.2.2",
     "nuxt": "^3.13.2",

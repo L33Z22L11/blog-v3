@@ -1,7 +1,3 @@
-$breakpoint-phone: 528px;
-$breakpoint-mobile: 768px;
-$breakpoint-widescreen: 1080px;
-
 @mixin dark-theme {
     --c-text: hsl(var(--hue-theme) 0% 100%);
     --c-text-1: hsl(var(--hue-theme) 0% 90%);

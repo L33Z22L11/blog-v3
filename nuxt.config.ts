@@ -41,8 +41,10 @@ export default defineNuxtConfig({
     ],
 
     css: [
-        '@/assets/main.scss',
-        '@/assets/article.scss',
+        '@/assets/css/article.scss',
+        '@/assets/css/color.scss',
+        '@/assets/css/main.scss',
+        '@/assets/css/reusable.scss',
     ],
 
     experimental: {
@@ -72,7 +74,7 @@ export default defineNuxtConfig({
         css: {
             preprocessorOptions: {
                 scss: {
-                    additionalData: '@import "@/assets/variable.scss";',
+                    additionalData: '@use "@/assets/css/_variable.scss" as *;',
                 },
             },
         },
@@ -117,12 +119,25 @@ export default defineNuxtConfig({
     },
 
     icon: {
-        serverBundle: 'auto',
+        customCollections: [
+            { prefix: 'zi', dir: './assets/icons' },
+        ],
+        // BUG: 首次加载有概率无图标
+        // No effect? 🤔
+        // provider: 'iconify',
+        // serverBundle: false,
+        serverBundle: {
+            remote: 'jsdelivr',
+        },
+        // clientBundle: {
+        //     scan: true,
+        //     sizeLimitKb: 256,
+        // },
     },
 
     image: {
         domains: [
-            // 'config.zhilu.cyou',
+            // 'blog.zhilu.cyou',
             // '7.isyangs.cn',
         ],
         format: ['avif', 'webp'],

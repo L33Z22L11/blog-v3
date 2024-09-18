@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// TODO: View Transition
 import type ArticleProps from '~/types/article'
 
 const props = defineProps<ArticleProps>()

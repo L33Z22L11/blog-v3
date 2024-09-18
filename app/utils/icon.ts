@@ -15,7 +15,7 @@ const archMap = {
     'Typecho': 'icon-park-solid:align-text-left-one', // 不准确
     'Vercel': 'simple-icons:vercel',
     'Gridea': 'tabler:circle-letter-g', // 不准确
-    'Vue': 'simple-icons:vuedotjs',
+    'Vue': 'uim:vuejs',
     'VitePress': 'simple-icons:vitepress',
     'WordPress': 'simple-icons:wordpress',
     'Zebaur': 'tabler:square-letter-z-filled', // 不准确

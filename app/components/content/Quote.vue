@@ -8,7 +8,7 @@ const icon = props.icon || 'ph:chat-centered-text-duotone'
 <template>
     <div class="quote title-like">
         <div class="icon-line">
-            <Icon :name="icon" size="5rem" />
+            <Icon :name="icon" />
         </div>
         <slot />
     </div>
@@ -21,24 +21,27 @@ const icon = props.icon || 'ph:chat-centered-text-duotone'
     color: var(--c-text-2);
 
     &:hover {
-        > .icon-line {
+        > .icon-line > .iconify {
             transform: translateY(-0.5rem);
         }
     }
 
     > .icon-line {
-        opacity: 0.2;
-        width: 100%;
-        margin-bottom: -2.5rem;
-        mask: linear-gradient(#fff 50%, transparent);
-        font: 5rem/normal;
-        transition: transform 0.2s;
+        position: relative;
+        opacity: 0.5;
+        min-height: 1rem;
+        margin-bottom: -0.5em;
+        mask: linear-gradient(#fff, transparent);
+        font-size: 4rem;
+        line-height: 1;
         z-index: -1;
+
+        > .iconify {
+            transition: transform 0.2s;
+        }
     }
 
     :deep(p) {
-        flex-grow: 1;
-        padding: 1rem 0;
         text-indent: 0;
     }
 }

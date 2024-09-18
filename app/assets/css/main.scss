@@ -1,0 +1,109 @@
+:root {
+    --font-family: "MiSans VF", "MiSans", "PingFang SC", system-ui, sans-serif;
+    --font-serif: "Noto Serif SC", "华文中宋", "Times New Roman", serif;
+    --font-monospace: "SFMono-Regular", "Cascadia Code", "Fira Code", "JetBrains Mono", "Menlo", "Monaco", "Consolas", "Noto Sans Mono", "monospace", "MiSans VF", "MiSans", "PingFang SC", system-ui, monospace;
+    --font-weight-normal: 400;
+    --font-weight-medium: 450;
+    --font-weight-bold: 500;
+
+    -webkit-tap-highlight-color: var(--c-primary-soft);
+
+    // 兼容了一点 IE
+    background-color: hsl(220deg 20% 98%);
+    background-color: var(--c-bg-1);
+    font: normal 1rem/1.4 sans-serif;
+    font-family: var(--font-family);
+    font-synthesis: style;
+    font-weight: var(--font-weight-normal);
+    color: var(--c-text-1);
+    transition: background-color 0.2s;
+    scroll-behavior: smooth;
+    scrollbar-color: var(--c-text-3) transparent;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: var(--c-primary-soft);
+}
+
+h1, h2, h3, h4, h5, h6, strong {
+    font-weight: var(--font-weight-bold);
+
+    &.text-story {
+        font-weight: bolder;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: currentcolor;
+}
+
+code, pre {
+    font-family: "Cascadia Code", "Noto Sans Mono", Consolas, monospace;
+    font-family: var(--font-monospace);
+}
+
+menu, ol, ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+button, input, textarea {
+    background: none;
+    font: inherit;
+    color: currentcolor;
+
+    &:disabled {
+        color: var(--c-text-3);
+        cursor: not-allowed;
+    }
+
+    .iconify:only-child {
+        display: block;
+    }
+}
+
+mark {
+    background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat left bottom / 100% 0.4em;
+    text-decoration: none;
+    color: var(--c-primary);
+    transition: 0.2s;
+    animation: line-spread 0.5s;
+
+    @keyframes line-spread {
+        from { background-size: 0 0.3em; }
+    }
+
+    &:hover {
+        background-size: 100% 50%;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-story {
+    font-family: serif;
+    font-family: var(--font-serif);
+}
+
+// Iconify 图标复用了此类
+.iconify {
+    flex-shrink: 0;
+    font-size: 1.2em;
+    vertical-align: text-bottom;
+}
