@@ -1,21 +1,20 @@
 <script setup lang="ts">
 defineProps<{
-    summary: string
+    title: string
     open?: boolean
-    nopadding?: boolean
 }>()
 </script>
 
 <template>
     <details :open>
-        <summary v-html="summary" />
-        <div class="detail" :class="{ nopadding }">
+        <summary v-html="title" />
+        <div class="detail">
             <slot />
         </div>
     </details>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 details {
     border: 1px solid var(--c-border);
     border-radius: 0.5em;
@@ -35,7 +34,7 @@ details {
     }
 
     summary {
-        padding: 0.5em 0.8em;
+        padding: 0.5em 0.8rem;
         color: var(--c-text-2);
         transition: all 0.2s;
         cursor: pointer;
@@ -56,14 +55,10 @@ details {
 
     .detail {
         position: relative;
-        padding: 0 0.8em;
+        padding: 0 0.8rem;
 
-        &.nopadding {
-            padding: 0;
-
-            > * {
-                margin: 0;
-            }
+        :deep(.z-codeblock) {
+            margin: 0 -0.8rem;
         }
     }
 }

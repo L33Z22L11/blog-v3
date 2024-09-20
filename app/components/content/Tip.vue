@@ -7,10 +7,10 @@ const props = defineProps<{
 }>()
 
 const tip = ref<HTMLElement>()
-const tooltipText = props.tip || (props.copy ? '点击复制' : '')
-const icon = props.icon || (props.copy ? 'ph:copy' : 'ph:question')
+const tooltipText = computed(() => props.tip || (props.copy ? '点击复制' : ''))
+const icon = computed(() => props.icon || (props.copy ? 'ph:copy-bold' : 'ph:question-bold'))
 
-useTooltip(tip, tooltipText)
+useTooltip(tip, tooltipText.value)
 props.copy && useCopy(tip, tip)
 </script>
 

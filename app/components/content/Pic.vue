@@ -21,6 +21,7 @@ const src = getImgUrl(props.src, props.mirror)
 
 <style lang="scss" scoped>
 .image {
+    margin-block: 1em;
     text-align: center;
 
     img {

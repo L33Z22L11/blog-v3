@@ -126,9 +126,35 @@
     }
 }
 
+mark {
+    background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat left bottom / 100% 0.4em;
+    text-decoration: none;
+    color: var(--c-primary);
+    transition: 0.2s;
+    animation: line-spread 0.5s;
+
+    @keyframes line-spread {
+        from { background-size: 0 0.3em; }
+    }
+
+    &:hover {
+        background-size: 100% 50%;
+    }
+}
+
+// Iconify 图标复用了此类
+.iconify {
+    flex-shrink: 0;
+    font-size: 1.2em;
+    vertical-align: text-bottom;
+}
+
 // fallback
 img {
     display: inline-block;
+
+    // Chrome 90- 🔥🦊😡
+    overflow: hidden;
 
     // 🔥🦊😡
     overflow: clip;

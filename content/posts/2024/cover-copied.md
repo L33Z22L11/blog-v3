@@ -33,7 +33,7 @@ link: https://mp.weixin.qq.com/s/M3-7XnNy30HprMpDsKBi7w
 title: Linux QQ 崩溃解决办法
 desc: 原创　纸鹿本鹿　2023-03-16 21:02:22　纸鹿摸鱼处
 banner: https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
-link: /2023/linuxqq-crash/
+link: /2023/linuxqq-crash
 ---
 ::
 

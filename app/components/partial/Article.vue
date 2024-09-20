@@ -47,7 +47,7 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
                 </span>
                 <span v-if="readingTime?.words" class="article-words">
                     <Icon name="ph:paragraph-bold" />
-                    {{ readingTime.words }}字
+                    {{ formatNumber(readingTime.words) }}字
                 </span>
             </div>
         </article>

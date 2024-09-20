@@ -33,7 +33,7 @@ useTooltip(postUpdated, getLocaleDatetime(props.updated))
                     {{ categoryLabel }}
                 </span>
                 <span class="wordcount">
-                    <Icon name="ph:paragraph-bold" /> {{ readingTime.words }} 字
+                    <Icon name="ph:paragraph-bold" /> {{ formatNumber(readingTime.words) }} 字
                 </span>
             </div>
         </div>

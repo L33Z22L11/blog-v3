@@ -58,6 +58,8 @@ recommend: true
   "editor.minimap.scale": 2,
   // 小地图高亮当前所在区域
   "editor.minimap.showSlider": "always",
+  // 小地图和滚动条高度位置同步
+  "editor.minimap.size": "fill",
   // 终端当前命令吸附至顶端
   "terminal.integrated.stickyScroll.enabled": true
 }

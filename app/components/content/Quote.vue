@@ -21,7 +21,8 @@ const icon = props.icon || 'ph:chat-centered-text-duotone'
     color: var(--c-text-2);
 
     &:hover {
-        > .icon-line > .iconify {
+        > .icon-line {
+            opacity: 1;
             transform: translateY(-0.5rem);
         }
     }
@@ -29,16 +30,13 @@ const icon = props.icon || 'ph:chat-centered-text-duotone'
     > .icon-line {
         position: relative;
         opacity: 0.5;
-        min-height: 1rem;
+        min-height: 0.5em;
         margin-bottom: -0.5em;
         mask: linear-gradient(#fff, transparent);
         font-size: 4rem;
         line-height: 1;
+        transition: all 0.2s;
         z-index: -1;
-
-        > .iconify {
-            transition: transform 0.2s;
-        }
     }
 
     :deep(p) {

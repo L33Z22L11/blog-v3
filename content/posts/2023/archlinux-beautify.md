@@ -38,7 +38,7 @@ tags: [教程, archlinux, 系统]
 
 随后将“~/.config/fontconfig/fonts.conf”文件设置为如下内容，也可以根据自己的喜好调整 sans-serif 和 monospace 的 fallback 列表。
 
-::folding{nopadding summary="fonts.conf"}
+::folding{title="fonts.conf"}
 ```xml
 <?xml version='1.0'?>
 <!DOCTYPE fontconfig SYSTEM 'urn:fontconfig:fonts.dtd'>

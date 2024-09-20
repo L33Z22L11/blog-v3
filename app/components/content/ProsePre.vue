@@ -1,5 +1,7 @@
 <script setup lang="ts">
-withDefaults(defineProps<{
+// FIXME: [Vue warn]: Invalid prop: type check failed for prop "highlights". Expected Function, got Array
+// FIXME: [nuxt] Failed to stringify dev server logs. Received DevalueError: Cannot stringify a function.
+const props = withDefaults(defineProps<{
     code?: string
     language?: string
     filename?: string
@@ -11,9 +13,15 @@ withDefaults(defineProps<{
 })
 
 const isWrap = ref(false)
+if (props.meta) {
+    const meta = props.meta.split(' ')
+    if (meta.includes('wrap')) {
+        isWrap.value = true
+    }
+}
+
 const elCodeblock = ref<HTMLElement>()
 const elCopyBtn = ref<HTMLElement>()
-
 useCopy(elCopyBtn, elCodeblock)
 </script>
 
@@ -36,7 +44,6 @@ useCopy(elCopyBtn, elCodeblock)
         </figcaption>
 
         <span v-if="language" class="language">{{ language }}</span>
-
         <!-- 嘿嘿，不要换行 -->
         <pre ref="elCodeblock" class="scrollcheck-x" :class="{ wrap: isWrap }"><slot /></pre>
     </figure>

@@ -115,6 +115,7 @@ export default defineNuxtConfig({
         },
         markdown: {
             remarkPlugins: ['remark-reading-time'],
+            toc: { depth: 4, searchDepth: 4 },
         },
     },
 

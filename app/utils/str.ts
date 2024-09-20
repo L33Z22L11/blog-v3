@@ -5,9 +5,8 @@ export function formatNumber(num: number) {
         { label: '万', threshold: 1e4 },
     ]
     for (const interval of intervals) {
-        if (num >= interval.threshold) {
+        if (num >= interval.threshold)
             return `${(num / interval.threshold).toFixed(2)}${interval.label}`
-        }
     }
     return num.toString()
 }

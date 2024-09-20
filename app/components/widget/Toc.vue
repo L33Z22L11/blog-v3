@@ -33,7 +33,7 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
                 }"
             >
                 <!-- 使用 <a> 确保键盘焦点切换 -->
-                <a :href="`#${entry?.id}`">{{ entry.text }}</a>
+                <a :href="`#${entry?.id}`" :title="entry.text">{{ entry.text }}</a>
                 <ReuseTemplate v-if="entry.children" :toc-item="entry.children" />
             </li>
         </ol>
@@ -72,7 +72,7 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 
     li {
         opacity: 0.6;
-        padding-left: 0.8rem;
+        margin-left: 0.8rem;
         font-size: 0.94em;
         color: var(--c-text);
         transition: opacity 0.2s;
@@ -90,7 +90,6 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
             content: "";
             position: absolute;
             left: 0.3rem;
-            height: 1em;
             margin: 0.2rem 0;
             padding: 0.6rem 1.5px;
             border-radius: 1rem;
@@ -108,7 +107,6 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 
             &:hover {
                 background-color: var(--c-bg-soft);
-                white-space: normal;
             }
         }
     }

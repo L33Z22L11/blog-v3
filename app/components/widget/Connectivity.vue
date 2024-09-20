@@ -3,7 +3,8 @@
         可访问性
     </h3>
     <div class="widget-card gbc-bg">
-        <p>域名启用 DNSSEC 和 HSTS，博客由 Netlify 托管，使用去图图床。</p>
+        <!-- TODO: 优化技术架构展示 -->
+        <p>域名启用 DNSSEC 和 HSTS，博客由 Vercel 托管，由 Nuxt Content 驱动，使用去图图床。</p>
         <p>
             获得省级、国家级认证如下：<br>
             江苏:<span class="m-finger">跳转反诈宣传</span><br>
