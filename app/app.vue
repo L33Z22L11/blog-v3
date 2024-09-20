@@ -12,6 +12,7 @@
     <ZPanel />
 </template>
 
+<!-- eslint-disable-next-line vue/enforce-style-attribute -->
 <style lang="scss">
 // Nuxt 根元素 id
 #z-root {

@@ -40,7 +40,7 @@ function undo() {
     </code>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .command {
     display: flex;
     overflow: hidden;

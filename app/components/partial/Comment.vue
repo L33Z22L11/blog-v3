@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const appConfig = useAppConfig()
 
 function initTwikoo() {
@@ -29,7 +29,7 @@ onMounted(() => initTwikoo())
     </section>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .z-comment {
     margin: 3rem 1rem;
 

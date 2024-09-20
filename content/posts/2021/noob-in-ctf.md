@@ -23,12 +23,11 @@ tags: [高中, CTF, 电教]
 
 唯一沾点边的，可能就是我会前端（网页设计）吧。
 
-```js [MssCTF 2021 Finals > Web-10000.js]
-setlnterval(function () {
-    if (count < 10000) {
-        // 在网页中更新模拟点击次数
-        count++;
-        // ...
-```
+::pic
+---
+src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fYUK7hslxhyibEjh7Yc4MRhRz0OWyVibZnk89pSH7aeFkXicBOS42b6hjUJfx1x9S4CgkSCQaZrMoWWg/640
+mirror: true
+---
+::
 
 祝我好运。

@@ -57,7 +57,7 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .widget-body {
     position: relative;
 

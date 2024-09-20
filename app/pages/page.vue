@@ -59,7 +59,7 @@ onMounted(() => {
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .header {
     display: none;
     margin-inline: 1rem;

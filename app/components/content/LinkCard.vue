@@ -24,7 +24,7 @@ const src = getImgUrl(props.icon, props.mirror)
     </ZRawLink>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .link-card {
     display: flex;
     align-items: center;
@@ -35,36 +35,36 @@ const src = getImgUrl(props.icon, props.mirror)
     padding: 0.5em 0.8em;
     font-size: 0.9em;
     line-height: initial;
-}
 
-// 溢出显示省略号
-.link-card-info {
-    flex-grow: 1;
-    overflow: hidden;
-}
+    // 溢出显示省略号
+    .link-card-info {
+        flex-grow: 1;
+        overflow: hidden;
+    }
 
-.link-card-title {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-}
+    .link-card-title {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+    }
 
-// 内部需要是块元素
-.link-card-description {
-    overflow: hidden;
-    margin-top: 0.2em;
-    font-size: 0.9em;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: var(--c-text-3);
-}
+    // 内部需要是块元素
+    .link-card-description {
+        overflow: hidden;
+        margin-top: 0.2em;
+        font-size: 0.9em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color: var(--c-text-3);
+    }
 
-.link-card-icon {
-    height: 3rem;
-    max-width: 5rem;
-    border-radius: 0.5rem;
-    object-fit: cover;
+    .link-card-icon {
+        height: 3rem;
+        max-width: 5rem;
+        border-radius: 0.5rem;
+        object-fit: cover;
+    }
 }
 </style>

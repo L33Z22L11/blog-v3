@@ -26,7 +26,7 @@ const appConfig = useAppConfig()
     </footer>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .z-footer {
     margin: 3rem 1rem;
     font-size: 0.9em;

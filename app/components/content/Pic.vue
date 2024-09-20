@@ -3,11 +3,11 @@ const props = defineProps<{
     src: string
     mirror?: ImgService
     caption?: string
-    width?: string
+    width?: string | number
     fancybox?: boolean
 }>()
 
-const src = getImgUrl(props.src, props.mirror)
+const src = computed(() => getImgUrl(props.src, props.mirror))
 </script>
 
 <template>
@@ -19,7 +19,7 @@ const src = getImgUrl(props.src, props.mirror)
     </figure>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .image {
     margin-block: 1em;
     text-align: center;

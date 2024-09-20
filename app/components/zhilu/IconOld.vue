@@ -9,7 +9,7 @@
     </svg>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 svg {
     vertical-align: middle;
 }

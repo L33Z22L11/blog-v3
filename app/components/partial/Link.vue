@@ -19,10 +19,6 @@ defineProps<{
     color: var(--c-primary);
     transition: all 0.2s;
 
-    @supports (color: color-mix(in srgb, transparent, transparent)) {
-        --c-primary-soft: color-mix(in srgb, var(--c-primary) 15%, transparent);
-    }
-
     &:hover {
         border-radius: 0.3em;
         background-size: 100% 100%;

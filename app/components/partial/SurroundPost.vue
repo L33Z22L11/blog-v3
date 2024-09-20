@@ -44,7 +44,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .surround-post {
     display: flex;
     justify-content: space-between;

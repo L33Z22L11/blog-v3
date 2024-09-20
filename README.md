@@ -44,8 +44,9 @@ https://blog.zhilu.cyou
 │   ├── app.vue # 布局
 │   └── error.vue # 错误页
 ├── content # 文章
-│   ├── drafts # 草稿
+│   ├── drafts # 草稿，生产环境不显示
 │   ├── posts # 文章
+│   ├── previews # 预览
 │   ├── link.md # 友链
 │   └── theme.md # 主题介绍
 ├── public # 静态资源

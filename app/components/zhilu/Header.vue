@@ -32,7 +32,7 @@ const appConfig = useAppConfig()
     </ZRawLink>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 .zhilu-header {
     display: flex;
     align-items: center;

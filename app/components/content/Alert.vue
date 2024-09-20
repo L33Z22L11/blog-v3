@@ -60,13 +60,17 @@ const title = computed(() => props.title || defaultTitle)
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .alert {
     padding: 0.2em 0.8em;
     background-image:
         radial-gradient(circle at 4em -25em, var(--c-primary), transparent 30em),
         linear-gradient(var(--c-primary) -2000%, transparent);
     font-size: 0.9em;
+
+    @supports (color: color-mix(in srgb, transparent, transparent)) {
+        --c-primary-soft: color-mix(in srgb, var(--c-primary) 15%, transparent);
+    }
 
     .alert-title {
         display: flex;

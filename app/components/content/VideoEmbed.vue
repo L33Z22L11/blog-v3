@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 
 const props = withDefaults(defineProps<{
@@ -45,7 +45,7 @@ const src = computed(() => {
     </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .video {
     overflow: hidden;
     margin: 2rem auto;

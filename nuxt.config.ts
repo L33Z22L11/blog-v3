@@ -146,6 +146,10 @@ export default defineNuxtConfig({
 
     ogImage: { enabled: false },
 
+    robots: {
+        disallow: ['/preview', '/previews/*'],
+    },
+
     shiki: {
         bundledThemes: ['catppuccin-latte', 'one-dark-pro'],
         bundledLangs: ['log'],

@@ -49,7 +49,7 @@ useCopy(elCopyBtn, elCodeblock)
     </figure>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .z-codeblock {
     position: relative;
     margin-block: 1em;

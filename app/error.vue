@@ -31,6 +31,7 @@ const handleError = () => clearError({ redirect: '/' })
     </div>
 </template>
 
+<!-- eslint-disable-next-line vue/enforce-style-attribute -->
 <style lang="scss">
 // [...slug].vue #empty 复用了此样式
 .app-error {

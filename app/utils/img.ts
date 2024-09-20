@@ -10,5 +10,7 @@ export function getImgUrl(src?: string, service?: ImgService) {
         return src
     if (service === true)
         return Object.values(services)[0] + src
-    return services[service] + src
+    if (service in services)
+        return services[service] + src
+    return src
 }

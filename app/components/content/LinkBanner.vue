@@ -25,7 +25,7 @@ const src = getImgUrl(props.banner, props.mirror)
     </ZRawLink>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .link-banner {
     display: flex;
     flex-direction: column;
@@ -33,27 +33,27 @@ const src = getImgUrl(props.banner, props.mirror)
     max-width: $breakpoint-phone;
     margin: 2rem auto;
     line-height: initial;
-}
 
-.link-banner-bg {
-    aspect-ratio: 2.4;
-    margin-bottom: -5%;
-    mask: linear-gradient(#fff 50%, transparent);
-    object-fit: cover;
-}
+    .link-banner-bg {
+        aspect-ratio: 2.4;
+        margin-bottom: -5%;
+        mask: linear-gradient(#fff 50%, transparent);
+        object-fit: cover;
+    }
 
-.link-banner-info {
-    padding: 0.5em 1em;
-}
+    .link-banner-info {
+        padding: 0.5em 1em;
+    }
 
-.link-banner-title {
-    font-size: 1.2em;
-    color: var(--c-text);
-}
+    .link-banner-title {
+        font-size: 1.2em;
+        color: var(--c-text);
+    }
 
-.link-banner-desc {
-    margin-top: 0.5em;
-    font-size: 0.8em;
-    color: var(--c-text-2);
+    .link-banner-desc {
+        margin-top: 0.5em;
+        font-size: 0.8em;
+        color: var(--c-text-2);
+    }
 }
 </style>

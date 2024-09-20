@@ -32,7 +32,7 @@ const archiveItem = ref<HTMLAnchorElement>()
     </li>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .article-line {
     display: grid;
     grid-template-columns: auto 1fr;

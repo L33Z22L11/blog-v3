@@ -1,10 +1,18 @@
+<script setup lang="ts">
+import blogConfig from '~~/blog.config'
+</script>
+
 <template>
-    <NuxtImg class="icon" src="https://www.zhilu.cyou/api/icon.png" alt="avatar_2019_03_01" />
+    <NuxtImg
+        alt=""
+        class="icon"
+        :src="blogConfig.favicon"
+    />
 </template>
 
 <style scoped>
 .icon {
-    width: 1.5em;
-    vertical-align: middle;
+    width: 1.2em;
+    vertical-align: text-bottom;
 }
 </style>

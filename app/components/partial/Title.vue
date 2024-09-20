@@ -16,7 +16,7 @@ defineProps<{
     </h2>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .z-title {
     display: flex;
     align-items: center;

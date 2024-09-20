@@ -54,7 +54,7 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
     </ZRawLink>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .article-card {
     container-type: inline-size;
     display: block;

@@ -29,7 +29,7 @@ if (appConfig.excerpt?.animation !== false) {
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 @keyframes fadein {
     from { opacity: 0; }
     to { opacity: 1; }

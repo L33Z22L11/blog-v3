@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import tippy from 'tippy.js'
 import type { Friend } from '~/types/friend'
 import 'tippy.js/dist/tippy.css'

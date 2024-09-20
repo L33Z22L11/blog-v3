@@ -14,7 +14,7 @@ defineProps<{
     </details>
 </template>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 details {
     border: 1px solid var(--c-border);
     border-radius: 0.5em;
