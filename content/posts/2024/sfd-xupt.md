@@ -2,7 +2,7 @@
 title: Windows 上的开源软件入门
 description: 软件自由日西邮站上的一场分享，从 CLI、GUI、开源协议、GitHub 讲起，推荐了一些开源软件。
 date: 2024-09-17 17:51:12
-updated: 2024-09-21 03:05:22
+updated: 2024-09-21 14:47:02
 categories: [经验分享]
 tags: [开源, 软件自由日, 大学, 分享]
 ---
@@ -74,7 +74,7 @@ C:\WINDOWS\System32\OpenSSH\
 
 ::alert{type="question"}
 #title
-清楚了 `ping` 的由来，其后的参数 `1.1.1.1` 呢？
+清楚了 `ping` 的由来，其后的参数 `baidu.com` 呢？
 ::
 
 命令行程序的参数是命令行参数，通过 `main` 函数获取。
@@ -225,7 +225,7 @@ link: https://www.criwits.top/missing/
 - 积极参与 Google Summer of Code、 :tip[开源之夏]{tip="中国科学院软件研究所“开源软件供应链点亮计划”"}）等开源活动
 - 小组 GitHub 组织也有多个开源项目，培养计划完全开源
 
-## 在 Windows 下使用开源软件
+## 在 Windows 上使用开源软件
 
 ::quote
 在你探索开源世界之前，你已经在使用众多开源软件了。
@@ -505,7 +505,7 @@ caption: Traffic Monitor 悬浮窗
 
 OBS Studio 是一款免费、开源、跨平台的屏幕、视频录制及直播串流软件。采用 GPL v2 开源协议。
 
-当然，Windows 11 自带的截图工具升级后已经支持录屏，QQ、腾讯会议、NVIDIA GeForce Experience 也有录屏功能。
+当然，Windows 11 自带的截图工具升级后已经支持录屏，QQ、腾讯会议、NVIDIA GeForce Experience（现已升级为NVIDIA App）也有录屏功能。
 
 ### 文件传输：LocalSend
 
@@ -583,6 +583,25 @@ link: https://f-droid.org/
 ::alert
 #title
 参阅文档：[通过清华大学开源软件镜像站使用 F-Droid 软件仓库](https://mirrors.tuna.tsinghua.edu.cn/help/fdroid/)
+::
+
+#### Termux
+
+> Termux 是一个适用于 Android 的终端模拟器，其环境类似于 Linux 环境。无需 Root 或设置即可使用。Termux 会自动进行最小安装 - 使用 APT 包管理器即可获得其他软件包。
+
+Termux 是一个 Android 终端应用程序和 Linux 环境。通过 GPL v3 协议开源在 [:icon{name="ri:github-fill"} termux/termux-app](https://github.com/termux/termux-app) 上。你可以在上面使用 Linux 风格的命令并管理开放环境。
+
+::link-banner
+---
+banner: https://7.isyangs.cn/24/6664009d45024-24.jpg
+title: Termux 简单指南
+desc: Termux 安装、配置 SSH，切换国内源，安装 ZSH、X11 图形界面，探索更多可能性。
+link: /2023/termux-guide
+---
+::
+
+::alert{title="场内活动"}
+在这一环节，我会通过 SSH 演示安卓平板上的 Termux 使用。
 ::
 
 #### 安装软件
