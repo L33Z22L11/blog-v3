@@ -1,4 +1,4 @@
-export const domainType: Record<string, DomainType> = {
+export const domainType: { [domain: string]: DomainType } = {
     'github.io': { icon: 'simple-icons:github', tip: 'GitHub Pages 域名' },
     'netlify.app': { icon: 'simple-icons:netlify', tip: 'Netlify 域名' },
     'pages.dev': { icon: 'simple-icons:cloudflare', tip: 'Cloudflare 域名' },

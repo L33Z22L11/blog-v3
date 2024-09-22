@@ -31,10 +31,10 @@ else {
             tag="article"
         />
         <template #empty>
-            <div class="app-error">
-                <Icon name="solar:confounded-square-bold-duotone" />
-                <p>内容为空或页面不存在</p>
-            </div>
+            <ZError
+                icon="solar:confounded-square-bold-duotone"
+                title="内容为空或页面不存在"
+            />
         </template>
         <ZPostFooter v-bind="post" />
         <ZSurroundPost />

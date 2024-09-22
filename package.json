@@ -23,6 +23,7 @@
     "embla-carousel-vue": "^8.3.0",
     "plain-shiki": "^0.0.2",
     "radash": "^12.1.0",
+    "shiki": "^1.18.0",
     "tippy.js": "^6.3.7",
     "vue": "^3.5.7"
   },

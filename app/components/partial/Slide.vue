@@ -42,12 +42,17 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
                 </ZRawLink>
             </div>
             <ZButton
-                class="embla-button prev" aria-label="上一页" icon="ph:caret-left-bold"
+                class="embla-button prev"
+                aria-label="上一页"
+                icon="ph:caret-left-bold"
                 @click="emblaApi?.scrollPrev()"
             />
-            <ZButton class="embla-button next" aria-label="下一页" @click="emblaApi?.scrollNext()">
-                <Icon name="ph:caret-right-bold" />
-            </ZButton>
+            <ZButton
+                class="embla-button next"
+                aria-label="下一页"
+                icon="ph:caret-right-bold"
+                @click="emblaApi?.scrollNext()"
+            />
         </div>
     </div>
 </template>

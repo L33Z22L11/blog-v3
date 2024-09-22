@@ -1,36 +1,71 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
+import type { CodeToTokensWithThemesOptions } from 'shiki'
+import { createPlainShiki } from 'plain-shiki'
+
+const props = defineProps<{
+    code?: string
     noprompt?: boolean
     prompt?: string
     command?: string
-}>(), {
-    prompt: '$',
-})
+    language?: string
+}>()
 
 // FIXME: Slot "default" invoked outside of the render function
 const slot = defineSlots()
-const command = computed(() => slot.default?.()[0]?.children ?? props.command)
-const commandInputValue = ref(command.value)
+
+const prompt = computed(() => props.noprompt ? '' : props.prompt ?? '$')
+const language = computed(() => props.language ?? getPromptLanguage(prompt.value))
+
+const initialCommand = computed(() => slot.default?.()[0]?.children ?? props.command)
+const command = ref(initialCommand.value)
 const showUndo = ref(false)
-const commandInput = ref<HTMLInputElement>()
+const commandInput = ref<HTMLElement>()
 const copyBtn = ref<HTMLElement>()
 
 useTooltip(commandInput, '可以修改命令后再复制', { trigger: 'focus' })
 useCopy(copyBtn, commandInput)
 
-watch(commandInputValue, (newVal) => {
-    showUndo.value = newVal !== command.value
+watch(command, (newVal) => {
+    showUndo.value = newVal !== initialCommand.value
 })
+// BUG: 恢复初始内容时高亮丢失
 function undo() {
-    commandInputValue.value = command.value
+    commandInput.value!.textContent = initialCommand.value
     showUndo.value = false
 }
+function beforeInput(event: InputEvent) {
+    // TODO: useTooltipMessage()
+    const { data, inputType } = event
+    if (data?.includes('\n') || inputType === 'insertLineBreak') {
+        event.preventDefault()
+        useTooltipMessageMounted(event.target as HTMLElement, '不支持换行')
+    }
+}
+function onInput(event: InputEvent) {
+    command.value = (event.target as HTMLElement).textContent
+}
+
+// FIXME: Type mismatch
+onMounted(async () => {
+    const shiki = await getShikiHighlighter()
+    // BUG: 无法高亮特定语言 PowerShell
+    const shikiOptions = await resolveShikiOptions({ lang: language.value }) as CodeToTokensWithThemesOptions
+    createPlainShiki(shiki).mount(commandInput.value!, shikiOptions)
+})
 </script>
 
 <template>
     <code class="command">
         <span v-if="!noprompt" class="prompt">{{ prompt }}</span>
-        <input ref="commandInput" v-model="commandInputValue" class="code">
+        <!-- FIXME: Type mismatch -->
+        <div
+            ref="commandInput"
+            contenteditable="plaintext-only"
+            class="code scrollcheck-x"
+            @beforeinput="beforeInput"
+            @input="onInput"
+            v-text="initialCommand"
+        />
         <button v-if="showUndo" class="operation" @click="undo">
             <Icon name="ph:arrow-u-up-left-bold" />
         </button>
@@ -62,9 +97,9 @@ function undo() {
     .code {
         // flex-grow: 1 会在窄宽度下溢出
         width: 100%;
+        padding: 0 0.8em;
         background-color: var(--ld-bg-card);
         white-space: nowrap;
-        text-indent: 1em;
     }
 
     .operation {

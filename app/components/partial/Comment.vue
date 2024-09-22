@@ -120,8 +120,6 @@ onMounted(() => initTwikoo())
     }
 }
 
-// TODO: 评论区代码块深浅色切换
-// .light :deep(#twikoo) pre {
-//     filter: invert(1);
-// }
+// TODO: 评论区代码高亮
+// BUG: 启用高亮会影响正文代码块样式
 </style>

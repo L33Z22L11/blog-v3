@@ -26,7 +26,7 @@ export default function<T> (list: MaybeRefOrGetter<T[]>, options?: UsePagination
         )
         : ref(initialPage)
 
-    const pagedList = computed(() => {
+    const listPaged = computed(() => {
         const start = (page.value - 1) * perPage
         return toValue(list).slice(start, start + perPage)
     })
@@ -36,6 +36,6 @@ export default function<T> (list: MaybeRefOrGetter<T[]>, options?: UsePagination
     return {
         totalPages,
         page,
-        pagedList,
+        listPaged,
     }
 }

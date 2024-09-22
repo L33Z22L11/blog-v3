@@ -7,18 +7,24 @@ const props = withDefaults(defineProps<{
     filename?: string
     highlights?: () => number[]
     meta?: string
+    class?: string
 }>(), {
     code: '',
     highlights: () => [],
 })
 
-const isWrap = ref(false)
-if (props.meta) {
-    const meta = props.meta.split(' ')
-    if (meta.includes('wrap')) {
-        isWrap.value = true
-    }
-}
+const meta = computed(() => {
+    if (!props.meta)
+        return {}
+
+    return props.meta.split(' ').reduce((acc, item) => {
+        const [key, value] = item.split('=')
+        acc[key!] = value ?? true
+        return acc
+    }, {} as { [meta: string]: string | boolean })
+})
+
+const isWrap = ref<boolean>(Boolean(meta.value.wrap))
 
 const elCodeblock = ref<HTMLElement>()
 const elCopyBtn = ref<HTMLElement>()
@@ -39,13 +45,18 @@ useCopy(elCopyBtn, elCodeblock)
             </div>
         </div>
 
+        <!-- TODO: 显示文件类型图标 -->
         <figcaption v-if="filename">
             {{ filename }}
         </figcaption>
 
         <span v-if="language" class="language">{{ language }}</span>
         <!-- 嘿嘿，不要换行 -->
-        <pre ref="elCodeblock" class="scrollcheck-x" :class="{ wrap: isWrap }"><slot /></pre>
+        <pre
+            ref="elCodeblock"
+            class="scrollcheck-x"
+            :class="[props.class, { wrap: isWrap }]"
+        ><slot /></pre>
     </figure>
 </template>
 
@@ -118,13 +129,14 @@ useCopy(elCopyBtn, elCodeblock)
     }
 }
 
-// 未指定语言
 pre {
+    // 未指定语言
     // 如果填写 0 会在 calc() 时出错
-    --line-number-width: 0px;
+    --left-offset: 0px;
 
     overflow: auto;
     padding: 1rem;
+    background-color: transparent;
 
     &.wrap {
         white-space: pre-wrap;
@@ -133,13 +145,13 @@ pre {
             display: block;
         }
     }
-}
 
-// 指定语言
-.shiki > pre {
-    --line-number-width: 4em;
+    // 指定语言
+    &.shiki {
+        --left-offset: 4em;
 
-    padding-left: var(--line-number-width);
+        padding-left: var(--left-offset);
+    }
 }
 
 // 高亮
@@ -153,14 +165,10 @@ pre {
     content: attr(line);
     position: absolute;
     left: 0;
-    width: var(--line-number-width);
+    width: var(--left-offset);
     padding: 0 1em 0 0.5em;
     background-color: var(--c-bg-2);
     text-align: right;
     color: var(--c-text-3);
-}
-
-.scrollcheck-x {
-    --left-offset: var(--line-number-width);
 }
 </style>

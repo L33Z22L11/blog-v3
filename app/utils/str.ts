@@ -1,3 +1,12 @@
+const promptLanguageMap = {
+    '$': 'sh',
+    '#': 'sh',
+    'CMD': 'bat',
+    'PS': 'powershell',
+}
+
+type PromptLanguage = keyof typeof promptLanguageMap
+
 export function formatNumber(num: number) {
     const intervals = [
         { label: '万亿', threshold: 1e12 },
@@ -9,6 +18,13 @@ export function formatNumber(num: number) {
             return `${(num / interval.threshold).toFixed(2)}${interval.label}`
     }
     return num.toString()
+}
+
+export function getPromptLanguage(prompt?: string) {
+    const match = prompt?.trim().match(/^[a-z]+/i)
+    if (!prompt || !match)
+        return 'plaintext'
+    return promptLanguageMap[match[0] as PromptLanguage]
 }
 
 export function joinWithBR(...strs: (string | undefined)[]) {

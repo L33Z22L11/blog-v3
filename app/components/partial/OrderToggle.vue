@@ -25,10 +25,7 @@ function switchOrder() {
 
 <style scoped lang="scss">
 .order-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin-block: 1rem;
+    text-align: right;
 
     > button {
         color: var(--c-text-2);

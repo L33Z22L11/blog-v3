@@ -7,6 +7,7 @@ const encodedBlacklist = [
 
 const encodedOfficial = btoa(new URL(blogConfig.url).hostname)
 
+// TODO: 恢复 <link rel="canonical"> 标签内容
 function redirect(sourcesEncoded: string[], targetEncoded: string) {
     const sources = sourcesEncoded.map(atob)
     const target = atob(targetEncoded)

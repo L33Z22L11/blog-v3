@@ -46,16 +46,9 @@ export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
     }
 
     useEventListener('scroll', autoThrottle(() => updateActiveToc()), { passive: true })
-    useEventListener('resize', autoThrottle(() => tocOffsets.trigger()))
-    useEventListener('load', autoThrottle(() => tocOffsets.trigger()))
-    // 展开 folding 组件时重新计算 tocOffsets
-    useEventListener('click', autoThrottle(() => tocOffsets.trigger()))
 
-    // TODO: use useElementSize()
-    // useEventListener('load', () => {
-    //     const { height: documentHeight } = useElementSize(document.documentElement)
-    //     watch(() => documentHeight, () => autoThrottle(() => tocOffsets.trigger()))
-    // })
+    const { height: bodyHeight } = useElementSize(document?.body)
+    debouncedWatch(bodyHeight, tocOffsets.trigger)
 
     return {
         activeTocItem,

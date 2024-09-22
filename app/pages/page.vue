@@ -26,7 +26,7 @@ const listSorted = computed(() => alphabetical(
     'desc',
 ))
 
-const { page, totalPages, pagedList } = usePagination(listSorted, {
+const { page, totalPages, listPaged } = usePagination(listSorted, {
     perPage,
     bindParam: 'id',
 })
@@ -50,11 +50,15 @@ onMounted(() => {
 </script>
 
 <template>
-    <ZhiluHeader class="header" to="/" />
+    <div class="header">
+        <!-- 若不包裹，display: none 在 JS 加载后才有足够优先级 -->
+        <ZhiluHeader to="/" />
+    </div>
     <ZSlide v-if="page === 1" :list="listRecommended" />
     <div class="post-list">
+        <!-- TODO: 显示 /preview 入口 -->
         <ZOrderToggle v-model="orderBy" class="order-toggle" />
-        <NuxtPage :list="pagedList" :order-by />
+        <NuxtPage :list="listPaged" :order-by />
         <ZPagination v-model="page" :per-page :total-pages />
     </div>
 </template>
@@ -62,11 +66,9 @@ onMounted(() => {
 <style scoped lang="scss">
 .header {
     display: none;
-    margin-inline: 1rem;
 
     @media (max-width: $breakpoint-mobile) {
-        display: flex;
-        align-items: center;
+        display: block;
     }
 }
 

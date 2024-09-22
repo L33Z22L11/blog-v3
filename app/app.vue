@@ -48,14 +48,14 @@ aside {
     // 解决父级 flexbox 设置 justify-content: center 时溢出左侧消失的问题
     min-width: 0;
 
-    // 为了使内容正确计算宽度而不横向溢出，方法有三：
-    // 1. 设置 min-width: 0
-    // 2. 使内容失去宽度，由 flex 全权 grow
-    // 3. 设置 contain: inline-size 也可，但兼容性不佳
+    // 此处不建议给内容设置 padding
     > main {
+        // 使较小宽度的内容占满
         flex-grow: 1;
+
+        // 使内容正确计算宽度而不横向溢出
+        // 也可设置 width: 0 或者 contain: inline-size（兼容性不佳）
         min-width: 0;
-        min-height: calc(100vh + 5rem);
     }
 }
 </style>

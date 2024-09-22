@@ -34,7 +34,6 @@ onMounted(() => {
                 <span class="name">{{ name }}</span>
                 <span class="title">{{ title }}</span>
             </div>
-            <!-- TODO: 域名Provider图标 with title attr -->
             <div class="domain-arch">
                 <span class="domain" :title="domainType?.tip">
                     <span>{{ mainDomain }}</span>

@@ -1,4 +1,18 @@
+import type { BundledLanguage, BundledTheme } from 'shiki'
 import blogConfig from './blog.config'
+import redirects from './redirects'
+
+const shikiOptions: {
+    langs: BundledLanguage[]
+    themes: BundledTheme[]
+    defaultTheme: BundledTheme
+    darkTheme: BundledTheme
+} = {
+    langs: ['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'shell', 'ssh-config', 'toml', 'ts', 'tsx', 'vue', 'xml', 'yaml'],
+    themes: ['catppuccin-latte', 'one-dark-pro'],
+    defaultTheme: 'catppuccin-latte',
+    darkTheme: 'one-dark-pro',
+}
 
 export default defineNuxtConfig({
     app: {
@@ -56,6 +70,7 @@ export default defineNuxtConfig({
     },
 
     routeRules: {
+        ...redirects,
         '/api/stats': { prerender: true },
         '/atom.xml': { prerender: true },
         '/sitemap.xml': { prerender: true },
@@ -107,10 +122,10 @@ export default defineNuxtConfig({
             blogConfig.language,
         ],
         highlight: {
-            langs: ['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'shell', 'ssh-config', 'toml', 'ts', 'tsx', 'vue', 'xml', 'yaml'],
+            langs: shikiOptions.langs,
             theme: {
-                default: 'catppuccin-latte',
-                dark: 'one-dark-pro',
+                default: shikiOptions.defaultTheme,
+                dark: shikiOptions.darkTheme,
             },
         },
         markdown: {
@@ -127,9 +142,9 @@ export default defineNuxtConfig({
         // No effect? 🤔
         // provider: 'iconify',
         // serverBundle: false,
-        serverBundle: {
-            remote: 'jsdelivr',
-        },
+        // serverBundle: {
+        //     remote: 'jsdelivr',
+        // },
         // clientBundle: {
         //     scan: true,
         //     sizeLimitKb: 256,
@@ -151,10 +166,13 @@ export default defineNuxtConfig({
     },
 
     shiki: {
-        bundledThemes: ['catppuccin-latte', 'one-dark-pro'],
-        bundledLangs: ['log'],
-        defaultTheme: 'catppuccin-latte',
+        bundledLangs: shikiOptions.langs,
+        bundledThemes: shikiOptions.themes,
         defaultLang: 'log',
+        defaultTheme: {
+            light: shikiOptions.defaultTheme,
+            dark: shikiOptions.darkTheme,
+        },
     },
 
     site: {
