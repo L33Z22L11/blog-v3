@@ -154,21 +154,25 @@ pre {
     }
 }
 
-// 高亮
-:deep(.line.highlight) {
-    border-radius: 0.2em;
-    background-color: var(--c-primary-soft);
-}
+:deep(.line) {
+    &::before {
+        content: attr(line);
+        position: absolute;
+        left: 0;
+        width: var(--left-offset);
+        padding: 0 1em 0 0.5em;
+        background-color: var(--c-bg-2);
+        text-align: right;
+        color: var(--c-text-3);
+    }
 
-// 行号
-:deep(.line::before) {
-    content: attr(line);
-    position: absolute;
-    left: 0;
-    width: var(--left-offset);
-    padding: 0 1em 0 0.5em;
-    background-color: var(--c-bg-2);
-    text-align: right;
-    color: var(--c-text-3);
+    &.highlight {
+        &::before {
+            color: inherit;
+        }
+
+        outline: 0.2em solid var(--ld-bg-active);
+        background-color: var(--ld-bg-active);
+    }
 }
 </style>

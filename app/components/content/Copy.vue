@@ -34,7 +34,6 @@ function undo() {
     showUndo.value = false
 }
 function beforeInput(event: InputEvent) {
-    // TODO: useTooltipMessage()
     const { data, inputType } = event
     if (data?.includes('\n') || inputType === 'insertLineBreak') {
         event.preventDefault()

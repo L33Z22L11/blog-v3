@@ -34,7 +34,10 @@ const listSorted = computed(() => alphabetical(
         <div class="preview-header">
             <div>
                 <h1>
-                    文章预览
+                    <ZRawLink class="mobile-only" to="/">
+                        <Icon name="ph:caret-left-bold" />
+                    </ZRawLink>
+                    预览
                 </h1>
             </div>
             <ZOrderToggle v-model="orderBy" />

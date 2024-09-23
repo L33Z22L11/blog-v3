@@ -17,7 +17,8 @@ const typeMap = {
     },
     info: {
         icon: 'ph-info-bold',
-        color: 'currentColor',
+        // 使用 currentColor 会导致 --c-primary-soft 颜色混合错误
+        color: 'var(--c-text-1)',
         title: '信息',
     },
     question: {

@@ -5,17 +5,18 @@ const encodedBlacklist = [
     'dgvhqt.com',
 ].map(btoa)
 
-const encodedOfficial = btoa(new URL(blogConfig.url).hostname)
+const encodedOfficial = btoa(new URL(blogConfig.url).host)
 
-// TODO: 恢复 <link rel="canonical"> 标签内容
-function redirect(sourcesEncoded: string[], targetEncoded: string) {
+function handleMirror(sourcesEncoded: string[], targetEncoded: string) {
     const sources = sourcesEncoded.map(atob)
     const target = atob(targetEncoded)
-    const shouldRedirect = sources.some(
-        domain => location.hostname.endsWith(domain),
-    )
-    if (shouldRedirect)
-        location.href = location.href.replace(location.hostname, target)
+    const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
+    const isBadMirror = sources.some(domain => location.hostname.endsWith(domain))
+    if (isBadMirror) {
+        location.host = target
+        if (canonical)
+            canonical.href = canonical.href.replace(location.host, target)
+    }
 }
 
 async function toIIFEString(fn: (...args: any[]) => void, ...args: any[]) {
@@ -26,7 +27,7 @@ async function toIIFEString(fn: (...args: any[]) => void, ...args: any[]) {
 }
 
 export default defineNitroPlugin(async (nitroApp) => {
-    const script = await toIIFEString(redirect, encodedBlacklist, encodedOfficial)
+    const script = await toIIFEString(handleMirror, encodedBlacklist, encodedOfficial)
     nitroApp.hooks.hook('render:html', (html) => {
         html.head.push(`<script>${script}</script>`)
     })

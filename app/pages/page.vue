@@ -50,25 +50,48 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="header">
+    <div class="mobile-only">
         <!-- 若不包裹，display: none 在 JS 加载后才有足够优先级 -->
         <ZhiluHeader to="/" />
     </div>
     <ZSlide v-if="page === 1" :list="listRecommended" />
     <div class="post-list">
         <!-- TODO: 显示 /preview 入口 -->
-        <ZOrderToggle v-model="orderBy" class="order-toggle" />
+        <div class="toolbar">
+            <div class="preview-entrance">
+                <ZRawLink to="/preview">
+                    <Icon name="ph:file-lock-bold" />
+                    查看预览文章
+                </ZRawLink>
+            </div>
+            <ZOrderToggle v-model="orderBy" class="order-toggle" />
+        </div>
         <NuxtPage :list="listPaged" :order-by />
         <ZPagination v-model="page" :per-page :total-pages />
     </div>
 </template>
 
 <style scoped lang="scss">
-.header {
-    display: none;
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    @media (max-width: $breakpoint-mobile) {
-        display: block;
+    .preview-entrance {
+        a {
+            position: relative;
+            opacity: 0;
+            transition: all 0.2s 1s, color 0.2s;
+            z-index: -1;
+        }
+
+        &:hover {
+            a {
+                opacity: 1;
+                color: var(--c-primary);
+                z-index: 0;
+            }
+        }
     }
 }
 

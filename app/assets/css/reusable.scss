@@ -179,3 +179,11 @@ img {
         color: var(--c-bg-soft);
     }
 }
+
+.mobile-only {
+    display: none;
+
+    @media (max-width: $breakpoint-mobile) {
+        display: initial;
+    }
+}
