@@ -6,8 +6,6 @@
     --font-weight-medium: 450;
     --font-weight-bold: 500;
 
-    -webkit-tap-highlight-color: var(--c-primary-soft);
-
     // 兼容了一点 IE
     background-color: hsl(220deg 20% 98%);
     background-color: var(--c-bg-1);
@@ -15,10 +13,12 @@
     font-family: var(--font-family);
     font-synthesis: style;
     font-weight: var(--font-weight-normal);
+    word-wrap: break-word;
     color: var(--c-text-1);
     transition: background-color 0.2s;
     scroll-behavior: smooth;
     scrollbar-color: var(--c-text-3) transparent;
+    -webkit-tap-highlight-color: var(--c-primary-soft);
 }
 
 * {

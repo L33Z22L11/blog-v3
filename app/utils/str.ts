@@ -1,3 +1,5 @@
+import { te } from 'date-fns/locale'
+
 const promptLanguageMap = {
     '$': 'sh',
     '#': 'sh',
@@ -19,12 +21,19 @@ export function formatNumber(num: number) {
     }
     return num.toString()
 }
-
 export function getPromptLanguage(prompt?: string) {
     const match = prompt?.trim().match(/^[a-z]+/i)
     if (!prompt || !match)
         return 'plaintext'
     return promptLanguageMap[match[0] as PromptLanguage]
+}
+
+export function highlightHTML(text: string, word: string, className: string = 'highlight') {
+    text = text.replace(/\n+/g, '<br>')
+    const pattern = new RegExp(word, 'gi')
+    const highlightedText = text.replace(pattern, matched =>
+        `<span class="${className}">${matched}</span>`)
+    return highlightedText
 }
 
 export function joinWithBR(...strs: (string | undefined)[]) {

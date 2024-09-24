@@ -7,6 +7,7 @@ const UIStore = useUIStore()
     <Transition>
         <div v-if="UIStore.isSidebarOpen" id="z-sidebar-bgmask" @click="UIStore.toggleSidebar" />
     </Transition>
+    <!-- 此处不能使用 Transition，因为半宽屏状态始终显示 -->
     <aside id="z-sidebar" :class="{ show: UIStore.isSidebarOpen }">
         <ZhiluHeader class="sidebar-header" to="/" />
         <nav class="sidebar-nav">
@@ -15,13 +16,18 @@ const UIStore = useUIStore()
                     <Icon name="ph:lego-bold" /> 本站仍处于开发阶段，不代表最终呈现样式。
                 </p>
             </div>
+            <div class="sidebar-nav-item search-btn" @click="UIStore.toggleSearch">
+                <Icon name="ph:magnifying-glass-bold" />
+                <span class="nav-text">搜索</span>
+                <span class="external-tip">Ctrl K</span>
+            </div>
             <template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">
                 <h3 v-if="group.title">
                     {{ group.title }}
                 </h3>
                 <menu>
                     <li v-for="(item, itemIndex) in group.items" :key="itemIndex">
-                        <ZRawLink :to="item.url">
+                        <ZRawLink :to="item.url" class="sidebar-nav-item">
                             <Icon :name="item.icon" />
                             <span class="nav-text">{{ item.text }}</span>
                             <Icon v-if="item?.external" class="external-tip" name="ph:arrow-up-right" />
@@ -42,6 +48,7 @@ const UIStore = useUIStore()
 </template>
 
 <style scoped lang="scss">
+// TODO: 减少侧边栏代码冗余
 #z-sidebar {
     display: grid;
     grid-template-rows: auto 1fr auto;
@@ -95,6 +102,10 @@ const UIStore = useUIStore()
     z-index: 1;
 }
 
+.search-btn {
+    cursor: text;
+}
+
 .sidebar-nav {
     overflow: auto;
     padding: 0 0.5rem;
@@ -108,40 +119,40 @@ const UIStore = useUIStore()
 
     li {
         margin: 0.5em 0;
+    }
+}
 
-        >a {
-            display: flex;
-            align-items: center;
-            gap: 0.5em;
-            padding: 0.5em 1em;
-            border-radius: 0.5em;
-            transition: all 0.2s;
+.sidebar-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    transition: all 0.2s;
 
-            &:hover, &.router-link-active {
-                background-color: var(--c-bg-soft);
-                color: var(--c-text);
-            }
+    &:hover, &.router-link-active {
+        background-color: var(--c-bg-soft);
+        color: var(--c-text);
+    }
 
-            &.router-link-active::after {
-                content: "⦁";
-                width: 1em;
-                text-align: center;
-                color: var(--c-text-3);
-            }
+    &.router-link-active::after {
+        content: "⦁";
+        width: 1em;
+        text-align: center;
+        color: var(--c-text-3);
+    }
 
-            .iconify {
-                font-size: 1.5em;
-            }
+    .iconify {
+        font-size: 1.5em;
+    }
 
-            .nav-text {
-                flex-grow: 1;
-            }
+    .nav-text {
+        flex-grow: 1;
+    }
 
-            .external-tip {
-                opacity: 0.5;
-                font-size: 1em;
-            }
-        }
+    .external-tip {
+        opacity: 0.5;
+        font-size: 1em;
     }
 }
 

@@ -29,6 +29,7 @@ const widgets = computed(() => (UIStore.aside || []).map(componentAlias =>
     <Transition>
         <div v-if="UIStore.isAsideOpen" id="z-aside-bgmask" @click="UIStore.toggleAside" />
     </Transition>
+    <!-- 此处不能使用 Transition，因为宽屏状态始终显示 -->
     <!-- 如果为空数组则隐藏 -->
     <aside v-if="UIStore.aside?.length" id="z-aside" :class="{ show: UIStore.isAsideOpen }">
         <div class="container">

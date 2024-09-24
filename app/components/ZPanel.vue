@@ -1,6 +1,12 @@
 <script setup lang="ts">
 const UIStore = useUIStore()
 const hasAside = computed(() => UIStore.aside?.length)
+
+useEventListener('keydown', (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+        UIStore.closeAll()
+    }
+})
 </script>
 
 <template>
@@ -46,7 +52,7 @@ const hasAside = computed(() => UIStore.aside?.length)
     }
 }
 
-#toggle-sidebar {
+#toggle-sidebar, #toggle-search {
     display: none;
 
     @media (max-width: $breakpoint-mobile) {
