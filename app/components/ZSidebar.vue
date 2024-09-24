@@ -31,7 +31,7 @@ const UIStore = useUIStore()
             </template>
         </nav>
         <footer class="sidebar-footer">
-            <ZThemeToggle />
+            <ThemeToggle />
             <div class="footer-link">
                 <ZLink :to="appConfig.sidebar.footerLink.url">
                     {{ appConfig.sidebar.footerLink.text }}

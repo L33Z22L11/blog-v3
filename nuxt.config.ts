@@ -90,6 +90,7 @@ export default defineNuxtConfig({
             preprocessorOptions: {
                 scss: {
                     additionalData: '@use "@/assets/css/_variable.scss" as *;',
+                    api: 'modern-compiler',
                 },
             },
         },
@@ -118,9 +119,9 @@ export default defineNuxtConfig({
     },
 
     content: {
-        locales: [
-            blogConfig.language,
-        ],
+        experimental: {
+            search: {},
+        },
         highlight: {
             langs: shikiOptions.langs,
             theme: {

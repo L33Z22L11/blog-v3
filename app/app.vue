@@ -1,6 +1,6 @@
 <template>
     <NuxtLoadingIndicator />
-    <ZSkipToContent />
+    <SkipToContent />
     <ZSidebar />
     <div id="content">
         <main id="main-content">

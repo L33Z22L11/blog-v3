@@ -22,8 +22,8 @@ else {
 
 <template>
     <ContentRenderer :value="post">
-        <ZPostHeader v-bind="post" />
-        <ZExcerpt v-if="excerpt" :excerpt />
+        <PostHeader v-bind="post" />
+        <PostExcerpt v-if="excerpt" :excerpt />
         <ContentRenderer
             class="article"
             :class="{ 'md-story': post?.type === 'story' }"
@@ -36,8 +36,8 @@ else {
                 title="内容为空或页面不存在"
             />
         </template>
-        <ZPostFooter v-bind="post" />
-        <ZSurroundPost />
-        <ZComment :key="route.path" />
+        <PostFooter v-bind="post" />
+        <PostSurround />
+        <PostComment :key="route.path" />
     </ContentRenderer>
 </template>

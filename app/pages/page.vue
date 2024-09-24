@@ -54,9 +54,8 @@ onMounted(() => {
         <!-- 若不包裹，display: none 在 JS 加载后才有足够优先级 -->
         <ZhiluHeader to="/" />
     </div>
-    <ZSlide v-if="page === 1" :list="listRecommended" />
+    <PostSlide v-if="page === 1" :list="listRecommended" />
     <div class="post-list">
-        <!-- TODO: 显示 /preview 入口 -->
         <div class="toolbar">
             <div class="preview-entrance">
                 <ZRawLink to="/preview">

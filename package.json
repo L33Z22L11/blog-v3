@@ -39,7 +39,7 @@
     "@zinkawaii/nuxt-shiki": "^0.6.0",
     "@zinkawaii/stylelint-config": "^0.1.5",
     "cross-env": "^7.0.3",
-    "eslint": "^9.11.0",
+    "eslint": "^9.11.1",
     "feed": "^4.2.2",
     "nuxt": "^3.13.2",
     "remark-reading-time": "^2.0.1",

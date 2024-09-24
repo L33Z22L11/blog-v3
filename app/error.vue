@@ -16,6 +16,8 @@ const handleError = () => clearError({ redirect: '/' })
 </script>
 
 <template>
+    <NuxtLoadingIndicator />
+    <SkipToContent />
     <ZSidebar />
     <div id="content">
         <main>
@@ -23,7 +25,7 @@ const handleError = () => clearError({ redirect: '/' })
                 <ZError
                     :code="error?.message"
                     :message="error?.url"
-                    :title="`出错了 - ${error?.statusCode} ${error?.statusMessage}`"
+                    :title="`出错了 - ${error?.statusCode} ${error?.statusMessage ?? ''}`"
                 >
                     <ZButton @click="handleError">
                         返回主页
@@ -34,6 +36,7 @@ const handleError = () => clearError({ redirect: '/' })
         </main>
         <ZAside v-if="!$route.meta.hideAside" />
     </div>
+    <ZPanel />
 </template>
 
 <style scoped lang="scss">

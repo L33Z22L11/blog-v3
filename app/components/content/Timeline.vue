@@ -23,7 +23,7 @@ function render() {
 </template>
 
 <style scoped lang="scss">
-// TODO: 优化样式
+// TODO: 优化时间线样式
 .timeline {
     position: relative;
     padding-left: 1.5em;

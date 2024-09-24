@@ -12,7 +12,7 @@ const orderBy = useRouteQuery(
 )
 
 const UIStore = useUIStore()
-UIStore.setAside(['blog_log'])
+UIStore.setAside(['blog_log', 'blog_stats'])
 
 const { data: listRaw } = await useAsyncData(
     'posts_archive',
@@ -45,9 +45,8 @@ const listGrouped = computed(
             :key="year"
             class="archive-group"
         >
-            <h2 class="archive-year">
+            <h2 class="archive-year" :data-count="yearGroup?.length">
                 {{ year }}
-                <span class="archive-count">{{ yearGroup?.length }}</span>
             </h2>
             <menu class="archive-list">
                 <ZArchive
@@ -89,10 +88,13 @@ const listGrouped = computed(
     transition: color 0.2s;
     z-index: -1;
     -webkit-text-stroke: 1px var(--c-text-3);
-}
 
-.archive-count {
-    position: absolute;
-    right: 0;
+    &::after {
+        content: attr(data-count) "篇";
+        position: absolute;
+        right: 0;
+        font-size: 0.6em;
+        -webkit-text-stroke-width: 0;
+    }
 }
 </style>
