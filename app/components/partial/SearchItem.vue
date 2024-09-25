@@ -31,6 +31,7 @@ const highlightContent = computed(() => highlightHTML(props.content ?? '', word.
 <style scoped lang="scss">
 .search-item {
     display: block;
+    margin: 0.5em;
     padding: 0.5em 0.8em;
     border-radius: 0.5em;
     transition: background-color 0.2s;

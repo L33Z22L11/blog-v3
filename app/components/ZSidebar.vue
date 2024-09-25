@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
 const UIStore = useUIStore()
+
+const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' : 'Ctrl+K')
 </script>
 
 <template>
@@ -11,15 +13,10 @@ const UIStore = useUIStore()
     <aside id="z-sidebar" :class="{ show: UIStore.isSidebarOpen }">
         <ZhiluHeader class="sidebar-header" to="/" />
         <nav class="sidebar-nav">
-            <div class="notify gradient-card active">
-                <p>
-                    <Icon name="ph:lego-bold" /> 本站仍处于开发阶段，不代表最终呈现样式。
-                </p>
-            </div>
-            <div class="sidebar-nav-item search-btn" @click="UIStore.toggleSearch">
+            <div class="search-btn sidebar-nav-item gradient-card" @click="UIStore.toggleSearch">
                 <Icon name="ph:magnifying-glass-bold" />
                 <span class="nav-text">搜索</span>
-                <span class="external-tip">Ctrl K</span>
+                <span class="keycut widescreen-only">{{ keycut }}</span>
             </div>
             <template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">
                 <h3 v-if="group.title">
@@ -77,12 +74,8 @@ const UIStore = useUIStore()
     position: fixed;
     inset: 0;
     background-color: #0003;
+    transition: opacity 0.2s;
     z-index: 100;
-
-    &.v-enter-active,
-    &.v-leave-active {
-        transition: opacity 0.2s;
-    }
 
     &.v-enter-from,
     &.v-leave-to {
@@ -94,20 +87,7 @@ const UIStore = useUIStore()
     }
 }
 
-.notify {
-    position: sticky;
-    margin: 1em 0.2em;
-    padding: 0.5em;
-    backdrop-filter: blur(2px);
-    z-index: 1;
-}
-
-.search-btn {
-    cursor: text;
-}
-
 .sidebar-nav {
-    overflow: auto;
     padding: 0 0.5rem;
     font-size: 0.9em;
 
@@ -153,6 +133,20 @@ const UIStore = useUIStore()
     .external-tip {
         opacity: 0.5;
         font-size: 1em;
+    }
+}
+
+.search-btn {
+    margin-block: 1rem;
+    cursor: text;
+
+    &:hover {
+        background-color: transparent;
+    }
+
+    .keycut {
+        opacity: 0.5;
+        font-size: 0.8em;
     }
 }
 

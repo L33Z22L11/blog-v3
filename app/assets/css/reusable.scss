@@ -187,3 +187,11 @@ img {
         display: initial;
     }
 }
+
+.widescreen-only {
+    display: none;
+
+    @media (min-width: $breakpoint-widescreen) {
+        display: initial;
+    }
+}

@@ -75,12 +75,8 @@ const widgets = computed(() => (UIStore.aside || []).map(componentAlias =>
     position: fixed;
     inset: 0;
     background-color: #0003;
+    transition: opacity 0.2s;
     z-index: 100;
-
-    &.v-enter-active,
-    &.v-leave-active {
-        transition: opacity 0.2s;
-    }
 
     &.v-enter-from,
     &.v-leave-to {
