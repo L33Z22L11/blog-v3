@@ -23,6 +23,6 @@ const archMap = {
 
 export type Arch = keyof typeof archMap
 
-export function getArchIcon(arch: Arch): string {
+export function getArchIcon(arch: Arch) {
     return archMap[arch] ?? ''
 }

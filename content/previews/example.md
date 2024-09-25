@@ -38,3 +38,5 @@ hideInfo: true
 #default
 默认插槽的 **粗体** `Inline code`
 ::
+
+:copy[sudo rm -rf]

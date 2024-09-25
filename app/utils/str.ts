@@ -1,13 +1,9 @@
-import { te } from 'date-fns/locale'
-
 const promptLanguageMap = {
     '$': 'sh',
     '#': 'sh',
     'CMD': 'bat',
     'PS': 'powershell',
 }
-
-type PromptLanguage = keyof typeof promptLanguageMap
 
 export function formatNumber(num: number) {
     const intervals = [
@@ -21,11 +17,13 @@ export function formatNumber(num: number) {
     }
     return num.toString()
 }
-export function getPromptLanguage(prompt?: string) {
-    const match = prompt?.trim().match(/^[a-z]+/i)
-    if (!prompt || !match)
-        return 'plaintext'
-    return promptLanguageMap[match[0] as PromptLanguage]
+
+export function getPromptLanguage(prompt: string) {
+    for (const promptPrefix in promptLanguageMap) {
+        if (prompt.startsWith(promptPrefix))
+            return Reflect.get(promptLanguageMap, promptPrefix)
+    }
+    return 'plaintext'
 }
 
 export function highlightHTML(text: string, word: string, className: string = 'highlight') {

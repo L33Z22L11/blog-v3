@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { CodeToTokensWithThemesOptions } from 'shiki'
 import { createPlainShiki } from 'plain-shiki'
 
 const props = defineProps<{
@@ -11,12 +10,12 @@ const props = defineProps<{
 }>()
 
 // FIXME: Slot "default" invoked outside of the render function
-const slot = defineSlots()
+const slots = defineSlots()
 
 const prompt = computed(() => props.noprompt ? '' : props.prompt ?? '$')
 const language = computed(() => props.language ?? getPromptLanguage(prompt.value))
 
-const initialCommand = computed(() => slot.default?.()[0]?.children ?? props.command)
+const initialCommand = computed(() => slots.default?.()[0]?.children ?? props.command)
 const command = ref(initialCommand.value)
 const showUndo = ref(false)
 const commandInput = ref<HTMLElement>()
@@ -28,11 +27,13 @@ useCopy(copyBtn, commandInput)
 watch(command, (newVal) => {
     showUndo.value = newVal !== initialCommand.value
 })
-// BUG: 恢复初始内容时高亮丢失
+
 function undo() {
     commandInput.value!.textContent = initialCommand.value
+    commandInput.value?.dispatchEvent(new Event('input'))
     showUndo.value = false
 }
+
 function beforeInput(event: InputEvent) {
     const { data, inputType } = event
     if (data?.includes('\n') || inputType === 'insertLineBreak') {
@@ -40,16 +41,17 @@ function beforeInput(event: InputEvent) {
         useTooltipMessageMounted(event.target as HTMLElement, '不支持换行')
     }
 }
+
 function onInput(event: InputEvent) {
     command.value = (event.target as HTMLElement).textContent
 }
 
-// FIXME: Type mismatch
 onMounted(async () => {
     const shiki = await getShikiHighlighter()
     // BUG: 无法高亮特定语言 PowerShell
-    const shikiOptions = await resolveShikiOptions({ lang: language.value }) as CodeToTokensWithThemesOptions
-    createPlainShiki(shiki).mount(commandInput.value!, shikiOptions)
+    const shikiOptions = await resolveShikiOptions({ lang: language.value })
+    // FIXME: Type mismatch
+    createPlainShiki(shiki).mount(commandInput.value!, shikiOptions as any)
 })
 </script>
 
