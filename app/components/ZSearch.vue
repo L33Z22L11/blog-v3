@@ -42,17 +42,19 @@ useEventListener('keydown', (event) => {
                     <Icon v-if="word" class="close" name="ph:x-bold" @click="word = ''" />
                 </div>
                 <TransitionGroup>
-                    <div v-if="word && !result?.length" class="no-result">
+                    <div v-if="word && status === 'success' && !result?.length" class="no-result">
                         <div>无结果</div>
                     </div>
                     <ol v-if="word && result?.length" class="scrollcheck-y search-result">
                         <!-- TODO: 通过方向键和回车选择搜索结果 -->
-                        <ZSearchItem
-                            v-for="item in result"
-                            :key="item.id"
-                            v-bind="item"
-                            @click="UIStore.toggleSearch"
-                        />
+                        <TransitionGroup>
+                            <ZSearchItem
+                                v-for="item in result"
+                                :key="item.id"
+                                v-bind="item"
+                                @click="UIStore.toggleSearch"
+                            />
+                        </TransitionGroup>
                     </ol>
                 </TransitionGroup>
             </form>
@@ -157,5 +159,9 @@ useEventListener('keydown', (event) => {
         opacity: 0;
         max-height: 0;
     }
+}
+
+.search-item {
+    transition: all 0.5s;
 }
 </style>

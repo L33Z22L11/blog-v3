@@ -38,15 +38,11 @@ const typeMap = {
     },
 }
 
-const {
-    icon: defaultIcon,
-    color: defaultColor,
-    title: defaultTitle,
-} = typeMap[props.type] || typeMap.tip
+const defaultProps = computed(() => typeMap[props.type] || typeMap.tip)
 
-const icon = computed(() => props.icon || defaultIcon)
-const color = computed(() => props.color || defaultColor)
-const title = computed(() => props.title || defaultTitle)
+const icon = computed(() => props.icon || defaultProps.value.icon)
+const color = computed(() => props.color || defaultProps.value.color)
+const title = computed(() => props.title || defaultProps.value.title)
 </script>
 
 <template>

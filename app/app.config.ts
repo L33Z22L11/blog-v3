@@ -31,10 +31,14 @@ export default defineAppConfig({
                 { icon: 'ri:qq-line', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
                 { icon: 'ph:envelope-simple-bold', text: blogConfig.author.email, url: `mailto:${blogConfig.author.email}` },
             ] },
-            { title: '信息', items: [
-                { icon: 'ph:swatches-bold', text: '主题灵感源自Stellar', url: '/theme' },
-                { icon: 'ph:certificate-bold', text: '萌ICP备20246888号', url: 'https://icp.gov.moe/?keyword=20246888' },
-            ] },
+            {
+                title: '信息',
+                items: [
+                    { icon: 'ph:code-bold', text: '使用 MIT 协议开源', url: 'https://github.com/L33Z22L11/blog-v3' },
+                    { icon: 'ph:swatches-bold', text: '主题灵感源自Stellar', url: '/theme' },
+                    { icon: 'ph:certificate-bold', text: '萌ICP备20246888号', url: 'https://icp.gov.moe/?keyword=20246888' },
+                ],
+            },
         ],
         message: '',
     },
@@ -63,13 +67,6 @@ export default defineAppConfig({
             { icon: 'ph:github-logo-bold', text: 'Github', url: 'https://github.com/L33Z22L11', external: true },
         ] },
     ],
-
-    sidebar: {
-        footerLink: {
-            text: 'L33Z22L11/blog-v3',
-            url: 'https://github.com/L33Z22L11/blog-v3',
-        },
-    },
 
     themes: {
         light: {

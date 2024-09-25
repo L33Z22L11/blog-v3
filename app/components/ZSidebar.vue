@@ -35,11 +35,6 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
         </nav>
         <footer class="sidebar-footer">
             <ThemeToggle />
-            <div class="footer-link">
-                <ZLink :to="appConfig.sidebar.footerLink.url">
-                    {{ appConfig.sidebar.footerLink.text }}
-                </ZLink>
-            </div>
         </footer>
     </aside>
 </template>
@@ -157,14 +152,9 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 }
 
 .sidebar-footer {
-    padding-top: 1rem;
+    padding-block: 1rem;
     font-size: 0.8em;
     text-align: center;
     color: var(--c-text-2);
-
-    .footer-link {
-        display: inline-block;
-        margin: 1rem 0;
-    }
 }
 </style>
