@@ -12,6 +12,7 @@ const src = computed(() => getImgUrl(props.src, props.mirror))
 
 <template>
     <figure class="image">
+        <!-- TODO: Fancybox -->
         <NuxtImg :src :width :alt="caption" />
         <figcaption v-if="caption">
             {{ caption }}

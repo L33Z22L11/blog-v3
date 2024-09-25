@@ -22,6 +22,7 @@ onMounted(() => {
 </script>
 
 <template>
+    <!-- TODO: 切换主题时的动画 -->
     <div class="theme-toggle">
         <button
             v-for="(themeData, key) in themes"

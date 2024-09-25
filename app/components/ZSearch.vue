@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { SearchResult } from 'minisearch'
-
 const UIStore = useUIStore()
 const searchInput = ref<HTMLInputElement>()
 
@@ -11,24 +9,15 @@ watch(() => UIStore.isSearchOpen, async (isOpen) => {
 
 // TODO: 随机展示热门搜索词
 const word = ref('')
-const result = ref<SearchResult[]>([])
 
-const showSearching = ref(false)
-const showNoResult = ref(false)
+const { data: result, execute: execSearch, status } = await useAsyncData(
+    word.value,
+    () => searchContent(word.value),
+    { immediate: false, transform: data => data.value },
+)
 
-watchDebounced(word, async () => {
-    showNoResult.value = false
-    if (!word.value) {
-        return
-    }
-    showSearching.value = true
-    result.value = (await searchContent(word)).value
-    showSearching.value = false
-    if (result.value.length === 0 && word.value)
-        showNoResult.value = true
-}, { debounce: 300 })
-
-useEventListener(window, 'keydown', (event) => {
+watchDebounced(word, () => word.value && execSearch(), { debounce: 300 })
+useEventListener('keydown', (event) => {
     if (event.ctrlKey && event.key === 'k') {
         event.preventDefault()
         UIStore.toggleSearch()
@@ -45,20 +34,19 @@ useEventListener(window, 'keydown', (event) => {
         />
     </Transition>
     <Transition>
-        <div v-if="UIStore.isSearchOpen" id="z-search" :class="{ searching: showSearching }">
+        <div v-if="UIStore.isSearchOpen" id="z-search">
             <form @submit.prevent>
                 <div class="input">
-                    <Icon :class="{ searching: showSearching }" name="ph:magnifying-glass-bold" />
+                    <Icon :class="{ searching: status === 'pending' }" name="ph:magnifying-glass-bold" />
                     <input ref="searchInput" v-model="word" class="search-input" placeholder="键入开始搜索">
-                    <Icon v-if="word" name="ph:x-bold" @click="word = ''" />
+                    <Icon v-if="word" class="close" name="ph:x-bold" @click="word = ''" />
                 </div>
-                <Transition>
-                    <div v-if="showNoResult" class="no-result">
+                <TransitionGroup>
+                    <div v-if="word && !result?.length" class="no-result">
                         <div>无结果</div>
                     </div>
-                </Transition>
-                <Transition>
-                    <ol v-if="word && result.length" class="scrollcheck-y search-result">
+                    <ol v-if="word && result?.length" class="scrollcheck-y search-result">
+                        <!-- TODO: 通过方向键和回车选择搜索结果 -->
                         <ZSearchItem
                             v-for="item in result"
                             :key="item.id"
@@ -66,13 +54,18 @@ useEventListener(window, 'keydown', (event) => {
                             @click="UIStore.toggleSearch"
                         />
                     </ol>
-                </Transition>
+                </TransitionGroup>
             </form>
         </div>
     </Transition>
 </template>
 
 <style scoped lang="scss">
+@keyframes twinkle {
+    from { opacity: 1; }
+    to { opacity: 0.2; }
+}
+
 #z-search {
     position: fixed;
     top: 10vh;
@@ -80,7 +73,7 @@ useEventListener(window, 'keydown', (event) => {
     width: 80%;
     max-width: $breakpoint-mobile;
     border: 1px solid var(--c-primary);
-    border-radius: 0.5em;
+    border-radius: 1em;
     box-shadow: 0 0.5em 1em var(--ld-shadow);
     background-color: var(--ld-bg-card);
     transition: all 0.2s;
@@ -88,7 +81,8 @@ useEventListener(window, 'keydown', (event) => {
 
     &.v-enter-from,
     &.v-leave-to {
-        top: 100%;
+        opacity: 0;
+        top: 20%;
     }
 
     .input {
@@ -99,11 +93,6 @@ useEventListener(window, 'keydown', (event) => {
         .iconify {
             margin: 0 0.5em;
 
-            @keyframes twinkle {
-                from { opacity: 1; }
-                to { opacity: 0.2; }
-            }
-
             &.searching {
                 animation: twinkle 0.5s alternate infinite linear;
             }
@@ -113,6 +102,16 @@ useEventListener(window, 'keydown', (event) => {
             width: 100%;
             padding: 1em 0;
             outline: none;
+        }
+
+        .close {
+            color: var(--c-text-3);
+            transition: color 0.2s;
+            cursor: pointer;
+
+            &:hover {
+                color: var(--c-text-2);
+            }
         }
     }
 }

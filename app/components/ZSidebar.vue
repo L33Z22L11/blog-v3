@@ -138,14 +138,20 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 
 .search-btn {
     margin-block: 1rem;
+    outline: 1px solid var(--c-border);
+    outline-offset: -1px;
     cursor: text;
 
     &:hover {
+        outline-color: transparent;
         background-color: transparent;
     }
 
     .keycut {
         opacity: 0.5;
+        padding: 0 0.2em;
+        border-radius: 0.2em;
+        background-color: var(--c-bg-soft);
         font-size: 0.8em;
     }
 }

@@ -2,8 +2,8 @@
 const UIStore = useUIStore()
 const hasAside = computed(() => UIStore.aside?.length)
 
-useEventListener('keydown', (e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
+useEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
         UIStore.closeAll()
     }
 })

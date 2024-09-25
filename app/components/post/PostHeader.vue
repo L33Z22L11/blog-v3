@@ -14,23 +14,23 @@ const postDate = ref<HTMLElement>()
 const postUpdated = ref<HTMLElement>()
 // TODO: Update reason display
 
-useTooltip(postDate, getLocaleDatetime(props.date))
-useTooltip(postUpdated, getLocaleDatetime(props.updated))
+useTooltip(postDate, `创建于 ${getLocaleDatetime(props.date)}`)
+useTooltip(postUpdated, `修改于 ${getLocaleDatetime(props.updated)}`)
 </script>
 
 <template>
     <!-- 💩夸克浏览器，桌面端只有IE不支持 :has() 了 -->
     <div class="post-header" :class="{ 'has-cover': image, 'text-revert': cover_revert }">
+        <!-- TODO: 优化卡片布局 -->
         <NuxtImg v-if="image" class="post-cover" :src="image" :alt="title" />
         <div class="post-nav">
             <div v-if="!hideInfo" class="post-info">
                 <time v-if="date" ref="postDate" :datetime="date">
                     <Icon name="ph:calendar-dots-bold" /> {{ publishedLabel }}</time>
-                <time v-if="updated" ref="postUpdated" :datetime="updated">
+                <time v-if="isTimeDiffSignificant(date, updated, .999)" ref="postUpdated" :datetime="updated">
                     <Icon name="ph:calendar-plus-bold" /> {{ updatedLabel }}</time>
                 <span v-if="categoryLabel" class="article-category">
-                    <Icon :name="categoryIcon" />
-                    {{ categoryLabel }}
+                    <Icon :name="categoryIcon" /> {{ categoryLabel }}
                 </span>
                 <span class="wordcount">
                     <Icon name="ph:paragraph-bold" /> {{ formatNumber(readingTime.words) }} 字
