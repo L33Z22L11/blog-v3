@@ -28,6 +28,7 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
                     <Icon name="ph:calendar-dots-bold" />
                     {{ publishedLabel }}
                 </time>
+                <!-- FIXME: 按更新日期排序时应当优先显示更新日期 -->
                 <time
                     v-if="isTimeDiffSignificant(date, updated)"
                     :class="{ 'use-updated': useUpdated }"

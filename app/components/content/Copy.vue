@@ -84,7 +84,7 @@ onMounted(async () => {
     border: 1px solid var(--c-border);
     border-radius: 0.5em;
     background-color: var(--ld-bg-card);
-    font-size: 0.8125em;
+    font-size: 0.8rem;
     line-height: 2.5;
 
     .prompt {

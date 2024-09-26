@@ -2,7 +2,7 @@ const promptLanguageMap = {
     '$': 'sh',
     '#': 'sh',
     'CMD': 'bat',
-    'PS': 'powershell',
+    'PS': 'bash',
 }
 
 export function formatNumber(num: number) {
