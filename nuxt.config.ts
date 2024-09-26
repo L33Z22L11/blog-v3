@@ -8,7 +8,7 @@ const shikiOptions: {
     defaultTheme: BundledTheme
     darkTheme: BundledTheme
 } = {
-    langs: ['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'shell', 'ssh-config', 'toml', 'ts', 'tsx', 'vue', 'xml', 'yaml'],
+    langs: ['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'java', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'shell', 'ssh-config', 'toml', 'ts', 'tsx', 'vb', 'vue', 'xml', 'yaml'],
     themes: ['catppuccin-latte', 'one-dark-pro'],
     defaultTheme: 'catppuccin-latte',
     darkTheme: 'one-dark-pro',

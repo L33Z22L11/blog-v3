@@ -14,14 +14,12 @@ const dateLabel = computed(() => mainDate.value
 const auxDateLabel = computed(() => props.date
     ? format(new Date(props.date), isSameYear(props.updated, props.date) ? 'MM-dd' : 'yyyy-MM-dd')
     : '')
-
-const archiveItem = ref<HTMLAnchorElement>()
 </script>
 
 <template>
     <li class="article-line">
         <time :datetime="mainDate">{{ dateLabel }}</time>
-        <ZRawLink ref="archiveItem" class="article-link gradient-card" :to :title="description">
+        <ZRawLink class="article-link gradient-card" :to :title="description">
             <span class="article-title" :class="{ 'text-story': type === 'story' }">
                 {{ title }}
             </span>

@@ -18,7 +18,7 @@ const { data: result, execute: execSearch, status } = await useAsyncData(
 
 watchDebounced(word, () => word.value && execSearch(), { debounce: 300 })
 useEventListener('keydown', (event) => {
-    if (event.ctrlKey && event.key === 'k') {
+    if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
         event.preventDefault()
         UIStore.toggleSearch()
     }

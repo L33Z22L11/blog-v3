@@ -2,13 +2,16 @@
 const props = defineProps<{
     icon?: string
 }>()
-const icon = props.icon || 'ph:chat-centered-text-duotone'
+
+const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
 </script>
 
 <template>
     <div class="quote title-like">
         <div class="icon-line">
-            <Icon :name="icon" />
+            <slot name="icon">
+                <Icon :name="icon" />
+            </slot>
         </div>
         <slot />
     </div>
