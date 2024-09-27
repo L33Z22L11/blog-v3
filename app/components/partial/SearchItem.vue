@@ -41,7 +41,7 @@ const highlightContent = computed(() => highlightHTML(props.content ?? '', word.
     border-radius: 0.5em;
     transition: background-color 0.2s;
 
-    &:hover {
+    &.active {
         background-color: var(--c-bg-soft);
     }
 
