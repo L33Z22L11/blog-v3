@@ -2,7 +2,7 @@
 title: 把博客文章按年份放在子文件夹中了
 description: 同时更改了文章链接前缀，编写了跳转脚本，后来通过平台重定向规则实现更规范的跳转。
 date: 2024-04-29 11:10:18
-updated: 2024-05-03 22:10:07
+updated: 2024-09-27 08:37:52
 categories: [经验分享]
 tags: [网站, 博客]
 references:
@@ -108,9 +108,9 @@ permalink: :year:month/:name/
 要一条一条写重定向规则，有点麻烦，可以这么做：
 
 - 尝试用命令生成先前博客链接路径和新的博客链接路径
-  :copy{prompt="PS >"}[hexo clean; hexo generate]
+  :copy{prompt="PS>"}[hexo clean; hexo generate]
 - findstr 不完全支持 PCRE，可以用 `Select-String "\\\d{6}\\"` 代替
-  :copy{prompt="PS >"}[dir -s .\public\ | findstr -r "\\[0-9][0-9][0-9][0-9][0-9][0-9]\\"]
+  :copy{prompt="PS>"}[dir -s .\public\ | findstr -r "\\[0-9][0-9][0-9][0-9][0-9][0-9]\\"]
 
 再用正则表达式稍微替换一下输出（不要忘了`/`），就能得到 Netlify 的重定向规则文件了。
 
@@ -130,3 +130,7 @@ include: [_redirects]
 ```
 
 这下应该 over 了。
+
+## 又没有结束
+
+5个月后，我通过 Google Search Console 发现收录的博客链接还是原先的。于是又通过 Nuxt 的能力编写了新的重定向脚本，并期待它能获取到 canonical 标签。
