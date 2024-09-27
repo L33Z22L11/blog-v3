@@ -10,7 +10,7 @@ interface Props extends SearchResult {
 const props = defineProps<Partial<Props>>()
 
 const title = computed(() => [...props.titles ?? [], props.title].join(' > '))
-
+const isPara = computed(() => props.titles?.length)
 const word = computed(() => props.queryTerms?.[0] ?? '')
 
 // const breadcrumbs = computed(() => props.titles?.split('\n').push(props.title).join(' > '))
@@ -20,9 +20,14 @@ const highlightContent = computed(() => highlightHTML(props.content ?? '', word.
 </script>
 
 <template>
-    <ZRawLink :to="id" class="search-item">
+    <ZRawLink :to="id" class="search-item" :class="{ para: isPara }">
         <menu>
-            <h2 v-html="highlightTitle" />
+            <h2>
+                <Badge v-if="!isPara" round>
+                    文章
+                </Badge>
+                <span v-html="highlightTitle" />
+            </h2>
             <p class="content" v-html="highlightContent" />
         </menu>
     </ZRawLink>
@@ -46,6 +51,12 @@ const highlightContent = computed(() => highlightHTML(props.content ?? '', word.
 
     h2 {
         font-size: 1em;
+
+        .badge {
+            margin-right: 0.2em;
+            font-size: 0.8em;
+            color: var(--c-primary);
+        }
 
         & + .content {
             margin-top: 0.2em;

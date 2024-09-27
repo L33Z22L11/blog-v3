@@ -1,14 +1,19 @@
 <script setup lang="ts">
-defineProps<{
+// 可以通过 to 传递链接
+// 即使 boolean 可选，其值也不会是 undefined
+const props = defineProps<{
     img?: string
     text?: string
+    round?: boolean
     square?: boolean
 }>()
+
+const round = computed(() => props.img ? !props.square : props.round)
 </script>
 
 <template>
-    <ZRawLink class="badge" :class="{ 'badge-img': img, 'badge-square': square }">
-        <NuxtImg v-if="img" class="badge-icon" :src="img" alt="avatar" />
+    <ZRawLink class="badge" :class="{ 'badge-img': img, 'badge-round': round }">
+        <NuxtImg v-if="img" class="badge-icon" :src="img" :alt="img" />
         <span class="badge-text">
             <slot>{{ text }}</slot>
         </span>
@@ -26,7 +31,6 @@ defineProps<{
     background-color: color-mix(in srgb, currentcolor 5%, transparent);
     font-size: 0.9em;
     line-height: normal;
-    color: var(--c-text-2);
     transition: color 0.2s;
 
     & + & {
@@ -36,30 +40,41 @@ defineProps<{
     &[href]:hover {
         color: var(--c-text);
     }
+
+    &.badge-round {
+        border-radius: 1em;
+
+        .badge-icon {
+            border-radius: 1em;
+
+            + .badge-text {
+                margin-left: 0.2em;
+            }
+        }
+
+        .badge-text {
+            margin: 0 0.5em;
+        }
+    }
 }
 
 .badge-img {
     margin-block: 2px;
-    border-radius: 1em;
     font-size: 0.8em;
 
     .badge-icon {
         height: 1.8em;
         aspect-ratio: 1;
-        border-radius: 1em;
+        border-radius: 3px;
         object-fit: cover;
     }
 }
 
-.badge-square {
-    border-radius: 4px;
-
-    .badge-icon {
-        border-radius: 3px;
-    }
-}
-
 .badge-text {
-    margin: 0 0.4em;
+    margin: 0 0.2em;
+
+    &:empty {
+        display: none;
+    }
 }
 </style>
