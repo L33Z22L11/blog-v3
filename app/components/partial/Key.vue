@@ -1,0 +1,52 @@
+<script setup lang="ts">
+const props = defineProps<{
+    code?: string
+}>()
+
+const emit = defineEmits<{
+    press: []
+}>()
+
+const active = ref(false)
+
+useEventListener('keydown', (e) => {
+    if (e.key === props.code) {
+        emit('press')
+        active.value = true
+    }
+})
+
+useEventListener('keyup', (e) => {
+    if (e.key === props.code) {
+        active.value = false
+    }
+})
+</script>
+
+<template>
+    <kbd :class="{ active }" @click="emit('press')"><slot /></kbd>
+</template>
+
+<style scoped lang="scss">
+kbd {
+    display: inline-block;
+    padding: 0.1em 0.2em;
+    border-radius: 0.2em;
+    box-shadow: inset 0 -0.15em 0 var(--c-bg-soft);
+    background-color: var(--c-bg-soft);
+    font-family: var(--font-monospace);
+    font-size: 0.9em;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: var(--c-text-2);
+    transition: all 0.1s;
+    user-select: none;
+
+    &:active, &.active {
+        box-shadow: inset 0 -0.1em 0 var(--c-primary);
+        background-color: var(--c-primary-soft);
+        color: var(--c-primary);
+        transform: translateY(0.05em);
+    }
+}
+</style>

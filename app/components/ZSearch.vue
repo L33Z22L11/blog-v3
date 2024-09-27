@@ -10,7 +10,7 @@ watch(() => UIStore.isSearchOpen, async (isOpen) => {
 // TODO: 随机展示热门搜索词
 const word = ref('')
 const activeIndex = ref(0)
-const listResult = ref()
+const listResult = ref<HTMLOListElement>()
 
 const { data: result, execute: execSearch, status } = await useAsyncData(
     word.value,
@@ -18,7 +18,11 @@ const { data: result, execute: execSearch, status } = await useAsyncData(
     { immediate: false, transform: data => data.value },
 )
 
-watchDebounced(word, () => word.value && execSearch(), { debounce: 300 })
+watchDebounced(word, () => {
+    activeIndex.value = 0
+    word.value && execSearch()
+}, { debounce: 300 })
+
 useEventListener('keydown', (event) => {
     if ((event.ctrlKey || event.metaKey)
         && event.key.toLowerCase() === 'k') {
@@ -27,28 +31,21 @@ useEventListener('keydown', (event) => {
     }
 })
 
-watch(activeIndex, () => {
-    listResult.value?.children[activeIndex.value].scrollIntoView({ block: 'nearest' })
-})
-
-function handleKey(event: KeyboardEvent) {
+watch(activeIndex, (newVal, oldVal) => {
     if (!result.value?.length)
         return
-    if (event.key === 'Enter') {
-        const item = listResult.value.children[activeIndex.value] as HTMLLIElement
-        item.dispatchEvent(new Event('click'))
+    if (newVal < 0 || newVal >= result.value?.length) {
+        activeIndex.value = oldVal
     }
-    else if (event.key === 'ArrowDown') {
-        event.preventDefault()
-        activeIndex.value = Math.min(result.value?.length - 1, activeIndex.value + 1)
-    }
-    else if (event.key === 'ArrowUp') {
-        event.preventDefault()
-        activeIndex.value = Math.max(0, activeIndex.value - 1)
-    }
-    else {
-        activeIndex.value = 0
-    }
+    (listResult.value?.children[activeIndex.value] as HTMLLIElement).scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+    })
+})
+
+function openActiveItem() {
+    const item = listResult.value?.children[activeIndex.value] as HTMLLIElement
+    item.dispatchEvent(new Event('click'))
 }
 </script>
 
@@ -62,45 +59,50 @@ function handleKey(event: KeyboardEvent) {
     </Transition>
     <Transition>
         <div v-if="UIStore.isSearchOpen" id="z-search">
-            <form @submit.prevent>
-                <div class="input">
-                    <Icon :class="{ searching: status === 'pending' }" name="ph:magnifying-glass-bold" />
-                    <input
-                        ref="searchInput"
-                        v-model="word"
-                        class="search-input"
-                        placeholder="键入开始搜索"
-                        @keydown="handleKey"
-                    >
-                    <Icon v-if="word" class="close" name="ph:x-bold" @click="word = ''" />
-                </div>
-                <TransitionGroup>
-                    <div v-if="word && status === 'success' && !result?.length" class="no-result">
-                        <div>无结果</div>
-                    </div>
-                    <ol
-                        v-if="word && result?.length"
-                        ref="listResult"
-                        class="scrollcheck-y search-result"
-                    >
-                        <TransitionGroup>
-                            <ZSearchItem
-                                v-for="(item, index) in result"
-                                :key="item.id"
-                                v-bind="item"
-                                :class="{ active: activeIndex === index }"
-                                @click="UIStore.toggleSearch"
-                                @mouseover="activeIndex = index"
-                            />
-                        </TransitionGroup>
-                    </ol>
-                    <div v-if="word && result?.length" class="tip">
-                        <kbd>↑</kbd> <kbd>↓</kbd> 切换&emsp;
-                        <kbd>Enter</kbd> 选择&emsp;
-                        <kbd>Esc</kbd> 关闭
-                    </div>
-                </TransitionGroup>
+            <form class="input" @submit.prevent>
+                <Icon :class="{ searching: status === 'pending' }" name="ph:magnifying-glass-bold" />
+                <input
+                    ref="searchInput"
+                    v-model="word"
+                    class="search-input"
+                    placeholder="键入开始搜索"
+                >
+                <Icon v-if="word" class="close" name="ph:x-bold" @click="word = ''" />
             </form>
+            <TransitionGroup name="maxheight">
+                <div v-if="word && status === 'success' && !result?.length" class="no-result">
+                    <div>无结果</div>
+                </div>
+                <ol
+                    v-if="word && result?.length"
+                    ref="listResult"
+                    class="scrollcheck-y search-result"
+                >
+                    <TransitionGroup>
+                        <ZSearchItem
+                            v-for="(item, index) in result"
+                            :key="item.id"
+                            v-bind="item"
+                            :class="{ active: activeIndex === index }"
+                            @click="UIStore.toggleSearch"
+                            @mouseover="activeIndex = index"
+                        />
+                    </TransitionGroup>
+                </ol>
+                <div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
+                    <ZKey code="ArrowUp" @press="activeIndex--">
+                        ↑
+                    </ZKey> <ZKey code="ArrowDown" @press="activeIndex++">
+                        ↓
+                    </ZKey> 切换&emsp;
+                    <ZKey code="Enter" @press="openActiveItem">
+                        Enter
+                    </ZKey> 选择&emsp;
+                    <ZKey code="Escape" @press="UIStore.toggleSearch">
+                        Esc
+                    </ZKey> 关闭
+                </div>
+            </TransitionGroup>
         </div>
     </Transition>
 </template>
@@ -197,6 +199,9 @@ function handleKey(event: KeyboardEvent) {
     max-height: 75dvh;
     transition: all 0.5s;
 
+    // FIXME: 滚动边距
+    scroll-margin: 2rem;
+
     &.v-enter-from,
     &.v-leave-to {
         opacity: 0;
@@ -209,7 +214,7 @@ function handleKey(event: KeyboardEvent) {
 }
 
 .tip {
-    padding: 0.5em;
+    margin: 0 1em 0.5rem;
     font-size: 0.8em;
     text-align: center;
     color: var(--c-text-3);
