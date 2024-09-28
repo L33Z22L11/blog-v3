@@ -11,15 +11,30 @@ const categoryLabel = props.categories?.[0]
 const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
 
 // TODO: Update reason display
+
+const shareText = `【${appConfig.title}】${props.title}\n\n${
+    props.description ? `${props.description}\n\n` : ''}${
+    new URL(props._path!, appConfig.url).href}`
+
+const btnShareByText = useTemplateRef('text-share')
+useCopy(btnShareByText, btnShareByText, shareText)
 </script>
 
 <template>
     <!-- 💩夸克浏览器，桌面端只有IE不支持 :has() 了 -->
     <div class="post-header" :class="{ 'has-cover': image, 'text-revert': cover_revert }">
         <!-- TODO: 优化卡片布局 -->
-        <!-- TODO: 生成分享文案和图片 -->
+        <!-- TODO: 生成分享图片 -->
         <NuxtImg v-if="image" class="post-cover" :src="image" :alt="title" />
         <div class="post-nav">
+            <div class="operations">
+                <ZButton ref="text-share" icon="ph:share-bold">
+                    文字分享
+                </ZButton>
+                <ZButton v-if="false" ref="image-share" icon="ph:share-bold">
+                    图片分享
+                </ZButton>
+            </div>
             <div v-if="!hideInfo" class="post-info">
                 <time
                     v-if="date"
@@ -63,6 +78,10 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
         border-radius: 0;
     }
 
+    &:hover .operations {
+        opacity: 1;
+    }
+
     &.has-cover {
         position: relative;
         overflow: hidden;
@@ -92,6 +111,15 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
     }
 }
 
+.operations {
+    position: absolute;
+    opacity: 0;
+    right: 1em;
+    color: var(--c-text-1);
+    transition: opacity 0.2s;
+    z-index: 1;
+}
+
 .post-cover {
     position: absolute;
     inset: 0;
@@ -108,6 +136,7 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
 }
 
 .post-nav {
+    position: relative;
     opacity: 0.9;
     padding: 0.8em 1rem;
 
