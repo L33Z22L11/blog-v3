@@ -5,8 +5,7 @@ const props = defineProps< { useUpdated?: boolean } & ArticleProps>()
 
 const appConfig = useAppConfig()
 
-const publishedLabel = getPostDate(props.date)
-const updatedLabel = getPostDate(props.updated)
+const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 
 const categoryLabel = props.categories?.[0]
 const categoryColor = appConfig.article.categories[categoryLabel!]?.color
@@ -24,19 +23,22 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
                 {{ description }}
             </p>
             <div class="article-info" data-allow-mismatch>
-                <time v-if="date" :datetime="date" :title="getLocaleDatetime(date)">
-                    <Icon name="ph:calendar-dots-bold" />
-                    {{ publishedLabel }}
-                </time>
-                <!-- FIXME: 按更新日期排序时应当优先显示更新日期 -->
                 <time
-                    v-if="isTimeDiffSignificant(date, updated)"
+                    v-if="showAllDate || !useUpdated"
+                    :datetime="date"
+                    :title="getLocaleDatetime(date)"
+                >
+                    <Icon name="ph:calendar-dots-bold" />
+                    {{ getPostDate(date) }}
+                </time>
+                <time
+                    v-if="showAllDate || useUpdated"
                     :class="{ 'use-updated': useUpdated }"
                     :datetime="updated"
                     :title="getLocaleDatetime(updated)"
                 >
                     <Icon name="ph:calendar-plus-bold" />
-                    {{ updatedLabel }}
+                    {{ getPostDate(props.updated) }}
                 </time>
                 <span
                     v-if="categoryLabel"
