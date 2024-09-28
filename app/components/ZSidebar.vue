@@ -161,7 +161,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
     color: var(--c-text-2);
 
     > * {
-        margin-block: clamp(0.5rem, 1rem, 5vh);
+        margin-block: clamp(0.5rem, 3vh, 1rem);
     }
 }
 </style>

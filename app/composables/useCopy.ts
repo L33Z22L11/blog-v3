@@ -1,4 +1,4 @@
-import ClipboardJS from 'clipboard'
+import 'tippy.js/dist/tippy.css'
 
 export default function (
     trigger: MaybeRefOrGetter<HTMLElement | null>,
@@ -12,6 +12,7 @@ export default function (
 
     useEventListener(trigger, 'click', async () => {
         try {
+            // TODO: use useClipboard()
             await navigator.clipboard.writeText(getText())
             showTooltipMessage(elTrigger.value, '已复制')
         }
