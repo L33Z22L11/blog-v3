@@ -12,7 +12,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
     <!-- 此处不能使用 Transition，因为半宽屏状态始终显示 -->
     <aside id="z-sidebar" :class="{ show: UIStore.isSidebarOpen }">
         <ZhiluHeader class="sidebar-header" to="/" />
-        <nav class="sidebar-nav">
+        <nav class="sidebar-nav scrollcheck-y">
             <div class="search-btn sidebar-nav-item gradient-card" @click="UIStore.toggleSearch">
                 <Icon name="ph:magnifying-glass-bold" />
                 <span class="nav-text">搜索</span>
@@ -35,6 +35,9 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
         </nav>
         <footer class="sidebar-footer">
             <ThemeToggle />
+            <menu class="sidebar-footer-nav">
+                <ZIconNavList :list="appConfig.footer.iconNav" />
+            </menu>
         </footer>
     </aside>
 </template>
@@ -42,8 +45,8 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 <style scoped lang="scss">
 // TODO: 减少侧边栏代码冗余
 #z-sidebar {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+    display: flex;
+    flex-direction: column;
     color: var(--c-text-2);
 
     @media (max-width: $breakpoint-mobile) {
@@ -51,7 +54,6 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
         left: -100%;
         width: 320px;
         max-width: 100%;
-        padding: 0 0.5rem;
         box-shadow: 0 0 1rem var(--ld-shadow);
         background-color: var(--ld-bg-blur);
         backdrop-filter: blur(0.5rem);
@@ -83,7 +85,9 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 }
 
 .sidebar-nav {
-    padding: 0 0.5rem;
+    flex-grow: 1;
+    top: 0;
+    padding: 0 5%;
     font-size: 0.9em;
 
     h3 {
@@ -152,9 +156,12 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 }
 
 .sidebar-footer {
-    padding-block: 1rem;
     font-size: 0.8em;
     text-align: center;
     color: var(--c-text-2);
+
+    > * {
+        margin-block: clamp(0.5rem, 1rem, 5vh);
+    }
 }
 </style>

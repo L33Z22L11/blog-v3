@@ -13,11 +13,11 @@ const activeTab = ref(Number(props.active) || 1)
     <div :class="{ center }">
         <div class="tabs">
             <button
-                v-for="(tab, index) in tabs"
-                :key="index"
+                v-for="(tab, tabIndex) in tabs"
+                :key="tabIndex"
                 type="button"
-                :class="{ active: activeTab === index + 1 }"
-                @click="activeTab = index + 1"
+                :class="{ active: activeTab === tabIndex + 1 }"
+                @click="activeTab = tabIndex + 1"
             >
                 {{ tab }}
             </button>

@@ -25,13 +25,13 @@ onMounted(() => {
     <!-- TODO: 切换主题时的动画 -->
     <div class="theme-toggle">
         <button
-            v-for="(themeData, key) in themes"
-            :key="key"
+            v-for="(themeData, themeIndex) in themes"
+            :key="themeIndex"
             ref="themeToggle"
             type="button"
             :aria-label="themeData.tip"
-            :class="{ active: colorMode.preference === key }"
-            @click="toggleTheme(key)"
+            :class="{ active: colorMode.preference === themeIndex }"
+            @click="toggleTheme(themeIndex)"
         >
             <Icon :name="themeData.icon" />
         </button>

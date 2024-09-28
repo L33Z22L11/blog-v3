@@ -54,6 +54,9 @@ aside {
         // 使较小宽度的内容占满
         flex-grow: 1;
 
+        // 会使一部分元素吸顶失效
+        // overflow: hidden;
+
         // 使内容正确计算宽度而不横向溢出
         // 也可设置 width: 0 或者 contain: inline-size（兼容性不佳）
         min-width: 0;

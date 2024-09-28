@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { SearchResult } from 'minisearch'
 
-interface Props extends SearchResult {
+interface SIProps extends SearchResult {
     title: string
     content: string
     titles: string[]
 }
 
-const props = defineProps<Partial<Props>>()
+const props = defineProps<Partial<SIProps>>()
 
 const title = computed(() => [...props.titles ?? [], props.title].join(' > '))
 const isPara = computed(() => props.titles?.length)
@@ -21,15 +21,13 @@ const highlightContent = computed(() => highlightHTML(props.content ?? '', word.
 
 <template>
     <ZRawLink :to="id" class="search-item" :class="{ para: isPara }">
-        <menu>
-            <h2>
-                <Badge v-if="!isPara" round>
-                    文章
-                </Badge>
-                <span v-html="highlightTitle" />
-            </h2>
-            <p class="content" v-html="highlightContent" />
-        </menu>
+        <h2>
+            <Badge v-if="!isPara" round>
+                文章
+            </Badge>
+            <span v-html="highlightTitle" />
+        </h2>
+        <p class="content" v-html="highlightContent" />
     </ZRawLink>
 </template>
 
@@ -53,7 +51,7 @@ const highlightContent = computed(() => highlightHTML(props.content ?? '', word.
         font-size: 1em;
 
         .badge {
-            margin-right: 0.2em;
+            margin-right: 0.5em;
             font-size: 0.8em;
             color: var(--c-primary);
         }

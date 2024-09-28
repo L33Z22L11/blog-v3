@@ -80,12 +80,12 @@ function openActiveItem() {
                 >
                     <TransitionGroup>
                         <ZSearchItem
-                            v-for="(item, index) in result"
+                            v-for="(item, itemIndex) in result"
                             :key="item.id"
                             v-bind="item"
-                            :class="{ active: activeIndex === index }"
+                            :class="{ active: activeIndex === itemIndex }"
                             @click="UIStore.toggleSearch"
-                            @mouseover="activeIndex = index"
+                            @mouseover="activeIndex = itemIndex"
                         />
                     </TransitionGroup>
                 </ol>

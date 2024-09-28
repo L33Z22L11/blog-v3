@@ -6,10 +6,11 @@ const appConfig = useAppConfig()
     <ZRawLink class="zhilu-header">
         <div v-if="appConfig.header.emojiTail" class="emoji-tail">
             <span
-                v-for="(char, index) in appConfig.header.emojiTail"
-                :key="index"
-                :style="`--delay: ${index * .6 - 3}s`"
-            >{{ char }}</span>
+                v-for="(emoji, emojiIndex) in appConfig.header.emojiTail"
+                :key="emojiIndex"
+                :style="{ '--delay': `${emojiIndex * .6 - 3}s` }"
+                v-text="emoji"
+            />
         </div>
         <NuxtImg
             :src="appConfig.header.logo"
@@ -20,10 +21,11 @@ const appConfig = useAppConfig()
         <div v-if="appConfig.header.text" class="zhilu-text">
             <div class="header-title">
                 <span
-                    v-for="(char, index) in appConfig.title"
-                    :key="index"
-                    :style="`--delay:${(index + 1) * .1}s`"
-                >{{ char }}</span>
+                    v-for="(char, charIndex) in appConfig.title"
+                    :key="charIndex"
+                    :style="{ '--delay': `${(charIndex + 1) * .1}s` }"
+                    v-text="char"
+                />
             </div>
             <div class="header-subtitle">
                 {{ appConfig.header.subtitle }}
@@ -38,7 +40,7 @@ const appConfig = useAppConfig()
     align-items: center;
     gap: 0.5em;
     position: relative;
-    margin: 2.5rem 1rem 1rem;
+    margin: clamp(1rem, 2rem, 5vh) 1rem min(1rem, 5vh);
     line-height: initial;
     color: var(--c-text);
     user-select: none;

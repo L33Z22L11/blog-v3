@@ -19,10 +19,8 @@ const appConfig = useAppConfig()
                 </menu>
             </div>
         </nav>
-        <p>
-            {{ appConfig.footer.copyright }}<br>
-            {{ appConfig.footer.message }}
-        </p>
+        <p v-html="appConfig.footer.copyright" />
+        <p v-html="appConfig.footer.message" />
     </footer>
 </template>
 
@@ -58,6 +56,10 @@ const appConfig = useAppConfig()
                 color: var(--c-text);
             }
         }
+    }
+
+    p {
+        margin: 0.5em;
     }
 }
 </style>
