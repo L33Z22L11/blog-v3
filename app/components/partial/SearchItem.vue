@@ -43,10 +43,6 @@ const highlightContent = computed(() => highlightHTML(props.content ?? '', word.
         background-color: var(--c-bg-soft);
     }
 
-    & + & {
-        margin-top: 0.5em;
-    }
-
     h2 {
         font-size: 1em;
 
@@ -63,6 +59,7 @@ const highlightContent = computed(() => highlightHTML(props.content ?? '', word.
 
     .content {
         font-size: 0.8em;
+        white-space: pre-line;
         color: var(--c-text-2);
     }
 }

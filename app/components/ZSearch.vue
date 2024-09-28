@@ -69,16 +69,16 @@ function openActiveItem() {
                 >
                 <Icon v-if="word" class="close" name="ph:x-bold" @click="word = ''" />
             </form>
-            <TransitionGroup name="maxheight">
+            <TransitionGroup name="expand">
                 <div v-if="word && status === 'success' && !result?.length" class="no-result">
-                    <div>无结果</div>
+                    无结果
                 </div>
                 <ol
                     v-if="word && result?.length"
                     ref="list-result"
                     class="scrollcheck-y search-result"
                 >
-                    <TransitionGroup>
+                    <TransitionGroup name="expand">
                         <ZSearchItem
                             v-for="(item, itemIndex) in result"
                             :key="item.id"
@@ -181,17 +181,10 @@ function openActiveItem() {
 .no-result {
     // 设置 max-height 时不要设置 padding
     max-height: 5em;
+    padding: 1em 1em 2em;
     text-align: center;
     color: var(--c-text-3);
     transition: all 0.5s;
-
-    div { padding: 1em 1em 2em; }
-
-    &.v-enter-from,
-    &.v-leave-to {
-        opacity: 0;
-        max-height: 0;
-    }
 }
 
 .search-result {
@@ -201,22 +194,32 @@ function openActiveItem() {
 
     // FIXME: 滚动边距
     scroll-margin: 2rem;
-
-    &.v-enter-from,
-    &.v-leave-to {
-        opacity: 0;
-        max-height: 0;
-    }
 }
 
 .search-item {
-    transition: all 0.5s, background-color 0.1s;
+    transition: all 0.5s, background-color 0.1s, opacity 0.2s;
+
+    &.expand-enter-to,
+    &.expand-leave-from {
+        max-height: 10em;
+    }
 }
 
 .tip {
+    max-height: 1rem;
     margin: 0 1em 0.5rem;
     font-size: 0.8em;
     text-align: center;
     color: var(--c-text-3);
+    transition: all 0.5s;
+}
+
+// 注意 CSS 优先级
+.expand-enter-from,
+.expand-leave-to {
+    opacity: 0;
+    max-height: 0;
+    margin-block: 0;
+    padding-block: 0;
 }
 </style>

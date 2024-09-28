@@ -27,10 +27,11 @@ export function getPromptLanguage(prompt: string) {
 }
 
 export function highlightHTML(text: string, word: string, className: string = 'highlight') {
-    text = text.replace(/\n+/g, '<br>')
     const pattern = new RegExp(word, 'gi')
-    const highlightedText = text.replace(pattern, matched =>
-        `<span class="${className}">${matched}</span>`)
+    const highlightedText = text
+        .replace(pattern, matched => `<span class="${className}">${matched}</span>`)
+        // CSS white-space: pre-line 即可保留但合并连续的空白符
+        // .replace(/\n+/g, '<br>')
     return highlightedText
 }
 
