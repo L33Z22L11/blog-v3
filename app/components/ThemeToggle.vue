@@ -1,37 +1,27 @@
 <script setup lang="ts">
-import tippy from 'tippy.js'
-import 'tippy.js/dist/tippy.css'
-
 const appConfig = useAppConfig()
 const colorMode = useColorMode()
 const themeToggle = ref<HTMLDivElement[] | undefined>()
 
 const themes = appConfig.themes
 type ThemeType = keyof typeof themes
-function toggleTheme(key: ThemeType) {
-    colorMode.preference = key
+function toggleTheme(themeName: ThemeType) {
+    colorMode.preference = themeName
 }
-
-// TODO: 使用 useTooltip()
-onMounted(() => {
-    themeToggle.value?.forEach((button, index) => {
-        const key = Object.keys(themes)[index] as ThemeType
-        tippy(button, { content: themes[key].tip })
-    })
-})
 </script>
 
 <template>
     <!-- TODO: 切换主题时的动画 -->
     <div class="theme-toggle">
         <button
-            v-for="(themeData, themeIndex) in themes"
-            :key="themeIndex"
+            v-for="(themeData, themeName) in themes"
+            :key="themeName"
             ref="themeToggle"
+            v-tippy="themeData.tip"
             type="button"
             :aria-label="themeData.tip"
-            :class="{ active: colorMode.preference === themeIndex }"
-            @click="toggleTheme(themeIndex)"
+            :class="{ active: colorMode.preference === themeName }"
+            @click="toggleTheme(themeName)"
         >
             <Icon :name="themeData.icon" />
         </button>

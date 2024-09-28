@@ -10,7 +10,7 @@ watch(() => UIStore.isSearchOpen, async (isOpen) => {
 // TODO: 随机展示热门搜索词
 const word = ref('')
 const activeIndex = ref(0)
-const listResult = ref<HTMLOListElement>()
+const listResult = useTemplateRef('list-result')
 
 const { data: result, execute: execSearch, status } = await useAsyncData(
     word.value,
@@ -75,7 +75,7 @@ function openActiveItem() {
                 </div>
                 <ol
                     v-if="word && result?.length"
-                    ref="listResult"
+                    ref="list-result"
                     class="scrollcheck-y search-result"
                 >
                     <TransitionGroup>

@@ -26,10 +26,10 @@ const meta = computed(() => {
 
 const isWrap = ref<boolean>(Boolean(meta.value.wrap))
 
-const elCodeblock = ref<HTMLElement>()
-const elCopyBtn = ref<HTMLElement>()
+const codeblock = useTemplateRef('codeblock')
+const copyBtn = useTemplateRef('copy-btn')
 
-useCopy(elCopyBtn, elCodeblock)
+useCopy(copyBtn, codeblock)
 </script>
 
 <template>
@@ -40,7 +40,7 @@ useCopy(elCopyBtn, elCodeblock)
                 <button @click="isWrap = !isWrap">
                     {{ isWrap ? '横向滚动' : '自动换行' }}
                 </button>
-                <button ref="elCopyBtn">
+                <button ref="copy-btn">
                     复制
                 </button>
             </div>
@@ -54,7 +54,7 @@ useCopy(elCopyBtn, elCodeblock)
         <span v-if="language" class="language">{{ language }}</span>
         <!-- 嘿嘿，不要换行 -->
         <pre
-            ref="elCodeblock"
+            ref="codeblock"
             class="scrollcheck-x"
             :class="[props.class, { wrap: isWrap }]"
         ><slot /></pre>

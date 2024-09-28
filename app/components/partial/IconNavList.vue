@@ -1,28 +1,16 @@
 <script setup lang="ts">
 import type { NavItem } from '~/types/nav'
 
-const props = defineProps<{
+defineProps<{
     list: NavItem[]
 }>()
-
-const tip = ref<HTMLLIElement[]>()
-
-console.log(tip.value)
-
-onMounted(() => {
-    props.list.forEach((item, index) => {
-        useTooltip(tip.value?.[index], item.text)
-    })
-})
 </script>
 
 <template>
     <menu>
-        <li v-for="item in list" ref="tip" :key="item.text">
-            <ZRawLink :to="item.url">
-                <Icon :name="item.icon" />
-            </ZRawLink>
-        </li>
+        <ZRawLink v-for="item in list" :key="item.text" v-tippy="item.text" :to="item.url">
+            <Icon :name="item.icon" />
+        </ZRawLink>
     </menu>
 </template>
 
@@ -30,6 +18,19 @@ onMounted(() => {
 menu {
     display: flex;
     justify-content: center;
-    gap: clamp(0.5rem, 5%, 1rem);
+
+    a {
+        padding: 0.5em;
+        border-radius: 2em;
+        transition: background-color 0.2s;
+
+        &:hover {
+            background-color: var(--c-bg-soft);
+        }
+
+        .iconify {
+            display: block;
+        }
+    }
 }
 </style>

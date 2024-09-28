@@ -1,24 +1,7 @@
-import type { Props as TProps } from 'tippy.js'
-import tippy from 'tippy.js'
-import 'tippy.js/dist/tippy.css'
-
-export default function (
-    el: Ref<HTMLElement | undefined>,
-    message: string,
-    options?: Partial<TProps>,
-) {
-    onMounted(() => {
-        if (!el.value)
-            return
-        tippy(el.value, {
-            ...options,
-            content: message,
-        })
-    })
-}
+import { tippy } from 'vue-tippy'
 
 export function showTooltipMessage(
-    el: HTMLElement | undefined,
+    el: HTMLElement | null,
     message: string,
     timeout = 1000,
 ) {

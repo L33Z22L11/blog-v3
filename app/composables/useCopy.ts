@@ -1,8 +1,8 @@
 import ClipboardJS from 'clipboard'
 
 export default function (
-    trigger: MaybeRefOrGetter<HTMLElement>,
-    target: MaybeRefOrGetter<HTMLInputElement | HTMLElement>,
+    trigger: MaybeRefOrGetter<HTMLElement | null>,
+    target: MaybeRefOrGetter<HTMLInputElement | HTMLElement | null>,
 ) {
     const elTrigger = toRef(trigger)
     const elTarget = toRef(target)

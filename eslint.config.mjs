@@ -7,7 +7,6 @@ export default antfu({
     rules: {
         // 'json/indent': ['error', 2],
         'jsonc/indent': ['error', 2],
-        'vue/enforce-style-attribute': ['error', { allow: ['scoped'] }],
         'vue/block-lang': ['error', {
             script: {
                 lang: ['ts'],
@@ -16,6 +15,8 @@ export default antfu({
                 lang: ['scss'],
             },
         }],
+        'vue/enforce-style-attribute': ['error', { allow: ['scoped'] }],
+        'vue/no-unused-refs': 'off',
         'yaml/indent': ['error', 2],
     },
 })

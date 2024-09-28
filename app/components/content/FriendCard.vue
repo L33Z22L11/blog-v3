@@ -1,11 +1,7 @@
 <script setup lang="ts">
-import tippy from 'tippy.js'
 import type { Friend } from '~/types/friend'
-import 'tippy.js/dist/tippy.css'
 
 const props = defineProps<Friend>()
-const friendCard = ref<HTMLElement>()
-
 const mainDomain = getMainDomain(props.link)
 const domainType = getDomainType(mainDomain)
 
@@ -15,19 +11,14 @@ const tip = joinWithBR(
     `${props.date ?? ''} ${props.link}`,
     `${props.comment ? `备注：${props.comment}` : ''}`,
 )
-
-onMounted(() => {
-    tippy(unrefElement(friendCard)!, {
-        allowHTML: true,
-        delay: [200, 0],
-        content: tip,
-    })
-})
 </script>
 
 <template>
     <!-- 覆盖掉 noreferrer，情绪价值给足 -->
-    <ZRawLink ref="friendCard" class="friend-card gradient-card" :to="link" rel="noopener">
+    <ZRawLink
+        v-tippy="{ allowHTML: true, delay: [200, 0], content: tip }"
+        class="friend-card gradient-card" :to="link" rel="noopener"
+    >
         <NuxtImg class="icon" :src="icon" :alt="name" />
         <div class="card-content">
             <div class="name-title">
@@ -40,11 +31,8 @@ onMounted(() => {
                     <Icon v-if="domainType" class="domain-mark" :name="domainType.icon" />
                 </span>
                 <Icon
-                    v-for="arch in archs"
-                    :key="arch"
-                    class="arch"
-                    :name="getArchIcon(arch)"
-                    :title="arch"
+                    v-for="arch in archs" :key="arch"
+                    class="arch" :name="getArchIcon(arch)" :title="arch"
                 />
             </div>
         </div>

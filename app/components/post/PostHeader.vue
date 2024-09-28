@@ -10,12 +10,7 @@ const updatedLabel = getPostDate(props.updated)
 const categoryLabel = props.categories?.[0]
 const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
 
-const postDate = ref<HTMLElement>()
-const postUpdated = ref<HTMLElement>()
 // TODO: Update reason display
-
-useTooltip(postDate, `创建于 ${getLocaleDatetime(props.date)}`)
-useTooltip(postUpdated, `修改于 ${getLocaleDatetime(props.updated)}`)
 </script>
 
 <template>
@@ -26,9 +21,17 @@ useTooltip(postUpdated, `修改于 ${getLocaleDatetime(props.updated)}`)
         <NuxtImg v-if="image" class="post-cover" :src="image" :alt="title" />
         <div class="post-nav">
             <div v-if="!hideInfo" class="post-info">
-                <time v-if="date" ref="postDate" :datetime="date">
+                <time
+                    v-if="date"
+                    v-tippy="`创建于 ${getLocaleDatetime(props.date)}`"
+                    :datetime="date"
+                >
                     <Icon name="ph:calendar-dots-bold" /> {{ publishedLabel }}</time>
-                <time v-if="isTimeDiffSignificant(date, updated, .999)" ref="postUpdated" :datetime="updated">
+                <time
+                    v-if="isTimeDiffSignificant(date, updated, .999)"
+                    v-tippy="`修改于 ${getLocaleDatetime(props.updated)}`"
+                    :datetime="updated"
+                >
                     <Icon name="ph:calendar-plus-bold" /> {{ updatedLabel }}</time>
                 <span v-if="categoryLabel" class="article-category">
                     <Icon :name="categoryIcon" /> {{ categoryLabel }}

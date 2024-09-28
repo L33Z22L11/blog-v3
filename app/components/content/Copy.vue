@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { createPlainShiki } from 'plain-shiki'
+import { useTippy } from 'vue-tippy'
 
 const props = defineProps<{
     code?: string
@@ -18,10 +19,9 @@ const language = computed(() => props.language ?? getPromptLanguage(prompt.value
 const initialCommand = computed(() => slots.default?.()[0]?.children ?? props.command)
 const command = ref(initialCommand.value)
 const showUndo = ref(false)
-const commandInput = ref<HTMLElement>()
-const copyBtn = ref<HTMLElement>()
+const commandInput = useTemplateRef('command-input')
+const copyBtn = useTemplateRef('copy-btn')
 
-useTooltip(commandInput, '可以修改命令后再复制', { trigger: 'focus' })
 useCopy(copyBtn, commandInput)
 
 watch(command, (newVal) => {
@@ -60,7 +60,7 @@ onMounted(async () => {
         <span v-if="!noprompt" class="prompt">{{ prompt }}</span>
         <!-- FIXME: Type mismatch -->
         <div
-            ref="commandInput"
+            ref="command-input"
             contenteditable="plaintext-only"
             class="code scrollcheck-x"
             @beforeinput="beforeInput"
@@ -70,7 +70,7 @@ onMounted(async () => {
         <button v-if="showUndo" class="operation" @click="undo">
             <Icon name="ph:arrow-u-up-left-bold" />
         </button>
-        <button ref="copyBtn" class="operation">
+        <button ref="copy-btn" v-tippy="'复制'" class="operation">
             <Icon name="ph:copy-bold" />
         </button>
     </code>
