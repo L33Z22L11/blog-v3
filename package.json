@@ -6,7 +6,7 @@
   "packageManager": "pnpm@9.11.0",
   "scripts": {
     "prepare": "nuxi prepare",
-    "dev": "nuxi dev --no-qr --host",
+    "dev": "nuxi dev --no-qr",
     "build": "cross-env NODE_OPTIONS='--no-deprecation' nuxi build",
     "generate": "nuxi generate",
     "preview": "nuxi preview",

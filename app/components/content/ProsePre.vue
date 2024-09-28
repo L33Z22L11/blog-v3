@@ -28,6 +28,7 @@ const isWrap = ref<boolean>(Boolean(meta.value.wrap))
 
 const elCodeblock = ref<HTMLElement>()
 const elCopyBtn = ref<HTMLElement>()
+
 useCopy(elCopyBtn, elCodeblock)
 </script>
 

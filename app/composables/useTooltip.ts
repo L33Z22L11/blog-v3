@@ -17,7 +17,7 @@ export default function (
     })
 }
 
-export function useTooltipMessageMounted(
+export function showTooltipMessage(
     el: HTMLElement | undefined,
     message: string,
     timeout = 1000,

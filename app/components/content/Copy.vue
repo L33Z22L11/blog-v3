@@ -38,7 +38,7 @@ function beforeInput(event: InputEvent) {
     const { data, inputType } = event
     if (data?.includes('\n') || inputType === 'insertLineBreak') {
         event.preventDefault()
-        useTooltipMessageMounted(event.target as HTMLElement, '不支持换行')
+        showTooltipMessage(event.target as HTMLElement, '不支持换行')
     }
 }
 

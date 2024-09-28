@@ -61,6 +61,15 @@ export default defineNuxtConfig({
         '@/assets/css/reusable.scss',
     ],
 
+    devServer: {
+        host: '0.0.0.0',
+        port: 443,
+        https: {
+            key: './ssl/zhilu-y.key',
+            cert: './ssl/zhilu-y.crt',
+        },
+    },
+
     experimental: {
         viewTransition: true,
     },
