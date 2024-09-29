@@ -4,13 +4,8 @@
     </h3>
     <div class="widget-card gbc-bg">
         <!-- TODO: 优化技术架构展示 -->
-        <p>域名启用 DNSSEC 和 HSTS，博客由 Vercel 托管，由 Nuxt Content 驱动，使用去图图床。</p>
-        <p>
-            获得省级、国家级认证如下：<br>
-            江苏:<span class="m-finger">跳转反诈宣传</span><br>
-            重庆:<span class="m-finger">DNS污染</span><br>
-            移动:<span class="m-finger">多省阻断解析</span>
-        </p>
+        <p>博客由 Vercel 托管，由 Nuxt Content 驱动。</p>
+
     </div>
 </template>
 

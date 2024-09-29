@@ -1,12 +1,12 @@
 // 存储 nuxt.config 和 app.config 共用的配置
 export default {
-    title: '纸鹿摸鱼处',
-    description: '纸鹿本鹿的个人博客，分享技术与生活。折腾不止，摸鱼生活——摸门🙏🏻',
+    title: '希乐博客',
+    description: 'Xlenco的个人博客，分享技术与生活。',
     author: {
-        name: '纸鹿本鹿',
-        avatar: 'https://www.zhilu.cyou/api/avatar.png',
-        email: 'hi@zhilu.cyou',
-        homepage: 'https://zhilu.cyou/',
+        name: 'Xlenco',
+        avatar: 'https://q.qlogo.cn/headimg_dl?dst_uin=1043865083&spec=640&img_type=webp',
+        email: 'xlenco@email.cn',
+        homepage: 'https://xlenco.top/',
     },
     copyright: {
         abbr: 'CC BY-NC-SA 4.0',
@@ -15,9 +15,9 @@ export default {
     },
     favicon: 'https://www.zhilu.cyou/api/icon.png',
     language: 'zh-CN',
-    timeEstablished: '2019-07-20',
+    timeEstablished: '2022-07-20',
     timezone: 'Asia/Shanghai',
-    url: 'https://blog.zhilu.cyou/',
+    url: 'https://blog.xlenco.top/',
 
     feed: {
         limit: 50,

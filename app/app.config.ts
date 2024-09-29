@@ -21,9 +21,9 @@ export default defineAppConfig({
     footer: {
         copyright: `© ${new Date().getFullYear()} ${blogConfig.author.name}`,
         iconNav: <NavItem[]>[
-            { icon: 'ph:house-bold', text: '个人主页', url: 'https://zhilu.cyou/' },
-            { icon: 'ri:qq-line', text: '交流群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
-            { icon: 'ph:github-logo-bold', text: 'GitHub: L33Z22L11', url: 'https://github.com/L33Z22L11' },
+            { icon: 'ph:house-bold', text: '个人主页', url: 'https://xlenco.top/' },
+           // { icon: 'ri:qq-line', text: '交流群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
+            { icon: 'ph:github-logo-bold', text: 'GitHub: Xlenco', url: 'https://github.com/xlenco' },
             { icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
             { icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
         ],
@@ -31,11 +31,11 @@ export default defineAppConfig({
             { title: '探索', items: [
                 { icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
                 { icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
-                { icon: 'ph:flying-saucer-bold', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
+              //  { icon: 'ph:flying-saucer-bold', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
             ] },
             { title: '社交', items: [
-                { icon: 'ph:github-logo-bold', text: 'L33Z22L11', url: 'https://github.com/L33Z22L11' },
-                { icon: 'ri:qq-line', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
+                { icon: 'ph:github-logo-bold', text: 'xlenco', url: 'https://github.com/xlenco' },
+               // { icon: 'ri:qq-line', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
                 { icon: 'ph:envelope-simple-bold', text: blogConfig.author.email, url: `mailto:${blogConfig.author.email}` },
             ] },
             {
@@ -43,7 +43,7 @@ export default defineAppConfig({
                 items: [
                     { icon: 'ph:code-bold', text: '使用 MIT 协议开源', url: 'https://github.com/L33Z22L11/blog-v3' },
                     { icon: 'ph:swatches-bold', text: '主题灵感源自Stellar', url: '/theme' },
-                    { icon: 'ph:certificate-bold', text: '萌ICP备20246888号', url: 'https://icp.gov.moe/?keyword=20246888' },
+               //     { icon: 'ph:certificate-bold', text: '萌ICP备20246888号', url: 'https://icp.gov.moe/?keyword=20246888' },
                 ],
             },
         ],
@@ -51,9 +51,9 @@ export default defineAppConfig({
     },
 
     header: {
-        logo: 'https://weavatar.com/avatar/47c0f2e82b76d9b10eb3023df9e02e4e3fdbeaf5b74b842063f207971e7fbe7b?s=160',
+        logo: 'https://q.qlogo.cn/headimg_dl?dst_uin=1043865083&spec=640&img_type=webp',
         text: true,
-        subtitle: '纸鹿至麓不知路，支炉制露不止漉',
+        subtitle: '总有人间一两风，吹我十万八千梦',
         emojiTail: ['📄', '🦌', '🙌', '🐟', '🏖️'],
     },
 
@@ -87,6 +87,6 @@ export default defineAppConfig({
 
     twikoo: {
         js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.39/dist/twikoo.all.min.js',
-        envId: 'https://twikoo.zhilu.cyou',
+        envId: 'https://twikoo2.xlenco.top',
     },
 })
