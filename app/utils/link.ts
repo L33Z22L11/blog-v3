@@ -1,4 +1,4 @@
-export const domainType = {
+export const domainType: Record<string, { icon: string, tip: string }> = {
     'github.io': { icon: 'simple-icons:github', tip: 'GitHub Pages 域名' },
     'netlify.app': { icon: 'simple-icons:netlify', tip: 'Netlify 域名' },
     'pages.dev': { icon: 'simple-icons:cloudflare', tip: 'Cloudflare 域名' },
@@ -30,7 +30,7 @@ export function getMainDomain(url: string) {
 }
 
 export function getDomainType(mainDomain: string) {
-    return Reflect.get(domainType, mainDomain)
+    return domainType[mainDomain]
 }
 export function isExtLink(url?: string) {
     if (!url)

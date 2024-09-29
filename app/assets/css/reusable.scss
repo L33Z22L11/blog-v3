@@ -151,6 +151,10 @@ mark {
     vertical-align: text-bottom;
 }
 
+.icon-revert {
+    filter: invert(1) hue-rotate(180deg);
+}
+
 // fallback
 img {
     display: inline-block;

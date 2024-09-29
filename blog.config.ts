@@ -1,3 +1,5 @@
+import type { BundledLanguage } from 'shiki'
+
 // 存储 nuxt.config 和 app.config 共用的配置
 export default {
     title: '纸鹿摸鱼处',
@@ -18,6 +20,8 @@ export default {
     timeEstablished: '2019-07-20',
     timezone: 'Asia/Shanghai',
     url: 'https://blog.zhilu.cyou/',
+
+    fileExtensions: <BundledLanguage[]>['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'java', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'shell', 'ssh-config', 'toml', 'ts', 'tsx', 'vb', 'vue', 'xml', 'yaml'],
 
     feed: {
         limit: 50,

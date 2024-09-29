@@ -1,4 +1,4 @@
-const promptLanguageMap = {
+const promptLanguageMap: Record<string, string> = {
     '$': 'sh',
     '#': 'sh',
     'CMD': 'bat',
@@ -21,7 +21,7 @@ export function formatNumber(num: number) {
 export function getPromptLanguage(prompt: string) {
     for (const promptPrefix in promptLanguageMap) {
         if (prompt.startsWith(promptPrefix))
-            return Reflect.get(promptLanguageMap, promptPrefix)
+            return promptLanguageMap[promptPrefix]
     }
     return 'plaintext'
 }

@@ -13,6 +13,10 @@ const props = withDefaults(defineProps<{
     highlights: () => [],
 })
 
+const colorMode = useColorMode()
+const iconRevert = computed(() => colorMode.value === 'light')
+const icon = computed(() => getFileIcon(props.language))
+
 const meta = computed(() => {
     if (!props.meta)
         return {}
@@ -36,7 +40,10 @@ useCopy(copyBtn, codeblock)
     <figure class="z-codeblock">
         <!-- TODO: 显示文件类型图标 -->
         <figcaption>
-            <span v-if="filename" class="filename">{{ filename }}</span>
+            <span v-if="filename" class="filename">
+                <Icon :class="{ 'icon-revert': iconRevert }" :name="icon" />
+                {{ filename }}
+            </span>
             <span v-if="language" class="language">{{ language }}</span>
             <div class="operations">
                 <button @click="isWrap = !isWrap">
@@ -73,7 +80,7 @@ useCopy(copyBtn, codeblock)
 
 figcaption {
     display: flex;
-    align-items: center;
+    flex-direction: row-reverse;
     justify-content: space-between;
     gap: 1em;
     position: sticky;
@@ -82,6 +89,7 @@ figcaption {
     z-index: 1;
 
     .filename {
+        order: 1;
         padding: 0.2em 0.8em;
         border-radius: 0 0 8px 8px;
         background-color: var(--c-border);
@@ -89,14 +97,15 @@ figcaption {
 
     .language {
         opacity: 0.4;
+        height: 0;
+        padding: 0.2em;
     }
 
     .operations {
         position: absolute;
         opacity: 0;
         top: 0;
-        right: 0;
-        padding: 0.2em 0.8em;
+        padding: 0.2em;
         border-radius: 0 8px 8px;
         background-color: var(--c-bg-2);
         transition: opacity 0.2s;
