@@ -13,8 +13,6 @@ const props = withDefaults(defineProps<{
     highlights: () => [],
 })
 
-const colorMode = useColorMode()
-const iconRevert = computed(() => colorMode.value === 'light')
 const icon = computed(() => getFileIcon(props.language))
 
 const meta = computed(() => {
@@ -41,7 +39,7 @@ useCopy(copyBtn, codeblock)
         <!-- TODO: 显示文件类型图标 -->
         <figcaption>
             <span v-if="filename" class="filename">
-                <Icon :class="{ 'icon-revert': iconRevert }" :name="icon" />
+                <Icon :class="{ 'icon-revert': $colorMode.value === 'light' }" :name="icon" />
                 {{ filename }}
             </span>
             <span v-if="language" class="language">{{ language }}</span>

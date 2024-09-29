@@ -102,7 +102,6 @@ export default defineNuxtConfig({
 
     vue: {
         propsDestructure: true,
-        runtimeCompiler: true,
     },
 
     modules: [

@@ -66,6 +66,8 @@ function openActiveItem() {
                     v-model="word"
                     class="search-input"
                     placeholder="键入开始搜索"
+                    @keydown.up.prevent
+                    @keydown.down.prevent
                 >
                 <Icon v-if="word" class="close" name="ph:x-bold" @click="word = ''" />
             </form>

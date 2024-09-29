@@ -22,6 +22,8 @@ const showUndo = ref(false)
 const commandInput = useTemplateRef('command-input')
 const copyBtn = useTemplateRef('copy-btn')
 
+// FIXME: Type mismatch
+useTippy(commandInput, { content: '可以修改命令后再复制', trigger: 'focus' })
 useCopy(copyBtn, commandInput)
 
 watch(command, (newVal) => {
