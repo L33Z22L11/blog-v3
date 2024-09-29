@@ -34,8 +34,10 @@ useCopy(copyBtn, codeblock)
 
 <template>
     <figure class="z-codeblock">
-        <!-- 改变 DOM 顺序会改变 z-index -->
-        <div class="codeblock-header">
+        <!-- TODO: 显示文件类型图标 -->
+        <figcaption>
+            <span v-if="filename" class="filename">{{ filename }}</span>
+            <span v-if="language" class="language">{{ language }}</span>
             <div class="operations">
                 <button @click="isWrap = !isWrap">
                     {{ isWrap ? '横向滚动' : '自动换行' }}
@@ -44,14 +46,8 @@ useCopy(copyBtn, codeblock)
                     复制
                 </button>
             </div>
-        </div>
-
-        <!-- TODO: 显示文件类型图标 -->
-        <figcaption v-if="filename">
-            {{ filename }}
         </figcaption>
 
-        <span v-if="language" class="language">{{ language }}</span>
         <!-- 嘿嘿，不要换行 -->
         <pre
             ref="codeblock"
@@ -70,40 +66,40 @@ useCopy(copyBtn, codeblock)
     font-size: 0.8125rem;
     line-height: 1.4;
 
-    .codeblock-header {
-        gap: 0.5em;
-        position: sticky;
-        top: 0;
-        height: 0;
-        background: linear-gradient(var(--c-bg-2), transparent);
-        z-index: 2;
+    &:hover .operations {
+        opacity: 1;
     }
+}
 
-    figcaption {
-        display: inline-block;
-        flex-shrink: 0;
-        position: sticky;
-        top: 0;
-        margin: 0 1em;
+figcaption {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    position: sticky;
+    top: 0;
+    padding: 0 1em;
+    z-index: 1;
+
+    .filename {
         padding: 0.2em 0.8em;
         border-radius: 0 0 8px 8px;
         background-color: var(--c-border);
-        z-index: 1;
     }
 
-    .language, .operations {
-        position: absolute;
+    .language {
         opacity: 0.4;
-        right: 0;
-        padding: 0.2em 0.8em;
-        transition: opacity 0.2s;
     }
 
     .operations {
-        gap: 0.5em 1em;
+        position: absolute;
         opacity: 0;
+        top: 0;
+        right: 0;
+        padding: 0.2em 0.8em;
         border-radius: 0 8px 8px;
         background-color: var(--c-bg-2);
+        transition: opacity 0.2s;
 
         > button {
             opacity: 0.4;
@@ -116,16 +112,6 @@ useCopy(copyBtn, codeblock)
             & + button {
                 margin-left: 1em;
             }
-        }
-    }
-
-    &:hover {
-        .language {
-            opacity: 0;
-        }
-
-        .operations {
-            opacity: 1;
         }
     }
 }

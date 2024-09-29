@@ -59,8 +59,8 @@ function openActiveItem() {
     </Transition>
     <Transition>
         <div v-if="UIStore.isSearchOpen" id="z-search">
-            <form class="input" @submit.prevent>
-                <Icon :class="{ searching: status === 'pending' }" name="ph:magnifying-glass-bold" />
+            <form class="input" :class="{ searching: status === 'pending' }" @submit.prevent>
+                <Icon name="ph:magnifying-glass-bold" />
                 <input
                     ref="searchInput"
                     v-model="word"
@@ -108,13 +108,14 @@ function openActiveItem() {
 </template>
 
 <style scoped lang="scss">
-@keyframes twinkle {
-    from { opacity: 1; }
-    to { opacity: 0.2; }
+@keyframes scan {
+    0% { left: -100%; }
+    100% { left: 150%; }
 }
 
 #z-search {
     position: fixed;
+    overflow: hidden;
     top: 10vh;
     top: 10dvh;
     width: 95%;
@@ -151,17 +152,29 @@ function openActiveItem() {
 .input {
     display: flex;
     align-items: center;
+    position: relative;
     padding: 0 0.5em;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        border-right: 1px solid var(--c-primary);
+        background: linear-gradient(to right, transparent 50%, var(--c-primary-soft)) no-repeat;
+        z-index: -1;
+    }
+
+    &.searching::before {
+        animation: scan 2s infinite;
+    }
 
     .iconify {
         margin: 0 0.5em;
-
-        &.searching {
-            animation: twinkle 0.5s alternate infinite linear;
-        }
     }
 
-    input {
+    .search-input {
         width: 100%;
         padding: 1em 0;
         outline: none;
