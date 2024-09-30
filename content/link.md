@@ -10,7 +10,7 @@ hideInfo: true
 
 ::tab
 ---
-tabs: ["我的博客信息", "交流群", "申请友链"]
+tabs: ["我的博客信息", "申请友链"]
 center: true
 active: 2
 ---
@@ -18,11 +18,11 @@ active: 2
 #tab1
 
 ```yaml
-- name: 纸鹿摸鱼处 # 可选：纸鹿本鹿
-  desc: 纸鹿至麓不知路，支炉制露不止漉
-  link: https://blog.zhilu.cyou
-  icon: https://www.zhilu.cyou/api/avatar.png
-  feed: https://blog.zhilu.cyou/atom.xml
+- name: 希乐博客 
+  desc: 总有人间人间一两风，吹我十万八千梦
+  link: https://blog.xlenco.top
+  icon: https://q1.qlogo.cn/g?b=qq&nk=1043865083&s=100
+  feed: https://blog.xlenco.top/atom.xml
 ```
 
 :::timeline
@@ -35,22 +35,16 @@ active: 2
 
 加入开往
 
-{2024-02-04}
-
-加入萌备
 
 :::
 
+
 #tab2
-
-:copy{prompt="QQ群"}[169994096]
-
-#tab3
 
 - 申请要求：原则上与多数独立博客的友链要求一致
   - **能够长期更新维护，并输出有价值的内容**
   - 可以参考 [加入开往](https://www.travellings.cn/docs/join) 页面的规则
-- 申请方式：在评论区留言或发送邮件到 :tip{text="hi@zhilu.cyou" copy}
+- 申请方式：在评论区留言或发送邮件到 :tip{text="xlenco@email.cn" copy}
   - 标题注明 `友链申请: 你的昵称`
   - 以 :tip[任意形式]{tip="指向信息的 URL、自然语言、编程语言"} 附上友链信息
     ```ts
@@ -67,11 +61,11 @@ active: 2
 
 :::friend-card
 ---
-name: 纸鹿本鹿
-title: 摸鱼处
-desc: 纸鹿至麓不知路，支炉制露不止漉
-link: https://blog.zhilu.cyou
-icon: https://www.zhilu.cyou/api/avatar.png
+name: Xlenco
+title: 希乐博客
+desc: 总有人间人间一两风，吹我十万八千梦。
+link: https://blog.xlenco.top
+icon: https://q1.qlogo.cn/g?b=qq&nk=1043865083&s=100
 archs: [Nuxt, Vercel]
 ---
 :::

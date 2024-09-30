@@ -13,7 +13,7 @@ export default {
         name: '署名-非商业性使用-相同方式共享 4.0 国际',
         url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
     },
-    favicon: 'https://www.zhilu.cyou/api/icon.png',
+    favicon: 'https://weavatar.com/avatar/67254b346498965226e5c91ebff66a69570b97f224d2d061e504b4eade1f00fa?s=160',
     language: 'zh-CN',
     timeEstablished: '2022-07-20',
     timezone: 'Asia/Shanghai',
