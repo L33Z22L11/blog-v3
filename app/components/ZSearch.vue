@@ -69,6 +69,7 @@ function openActiveItem() {
                     @keydown.up.prevent
                     @keydown.down.prevent
                 >
+                <!-- 方向键切换搜索结果不应只在搜索框内触发 -->
                 <Icon v-if="word" class="close" name="ph:x-bold" @click="word = ''" />
             </form>
             <TransitionGroup name="expand">

@@ -36,7 +36,6 @@ useCopy(copyBtn, codeblock)
 
 <template>
     <figure class="z-codeblock">
-        <!-- TODO: 显示文件类型图标 -->
         <figcaption>
             <span v-if="filename" class="filename">
                 <Icon :class="{ 'icon-revert': $colorMode.value === 'light' }" :name="icon" />

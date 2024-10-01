@@ -36,7 +36,7 @@ const fileTypeMap: Record<string, string> = {
     sh: 'bash',
     ssh_config: 'properties',
     ts: 'typescript',
-    tsx: 'tsx',
+    tsx: 'typescript',
     vb: 'visual-studio',
 }
 
