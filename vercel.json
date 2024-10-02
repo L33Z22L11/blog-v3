@@ -1,20 +1,13 @@
 {
-    "headers": [
+  "headers": [
+    {
+      "source": "/api/stats",
+      "headers": [
         {
-            "source": "/api/stats",
-            "headers": [
-                {
-                    "key": "Content - Type",
-                    "value": "application/json"
-                }
-            ]
+          "key": "Content-Type",
+          "value": "application/json"
         }
-    ],
-    "redirects": [
-        {
-            "from": "/p/1420.html",
-            "to": "/2024/yuque - deploys - to - hexo",
-            "statusCode": 301
-        }
-    ]
+      ]
+    }
+  ],
 }
