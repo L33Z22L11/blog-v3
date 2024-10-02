@@ -1,7 +1,7 @@
 ---
 title: 双拼语法介绍以及选择
-date: 2022-11-25 14:26
-updated: 2022-11-25 18:25
+date: 2022-11-25 14:26:00
+updated: 2022-11-25 18:25:00
 image: https://xlenco.onmicrosoft.cn/img/c65c2ec5a7f9.jpg
 description: 这篇文章介绍了双拼输入法，一种基于拼音的高效输入方案
 ---

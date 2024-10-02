@@ -1,5 +1,3 @@
-import type { BundledLanguage } from 'shiki'
-
 // 存储 nuxt.config 和 app.config 共用的配置
 export default {
     title: '希乐博客',
@@ -20,8 +18,6 @@ export default {
     timeEstablished: '2022-07-20',
     timezone: 'Asia/Shanghai',
     url: 'https://blog.xlenco.top/',
-
-    fileExtensions: <BundledLanguage[]>['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'java', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'shell', 'ssh-config', 'toml', 'ts', 'tsx', 'vb', 'vue', 'xml', 'yaml'],
 
     feed: {
         limit: 50,

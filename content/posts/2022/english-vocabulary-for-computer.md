@@ -1,7 +1,7 @@
 ---
 title: 计算机专业英语词汇大全
-date: 2022-9-11 13:01
-updated: 2022-9-11 14:29
+date: 2022-9-11 13:01:00
+updated: 2022-9-11 14:29:00
 image: https://xlenco.onmicrosoft.cn/img/99167D.jpg
 description: 整理出的一些计算机专业英语词汇
 ---

@@ -2,7 +2,7 @@
 title: 前端字体压缩方案
 image: https://xlenco-img.s3.bitiful.net/i/2024/10/e308bb926c6e3323783e6c536edc136f.webp
 date: 2024-03-09 00:00:00
-updated: 2024-03-09 00:00:00
+updated: 2024-03-10 00:00:00
 description: 这篇文章介绍了Fontmin，一个纯JS实现的字体子集化工具，它能够从TTF字体文件中提取所需的字符并生成新的TTF文件，以此达到压缩效果
 ---
 ## Fontmin

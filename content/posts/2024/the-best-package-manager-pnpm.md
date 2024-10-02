@@ -3,6 +3,7 @@ title: 最好用的包管理器pnpm
 image: https://xlenco-img.s3.bitiful.net/i/2024/08/a03ee580aad59e67cc0179880e6945a2.webp
 description: 这篇文章介绍了pnpm,pnpm是一款比较好的包管理器
 date: 2024-08-19 09:37:56
+updated: 2024-08-20 09:37:56
 ---
 
 pnpm 是一个具有速度快、节省磁盘空间的特点的软件包管理器。它比 npm 快近 2 倍，node_modules 中的文件克隆或硬链接自单一存储位置，内置对单个源码仓库中包含多个软件包的支持，创建的 node_modules 默认并非扁平结构，权限严格。pnpm 拥有广泛的用户群体，包括 Compass、Microsoft、Prezi、ByteDance、JustAnswer 等。

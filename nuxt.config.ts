@@ -1,12 +1,17 @@
-import type { BundledTheme } from 'shiki'
+import type { BundledLanguage, BundledTheme } from 'shiki'
 import blogConfig from './blog.config'
 import redirects from './redirects'
 
-const shikiOptions = {
-    langs: blogConfig.fileExtensions,
-    themes: <BundledTheme[]>['catppuccin-latte', 'one-dark-pro'],
-    defaultTheme: <BundledTheme>'catppuccin-latte',
-    darkTheme: <BundledTheme>'one-dark-pro',
+const shikiOptions: {
+    langs: BundledLanguage[]
+    themes: BundledTheme[]
+    defaultTheme: BundledTheme
+    darkTheme: BundledTheme
+} = {
+    langs: ['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'java', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'shell', 'ssh-config', 'toml', 'ts', 'tsx', 'vb', 'vue', 'xml', 'yaml'],
+    themes: ['catppuccin-latte', 'one-dark-pro'],
+    defaultTheme: 'catppuccin-latte',
+    darkTheme: 'one-dark-pro',
 }
 
 export default defineNuxtConfig({
@@ -102,6 +107,7 @@ export default defineNuxtConfig({
 
     vue: {
         propsDestructure: true,
+        runtimeCompiler: true,
     },
 
     modules: [

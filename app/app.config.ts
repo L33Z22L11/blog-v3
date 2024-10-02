@@ -87,6 +87,6 @@ export default defineAppConfig({
 
     twikoo: {
         js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.39/dist/twikoo.all.min.js',
-        envId: 'https://twikoo2.xlenco.top',
+        envId: 'https://twikoo2.xlenco.top/.netlify/functions/twikoo',
     },
 })
