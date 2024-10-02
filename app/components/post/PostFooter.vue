@@ -17,9 +17,9 @@ const appConfig = useAppConfig()
                         <p v-if="typeof link === 'string'">
                             {{ link }}
                         </p>
-                        <ZLink v-else :to="link.link">
+                        <ProseA v-else :href="link.link">
                             {{ link?.title ?? link.link }}
-                        </ZLink>
+                        </ProseA>
                     </li>
                 </ul>
             </div>
@@ -30,9 +30,9 @@ const appConfig = useAppConfig()
             </div>
             <div class="content">
                 <p>
-                    本文采用 <ZLink :to="appConfig.copyright.url">
+                    本文采用 <ProseA :href="appConfig.copyright.url">
                         {{ appConfig.copyright.name }}
-                    </ZLink>
+                    </ProseA>
                     许可协议，转载请注明出处。
                 </p>
             </div>

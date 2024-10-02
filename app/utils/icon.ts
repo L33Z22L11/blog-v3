@@ -26,3 +26,26 @@ export type Arch = keyof typeof archMap
 export function getArchIcon(arch: Arch) {
     return archMap[arch] ?? ''
 }
+
+const fileTypeMap: Record<string, string> = {
+    bat: 'batch',
+    ini: 'properties',
+    js: 'javascript',
+    md: 'markdown',
+    mdc: 'markdown',
+    sh: 'bash',
+    ssh_config: 'properties',
+    ts: 'typescript',
+    tsx: 'typescript',
+    vb: 'visual-studio',
+}
+
+export function getFileIcon(extension?: string): string {
+    const config = useAppConfig()
+
+    if (!extension || !(config.fileExtensions as string[]).includes(extension))
+        return 'ph:file-bold'
+
+    const fileType = fileTypeMap[extension] || extension
+    return `catppuccin:${fileType}`
+}

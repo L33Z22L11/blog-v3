@@ -47,14 +47,16 @@ icon: https://www.zhilu.cyou/api/icon.png
 
 :badge[普通] :badge[指定圆形]{round} :badge[指定方形]{square}
 
-:badge{img="1"} :badge{img="1" round} :badge{img="1" square}
+:badge{img="https://picsum.photos/100/100"} :badge{img="https://picsum.photos/100/100" round} :badge{img="https://picsum.photos/100/100" square}
 
 ::alert
 #title
-:badge{img="1" text="自定义文字" to="/"}
-:badge{img="1" text="自定义文字" round}
-:badge{img="1" text="自定义文字" square}
+:badge{img="https://picsum.photos/100/100" text="自定义文字" to="/"}
+:badge{img="https://picsum.photos/100/100" text="自定义文字" round}
+:badge{img="https://picsum.photos/100/100" text="自定义文字" square}
 ::
+
+## :blur[Blur]
 
 ## Copy
 

@@ -9,7 +9,7 @@ const UIStore = useUIStore()
 UIStore.setAside(['blog_log'])
 
 onMounted(() => {
-    console.error(props.error)
+    console.error(props.error?.stack)
 })
 
 const handleError = () => clearError({ redirect: '/' })

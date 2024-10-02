@@ -22,6 +22,7 @@ const scroll = ref(true)
     font-size: 0.9em;
     line-height: 1.4;
 
+    // BUG: 在极窄宽度下仍会溢出
     table.scroll {
         display: block;
         overflow: auto;

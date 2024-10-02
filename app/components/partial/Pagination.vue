@@ -1,27 +1,36 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
     totalPages: number
     perPage: number
 }>()
 
 const page = defineModel<number>({ required: true })
+const pageArr = computed(() => genPageArr(page.value, props.totalPages))
 </script>
 
 <template>
-    <nav class="pagination">
+    <nav class="pagination" :aria-label="`第${page}页，共${totalPages}页`">
         <ZButton
             :disabled="page <= 1"
-            class="pagination-button"
             icon="ph:arrow-fat-left-duotone"
             aria-label="上一页"
             @click="page--"
         />
-        <span class="pagination-info">
-            第 {{ page }} / {{ totalPages }} 页
-        </span>
+        <template v-for="i in pageArr" :key="i">
+            <!-- TODO: 点击后选择目标页面 -->
+            <span v-if="i === null" class="pagination-ellipsis">…</span>
+            <button
+                v-else
+                type="button"
+                class="pagination-button"
+                :class="{ active: i === page }"
+                :aria-label="`第${i}页`"
+                @click="page = i"
+                v-text="i"
+            />
+        </template>
         <ZButton
             :disabled="page >= totalPages"
-            class="pagination-button"
             icon="ph:arrow-fat-right-duotone"
             aria-label="下一页"
             @click="page++"
@@ -34,7 +43,26 @@ const page = defineModel<number>({ required: true })
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
     margin: 1rem 0;
+
+    .pagination-ellipsis {
+        opacity: 0.5;
+        user-select: none;
+    }
+
+    .pagination-button {
+        padding: 0.2em 0.5em;
+        border-radius: 0.5em;
+        transition: background-color 0.2s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--c-border);
+        }
+
+        &.active {
+            background-color: var(--c-border);
+        }
+    }
 }
 </style>
