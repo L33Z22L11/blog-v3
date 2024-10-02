@@ -1,4 +1,4 @@
-const archMap = {
+const archIcons = {
     'Astro': 'simple-icons:astro',
     'CDN (国内)': 'ph:cloud-check-fill',
     'Cloudflare': 'simple-icons:cloudflare',
@@ -22,13 +22,39 @@ const archMap = {
     'Zebaur': 'tabler:square-letter-z-filled', // 不准确
 }
 
-export type Arch = keyof typeof archMap
+export type Arch = keyof typeof archIcons
 
 export function getArchIcon(arch: Arch) {
-    return archMap[arch] ?? ''
+    return archIcons[arch] ?? ''
 }
 
-const fileTypeMap: Record<string, string> = {
+export const mainDomainIcons: Record<string, string> = {
+    'bilibili.com': 'ri:bilibili-fill',
+    'github.com': 'ri:github-fill',
+    'github.io': 'ri:github-fill',
+    'microsoft.com': 'ri:microsoft-fill',
+    'netlify.app': 'simple-icons:netlify',
+    'pages.dev': 'simple-icons:cloudflare',
+    'qq.com': 'ri:qq-fill',
+    'thisis.host': 'ph:star-four-fill',
+    'vercel.app': 'simple-icons:vercel',
+    'zabaur.app': 'tabler:square-letter-z-filled',
+    'zhihu.com': 'ri:zhihu-line',
+}
+
+export const domainIcons: Record<string, string> = {
+    'mp.weixin.qq.com': 'ri:wechat-fill',
+}
+
+export function getDomainIcon(url: string) {
+    const domain = getDomain(url)
+    const mainDomain = getMainDomain(url)
+    if (domain in domainIcons)
+        return domainIcons[domain]
+    return mainDomainIcons[mainDomain]
+}
+
+const ext2lang: Record<string, string> = {
     bat: 'batch',
     ini: 'properties',
     js: 'javascript',
@@ -47,6 +73,6 @@ export function getFileIcon(extension?: string): string {
     if (!extension || !(config.fileExtensions as string[]).includes(extension))
         return 'ph:file-bold'
 
-    const fileType = fileTypeMap[extension] || extension
+    const fileType = ext2lang[extension] || extension
     return `catppuccin:${fileType}`
 }

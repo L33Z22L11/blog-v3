@@ -1,15 +1,17 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
     href: string
 }>()
+
+const icon = computed(() => getDomainIcon(props.href))
+const tip = computed(() => isExtLink(props.href) && getDomain(props.href))
 </script>
 
 <template>
-    <!-- TODO: 根据链接添加合适的图标 -->
-    <ZRawLink v-tippy="getMainDomain(href)" class="z-link" :to="href">
+    <ZRawLink v-tippy="tip" class="z-link" :to="href">
+        <Icon v-if="icon" class="domain-icon" :name="icon" />
         <slot />
     </ZRawLink>
-    <Icon v-if="isExtLink(href)" class="external" name="ph:arrow-up-right" />
 </template>
 
 <style scoped lang="scss">
@@ -22,11 +24,9 @@ defineProps<{
         border-radius: 0.3em;
         background-size: 100% 100%;
     }
-}
 
-.iconify.external {
-    font-size: 0.8em;
-    vertical-align: text-top;
-    color: var(--c-primary);
+    .domain-icon {
+        margin-right: 0.2em;
+    }
 }
 </style>

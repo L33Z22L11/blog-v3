@@ -67,7 +67,7 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
     oh-my-posh init pwsh | Invoke-Expression
     ```
 - 安装字体
-  - 访问 [Nerd Fonts 网站](https://www.nerdfonts.com/font-downloads) 或者 [:icon{name="ri:github-fill"}Release 页面](https://github.com/ryanoasis/nerd-fonts/releases)
+  - 访问 [Nerd Fonts 网站](https://www.nerdfonts.com/font-downloads) 或者 [Release 页面](https://github.com/ryanoasis/nerd-fonts/releases)
   - 按 Ctrl+F 搜索你常使用的字体，并下载
   - 解压后选中字体，右键安装
   - 在 Windows Terminal 中，按 Ctrl+, 打开设置
@@ -75,7 +75,7 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 
 #### VS Code 集成终端乱码
 
-这是一个 [:icon{name="ri:github-fill"} bug](https://github.com/microsoft/vscode/issues/211922)，可以通过设置 `terminal.integrated.shellIntegration.enabled` 为 `false` 来解决。
+这是一个 [bug](https://github.com/microsoft/vscode/issues/211922)，可以通过设置 `terminal.integrated.shellIntegration.enabled` 为 `false` 来解决。
 
 ## Git Bash
 

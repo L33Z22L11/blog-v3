@@ -132,7 +132,7 @@ Vim、nano、top 也是经典的 TUI 程序，相比于命令行程序，它具�
 顾名思义，图形界面程序就是具有图形界面的程序。大家常用的桌面软件，如 Chrome、VS Code、QQ，都是图形界面程序。
 
 ::alert{title="你知道吗"}
-Windows 终端、命令行（CMD）也是图形界面程序。（参见 [:icon{name="ri:windows-fill"} Windows 控制台和终端定义](https://learn.microsoft.com/zh-cn/windows/console/definitions)）
+Windows 终端、命令行（CMD）也是图形界面程序。（参见 [Windows 控制台和终端定义](https://learn.microsoft.com/zh-cn/windows/console/definitions)）
 ::
 
 #### 图形界面程序也依赖环境变量和命令行参数
@@ -246,13 +246,13 @@ link: https://www.criwits.top/missing/
 
 > 高速下载 Git Clone/SSH、Release、Raw、Code(ZIP) 等文件 (公益加速)、项目列表单文件快捷下载、添加 `git clone` 命令。
 
-项目开源于 [:icon{name="ri:github-fill"} XIU2/UserScript](https://github.com/XIU2/UserScript)，采用 GPL v3 协议。使用前需要在浏览器安装 “篡改猴” 插件。
+项目开源于 [XIU2/UserScript](https://github.com/XIU2/UserScript)，采用 GPL v3 协议。使用前需要在浏览器安装 “篡改猴” 插件。
 
 #### 使用其下载软件
 
 ::alert
 #title
-参阅官方文档：[:icon{name="ri:github-fill"} 在 GitHub 上寻找灵感](https://docs.github.com/zh/get-started/start-your-journey/finding-inspiration-on-github)
+参阅官方文档：[在 GitHub 上寻找灵感](https://docs.github.com/zh/get-started/start-your-journey/finding-inspiration-on-github)
 ::
 
 当访问一个项目的代码仓库时，首先阅读文件目录列表下方的 :tip[README]{tip="项目自述文档"}，它有助于你快速了解项目。当项目具有 :tip[二进制发行版]{tip="能直接安装使用的软件"} 时，可以在文件目录列表右侧的 **Releases** 中下载。
@@ -276,7 +276,7 @@ link: https://www.criwits.top/missing/
 
 > HelloGitHub 是一个发现和分享有趣、入门级开源项目的平台。希望大家能够在这里找到编程的快乐、 轻松搞定问题的技术方案、大呼过瘾的开源神器，顺其自然地开启开源之旅。
 
-它能帮助你探索 GitHub。项目开源于 [:icon{name="ri:github-fill"} 521xueweihan/HelloGithub](https://github.com/521xueweihan/HelloGitHub)，采用 CC BY-NC-ND 4.0 协议。也有同名微信公众号可供关注。
+它能帮助你探索 GitHub。项目开源于 [521xueweihan/HelloGithub](https://github.com/521xueweihan/HelloGitHub)，采用 CC BY-NC-ND 4.0 协议。也有同名微信公众号可供关注。
 
 ::link-card
 ---
@@ -290,7 +290,7 @@ link: https://hellogithub.com/
 
 #### WinGet
 
-WinGet 是微软官方的 Windows 程序包管理器，它提供了命令行程序，允许你安装、更新和卸载 Windows 上的应用程序。以 MIT 协议开源在 [:icon{name="ri:github-fill"} microsoft/winget-cli](https://github.com/microsoft/winget-cli)。
+WinGet 是微软官方的 Windows 程序包管理器，它提供了命令行程序，允许你安装、更新和卸载 Windows 上的应用程序。以 MIT 协议开源在 [microsoft/winget-cli](https://github.com/microsoft/winget-cli)。
 
 ::pic
 ---
@@ -358,7 +358,7 @@ Microsoft 对第三方程序包概不负责，也不向第三方程序包授予�
 ::
 
 ::alert{title="相关文档"}
-- Microsoft Learn：[:icon{name="ri:windows-fill"} 使用 WinGet 工具安装和管理应用程序](https://learn.microsoft.com/zh-cn/windows/package-manager/winget/)
+- Microsoft Learn：[使用 WinGet 工具安装和管理应用程序](https://learn.microsoft.com/zh-cn/windows/package-manager/winget/)
 - USTC Mirror：[使用中国科学技术大学的镜像源加速下载](https://mirrors.ustc.edu.cn/help/winget-source.html)
 ::
 
@@ -366,7 +366,7 @@ Microsoft 对第三方程序包概不负责，也不向第三方程序包授予�
 你也许会羡慕 Linux 用户的终端具有炫酷的界面和方便的功能，但 Windows 也能做到这些。
 ::
 
-Oh My Posh 是一个用于 Windows 终端的命令行主题管理工具。根据 MIT 协议开源在 [:icon{name="ri:github-fill"} JanDeDobbeleer/oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh)。
+Oh My Posh 是一个用于 Windows 终端的命令行主题管理工具。根据 MIT 协议开源在 [JanDeDobbeleer/oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh)。
 
 ::pic
 ---
@@ -554,7 +554,7 @@ link: /2024/moonlight-streaming-guide
 
 #### 校园网联合镜像站
 
-MirrorZ 提供校园网镜像站的索引和跳转服务，由教育网提供支持，能够基于地理位置快速访问各镜像站点资源。项目以 MIT 协议开源于 [:icon{name="ri:github-fill"} mirrorz-org/mirrorz](https://github.com/mirrorz-org/mirrorz)。
+MirrorZ 提供校园网镜像站的索引和跳转服务，由教育网提供支持，能够基于地理位置快速访问各镜像站点资源。项目以 MIT 协议开源于 [mirrorz-org/mirrorz](https://github.com/mirrorz-org/mirrorz)。
 
 ::link-card
 ---
@@ -587,7 +587,7 @@ link: https://f-droid.org/
 
 > Termux 是一个适用于 Android 的终端模拟器，其环境类似于 Linux 环境。无需 Root 或设置即可使用。Termux 会自动进行最小安装 - 使用 APT 包管理器即可获得其他软件包。
 
-Termux 是一个 Android 终端应用程序和 Linux 环境。通过 GPL v3 协议开源在 [:icon{name="ri:github-fill"} termux/termux-app](https://github.com/termux/termux-app) 上。你可以在上面使用 Linux 风格的命令并管理开放环境。
+Termux 是一个 Android 终端应用程序和 Linux 环境。通过 GPL v3 协议开源在 [termux/termux-app](https://github.com/termux/termux-app) 上。你可以在上面使用 Linux 风格的命令并管理开放环境。
 
 ::link-banner
 ---

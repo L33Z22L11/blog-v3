@@ -1,10 +1,10 @@
-export const domainType: Record<string, { icon: string, tip: string }> = {
-    'github.io': { icon: 'simple-icons:github', tip: 'GitHub Pages 域名' },
-    'netlify.app': { icon: 'simple-icons:netlify', tip: 'Netlify 域名' },
-    'pages.dev': { icon: 'simple-icons:cloudflare', tip: 'Cloudflare 域名' },
-    'thisis.host': { icon: 'ph:star-four-fill', tip: '纸鹿提供的域名' },
-    'vercel.app': { icon: 'simple-icons:vercel', tip: 'Vercel 域名' },
-    'zabaur.app': { icon: 'tabler:square-letter-z-filled', tip: 'Zebaur 域名' },
+export const domainTip: Record<string, string> = {
+    'github.io': 'GitHub Pages 域名',
+    'netlify.app': 'Netlify 域名',
+    'pages.dev': 'Cloudflare 域名',
+    'thisis.host': '纸鹿提供的域名',
+    'vercel.app': 'Vercel 域名',
+    'zabaur.app': 'Zebaur 域名',
 }
 
 const noRouterExtensions = ['.css', '.csv', '.gif', '.ico', '.jpg', '.js', '.json', '.png', '.svg', '.txt', '.xml']
@@ -30,7 +30,7 @@ export function getMainDomain(url: string) {
 }
 
 export function getDomainType(mainDomain: string) {
-    return domainType[mainDomain]
+    return domainTip[mainDomain]
 }
 export function isExtLink(url?: string) {
     if (!url)
