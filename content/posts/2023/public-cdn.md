@@ -6,8 +6,7 @@ image: https://xlenco.onmicrosoft.cn/img/OIP-C.jpg
 description: 这篇文章介绍了一些常用的前端公共CDN，便于开发者使用CDN加速自己的静态资源
 ---
 
-tags: [CDN]
-categories: [前端]
+
 
 
 ## 前言
