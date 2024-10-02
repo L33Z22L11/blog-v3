@@ -7,6 +7,7 @@ const archMap = {
     'Halo': 'tabler:square-letter-h-filled', // 不准确
     'Hexo': 'simple-icons:hexo',
     'Hugo': 'simple-icons:hugo',
+    'Jekyll': 'simple-icons:jekyll',
     'Mix Space': 'ph:yarn',
     'Netlify': 'simple-icons:netlify',
     'Next.js': 'simple-icons:nextdotjs',
