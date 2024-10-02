@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// TODO: View Transition
 import type ArticleProps from '~/types/article'
 
 const props = defineProps<ArticleProps>()
@@ -9,8 +8,6 @@ const updatedLabel = getPostDate(props.updated)
 
 const categoryLabel = props.categories?.[0]
 const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
-
-// TODO: Update reason display
 
 const shareText = `【${appConfig.title}】${props.title}\n\n${
     props.description ? `${props.description}\n\n` : ''}${
@@ -23,7 +20,6 @@ useCopy(btnShareByText, btnShareByText, shareText)
 <template>
     <!-- 💩夸克浏览器，桌面端只有IE不支持 :has() 了 -->
     <div class="post-header" :class="{ 'has-cover': image, 'text-revert': cover_revert }">
-        <!-- TODO: 优化卡片布局 -->
         <!-- TODO: 生成分享图片 -->
         <NuxtImg v-if="image" class="post-cover" :src="image" :alt="title" />
         <div class="post-nav">

@@ -6,7 +6,7 @@ defineProps<{
 
 <template>
     <!-- TODO: 根据链接添加合适的图标 -->
-    <ZRawLink class="z-link" :to="href">
+    <ZRawLink v-tippy="getMainDomain(href)" class="z-link" :to="href">
         <slot />
     </ZRawLink>
     <Icon v-if="isExtLink(href)" class="external" name="ph:arrow-up-right" />

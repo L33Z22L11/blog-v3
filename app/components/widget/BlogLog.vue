@@ -30,7 +30,7 @@ const blogLog = [
     <h3 class="widget-title">
         更新日志
     </h3>
-    <!-- TODO: timeline style -->
+    <!-- TODO: 优化时间线样式 -->
     <div class="widget-card">
         <ul>
             <li v-for="(item, index) in blogLog" :key="index">

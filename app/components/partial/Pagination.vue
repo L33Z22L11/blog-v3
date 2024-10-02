@@ -17,7 +17,7 @@ const pageArr = computed(() => genPageArr(page.value, props.totalPages))
             @click="page--"
         />
         <template v-for="i in pageArr" :key="i">
-            <!-- TODO: 点击后选择目标页面 -->
+            <!-- TODO: 点击后自主选择目标页面 -->
             <span v-if="i === null" class="pagination-ellipsis">…</span>
             <button
                 v-else

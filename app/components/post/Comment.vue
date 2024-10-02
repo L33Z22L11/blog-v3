@@ -2,7 +2,7 @@
 const appConfig = useAppConfig()
 
 function initTwikoo() {
-    window.twikoo?.init?.({
+    (window as any).twikoo?.init?.({
         envId: appConfig.twikoo.envId,
         el: '#twikoo',
     })
@@ -15,8 +15,7 @@ onMounted(() => initTwikoo())
 </script>
 
 <template>
-    <!-- FIXME: 刷新时不添加 class="light" -->
-    <section class="z-comment" :class="{ light: $colorMode.value === 'light' }" data-allow-mismatch="class">
+    <section class="z-comment">
         <h3>评论区</h3>
         <ClientOnly>
             <div id="twikoo" />
@@ -119,7 +118,4 @@ onMounted(() => initTwikoo())
         transition: background-color 0.1s;
     }
 }
-
-// TODO: 评论区代码高亮
-// BUG: 启用高亮会影响正文代码块样式
 </style>

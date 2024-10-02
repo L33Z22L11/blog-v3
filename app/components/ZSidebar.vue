@@ -7,6 +7,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 
 <template>
     <Transition>
+        <!-- FIXME: 评估是否能公用 bgmask 减少冗余 -->
         <div v-if="UIStore.isSidebarOpen" id="z-sidebar-bgmask" @click="UIStore.toggleSidebar" />
     </Transition>
     <!-- 此处不能使用 Transition，因为半宽屏状态始终显示 -->
@@ -41,7 +42,6 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 </template>
 
 <style scoped lang="scss">
-// TODO: 减少侧边栏代码冗余
 #z-sidebar {
     display: flex;
     flex-direction: column;

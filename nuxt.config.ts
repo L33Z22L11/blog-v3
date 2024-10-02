@@ -83,9 +83,6 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             buildTime: new Date().toISOString(),
-            // TODO: add stats
-            // totalPosts: 0,
-            // totalWords: 0,
         },
     },
 
@@ -143,16 +140,6 @@ export default defineNuxtConfig({
             { prefix: 'zi', dir: './assets/icons' },
         ],
         // BUG: 首次加载有概率无图标
-        // No effect? 🤔
-        // provider: 'iconify',
-        // serverBundle: false,
-        // serverBundle: {
-        //     remote: 'jsdelivr',
-        // },
-        // clientBundle: {
-        //     scan: true,
-        //     sizeLimitKb: 256,
-        // },
     },
 
     image: {

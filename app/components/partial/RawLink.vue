@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{ to?: string }>()
-// TODO: 鼠标悬浮外联展示小箭头
+// TODO: 鼠标悬浮外链时展示小箭头
 </script>
 
 <template>
