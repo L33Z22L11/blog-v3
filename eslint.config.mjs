@@ -9,7 +9,7 @@ export default antfu({
         'jsonc/indent': ['error', 2],
         'vue/block-lang': ['error', {
             script: {
-                lang: ['ts'],
+                lang: ['ts', 'tsx'],
             },
             style: {
                 lang: ['scss'],

@@ -23,9 +23,8 @@ watchDebounced(word, () => {
     word.value && execSearch()
 }, { debounce: 300 })
 
-useEventListener('keydown', (event) => {
-    if ((event.ctrlKey || event.metaKey)
-        && event.key.toLowerCase() === 'k') {
+useEventListener('keydown', (event: KeyboardEvent) => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault()
         UIStore.toggleSearch()
     }
@@ -207,9 +206,7 @@ function openActiveItem() {
     max-height: 75vh;
     max-height: 75dvh;
     transition: all 0.5s;
-
-    // FIXME: 滚动边距
-    scroll-margin: 2rem;
+    scroll-padding: 2rem;
 }
 
 .search-item {

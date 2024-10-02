@@ -10,7 +10,12 @@
         margin: 0.5em 0;
     }
 
-    > h1, > h2, > h3, > h4, > h5, > h6 {
+    :target {
+        border-radius: 0.2rem;
+        background-color: var(--c-primary-soft);
+    }
+
+    >:where(h1, h2, h3, h4, h5, h6) {
         margin: 1.6em 0 0.8em;
         font-weight: var(--font-weight-medium);
         color: var(--c-text);
@@ -61,12 +66,12 @@
         opacity: 0.4;
     }
 
-    &:not(.md-story) > h2::before {
+    &:not(.md-story) > h2 > a::before {
         content: ".";
         color: white;
     }
 
-    &:not(.md-story) > :where(h2, h3, h4, h5, h6)::before {
+    &:not(.md-story) > :where(h2, h3, h4, h5, h6) > a::before {
         content: "";
         margin-right: 8px;
         padding: 0 2px;
