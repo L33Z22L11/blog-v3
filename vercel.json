@@ -11,6 +11,10 @@
     }
   ],
   "redirects": [
-    { "from": "/p/1420.html", "to": "/2024/yuque-deploys-to-hexo", "statusCode": 301 }
+    { 
+      "from": "/p/1420.html", 
+      "to": "/2024/yuque-deploys-to-hexo", 
+      "statusCode": 301 
+    }
   ]
 }
