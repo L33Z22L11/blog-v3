@@ -1,0 +1,19 @@
+diff --git a/dist/vue-tippy.d.ts b/dist/vue-tippy.d.ts
+index 617ffdf69d5d8b7de07de313eb84a07b53c3e08f..a2e4b9c5e9c7426d2d695ac4e649894af08e1b15 100644
+--- a/dist/vue-tippy.d.ts
++++ b/dist/vue-tippy.d.ts
+@@ -1,4 +1,4 @@
+-import { Component } from 'vue';
++import { Component, ShallowRef } from 'vue';
+ import { ComponentObjectPropsOptions } from 'vue';
+ import { Content } from 'tippy.js';
+ import { CreateSingletonProps } from 'tippy.js';
+@@ -718,7 +718,7 @@ export declare function useSingleton(instances: TippyInstances, optionalProps?:
+     singleton: import("vue").Ref<import("tippy.js").CreateSingletonInstance<CreateSingletonProps<Props>> | undefined>;
+ };
+ 
+-export declare function useTippy(el: Element | (() => Element) | Ref<Element> | Ref<Element | undefined>, opts?: TippyOptions, settings?: {
++export declare function useTippy(el: Element | (() => Element) | Ref<Element> | Ref<Element | undefined> | ShallowRef<Element | null>, opts?: TippyOptions, settings?: {
+     mount: boolean;
+     appName: string;
+ }): {

@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  vue-tippy:
+    hash: ttfvc3dpsxtdcz4wfh2illbaq4
+    path: patches/vue-tippy.patch
+
 importers:
 
   .:
@@ -43,7 +48,7 @@ importers:
         version: 3.5.10(typescript@5.6.2)
       vue-tippy:
         specifier: ^6.4.4
-        version: 6.4.4(vue@3.5.10(typescript@5.6.2))
+        version: 6.4.4(patch_hash=ttfvc3dpsxtdcz4wfh2illbaq4)(vue@3.5.10(typescript@5.6.2))
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^3.7.3
@@ -11872,7 +11877,7 @@ snapshots:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.10(typescript@5.6.2)
 
-  vue-tippy@6.4.4(vue@3.5.10(typescript@5.6.2)):
+  vue-tippy@6.4.4(patch_hash=ttfvc3dpsxtdcz4wfh2illbaq4)(vue@3.5.10(typescript@5.6.2)):
     dependencies:
       tippy.js: 6.3.7
       vue: 3.5.10(typescript@5.6.2)

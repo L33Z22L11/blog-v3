@@ -22,7 +22,7 @@ const showUndo = ref(false)
 const commandInput = useTemplateRef('command-input')
 const copyBtn = useTemplateRef('copy-btn')
 
-useTippy(commandInput as Ref<Element>, { content: '可以修改命令后再复制', trigger: 'focus' })
+useTippy(commandInput, { content: '可以修改命令后再复制', trigger: 'focus' })
 useCopy(copyBtn, commandInput)
 
 watch(command, (newVal) => {
