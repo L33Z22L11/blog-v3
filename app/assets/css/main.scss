@@ -17,6 +17,7 @@
     color: var(--c-text-1);
     transition: background-color 0.2s;
     scroll-behavior: smooth;
+    scroll-padding: 2rem;
     scrollbar-color: var(--c-text-3) transparent;
     -webkit-tap-highlight-color: var(--c-primary-soft);
 }

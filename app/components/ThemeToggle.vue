@@ -11,7 +11,6 @@ function toggleTheme(themeName: ThemeType) {
 </script>
 
 <template>
-    <!-- TODO: 切换主题时的动画 -->
     <div class="theme-toggle">
         <button
             v-for="(themeData, themeName) in themes"

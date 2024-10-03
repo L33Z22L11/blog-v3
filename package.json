@@ -35,6 +35,7 @@
     "@nuxtjs/color-mode": "^3.5.1",
     "@nuxtjs/seo": "2.0.0-rc.21",
     "@pinia/nuxt": "^0.5.4",
+    "@vite-pwa/nuxt": "^0.10.5",
     "@vueuse/nuxt": "^11.1.0",
     "@zinkawaii/nuxt-shiki": "^0.7.1",
     "@zinkawaii/stylelint-config": "^0.1.5",
@@ -47,5 +48,10 @@
     "stylelint": "^16.9.0",
     "terser": "^5.34.1",
     "typescript": "^5.6.2"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "vue-tippy": "patches/vue-tippy.patch"
+    }
   }
 }

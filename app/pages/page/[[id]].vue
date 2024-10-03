@@ -14,8 +14,7 @@ definePageMeta({
 </script>
 
 <template>
-    <!-- TODO: 列表渐进动画 -->
-    <!-- TODO: 指定 id 范围以 SSG -->
+    <!-- FIXME: 指定 id 范围以 SSG -->
     <ZArticle
         v-for="article in list"
         :key="article._path"

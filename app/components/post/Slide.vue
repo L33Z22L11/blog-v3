@@ -140,7 +140,7 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
             padding: 1em;
             backdrop-filter: brightness(0.8) saturate(10) contrast(0.8) blur(2em);
             text-align: center;
-            color: #fff;
+            color: white;
             transition: opacity 0.2s;
 
             .desc {

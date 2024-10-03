@@ -37,7 +37,7 @@ github:
 
 ## 开源衍生
 
-- 灵感源自 [:icon{name="ri:github-fill"} xaoxuu/hexo-theme-stellar](https://github.com/xaoxuu/hexo-theme-stellar)，这是一个经过精致设计的简洁 Hexo 主题。
+- 灵感源自 [xaoxuu/hexo-theme-stellar](https://github.com/xaoxuu/hexo-theme-stellar)，这是一个经过精致设计的简洁 Hexo 主题。
 - 为许多项目提供样式灵感。
 
 ## 开发过程

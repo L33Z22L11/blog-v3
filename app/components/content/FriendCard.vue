@@ -2,8 +2,8 @@
 import type { Friend } from '~/types/friend'
 
 const props = defineProps<Friend>()
-const mainDomain = getMainDomain(props.link)
-const domainType = getDomainType(mainDomain)
+const mainDomain = computed(() => getMainDomain(props.link))
+const domainIcon = computed(() => getDomainIcon(mainDomain.value))
 
 // TODO: 优化鼠标悬浮提示
 const tip = joinWithBR(
@@ -26,9 +26,9 @@ const tip = joinWithBR(
                 <span class="title">{{ title }}</span>
             </div>
             <div class="domain-arch">
-                <span class="domain" :title="domainType?.tip">
+                <span class="domain" :title="getDomainType(mainDomain)">
                     <span>{{ mainDomain }}</span>
-                    <Icon v-if="domainType" class="domain-mark" :name="domainType.icon" />
+                    <Icon v-if="domainIcon" class="domain-mark" :name="domainIcon" />
                 </span>
                 <Icon
                     v-for="arch in archs" :key="arch"
@@ -71,11 +71,12 @@ const tip = joinWithBR(
 }
 
 .icon {
-    width: 3em;
-    height: 3em;
+    width: 3rem;
+    height: 3rem;
     border-radius: 4em;
     box-shadow: 2px 4px 0.5em var(--ld-shadow);
     background-color: white;
+    object-fit: cover;
 }
 
 .card-content {
@@ -83,7 +84,7 @@ const tip = joinWithBR(
         text-align: center;
 
         .name-title {
-            flex-direction: column;
+            justify-content: center;
         }
     }
 
@@ -91,6 +92,7 @@ const tip = joinWithBR(
         display: flex;
         align-items: center;
         gap: 0 0.2em;
+        flex-wrap: wrap;
 
         .title {
             opacity: 0.4;
