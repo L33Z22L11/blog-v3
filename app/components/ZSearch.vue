@@ -169,7 +169,7 @@ function openActiveItem() {
     }
 
     &.searching::before {
-        animation: scan 2s infinite;
+        animation: scan 1s infinite;
     }
 
     .iconify {

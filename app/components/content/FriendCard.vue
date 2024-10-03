@@ -71,11 +71,12 @@ const tip = joinWithBR(
 }
 
 .icon {
-    width: 3em;
-    height: 3em;
+    width: 3rem;
+    height: 3rem;
     border-radius: 4em;
     box-shadow: 2px 4px 0.5em var(--ld-shadow);
     background-color: white;
+    object-fit: cover;
 }
 
 .card-content {
@@ -83,7 +84,7 @@ const tip = joinWithBR(
         text-align: center;
 
         .name-title {
-            flex-direction: column;
+            justify-content: center;
         }
     }
 
@@ -91,6 +92,7 @@ const tip = joinWithBR(
         display: flex;
         align-items: center;
         gap: 0 0.2em;
+        flex-wrap: wrap;
 
         .title {
             opacity: 0.4;

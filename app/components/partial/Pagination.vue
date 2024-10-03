@@ -17,10 +17,8 @@ const pageArr = computed(() => genPageArr(page.value, props.totalPages))
             @click="page--"
         />
         <template v-for="i in pageArr" :key="i">
-            <!-- TODO: 点击后自主选择目标页面 -->
-            <span v-if="i === null" class="pagination-ellipsis">…</span>
             <button
-                v-else
+                v-if="Number.isFinite(i)"
                 type="button"
                 class="pagination-button"
                 :class="{ active: i === page }"
@@ -28,6 +26,8 @@ const pageArr = computed(() => genPageArr(page.value, props.totalPages))
                 @click="page = i"
                 v-text="i"
             />
+            <!-- TODO: 点击后自主选择目标页面 -->
+            <span v-else class="pagination-ellipsis">…</span>
         </template>
         <ZButton
             :disabled="page >= totalPages"
