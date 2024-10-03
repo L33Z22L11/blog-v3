@@ -11,5 +11,6 @@ code {
     background-color: var(--c-bg-2);
     background-color: color-mix(in srgb, currentcolor 5%, transparent);
     font-size: 0.875em;
+    white-space: break-spaces;
 }
 </style>

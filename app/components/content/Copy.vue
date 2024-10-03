@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { createPlainShiki } from 'plain-shiki'
+import { createPlainShiki, type MountPlainShikiOptions } from 'plain-shiki'
 import { useTippy } from 'vue-tippy'
 
 const props = defineProps<{
@@ -22,7 +22,6 @@ const showUndo = ref(false)
 const commandInput = useTemplateRef('command-input')
 const copyBtn = useTemplateRef('copy-btn')
 
-// FIXME: Type mismatch
 useTippy(commandInput, { content: '可以修改命令后再复制', trigger: 'focus' })
 useCopy(copyBtn, commandInput)
 
@@ -52,21 +51,19 @@ onMounted(async () => {
     const shiki = await getShikiHighlighter()
     // BUG: 无法高亮特定语言 PowerShell
     const shikiOptions = await resolveShikiOptions({ lang: language.value })
-    // FIXME: Type mismatch
-    createPlainShiki(shiki).mount(commandInput.value!, shikiOptions as any)
+    createPlainShiki(shiki).mount(commandInput.value!, shikiOptions as MountPlainShikiOptions)
 })
 </script>
 
 <template>
     <code class="command">
         <span v-if="!noprompt" class="prompt">{{ prompt }}</span>
-        <!-- FIXME: Type mismatch -->
         <div
             ref="command-input"
             contenteditable="plaintext-only"
             class="code scrollcheck-x"
-            @beforeinput="beforeInput"
-            @input="onInput"
+            @beforeinput="beforeInput($event as InputEvent)"
+            @input="onInput($event as InputEvent)"
             v-text="initialCommand"
         />
         <button v-if="showUndo" class="operation" @click="undo">

@@ -38,6 +38,7 @@ useCopy(copyBtn, codeblock)
     <figure class="z-codeblock">
         <figcaption>
             <span v-if="filename" class="filename">
+                <!-- BUG: 初次访问时不添加 class="light" -->
                 <Icon :class="{ 'icon-revert': $colorMode.value === 'light' }" :name="icon" />
                 {{ filename }}
             </span>
@@ -153,7 +154,7 @@ pre {
         position: absolute;
         left: 0;
         width: var(--left-offset);
-        padding: 0 1em 0 0.5em;
+        padding-right: 1em;
         background-color: var(--c-bg-2);
         text-align: right;
         color: var(--c-text-3);

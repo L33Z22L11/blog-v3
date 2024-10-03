@@ -54,7 +54,7 @@ onMounted(() => {
         <!-- 若不包裹，display: none 在 JS 加载后才有足够优先级 -->
         <ZhiluHeader to="/" />
     </div>
-    <PostSlide v-if="page === 1" :list="listRecommended" />
+    <PostSlide v-if="listRecommended?.length && page === 1" :list="listRecommended" />
     <div class="post-list">
         <div class="toolbar">
             <div class="preview-entrance">
