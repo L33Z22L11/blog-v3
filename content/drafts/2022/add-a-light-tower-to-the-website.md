@@ -1,16 +1,13 @@
 ---
-abbrlink: ''
-categories: []
 date: 2022-12-23 10:44
 description: 使用 HTML、CSS 为网页添加灯笼样式
 image: https://xlenco.onmicrosoft.cn/i/HcBn1_DkiKsrTfz.webp
-tags: []
 title: 为你的网站添加灯笼样式
-updated: '2024-10-04T15:00:03.006+08:00'
+updated: '2024-10-04T15:16:19.229+08:00'
 ---
 ## 前言
 
-最近又要到一年一度的春节了，之前在网上冲浪时看到很多网站挂上了灯笼，我也趁着这个机会水一篇文章，代码会放在下面  
+最近又要到一年一度的春节了，之前在网上冲浪时看到很多网站挂上了灯笼，我也趁着这个机会水一篇文章，代码会放在下面
 
 ## Dome
 
