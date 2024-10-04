@@ -116,7 +116,6 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
         '@vueuse/nuxt',
         '@zinkawaii/nuxt-shiki',
-        '@vite-pwa/nuxt',
 
     ],
 
@@ -177,23 +176,6 @@ export default defineNuxtConfig({
     site: {
         name: blogConfig.title,
         url: blogConfig.url,
-    },
-
-    pwa: {
-        // 設定是否有更新時自動更新，因為我的網站只是單純展示用，直接設定autoUpdate。
-        registerType: 'autoUpdate',
-        // 設定是否要在開發的時候（npm run dev）啟用pwa功能，為了方便測試，我是把他開啟。
-        devOptions: {
-          enabled: true,
-        },
-        // pwa的描述檔
-        manifest: {
-          name: '希乐博客',
-          short_name: '希乐博客',
-          description: 'Xlenco的个人博客站',
-          lang: 'zh-CN',
-          theme_color: '#000000',
-      },
     },
     
 })
