@@ -1,7 +1,7 @@
 ---
 title: 你真的会做笔记吗？这里有几种高效做笔记的方法！
 image: https://xlenco-img.s3.bitiful.net/i/2024/06/107b5ba4319387d99fbe042e8ebc6898.webp
-description: 介绍了一些高效记笔记的方法
+description: 介绍了一些高效记笔记的方法。
 date: 2024-06-23 15:08:28
 updated: 2024-06-24 15:08:28
 ---

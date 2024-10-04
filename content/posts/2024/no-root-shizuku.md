@@ -1,7 +1,7 @@
 ---
 title: 无需Root玩机工具Shizuku
 image: https://xlenco-img.s3.bitiful.net/i/2024/08/a66d0a6348093d1a6d5d89c136464772.webp
-description: 这篇文章介绍了一款无需Root即可拥有大部分玩机体验的工具Root，并且附上了一些支持Shizuku的工具
+description: 这篇文章介绍了一款无需Root即可拥有大部分玩机体验的工具Root，并且附上了一些支持Shizuku的工具。
 date: 2024-08-21 17:57:18
 updated: 2024-09-21 17:57:18
 ---

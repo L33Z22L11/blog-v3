@@ -3,7 +3,7 @@ title: 图床方案汇总
 date: 2022-09-13 22:02:07
 updated: 2023-01-17 21:02:07
 image: https://xlenco-img.s3.bitiful.net/i/2024/07/02ee9c16897fe5ad15af832229bae0b5.webp
-description: 介绍常用的图床方案，以及图床管理工具的选择
+description: 介绍常用的图床方案，以及图床管理工具的选择。
 ---
 
 

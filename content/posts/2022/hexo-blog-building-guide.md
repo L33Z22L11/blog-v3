@@ -3,7 +3,7 @@ title: Hexo｜博客搭建指南
 date: 2022-8-28 16:12
 updated: 2022-8-28 20:12
 image: https://xlenco.onmicrosoft.cn/img/20200715201402.webp
-description: 这篇文章介绍了作者搭建个人博客Hexo的全过程
+description: 这篇文章介绍了作者搭建个人博客Hexo的全过程。
 ---
 
 ## 1. 引言

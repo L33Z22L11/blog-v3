@@ -3,7 +3,7 @@ title: 利用Github Actions自动化部署你Hexo博客
 date: 2022-08-25 22:01:13
 updated: 2022-12-9 14:15:00
 image: https://xlenco.onmicrosoft.cn/img/7bf185e5.webp
-description: 这篇文章介绍了GitHub Actions的概念和使用方式。如何使用Github Actions自动化部署Hexo博客
+description: 这篇文章介绍了GitHub Actions的概念和使用方式。如何使用Github Actions自动化部署Hexo博客。
 ---
 ### Github Actions概念
 

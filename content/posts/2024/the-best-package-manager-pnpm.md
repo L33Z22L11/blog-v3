@@ -1,7 +1,7 @@
 ---
 title: 最好用的包管理器pnpm
 image: https://xlenco-img.s3.bitiful.net/i/2024/08/a03ee580aad59e67cc0179880e6945a2.webp
-description: 这篇文章介绍了pnpm,pnpm是一款比较好的包管理器
+description: 这篇文章介绍了pnpm,pnpm是一款比较好的包管理器。
 date: 2024-08-19 09:37:56
 updated: 2024-08-20 09:37:56
 ---
