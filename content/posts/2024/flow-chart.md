@@ -1,6 +1,7 @@
 ---
 title: 流程图介绍以及使用
 date: 2024-10-04 17:49:02
+update: 2024-10-04 20:35:02
 image: https://xlenco-img.s3.bitiful.net/i/2024/10/9cde8a4321c28f60cb3fab08cccbe711.webp
 description:  这篇文章介绍了什么是流程图以及流程图的作用，并介绍了流程图的基本符号，实例与制作流程图的工具。
 ---
