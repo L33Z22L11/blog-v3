@@ -71,7 +71,7 @@ import mediumZoom from 'medium-zoom'
 
 onMounted(async () => {
     await nextTick()
-    mediumZoom('img[alt="img"]', {
+    mediumZoom('img:not([class])', {
         background: 'rgba(0, 0, 0, 0.8)',
         margin: 24,
         scrollOffset: 0,
