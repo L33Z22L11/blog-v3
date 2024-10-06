@@ -64,3 +64,12 @@ aside {
     }
 }
 </style>
+
+// medium-zoom 图片点击放大
+<script setup>
+import mediumZoom from 'medium-zoom'
+onMounted(async () => {
+    await nextTick()
+    mediumZoom(document.querySelectorAll('img'))
+})
+</script>
