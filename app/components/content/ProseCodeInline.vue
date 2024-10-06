@@ -2,7 +2,7 @@
     <code><slot /></code>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 code {
     padding: 0.1em 0.3em;
     border: 1px solid var(--c-border);

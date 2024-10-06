@@ -28,7 +28,7 @@ onMounted(() => initTwikoo())
     </section>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .z-comment {
     margin: 3rem 1rem;
 

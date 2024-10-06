@@ -40,7 +40,7 @@ onMounted(async () => {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 ul {
     display: flex;
     flex-wrap: wrap;

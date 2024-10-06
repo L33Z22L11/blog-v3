@@ -57,7 +57,7 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .z-slide {
     margin: 1rem;
 }

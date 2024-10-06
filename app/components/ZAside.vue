@@ -41,7 +41,7 @@ const widgets = computed(() => (UIStore.aside || []).map(componentAlias =>
     </aside>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 #z-aside {
     overflow: auto;
     padding: 0.5rem;

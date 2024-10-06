@@ -43,7 +43,7 @@ const src = computed(() => {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .video {
     overflow: hidden;
     margin: 2rem auto;

@@ -70,7 +70,7 @@ onMounted(() => {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .toolbar {
     display: flex;
     align-items: center;

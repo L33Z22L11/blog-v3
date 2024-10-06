@@ -21,7 +21,7 @@ props.copy && useCopy(tip, tip)
     </span>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .tip {
     position: relative;
     text-decoration: underline dashed var(--c-text-3);

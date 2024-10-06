@@ -41,7 +41,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
     </aside>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 #z-sidebar {
     display: flex;
     flex-direction: column;

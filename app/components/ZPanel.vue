@@ -31,7 +31,7 @@ useEventListener('keydown', (event) => {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 #z-panel {
     position: fixed;
     overflow: hidden;

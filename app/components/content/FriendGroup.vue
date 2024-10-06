@@ -18,7 +18,7 @@ import allMyFriends from '~/assets/friend'
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .friend-group {
     // position: relative;
     margin: 2rem 0;

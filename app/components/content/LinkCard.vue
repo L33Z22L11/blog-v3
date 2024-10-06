@@ -24,7 +24,7 @@ const src = computed(() => getImgUrl(props.icon, props.mirror))
     </ZRawLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .link-card {
     display: flex;
     align-items: center;

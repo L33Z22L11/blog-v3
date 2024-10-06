@@ -56,7 +56,7 @@ const listSorted = computed(() => alphabetical(
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .preview {
     margin: 1rem;
 }

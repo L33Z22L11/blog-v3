@@ -31,7 +31,7 @@ const highlightContent = computed(() => highlightHTML(props.content ?? '', word.
     </ZRawLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .search-item {
     display: block;
     margin: 0.5em;

@@ -46,7 +46,7 @@ const codeHighlighted = await useShikiHighlighted(() => props.code, {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .error {
     display: flex;
     flex-direction: column;

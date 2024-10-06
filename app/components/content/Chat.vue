@@ -25,7 +25,7 @@ function render() {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .chat {
     margin-inline: 2vw;
     font-size: 0.9em;

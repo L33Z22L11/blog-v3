@@ -38,7 +38,7 @@ const pageArr = computed(() => genPageArr(page.value, props.totalPages))
     </nav>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .pagination {
     display: flex;
     align-items: center;

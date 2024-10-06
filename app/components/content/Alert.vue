@@ -57,7 +57,7 @@ const title = computed(() => props.title || defaultProps.value.title)
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .alert {
     padding: 0.2em 0.8em;
     background-image:

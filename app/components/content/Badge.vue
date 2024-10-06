@@ -20,7 +20,7 @@ const round = computed(() => props.img ? !props.square : props.round)
     </ZRawLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .badge {
     display: inline-flex;
     align-items: center;

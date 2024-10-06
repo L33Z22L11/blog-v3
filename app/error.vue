@@ -39,7 +39,7 @@ const handleError = () => clearError({ redirect: '/' })
     <ZPanel />
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .app-error {
     margin: 1rem;
 

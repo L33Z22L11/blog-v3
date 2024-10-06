@@ -27,7 +27,7 @@ useEventListener('keyup', (e) => {
     <kbd :class="{ active }" @click="emit('press')"><slot /></kbd>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 kbd {
     display: inline-block;
     padding: 0.1em 0.2em;

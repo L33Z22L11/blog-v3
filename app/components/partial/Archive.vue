@@ -30,7 +30,7 @@ const auxDateLabel = computed(() => props.date
     </li>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .article-line {
     display: grid;
     grid-template-columns: auto 1fr;

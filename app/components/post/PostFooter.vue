@@ -40,7 +40,7 @@ const appConfig = useAppConfig()
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .post-footer {
     margin: 2rem 0.5rem;
     border: 1px solid var(--c-border);

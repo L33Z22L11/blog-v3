@@ -15,7 +15,7 @@ const scroll = ref(true)
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .md-table {
     position: relative;
     margin: 1rem;

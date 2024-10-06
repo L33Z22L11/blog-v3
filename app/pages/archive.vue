@@ -61,7 +61,7 @@ const listGrouped = computed(
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .archive {
     margin: 1rem;
     mask: linear-gradient(#fff 50%, #fff5);

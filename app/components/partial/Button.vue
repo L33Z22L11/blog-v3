@@ -19,7 +19,7 @@ defineProps<ButtonProps>()
     </button>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .button {
     padding: 0.4em 0.6em;
     border: 1px solid var(--c-border);

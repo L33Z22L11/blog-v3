@@ -75,7 +75,7 @@ onMounted(async () => {
     </code>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .command {
     display: flex;
     overflow: hidden;

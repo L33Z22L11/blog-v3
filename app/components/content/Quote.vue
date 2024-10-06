@@ -17,7 +17,7 @@ const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .quote {
     font-size: 1.2rem;
     font-weight: var(--font-weight-medium);

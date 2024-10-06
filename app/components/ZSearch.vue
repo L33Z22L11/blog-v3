@@ -109,7 +109,7 @@ function openActiveItem() {
     </Transition>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @keyframes scan {
     0% { left: -100%; }
     100% { left: 150%; }

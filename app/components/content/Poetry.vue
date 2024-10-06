@@ -23,7 +23,7 @@ defineProps<{
     </section>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .poetry {
     width: fit-content;
     margin: 2em auto;

@@ -39,7 +39,7 @@ const tip = joinWithBR(
     </ZRawLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .friend-card {
     display: flex;
     align-items: center;

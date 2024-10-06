@@ -25,7 +25,7 @@ const src = getImgUrl(props.banner, props.mirror)
     </ZRawLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .link-banner {
     display: flex;
     flex-direction: column;

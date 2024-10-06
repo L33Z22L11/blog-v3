@@ -22,7 +22,7 @@ function render() {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 // TODO: 优化时间线样式
 .timeline {
     position: relative;

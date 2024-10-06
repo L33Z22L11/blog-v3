@@ -58,7 +58,7 @@ useCopy(btnShareByText, btnShareByText, shareText)
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .post-header {
     display: flex;
     flex-direction: column;

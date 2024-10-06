@@ -62,7 +62,7 @@ useCopy(copyBtn, codeblock)
     </figure>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .z-codeblock {
     position: relative;
     margin-block: 1em;

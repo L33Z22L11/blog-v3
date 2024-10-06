@@ -14,7 +14,7 @@ const tip = computed(() => isExtLink(props.href) && getDomain(props.href))
     </ZRawLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .z-link {
     background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 0.1em;
     color: var(--c-primary);

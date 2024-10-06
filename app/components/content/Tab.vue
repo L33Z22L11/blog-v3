@@ -28,7 +28,7 @@ const activeTab = ref(Number(props.active) || 1)
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .center {
     width: fit-content;
     max-width: 100%;

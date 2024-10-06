@@ -14,7 +14,7 @@ defineProps<{
     </menu>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 menu {
     display: flex;
     justify-content: center;
