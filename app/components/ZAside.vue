@@ -9,7 +9,7 @@ import {
 } from '#components'
 import { pascal } from 'radash'
 
-const UIStore = useUIStore()
+const layoutStore = useLayoutStore()
 
 const widgetList = {
     LazyWidgetBlogLog,
@@ -20,18 +20,18 @@ const widgetList = {
     LazyWidgetToc,
 }
 
-const widgets = computed(() => (UIStore.aside || []).map(componentAlias =>
+const widgets = computed(() => (layoutStore.asideItems || []).map(componentAlias =>
     `LazyWidget${pascal(componentAlias)}` as keyof typeof widgetList),
 )
 </script>
 
 <template>
     <Transition>
-        <div v-if="UIStore.isAsideOpen" id="z-aside-bgmask" @click="UIStore.toggleAside" />
+        <div v-if="layoutStore.isOpen('aside')" id="z-aside-bgmask" @click="layoutStore.toggle('aside')" />
     </Transition>
     <!-- 此处不能使用 Transition，因为宽屏状态始终显示 -->
     <!-- 如果为空数组则隐藏 -->
-    <aside v-if="UIStore.aside?.length" id="z-aside" class="scrollcheck-y" :class="{ show: UIStore.isAsideOpen }">
+    <aside v-if="layoutStore.asideItems?.length" id="z-aside" class="scrollcheck-y" :class="{ show: layoutStore.isOpen('aside') }">
         <div class="container">
             <div v-for="widget in widgets" :key="widget" class="widget">
                 <!-- 更换页面时通过 key 更新这些组件，防止旧数据导致问题 -->

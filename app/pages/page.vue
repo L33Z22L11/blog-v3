@@ -8,8 +8,8 @@ useSeoMeta({
 const perPage = appConfig.indexGenerator.perPage || 10
 const orderBy = ref(appConfig.indexGenerator.orderBy || 'date')
 
-const UIStore = useUIStore()
-UIStore.setAside(['blog_log', 'blog_stats', 'connectivity'])
+const layoutStore = useLayoutStore()
+layoutStore.setAside(['blog_log', 'blog_stats', 'connectivity'])
 
 const { data: listRaw } = await useAsyncData(
     'posts_index',

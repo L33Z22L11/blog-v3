@@ -26,7 +26,7 @@ watch(command, (newVal) => {
 })
 
 function undo() {
-    commandInput.value!.textContent = props.command
+    commandInput.value!.textContent = props.command ?? ''
     // 触发 shiki 高亮
     commandInput.value?.dispatchEvent(new Event('input'))
     showUndo.value = false
@@ -41,7 +41,7 @@ function beforeInput(event: InputEvent) {
 }
 
 function onInput(event: InputEvent) {
-    command.value = (event.target as Element).textContent
+    command.value = (event.target as Element).textContent ?? ''
 }
 
 onMounted(async () => {

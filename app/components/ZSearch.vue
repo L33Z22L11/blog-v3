@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const UIStore = useUIStore()
+const layoutStore = useLayoutStore()
 const searchInput = ref<HTMLInputElement>()
 
-watch(() => UIStore.isSearchOpen, async (isOpen) => {
+watch(() => layoutStore.isOpen('search'), async (isOpen) => {
     await nextTick()
     isOpen && searchInput.value?.focus()
 })
@@ -26,7 +26,7 @@ watchDebounced(word, () => {
 useEventListener('keydown', (event: KeyboardEvent) => {
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault()
-        UIStore.toggleSearch()
+        layoutStore.toggle('search')
     }
 })
 
@@ -52,13 +52,13 @@ function openActiveItem() {
 <template>
     <Transition>
         <div
-            v-if="UIStore.isSearchOpen"
+            v-if="layoutStore.isOpen('search')"
             id="z-search-bgmask"
-            @click="UIStore.toggleSearch"
+            @click="layoutStore.toggle('search')"
         />
     </Transition>
     <Transition>
-        <div v-if="UIStore.isSearchOpen" id="z-search">
+        <div v-if="layoutStore.isOpen('search')" id="z-search">
             <form class="input" :class="{ searching: status === 'pending' }" @submit.prevent>
                 <Icon name="ph:magnifying-glass-bold" />
                 <input
@@ -87,7 +87,7 @@ function openActiveItem() {
                             :key="item.id"
                             v-bind="item"
                             :class="{ active: activeIndex === itemIndex }"
-                            @click="UIStore.toggleSearch"
+                            @click="layoutStore.toggle('search')"
                             @mouseover="activeIndex = itemIndex"
                         />
                     </TransitionGroup>
@@ -101,7 +101,7 @@ function openActiveItem() {
                     <ZKey code="Enter" @press="openActiveItem">
                         Enter
                     </ZKey> 选择&emsp;
-                    <ZKey code="Escape" @press="UIStore.toggleSearch">
+                    <ZKey code="Escape" @press="layoutStore.toggle('search')">
                         Esc
                     </ZKey> 关闭
                 </div>

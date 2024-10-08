@@ -11,8 +11,8 @@ const orderBy = useRouteQuery(
     () => appConfig.indexGenerator.orderBy || 'date',
 )
 
-const UIStore = useUIStore()
-UIStore.setAside(['blog_log'])
+const layoutStore = useLayoutStore()
+layoutStore.setAside(['blog_log'])
 
 const { data: listRaw } = await useAsyncData(
     'preview_list',

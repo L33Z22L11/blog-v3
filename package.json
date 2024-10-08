@@ -1,7 +1,7 @@
 {
   "name": "zhilu-blog",
   "type": "module",
-  "version": "3.0.7",
+  "version": "3.0.8",
   "private": true,
   "packageManager": "pnpm@9.12.1",
   "scripts": {
@@ -21,7 +21,7 @@
     "date-fns-tz": "^3.2.0",
     "embla-carousel-autoplay": "^8.3.0",
     "embla-carousel-vue": "^8.3.0",
-    "plain-shiki": "^0.0.8",
+    "plain-shiki": "^0.0.10",
     "radash": "^12.1.0",
     "shiki": "^1.22.0",
     "vue": "^3.5.11",

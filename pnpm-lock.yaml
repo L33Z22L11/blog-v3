@@ -35,8 +35,8 @@ importers:
         specifier: ^8.3.0
         version: 8.3.0(vue@3.5.11(typescript@5.6.2))
       plain-shiki:
-        specifier: ^0.0.8
-        version: 0.0.8
+        specifier: ^0.0.10
+        version: 0.0.10(shiki@1.22.0)
       radash:
         specifier: ^12.1.0
         version: 12.1.0
@@ -4050,8 +4050,10 @@ packages:
   pkg-types@1.2.0:
     resolution: {integrity: sha512-+ifYuSSqOQ8CqP4MbZA5hDpb97n3E8SVWdJe+Wms9kj745lmd3b7EZJiqvmLwAlmRfjrI7Hi5z3kdBJ93lFNPA==}
 
-  plain-shiki@0.0.8:
-    resolution: {integrity: sha512-RA3SdytxkIjc0nCiVcu+Dxy6ezoXAbA9/FLzCxefmWZLAe2gR1mwiSciPlBxUcW1THaj4us003r0nwPVF6vDIw==}
+  plain-shiki@0.0.10:
+    resolution: {integrity: sha512-OZhw/zrHp7OC+HoaUO7XST0cLQEB3jpSt6z1VovHB0DTaG9xPK6XyafQlxTlhXKO9+7ch7FUloj7CiYJ4ldPFg==}
+    peerDependencies:
+      shiki: ^1.22.0
 
   playwright-core@1.47.2:
     resolution: {integrity: sha512-3JvMfF+9LJfe16l7AbSmU555PaTl2tPyQsVInqm3id16pdDfvZ8TTZ/pyzmkbDrZTQefyzU7AIHlZqQnxpqHVQ==}
@@ -10501,7 +10503,7 @@ snapshots:
       mlly: 1.7.1
       pathe: 1.1.2
 
-  plain-shiki@0.0.8:
+  plain-shiki@0.0.10(shiki@1.22.0):
     dependencies:
       shiki: 1.22.0
 

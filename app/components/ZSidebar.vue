@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
-const UIStore = useUIStore()
+const layoutStore = useLayoutStore()
 
 const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' : 'Ctrl+K')
 </script>
@@ -8,13 +8,13 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 <template>
     <Transition>
         <!-- FIXME: 评估是否能公用 bgmask 减少冗余 -->
-        <div v-if="UIStore.isSidebarOpen" id="z-sidebar-bgmask" @click="UIStore.toggleSidebar" />
+        <div v-if="layoutStore.isOpen('sidebar')" id="z-sidebar-bgmask" @click="layoutStore.toggle('sidebar')" />
     </Transition>
     <!-- 此处不能使用 Transition，因为半宽屏状态始终显示 -->
-    <aside id="z-sidebar" :class="{ show: UIStore.isSidebarOpen }">
+    <aside id="z-sidebar" :class="{ show: layoutStore.isOpen('sidebar') }">
         <ZhiluHeader class="sidebar-header" to="/" />
         <nav class="sidebar-nav scrollcheck-y">
-            <div class="search-btn sidebar-nav-item gradient-card" @click="UIStore.toggleSearch">
+            <div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
                 <Icon name="ph:magnifying-glass-bold" />
                 <span class="nav-text">搜索</span>
                 <span class="keycut widescreen-only">{{ keycut }}</span>
