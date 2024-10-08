@@ -21,7 +21,7 @@ recommend: true
 虽然 Windows 会在即将推出的版本加上 sudo，但目前还没有，需要通过安装 gsudo 来添加 sudo 支持。
 
 - 安装 gsudo
-  :copy{prompt="PS>"}[winget install gsudo]
+  :copy{prompt="PS>" command="winget install gsudo"}
 
 ### 如果使用 Windows Powershell
 
@@ -30,17 +30,17 @@ recommend: true
 PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是旧版本的 PSReadLine 模块，需要强制更新。
 
 - 安装新版 PSReadLine 模块
-  :copy{prompt="PS>"}[sudo Install-Module PSReadLine -Force]
+  :copy{prompt="PS>" command="sudo Install-Module PSReadLine -Force"}
   如果第一次执行时提示安装 NuGet 提供程序，那么可能需要再次执行命令才能安装 PSReadLine。
 
 ### 启用自动补全
 
 - 新建 PS 配置文件的文件夹，若已存在可以忽略
-  :copy{prompt="PS>"}[mkdir $PROFILE/..]
+  :copy{prompt="PS>" command="mkdir $PROFILE/.."}
 - 打开 PS 配置文件
-  :copy{prompt="PS>"}[notepad $PROFILE]
+  :copy{prompt="PS>" command="notepad $PROFILE"}
   - 也可以更改系统全局配置文件
-  :copy{prompt="PS>"}[sudo notepad $PSHOME\profile.ps1]
+  :copy{prompt="PS>" command="sudo notepad $PSHOME\profile.ps1"}
 - 添加以下内容
   ```powershell [$PROFILE]
   # 按 Tab 键显示补全菜单，按方向键切换选项
@@ -56,12 +56,12 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 ### Oh My Posh
 
 - 安装 oh-my-posh（参见 [官方文档](https://ohmyposh.dev/docs/installation/windows)）
-  :copy{prompt="PS>"}[winget install JanDeDobbeleer.OhMyPosh]
+  :copy{prompt="PS>" command="winget install JanDeDobbeleer.OhMyPosh"}
 - 配置（参见 [官方文档](https://ohmyposh.dev/docs/installation/prompt)）
   - 更改 PS 脚本执行策略
-  :copy{prompt="PS>"}[sudo Set-ExecutionPolicy RemoteSigned]
+  :copy{prompt="PS>" command="sudo Set-ExecutionPolicy RemoteSigned"}
   - 打开 PS 配置文件
-  :copy{prompt="PS>"}[notepad $PROFILE]
+  :copy{prompt="PS>" command="notepad $PROFILE"}
   - 在文件中添加以下内容
     ```powershell [$PROFILE]
     oh-my-posh init pwsh | Invoke-Expression
@@ -83,10 +83,10 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 
 - 打开 Windows Terminal 设置
 - 配置文件 - 添加新配置文件
-  - :copy{prompt="名称"}[Git Bash]
-  - :copy{prompt="命令"}[%ProgramFiles%\Git\bin\bash.exe --login -i]
-  - :copy{prompt="启动目录"}[%USERPROFILE%]
-  - :copy{prompt="图标"}[%ProgramFiles%\Git\mingw64\share\git\git-for-windows.ico]
+  - :copy{prompt="名称" command="Git Bash"}
+  - :copy{prompt="命令" command="%ProgramFiles%\Git\bin\bash.exe --login -i"}
+  - :copy{prompt="启动目录" command="%USERPROFILE%"}
+  - :copy{prompt="图标" command="%ProgramFiles%\Git\mingw64\share\git\git-for-windows.ico"}
 
 ## 美化
 

@@ -20,7 +20,7 @@ UEFI 引导中，可以有多个启动项，比如 Windows Boot Manager、Linux 
 
 ### 列出 EFI 启动项
 
-:copy{prompt="PS(管理员)>"}[bcdedit /enum ALL]
+:copy{prompt="PS(管理员)>" command="bcdedit /enum ALL"}
 
 执行此命令，你会看到类似以下内容：
 
@@ -88,7 +88,7 @@ shutdown -r -t 0
 
 ### 列出启动项
 
-:copy[efibootmgr]
+:copy{command="efibootmgr"}
 
 执行此命令后，会得到如下所示的 EFI 启动项列表：
 
@@ -103,13 +103,13 @@ Boot2001* EFI USB Device        RC
 
 ### 重启到指定 EFI 启动项
 
-:copy[sudo efibootmgr -n 四位数序号]
+:copy{command="sudo efibootmgr -n 四位数序号"}
 
 ### 修改 Linux Boot Manager 的下一次启动项/默认启动项
 
 > 仅适用于使用 `systemd-boot` 启动的系统，如果你在使用 Grub，请参阅其他教程。
 
-:copy[bootctl list]
+:copy{command="bootctl list"}
 
 执行此命令后，可以列出如下所示的启动项列表：
 
@@ -136,4 +136,4 @@ Boot2001* EFI USB Device        RC
 
 使用此命令可以修改 Linux Boot Manager 的下一次启动项，若想修改默认启动项，请使用 `set-dafault` 选项。
 
-:copy[sudo bootctl set-oneshot [ID]]
+:copy{command="sudo bootctl set-oneshot [ID]"}

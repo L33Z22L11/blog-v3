@@ -10,14 +10,10 @@ const props = defineProps<{
     language?: string
 }>()
 
-// FIXME: Slot "default" invoked outside of the render function
-const slots = defineSlots()
-
 const prompt = computed(() => props.noprompt ? '' : props.prompt ?? '$')
 const language = computed(() => props.language ?? getPromptLanguage(prompt.value))
 
-const initialCommand = computed(() => slots.default?.()[0]?.children ?? props.command)
-const command = ref(initialCommand.value)
+const command = ref(props.command)
 const showUndo = ref(false)
 const commandInput = useTemplateRef('command-input')
 const copyBtn = useTemplateRef('copy-btn')
@@ -26,11 +22,11 @@ useTippy(commandInput, { content: '可以修改命令后再复制', trigger: 'fo
 useCopy(copyBtn, commandInput)
 
 watch(command, (newVal) => {
-    showUndo.value = newVal !== initialCommand.value
+    showUndo.value = newVal !== props.command
 })
 
 function undo() {
-    commandInput.value!.textContent = initialCommand.value
+    commandInput.value!.textContent = props.command
     // 触发 shiki 高亮
     commandInput.value?.dispatchEvent(new Event('input'))
     showUndo.value = false
@@ -65,7 +61,7 @@ onMounted(async () => {
             class="code scrollcheck-x"
             @beforeinput="beforeInput($event as InputEvent)"
             @input="onInput($event as InputEvent)"
-            v-text="initialCommand"
+            v-text="command"
         />
         <button v-if="showUndo" class="operation" @click="undo">
             <Icon name="ph:arrow-u-up-left-bold" />

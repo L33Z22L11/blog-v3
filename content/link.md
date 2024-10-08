@@ -43,7 +43,7 @@ active: 2
 
 #tab2
 
-:copy{prompt="QQ群"}[169994096]
+:copy{prompt="QQ群" command="169994096"}
 
 #tab3
 

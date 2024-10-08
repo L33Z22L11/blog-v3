@@ -491,7 +491,7 @@ caption: Traffic Monitor 悬浮窗
 
 - 右键开始菜单图标，选择“终端”。（“PowerShell”也行，但说明该升系统了）
 - 输入命令卸载“Windows Web 体验包”（小组件广告）
-  :copy{prompt="PS>"}[winget uninstall "windows web experience pack"]
+  :copy{prompt="PS>" command="winget uninstall &quot;windows web experience pack&quot;"}
 - 右键 Traffic Monitor，勾选“显示任务栏窗口”，取消勾选“显示主窗口”
 - 你可以在“选项”-“任务栏窗口设置”里继续调整
 

@@ -60,4 +60,4 @@ icon: https://www.zhilu.cyou/api/icon.png
 
 ## Copy
 
-:copy[sudo rm -rf]
+:copy{command="sudo rm -rf"}

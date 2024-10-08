@@ -19,7 +19,7 @@ tags: [教程, archlinux, 系统]
 > 可以在 [icon-theme](https://github.com/topics/icon-theme) 话题、[#icon #theme](https://github.com/search?q=%23icon+%23theme) 搜索结果或 [Pling](https://www.pling.com/browse?cat=386) 上浏览图标。
 
 - 推荐使用 [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) 图标主题
-  :copy[sudo pacman -S papirus-icon-theme]
+  :copy{command="sudo pacman -S papirus-icon-theme"}
 
 在“颜色和主题-图标”中可以启用下载的图标。
 
@@ -28,7 +28,7 @@ tags: [教程, archlinux, 系统]
 > 可以在 [cursor-theme](https://github.com/topics/cursor-theme) 话题、[#cursor #theme](https://github.com/search?q=%23cursor+%23theme) 搜索结果或 [Pling](https://www.pling.com/browse?cat=107) 上浏览鼠标指针样式。
 
 - 推荐使用 [Bibata](https://github.com/ful1e5/Bibata_Cursor) 鼠标指针样式
-  :copy[yay -S bibata-cursor-theme-bin]
+  :copy{command="yay -S bibata-cursor-theme-bin"}
 
 在“颜色和主题-光标”中选择下载的鼠标指针样式。
 

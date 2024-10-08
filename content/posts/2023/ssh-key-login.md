@@ -12,7 +12,7 @@ tags: [教程, ssh, 远程]
 
 ED225519 类型的密钥综合性能更好。
 
-:copy[ssh-keygen -t ed25519]
+:copy{command="ssh-keygen -t ed25519"}
 
 连续按回车键即可。如果你想自定义生成内容，请使用 `ssh-keygen -t ed25519 -C "内容"`。生成好的**公钥**可以通过 `cat ~/.ssh/id_ed25519.pub` 查看。
 

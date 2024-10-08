@@ -402,16 +402,16 @@ int main() {
 > 请通过命令创建一个目录，在该目录中创建几个后缀为`.Linux`的文件，然后通过命令查询这几个文件的基本属性信息（如文件大小，文件创建时间等），之后使用命令查看该目录下文件名含有“`.Linux`”的文件的数量（不包括子目录下的文件），把得到的数字写入到一个文件中，最后删除此目录。
 
 - 创建目录
-  :copy[mkdir my_directory]
+  :copy{command="mkdir my_directory"}
 - 进入目录
-  :copy[cd my_directory]
+  :copy{command="cd my_directory"}
 - 创建后缀为.Linux的文件
-  :copy[touch file{1,2,3}.Linux]
+  :copy{command="touch file{1,2,3}.Linux"}
 - 查询文件的基本属性信息
-  :copy[ls -l file*.Linux]
+  :copy{command="ls -l file*.Linux"}
 - 查看包含".Linux"的文件数量
-  :copy[ls -l file*.Linux | wc -l > file_count.txt]
+  :copy{command="ls -l file*.Linux | wc -l > file_count.txt"}
 - 查看文件数量
-  :copy[cat file_count.txt]
+  :copy{command="cat file_count.txt"}
 - 删除目录及其内容
-  :copy[cd .. && rm -r my_directory]
+  :copy{command="cd .. && rm -r my_directory"}

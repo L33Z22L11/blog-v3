@@ -127,9 +127,9 @@ link: https://mirrors.tuna.tsinghua.edu.cn/Adoptium/8/jdk/x64/windows/
   }
   ```
 - 确认编译环境为 Java 8（`1.8.0_xxx`）
-  :copy{prompt="PS>"}[javac -version]
+  :copy{prompt="PS>" command="javac -version"}
 - 编译为 `.class` 文件
-  :copy{prompt="PS>"}[javac -encoding UTF-8 FirstApplet.java]
+  :copy{prompt="PS>" command="javac -encoding UTF-8 FirstApplet.java"}
 - 编写 HTML 代码
   ```html [fitst-applet.html]
   <applet code="FirstApplet.class" width="300" height="300"></applet>
@@ -153,7 +153,7 @@ CreateObject("InternetExplorer.Application").Visible=true
 
 正当我打算放弃的时候，我忽然发现了 Applet 查看器（`appletviewer`）。上文提到的 Adoptium OpenJDK 8 带有这个工具。于是，很容易地：
 
-:copy{prompt="PS>"}[appletviewer fitst-applet.html]
+:copy{prompt="PS>" command="appletviewer fitst-applet.html"}
 
 > :tip[这是一个 Java Applet程序]{tip="当然，这里是前端和 MDC 语法的实现" style="color: #37f"}
 >
