@@ -150,10 +150,6 @@ mark {
     vertical-align: text-bottom;
 }
 
-.icon-revert {
-    filter: invert(1) hue-rotate(180deg);
-}
-
 // fallback
 img {
     display: inline-block;
@@ -189,7 +185,8 @@ img {
     display: none;
 
     @media (max-width: $breakpoint-mobile) {
-        display: initial;
+        display: revert;
+        overflow: hidden;
     }
 }
 
@@ -197,6 +194,6 @@ img {
     display: none;
 
     @media (min-width: $breakpoint-widescreen) {
-        display: initial;
+        display: revert;
     }
 }

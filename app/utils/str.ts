@@ -30,8 +30,7 @@ export function highlightHTML(text: string, word: string, className: string = 'h
     const pattern = new RegExp(word, 'gi')
     const highlightedText = text
         .replace(pattern, matched => `<span class="${className}">${matched}</span>`)
-        // CSS white-space: pre-line 即可保留但合并连续的空白符
-        // .replace(/\n+/g, '<br>')
+        .replace(/\n+/g, '<br>')
     return highlightedText
 }
 

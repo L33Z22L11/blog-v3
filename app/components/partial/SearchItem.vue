@@ -13,14 +13,13 @@ const title = computed(() => [...props.titles ?? [], props.title].join(' > '))
 const isPara = computed(() => props.titles?.length)
 const word = computed(() => props.queryTerms?.[0] ?? '')
 
-// const breadcrumbs = computed(() => props.titles?.split('\n').push(props.title).join(' > '))
-
 const highlightTitle = computed(() => highlightHTML(title.value, word.value))
 const highlightContent = computed(() => highlightHTML(props.content ?? '', word.value))
 </script>
 
 <template>
-    <ZRawLink :to="id" class="search-item" :class="{ para: isPara }">
+    <!-- FIXME: props 上不存在属性“id” -->
+    <ZRawLink :to="id" class="search-item">
         <h2>
             <Badge v-if="!isPara" round>
                 文章
@@ -59,7 +58,7 @@ const highlightContent = computed(() => highlightHTML(props.content ?? '', word.
 
     .content {
         font-size: 0.8em;
-        white-space: pre-line;
+        white-space: pre-wrap;
         color: var(--c-text-2);
     }
 }

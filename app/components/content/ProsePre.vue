@@ -5,7 +5,7 @@ const props = withDefaults(defineProps<{
     code?: string
     language?: string
     filename?: string
-    highlights?: () => number[]
+    highlights?: number[]
     meta?: string
     class?: string
 }>(), {
@@ -40,8 +40,10 @@ useCopy(copyBtn, codeblock)
     <figure class="z-codeblock">
         <figcaption>
             <span v-if="filename" class="filename">
-                <!-- BUG: 初次访问时不添加 class="light" -->
-                <Icon :class="{ 'icon-revert': $colorMode.value === 'light' }" :name="icon" />
+                <ClientOnly>
+                    <!-- 颜色偏好存储于客户端，可能水合不匹配 -->
+                    <Icon :class="{ 'icon-revert': $colorMode.value === 'light' }" :name="icon" />
+                </ClientOnly>
                 {{ filename }}
             </span>
             <span v-if="language" class="language">{{ language }}</span>
@@ -170,5 +172,9 @@ pre {
         outline: 0.2em solid var(--ld-bg-active);
         background-color: var(--ld-bg-active);
     }
+}
+
+.icon-revert {
+    filter: invert(0.8) hue-rotate(180deg) saturate(2);
 }
 </style>
