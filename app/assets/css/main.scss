@@ -6,6 +6,8 @@
     --font-weight-medium: 450;
     --font-weight-bold: 500;
 
+    overflow-y: scroll;
+
     // 兼容了一点 IE
     background-color: hsl(220deg 20% 98%);
     background-color: var(--c-bg-1);

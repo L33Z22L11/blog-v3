@@ -52,12 +52,6 @@
         }
     }
 
-    > p > img:not([class]) {
-        max-width: 100%;
-        margin: 1rem auto;
-        border-radius: 0.5rem;
-    }
-
     strong {
         background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 30%;
     }
