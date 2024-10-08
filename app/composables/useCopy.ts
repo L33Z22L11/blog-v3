@@ -19,8 +19,8 @@ import 'tippy.js/dist/tippy.css'
  * useCopy(btnCopy, btnCopy, '自定义文本')
  */
 export default function (
-    trigger: MaybeRefOrGetter<{ $el: HTMLElement } | HTMLElement | null>,
-    target: MaybeRefOrGetter<{ $el: HTMLElement } | HTMLInputElement | HTMLElement | null>,
+    trigger: MaybeRefOrGetter<{ $el: Element } | Element | null>,
+    target: MaybeRefOrGetter<{ $el: Element } | HTMLInputElement | Element | null>,
     text?: string,
 ) {
     const getEl = (element: any) => element?.$el ?? element

@@ -31,6 +31,7 @@ watch(command, (newVal) => {
 
 function undo() {
     commandInput.value!.textContent = initialCommand.value
+    // 触发 shiki 高亮
     commandInput.value?.dispatchEvent(new Event('input'))
     showUndo.value = false
 }
@@ -39,12 +40,12 @@ function beforeInput(event: InputEvent) {
     const { data, inputType } = event
     if (data?.includes('\n') || inputType === 'insertLineBreak') {
         event.preventDefault()
-        showTooltipMessage(event.target as HTMLElement, '不支持换行')
+        showTooltipMessage(event.target as Element, '不支持换行')
     }
 }
 
 function onInput(event: InputEvent) {
-    command.value = (event.target as HTMLElement).textContent
+    command.value = (event.target as Element).textContent
 }
 
 onMounted(async () => {

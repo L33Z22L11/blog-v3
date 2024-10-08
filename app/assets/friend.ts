@@ -1,6 +1,6 @@
 import type { FriendGroup } from '~/types/friend'
 
-export default <FriendGroup[]> [
+export default <FriendGroup[]>[
     {
         name: '朋友',
         desc: '纸鹿和朋友在现实生活中关系很好。虽然他们可能在互联网上不太活跃。',
@@ -390,7 +390,7 @@ export default <FriendGroup[]> [
                 desc: '互联网中的静谧之地',
                 link: 'https://blog.xlenco.top/',
                 icon: 'https://q1.qlogo.cn/g?b=qq&nk=1043865083&s=4',
-                archs: ['Hexo', 'Vercel'],
+                archs: ['Nuxt', 'Vercel'],
                 date: '2024-07-28',
                 comment: '学生，经验分享。',
             },

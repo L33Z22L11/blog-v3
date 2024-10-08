@@ -44,6 +44,7 @@ watch(activeIndex, (newVal, oldVal) => {
 
 function openActiveItem() {
     const item = listResult.value?.children[activeIndex.value] as HTMLLIElement
+    // 触发 vue-router 点击事件
     item.dispatchEvent(new Event('click'))
 }
 </script>

@@ -8,6 +8,8 @@ const props = defineProps<{
     square?: boolean
 }>()
 
+// 有图时默认为圆形样式，除非指定为方形
+// 无图时默认为方形样式，除非指定为圆形
 const round = computed(() => props.img ? !props.square : props.round)
 </script>
 

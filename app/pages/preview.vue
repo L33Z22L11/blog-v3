@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { alphabetical, group } from 'radash'
+import { alphabetical } from 'radash'
 
 const appConfig = useAppConfig()
 useSeoMeta({

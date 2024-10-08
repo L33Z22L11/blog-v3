@@ -3,7 +3,7 @@ import 'tippy.js/dist/tippy.css'
 // import 'tippy.js/themes/light.css'
 
 export function showTooltipMessage(
-    el: HTMLElement | null,
+    el: Element | null,
     message: string,
     timeout = 1000,
 ) {

@@ -15,15 +15,17 @@ const props = withDefaults(defineProps<{
 
 const icon = computed(() => getFileIcon(props.language))
 
+interface CodeblockMeta { [meta: string]: string | boolean }
+
 const meta = computed(() => {
     if (!props.meta)
         return {}
 
-    return props.meta.split(' ').reduce((acc, item) => {
+    return props.meta.split(' ').reduce((acc: CodeblockMeta, item) => {
         const [key, value] = item.split('=')
         acc[key!] = value ?? true
         return acc
-    }, {} as { [meta: string]: string | boolean })
+    }, {})
 })
 
 const isWrap = ref<boolean>(Boolean(meta.value.wrap))
