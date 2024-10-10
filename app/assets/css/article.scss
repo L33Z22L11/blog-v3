@@ -52,6 +52,18 @@
         }
     }
 
+    > p > img:only-child, img.image {
+        display: block;
+        max-width: 100%;
+        margin: 1rem auto;
+        border-radius: 0.5rem;
+    }
+
+    > hr {
+        margin: 3em 0;
+        border-top: 0.4em dashed var(--c-border);
+    }
+
     strong {
         background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 30%;
     }
