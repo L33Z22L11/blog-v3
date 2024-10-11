@@ -57,9 +57,9 @@ KazariEX 见此情况，几次建议我使用 Nuxt.js 重构博客并手写主�
 如果系统偏好浅色模式，而博客选择了深色主题，刷新时会闪白。
 ::
 
-不少网站都有这个问题，比如 [GitHub Docs](https://docs.github.com/zh)、[VueUse 文档的 `useColorMode`](https://vueuse.org/core/useColorMode/)。最令我佩服的是 Astro 主题 [Frosti](https://github.com/EveSunMaple/Frosti)，我提出 [Issue: 深色模式下刷新/切换页面时的屏幕闪烁](https://github.com/EveSunMaple/Frosti/issues/16) 后，作者 [EveSunMaple](https://github.com/EveSunMaple)持续跟进，最终解决了问题。
+不少网站都有这个问题，比如 [GitHub Docs](https://docs.github.com/zh)、[VueUse 文档的 `useColorMode`](https://vueuse.org/core/useColorMode/)。最令我佩服的是 Astro 主题 [Frosti](https://github.com/EveSunMaple/Frosti)，我提出 [Issue: 深色模式下刷新/切换页面时的屏幕闪烁](https://github.com/EveSunMaple/Frosti/issues/16) 后，作者 [EveSunMaple](https://github.com/EveSunMaple) 持续跟进，最终解决了问题。
 
-话说回来，我在解决页面刷新时的主题问题时遇到了困难，于是请求 KazariEX 的支援。我们发现 VitePress 没有这个问题，并一起研究了其源码。最终发现 VitePress 使用原生 `<script>` 预处理主题，避免了在 `mounted` 钩子中才切换主题的情况。我们参考这一思路解决了问题。后来 isYangs 引入了现成的 `@nuxt/color-mode` 模块，使代码更加优雅。
+话说回来，我在解决页面刷新时的主题问题时遇到了困难，于是请求 KazariEX 的支援。我们发现 VitePress 没有这个问题，就一起研究它的源码，最终发现 VitePress 使用原生 `<script>` 预处理主题，避免了在 `mounted` 钩子中才切换主题的情况。我们参考这一思路解决了问题。后来 isYangs 引入了现成的 `@nuxt/color-mode` 模块，使代码更加优雅。
 
 ### 样式预处理
 
@@ -200,7 +200,7 @@ onMounted(() => initTwikoo())
 
 我参考了 Stellar 主题的左中右三栏布局。其中，右侧栏可以通过元数据或 Front Matter 中的 `aside` 数组来自定义组件。
 
-Stellar 主题使用 Grid 布局，而我选择借鉴 Vitepress 默认主题的 Flex 布局实现方式，这样不仅兼容性更好，还能在隐藏右侧栏时让正文占据此空间。
+Stellar 主题使用 Grid 布局，而我选择借鉴 VitePress 默认主题的 Flex 布局实现方式，这样不仅兼容性更好，还能在隐藏右侧栏时让正文占据此空间。
 
 ```yaml [blog-using-nuxt.md]
 ---
