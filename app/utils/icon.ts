@@ -71,7 +71,7 @@ export function getFileIcon(extension?: string): string {
     const config = useAppConfig()
 
     if (!extension || !(config.fileExtensions as string[]).includes(extension))
-        return 'ph:file-bold'
+        extension = 'file'
 
     const fileType = ext2lang[extension] || extension
     return `catppuccin:${fileType}`
