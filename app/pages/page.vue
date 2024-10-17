@@ -40,13 +40,6 @@ const listRecommended = computed(() => sort(
 useSeoMeta({
     title: () => page.value > 1 ? `第${page.value}页` : '',
 })
-
-// 兼容 SSR
-onMounted(() => {
-    watch(page, () => {
-        window.scrollTo({ top: 0 })
-    })
-})
 </script>
 
 <template>
@@ -58,6 +51,7 @@ onMounted(() => {
     <div class="post-list">
         <div class="toolbar">
             <div class="preview-entrance">
+                <!-- 外层元素用于占位 -->
                 <ZRawLink to="/preview">
                     <Icon name="ph:file-lock-bold" />
                     查看预览文章

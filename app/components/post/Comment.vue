@@ -104,6 +104,19 @@ onMounted(() => initTwikoo())
         }
     }
 
+    blockquote {
+        margin: 0.5em 0;
+        padding: 0.2em 0.5em;
+        border-left: 4px solid var(--c-border);
+        border-radius: 4px;
+        background-color: var(--c-bg-2);
+        font-size: 0.9rem;
+
+        > .z-codeblock {
+            margin: 0 -0.8rem;
+        }
+    }
+
     .tk-extras, .tk-footer {
         font-size: 0.7rem;
         color: var(--c-text-3);

@@ -49,6 +49,7 @@ https://blog.zhilu.cyou
 │   ├── previews # 预览
 │   ├── link.md # 友链
 │   └── theme.md # 主题介绍
+├── patches # npm 包补丁
 ├── public # 静态资源
 │   └── fonts # 字体
 ├── server # 服务端
@@ -60,8 +61,10 @@ https://blog.zhilu.cyou
 │   │   └── fix-post-path.ts # 美化文章链接
 │   └── routes # 路由
 │       └── atom.xml.get.ts # Atom 订阅源
+├── ssl # 开发环境证书
 ├── blog.config.ts # 博客公共配置
 ├── nuxt.config.ts # Nuxt 配置
+├── redirects.ts # 旧站点重定向配置
 └── vercel.json # Vercel 配置
 ```
 
@@ -77,4 +80,10 @@ pnpm i
 
 ```bash
 pnpm dev
+```
+
+### 构建生产环境
+
+```bash
+pnpm generate
 ```
