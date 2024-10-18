@@ -460,6 +460,15 @@ export default <FriendGroup[]>[
                 date: '2024-10-02',
                 comment: '前端学习，高中生活。',
             },
+            {
+                name: 'tinsir888',
+                desc: 'Ηλύσια Πεδία',
+                link: 'https://tinsir888.github.io/',
+                icon: 'https://wsrv.nl/?url=github.com/tinsir888.png',
+                archs: ['Hexo', 'GitHub Pages'],
+                date: '2024-10-18',
+                comment: '计算机科学，留学生活。',
+            },
         ],
     },
     {
