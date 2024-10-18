@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ZLightbox } from '#components'
+
 const props = withDefaults(defineProps<{
     src: string
     mirror?: ImgService
@@ -7,29 +9,33 @@ const props = withDefaults(defineProps<{
     height?: string | number
     zoom?: boolean
 }>(), {
-    // zoom: true,
+    zoom: true,
 })
 
 const src = computed(() => getImgUrl(props.src, props.mirror))
+const image = ref(null!)
+const elImage = useCurrentElement<HTMLImageElement>(image)
 
-const layoutStore = useLayoutStore()
-const lightboxStore = useLightboxStore()
-function handleZoom() {
-    layoutStore.toggle('lightbox')
-    lightboxStore.setState({
-        url: src.value,
-        caption: props.caption,
-    })
-}
+const popoverStore = usePopoverStore()
+
+const { open, close } = popoverStore.use(() => h(ZLightbox, {
+    el: elImage.value,
+    caption: props.caption,
+    onClose() {
+        close()
+    },
+}))
 </script>
 
 <template>
     <!-- <ProseImg> 被 <p> 包裹，若内含块级元素会自动关闭，导致水合不匹配 -->
     <figure class="image">
         <NuxtImg
-            class="image" :style="{ cursor: zoom && 'zoom-in' }"
+            ref="image"
+            class="image"
+            :style="{ cursor: zoom && 'zoom-in' }"
             :src :alt="caption" :width :height
-            @click="zoom && handleZoom()"
+            @click="zoom && open()"
         />
         <figcaption v-if="caption" aria-hidden v-text="caption" />
     </figure>

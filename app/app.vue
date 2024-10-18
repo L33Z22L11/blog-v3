@@ -11,7 +11,7 @@
     </div>
     <ZSearch />
     <ZPanel />
-    <ZLightbox />
+    <ZPopover />
 </template>
 
 <!-- eslint-disable-next-line vue/enforce-style-attribute -->
