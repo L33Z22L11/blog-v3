@@ -9,6 +9,7 @@ const popoverStore = usePopoverStore()
         :key="index"
         class="popover"
         :show="popover.show"
+        :delay="popover.delay"
     />
 </template>
 

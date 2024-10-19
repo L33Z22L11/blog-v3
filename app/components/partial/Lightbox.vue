@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { BaseTransitionProps } from 'vue'
-
 const props = defineProps<{
     el: HTMLImageElement
     caption?: string
     show?: boolean
+    delay?: number
 }>()
 
 const emit = defineEmits<{
@@ -13,35 +12,32 @@ const emit = defineEmits<{
 
 const originRect = props.el.getBoundingClientRect()
 const rate = 0.8
-const image = ref(null!)
-const elImage = useCurrentElement<HTMLImageElement>(image)
+const zoomImage = ref(null!)
+const elZoomImage = useCurrentElement<HTMLImageElement>(zoomImage)
 
-const { style } = useDraggable(elImage, {
+const { style } = useDraggable(elZoomImage, {
     initialValue: { x: originRect.x, y: originRect.y },
 })
 
 function onWheel(e: WheelEvent) {
-    const { left, top, width, height } = elImage.value.getBoundingClientRect()
-
-    // 限制缩放
-    const tooLarge = width > Math.max(window.innerWidth, originRect.width) * 2
+    const { left, top, width, height } = elZoomImage.value.getBoundingClientRect()
+    const isTooLarge = width > Math.max(window.innerWidth, originRect.width) * 2
         && height > Math.max(window.innerHeight, originRect.height) * 2
-    const tooSmall = width < Math.min(window.innerWidth, originRect.width) * 0.5
+    const isTooSmall = width < Math.min(window.innerWidth, originRect.width) * 0.5
         && height < Math.min(window.innerHeight, originRect.height) * 0.5
-    if ((e.deltaY < 0 && tooLarge) || (e.deltaY > 0 && tooSmall))
+    if ((e.deltaY < 0 && isTooLarge) || (e.deltaY > 0 && isTooSmall))
         return
-
-    let rate = 1 + Math.abs(e.deltaY % 100 ? e.deltaY * 100 : e.deltaY) / 200
-    if (e.deltaY > 0)
-        rate = 1 / rate
-
-    const finalX = left - (e.clientX - left) * (rate - 1)
-    const finalY = top - (e.clientY - top) * (rate - 1)
-
-    elImage.value.style.left = `${finalX}px`
-    elImage.value.style.top = `${finalY}px`
-    elImage.value.style.width = `${width * rate}px`
-    elImage.value.style.height = `${height * rate}px`
+    const isTouchpad = Math.abs(e.deltaY) < 8
+    let delta = isTouchpad ? Math.abs(e.deltaY) : 0.5
+    delta = e.deltaY > 0 ? 1 / (1 + delta) : 1 + delta
+    const finalX = left - (e.clientX - left) * (delta - 1)
+    const finalY = top - (e.clientY - top) * (delta - 1)
+    Object.assign(elZoomImage.value.style, {
+        left: `${finalX}px`,
+        top: `${finalY}px`,
+        width: `${width * delta}px`,
+        height: `${height * delta}px`,
+    })
 }
 
 async function onEnter() {
@@ -51,30 +47,34 @@ async function onEnter() {
     const [finalWidth, finalHeight] = (fixedWidth / fixedHeight > ratio)
         ? [fixedHeight * ratio, fixedHeight]
         : [fixedWidth, fixedWidth / ratio]
-
     await delay(0)
-    elImage.value.style.top = `calc(50% - ${Math.floor(finalHeight / 2)}px)`
-    elImage.value.style.left = `calc(50% - ${Math.floor(finalWidth / 2)}px)`
-    elImage.value.style.width = `${finalWidth}px`
-    elImage.value.style.height = `${finalHeight}px`
+    Object.assign(elZoomImage.value.style, {
+        top: `calc(50% - ${Math.floor(finalHeight / 2)}px)`,
+        left: `calc(50% - ${Math.floor(finalWidth / 2)}px)`,
+        width: `${finalWidth}px`,
+        height: `${finalHeight}px`,
+    })
 }
 
 function onLeave() {
-    elImage.value.style.left = `${originRect.x}px`
-    elImage.value.style.top = `${originRect.y}px`
-    elImage.value.style.width = `${originRect.width}px`
-    elImage.value.style.height = `${originRect.height}px`
+    // 重新获取元素位置
+    const { x, y, width, height } = props.el.getBoundingClientRect()
+    Object.assign(elZoomImage.value.style, {
+        left: `${x}px`,
+        top: `${y}px`,
+        width: `${width}px`,
+        height: `${height}px`,
+    })
 }
 
 useEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
+    if (e.key === 'Escape')
         emit('close')
-    }
 })
 </script>
 
 <template>
-    <div class="z-lightbox">
+    <div class="z-lightbox" :style="{ '--delay': `${delay}ms` }">
         <Transition>
             <div
                 v-if="show"
@@ -85,7 +85,7 @@ useEventListener('keydown', (e) => {
         <Transition @enter="onEnter" @leave="onLeave">
             <NuxtImg
                 v-if="show"
-                ref="image"
+                ref="zoomImage"
                 class="image"
                 :width="el.width"
                 :height="el.height"
@@ -120,8 +120,7 @@ useEventListener('keydown', (e) => {
     position: fixed;
     inset: 0;
     background-color: #0007;
-    transition: backdrop-filter 1s;
-    transition: opacity 0.2s;
+    transition: all var(--delay, 0.2s);
     z-index: 0;
 
     &.v-enter-from,
@@ -132,16 +131,13 @@ useEventListener('keydown', (e) => {
 
 .image {
     position: fixed;
-    transition: all 0.2s;
     cursor: move;
+    touch-action: none;
 
-    &.v-enter-from,
-    &.v-leave-to {
-        border-radius: 1em;
-    }
-
-    &:active {
-        transition: none;
+    &.v-enter-active,
+    &.v-leave-active {
+        border-radius: 0.5rem;
+        transition: all var(--delay, 0.2s);
     }
 }
 
@@ -154,10 +150,11 @@ useEventListener('keydown', (e) => {
     max-width: min(40rem, 80%);
     margin-inline: auto;
     border-radius: 0.5em;
-    box-shadow: 0 0.5em 1em var(--ld-shadow);
-    background-color: var(--c-text-1);
-    color: var(--c-bg-2);
-    transition: all 0.2s;
+    box-shadow: 0 0.2em 0.5em var(--ld-shadow), 0 0.5em 1em var(--ld-shadow);
+    background-color: #0007;
+    backdrop-filter: blur(1rem) saturate(2);
+    color: white;
+    transition: all var(--delay, 0.2s);
     inset-inline: 0;
 
     &.v-enter-from,
