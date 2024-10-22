@@ -97,7 +97,7 @@ useEventListener('keydown', (e) => {
         </Transition>
         <Transition>
             <div v-if="show" class="tooltip">
-                <span class="caption">{{ caption }}</span>
+                <span v-if="caption" class="caption">{{ caption }}</span>
                 <button
                     class="close"
                     type="button"
@@ -147,6 +147,7 @@ useEventListener('keydown', (e) => {
     position: fixed;
     bottom: clamp(2rem, 10vh, 5rem);
     width: fit-content;
+    min-height: 2em;
     max-width: min(40rem, 80%);
     margin-inline: auto;
     border-radius: 0.5em;

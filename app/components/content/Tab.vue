@@ -46,7 +46,7 @@ const activeTab = ref(Number(props.active) || 1)
     padding: 0.5em 0;
     font-size: 0.9em;
 
-    &::after {
+    &::before {
         content: "";
         position: absolute;
         bottom: 0;
@@ -84,7 +84,6 @@ button {
             height: 2px;
             border-radius: 1em;
             background-color: var(--c-primary);
-            z-index: 1;
         }
     }
 }

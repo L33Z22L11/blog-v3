@@ -454,8 +454,8 @@ export default <FriendGroup[]>[
             {
                 name: 'LineXic',
                 desc: '念念不忘，必有回响',
-                link: 'https://blog.linexic.top/',
-                icon: 'https://blog.linexic.top/logo.png',
+                link: 'https://linexic.top/',
+                icon: 'https://linexic.top/logo.png',
                 archs: ['Jekyll', 'Cloudflare'],
                 date: '2024-10-02',
                 comment: '前端学习，高中生活。',
