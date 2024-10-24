@@ -1,32 +1,40 @@
 import type { Raw, VNode } from 'vue'
 
 interface PopoverState {
-    comp: VNode
-    show: Ref<boolean>
-    delay: number
+    component: VNode
+    duration: number
+    isOpening: Ref<boolean>
+    zIndex: number
+}
+
+export interface PopoverOptions {
+    duration?: number
 }
 
 export const usePopoverStore = defineStore('popover', () => {
     const pops = ref<Raw<PopoverState>[]>([])
-    const use = (render: () => VNode, afterDelay: number = 0) => {
+    const use = (render: () => VNode, options?: PopoverOptions) => {
         let state: PopoverState
-        const show = ref(false)
+        const isOpening = ref(false)
+        const zIndex = pops.value.length + 100
         const open = async () => {
             state = {
-                comp: render(),
-                show,
-                delay: afterDelay,
+                component: render(),
+                isOpening,
+                duration: options?.duration ?? 0,
+                zIndex,
             }
             pops.value.push(state)
             await nextTick()
-            show.value = true
+            isOpening.value = true
         }
         const close = async () => {
             const index = pops.value.indexOf(state)
             if (index === -1)
                 return
-            show.value = false
-            await delay(state.delay)
+            isOpening.value = false
+
+            await delay(state.duration)
             pops.value.splice(index, 1)
         }
 

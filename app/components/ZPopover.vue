@@ -1,20 +1,10 @@
 <script setup lang="ts">
 const popoverStore = usePopoverStore()
+const { pops } = storeToRefs(popoverStore)
 </script>
 
 <template>
-    <component
-        :is="popover.comp"
-        v-for="popover, index in popoverStore.pops"
-        :key="index"
-        class="popover"
-        :show="popover.show"
-        :delay="popover.delay"
-    />
+    <template v-for="{ component, zIndex, isOpening, duration } in pops" :key="zIndex">
+        <component :is="component" :is-opening :duration :style="{ zIndex }" />
+    </template>
 </template>
-
-<style lang="scss" scoped>
-.popover {
-    z-index: 100;
-}
-</style>

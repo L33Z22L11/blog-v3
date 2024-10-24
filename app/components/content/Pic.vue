@@ -24,7 +24,9 @@ const { open, close } = popoverStore.use(() => h(ZLightbox, {
     onClose() {
         close()
     },
-}), 200)
+}), {
+    duration: 200,
+})
 </script>
 
 <template>

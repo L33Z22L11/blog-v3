@@ -128,7 +128,7 @@ function openActiveItem() {
     box-shadow: 0 0.5em 1em var(--ld-shadow);
     background-color: var(--ld-bg-card);
     transition: all 0.2s;
-    z-index: 100;
+    z-index: 1000;
 
     &.v-enter-from,
     &.v-leave-to {

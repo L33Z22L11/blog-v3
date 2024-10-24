@@ -2,8 +2,8 @@
 const props = defineProps<{
     el: HTMLImageElement
     caption?: string
-    show?: boolean
-    delay?: number
+    isOpening?: boolean
+    duration?: number
 }>()
 
 const emit = defineEmits<{
@@ -15,8 +15,18 @@ const rate = 0.8
 const zoomImage = ref(null!)
 const elZoomImage = useCurrentElement<HTMLImageElement>(zoomImage)
 
+const touchStart = ref({
+    singleFinger: true,
+    fingerDistance: 0,
+    left: 0,
+    top: 0,
+    width: 0,
+    height: 0,
+})
+
 const { style } = useDraggable(elZoomImage, {
     initialValue: { x: originRect.x, y: originRect.y },
+    disabled: () => !touchStart.value.singleFinger,
 })
 
 function onWheel(e: WheelEvent) {
@@ -28,7 +38,7 @@ function onWheel(e: WheelEvent) {
     if ((e.deltaY < 0 && isTooLarge) || (e.deltaY > 0 && isTooSmall))
         return
     const isTouchpad = Math.abs(e.deltaY) < 8
-    let delta = isTouchpad ? Math.abs(e.deltaY) : 0.5
+    let delta = isTouchpad ? Math.abs(e.deltaY) * 0.05 : 0.5
     delta = e.deltaY > 0 ? 1 / (1 + delta) : 1 + delta
     const finalX = left - (e.clientX - left) * (delta - 1)
     const finalY = top - (e.clientY - top) * (delta - 1)
@@ -40,10 +50,56 @@ function onWheel(e: WheelEvent) {
     })
 }
 
+function onTouchStart(e: TouchEvent) {
+    if (e.touches.length < 2)
+        return
+    touchStart.value.singleFinger = false
+    const [touch1, touch2] = e.touches
+    if (!touch1 || !touch2)
+        return
+
+    const { left, top, width, height } = elZoomImage.value.getBoundingClientRect()
+    Object.assign(touchStart.value, { left, top, width, height })
+    touchStart.value.fingerDistance = Math.hypot(
+        touch1.clientX - touch2.clientX,
+        touch1.clientY - touch2.clientY,
+    )
+}
+
+function onTouchMove(e: TouchEvent) {
+    if (e.touches.length < 2)
+        return
+    touchStart.value.singleFinger = false
+    const [touch1, touch2] = e.touches
+    if (!touch1 || !touch2)
+        return
+
+    const currentDistance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY)
+    const scale = currentDistance / touchStart.value.fingerDistance
+
+    const finalWidth = touchStart.value.width * scale
+    const finalHeight = touchStart.value.height * scale
+    const finalX = (touch1.clientX + touch2.clientX - finalWidth) / 2
+    const finalY = (touch1.clientY + touch2.clientY - finalHeight) / 2
+
+    Object.assign(elZoomImage.value.style, {
+        left: `${finalX}px`,
+        top: `${finalY}px`,
+        width: `${finalWidth}px`,
+        height: `${finalHeight}px`,
+    })
+}
+
+function onTouchEnd(e: TouchEvent) {
+    if (e.touches.length < 2) {
+        touchStart.value.singleFinger = true
+    }
+}
+
 async function onEnter() {
     const fixedWidth = window.innerWidth * rate
     const fixedHeight = window.innerHeight * rate
-    const ratio = originRect.width / originRect.height
+    const ratio = props.el.naturalWidth / props.el.naturalHeight
     const [finalWidth, finalHeight] = (fixedWidth / fixedHeight > ratio)
         ? [fixedHeight * ratio, fixedHeight]
         : [fixedWidth, fixedWidth / ratio]
@@ -74,17 +130,17 @@ useEventListener('keydown', (e) => {
 </script>
 
 <template>
-    <div class="z-lightbox" :style="{ '--delay': `${delay}ms` }">
+    <div class="z-lightbox" :style="{ '--delay': `${duration}ms` }">
         <Transition>
             <div
-                v-if="show"
+                v-if="isOpening"
                 id="z-lightbox-bgmask"
                 @click="emit('close')"
             />
         </Transition>
         <Transition @enter="onEnter" @leave="onLeave">
             <NuxtImg
-                v-if="show"
+                v-if="isOpening"
                 ref="zoomImage"
                 class="image"
                 :width="el.width"
@@ -93,10 +149,13 @@ useEventListener('keydown', (e) => {
                 :style
                 draggable="false"
                 @wheel.prevent="onWheel"
+                @touchstart.prevent="onTouchStart"
+                @touchmove.prevent="onTouchMove"
+                @touchend="onTouchEnd"
             />
         </Transition>
         <Transition>
-            <div v-if="show" class="tooltip">
+            <div v-if="isOpening" class="tooltip">
                 <span v-if="caption" class="caption">{{ caption }}</span>
                 <button
                     class="close"
@@ -132,6 +191,7 @@ useEventListener('keydown', (e) => {
 .image {
     position: fixed;
     cursor: move;
+    object-fit: cover;
     touch-action: none;
 
     &.v-enter-active,
@@ -150,6 +210,7 @@ useEventListener('keydown', (e) => {
     min-height: 2em;
     max-width: min(40rem, 80%);
     margin-inline: auto;
+    border: 1px solid #0003;
     border-radius: 0.5em;
     box-shadow: 0 0.2em 0.5em var(--ld-shadow), 0 0.5em 1em var(--ld-shadow);
     background-color: #0007;
