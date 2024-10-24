@@ -2,8 +2,8 @@
 import type { Friend } from '~/types/friend'
 
 const props = defineProps<Friend>()
-const mainDomain = computed(() => getMainDomain(props.link))
-const domainIcon = computed(() => getDomainIcon(mainDomain.value))
+const mainDomain = computed(() => getMainDomain(props.link, true))
+const domainIcon = computed(() => getDomainIcon(props.link))
 
 // TODO: 优化鼠标悬浮提示
 const tip = joinWithBR(

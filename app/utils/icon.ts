@@ -30,6 +30,7 @@ export function getArchIcon(arch: Arch) {
 
 export const mainDomainIcons: Record<string, string> = {
     'bilibili.com': 'ri:bilibili-fill',
+    'creativecommons.org': 'ri:creative-commons-line',
     'github.com': 'ri:github-fill',
     'github.io': 'ri:github-fill',
     'microsoft.com': 'ri:microsoft-fill',
@@ -48,7 +49,7 @@ export const domainIcons: Record<string, string> = {
 
 export function getDomainIcon(url: string) {
     const domain = getDomain(url)
-    const mainDomain = getMainDomain(url)
+    const mainDomain = getMainDomain(url, true)
     if (domain in domainIcons)
         return domainIcons[domain]
     return mainDomainIcons[mainDomain]
