@@ -13,7 +13,7 @@ tags: [幼儿园, 信]
 src: https://7.isyangs.cn/24/668ba60f3d8f9-24.jpg
 caption: 历经十几年，这封信依旧保存完好。
 width: 360px
-fancybox: true
+zoom: true
 ---
 ::
 

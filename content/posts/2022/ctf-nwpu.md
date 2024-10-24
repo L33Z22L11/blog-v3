@@ -248,7 +248,7 @@ console.log(originStr)
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx0iaRk8j1fd8A8CG465FTXchVPSZx6FoKZfOLugmwfc0bbVl7npuATWg/640
 mirror: true
 width: 400px
-fancybox: true
+zoom: true
 ---
 ::
 
@@ -310,7 +310,7 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxgVAmCT6JfmaQNQVnJaHiaDzl3WVlTwjKRO8f3ibHzLDYkSia5TpBVL7Pg/640
 mirror: true
-fancybox: true
+zoom: true
 ---
 ::
 
@@ -394,7 +394,7 @@ print(correct)
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx8oDVicpWhxX0ticyCwiajDbuGw7wFy4l5TgbNY6ic3Nx3Xqib5eaM92umcw/640
 mirror: true
 caption: 显然，我没有设置中止循环的条件，有可能是因为我懒。
-fancybox: true
+zoom: true
 ---
 ::
 
@@ -576,7 +576,7 @@ width: 200px
 src: https://pic.baike.soso.com/ugc/baikepic2/0/20230422171906-1719590246_bmp_706_750_1590054.jpg/
 caption: 校歌.jpg(点击放大)
 width: 400px
-fancybox: true
+zoom: true
 ---
 ::
 

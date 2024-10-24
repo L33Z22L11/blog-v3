@@ -47,7 +47,7 @@ link: /2023/linuxqq-crash
 ---
 src: https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
 caption: 我的封面
-fancybox: true
+zoom: true
 ---
 ::
 
@@ -56,7 +56,7 @@ fancybox: true
 src: https://mmbiz.qpic.cn/mmbiz_jpg/VY8SELNGe96D4BWicYxv0JgWsyvdCOq9qbpwmcjiaw8KJcvoeawYqAHHIUvOEq131W7FuLpKhpDrDnVfiahBf0ALg/0
 mirror: true
 caption: 标题后方可见PS痕迹，登录窗口头像左上方最甚👆
-fancybox: true
+zoom: true
 ---
 ::
 
@@ -69,7 +69,7 @@ fancybox: true
 src: https://im.qq.com/linuxqq/images/linuxqq/macbook_phone.png
 caption: 我使用了 QQ 官网的这张图片
 width: 360px
-fancybox: true
+zoom: true
 ---
 ::
 
@@ -94,7 +94,7 @@ Linux QQ 官方团队使用的封面中，背景里的 QQ 是旧版界面，新�
 src: https://im.qq.com/linuxqq/images/new/login.png
 caption: 新版 QQ 登录界面
 width: 240px
-fancybox: true
+zoom: true
 ---
 ::
 
@@ -103,7 +103,7 @@ fancybox: true
 src: https://mmbiz.qpic.cn/mmbiz_jpg/VY8SELNGe96D4BWicYxv0JgWsyvdCOq9qbpwmcjiaw8KJcvoeawYqAHHIUvOEq131W7FuLpKhpDrDnVfiahBf0ALg/0
 mirror: true
 caption: 封面中使用了旧版、macOS 版 QQ 版本
-fancybox: true
+zoom: true
 ---
 ::
 
