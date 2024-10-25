@@ -1,16 +1,37 @@
 import { serverQueryContent } from '#content/server'
 import blogConfig from '~~/blog.config'
 import { version } from '~~/package.json'
-import xml2js from 'xml2js'
+import { XMLBuilder } from 'fast-xml-parser'
 import type ArticleProps from '~/types/article'
+
+const xmlBuilderOptions = {
+    attributeNamePrefix: '$',
+    cdataPropName: '$',
+    format: true,
+    ignoreAttributes: false,
+    textNodeName: '_',
+}
+
+const builder = new XMLBuilder(xmlBuilderOptions)
 
 function getUrl(path: string | undefined) {
     return new URL(path ?? '', blogConfig.url).toString()
 }
 
+function renderContent(post: Record<string, string>) {
+    return builder.build({
+        img: post.image ? { $src: post.image } : undefined,
+        p: post.description,
+        a: {
+            $href: getUrl(post._path),
+            _: '点击查看全文',
+        },
+    })
+}
+
 export default defineEventHandler(async (event) => {
     const feed = {
-        $: { xmlns: 'http://www.w3.org/2005/Atom' },
+        $xmlns: 'http://www.w3.org/2005/Atom',
         id: blogConfig.url,
         title: blogConfig.title,
         updated: new Date().toISOString(),
@@ -19,9 +40,13 @@ export default defineEventHandler(async (event) => {
             email: blogConfig.author.email,
             uri: blogConfig.author.homepage,
         },
-        link: [{ $: { href: getUrl('atom.xml'), rel: 'self' } }],
+        link: [
+            { $href: getUrl('atom.xml'), $rel: 'self' },
+            { $href: blogConfig.url, $rel: 'self' },
+        ],
         generator: {
-            $: { uri: 'https://github.com/L33Z22L11/blog-v3', version },
+            $uri: 'https://github.com/L33Z22L11/blog-v3',
+            $version: version,
             _: 'Zhilu Blog',
         },
         icon: blogConfig.favicon,
@@ -44,20 +69,19 @@ export default defineEventHandler(async (event) => {
             updated: new Date(post.updated).toISOString(),
             author: { name: post.author || blogConfig.author.name },
             content: {
-                $: { type: 'html' },
-                // TODO: 渲染文章内容
-                _: `<![CDATA[<img src="${post.image}" alt="${post.title}"/><p>${post.description}</p>]]>`,
+                $type: 'html',
+                $: renderContent(post),
             },
-            link: { $: { href: getUrl(post._path) } },
+            link: { $href: getUrl(post._path) },
             summary: post.description,
-            category: { $: { term: post.categories?.[0] } },
+            category: { $term: post.categories?.[0] },
             published: new Date(post.date).toISOString(),
         })
     })
 
-    const builder = new xml2js.Builder()
-    const xml = builder.buildObject({ feed })
-
     setHeader(event, 'Content-Type', 'application/xml; charset=UTF-8')
-    return xml
+    return builder.build({
+        '?xml': { $version: '1.0', $encoding: 'UTF-8' },
+        feed,
+    })
 })

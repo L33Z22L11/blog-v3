@@ -21,13 +21,13 @@
     "date-fns-tz": "^3.2.0",
     "embla-carousel-autoplay": "^8.3.0",
     "embla-carousel-vue": "^8.3.0",
+    "fast-xml-parser": "^4.5.0",
     "parse-domain": "^8.2.2",
     "plain-shiki": "^0.0.12",
     "radash": "^12.1.0",
     "shiki": "^1.22.0",
     "vue": "^3.5.12",
-    "vue-tippy": "^6.5.0",
-    "xml2js": "^0.6.2"
+    "vue-tippy": "^6.5.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
@@ -37,7 +37,6 @@
     "@nuxtjs/color-mode": "^3.5.1",
     "@nuxtjs/seo": "2.0.0-rc.21",
     "@pinia/nuxt": "^0.5.5",
-    "@types/xml2js": "^0.4.14",
     "@vueuse/nuxt": "^11.1.0",
     "@zinkawaii/nuxt-shiki": "^0.7.1",
     "@zinkawaii/stylelint-config": "^0.1.5",
