@@ -1,31 +1,35 @@
 import { serverQueryContent } from '#content/server'
 import blogConfig from '~~/blog.config'
-import { Feed } from 'feed'
+import { version } from '~~/package.json'
+import xml2js from 'xml2js'
+import type ArticleProps from '~/types/article'
 
-function getUrl(path?: string) {
+function getUrl(path: string | undefined) {
     return new URL(path ?? '', blogConfig.url).toString()
 }
 
 export default defineEventHandler(async (event) => {
-    const feed = new Feed({
+    const feed = {
+        $: { xmlns: 'http://www.w3.org/2005/Atom' },
         id: blogConfig.url,
         title: blogConfig.title,
-        updated: new Date(),
-        generator: 'https://github.com/L33Z22L11/blog-v3',
+        updated: new Date().toISOString(),
         author: {
-            ...blogConfig.author,
-            link: blogConfig.author.homepage,
+            name: blogConfig.author.name,
+            email: blogConfig.author.email,
+            uri: blogConfig.author.homepage,
         },
-        link: blogConfig.url,
-        feedLinks: {
-            atom: getUrl('atom.xml'),
+        link: [{ $: { href: getUrl('atom.xml'), rel: 'self' } }],
+        generator: {
+            $: { uri: 'https://github.com/L33Z22L11/blog-v3', version },
+            _: 'Zhilu Blog',
         },
-        description: blogConfig.description,
-        language: blogConfig.language,
-        image: blogConfig.author.avatar,
-        favicon: blogConfig.favicon,
-        copyright: blogConfig.copyright.abbr,
-    })
+        icon: blogConfig.favicon,
+        logo: blogConfig.author.avatar,
+        rights: `© ${new Date().getFullYear()} Zhilu`,
+        subtitle: blogConfig.subtitle,
+        entry: <ArticleProps>[],
+    }
 
     const posts = await serverQueryContent(event)
         .where({ _original_dir: { $eq: '/posts' } })
@@ -33,21 +37,27 @@ export default defineEventHandler(async (event) => {
         .limit(blogConfig.feed.limit)
         .find()
 
-    posts.forEach(async (post) => {
-        feed.addItem({
-            title: post.title ?? '',
+    posts.forEach((post) => {
+        feed.entry.push({
             id: getUrl(post._path),
-            link: getUrl(post._path),
-            date: new Date(post.updated),
-            description: post.description,
-            category: post.categories,
-            image: post.image,
-            author: post.author || blogConfig.author.name,
-            published: new Date(post.date),
-            copyright: post.copyright || blogConfig.copyright.abbr,
+            title: post.title ?? '',
+            updated: new Date(post.updated).toISOString(),
+            author: { name: post.author || blogConfig.author.name },
+            content: {
+                $: { type: 'html' },
+                // TODO: 渲染文章内容
+                _: `<![CDATA[<img src="${post.image}" alt="${post.title}"/><p>${post.description}</p>]]>`,
+            },
+            link: { $: { href: getUrl(post._path) } },
+            summary: post.description,
+            category: { $: { term: post.categories?.[0] } },
+            published: new Date(post.date).toISOString(),
         })
     })
 
-    setHeader(event, 'Content-Type', 'text/xml; charset=UTF-8')
-    return feed.atom1()
+    const builder = new xml2js.Builder()
+    const xml = builder.buildObject({ feed })
+
+    setHeader(event, 'Content-Type', 'application/xml; charset=UTF-8')
+    return xml
 })

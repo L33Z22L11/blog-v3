@@ -59,7 +59,7 @@ export default defineAppConfig({
     header: {
         logo: 'https://weavatar.com/avatar/47c0f2e82b76d9b10eb3023df9e02e4e3fdbeaf5b74b842063f207971e7fbe7b?s=160',
         text: true,
-        subtitle: '纸鹿至麓不知路，支炉制露不止漉',
+        subtitle: blogConfig.subtitle,
         emojiTail: ['📄', '🦌', '🙌', '🐟', '🏖️'],
     },
 
