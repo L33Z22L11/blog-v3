@@ -24,7 +24,7 @@ else {
     <ContentRenderer :value="post">
         <PostHeader v-bind="post" />
         <PostExcerpt v-if="excerpt" :excerpt />
-        <ContentRenderer
+        <ContentRendererMarkdown
             class="article"
             :class="{ 'md-story': post?.type === 'story' }"
             :value="post ?? {}"

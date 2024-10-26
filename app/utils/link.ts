@@ -9,7 +9,7 @@ export const domainTip: Record<string, string> = {
     'zabaur.app': 'Zebaur 域名',
 }
 
-const noRouterExtensions = ['.css', '.csv', '.gif', '.ico', '.jpg', '.js', '.json', '.png', '.svg', '.txt', '.xml']
+const noRouterExtensions = ['.css', '.csv', '.gif', '.ico', '.jpg', '.js', '.json', '.opml', '.png', '.svg', '.txt', '.xml']
 
 export function getDomain(url: string) {
     const domain = fromUrl(url)

@@ -1,9 +1,10 @@
 <script setup lang="ts">
 const props = defineProps<{
     href: string
+    icon?: string
 }>()
 
-const icon = computed(() => getDomainIcon(props.href))
+const icon = computed(() => props.icon || getDomainIcon(props.href))
 const tip = computed(() => isExtLink(props.href) && getDomain(props.href))
 </script>
 

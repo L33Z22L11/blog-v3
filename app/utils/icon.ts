@@ -6,6 +6,7 @@ const archIcons = {
     'GitHub Pages': 'simple-icons:github',
     'Halo': 'tabler:square-letter-h-filled', // 不准确
     'Hexo': 'simple-icons:hexo',
+    'HTML': 'simple-icons:html5',
     'Hugo': 'simple-icons:hugo',
     'Jekyll': 'simple-icons:jekyll',
     'Mix Space': 'ph:yarn',

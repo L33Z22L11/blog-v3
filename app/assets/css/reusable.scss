@@ -144,7 +144,8 @@ mark {
 
 
 // Iconify 图标复用了此类
-.iconify {
+:where(.iconify) {
+    display: inline-block;
     flex-shrink: 0;
     font-size: 1.2em;
     vertical-align: text-bottom;

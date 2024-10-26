@@ -1,0 +1,75 @@
+<script setup lang="ts">
+useLayoutStore().setAside([])
+const { data: postLink } = await useAsyncData('/link', () => queryContent('/link').findOne())
+postLink.value && useContentHead(postLink.value)
+</script>
+
+<template>
+    <header class="link-reminder">
+        <div class="content">
+            <p><Icon name="ph:newspaper-clipping-bold" /> 我通过订阅服务阅读友链内容。</p>
+            <p>
+                你也可以加入QQ群 <Tip copy>
+                    169994096
+                </Tip> 闲聊交流。
+            </p>
+            <p>
+                我制作了本站<ProseA href="/zhilu.opml">
+                    友链源OPML聚合
+                </ProseA>，你可以导入阅读器或<ProseA href="https://app.follow.is/share/lists/72840182614552576">
+                    直接订阅 Follow List
+                </ProseA>。
+            </p>
+        </div>
+        <div class="operations">
+            <ProseA href="/atom.xml" icon="ph:rss-simple-bold">
+                订阅源
+            </ProseA>
+            <ProseA href="https://app.follow.is/share/feeds/62533754566736896" icon="ph:list-plus-bold">
+                在Follow上订阅
+            </ProseA>
+        </div>
+    </header>
+    <ContentRenderer :value="postLink">
+        <ContentRendererMarkdown
+            class="article"
+            :value="postLink ?? {}"
+            tag="article"
+        />
+        <template #empty>
+            <ZError
+                icon="solar:confounded-square-bold-duotone"
+                title="未配置友链文件"
+            />
+        </template>
+        <PostComment key="/link" />
+    </ContentRenderer>
+</template>
+
+<style lang="scss" scoped>
+.link-reminder {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.8rem 2rem;
+    margin: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 1rem;
+    background: var(--c-primary-soft);
+
+    .content {
+        flex-basis: 20em;
+        flex-grow: 1;
+    }
+
+    .operations {
+        display: flex;
+        flex-basis: 10em;
+        flex-grow: 1;
+        justify-content: end;
+        gap: 0.2em 1rem;
+        flex-wrap: wrap;
+    }
+}
+</style>
