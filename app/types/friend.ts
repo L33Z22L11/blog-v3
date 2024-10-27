@@ -10,7 +10,7 @@ export interface Friend {
     /** 博客地址 */
     link: string
     /** 订阅源 */
-    feed: string | null
+    feed?: string
     /** 站点小图标，不建议为方形 */
     icon: string
     /** 个人头像，为空则使用站点图标 */

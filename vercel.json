@@ -8,6 +8,15 @@
           "value": "application/json"
         }
       ]
+    },
+    {
+      "source": "/(.*)\\.(xml|opml)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=UTF-8"
+        }
+      ]
     }
   ]
 }

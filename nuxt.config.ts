@@ -77,7 +77,6 @@ export default defineNuxtConfig({
         ...redirects,
         '/api/stats': { prerender: true },
         '/atom.xml': { prerender: true },
-        '/sitemap.xml': { prerender: true },
         '/zhilu.opml': { prerender: true },
     },
 

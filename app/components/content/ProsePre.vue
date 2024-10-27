@@ -95,19 +95,20 @@ figcaption {
         padding: 0.2em 0.8em;
         border-radius: 0 0 8px 8px;
         background-color: var(--c-border);
+        word-break: break-all;
     }
 
     .language {
         opacity: 0.4;
-        height: 0;
-        padding: 0.2em;
+        margin: 0.2em 0 -0.8em;
     }
 
     .operations {
         position: absolute;
         opacity: 0;
         top: 0;
-        padding: 0.2em;
+        right: 0;
+        padding: 0.2em 0.8em;
         border-radius: 0 8px 8px;
         background-color: var(--c-bg-2);
         transition: opacity 0.2s;
