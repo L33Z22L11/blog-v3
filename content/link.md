@@ -4,10 +4,6 @@ aside: []
 hideInfo: true
 ---
 
-:friend-group
-
-:br
-
 ::tab
 ---
 tabs: ["我的博客信息", "申请友链"]
@@ -42,17 +38,4 @@ center: true
     }
     ```
 - 信息可能会被适当修改，以保证展示效果
-
-:::friend-card
----
-author: 纸鹿本鹿
-sitenick: 摸鱼处
-desc: 纸鹿至麓不知路，支炉制露不止漉
-link: https://blog.zhilu.cyou
-icon: https://www.zhilu.cyou/api/icon.png
-avatar: https://www.zhilu.cyou/api/avatar.png
-feed: https://blog.zhilu.cyou/atom.xml
-archs: [Nuxt, Vercel]
----
-:::
 ::

@@ -1,4 +1,4 @@
-export interface Friend {
+export interface FeedEntry {
     /** 博客作者 */
     author: string
     /** 网站趣称 */
@@ -23,11 +23,11 @@ export interface Friend {
     comment?: string
 }
 
-export interface FriendGroup {
+export interface FeedGroup {
     /** 分组名 */
     name: string
     /** 描述 */
     desc?: string
     /** 友链列表 */
-    items: Friend[]
+    items: FeedEntry[]
 }

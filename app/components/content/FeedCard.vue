@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { Friend } from '~/types/friend'
+import type { FeedEntry } from '~/types/feed'
 
-const props = defineProps<Friend>()
+const props = defineProps<FeedEntry>()
 const mainDomain = computed(() => getMainDomain(props.link, true))
 const domainIcon = computed(() => getDomainIcon(props.link))
 

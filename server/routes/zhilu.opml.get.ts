@@ -1,7 +1,8 @@
-import blogConfig from '~~/blog.config'
+import blogConfig, { feedEntry } from '~~/blog.config'
 import { XMLBuilder } from 'fast-xml-parser'
-import friend from '~/assets/friend'
-import type { FriendGroup } from '~/types/friend'
+import friends from '~/friends'
+import subscriptions from '~/subscriptions'
+import type { FeedEntry, FeedGroup } from '~/types/feed'
 
 const runtimeConfig = useRuntimeConfig()
 
@@ -13,31 +14,29 @@ const xmlBuilderOptions = {
 
 const builder = new XMLBuilder(xmlBuilderOptions)
 
+function mapEntry(item: FeedEntry) {
+    return {
+        $text: item.title || item.sitenick || item.author,
+        $description: item.desc,
+        $htmlUrl: item.link || item.feed,
+        $created: new Date(item.date).toISOString(),
+        $type: 'rss',
+        $title: item.title || item.sitenick || item.author,
+        $xmlUrl: item.feed,
+    }
+}
+
+function flattenGroups(groups: FeedGroup[]) {
+    return groups.flatMap(group =>
+        group.items.filter(item => item.feed).map(mapEntry))
+}
+
 export default defineEventHandler(async (event) => {
     const outlines = [
-        {
-            $type: 'rss',
-            $text: blogConfig.title,
-            $xmlUrl: new URL('/feed.xml', blogConfig.url).toString(),
-            $description: blogConfig.description as string | undefined,
-            $htmlUrl: blogConfig.url,
-            $title: blogConfig.title,
-        },
+        mapEntry(feedEntry),
+        ...flattenGroups(subscriptions),
+        ...flattenGroups(friends),
     ]
-
-    friend.forEach((group: FriendGroup) => group.items.forEach((item) => {
-        if (!item.feed)
-            return
-        const title = item.title || item.sitenick || item.author
-        outlines.push({
-            $type: 'rss',
-            $text: title,
-            $xmlUrl: item.feed,
-            $description: item.desc,
-            $htmlUrl: item.link || item.feed,
-            $title: title,
-        })
-    }))
 
     const opml = {
         $version: '2.0',

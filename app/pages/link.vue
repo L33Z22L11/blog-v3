@@ -1,5 +1,10 @@
 <script setup lang="ts">
-useLayoutStore().setAside([])
+import friends from '~/friends'
+import subscriptions from '~/subscriptions'
+
+const layoutStore = useLayoutStore()
+layoutStore.setAside([])
+
 const { data: postLink } = await useAsyncData('/link', () => queryContent('/link').findOne())
 postLink.value && useContentHead(postLink.value)
 </script>
@@ -30,6 +35,10 @@ postLink.value && useContentHead(postLink.value)
             </ProseA>
         </div>
     </header>
+
+    <FeedGroup label="友链" :feeds="friends" />
+    <FeedGroup label="订阅" :feeds="subscriptions" />
+
     <ContentRenderer :value="postLink">
         <ContentRendererMarkdown
             class="article"

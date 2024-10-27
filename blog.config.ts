@@ -1,7 +1,8 @@
 import type { BundledLanguage } from 'shiki'
+import type { FeedEntry } from '~/types/feed'
 
 // 存储 nuxt.config 和 app.config 共用的配置
-export default {
+const blogConfig = {
     title: '纸鹿摸鱼处',
     subtitle: '纸鹿至麓不知路，支炉制露不止漉',
     description: '纸鹿本鹿的个人博客，分享技术与生活。折腾不止，摸鱼生活——摸门🙏🏻',
@@ -32,3 +33,19 @@ export default {
         '/posts',
     ],
 }
+
+export const feedEntry = <FeedEntry>{
+    author: blogConfig.author.name,
+    sitenick: '摸鱼处',
+    title: blogConfig.title,
+    desc: blogConfig.subtitle || blogConfig.description,
+    link: blogConfig.url,
+    feed: new URL('/atom.xml', blogConfig.url).toString(),
+    icon: blogConfig.favicon,
+    avatar: blogConfig.author.avatar,
+    archs: ['Nuxt', 'Vercel'],
+    date: blogConfig.timeEstablished,
+    comment: '这是我自己',
+}
+
+export default blogConfig
