@@ -50,6 +50,7 @@ function onWheel(e: WheelEvent) {
     })
 }
 
+// FIXME: 触发区域应当是全屏
 function onTouchStart(e: TouchEvent) {
     if (e.touches.length < 2)
         return

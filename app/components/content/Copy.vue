@@ -3,7 +3,6 @@ import { createPlainShiki, type MountPlainShikiOptions } from 'plain-shiki'
 import { useTippy } from 'vue-tippy'
 
 const props = defineProps<{
-    code?: string
     noprompt?: boolean
     prompt?: string
     command?: string

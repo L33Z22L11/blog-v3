@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// FIXME: [Vue warn]: Invalid prop: type check failed for prop "highlights". Expected Function, got Array
-// FIXME: [nuxt] Failed to stringify dev server logs. Received DevalueError: Cannot stringify a function.
 const props = withDefaults(defineProps<{
     code?: string
     language?: string
@@ -46,6 +44,7 @@ useCopy(copyBtn, codeblock)
                 </ClientOnly>
                 {{ filename }}
             </span>
+            <span v-else />
             <span v-if="language" class="language">{{ language }}</span>
             <div class="operations">
                 <button @click="isWrap = !isWrap">
@@ -69,6 +68,7 @@ useCopy(copyBtn, codeblock)
 <style lang="scss" scoped>
 .z-codeblock {
     position: relative;
+    overflow: clip;
     margin-block: 1em;
     border-radius: 8px;
     background-color: var(--c-bg-2);
@@ -82,7 +82,6 @@ useCopy(copyBtn, codeblock)
 
 figcaption {
     display: flex;
-    flex-direction: row-reverse;
     justify-content: space-between;
     gap: 1em;
     position: sticky;
@@ -91,8 +90,6 @@ figcaption {
     z-index: 1;
 
     .filename {
-        order: 1;
-        margin-bottom: 0.8em;
         padding: 0.2em 0.8em;
         border-radius: 0 0 8px 8px;
         background-color: var(--c-border);
@@ -101,7 +98,8 @@ figcaption {
 
     .language {
         opacity: 0.4;
-        margin: 0.2em 0;
+        height: 0;
+        line-height: 1.8em;
     }
 
     .operations {
@@ -150,7 +148,6 @@ pre {
     &.shiki {
         --left-offset: 4em;
 
-        padding-top: 0;
         padding-left: var(--left-offset);
     }
 }

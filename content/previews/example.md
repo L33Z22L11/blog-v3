@@ -6,58 +6,94 @@ hideInfo: true
 icon: https://www.zhilu.cyou/api/icon.png
 ---
 
+## a (`ProseA`)
+
+[内部链接](#a-prosea)，另外，[站外链接](https://zhilu.cyou) 默认在新标签页打开，并展示域名。
+
+还会根据域名展示图标，例如 [微软文档](https://learn.microsoft.com/zh-cn/)、[GitHub](https://github.com/)、[Bilibili](https://www.bilibili.com/)、[QQ 官网](https://im.qq.com/)、[微信公众号](https://mp.weixin.qq.com/) 等，有必要时再添加。
+
 ## Alert
 
 ::alert
 #title
-标题插槽的 **粗体** `Inline code`
+标题插槽的 [超链接](#alert) **粗体** `Inline code`
 #default
-默认插槽的 **粗体** `Inline code`
+默认插槽的 [超链接](#alert) **粗体** `Inline code`
 ::
 
 ::alert{type="question"}
 #title
-标题插槽的 **粗体** `Inline code`
+标题插槽的 [超链接](#alert) **粗体** `Inline code`
 #default
-默认插槽的 **粗体** `Inline code`
+默认插槽的 [超链接](#alert) **粗体** `Inline code`
 ::
 
 ::alert{type="info"}
 #title
-标题插槽的 **粗体** `Inline code`
+标题插槽的 [超链接](#alert) **粗体** `Inline code`
 #default
-默认插槽的 **粗体** `Inline code`
+默认插槽的 [超链接](#alert) **粗体** `Inline code`
 ::
 
 ::alert{type="warning"}
 #title
-标题插槽的 **粗体** `Inline code`
+标题插槽的 [超链接](#alert) **粗体** `Inline code`
 #default
-默认插槽的 **粗体** `Inline code`
+默认插槽的 [超链接](#alert) **粗体** `Inline code`
 ::
 
 ::alert{type="error"}
 #title
-标题插槽的 **粗体** `Inline code`
+标题插槽的 [超链接](#alert) **粗体** `Inline code`
 #default
-默认插槽的 **粗体** `Inline code`
+默认插槽的 [超链接](#alert) **粗体** `Inline code`
 ::
 
 ## Badge
 
-:badge[普通] :badge[指定圆形]{round} :badge[指定方形]{square}
+:badge[普通]{to="#badge"} :badge[指定圆形]{round} :badge[指定方形]{square}
 
-:badge{img="https://picsum.photos/100/100"} :badge{img="https://picsum.photos/100/100" round} :badge{img="https://picsum.photos/100/100" square}
+:badge{img="https://picsum.photos/100/100" to="#badge"} :badge{img="https://picsum.photos/100/100" round} :badge{img="https://picsum.photos/100/100" square}
+
+<!-- [在 :badge[超链接] 里也会变](#badge) -->
 
 ::alert
 #title
-:badge{img="https://picsum.photos/100/100" text="自定义文字" to="/"}
+:badge{img="https://picsum.photos/100/100" text="自定义文字" to="#badge"}
 :badge{img="https://picsum.photos/100/100" text="自定义文字" round}
 :badge{img="https://picsum.photos/100/100" text="自定义文字" square}
 ::
 
 ## :blur[Blur]
 
+## Code (`ProseInlineCode`)
+
+`inline code` and [a hyperlink with `inline code`](#code-proseinlinecode)
+
+## Codeblock (`ProsePre`)
+
+```
+only text
+```
+
+``` [filename]
+without language
+```
+
+```yaml
+language: yaml
+```
+
+```yaml [filename]
+language: yaml # with filename
+```
+
 ## Copy
 
+> 语言从 `str.ts` 的 `getPromptLanguage` 里推断，使用 [plain-shiki](https://github.com/KazariEX/plain-shiki) 高亮。
+
 :copy{command="sudo rm -rf"}
+
+:copy{noprompt command="zhilu://link.without.prompt"}
+
+:copy{prompt="custom prompt" language="js" command="const language='js' // also customable, when it becomes too long, it can be scrolled"}
