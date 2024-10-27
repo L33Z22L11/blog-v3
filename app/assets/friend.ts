@@ -89,7 +89,15 @@ export default <FriendGroup[]> [
                 icon: 'https://zxalive.com/avatar.webp',
                 archs: ['Halo', 'CDN (国内)'],
                 date: '2024-10-03',
-            },             
+            }, 
+            {
+                name: 'Liu Zijian’s Blog',
+                desc: '道阻且长，行则将至',
+                link: 'https://blog.liuzijian.com',
+                icon: 'https://blog.liuzijian.com/img/logo.jpg',
+                archs: ['Hexo', 'CDN (国内)'],
+                date: '2024-10-26',
+            },               
         ],
     },
     {
