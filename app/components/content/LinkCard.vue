@@ -61,6 +61,7 @@ const src = computed(() => getImgUrl(props.icon, props.mirror))
     }
 
     .link-card-icon {
+        flex-shrink: 0;
         height: 3rem;
         max-width: 5rem;
         border-radius: 0.5rem;

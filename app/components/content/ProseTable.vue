@@ -18,15 +18,16 @@ const scroll = ref(true)
 <style lang="scss" scoped>
 .md-table {
     position: relative;
-    margin: 1rem;
+    margin: 1rem 0;
     font-size: 0.9em;
     line-height: 1.4;
+    word-break: break-all;
 
-    // BUG: 在极窄宽度下仍会溢出
     table.scroll {
         display: block;
         overflow: auto;
         white-space: nowrap;
+        word-break: normal;
     }
 
     &:hover {
@@ -51,6 +52,8 @@ const scroll = ref(true)
 
     :deep(table) {
         border-collapse: collapse;
+
+        // 表头 thead 滚动吸附
 
         th {
             background-color: var(--c-bg-2);

@@ -92,6 +92,7 @@ figcaption {
 
     .filename {
         order: 1;
+        margin-bottom: 0.8em;
         padding: 0.2em 0.8em;
         border-radius: 0 0 8px 8px;
         background-color: var(--c-border);
@@ -100,7 +101,7 @@ figcaption {
 
     .language {
         opacity: 0.4;
-        margin: 0.2em 0 -0.8em;
+        margin: 0.2em 0;
     }
 
     .operations {
@@ -149,6 +150,7 @@ pre {
     &.shiki {
         --left-offset: 4em;
 
+        padding-top: 0;
         padding-left: var(--left-offset);
     }
 }
