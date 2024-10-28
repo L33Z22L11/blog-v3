@@ -11,7 +11,8 @@
     "generate": "nuxi generate",
     "preview": "nuxi preview",
     "lint": "eslint --ignore-pattern '/.nuxt/*' --ignore-pattern '/public/*' .",
-    "lint:fix": "eslint --fix --ignore-pattern '/.nuxt/*' --ignore-pattern '/public/*' ."
+    "lint:fix": "eslint --fix --ignore-pattern '/.nuxt/*' --ignore-pattern '/public/*' .",
+    "new": "node scripts/new-blog.js"
   },
   "dependencies": {
     "@vueuse/core": "^11.1.0",

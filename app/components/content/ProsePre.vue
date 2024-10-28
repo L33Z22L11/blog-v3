@@ -70,7 +70,7 @@ useCopy(copyBtn, codeblock)
     position: relative;
     overflow: clip;
     margin-block: 1em;
-    border-radius: 8px;
+    border-radius: 0.5em;
     background-color: var(--c-bg-2);
     font-size: 0.8125rem;
     line-height: 1.4;
@@ -91,7 +91,7 @@ figcaption {
 
     .filename {
         padding: 0.2em 0.8em;
-        border-radius: 0 0 8px 8px;
+        border-radius: 0 0 0.5em 0.5em;
         background-color: var(--c-border);
         word-break: break-all;
     }
@@ -107,9 +107,10 @@ figcaption {
         opacity: 0;
         top: 0;
         right: 0;
-        padding: 0.2em 0.8em;
-        border-radius: 0 8px 8px;
+        padding: 0 1em;
+        border-radius: 0 0.5em 0.5em;
         background-color: var(--c-bg-2);
+        line-height: 1.8em;
         transition: opacity 0.2s;
 
         > button {
@@ -121,7 +122,7 @@ figcaption {
             }
 
             & + button {
-                margin-left: 1em;
+                margin-left: 0.8em;
             }
         }
     }

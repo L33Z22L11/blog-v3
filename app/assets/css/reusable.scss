@@ -55,12 +55,17 @@
     scrollbar-width: thin;
 
     &::-webkit-scrollbar {
-        height: var(--guessed-scrollbar-height);
+        height: calc(var(--guessed-scrollbar-height) * 0.8);
+        cursor: default;
     }
 
     &::-webkit-scrollbar-thumb {
         border-radius: var(--guessed-scrollbar-height);
         background-color: var(--c-text-3);
+
+        &:hover {
+            background-color: var(--c-text-2);
+        }
     }
 }
 
@@ -96,12 +101,17 @@
     scrollbar-width: thin;
 
     &::-webkit-scrollbar {
-        height: var(--guessed-scrollbar-width);
+        height: calc(var(--guessed-scrollbar-width) * 0.8);
+        cursor: default;
     }
 
     &::-webkit-scrollbar-thumb {
-        border-radius: var(--guessed-scrollbar-width);
+        border-radius: var(--guessed-scrollbar-height);
         background-color: var(--c-text-3);
+
+        &:hover {
+            background-color: var(--c-text-2);
+        }
     }
 }
 

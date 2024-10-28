@@ -3,6 +3,12 @@ import type { ReadTimeResults } from 'reading-time'
 
 const _appConfig = useAppConfig()
 
+interface ParsedContentExtra extends ParsedContent {
+    _dir: string
+    _stem: string
+    _original_dir: string
+}
+
 export interface CustomArticleProps {
     title: string
     description: string
@@ -24,4 +30,4 @@ export interface CustomArticleProps {
 export type ArticleCategory = keyof typeof _appConfig.article.categories & string
 export type ArticleOrderType = keyof Pick<CustomArticleProps, 'date' | 'updated'>
 
-export default interface ArticleProps extends Partial<CustomArticleProps>, Partial<ParsedContent> { }
+export default interface ArticleProps extends Partial<CustomArticleProps>, Partial<ParsedContentExtra> { }

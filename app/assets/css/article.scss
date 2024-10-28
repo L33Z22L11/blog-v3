@@ -52,11 +52,19 @@
         }
     }
 
-    > p > img:only-child, img.image {
-        display: block;
+    img {
         max-width: 100%;
-        margin: 1rem auto;
-        border-radius: 0.5rem;
+
+        &.icon {
+            height: 1.4em;
+            vertical-align: text-bottom;
+        }
+
+        &:not([class]), &.image {
+            display: block;
+            margin: 1rem auto;
+            border-radius: 0.5rem;
+        }
     }
 
     > hr {

@@ -21,6 +21,12 @@ if (appConfig.excerpt?.animation !== false) {
         caret.value = ''
     })
 }
+
+if (import.meta.dev) {
+    watch(() => props.excerpt, (newExcerpt) => {
+        excerpt.value = newExcerpt
+    })
+}
 </script>
 
 <template>

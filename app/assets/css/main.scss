@@ -87,3 +87,7 @@ button, input, textarea {
     font-family: serif;
     font-family: var(--font-serif);
 }
+
+.text-repeat {
+    text-shadow: 0.1em 0 var(--c-bg-soft), 0.2em 0 var(--c-bg-soft), 0.3em 0 var(--c-bg-soft), 0.4em 0 var(--c-bg-soft), 0.5em 0 var(--c-bg-soft);
+}

@@ -5,7 +5,7 @@ const layoutStore = useLayoutStore()
 layoutStore.setAside(['toc'])
 
 const { data: post } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
-const excerpt = post.value?.description || ''
+const excerpt = computed(() => post.value?.description || '')
 
 if (post.value) {
     useContentHead(post.value)
