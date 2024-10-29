@@ -3,6 +3,7 @@ title: 配置并差点运行不了 Java Applet
 description: 为了完成大学《Java 语言程序设计》课程的实验报告，尝试配置旧版 Java 环境并成功运行 Java Applet，最终认为实际应用价值有限。
 date: 2024-09-26 09:12:42
 updated: 2024-09-27 00:34:28
+image: https://7.isyangs.cn/24/67211d6477610-24.webp
 categories: [经验分享]
 tags: [大学, Java, 问题, 兼容]
 references:

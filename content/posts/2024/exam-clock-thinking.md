@@ -3,6 +3,7 @@ title: 再谈考试时钟：技术之外的思考
 description: 通过回忆高中生活和开发考试时钟的经历，结合遇到的其他事例，点出了技术与人文关怀的关联，并呼吁注重用户体验。
 date: 2024-10-18 16:50:35
 updated: 2024-10-22 22:55:43
+image: https://7.isyangs.cn/24/67211d63f41fd-24.webp
 type: story
 categories: [生活]
 tags: [产品, 校园, 设计]

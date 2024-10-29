@@ -3,7 +3,7 @@ title: 给电脑新手的笔记本开荒指南导读
 description: 成为电脑高手，机魂大悦，人亦绥。我已避开联想预装软件所带问题的瓢泼大雨，而持续收到新手关于厂商作恶所致问题的咨询，却是相伴许久的潮湿。总结成文，恶意软件退!退!退！
 date: 2024-10-28 08:23:08
 updated: 2024-10-29 02:14:38
-# image:
+image: https://7.isyangs.cn/24/67211d63f4203-24.webp
 categories: [经验分享]
 tags: [电脑, Windows, 新手]
 references:

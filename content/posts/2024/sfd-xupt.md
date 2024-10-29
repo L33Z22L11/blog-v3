@@ -3,7 +3,7 @@ title: Windows 上的开源软件入门
 description: 软件自由日西邮站上的一场分享，从 CLI、GUI、开源协议、GitHub 讲起，推荐了一些开源软件。
 date: 2024-09-17 17:51:12
 updated: 2024-09-21 14:47:02
-# image:
+image: https://7.isyangs.cn/24/67211d656e0ac-24.webp
 categories: [经验分享]
 tags: [开源, 软件自由日, 大学, 分享]
 ---

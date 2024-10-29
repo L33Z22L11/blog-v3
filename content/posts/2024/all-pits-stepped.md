@@ -3,6 +3,7 @@ title: 从“端口无法访问”到本地环境问题——朋友的博客踩�
 description: M 来找我帮忙，从服务器搭建博客到本地 Windows 环境问题，他把坑几乎全踩了一遍。少配少错。可他博客至今空空如也，所以我发出完整踩坑过程，希望能帮助到更多人。
 date: 2024-07-24 21:20:57
 updated: 2024-08-03 10:23:46
+image: https://7.isyangs.cn/24/67211d6517aa3-24.webp
 type: story
 categories: [生活]
 tags: [博客, 问题]

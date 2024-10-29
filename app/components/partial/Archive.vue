@@ -74,7 +74,7 @@ const auxDateLabel = computed(() => props.date
         .article-cover {
             opacity: 1;
             width: 50%;
-            object-position: center 44%;
+            object-position: center 43.5%;
         }
     }
 }
