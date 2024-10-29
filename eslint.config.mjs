@@ -15,7 +15,7 @@ export default antfu({
                 lang: ['scss'],
             },
         }],
-        'vue/enforce-style-attribute': ['error', { allow: ['scoped'] }],
+        'vue/enforce-style-attribute': ['warn', { allow: ['scoped'] }],
         'vue/no-unused-refs': 'off',
         'yaml/indent': ['error', 2],
     },

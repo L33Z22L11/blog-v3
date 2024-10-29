@@ -9,7 +9,7 @@ const perPage = appConfig.indexGenerator.perPage || 10
 const orderBy = ref(appConfig.indexGenerator.orderBy || 'date')
 
 const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog_log', 'blog_stats', 'connectivity'])
+layoutStore.setAside(['blog_stats', 'connectivity'])
 
 const { data: listRaw } = await useAsyncData(
     'posts_index',

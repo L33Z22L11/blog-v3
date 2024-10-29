@@ -36,8 +36,7 @@ const listSorted = computed(() => alphabetical(
                 <h1>
                     <ZRawLink class="mobile-only" to="/">
                         <Icon name="ph:caret-left-bold" />
-                    </ZRawLink>
-                    预览
+                    </ZRawLink>预览
                 </h1>
             </div>
             <ZOrderToggle v-model="orderBy" />

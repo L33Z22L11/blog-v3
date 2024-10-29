@@ -12,7 +12,7 @@ const orderBy = useRouteQuery(
 )
 
 const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog_log', 'blog_stats'])
+layoutStore.setAside(['blog_stats', 'blog_log'])
 
 const { data: listRaw } = await useAsyncData(
     'posts_archive',
