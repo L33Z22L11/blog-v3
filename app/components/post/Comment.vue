@@ -117,6 +117,12 @@ onMounted(() => initTwikoo())
         }
     }
 
+    .tk-owo-emotion {
+        width: auto;
+        height: 1.4em;
+        vertical-align: text-bottom;
+    }
+
     .tk-extras, .tk-footer {
         font-size: 0.7rem;
         color: var(--c-text-3);

@@ -65,7 +65,7 @@ export default defineEventHandler(async (event) => {
         },
         link: [
             { $href: getUrl('atom.xml'), $rel: 'self' },
-            { $href: blogConfig.url, $rel: 'self' },
+            { $href: blogConfig.url, $rel: 'alternate' },
         ],
         language: blogConfig.language, // RSS 2.0
         generator: {

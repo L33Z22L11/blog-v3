@@ -28,7 +28,7 @@ function mapEntry(item: FeedEntry) {
 
 function flattenGroups(groups: FeedGroup[]) {
     return groups.flatMap(group =>
-        group.items.filter(item => item.feed).map(mapEntry))
+        group.entries.filter(entry => entry.feed).map(mapEntry))
 }
 
 export default defineEventHandler(async (event) => {

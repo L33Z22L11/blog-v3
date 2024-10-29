@@ -5,7 +5,7 @@ export default <FeedGroup[]>[
     {
         name: '漫游',
         desc: '网上冲浪时发现的精彩内容与常读订阅，与君共享。',
-        items: [
+        entries: [
             {
                 author: '风记星辰',
                 desc: '热爱你来过的每度温暖',
@@ -102,6 +102,17 @@ export default <FeedGroup[]>[
                 avatar: getFeedIcon('imsyy'),
                 archs: ['VitePress', 'Cloudflare'],
                 date: '2024-10-26',
+            },
+            {
+                author: '汐笺',
+                sitenick: '最小可读',
+                desc: '基本无害，可能有用',
+                link: 'https://mvread.blog/',
+                feed: 'https://mvread.blog/feed',
+                icon: 'https://wsrv.nl/?url=mmbiz.qpic.cn/mmbiz_png/ObdOUIBwLwlt7jrOzKib6gUM83iaY6d6qLF4fH7AtAyL8mnic0jPicnFLdjXnduL5Pkj8Viah8RJAZzPwOWlj8995Qw/0',
+                avatar: 'https://cdnv2.ruguoapp.com/FufBpXB3Ax66mh9vkBEjTujMVLmPv3.jpg?imageMogr2/auto-orient/heic-exif/1/format/jpeg/thumbnail/!300x300r/gravity/Center/crop/!300x300a0a0',
+                archs: ['WordPress', '虚拟主机'],
+                date: '2024-10-29',
             },
         ],
     },

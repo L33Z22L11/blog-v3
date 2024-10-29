@@ -1,9 +1,11 @@
 const archIcons = {
+    '国内 CDN': 'ph:cloud-check-fill',
+    '虚拟主机': 'ph:file-cloud-bold',
     'Astro': 'simple-icons:astro',
-    'CDN (国内)': 'ph:cloud-check-fill',
     'Cloudflare': 'simple-icons:cloudflare',
     'Deno Deploy': 'simple-icons:deno',
     'GitHub Pages': 'simple-icons:github',
+    'Gridea': 'tabler:circle-letter-g', // 不准确
     'Halo': 'tabler:square-letter-h-filled', // 不准确
     'Hexo': 'simple-icons:hexo',
     'HTML': 'simple-icons:html5',
@@ -16,9 +18,8 @@ const archIcons = {
     'Server': 'ph:hard-drives-fill',
     'Typecho': 'icon-park-solid:align-text-left-one', // 不准确
     'Vercel': 'simple-icons:vercel',
-    'Gridea': 'tabler:circle-letter-g', // 不准确
-    'Vue': 'uim:vuejs',
     'VitePress': 'simple-icons:vitepress',
+    'Vue': 'uim:vuejs',
     'WordPress': 'simple-icons:wordpress',
     'Zebaur': 'tabler:square-letter-z-filled', // 不准确
 }

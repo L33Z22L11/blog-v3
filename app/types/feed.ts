@@ -29,5 +29,5 @@ export interface FeedGroup {
     /** 描述 */
     desc?: string
     /** 友链列表 */
-    items: FeedEntry[]
+    entries: FeedEntry[]
 }

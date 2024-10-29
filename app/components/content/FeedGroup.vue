@@ -19,7 +19,7 @@ defineProps<{
             {{ group.desc }}
         </p>
         <menu class="feed-list">
-            <li v-for="enery in group.items" :key="enery.link" class="feed-card">
+            <li v-for="enery in group.entries" :key="enery.link" class="feed-card">
                 <FeedCard v-bind="enery" />
             </li>
         </menu>
@@ -46,8 +46,7 @@ defineProps<{
     top: 0;
     margin-bottom: -0.3em;
     mask: linear-gradient(#fff 50%, transparent);
-    font-size: 5rem;
-    line-height: 1;
+    font: 800 5rem/1 var(--font-stroke-free);
     text-align: center;
     color: transparent;
     transition: color 0.2s;
