@@ -33,6 +33,14 @@ export function getMainDomain(url: string, useIcann?: boolean) {
 export function getDomainType(mainDomain: string) {
     return domainTip[mainDomain]
 }
+
+export function getGhUsername(url?: string) {
+    if (!url)
+        return ''
+    const regex = /github\.com\/([a-zA-Z0-9-]+)(?:\/[^/]+)?(\/?)$/
+    return url.match(regex)?.[1] ?? ''
+}
+
 export function isExtLink(url?: string) {
     if (!url)
         return false

@@ -21,7 +21,7 @@ SMB (Server Message Block) 是一种网络文件共享协议；Samba 是在 Linu
 
 如果只是单次传输文件，可以考虑使用 `scp` 或 `rsync`。
 
-```bash
+```sh
 scp -P 22 /path/to/file user@host:/path/to/destination
 rsync -avzP /path/to/file user@host:/path/to/destination
 ```
@@ -38,7 +38,7 @@ sudo systemctl enable --now smb.service
 ### 添加 Samba 用户
 
 - 设置本用户的 SMB 密码：
-  ```bash
+  ```sh
   sudo smbpasswd -a my_username
   ```
 - 如果你需要使用其他账户访问 SMB，请添加对应用户名：

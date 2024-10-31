@@ -23,7 +23,9 @@ const blogConfig = {
     timezone: 'Asia/Shanghai',
     url: 'https://blog.zhilu.cyou/',
 
-    fileExtensions: <BundledLanguage[]>['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'java', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'shell', 'ssh-config', 'toml', 'ts', 'tsx', 'vb', 'vue', 'xml', 'yaml'],
+    // 用于 Shiki、Plain Shiki 引入代码高亮
+    // 同时用于显示代码块语言对应的 Iconify Catppuccin 图标
+    fileExtensions: <BundledLanguage[]>['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'java', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'sh', 'ssh-config', 'toml', 'ts', 'tsx', 'vb', 'vue', 'xml', 'yaml'],
 
     feed: {
         limit: 50,

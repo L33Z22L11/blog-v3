@@ -51,17 +51,22 @@ icon: https://www.zhilu.cyou/api/icon.png
 
 ## Badge
 
-:badge[普通]{to="#badge"} :badge[指定圆形]{round} :badge[指定方形]{square}
+纯文本 :badge[普通]{link="#badge"} :badge[指定圆形]{round} :badge[指定方形]{square}
 
-:badge{img="https://picsum.photos/100/100" to="#badge"} :badge{img="https://picsum.photos/100/100" round} :badge{img="https://picsum.photos/100/100" square}
+GitHub头像自动识别 :badge[KazariEX]{round link="https://github.com/KazariEX"}
+可指定方形 :badge[isYangs/GioPic]{square link="https://github.com/isYangs/GioPic"}
+
+带链接 :badge{img="https://picsum.photos/100/100" link="#badge"}
+指定圆形 :badge{img="https://picsum.photos/100/100" round}
+指定方形 :badge{img="https://picsum.photos/100/100" square}
 
 <!-- [在 :badge[超链接] 里也会变](#badge) -->
 
 ::alert
 #title
-:badge{img="https://picsum.photos/100/100" text="自定义文字" to="#badge"}
-:badge{img="https://picsum.photos/100/100" text="自定义文字" round}
-:badge{img="https://picsum.photos/100/100" text="自定义文字" square}
+在其他组件中使用 :badge{img="https://picsum.photos/100/100" text="带链接" link="#badge"}
+#default
+:badge{img="https://picsum.photos/100/100" text="指定圆形" round} 背景色 [可以 :badge{img="https://picsum.photos/100/100" text="动态变化" square} 使用](#badge)
 ::
 
 ## :blur[Blur]

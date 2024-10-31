@@ -52,9 +52,15 @@ const yearlyWordCount = computed(() => {
             :key="year"
             class="archive-group"
         >
-            <h2 class="archive-year" :data-count="yearGroup?.length" :data-words="yearlyWordCount[year]">
-                {{ year }}
-            </h2>
+            <div class="archive-title">
+                <h2 class="archive-year">
+                    {{ year }}
+                </h2>
+                <div class="archive-info">
+                    <span>{{ yearlyWordCount[year] }}字</span>
+                    <span>{{ yearGroup?.length }}篇</span>
+                </div>
+            </div>
             <menu class="archive-list">
                 <ZArchive
                     v-for="article in yearGroup"
@@ -75,34 +81,42 @@ const yearlyWordCount = computed(() => {
 }
 
 .archive-group {
-    margin: 1rem 0;
+    padding: 1rem 0;
 
-    &:hover .archive-year {
+    &:hover .archive-title {
         color: var(--c-text-3);
     }
 }
 
-.archive-year {
+.archive-title {
+    display: flex;
+
+    // align-items: center;
+    justify-content: space-between;
+    gap: 1em;
     position: sticky;
     opacity: 0.5;
     top: 0;
-    margin-bottom: -0.3em;
-    mask: linear-gradient(#fff 50%, transparent);
-    font: 700 5rem/1 var(--font-stroke-free);
+    font-size: min(1.5em, 5vw);
     color: transparent;
     transition: color 0.2s;
-    z-index: -1;
-    -webkit-text-stroke: 1px var(--c-text-3);
 
-    &::after {
-        content: attr(data-words) "字\a" attr(data-count) "篇";
-        position: absolute;
-        right: 0;
-        font-size: 1.5rem;
-        line-height: normal;
-        white-space: pre;
-        text-align: right;
-        -webkit-text-stroke-width: 0;
+    .archive-year {
+        margin-bottom: -0.3em;
+        mask: linear-gradient(#fff 50%, transparent);
+        font: 800 3em/1 var(--font-stroke-free);
+        z-index: -1;
+        -webkit-text-stroke: 1px var(--c-text-3);
+    }
+
+    .archive-info {
+        display: flex;
+        flex-grow: 1;
+        justify-content: flex-end;
+        column-gap: 0.5em;
+
+        // border-top: 0.2em dashed;
+        flex-wrap: wrap;
     }
 }
 </style>

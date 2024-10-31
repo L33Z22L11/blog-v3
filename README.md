@@ -72,18 +72,18 @@ https://blog.zhilu.cyou
 
 ### 安装依赖
 
-```bash
+```sh
 pnpm i
 ```
 
 ### 运行开发环境
 
-```bash
+```sh
 pnpm dev
 ```
 
 ### 构建生产环境
 
-```bash
+```sh
 pnpm generate
 ```

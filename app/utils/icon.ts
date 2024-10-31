@@ -57,17 +57,19 @@ export function getDomainIcon(url: string) {
     return mainDomainIcons[mainDomain]
 }
 
+// 将 blogConfig.fileExtensions 的部分后缀名简写
+// 转换为代码块语言对应的 Iconify Catppuccin图标
 const ext2lang: Record<string, string> = {
-    bat: 'batch',
-    ini: 'properties',
-    js: 'javascript',
-    md: 'markdown',
-    mdc: 'markdown',
-    sh: 'bash',
-    ssh_config: 'properties',
-    ts: 'typescript',
-    tsx: 'typescript',
-    vb: 'visual-studio',
+    'bat': 'batch',
+    'ini': 'properties',
+    'js': 'javascript',
+    'md': 'markdown',
+    'mdc': 'markdown',
+    'sh': 'bash',
+    'ssh-config': 'properties',
+    'ts': 'typescript',
+    'tsx': 'typescript',
+    'vb': 'visual-studio',
 }
 
 export function getFileIcon(extension?: string): string {
