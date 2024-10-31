@@ -1,4 +1,5 @@
 const archIcons = {
+    '服务器': 'ph:hard-drives-fill',
     '国内 CDN': 'ph:cloud-check-fill',
     '虚拟主机': 'ph:file-cloud-bold',
     'Astro': 'simple-icons:astro',
@@ -15,7 +16,6 @@ const archIcons = {
     'Netlify': 'simple-icons:netlify',
     'Next.js': 'simple-icons:nextdotjs',
     'Nuxt': 'simple-icons:nuxtdotjs',
-    'Server': 'ph:hard-drives-fill',
     'Typecho': 'icon-park-solid:align-text-left-one', // 不准确
     'Vercel': 'simple-icons:vercel',
     'VitePress': 'simple-icons:vitepress',

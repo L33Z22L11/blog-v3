@@ -13,7 +13,7 @@ export default <FeedGroup[]>[
                 link: 'https://thyuu.com/',
                 icon: 'https://std.thyuu.com/logo.svg',
                 avatar: 'https://std.thyuu.com/logo.svg',
-                archs: ['WordPress', 'Server'],
+                archs: ['WordPress', '服务器'],
                 date: '2024-02-01',
             },
             {
@@ -88,7 +88,7 @@ export default <FeedGroup[]>[
                 feed: 'https://xaoxuu.com/atom.xml',
                 icon: 'https://xaoxuu.com/assets/xaoxuu/favicon/favicon-32x32.png',
                 avatar: getFeedIcon('xaoxuu'),
-                archs: ['Hexo', 'Server'],
+                archs: ['Hexo', '服务器'],
                 date: '2024-10-26',
             },
             {
