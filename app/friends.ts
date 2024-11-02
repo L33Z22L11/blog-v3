@@ -71,7 +71,7 @@ export default <FeedGroup[]>[
                 feed: 'https://www.bandao.ltd/atom.xml',
                 icon: getFeedIcon('bandaoworld', { preset: 'icon' }),
                 avatar: getFeedIcon('bandaoworld'),
-                archs: ['Typecho', '服务器'],
+                archs: ['Hexo', '服务器'],
                 date: '2024-02-02',
                 comment: '大学学长，爱好摄影/听歌，会一些Vue。',
             },

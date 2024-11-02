@@ -27,7 +27,7 @@ const tip = computed(() => isExtLink(props.href) && getDomain(props.href))
     }
 
     .domain-icon {
-        margin: 0 0.1em;
+        margin-right: 0.1em;
     }
 }
 </style>

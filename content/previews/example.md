@@ -101,4 +101,12 @@ language: yaml # with filename
 
 :copy{noprompt command="zhilu://link.without.prompt"}
 
-:copy{prompt="custom prompt" language="js" command="const language='js' // also customable, when it becomes too long, it can be scrolled"}
+:copy{prompt="custom prompt" language="js" command="const customLanguage = 'js' // scrollable when it is tooooooooooooooooooooooo long"}
+
+## Key
+
+:key[Esc]{code="escape"} :key[F2]{code="f2"} :key[Ctrl]{code="control"} :key[Shift]{code="shift"} :key[a]{code="a"} :key[Space]{code=" "} :key[Tab]{code="tab"} :key[Enter]{code="enter"}
+
+:key[Ctrl+Shift+A]{code="a" ctrl shift} :key[Alt]{code="alt"} :key[Alt+Shift]{code="shift" alt} :key[Ctrl+Alt]{code="alt" ctrl}
+
+:key[↑]{code="arrowup"} :key[↑]{code="arrowup"} :key[↓]{code="arrowdown"} :key[↓]{code="arrowdown"} :key[←]{code="arrowleft"} :key[→]{code="arrowright"} :key[←]{code="arrowleft"} :key[→]{code="arrowright"} :key[B]{code="b"} :key[A]{code="a"} :key[B]{code="b"} :key[A]{code="a"}

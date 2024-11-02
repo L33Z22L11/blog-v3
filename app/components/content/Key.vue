@@ -1,6 +1,10 @@
 <script setup lang="ts">
 const props = defineProps<{
     code?: string
+    ctrl?: boolean
+    shift?: boolean
+    alt?: boolean
+    meta?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -9,15 +13,22 @@ const emit = defineEmits<{
 
 const active = ref(false)
 
+function checkModifiers(e: KeyboardEvent) {
+    return ((!props.ctrl || props.ctrl === e.ctrlKey)
+        && (!props.shift || props.shift === e.shiftKey)
+        && (!props.alt || props.alt === e.altKey)
+        && (!props.meta || props.meta === e.metaKey))
+}
+
 useEventListener('keydown', (e) => {
-    if (e.key === props.code) {
+    if (e.key.toLowerCase() === props.code && checkModifiers(e)) {
         emit('press')
         active.value = true
     }
 })
 
 useEventListener('keyup', (e) => {
-    if (e.key === props.code) {
+    if (e.key.toLowerCase() === props.code && checkModifiers(e)) {
         active.value = false
     }
 })

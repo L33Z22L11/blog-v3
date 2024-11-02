@@ -93,17 +93,17 @@ function openActiveItem() {
                     </TransitionGroup>
                 </ol>
                 <div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
-                    <ZKey code="ArrowUp" @press="activeIndex--">
+                    <Key code="ArrowUp" @press="activeIndex--">
                         ↑
-                    </ZKey> <ZKey code="ArrowDown" @press="activeIndex++">
+                    </Key> <Key code="ArrowDown" @press="activeIndex++">
                         ↓
-                    </ZKey> 切换&emsp;
-                    <ZKey code="Enter" @press="openActiveItem">
+                    </Key> 切换&emsp;
+                    <Key code="Enter" @press="openActiveItem">
                         Enter
-                    </ZKey> 选择&emsp;
-                    <ZKey code="Escape" @press="layoutStore.toggle('search')">
+                    </Key> 选择&emsp;
+                    <Key code="Escape" @press="layoutStore.toggle('search')">
                         Esc
-                    </ZKey> 关闭
+                    </Key> 关闭
                 </div>
             </TransitionGroup>
         </div>

@@ -74,10 +74,9 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .command {
     display: flex;
-    overflow: hidden;
     margin: 0.5rem 0;
     border: 1px solid var(--c-border);
-    border-radius: 0.5em;
+    border-radius: 4px;
     background-color: var(--ld-bg-card);
     font-size: 0.8rem;
     line-height: 2.5;
@@ -86,6 +85,7 @@ onMounted(async () => {
         flex-shrink: 0;
         padding: 0 1em;
         border-right: 1px solid var(--c-border);
+        border-radius: 3px 0 0 3px;
         background-color: var(--c-bg-2);
         color: var(--c-text-2);
     }
@@ -94,7 +94,6 @@ onMounted(async () => {
         // flex-grow: 1 会在窄宽度下溢出
         width: 100%;
         padding: 0 0.8em;
-        background-color: var(--ld-bg-card);
         white-space: nowrap;
     }
 
