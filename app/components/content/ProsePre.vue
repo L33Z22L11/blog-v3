@@ -176,6 +176,6 @@ pre {
 }
 
 .icon-revert {
-    filter: invert(0.8) hue-rotate(180deg) saturate(2);
+    filter: invert(0.7) hue-rotate(180deg) saturate(4);
 }
 </style>

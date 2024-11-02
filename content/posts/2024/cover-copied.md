@@ -19,7 +19,7 @@ references:
 ::link-banner
 ---
 title: Linux QQ能打语音视频了！一文详解背后技术实现！
-desc: 原创　QQ音视频团队　腾讯云开发者　2024-06-18 08:43　北京
+description: 原创　QQ音视频团队　腾讯云开发者　2024-06-18 08:43　北京
 banner: https://mmbiz.qpic.cn/mmbiz_jpg/VY8SELNGe96D4BWicYxv0JgWsyvdCOq9qbpwmcjiaw8KJcvoeawYqAHHIUvOEq131W7FuLpKhpDrDnVfiahBf0ALg/0
 mirror: true
 link: https://mp.weixin.qq.com/s/M3-7XnNy30HprMpDsKBi7w
@@ -31,7 +31,7 @@ link: https://mp.weixin.qq.com/s/M3-7XnNy30HprMpDsKBi7w
 ::link-banner
 ---
 title: Linux QQ 崩溃解决办法
-desc: 原创　纸鹿本鹿　2023-03-16 21:02:22　纸鹿摸鱼处
+description: 原创　纸鹿本鹿　2023-03-16 21:02:22　纸鹿摸鱼处
 banner: https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
 link: /2023/linuxqq-crash
 ---

@@ -104,7 +104,7 @@ link: https://shawn.thisis.host/2024/clang-config/
 ---
 ::
 
-我在 Linux 上安装了 Clang 和 clangd 后就能正常使用了。但我在 Windows 上只安装了 LLVM 和 clangd，当时应该是没有安装 [MSVC](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/) 和 MS Build 工具，所以才没有成功。
+我在 Linux 上安装了 Clang 和 clangd 后就能正常使用了。但我在 Windows 上只安装了 LLVM 和 clangd，当时应该是没有安装 MSVC 或者 [MSBuild（Microsoft C++ / Visual Studio 生成工具）](https://visualstudio.microsoft.com/zh-hans/visual-cpp-build-tools/)工具，所以才没有成功。
 
 ::quote
 问题：讲出来——然后解决了。

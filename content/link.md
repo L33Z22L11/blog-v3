@@ -25,7 +25,7 @@ center: true
 
 - 申请要求：原则上与多数独立博客的友链要求一致
   - 能够**长期更新维护**，并输出**有价值的原创内容**
-  - 可以参考 [加入开往](https://www.travellings.cn/docs/join) 页面的规则
+  - 可以参考 [加入开往](https://www.travellings.cn/docs/join.html) 页面的规则
 - 申请方式：在评论区留言或发送邮件到 :tip{text="hi@zhilu.cyou" copy}
   - 标题注明 `友链申请: 你的昵称`
   - 以 :tip[任意形式]{tip="指向信息的 URL、自然语言、编程语言"} 附上友链信息

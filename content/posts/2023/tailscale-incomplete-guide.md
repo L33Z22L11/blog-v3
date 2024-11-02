@@ -113,6 +113,6 @@ powershell Invoke-WmiMethod Win32_Process Create \"powershell Restart-Service Ta
 ---
 banner: https://7.isyangs.cn/24/6664009b8f999-24.jpg
 title: Moonlight 串流指南
-desc: 服务端Sunshine设置、客户端分辨率调整、隐私屏功能实现及触摸优化。
+description: 服务端Sunshine设置、客户端分辨率调整、隐私屏功能实现及触摸优化。
 link: /2024/moonlight-streaming-guide
 ---

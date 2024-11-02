@@ -17,7 +17,7 @@ recommend: 20
 ---
 banner: https://7.isyangs.cn/24/65b66289c9a2e-24.jpg
 title: Windows 安装指南
-desc: 使用 Ventoy、微 PE、Dism++ 安装系统，绕过账户限制并激活 Office 与 Windows，合理分区布局使数据安全有序。
+description: 使用 Ventoy、微 PE、Dism++ 安装系统，绕过账户限制并激活 Office 与 Windows，合理分区布局使数据安全有序。
 link: /2023/windows-setup-guide
 ---
 ::
@@ -27,7 +27,7 @@ link: /2023/windows-setup-guide
 banner: https://7.isyangs.cn/24/66640097e0cbb-24.jpg
 link: /2024/archlinux-boot-repair
 title: Arch Linux 启动引导修复
-desc: 可以修复绝大多数 Arch Linux 无法启动的问题。
+description: 可以修复绝大多数 Arch Linux 无法启动的问题。
 ---
 ::
 
@@ -47,7 +47,13 @@ desc: 可以修复绝大多数 Arch Linux 无法启动的问题。
 
 ### 关闭安全启动
 
+关闭 Windows 的 BitLocker 或设备加密，否则你的 Windows 数据可能会被锁死。
+
 Ventoy 需要加载自定义证书文件才能在启用“安全启动”特性的设备上正常启动，一些 Linux 安装环境可能也不支持“安全启动”。方便起见，可以在 BIOS 设置里关闭“安全启动”特性，装好系统后再打开。
+
+关闭“快速启动”功能，也许可以解决一些玄学的掉引导问题。
+
+如果 Ventoy 启动镜像时遇到错误，可以在选择镜像后，使用 grub2 模式引导启动。
 
 ### 联网
 

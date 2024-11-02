@@ -2,7 +2,7 @@
 title: Windows 终端体验优化指南
 description: 一篇优化 Windows Terminal 体验的指南，涵盖 PowerShell 增强、Oh My Posh 主题配置、集成 Git Bash 以及终端美化等方面。
 date: 2024-06-16 22:48:57
-updated: 2024-09-14 19:57:42
+updated: 2024-11-02 17:55:29
 image: https://7.isyangs.cn/24/6671b766a4312-24.jpg
 categories: [经验分享]
 tags: [教程, 系统, Windows, 终端]
@@ -18,7 +18,7 @@ recommend: true
 
 ### 安装 sudo
 
-虽然 Windows 会在即将推出的版本加上 sudo，但目前还没有，需要通过安装 gsudo 来添加 sudo 支持。
+如果你还没有升级到 Windows 24H2，你可以通过安装 gsudo 来添加 sudo 支持。
 
 - 安装 gsudo
   :copy{prompt="PS>" command="winget install gsudo"}
@@ -88,6 +88,15 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
   - :copy{prompt="启动目录" command="%USERPROFILE%"}
   - :copy{prompt="图标" command="%ProgramFiles%\Git\mingw64\share\git\git-for-windows.ico"}
 
+::link-banner
+---
+banner: https://7.isyangs.cn/24/6664009c87ec5-24.jpg
+title: SSH 免密登录
+description: 生成SSH密钥，启用公钥认证，将公钥添加至授权列表，实现 Windows/Linux/GitHub SSH 免密登录。
+link: /2023/ssh-key-login
+---
+::
+
 ## 美化
 
 修改位置：Windows Terminal 设置 - 配置文件 - 默认值 - 外观
@@ -99,3 +108,45 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 - 透明度
   - 背景不透明度：50%
   - 启用亚克力材料：开
+
+## 搜索历史命令
+
+在更新了 PS ReadLine 后，可以通过按 F2 键切换行内补全和补全列表。
+
+另外，`Ctrl + R` 也可用于搜索命令历史记录。使用方法如下：
+
+1. **进入搜索模式**：按下 `Ctrl + R`，你会看到提示符变成 `(reverse-i-search)`，这意味着你可以开始搜索之前执行过的命令。
+2. **输入搜索关键字**：开始输入你想要查找的命令的部分内容，PowerShell 会实时显示与输入内容匹配的最近命令。
+3. **查看匹配结果**：如果有多个匹配的命令，你可以继续按 `Ctrl + R` 来查看更早的匹配结果。每按一次，会向后查找一个匹配的命令。
+4. **执行命令**：当找到想要的命令后，按 `Enter` 执行该命令。
+5. **取消搜索**：如果不想执行搜索到的命令，可以按 `Ctrl + G` 或 `Esc` 取消搜索，返回到普通的命令提示符。
+
+同时，`Ctrl + S` 用于正向搜索命令历史记录。使用方法如下：
+
+1. **进入正向搜索模式**：按下 `Ctrl + S`，你会看到提示符变成 `(forward-i-search)`。
+2. **输入搜索关键字**：开始输入你想要查找的命令的部分内容，PowerShell 会实时显示与输入内容匹配的下一个命令。
+3. **查看匹配结果**：如果有多个匹配的命令，你可以继续按 `Ctrl + S` 来查看下一个匹配结果。
+4. **执行命令**：当找到想要的命令后，按 `Enter` 执行该命令。
+5. **取消搜索**：按 `Ctrl + G` 或 `Esc` 可以取消搜索，返回到普通的命令提示符。
+
+## 使用 Fastfetch 获取系统信息
+
+在 Windows 下，推荐使用 [Scoop](https://scoop.sh/) 安装命令行程序。安装 Scoop 后，可以通过 `scoop install fastfetch` 安装 [Fastfetch](https://github.com/fastfetch-cli/fastfetch)。（参考[Windows 上的开源软件入门 > 使用包管理器安装软件](/2024/sfd-xupt#使用包管理器安装软件)）
+
+- 打印系统信息
+  :copy{prompt="PS>" command="fastfetch"}
+- 更详细地显示系统信息，并隐藏 Logo
+  :copy{prompt="PS>" command="fastfetch -c all -l none"}
+
+Fastfetch 还支持更进一步地定义配置文件。
+
+## 一些有趣的命令
+
+- 通过 PS ReadLine 获取历史记录
+  :copy{prompt="PS>" command="Get-Content (Get-PSReadlineOption).HistorySavePath"}
+- 获取命令位置（类似于 Linux 的 `which`）
+  :copy{prompt="PS>" command="(Get-Command <command>).Definition"}
+- 在此次打开文件资源管理器
+  :copy{prompt="PS>" command="explorer ."}
+- 在无网状态下开启移动热点
+  :copy{prompt="PS>" command="[Windows.Networking.NetworkOperators.NetworkOperatorTetheringManager,Windows.Networking.NetworkOperators,ContentType=WindowsRuntime]::CreateFromConnectionProfile([Windows.Networking.Connectivity.NetworkInformation,Windows.Networking.Connectivity,ContentType=WindowsRuntime]::GetInternetConnectionProfile()).StartTetheringAsync()"}

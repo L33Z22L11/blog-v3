@@ -381,7 +381,7 @@ caption: Oh My Posh
 ---
 banner: https://7.isyangs.cn/24/6671b766a4312-24.jpg
 title: Windows 终端体验优化指南
-desc: 一篇优化 Windows Terminal 体验的指南，涵盖 PowerShell 增强、Oh My Posh 主题配置、集成 Git Bash 以及终端美化等方面。
+description: 一篇优化 Windows Terminal 体验的指南，涵盖 PowerShell 增强、Oh My Posh 主题配置、集成 Git Bash 以及终端美化等方面。
 link: /2024/windows-terminal
 ---
 ::
@@ -538,7 +538,7 @@ caption: Escrcpy 截图
 ---
 banner: https://7.isyangs.cn/24/6664009b8f999-24.jpg
 title: Moonlight 串流指南
-desc: 服务端Sunshine设置、客户端分辨率调整、隐私屏功能实现及触摸优化。
+description: 服务端Sunshine设置、客户端分辨率调整、隐私屏功能实现及触摸优化。
 link: /2024/moonlight-streaming-guide
 ---
 ::
@@ -594,7 +594,7 @@ Termux 是一个 Android 终端应用程序和 Linux 环境。通过 GPL v3 协�
 ---
 banner: https://7.isyangs.cn/24/6664009d45024-24.jpg
 title: Termux 简单指南
-desc: Termux 安装、配置 SSH，切换国内源，安装 ZSH、X11 图形界面，探索更多可能性。
+description: Termux 安装、配置 SSH，切换国内源，安装 ZSH、X11 图形界面，探索更多可能性。
 link: /2023/termux-guide
 ---
 ::

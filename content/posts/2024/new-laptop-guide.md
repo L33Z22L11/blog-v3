@@ -2,7 +2,7 @@
 title: 给电脑新手的笔记本开荒指南导读
 description: 成为电脑高手，机魂大悦，人亦绥。我已避开联想预装软件所带问题的瓢泼大雨，而持续收到新手关于厂商作恶所致问题的咨询，却是相伴许久的潮湿。总结成文，恶意软件退!退!退！
 date: 2024-10-28 08:23:08
-updated: 2024-10-29 02:14:38
+updated: 2024-11-02 16:41:56
 image: https://7.isyangs.cn/24/67211d63f4203-24.webp
 categories: [经验分享]
 tags: [电脑, Windows, 新手]
@@ -210,6 +210,14 @@ link: https://github.com/BartoszCichecki/LenovoLegionToolkit/blob/master/README_
 mirror: weserv
 ---
 ::
+
+## 数据安全和易用性
+
+部分电脑在购买时会默认开启 BitLocker 或设备加密，这是一个好功能，但偶尔也会对用户带来麻烦。比如更改了分区后，电脑可能会锁死，提示输入 BitLocker 密钥才能启动系统。
+
+如果你的电脑登录了微软账户，这个密钥会备份在微软的服务器上，可以检查 [自己微软账户上备份的恢复密钥](https://account.microsoft.com/devices/recoverykey)。如果没有登录，则一般是伪加密，可以在恢复环境中输入 `manage-bde -off C:` 来解锁。
+
+这个功能对于普通用户并无必要，还会轻微降低硬盘读写速率（影响游戏加载速度），你可以在设置中搜索“BitLocker”或“设备加密”，关闭此功能。关闭后，如果有人拿到了你的电脑，可以绕过开机密码访问你的文件。
 
 ## 写在最后
 
