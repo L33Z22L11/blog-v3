@@ -97,7 +97,15 @@ export default <FriendGroup[]> [
                 icon: 'https://blog.liuzijian.com/img/logo.jpg',
                 archs: ['Hexo', 'CDN (国内)'],
                 date: '2024-10-26',
-            },              
+            },
+            {
+                name: 'TASA-Ed官网',
+                desc: 'TASA-Ed工作室官网',
+                link: 'https://www.tasaed.top',
+                icon: 'https://www.tasaed.top/upload/T832.png',
+                archs: ['Hexo', 'CDN (国内)'],
+                date: '2024-11-03',
+            },             
         ],
     },
     {
