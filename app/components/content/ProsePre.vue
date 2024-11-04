@@ -11,9 +11,11 @@ const props = withDefaults(defineProps<{
     highlights: () => [],
 })
 
-const icon = computed(() => getFileIcon(props.language))
-
-interface CodeblockMeta { [meta: string]: string | boolean }
+interface CodeblockMeta {
+    icon?: string
+    wrap?: boolean
+    [meta: string]: string | boolean | undefined
+}
 
 const meta = computed(() => {
     if (!props.meta)
@@ -26,7 +28,8 @@ const meta = computed(() => {
     }, {})
 })
 
-const isWrap = ref<boolean>(Boolean(meta.value.wrap))
+const icon = computed(() => meta.value.icon || getFileIcon(props.filename) || getLangIcon(props.language))
+const isWrap = ref(meta.value.wrap)
 
 const codeblock = useTemplateRef('codeblock')
 const copyBtn = useTemplateRef('copy-btn')
@@ -40,7 +43,7 @@ useCopy(copyBtn, codeblock)
             <span v-if="filename" class="filename">
                 <ClientOnly>
                     <!-- 颜色偏好存储于客户端，可能水合不匹配 -->
-                    <Icon :class="{ 'icon-revert': $colorMode.value === 'light' }" :name="icon" />
+                    <Icon :class="{ 'icon-revert': !meta.icon && $colorMode.value === 'light' }" :name="icon" />
                 </ClientOnly>
                 {{ filename }}
             </span>

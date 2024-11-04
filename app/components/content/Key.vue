@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
+    /** Key 名称应当转为小写 */
     code?: string
     ctrl?: boolean
     shift?: boolean

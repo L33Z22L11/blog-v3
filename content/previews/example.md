@@ -99,7 +99,7 @@ language: yaml # with filename
 
 :copy{command="sudo rm -rf"}
 
-:copy{noprompt command="zhilu://link.without.prompt"}
+:copy{prompt command="zhilu://link.without.prompt"}
 
 :copy{prompt="custom prompt" language="js" command="const customLanguage = 'js' // scrollable when it is tooooooooooooooooooooooo long"}
 

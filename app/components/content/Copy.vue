@@ -2,27 +2,25 @@
 import { createPlainShiki, type MountPlainShikiOptions } from 'plain-shiki'
 import { useTippy } from 'vue-tippy'
 
-const props = defineProps<{
-    noprompt?: boolean
-    prompt?: string
+const props = withDefaults(defineProps<{
+    /* noprompt?: boolean */
+    prompt?: string | boolean
     command?: string
     language?: string
-}>()
+}>(), {
+    prompt: '$',
+})
 
-const prompt = computed(() => props.noprompt ? '' : props.prompt ?? '$')
-const language = computed(() => props.language ?? getPromptLanguage(prompt.value))
+// prompt 传入空字符串会变成 true
+const showPrompt = computed(() => /* !props.noprompt && */ props.prompt as unknown !== true)
+const language = computed(() => props.language ?? getPromptLanguage(props.prompt as string))
 
-const command = ref(props.command)
 const showUndo = ref(false)
 const commandInput = useTemplateRef('command-input')
 const copyBtn = useTemplateRef('copy-btn')
 
 useTippy(commandInput, { content: '可以修改命令后再复制', trigger: 'focus' })
 useCopy(copyBtn, commandInput)
-
-watch(command, (newVal) => {
-    showUndo.value = newVal !== props.command
-})
 
 function undo() {
     commandInput.value!.textContent = props.command ?? ''
@@ -40,7 +38,7 @@ function beforeInput(event: InputEvent) {
 }
 
 function onInput(event: InputEvent) {
-    command.value = (event.target as Element).textContent ?? ''
+    showUndo.value = props.command !== (event.target as Element).textContent
 }
 
 onMounted(async () => {
@@ -53,7 +51,7 @@ onMounted(async () => {
 
 <template>
     <code class="command">
-        <span v-if="!noprompt" class="prompt">{{ prompt }}</span>
+        <span v-if="showPrompt" class="prompt">{{ prompt }}</span>
         <div
             ref="command-input"
             contenteditable="plaintext-only"

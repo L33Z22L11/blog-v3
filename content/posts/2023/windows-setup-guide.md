@@ -149,8 +149,8 @@ recommend: true
 - 点击页面顶部的“开始部署”
 - 等待Office安装完成
 - 按下Ctrl+Shift+P，输入下列命令之一，或者也可以去[激活入门教程](https://www.coolhub.top/archives/14#:~:text=%E8%87%AA%E5%8A%A8%E6%BF%80%E6%B4%BB%20Office)中查看：
-  :copy{noprompt command="ospp /inslicid MondoVolume /sethst:kms.loli.beer /setprt:1688 /act"}
-  :copy{noprompt command="ospp /inslicid MondoVolume /sethst:kms.03k.org /setprt:1688 /act"}
+  :copy{prompt command="ospp /inslicid MondoVolume /sethst:kms.loli.beer /setprt:1688 /act"}
+  :copy{prompt command="ospp /inslicid MondoVolume /sethst:kms.03k.org /setprt:1688 /act"}
 - 等待Office激活成功
 
 ## 使用HEU KMS Activator激活Windows

@@ -93,15 +93,15 @@ function openActiveItem() {
                     </TransitionGroup>
                 </ol>
                 <div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
-                    <Key code="ArrowUp" @press="activeIndex--">
+                    <Key code="arrowup" @press="activeIndex--">
                         ↑
-                    </Key> <Key code="ArrowDown" @press="activeIndex++">
+                    </Key> <Key code="arrowdown" @press="activeIndex++">
                         ↓
                     </Key> 切换&emsp;
-                    <Key code="Enter" @press="openActiveItem">
+                    <Key code="enter" @press="openActiveItem">
                         Enter
                     </Key> 选择&emsp;
-                    <Key code="Escape" @press="layoutStore.toggle('search')">
+                    <Key code="escape" @press="layoutStore.toggle('search')">
                         Esc
                     </Key> 关闭
                 </div>

@@ -57,6 +57,37 @@ export function getDomainIcon(url: string) {
     return mainDomainIcons[mainDomain]
 }
 
+const file2icon: Record<string, string> = {
+    '.crt': 'catppuccin:certificate',
+    '.gitattributes': 'catppuccin:git',
+    '.gitconfig': 'catppuccin:git',
+    '.gitignore': 'catppuccin:git',
+    '.key': 'catppuccin:key',
+    '.npmrc': 'catppuccin:npm',
+    '.patch': 'catppuccin:git',
+    '.prettierrc': 'catppuccin:prettier',
+    'CHANGELOG.md': 'catppuccin:changelog',
+    'CODE_OF_CONDUCT.md': 'catppuccin:code-of-conduct',
+    'CONTRIBUTING.md': 'catppuccin:contributing',
+    'eslint.config.mjs': 'catppuccin:eslint',
+    'LICENSE': 'catppuccin:license',
+    'netlify.toml': 'catppuccin:netlify',
+    'nuxt.config.ts': 'catppuccin:nuxt',
+    'package.json': 'catppuccin:package-json',
+    'pnpm-workspace.yaml': 'catppuccin:pnpm',
+    'README.md': 'catppuccin:readme',
+    'stylelint.config.mjs': 'catppuccin:stylelint',
+    'tsconfig.json': 'catppuccin:typescript-config',
+    'verccel.json': 'catppuccin:vercel',
+}
+
+export function getFileIcon(filename?: string) {
+    if (!filename)
+        return undefined
+    const extension = Object.keys(file2icon).find(ext => filename.endsWith(ext))
+    return extension ? file2icon[extension] : undefined
+}
+
 // 将 blogConfig.fileExtensions 的部分后缀名简写
 // 转换为代码块语言对应的 Iconify Catppuccin图标
 const ext2lang: Record<string, string> = {
@@ -72,7 +103,7 @@ const ext2lang: Record<string, string> = {
     'vb': 'visual-studio',
 }
 
-export function getFileIcon(extension?: string): string {
+export function getLangIcon(extension?: string): string {
     const config = useAppConfig()
 
     if (!extension || !(config.fileExtensions as string[]).includes(extension))
