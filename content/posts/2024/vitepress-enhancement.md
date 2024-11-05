@@ -2,7 +2,7 @@
 title: VitePress 不完全优化指南
 description: VitePress 的基本使用与定制技巧，涵盖项目初始化、汉化配置、图标引入、自定义主题等内容，旨在利用 VitePress 构建美观、高效的静态站点。
 date: 2024-11-03 17:54:50
-updated: 2024-11-05 01:57:19
+updated: 2024-11-05 13:19:56
 image: https://7.isyangs.cn/24/67290b1bd1b29-24.webp
 categories: [经验分享]
 tags: [VitePress, 前端]
@@ -18,6 +18,13 @@ VitePress 是一个非常优秀的静态站点生成器，它使用 Vite 作为�
 
 - 通过 npm 安装 pnpm
   :copy{command="npm install -g pnpm"}
+- 更改 PowerShell 脚本 [执行策略](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies)
+  :copy{command="Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"}
+  - 也可通过管理员权限更改系统策略
+    :copy{command="sudo Set-ExecutionPolicy RemoteSigned"}
+- 初始化 pnpm
+  :copy{command="pnpm setup"}
+  - 初始化后，由于环境变量变化，需要启动一个新的 PowerShell 会话
 - 通过 pnpm 重新安装 pnpm
   :copy{command="pnpm install -g pnpm"}
 - 卸载通过 npm 安装的 pnpm
@@ -46,16 +53,19 @@ shamefully-hoist=true
 
 ### 也许需要汉化
 
-在使用 VitePress 的时候，你也许会发现一些内容是英文，这时可以通过添加如下配置项来汉化（不要删除原有配置）。
+在使用 VitePress 的时候，你也许会发现一些内容是英文，这时可以通过添加如下配置项来汉化（不要删除原有配置），在使用此配置时应对照文档弄清每一项作用。
 
 ```ts [docs/.vitepress/config.mts]
-import { defineConfig } from 'vitepress'
+import { type DefaultTheme, defineConfig } from 'vitepress'
 
 // https://vitepress.dev/zh/reference/site-config
 export default defineConfig({
     lang: 'zh-Hans',
     themeConfig: {
         // https://vitepress.dev/zh/reference/default-theme-config
+        nav: nav(),
+        sidebar: sidebar(),
+        externalLinkIcon: true,
         langMenuLabel: '切换语言',
         darkModeSwitchLabel: '主题',
         lightModeSwitchTitle: '切换到浅色模式',
@@ -64,11 +74,20 @@ export default defineConfig({
         outline: { level: [2, 3], label: '目录' },
         returnToTopLabel: '返回顶部',
         // 请将此链接修改为正确的URL，或根据需求删除该配置
-        editLink: { pattern: 'https://github.com/username/repository-name/blame/main/docs/:path', text: '源代码', },
+        // editLink: { pattern: 'https://github.com/username/repository-name/blame/main/docs/:path', text: '源代码', },
         lastUpdated: { text: '更新于' },
         docFooter: { prev: '上一篇', next: '下一篇' },
     },
 })
+
+// 将导航和侧边栏逻辑提取到外部，便于根据文档结构进行维护
+function nav(): DefaultTheme.NavItem[] {
+    return []
+}
+
+function sidebar(): DefaultTheme.Sidebar {
+    return { '/': [] }
+}
 ```
 
 特别地，404 页面也需要汉化，在主题入口处向 `not-found` 插槽中 [注入组件](https://vitepress.dev/zh/guide/extending-default-theme#layout-slots) 即可，成品入口文件在 [扩展主题](#扩展主题) 一节。
@@ -125,12 +144,13 @@ Staticfile CDN、BootCDN（bootcss）、51LA 统计等公共服务已被发现�
 - [图标库（官方搜索）](https://icon-sets.iconify.design/)
 - [Yesicon（第三方搜索）](https://yesicon.app/)
 
-它收录了 :icon{name="ic:baseline-android"} :icon{name="ic:baseline-signal-wifi-bad"} :icon{name="ic:baseline-battery-charging-60"} Material Design 的符号图标、 :icon{name="simple-icons:3m"} :icon{name="simple-icons:xiaohongshu"} :icon{name="simple-icons:xiaomi"} Simple Icons 的品牌图标、 :icon{name="vscode-icons:file-type-photoshop2"} :icon{name="catppuccin:kotlin"} 各种文件图标、 :icon{name="ph:chats-circle-duotone"} :icon{name="noto:crystal-ball"} 双色/彩色图标和 :icon{name="line-md:uploading-loop"} :icon{name="svg-spinners:bars-rotate-fade"} 动画图标。相比 Iconfont，这些图标的风格更容易统一，并且引入前端项目更加方便，支持 Tailwind CSS、UnoCSS、React、Vue、Svelte 等多种框架。我偶尔也会下载这些图标用于 PPT 演示。
+它收录了 :icon{name="ic:baseline-android"} :icon{name="ic:baseline-signal-wifi-bad"} :icon{name="ic:baseline-battery-charging-60"} Material Design 的符号图标、 :icon{name="simple-icons:3m"} :icon{name="simple-icons:xiaohongshu"} :icon{name="simple-icons:xiaomi"} Simple Icons 的品牌图标、 :icon{name="vscode-icons:file-type-photoshop2"} :icon{name="catppuccin:kotlin"} 各种文件图标、 :icon{name="ph:chats-circle-duotone"} :icon{name="noto:crystal-ball"} 双色/彩色图标和 :icon{name="line-md:uploading-loop"} :icon{name="svg-spinners:bars-rotate-fade"} 动画图标等。相比 Iconfont，这些图标的风格更容易统一，并且引入前端项目更加方便，支持 Tailwind CSS、UnoCSS、React、Vue、Svelte 等多种框架。我偶尔也会下载这些图标用于 PPT 演示。
 
 - VitePress 适合安装 `@iconify/vue`
   :copy{command="pnpm i @iconify/vue"}
 - 在主题入口文件导入并注册 `Icon` 组件，成品入口文件在下一节
 - 在 Markdown 中通过 `<Icon icon="ph:hand-heart-duotone" />` 使用图标
+- 配置项里的字符串不会经过 Vue 渲染，需要将对应位置换用 Vue 组件或是回退至 CDN 引入的图标字体
 
 ## 自定义主题
 
@@ -179,7 +199,7 @@ export default {
 
 ```css [docs/.vitepress/theme/style.css]
 .fa-solid, .fa-regular, .fa-brands {
-    width: 1.3em;
+    width: 1.2em;
     vertical-align: middle;
     text-align: center;
 }
@@ -235,9 +255,22 @@ export default {
 }
 ```
 
+如果需要在某些选择器中重置上述 `a` 样式，即使在开发环境中看起来已成功重置，但由于构建产物中 CSS 出现顺序的变化，实际样式可能并未生效。在不使用 `!important` 的情况下，可以通过重复父级类名来提升样式的优先级。
+
+```css [some-component.vue]
+.some-comp.some-comp a {
+    background: unset;
+}
+
+.some-comp.some-comp a[target]::after {
+    content: unset;
+}
+```
+
 还有一些有趣的样式，试一试就知道是什么了：
 
 ```css [docs/.vitepress/theme/style.css]
+/* 首页 Feature 图标样式 */
 .VPFeature {
     position: relative;
     overflow: hidden;
@@ -250,6 +283,25 @@ export default {
     right: 10%;
     background-color: transparent;
     font-size: 8em;
+    z-index: -1;
+}
+
+/* 文档二级标题编号 */
+.vp-doc {
+    counter-reset: section-counter;
+}
+
+.vp-doc h2 {
+    counter-increment: section-counter;
+}
+
+.vp-doc h2::before {
+    content: counter(section-counter);
+    position: absolute;
+    left: -2rem;
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--vp-c-divider);
     z-index: -1;
 }
 ```

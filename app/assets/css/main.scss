@@ -97,8 +97,11 @@ button, input, textarea {
 
 .text-zoom {
     display: inline-block;
-    animation: zoom 1s linear both;
-    animation-timeline: view();
+
+    @supports (animation-timeline: view()) {
+        animation: zoom 1s both;
+        animation-timeline: view();
+    }
 
     @keyframes zoom {
         from { transform: scale(0.8); }

@@ -57,9 +57,11 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 
 - 安装 oh-my-posh（参见 [官方文档](https://ohmyposh.dev/docs/installation/windows)）
   :copy{prompt="PS>" command="winget install JanDeDobbeleer.OhMyPosh"}
+- 更改 PowerShell [执行策略](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies)
+  :copy{prompt="PS>" command="Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"}
+  - 也可通过管理员权限更改系统策略
+  :copy{command="sudo Set-ExecutionPolicy RemoteSigned"}
 - 配置（参见 [官方文档](https://ohmyposh.dev/docs/installation/prompt)）
-  - 更改 PS 脚本执行策略
-  :copy{prompt="PS>" command="sudo Set-ExecutionPolicy RemoteSigned"}
   - 打开 PS 配置文件
   :copy{prompt="PS>" command="notepad $PROFILE"}
   - 在文件中添加以下内容
