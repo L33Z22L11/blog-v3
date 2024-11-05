@@ -71,7 +71,6 @@ export function timeElapse(date?: Date | string, maxDepth = 2) {
         { label: '天', threshold: 1000 * 60 * 60 * 24 },
         { label: '小时', threshold: 1000 * 60 * 60 },
         { label: '分钟', threshold: 1000 * 60 },
-        { label: '秒', threshold: 1000 },
     ]
     let timeString = ''
     let msecRemained = msecPast

@@ -2,20 +2,20 @@
     <h3 class="widget-title">
         可访问性
     </h3>
-    <div class="widget-card gbc-bg">
+    <div class="widget-card sp-bg">
         <!-- TODO: 优化技术架构展示 -->
-        <p>域名启用 DNSSEC 和 HSTS，博客由 Vercel 托管，由 Nuxt Content 驱动，使用去图图床。</p>
+        <p>域名启用 DNSSEC 和 HSTS，续费至2030年8月，托管于 Vercel；博客由 Nuxt Content 驱动，使用去图图床。</p>
         <p>
             获得省级、国家级认证如下：<br>
-            江苏:<span class="m-finger">跳转反诈宣传</span><br>
-            重庆:<span class="m-finger">DNS污染</span><br>
-            移动:<span class="m-finger">多省阻断解析</span>
+            江苏:<span class="sp-emoji">跳转反诈宣传</span><br>
+            重庆:<span class="sp-emoji">DNS污染</span><br>
+            移动:<span class="sp-emoji">多省阻断解析</span>
         </p>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.gbc-bg {
+.sp-bg {
     position: relative;
     overflow: hidden;
     z-index: 0;
@@ -26,13 +26,13 @@
         opacity: 0.2;
         inset: 0;
         background: center / cover;
-        background-image: url("https://image.baidu.com/search/down?url=https://i0.hdslb.com/bfs/archive/abf1bb4412360550a18e5f2e71b1227e7d949735.png@320w");
+        background-image: url("https://wsrv.nl/?url=i1.hdslb.com/bfs/archive/d275f7712860be44d5fa947971d86688eeddbeea.jpg@320w");
         z-index: -1;
     }
 }
 
-.m-finger::before, .m-finger::after {
-    // 文明用语😋
-    content: "\1F595";
+.sp-emoji::before, .sp-emoji::after {
+    // 文明用语😋\1F595
+    content: "😠";
 }
 </style>

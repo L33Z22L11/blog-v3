@@ -2,16 +2,16 @@
 const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()
 
-const timeEstablished = appConfig.timeEstablished
-const timeUpdated = runtimeConfig.public.buildTime
-const totalWords = ref('约8万')
+const timeEstablished = ref(timeElapse(appConfig.timeEstablished))
+const timeUpdated = ref(timeElapse(runtimeConfig.public.buildTime))
+const totalWords = ref(appConfig.stats.wordCount)
 
 const blogStats = [{
     title: '运营时长',
-    content: timeElapse(timeEstablished),
+    content: timeEstablished,
 }, {
     title: '上次更新',
-    content: timeElapse(timeUpdated),
+    content: timeUpdated,
 }, {
     title: '总字数',
     content: totalWords,

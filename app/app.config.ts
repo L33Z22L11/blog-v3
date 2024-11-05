@@ -79,6 +79,10 @@ export default defineAppConfig({
         },
     ],
 
+    stats: {
+        wordCount: '约10万',
+    },
+
     themes: {
         light: {
             icon: 'ph:sun-bold',
