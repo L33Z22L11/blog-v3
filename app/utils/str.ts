@@ -18,10 +18,12 @@ export function formatNumber(num: number) {
     return num.toString()
 }
 
-export function getPromptLanguage(prompt: string) {
+export function getPromptLanguage(prompt: string | boolean) {
+    if (typeof prompt === 'boolean')
+        return 'plaintext'
     for (const promptPrefix in promptLanguageMap) {
         if (prompt.startsWith(promptPrefix))
-            return promptLanguageMap[promptPrefix]
+            return promptLanguageMap[promptPrefix] ?? 'plaintext'
     }
     return 'plaintext'
 }

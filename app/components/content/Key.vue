@@ -22,14 +22,14 @@ function checkModifiers(e: KeyboardEvent) {
 }
 
 useEventListener('keydown', (e) => {
-    if (e.key.toLowerCase() === props.code && checkModifiers(e)) {
+    if (e.key?.toLowerCase() === props.code && checkModifiers(e)) {
         emit('press')
         active.value = true
     }
 })
 
 useEventListener('keyup', (e) => {
-    if (e.key.toLowerCase() === props.code && checkModifiers(e)) {
+    if (e.key?.toLowerCase() === props.code && checkModifiers(e)) {
         active.value = false
     }
 })

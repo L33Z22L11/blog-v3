@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<{
 
 // prompt 传入空字符串会变成 true
 const showPrompt = computed(() => /* !props.noprompt && */ props.prompt as unknown !== true)
-const language = computed(() => props.language ?? getPromptLanguage(props.prompt as string))
+const language = computed(() => props.language ?? getPromptLanguage(props.prompt))
 
 const showUndo = ref(false)
 const commandInput = useTemplateRef('command-input')
@@ -55,15 +55,16 @@ onMounted(async () => {
         <div
             ref="command-input"
             contenteditable="plaintext-only"
-            class="code scrollcheck-x"
+            class="code"
             @beforeinput="beforeInput($event as InputEvent)"
             @input="onInput($event as InputEvent)"
             v-text="command"
         />
-        <button v-if="showUndo" class="operation" @click="undo">
+        <div class="mask" />
+        <button v-if="showUndo" v-tippy="'恢复原始内容'" class="operation" aria-label="恢复原始内容" @click="undo">
             <Icon name="ph:arrow-u-up-left-bold" />
         </button>
-        <button ref="copy-btn" v-tippy="'复制'" class="operation">
+        <button ref="copy-btn" v-tippy="'复制'" class="operation" aria-label="复制">
             <Icon name="ph:copy-bold" />
         </button>
     </code>
@@ -78,6 +79,17 @@ onMounted(async () => {
     background-color: var(--ld-bg-card);
     font-size: 0.8rem;
     line-height: 2.5;
+    transition: border-color 0.2s;
+
+    &:focus-within {
+        border-color: var(--c-primary);
+
+        .prompt {
+            border-right-color: var(--c-primary);
+            background-color: var(--c-primary-soft);
+            color: var(--c-primary);
+        }
+    }
 
     .prompt {
         flex-shrink: 0;
@@ -86,24 +98,50 @@ onMounted(async () => {
         border-radius: 3px 0 0 3px;
         background-color: var(--c-bg-2);
         color: var(--c-text-2);
+        transition: all 0.2s;
     }
 
     .code {
-        // flex-grow: 1 会在窄宽度下溢出
-        width: 100%;
-        padding: 0 0.8em;
+        flex-grow: 1;
+        position: relative;
+        overflow-x: auto;
+        padding: 0 1em;
+        outline: none;
         white-space: nowrap;
+        scrollbar-color: initial;
+        scrollbar-width: initial;
+
+        &::-webkit-scrollbar {
+            height: 4px;
+            cursor: default;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--c-border);
+            cursor: pointer;
+        }
+    }
+
+    .mask {
+        flex-shrink: 0;
+        width: 1em;
+        height: 2.5em;
+        margin-left: -1em;
+        border-radius: 2px;
+        background-image: linear-gradient(to right, transparent, var(--ld-bg-card));
+        pointer-events: none;
+        z-index: 0;
     }
 
     .operation {
+        flex-shrink: 0;
+        position: relative;
         height: 2.5em;
-        padding: 0.5em 0.2em;
+        margin-left: -0.5em;
+        padding: 0.5em;
         color: var(--c-text-2);
         transition: color, 0.2s;
-
-        &:last-child {
-            padding-right: 0.5em;
-        }
+        z-index: 0;
 
         &:hover {
             color: var(--c-primary);
