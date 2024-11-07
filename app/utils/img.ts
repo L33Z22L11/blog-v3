@@ -5,9 +5,9 @@ const services = {
 
 export type ImgService = keyof typeof services | boolean
 
-export function getFeedIcon(name: string, options?: Record<string, any>) {
+export function getGhAvatar(name: string, options?: Record<string, any>) {
     if (!options)
-        options = { size: 96 }
+        options = { size: 92 }
     if (options.preset === 'icon')
         Object.assign(options, { size: 32, mask: 'circle' })
     let url = `https://wsrv.nl/?url=github.com/${name}.png`

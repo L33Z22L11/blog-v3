@@ -14,7 +14,7 @@ const round = computed(() => props.img ? !props.square : props.round)
 
 const ghAvatar = computed(() => {
     const username = getGhUsername(props.link)
-    return username ? getFeedIcon(username, { size: 92 }) : ''
+    return username ? getGhAvatar(username) : ''
 })
 
 const img = computed(() => props.img || ghAvatar.value)

@@ -9,7 +9,8 @@
     </svg>
 </template>
 
-<style lang="scss" scoped>
+<!-- eslint-disable-next-line vue/block-lang -->
+<style scoped>
 svg {
     vertical-align: middle;
 }

@@ -1,3 +1,4 @@
+import type { XmlBuilderOptions } from 'fast-xml-parser'
 import { serverQueryContent } from '#content/server'
 import blogConfig from '~~/blog.config'
 import { version } from '~~/package.json'
@@ -5,7 +6,7 @@ import { XMLBuilder } from 'fast-xml-parser'
 
 const runtimeConfig = useRuntimeConfig()
 
-const xmlBuilderOptions = {
+const xmlBuilderOptions: XmlBuilderOptions = {
     attributeNamePrefix: '$',
     cdataPropName: '$',
     format: true,

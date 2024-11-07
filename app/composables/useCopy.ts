@@ -1,3 +1,4 @@
+import ClipboardJS from 'clipboard'
 import 'tippy.js/dist/tippy.css'
 
 /**
@@ -29,23 +30,16 @@ export default function (
         // FIXME: 保留 trigger 和 target 的响应性
         const elTrigger = getEl(toValue(trigger))
         const elTarget = getEl(toValue(target))
-        const getClipboardText = () => {
+        const getText = () => {
             if (text)
                 return text
             if (elTarget instanceof HTMLInputElement)
                 return elTarget.value
-            return elTarget?.textContent || ''
+            return elTarget?.textContent as string || ''
         }
 
-        useEventListener(elTrigger, 'click', async () => {
-            try {
-                await navigator.clipboard.writeText(getClipboardText())
-                showTooltipMessage(elTrigger, '已复制')
-            }
-            catch (e) {
-                showTooltipMessage(elTrigger, '复制失败')
-                console.error(e)
-            }
-        })
+        const clipboard = new ClipboardJS(elTrigger, { text: getText })
+        clipboard.on('success', () => showTooltipMessage(elTrigger, '已复制'))
+        clipboard.on('error', () => showTooltipMessage(elTrigger, '复制失败'))
     })
 }

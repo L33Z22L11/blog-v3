@@ -145,7 +145,7 @@ useCopy(btnShareByText, btnShareByText, shareText)
     .post-info {
         display: flex;
         gap: 0.5em 1.2em;
-        column-gap: clamp(1em, 3cqw, 1.5em);
+        column-gap: clamp(1em, 3%, 1.5em);
         flex-wrap: wrap;
     }
 }

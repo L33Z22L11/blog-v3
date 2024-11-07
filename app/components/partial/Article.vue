@@ -59,7 +59,6 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
 
 <style lang="scss" scoped>
 .article-card {
-    container-type: inline-size;
     display: block;
     position: relative;
     margin: 1rem 0;
@@ -83,8 +82,7 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
 
 .article-info {
     display: flex;
-    gap: 0.5em 1.2em;
-    column-gap: clamp(1em, 3cqw, 1.5em);
+    gap: 0.5em clamp(1em, 5%, 1.5em);
     font-size: 0.8em;
     flex-wrap: wrap;
     color: var(--c-text-2);

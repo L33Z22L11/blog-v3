@@ -1,5 +1,5 @@
 import type { FeedGroup } from '~/types/feed'
-import { getFeedIcon } from './utils/img'
+import { getGhAvatar } from './utils/img'
 
 export default <FeedGroup[]>[
     {
@@ -22,7 +22,7 @@ export default <FeedGroup[]>[
                 link: 'https://innei.in/',
                 feed: 'https://innei.in/feed',
                 icon: 'https://innei.in/innei.svg',
-                avatar: getFeedIcon('Innei'),
+                avatar: getGhAvatar('Innei'),
                 archs: ['Mix Space', 'Cloudflare'],
                 date: '2024-02-13',
             },
@@ -77,7 +77,7 @@ export default <FeedGroup[]>[
                 link: 'https://antfu.me/',
                 feed: 'https://antfu.me/feed.xml',
                 icon: 'https://antfu.me/favicon.svg',
-                avatar: getFeedIcon('antfu'),
+                avatar: getGhAvatar('antfu'),
                 archs: ['Vue', 'Netlify'],
                 date: '2024-10-26',
             },
@@ -87,7 +87,7 @@ export default <FeedGroup[]>[
                 link: 'https://xaoxuu.com/',
                 feed: 'https://xaoxuu.com/atom.xml',
                 icon: 'https://xaoxuu.com/assets/xaoxuu/favicon/favicon-32x32.png',
-                avatar: getFeedIcon('xaoxuu'),
+                avatar: getGhAvatar('xaoxuu'),
                 archs: ['Hexo', '服务器'],
                 date: '2024-10-26',
             },
@@ -99,7 +99,7 @@ export default <FeedGroup[]>[
                 link: 'https://blog.imsyy.top/',
                 feed: 'https://blog.imsyy.top/rss.xml',
                 icon: 'https://unavatar.webp.se/blog.imsyy.top',
-                avatar: getFeedIcon('imsyy'),
+                avatar: getGhAvatar('imsyy'),
                 archs: ['VitePress', 'Cloudflare'],
                 date: '2024-10-26',
             },
