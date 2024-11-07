@@ -20,7 +20,7 @@
     font-weight: var(--font-weight-normal);
     word-wrap: break-word;
     color: var(--c-text-1);
-    transition: background-color 0.2s;
+    transition: color 0.1s, background-color 0.2s;
     scroll-behavior: smooth;
     scroll-padding: 2rem;
     scrollbar-color: var(--c-text-3) transparent;

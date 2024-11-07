@@ -23,9 +23,11 @@ useTippy(commandInput, { content: '可以修改命令后再复制', trigger: 'fo
 useCopy(copyBtn, commandInput)
 
 function undo() {
-    commandInput.value!.textContent = props.command ?? ''
+    if (!commandInput.value)
+        return
+    commandInput.value.textContent = props.command ?? ''
     // 触发 shiki 高亮
-    commandInput.value?.dispatchEvent(new Event('input'))
+    commandInput.value.dispatchEvent(new Event('input'))
     showUndo.value = false
 }
 
@@ -117,7 +119,7 @@ onMounted(async () => {
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: var(--c-border);
+            background-color: var(--c-bg-soft);
             cursor: pointer;
         }
     }

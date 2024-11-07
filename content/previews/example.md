@@ -51,7 +51,7 @@ icon: https://www.zhilu.cyou/api/icon.png
 
 ## Badge
 
-纯文本 :badge[普通]{link="#badge"} :badge[指定圆形]{round} :badge[指定方形]{square}
+纯文本 :badge[普通]{link="#badge"} :badge[指定圆形]{round} :badge[指定方形]{square} :badge[带个图]{img="https://picsum.photos/100/100"}
 
 GitHub头像自动识别 :badge[KazariEX]{round link="https://github.com/KazariEX"}
 可指定方形 :badge[isYangs/GioPic]{square link="https://github.com/isYangs/GioPic"}

@@ -1,6 +1,4 @@
 import { tippy } from 'vue-tippy'
-import 'tippy.js/dist/tippy.css'
-// import 'tippy.js/themes/light.css'
 
 export function showTooltipMessage(
     el: Element | null,
@@ -10,7 +8,6 @@ export function showTooltipMessage(
     if (!el)
         return
     tippy(el, {
-        // TODO: use useColorMode() to get theme
         content: message,
         trigger: 'manual',
         onShow(instance) {

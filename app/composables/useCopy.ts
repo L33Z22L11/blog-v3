@@ -1,5 +1,4 @@
 import ClipboardJS from 'clipboard'
-import 'tippy.js/dist/tippy.css'
 
 /**
  * 点击触发元素时，将文本复制到剪贴板，并在触发元素上显示提示信息。
@@ -17,17 +16,17 @@ import 'tippy.js/dist/tippy.css'
  *
  * @example
  * const btnCopy = useTemplateRef('copy-btn')
- * useCopy(btnCopy, btnCopy, '自定义文本')
+ * useCopy(btnCopy, null, '自定义文本')
  */
 export default function (
     trigger: MaybeRefOrGetter<{ $el: Element } | Element | null>,
     target: MaybeRefOrGetter<{ $el: Element } | HTMLInputElement | Element | null>,
     text?: string,
 ) {
+    let clipboard: ClipboardJS
     const getEl = (element: any) => element?.$el ?? element
 
     onMounted(() => {
-        // FIXME: 保留 trigger 和 target 的响应性
         const elTrigger = getEl(toValue(trigger))
         const elTarget = getEl(toValue(target))
         const getText = () => {
@@ -38,8 +37,12 @@ export default function (
             return elTarget?.textContent as string || ''
         }
 
-        const clipboard = new ClipboardJS(elTrigger, { text: getText })
+        clipboard = new ClipboardJS(elTrigger, { text: getText })
         clipboard.on('success', () => showTooltipMessage(elTrigger, '已复制'))
         clipboard.on('error', () => showTooltipMessage(elTrigger, '复制失败'))
+    })
+
+    onUnmounted(() => {
+        clipboard?.destroy()
     })
 }

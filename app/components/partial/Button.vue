@@ -1,14 +1,18 @@
 <script setup lang="ts">
+import { ZRawLink } from '#components'
+
 export interface ButtonProps {
     icon?: string
     text?: string
+    to?: string
     desc?: string
+    primary?: boolean
 }
 defineProps<ButtonProps>()
 </script>
 
 <template>
-    <button class="button" type="button">
+    <component :is="to ? ZRawLink : 'button'" :to class="button" :class="{ primary }" type="button">
         <div class="button-main">
             <Icon v-if="icon" :name="icon" />
             <slot>{{ text }}</slot>
@@ -16,26 +20,43 @@ defineProps<ButtonProps>()
         <div v-if="desc" class="button-desc">
             {{ desc }}
         </div>
-    </button>
+    </component>
 </template>
 
 <style lang="scss" scoped>
 .button {
+    display: inline-block;
     padding: 0.4em 0.6em;
     border: 1px solid var(--c-border);
     border-radius: 0.5em;
     box-shadow: 0 2px 0.5em var(--ld-shadow);
     background-color: var(--ld-bg-card);
     line-height: normal;
+    vertical-align: middle;
+    transition: color 0.1s, background-color 0.2s;
     cursor: pointer;
 
-    & + & {
-        margin-left: 0.8em;
+    &.primary {
+        background-color: var(--c-primary);
+        color: var(--c-bg);
+    }
+
+    &:hover {
+        background-color: var(--c-bg-2);
+        color: var(--c-text);
+    }
+
+    &:active {
+        background-color: var(--ld-shadow);
     }
 
     &:disabled {
         background-color: initial;
         cursor: not-allowed;
+    }
+
+    & + .button {
+        margin-left: 0.8em;
     }
 }
 

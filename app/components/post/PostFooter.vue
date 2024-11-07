@@ -51,7 +51,7 @@ const appConfig = useAppConfig()
 section {
     padding: 1rem;
 
-    & + & {
+    & + section {
         border-top: 1px solid var(--c-border);
     }
 }

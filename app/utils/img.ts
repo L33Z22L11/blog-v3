@@ -5,7 +5,9 @@ const services = {
 
 export type ImgService = keyof typeof services | boolean
 
-export function getGhAvatar(name: string, options?: Record<string, any>) {
+export function getGhAvatar(name?: string, options?: Record<string, any>) {
+    if (!name)
+        return ''
     if (!options)
         options = { size: 92 }
     if (options.preset === 'icon')
