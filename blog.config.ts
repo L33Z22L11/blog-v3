@@ -34,6 +34,12 @@ const blogConfig = {
     hideContentPrefixes: [
         '/posts',
     ],
+
+    twikoo: {
+        js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.39/dist/twikoo.all.min.js',
+        envId: 'https://twikoo.zhilu.cyou/',
+        preload: 'https://twikoo.zhilu.cyou/',
+    },
 }
 
 export const feedEntry = <FeedEntry>{

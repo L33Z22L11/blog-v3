@@ -683,6 +683,17 @@ export default <FeedGroup[]>[
                 date: '2024-11-03',
                 comment: '学生，技术分享，生活。',
             },
+            {
+                author: '一粒微尘',
+                desc: '撷光以望，纳星于瞳',
+                link: 'https://blog.667408.xyz/',
+                feed: 'https://blog.667408.xyz/atom.xml',
+                icon: 'https://blog.667408.xyz/favicon.ico',
+                avatar: 'https://blog.667408.xyz/favicon.ico',
+                archs: ['Hexo', 'Cloudflare'],
+                date: '2024-11-07',
+                comment: 'Hexo博客折腾，技术分享。',
+            },
         ],
     },
 ]

@@ -144,6 +144,7 @@ useEventListener('keydown', (e) => {
                 v-if="isOpening"
                 ref="zoomImage"
                 class="image"
+                :alt="el.alt"
                 :width="el.width"
                 :height="el.height"
                 :src="el.src"

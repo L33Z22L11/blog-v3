@@ -9,6 +9,7 @@ const props = withDefaults(defineProps<{
     height?: string | number
     zoom?: boolean
 }>(), {
+    caption: '',
     zoom: true,
 })
 
