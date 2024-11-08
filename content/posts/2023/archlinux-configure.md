@@ -73,7 +73,7 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 
 ## Goproxy
 
-可以使用 [七牛云GoProxy.cn](https://goproxy.cn/) [GoProxy.io](https://goproxy.io/zh/) 镜像加速。
+可以使用 [七牛云GoProxy.cn](https://goproxy.cn/)、[GoProxy.io](https://goproxy.io/zh/) 镜像加速。
 
 - 编辑环境变量文件
   :copy{command="sudo vim /etc/environment"}

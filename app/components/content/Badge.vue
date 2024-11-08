@@ -46,15 +46,18 @@ const tip = computed(() => {
     display: inline-flex;
     align-items: center;
     border: 1px solid var(--c-border);
-    border-color: color-mix(in srgb, currentcolor 10%, transparent);
     border-radius: 4px;
-    background-color: var(--c-bg-3);
-    background-color: color-mix(in srgb, currentcolor 5%, transparent);
-    font-size: 0.9em;
+    background-color: var(--c-bg-2);
+    font-size: 0.875em;
     line-height: normal;
     vertical-align: text-bottom;
-    color: color-mix(in srgb, currentcolor 80%, transparent);
     transition: color 0.2s;
+
+    @supports (color: color-mix(in srgb, transparent, transparent)) {
+        border-color: color-mix(in srgb, currentcolor 10%, transparent);
+        background-color: color-mix(in srgb, currentcolor 5%, transparent);
+        color: color-mix(in srgb, currentcolor 80%, transparent);
+    }
 
     &[href]:hover {
         color: var(--c-text);
