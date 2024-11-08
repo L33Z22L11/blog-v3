@@ -1,13 +1,5 @@
-import type { BundledTheme } from 'shiki'
 import blogConfig from './blog.config'
 import redirects from './redirects'
-
-const shikiOptions = {
-    langs: blogConfig.fileExtensions,
-    themes: <BundledTheme[]>['catppuccin-latte', 'one-dark-pro'],
-    defaultTheme: <BundledTheme>'catppuccin-latte',
-    darkTheme: <BundledTheme>'one-dark-pro',
-}
 
 export default defineNuxtConfig({
     app: {
@@ -125,10 +117,10 @@ export default defineNuxtConfig({
             search: {},
         },
         highlight: {
-            langs: shikiOptions.langs,
+            langs: blogConfig.shiki.langs,
             theme: {
-                default: shikiOptions.defaultTheme,
-                dark: shikiOptions.darkTheme,
+                default: blogConfig.shiki.defaultTheme,
+                dark: blogConfig.shiki.darkTheme,
             },
         },
         markdown: {
@@ -145,26 +137,23 @@ export default defineNuxtConfig({
     },
 
     image: {
-        domains: [
-            // 'blog.zhilu.cyou',
-            // '7.isyangs.cn',
-        ],
+        domains: blogConfig.imageDomains,
         format: ['avif', 'webp'],
     },
 
     // ogImage: { enabled: false },
 
     robots: {
-        disallow: ['/preview', '/previews/*'],
+        disallow: blogConfig.robotsNotIndex,
     },
 
     shiki: {
-        bundledLangs: shikiOptions.langs,
-        bundledThemes: shikiOptions.themes,
+        bundledLangs: blogConfig.shiki.langs,
+        bundledThemes: blogConfig.shiki.themes,
         defaultLang: 'log',
         defaultTheme: {
-            light: shikiOptions.defaultTheme,
-            dark: shikiOptions.darkTheme,
+            light: blogConfig.shiki.defaultTheme,
+            dark: blogConfig.shiki.darkTheme,
         },
     },
 

@@ -94,14 +94,14 @@ function sidebar(): DefaultTheme.Sidebar {
 
 ## Git 统计的修正
 
-如果你的项目是使用 VitePress 构建的网站（文档即项目），GitHub 的语言统计可能不够准确。GitHub 使用 Linguist 库来统计仓库语言（[详情](https://docs.github.com/zh/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-repository-languages)），默认情况下会忽略 Markdown 文件和常见的文档文件夹（如 `/doc`）。为了获得更准确的统计结果，可以通过覆盖 GitHub Linguist 配置（[英文文档](https://github.com/github-linguist/linguist/blob/main/docs/overrides.md)）来调整统计策略。
+如果你的项目是使用 VitePress 构建的网站（文档即项目），GitHub 的语言统计可能不够准确。GitHub 使用 Linguist 库来统计仓库语言（[详情](https://docs.github.com/zh/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-repository-languages)），默认情况下会忽略 Markdown 文件和常见的文档文件夹（如 `/docs`）。为了获得更准确的统计结果，可以通过覆盖 GitHub Linguist 配置（[英文文档](https://github.com/github-linguist/linguist/blob/main/docs/overrides.md)）来调整统计策略。
 
 ```ini [.gitattributes]
 *.md linguist-detectable=true
 docs/** linguist-documentation=false
 ```
 
-这样，`/doc` 文件夹里的 Markdown 文件和其他文件也会被统计到。
+这样，`/docs` 文件夹里的 Markdown 文件和其他文件也会被统计到。
 
 ## 图标的千种引入
 

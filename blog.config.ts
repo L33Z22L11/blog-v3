@@ -1,4 +1,4 @@
-import type { BundledLanguage } from 'shiki'
+import type { BundledLanguage, BundledTheme } from 'shiki'
 import type { FeedEntry } from '~/types/feed'
 
 // 存储 nuxt.config 和 app.config 共用的配置
@@ -23,17 +23,28 @@ const blogConfig = {
     timezone: 'Asia/Shanghai',
     url: 'https://blog.zhilu.cyou/',
 
-    // 用于 Shiki、Plain Shiki 引入代码高亮
-    // 同时用于显示代码块语言对应的 Iconify Catppuccin 图标
-    fileExtensions: <BundledLanguage[]>['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'java', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'sh', 'ssh-config', 'toml', 'ts', 'tsx', 'vb', 'vue', 'xml', 'yaml'],
-
     feed: {
         limit: 50,
     },
 
-    hideContentPrefixes: [
-        '/posts',
+    hideContentPrefixes: ['/posts'],
+
+    imageDomains: [
+        // 自动启用本域名的 Nuxt Image
+        // 'www.zhilu.cyou',
+        // '7.isyangs.cn',
     ],
+
+    robotsNotIndex: ['/preview', '/previews/*'],
+
+    // 用于 Shiki、Plain Shiki 引入代码高亮
+    // 同时用于显示代码块语言对应的 Iconify Catppuccin 图标
+    shiki: {
+        langs: <BundledLanguage[]>['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'java', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'sh', 'ssh-config', 'toml', 'ts', 'tsx', 'vb', 'vue', 'xml', 'yaml'],
+        themes: <BundledTheme[]>['catppuccin-latte', 'one-dark-pro'],
+        defaultTheme: <BundledTheme>'catppuccin-latte',
+        darkTheme: <BundledTheme>'one-dark-pro',
+    },
 
     twikoo: {
         js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.39/dist/twikoo.all.min.js',

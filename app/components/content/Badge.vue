@@ -74,10 +74,9 @@ const tip = computed(() => {
 
 .badge-img {
     .badge-icon {
-        width: 1.6em;
         height: 1.6em;
+        max-width: 2em;
         border-radius: 3.5px;
-        object-fit: cover;
     }
 
     .badge-text {

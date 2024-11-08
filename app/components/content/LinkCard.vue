@@ -20,7 +20,9 @@ const src = computed(() => getImgUrl(props.icon, props.mirror))
                 {{ description ?? getDomain(link) }}
             </div>
         </div>
-        <NuxtImg v-if="src" class="link-card-icon" :src :alt="title" />
+        <slot name="icon" class="link-card-icon-slot">
+            <NuxtImg v-if="src" class="link-card-icon" :src :alt="title" />
+        </slot>
     </ZRawLink>
 </template>
 

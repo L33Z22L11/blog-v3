@@ -30,6 +30,7 @@ export function getArchIcon(arch: Arch) {
     return archIcons[arch] ?? ''
 }
 
+/** 主域名图标映射 */
 export const mainDomainIcons: Record<string, string> = {
     'bilibili.com': 'ri:bilibili-fill',
     'creativecommons.org': 'ri:creative-commons-line',
@@ -45,6 +46,7 @@ export const mainDomainIcons: Record<string, string> = {
     'zhihu.com': 'ri:zhihu-line',
 }
 
+/** 专门域名图标映射，优先级高于主域名图标 */
 export const domainIcons: Record<string, string> = {
     'mp.weixin.qq.com': 'ri:wechat-fill',
 }
@@ -57,6 +59,7 @@ export function getDomainIcon(url: string) {
     return mainDomainIcons[mainDomain]
 }
 
+/** 文件名后缀图标映射，优先级高于代码块语言图标映射 */
 const file2icon: Record<string, string> = {
     '.crt': 'catppuccin:certificate',
     '.gitattributes': 'catppuccin:git',
@@ -88,8 +91,12 @@ export function getFileIcon(filename?: string) {
     return extension ? file2icon[extension] : undefined
 }
 
-// 将 blogConfig.fileExtensions 的部分后缀名简写
-// 转换为代码块语言对应的 Iconify Catppuccin图标
+/**
+ * 代码块语言简写或别名到 Catppuccin 图标库中的语言名映射
+ *
+ * 将 blogConfig.shiki.langs 的部分后缀名简写
+ * 转换为代码块语言对应的 Iconify Catppuccin图标
+ */
 const ext2lang: Record<string, string> = {
     'bat': 'batch',
     'ini': 'properties',
@@ -106,7 +113,7 @@ const ext2lang: Record<string, string> = {
 export function getLangIcon(extension?: string): string {
     const config = useAppConfig()
 
-    if (!extension || !(config.fileExtensions as string[]).includes(extension))
+    if (!extension || !(config.shiki.langs as string[]).includes(extension))
         extension = 'file'
 
     const fileType = ext2lang[extension] || extension
