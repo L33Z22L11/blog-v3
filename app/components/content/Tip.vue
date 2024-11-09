@@ -2,7 +2,7 @@
 const props = defineProps<{
     text?: string
     tip?: string
-    icon?: string
+    icon?: string | boolean
     copy?: boolean
 }>()
 
@@ -17,7 +17,7 @@ props.copy && useCopy(tip, tip)
     <span ref="tip" v-tippy="tooltipText" class="tip">
         <!-- 元素间不留空格 -->
         <slot>{{ text }}</slot>
-        <Icon :name="icon" class="tip-icon" />
+        <Icon v-if="typeof icon === 'string'" :name="icon" class="tip-icon" />
     </span>
 </template>
 

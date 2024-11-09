@@ -40,9 +40,10 @@ github:
 ---
 title: 组件样式示例
 link: /previews/example
+style: { background: var(--c-primary-soft) }
 ---
 #icon
-🎨
+[**看就对了**]<br>👉👉🎨
 ::
 
 ## 主题特性

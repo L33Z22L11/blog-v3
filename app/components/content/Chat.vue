@@ -8,13 +8,16 @@ function render() {
     return slotContent.map((node: VNode) => {
         // WARN: 此处使用了非标准的 v-slot:default
         const textContent = (node.children as any)?.default?.()[0].children || ''
-        const match = textContent?.match?.(/^\{(.*?)\}$/)
-        const matchMyself = match?.[1]?.match?.(/^\((.*?)\)$/)
-        return matchMyself
-            ? <div class="chat-caption chat-myself">{matchMyself[1]}</div>
-            : match
-                ? <div class="chat-caption">{match[1]}</div>
-                : <div class="chat-body">{node}</div>
+        const matchCaption = textContent?.match?.(/^\{(.*?)\}$/)
+        const matchCaptionMyself = matchCaption?.[1]?.match?.(/^\((.*?)\)$/)
+        const matchCaptionSystem = matchCaption?.[1]?.match?.(/^:(.*?):$/)
+        if (matchCaptionMyself)
+            return <div class="chat-caption chat-myself">{matchCaptionMyself[1]}</div>
+        else if (matchCaptionSystem)
+            return <div class="chat-caption chat-system">{matchCaptionSystem[1]}</div>
+        else if (matchCaption)
+            return <div class="chat-caption">{matchCaption[1]}</div>
+        else return <div class="chat-body">{node}</div>
     })
 }
 </script>
@@ -50,6 +53,10 @@ function render() {
         p {
             text-indent: 0;
         }
+    }
+
+    .chat-system {
+        text-align: center;
     }
 
     .chat-myself {
