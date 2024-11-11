@@ -37,6 +37,11 @@ const blogConfig = {
 
     robotsNotIndex: ['/preview', '/previews/*'],
 
+    scripts: [
+        { 'src': 'https://zhi.zhilu.cyou/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true },
+        { 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
+    ],
+
     // 用于 Shiki、Plain Shiki 引入代码高亮
     // 同时用于显示代码块语言对应的 Iconify Catppuccin 图标
     shiki: {
@@ -53,6 +58,7 @@ const blogConfig = {
     },
 }
 
+// 用于生成 OPML 和友链页面配置
 export const feedEntry = <FeedEntry>{
     author: blogConfig.author.name,
     sitenick: '摸鱼处',

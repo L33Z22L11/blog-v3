@@ -28,10 +28,7 @@ export default defineNuxtConfig({
                 separator: '|',
             },
             titleTemplate: `%s %separator ${blogConfig.title}`,
-            script: [
-                { 'src': 'https://zhi.zhilu.cyou/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true },
-                { 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
-            ],
+            script: blogConfig.scripts,
         },
     },
 
@@ -49,15 +46,6 @@ export default defineNuxtConfig({
         '@/assets/css/main.scss',
         '@/assets/css/reusable.scss',
     ],
-
-    // devServer: {
-    //     host: '0.0.0.0',
-    //     port: 443,
-    //     https: {
-    //         key: './ssl/zhilu-y.key',
-    //         cert: './ssl/zhilu-y.crt',
-    //     },
-    // },
 
     experimental: {
         viewTransition: true,
@@ -89,10 +77,6 @@ export default defineNuxtConfig({
                 },
             },
         },
-    },
-
-    vue: {
-        propsDestructure: true,
     },
 
     modules: [
@@ -140,8 +124,6 @@ export default defineNuxtConfig({
         domains: blogConfig.imageDomains,
         format: ['avif', 'webp'],
     },
-
-    // ogImage: { enabled: false },
 
     robots: {
         disallow: blogConfig.robotsNotIndex,

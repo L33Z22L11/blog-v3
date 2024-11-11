@@ -21,6 +21,7 @@ const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
 .quote {
     font-size: 1.2rem;
     font-weight: var(--font-weight-medium);
+    line-height: normal;
     color: var(--c-text-2);
 
     &:hover {
@@ -34,15 +35,15 @@ const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
         position: relative;
         opacity: 0.5;
         min-height: 0.5em;
-        margin-bottom: -0.5em;
+        margin-bottom: -0.3em;
         mask: linear-gradient(#fff, transparent);
         font-size: 4rem;
-        line-height: 1;
         transition: all 0.2s;
         z-index: -1;
     }
 
     :deep(p) {
+        margin: 0;
         text-indent: 0;
     }
 }

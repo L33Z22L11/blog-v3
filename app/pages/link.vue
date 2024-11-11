@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { feedEntry } from '~~/blog.config'
 import friends from '~/friends'
 import subscriptions from '~/subscriptions'
+
+// FIXME: 数据无法传入 ContentRenderMarkdown 组件
+const postExtraData = ref({ feedEntry })
 
 const layoutStore = useLayoutStore()
 layoutStore.setAside([])
@@ -39,20 +43,18 @@ postLink.value && useContentHead(postLink.value)
     <FeedGroup label="友链" :feeds="friends" />
     <FeedGroup label="订阅" :feeds="subscriptions" />
 
-    <ContentRenderer :value="postLink">
-        <ContentRendererMarkdown
-            class="article"
-            :value="postLink ?? {}"
-            tag="article"
-        />
-        <template #empty>
-            <ZError
-                icon="solar:confounded-square-bold-duotone"
-                title="未配置友链文件"
-            />
-        </template>
-        <PostComment key="/link" />
-    </ContentRenderer>
+    <ContentRendererMarkdown
+        v-if="postLink"
+        :data="postExtraData"
+        :value="postLink"
+        class="article"
+        tag="article"
+    />
+    <p v-else class="text-center">
+        可于 link.md 配置友链补充说明。
+    </p>
+
+    <PostComment key="/link" />
 </template>
 
 <style lang="scss" scoped>

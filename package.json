@@ -5,11 +5,11 @@
   "private": true,
   "packageManager": "pnpm@9.12.3",
   "scripts": {
-    "prepare": "nuxi prepare",
-    "dev": "nuxi dev --no-qr",
-    "build": "cross-env NODE_OPTIONS='--no-deprecation' nuxi build",
-    "generate": "nuxi generate",
-    "preview": "nuxi preview",
+    "prepare": "nuxt prepare",
+    "dev": "nuxt dev --no-qr",
+    "build": "cross-env NODE_OPTIONS='--no-deprecation' nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "new": "node scripts/new-blog.js"
