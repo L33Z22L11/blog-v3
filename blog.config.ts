@@ -5,7 +5,7 @@ import type { FeedEntry } from '~/types/feed'
 const blogConfig = {
     title: '纸鹿摸鱼处',
     subtitle: '纸鹿至麓不知路，支炉制露不止漉',
-    description: '纸鹿本鹿的个人博客，分享技术与生活。折腾不止，摸鱼生活——摸门🙏🏻',
+    description: '纸鹿本鹿的个人博客，分享技术与生活。“折腾不止，摸鱼生活——摸门🙏🏻”。纸鹿是一名开源爱好者，结识了许多志同道合的朋友。这个博客记录了他在生活和技术学习中的点滴经历，充满启发与思考。网站界面简洁美观，内容丰富实用，人气互动活跃，涵盖了编程、生活、学习等多个领域，为读者提供了卓越的阅读体验。',
     author: {
         name: '纸鹿本鹿',
         avatar: 'https://www.zhilu.cyou/api/avatar.png',

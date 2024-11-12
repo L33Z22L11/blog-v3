@@ -4,6 +4,7 @@ import { alphabetical, sort } from 'radash'
 const appConfig = useAppConfig()
 useSeoMeta({
     description: appConfig.description,
+    ogImage: appConfig.author.avatar,
 })
 const perPage = appConfig.indexGenerator.perPage || 10
 const orderBy = ref(appConfig.indexGenerator.orderBy || 'date')
@@ -31,15 +32,13 @@ const { page, totalPages, listPaged } = usePagination(listSorted, {
     bindParam: 'id',
 })
 
+useSeoMeta({ title: () => (page.value > 1 ? `第${page.value}页` : '') })
+
 const listRecommended = computed(() => sort(
     listRaw.value.filter(item => item?.recommend),
     post => post.recommend,
     true,
 ))
-
-useSeoMeta({
-    title: () => page.value > 1 ? `第${page.value}页` : '',
-})
 </script>
 
 <template>

@@ -8,7 +8,12 @@ const { data: post } = await useAsyncData(route.path, () => queryContent(route.p
 const excerpt = computed(() => post.value?.description || '')
 
 if (post.value) {
-    useContentHead(post.value)
+    useSeoMeta({
+        title: post.value.title,
+        ogType: 'article',
+        ogImage: post.value.image,
+        description: post.value.description,
+    })
     layoutStore.setAside(post.value.aside)
 }
 else {

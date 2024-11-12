@@ -1,7 +1,7 @@
 ---
 title: 友链
+description: 纸鹿摸鱼处的友链页面，收集了添加他为友链的网站和他订阅的网站列表。
 aside: []
-hideInfo: true
 ---
 
 ::tab

@@ -10,7 +10,11 @@ const layoutStore = useLayoutStore()
 layoutStore.setAside([])
 
 const { data: postLink } = await useAsyncData('/link', () => queryContent('/link').findOne())
-postLink.value && useContentHead(postLink.value)
+postLink.value && useSeoMeta({
+    title: postLink.value.title,
+    ogType: 'profile',
+    description: postLink.value.description,
+})
 </script>
 
 <template>

@@ -3,7 +3,6 @@ import redirects from './redirects'
 
 export default defineNuxtConfig({
     app: {
-        rootId: 'z-root',
         head: {
             htmlAttrs: {
                 lang: blogConfig.language,
@@ -14,15 +13,17 @@ export default defineNuxtConfig({
                 { rel: 'preconnect', href: blogConfig.twikoo.preload },
                 { rel: 'preconnect', href: 'https://cdn-font.hyperos.mi.com' },
                 // 浏览器渲染中文 VF 字重有问题
-                // https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap
                 { rel: 'stylesheet', href: 'https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap', media: 'none', onload: 'this.media="all"' },
+                // https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap
                 { rel: 'preconnect', href: 'https://fonts.googleapis.cn' },
                 { rel: 'preconnect', href: 'https://fonts.gstatic.cn' },
                 { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap', media: 'none', onload: 'this.media="all"' },
-                // { rel: 'preconnect', href: 'https://fonts.loli.net' },
-                // { rel: 'preconnect', href: 'https://gstatic.loli.net' },
-                // { rel: 'stylesheet', href: 'https://fonts.loli.net/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap', media: 'none', onload: 'this.media="all"' },
                 // { rel: 'stylesheet', href: 'https://gcore.jsdelivr.net/npm/nerdfonts-web/nf.min.css' },
+            ],
+            meta: [
+                { name: 'author', content: blogConfig.author.name },
+                { name: 'color-scheme', content: 'light dark' },
+                { 'name': 'generator', 'data-github-repo': 'https://github.com/L33Z22L11/blog-v3' },
             ],
             templateParams: {
                 separator: '|',
@@ -30,6 +31,7 @@ export default defineNuxtConfig({
             titleTemplate: `%s %separator ${blogConfig.title}`,
             script: blogConfig.scripts,
         },
+        rootId: 'z-root',
     },
 
     compatibilityDate: '2024-08-03',

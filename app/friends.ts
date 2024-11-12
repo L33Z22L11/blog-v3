@@ -647,7 +647,7 @@ export default <FeedGroup[]>[
                 avatar: getGhAvatar('Redish101'),
                 archs: ['Next.js', 'Vercel'],
                 date: '2024-10-27',
-                comment: '江湖人称数据库，常用Go语言，学生。',
+                comment: '江湖人称数据库，初中生，博客开发中。',
             },
             {
                 author: 'Pinpe',

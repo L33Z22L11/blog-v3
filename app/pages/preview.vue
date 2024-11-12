@@ -4,7 +4,7 @@ import { alphabetical } from 'radash'
 const appConfig = useAppConfig()
 useSeoMeta({
     title: '预览',
-    description: `${appConfig.title}的预览。`,
+    description: `${appConfig.title}的文章预览。`,
 })
 const orderBy = useRouteQuery(
     'order',
