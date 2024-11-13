@@ -6,11 +6,11 @@ useSeoMeta({
     description: appConfig.description,
     ogImage: appConfig.author.avatar,
 })
-//分页页数
+// 分页页数
 const perPage = appConfig.indexGenerator.perPage || 10
-//排序字段
+// 排序字段
 const orderBy = ref(appConfig.indexGenerator.orderBy || 'date')
-//排序方向
+// 排序方向
 const orderDirection = ref(true)
 
 const layoutStore = useLayoutStore()
@@ -43,8 +43,9 @@ const listRecommended = computed(() => sort(
     post => post.recommend,
     true,
 ))
-const changeOrderDir = ()=>{
-    orderDirection.value = !orderDirection.value;
+
+function changeOrderDir() {
+    orderDirection.value = !orderDirection.value
 }
 </script>
 
@@ -63,10 +64,10 @@ const changeOrderDir = ()=>{
                     查看预览文章
                 </ZRawLink>
             </div>
-            <ZOrderToggle 
+            <ZOrderToggle
+                v-model="orderBy"
+                class="order-toggle"
                 @direction="changeOrderDir"
-                v-model="orderBy" 
-                class="order-toggle" 
             />
         </div>
         <NuxtPage :list="listPaged" :order-by />

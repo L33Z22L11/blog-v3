@@ -32,13 +32,13 @@ const listSorted = computed(() => alphabetical(
 ))
 
 const listGrouped = computed(() => {
-    const groupList = Object.entries(
-        group(listSorted.value, article =>new Date(article[orderBy.value]).getFullYear())
-    );
+    const groupList = Object.entries(group(
+        listSorted.value,
+        article => new Date(article[orderBy.value]).getFullYear(),
+    ))
 
-    return orderDirection.value ? groupList.reverse() : groupList;
+    return orderDirection.value ? groupList.reverse() : groupList
 })
-
 
 const yearlyWordCount = computed(() => {
     return listGrouped.value.reduce<Record<string, string>>((acc, [year, yearGroup]) => {
@@ -47,14 +47,15 @@ const yearlyWordCount = computed(() => {
         return acc
     }, {})
 })
-const changeOrderDir = ()=>{
-    orderDirection.value = !orderDirection.value;
+
+function changeOrderDir() {
+    orderDirection.value = !orderDirection.value
 }
 </script>
 
 <template>
     <div class="archive">
-        <ZOrderToggle @direction="changeOrderDir" v-model="orderBy" />
+        <ZOrderToggle v-model="orderBy" @direction="changeOrderDir" />
         <div
             v-for="[year, yearGroup] in listGrouped"
             :key="year"
