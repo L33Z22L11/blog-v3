@@ -11,6 +11,8 @@ const orderBy = useRouteQuery(
     () => appConfig.indexGenerator.orderBy || 'date',
 )
 
+const orderDirection = ref(true)
+
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog_stats', 'blog_log'])
 
@@ -29,11 +31,14 @@ const listSorted = computed(() => alphabetical(
     'desc',
 ))
 
-const listGrouped = computed(() => Object
-    .entries(group(listSorted.value, article =>
-        new Date(article[orderBy.value]).getFullYear()))
-    .reverse(),
-)
+const listGrouped = computed(() => {
+    const groupList = Object.entries(
+        group(listSorted.value, article =>new Date(article[orderBy.value]).getFullYear())
+    );
+
+    return orderDirection.value ? groupList.reverse() : groupList;
+})
+
 
 const yearlyWordCount = computed(() => {
     return listGrouped.value.reduce<Record<string, string>>((acc, [year, yearGroup]) => {
@@ -42,11 +47,14 @@ const yearlyWordCount = computed(() => {
         return acc
     }, {})
 })
+const changeOrderDir = ()=>{
+    orderDirection.value = !orderDirection.value;
+}
 </script>
 
 <template>
     <div class="archive">
-        <ZOrderToggle v-model="orderBy" />
+        <ZOrderToggle @direction="changeOrderDir" v-model="orderBy" />
         <div
             v-for="[year, yearGroup] in listGrouped"
             :key="year"

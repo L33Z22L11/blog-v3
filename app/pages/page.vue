@@ -5,8 +5,12 @@ const appConfig = useAppConfig()
 useSeoMeta({
     description: appConfig.description,
 })
+//分页页数
 const perPage = appConfig.indexGenerator.perPage || 10
+//排序字段
 const orderBy = ref(appConfig.indexGenerator.orderBy || 'date')
+//排序方向
+const orderDirection = ref(true)
 
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog_stats', 'connectivity'])
@@ -23,7 +27,7 @@ const { data: listRaw } = await useAsyncData(
 const listSorted = computed(() => alphabetical(
     listRaw.value,
     item => item[orderBy.value],
-    'desc',
+    orderDirection.value ? 'desc' : 'asc',
 ))
 
 const { page, totalPages, listPaged } = usePagination(listSorted, {
@@ -36,7 +40,9 @@ const listRecommended = computed(() => sort(
     post => post.recommend,
     true,
 ))
-
+const changeOrderDir = ()=>{
+    orderDirection.value = !orderDirection.value;
+}
 useSeoMeta({
     title: () => page.value > 1 ? `第${page.value}页` : '',
 })
@@ -57,7 +63,11 @@ useSeoMeta({
                     查看预览文章
                 </ZRawLink>
             </div>
-            <ZOrderToggle v-model="orderBy" class="order-toggle" />
+            <ZOrderToggle 
+                @direction="changeOrderDir"
+                v-model="orderBy" 
+                class="order-toggle" 
+            />
         </div>
         <NuxtPage :list="listPaged" :order-by />
         <ZPagination v-model="page" :per-page :total-pages />
