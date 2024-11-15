@@ -6,12 +6,8 @@ useSeoMeta({
     title: '归档',
     description: `${appConfig.title}的所有文章归档。`,
 })
-const orderBy = useRouteQuery(
-    'order',
-    () => appConfig.indexGenerator.orderBy || 'date',
-)
-
-const orderDirection = ref(true)
+const sortOrder = ref(appConfig.pagination.sortOrder || 'date')
+const isAscending = ref<boolean>()
 
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog_stats', 'blog_log'])
@@ -27,17 +23,17 @@ const { data: listRaw } = await useAsyncData(
 
 const listSorted = computed(() => alphabetical(
     listRaw.value,
-    item => item[orderBy.value],
-    'desc',
+    item => item[sortOrder.value],
+    isAscending.value ? 'asc' : 'desc',
 ))
 
 const listGrouped = computed(() => {
     const groupList = Object.entries(group(
         listSorted.value,
-        article => new Date(article[orderBy.value]).getFullYear(),
+        article => new Date(article[sortOrder.value]).getFullYear(),
     ))
 
-    return orderDirection.value ? groupList.reverse() : groupList
+    return isAscending.value ? groupList : groupList.reverse()
 })
 
 const yearlyWordCount = computed(() => {
@@ -47,15 +43,14 @@ const yearlyWordCount = computed(() => {
         return acc
     }, {})
 })
-
-function changeOrderDir() {
-    orderDirection.value = !orderDirection.value
-}
 </script>
 
 <template>
     <div class="archive">
-        <ZOrderToggle v-model="orderBy" @direction="changeOrderDir" />
+        <ZOrderToggle
+            v-model:is-ascending="isAscending"
+            v-model:sort-order="sortOrder"
+        />
         <div
             v-for="[year, yearGroup] in listGrouped"
             :key="year"
@@ -76,7 +71,7 @@ function changeOrderDir() {
                     :key="article._path"
                     v-bind="article"
                     :to="article._path"
-                    :use-updated="orderBy === 'updated'"
+                    :use-updated="sortOrder === 'updated'"
                 />
             </menu>
         </div>

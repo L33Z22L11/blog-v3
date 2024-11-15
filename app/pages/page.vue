@@ -6,12 +6,9 @@ useSeoMeta({
     description: appConfig.description,
     ogImage: appConfig.author.avatar,
 })
-// 分页页数
-const perPage = appConfig.indexGenerator.perPage || 10
-// 排序字段
-const orderBy = ref(appConfig.indexGenerator.orderBy || 'date')
-// 排序方向
-const orderDirection = ref(true)
+const perPage = appConfig.pagination.perPage || 10
+const sortOrder = ref(appConfig.pagination.sortOrder || 'date')
+const isAscending = ref<boolean>()
 
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog_stats', 'connectivity'])
@@ -27,8 +24,8 @@ const { data: listRaw } = await useAsyncData(
 
 const listSorted = computed(() => alphabetical(
     listRaw.value,
-    item => item[orderBy.value],
-    orderDirection.value ? 'desc' : 'asc',
+    item => item[sortOrder.value],
+    isAscending.value ? 'asc' : 'desc',
 ))
 
 const { page, totalPages, listPaged } = usePagination(listSorted, {
@@ -43,10 +40,6 @@ const listRecommended = computed(() => sort(
     post => post.recommend,
     true,
 ))
-
-function changeOrderDir() {
-    orderDirection.value = !orderDirection.value
-}
 </script>
 
 <template>
@@ -65,12 +58,11 @@ function changeOrderDir() {
                 </ZRawLink>
             </div>
             <ZOrderToggle
-                v-model="orderBy"
-                class="order-toggle"
-                @direction="changeOrderDir"
+                v-model:is-ascending="isAscending"
+                v-model:sort-order="sortOrder"
             />
         </div>
-        <NuxtPage :list="listPaged" :order-by />
+        <NuxtPage :list="listPaged" :sort-order />
         <ZPagination v-model="page" :per-page :total-pages />
     </div>
 </template>
