@@ -2,7 +2,7 @@
 title: 为你的网站添加灯笼样式
 date: 2022-12-23 10:44
 updated: 2022-12-28 19:23
-image: https://xlenco.onmicrosoft.cn/i/HcBn1_DkiKsrTfz.webp
+image: https://xlenco-img.s3.bitiful.net/i/2024/11/8c762403bb94f5902c93d4e1f57aa928.webp
 description: 使用 HTML、CSS 为网页添加灯笼样式。
 ---
 ## 前言
