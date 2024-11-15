@@ -6,8 +6,9 @@ useSeoMeta({
     description: appConfig.description,
     ogImage: appConfig.author.avatar,
 })
-const perPage = appConfig.indexGenerator.perPage || 10
-const orderBy = ref(appConfig.indexGenerator.orderBy || 'date')
+const perPage = appConfig.pagination.perPage || 10
+const sortOrder = ref(appConfig.pagination.sortOrder || 'date')
+const isAscending = ref<boolean>()
 
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog_stats', 'connectivity'])
@@ -23,8 +24,8 @@ const { data: listRaw } = await useAsyncData(
 
 const listSorted = computed(() => alphabetical(
     listRaw.value,
-    item => item[orderBy.value],
-    'desc',
+    item => item[sortOrder.value],
+    isAscending.value ? 'asc' : 'desc',
 ))
 
 const { page, totalPages, listPaged } = usePagination(listSorted, {
@@ -56,9 +57,12 @@ const listRecommended = computed(() => sort(
                     查看预览文章
                 </ZRawLink>
             </div>
-            <ZOrderToggle v-model="orderBy" class="order-toggle" />
+            <ZOrderToggle
+                v-model:is-ascending="isAscending"
+                v-model:sort-order="sortOrder"
+            />
         </div>
-        <NuxtPage :list="listPaged" :order-by />
+        <NuxtPage :list="listPaged" :sort-order />
         <ZPagination v-model="page" :per-page :total-pages />
     </div>
 </template>

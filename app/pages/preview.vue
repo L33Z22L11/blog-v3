@@ -6,10 +6,8 @@ useSeoMeta({
     title: '预览',
     description: `${appConfig.title}的文章预览。`,
 })
-const orderBy = useRouteQuery(
-    'order',
-    () => appConfig.indexGenerator.orderBy || 'date',
-)
+const sortOrder = ref(appConfig.pagination.sortOrder || 'date')
+const isAscending = ref<boolean>()
 
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog_log'])
@@ -22,11 +20,12 @@ const { data: listRaw } = await useAsyncData(
     { default: () => [] },
 )
 
-const listSorted = computed(() => alphabetical(
-    listRaw.value,
-    item => item[orderBy.value],
-    'desc',
-))
+const listSorted = computed(() =>
+    alphabetical(
+        listRaw.value,
+        item => item[sortOrder.value],
+        isAscending.value ? 'desc' : 'asc',
+    ))
 </script>
 
 <template>
@@ -39,7 +38,10 @@ const listSorted = computed(() => alphabetical(
                     </ZRawLink>预览
                 </h1>
             </div>
-            <ZOrderToggle v-model="orderBy" />
+            <ZOrderToggle
+                v-model:is-ascending="isAscending"
+                v-model:sort-order="sortOrder"
+            />
         </div>
         <p>勇敢的人探索世界。这里是一些还未发布的文章。</p>
 
@@ -49,7 +51,7 @@ const listSorted = computed(() => alphabetical(
                 :key="article._path"
                 v-bind="article"
                 :to="article._path"
-                :use-updated="orderBy === 'updated'"
+                :use-updated="sortOrder === 'updated'"
             />
         </menu>
     </div>

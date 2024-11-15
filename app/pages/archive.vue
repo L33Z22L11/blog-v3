@@ -6,10 +6,8 @@ useSeoMeta({
     title: '归档',
     description: `${appConfig.title}的所有文章归档。`,
 })
-const orderBy = useRouteQuery(
-    'order',
-    () => appConfig.indexGenerator.orderBy || 'date',
-)
+const sortOrder = ref(appConfig.pagination.sortOrder || 'date')
+const isAscending = ref<boolean>()
 
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog_stats', 'blog_log'])
@@ -25,15 +23,18 @@ const { data: listRaw } = await useAsyncData(
 
 const listSorted = computed(() => alphabetical(
     listRaw.value,
-    item => item[orderBy.value],
-    'desc',
+    item => item[sortOrder.value],
+    isAscending.value ? 'asc' : 'desc',
 ))
 
-const listGrouped = computed(() => Object
-    .entries(group(listSorted.value, article =>
-        new Date(article[orderBy.value]).getFullYear()))
-    .reverse(),
-)
+const listGrouped = computed(() => {
+    const groupList = Object.entries(group(
+        listSorted.value,
+        article => new Date(article[sortOrder.value]).getFullYear(),
+    ))
+
+    return isAscending.value ? groupList : groupList.reverse()
+})
 
 const yearlyWordCount = computed(() => {
     return listGrouped.value.reduce<Record<string, string>>((acc, [year, yearGroup]) => {
@@ -46,7 +47,10 @@ const yearlyWordCount = computed(() => {
 
 <template>
     <div class="archive">
-        <ZOrderToggle v-model="orderBy" />
+        <ZOrderToggle
+            v-model:is-ascending="isAscending"
+            v-model:sort-order="sortOrder"
+        />
         <div
             v-for="[year, yearGroup] in listGrouped"
             :key="year"
@@ -67,7 +71,7 @@ const yearlyWordCount = computed(() => {
                     :key="article._path"
                     v-bind="article"
                     :to="article._path"
-                    :use-updated="orderBy === 'updated'"
+                    :use-updated="sortOrder === 'updated'"
                 />
             </menu>
         </div>

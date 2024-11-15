@@ -1,24 +1,39 @@
 <script setup lang="ts">
-const appConfig = useAppConfig()
-
-const orderMap = appConfig.article.order
-
-const orderBy = defineModel<keyof typeof orderMap>({
-    required: true,
-    default: 'date',
+// 当且仅当如此书写时，props.allowAscending 才能正确解析为 undefined
+const props = withDefaults(defineProps<{
+    allowAscending?: boolean | undefined
+}>(), {
+    allowAscending: undefined,
 })
+const appConfig = useAppConfig()
+const orderMap = appConfig.article.order
+const allowAscending = computed(() => props.allowAscending ?? appConfig.pagination.allowAscending)
 
-function switchOrder() {
+const sortOrder = defineModel<keyof typeof orderMap>('sortOrder', { default: 'date' })
+const isAscending = defineModel<boolean>('isAscending')
+const orderIcon = computed(() => isAscending.value ? 'ph:sort-descending-bold' : 'ph:sort-ascending-bold')
+
+function toggleOrder() {
     const orderKeys = Object.keys(orderMap) as (keyof typeof orderMap)[]
-    const currentIndex = orderKeys.indexOf(orderBy.value)
-    orderBy.value = orderKeys[(currentIndex + 1) % orderKeys.length]!
+    sortOrder.value = orderKeys[(orderKeys.indexOf(sortOrder.value) + 1) % orderKeys.length] || 'date'
+}
+
+function toggleDirection() {
+    if (!allowAscending.value)
+        return
+    isAscending.value = !isAscending.value
 }
 </script>
 
 <template>
     <div class="order-toggle">
-        <button @click="switchOrder">
-            <Icon name="ph:sort-ascending-bold" /> <span class="order-text">{{ orderMap[orderBy] }}</span>
+        <button v-if="allowAscending" aria-label="切换排序方向" @click="toggleDirection">
+            <Icon :name="orderIcon" class="toggle-direction" />
+        </button>
+
+        <button @click="toggleOrder">
+            <Icon v-if="!allowAscending" :name="orderIcon" />
+            <span class="order-text">{{ orderMap[sortOrder] }}</span>
         </button>
     </div>
 </template>
@@ -34,6 +49,19 @@ function switchOrder() {
         &:hover {
             color: var(--c-primary);
         }
+
+        & + button {
+            margin-left: 1em;
+        }
+
+        .iconify + span {
+            margin-left: 0.1em;
+        }
+    }
+
+    .toggle-direction {
+        display: inline-block;
+        margin-right: -0.7em;
     }
 }
 </style>

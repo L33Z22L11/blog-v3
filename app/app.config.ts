@@ -63,9 +63,11 @@ export default defineAppConfig({
         emojiTail: ['📄', '🦌', '🙌', '🐟', '🏖️'],
     },
 
-    indexGenerator: {
+    pagination: {
         perPage: 10,
-        orderBy: <ArticleOrderType>'date',
+        sortOrder: <ArticleOrderType>'date',
+        /** 允许（普通/预览/归档）文章列表正序 */
+        allowAscending: false,
     },
 
     nav: <Nav>[
