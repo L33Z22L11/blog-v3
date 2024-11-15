@@ -65,6 +65,10 @@ menu, ol, ul {
 
 button {
     cursor: pointer;
+
+    .iconify:only-child {
+        display: block;
+    }
 }
 
 button, input, textarea {
@@ -73,12 +77,7 @@ button, input, textarea {
     color: currentcolor;
 
     &:disabled {
-        color: var(--c-text-3);
         cursor: not-allowed;
-    }
-
-    .iconify:only-child {
-        display: block;
     }
 }
 

@@ -37,6 +37,7 @@ const auxDateLabel = computed(() => props.date
     align-items: center;
     gap: 0.5em;
     margin: 0.2em 0;
+    transition: all 0.2s;
 
     @media (max-width: $breakpoint-mobile) {
         font-size: 0.9em;

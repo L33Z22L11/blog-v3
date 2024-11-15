@@ -11,7 +11,6 @@ const allowAscending = computed(() => props.allowAscending ?? appConfig.paginati
 
 const sortOrder = defineModel<keyof typeof orderMap>('sortOrder', { default: 'date' })
 const isAscending = defineModel<boolean>('isAscending')
-const orderIcon = computed(() => isAscending.value ? 'ph:sort-descending-bold' : 'ph:sort-ascending-bold')
 
 function toggleOrder() {
     const orderKeys = Object.keys(orderMap) as (keyof typeof orderMap)[]
@@ -28,11 +27,11 @@ function toggleDirection() {
 <template>
     <div class="order-toggle">
         <button v-if="allowAscending" aria-label="切换排序方向" @click="toggleDirection">
-            <Icon :name="orderIcon" class="toggle-direction" />
+            <Icon name="ph:sort-ascending-bold" class="toggle-direction" :class="{ ascending: isAscending }" />
         </button>
 
         <button @click="toggleOrder">
-            <Icon v-if="!allowAscending" :name="orderIcon" />
+            <Icon v-if="!allowAscending" name="ph:sort-ascending-bold" />
             <span class="order-text">{{ orderMap[sortOrder] }}</span>
         </button>
     </div>
@@ -44,14 +43,10 @@ function toggleDirection() {
 
     > button {
         color: var(--c-text-2);
-        transition: color 0.1s;
+        transition: color 0.2s;
 
         &:hover {
             color: var(--c-primary);
-        }
-
-        & + button {
-            margin-left: 1em;
         }
 
         .iconify + span {
@@ -61,7 +56,12 @@ function toggleDirection() {
 
     .toggle-direction {
         display: inline-block;
-        margin-right: -0.7em;
+        margin-right: 0.1em;
+        transition: transform 0.2s;
+
+        &.ascending {
+            transform: scaleY(-1);
+        }
     }
 }
 </style>

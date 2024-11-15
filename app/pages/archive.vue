@@ -32,7 +32,6 @@ const listGrouped = computed(() => {
         listSorted.value,
         article => new Date(article[sortOrder.value]).getFullYear(),
     ))
-
     return isAscending.value ? groupList : groupList.reverse()
 })
 
@@ -66,13 +65,15 @@ const yearlyWordCount = computed(() => {
                 </div>
             </div>
             <menu class="archive-list">
-                <ZArchive
-                    v-for="article in yearGroup"
-                    :key="article._path"
-                    v-bind="article"
-                    :to="article._path"
-                    :use-updated="sortOrder === 'updated'"
-                />
+                <TransitionGroup>
+                    <ZArchive
+                        v-for="article in yearGroup"
+                        :key="article._path"
+                        v-bind="article"
+                        :to="article._path"
+                        :use-updated="sortOrder === 'updated'"
+                    />
+                </TransitionGroup>
             </menu>
         </div>
     </div>

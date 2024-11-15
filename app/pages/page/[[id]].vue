@@ -4,7 +4,7 @@ import type ArticleProps from '~/types/article'
 
 const props = defineProps<{
     list: ArticleProps[]
-    orderBy: ArticleOrderType
+    sortOrder: ArticleOrderType
 }>()
 
 definePageMeta({
@@ -26,7 +26,7 @@ watch(props, () => {
             :key="article._path"
             v-bind="article"
             :to="article._path"
-            :use-updated="orderBy === 'updated'"
+            :use-updated="sortOrder === 'updated'"
         />
     </TransitionGroup>
 </template>

@@ -52,6 +52,7 @@ defineProps<ButtonProps>()
 
     &:disabled {
         background-color: initial;
+        color: revert;
         cursor: not-allowed;
     }
 
