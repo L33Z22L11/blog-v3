@@ -129,7 +129,7 @@ const _btnShareByText = useTemplateRef('image-share')
 
 .post-title {
     padding: 0.8em 1rem;
-    font-size: 1.8em;
+    font-size: 1.6em;
     line-height: 1.2;
 }
 

@@ -35,6 +35,7 @@ const listGrouped = computed(() => {
     return isAscending.value ? groupList : groupList.reverse()
 })
 
+// 不能使用 /api/stats，因为可能切换分组方式
 const yearlyWordCount = computed(() => {
     return listGrouped.value.reduce<Record<string, string>>((acc, [year, yearGroup]) => {
         const totalWords = yearGroup?.reduce((sum, cur) => sum + cur.readingTime.words, 0) || 0

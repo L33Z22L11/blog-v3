@@ -1,19 +1,31 @@
 import { serverQueryContent } from '#content/server'
 
-export default defineEventHandler(async (event) => {
-    // 未指定请求方法会多次调用
-    // console.log(new Error('服务端统计函数调用堆栈'))
+interface StatsEntry {
+    posts: number
+    words: number
+}
 
+export default defineEventHandler(async (event) => {
     const stats = {
-        totalWords: 0,
+        total: { posts: 0, words: 0 },
+        annual: <StatsEntry[]>{},
     }
 
     const posts = await serverQueryContent(event).find()
 
-    posts.forEach(async (post) => {
-        // console.log(`[stats] totalWords: ${stats.totalWords} += ${post.readingTime.words} @[${post.title}](${post._path})`)
-        stats.totalWords += post.readingTime.words
-    })
+    for (const post of posts) {
+        stats.total.posts++
+        stats.total.words += post.readingTime.words
+
+        if (!post.date)
+            continue
+        const year = new Date(post.date).getFullYear()
+        if (!stats.annual[year])
+            stats.annual[year] = { posts: 0, words: 0 }
+
+        stats.annual[year].posts++
+        stats.annual[year].words += post.readingTime.words
+    }
 
     return stats
 })
