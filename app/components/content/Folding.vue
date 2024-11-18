@@ -66,7 +66,7 @@ details {
         padding: 0 0.8rem 0.5rem;
 
         :deep(.z-codeblock) {
-            margin: -0.8rem -0.5rem;
+            margin: 0 -0.5rem -0.8rem;
         }
     }
 }

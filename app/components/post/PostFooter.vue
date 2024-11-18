@@ -8,7 +8,7 @@ const appConfig = useAppConfig()
 <template>
     <div class="post-footer">
         <section v-if="references" class="reference">
-            <div class="title">
+            <div id="reference" class="title">
                 参考链接
             </div>
             <div class="content">
