@@ -1,23 +1,27 @@
 <script lang="tsx" setup>
-const slots = defineSlots()
+const slots = defineSlots<{
+    default: () => VNode[]
+}>()
+
 function render() {
-    const slotContent = slots.default?.()
+    const slotContent = slots.default()
     if (!slotContent)
         return <span>无会话内容</span>
 
     return slotContent.map((node: VNode) => {
         // WARN: 此处使用了非标准的 v-slot:default
-        const textContent = (node.children as any)?.default?.()[0].children || ''
-        const matchCaption = textContent?.match?.(/^\{(.*?)\}$/)
-        const matchCaptionMyself = matchCaption?.[1]?.match?.(/^\((.*?)\)$/)
-        const matchCaptionSystem = matchCaption?.[1]?.match?.(/^:(.*?):$/)
-        if (matchCaptionMyself)
-            return <div class="chat-caption chat-myself">{matchCaptionMyself[1]}</div>
-        else if (matchCaptionSystem)
-            return <div class="chat-caption chat-system">{matchCaptionSystem[1]}</div>
-        else if (matchCaption)
-            return <div class="chat-caption">{matchCaption[1]}</div>
-        else return <div class="chat-body">{node}</div>
+        const textContent = (node.children as any)?.default?.()[0].children
+        const body = <div class="chat-body">{node}</div>
+        if (typeof textContent !== 'string')
+            return body
+
+        const match = textContent.match(/^\{(?<control>\.|:)?(?<caption>.*)\}$/)
+        if (!match)
+            return body
+
+        const { caption, control } = match?.groups || {}
+        const controlClass = control === '.' ? 'chat-myself' : control === ':' ? 'chat-system' : ''
+        return <div class={`chat-caption ${controlClass}`}>{caption}</div>
     })
 }
 </script>
