@@ -1,0 +1,13 @@
+diff --git a/dist/shared.d.ts b/dist/shared.d.ts
+index ab2199d7da355160a31dd4edfb55c2c354d43f6b..9a1b97fbb075e17e2453bc34551cc095ac1e5dcb 100644
+--- a/dist/shared.d.ts
++++ b/dist/shared.d.ts
+@@ -316,7 +316,7 @@ export type LooseRequired<T> = {
+     [P in keyof (T & Required<T>)]: T[P];
+ };
+ export type IfAny<T, Y, N> = 0 extends 1 & T ? Y : N;
+-export type IsKeyValues<T, K = string> = IfAny<T, false, T extends object ? (keyof T extends K ? true : false) : false>;
++export type IsKeyValues<T, K = PropertyKey> = IfAny<T, false, T extends object ? (NonNullable<keyof T> extends K ? true : false) : false>;
+ /**
+  * Utility for extracting the parameters from a function overload (for typed emits)
+  * https://github.com/microsoft/TypeScript/issues/32164#issuecomment-1146737709
