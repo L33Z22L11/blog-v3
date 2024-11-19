@@ -41,7 +41,7 @@ export default defineEventHandler(async (event) => {
     const entries = posts.map(post => ({
         id: getUrl(post._path),
         title: post.title ?? '',
-        updated: new Date(post.updated).toISOString(),
+        updated: post.updated && new Date(post.updated).toISOString(),
         author: { name: post.author || blogConfig.author.name },
         content: {
             $type: 'html',
@@ -50,7 +50,7 @@ export default defineEventHandler(async (event) => {
         link: { $href: getUrl(post._path) },
         summary: post.description,
         category: { $term: post.categories?.[0] },
-        published: new Date(post.date).toISOString(),
+        published: post.date && new Date(post.date).toISOString(),
     }))
 
     const feed = {

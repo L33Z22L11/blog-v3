@@ -19,7 +19,7 @@ const blogConfig = {
     },
     favicon: 'https://www.zhilu.cyou/api/icon.png',
     language: 'zh-CN',
-    timeEstablished: '2019-07-20',
+    timeEstablished: '2019-07-19',
     timezone: 'Asia/Shanghai',
     url: 'https://blog.zhilu.cyou/',
 
@@ -45,6 +45,7 @@ const blogConfig = {
     // 用于 Shiki、Plain Shiki 引入代码高亮
     // 同时用于显示代码块语言对应的 Iconify Catppuccin 图标
     shiki: {
+        bundledLangs: <BundledLanguage[]>['bat', 'log', 'sh', 'powershell'],
         langs: <BundledLanguage[]>['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'java', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'sh', 'ssh-config', 'toml', 'ts', 'tsx', 'vb', 'vue', 'xml', 'yaml'],
         themes: <BundledTheme[]>['catppuccin-latte', 'one-dark-pro'],
         defaultTheme: <BundledTheme>'catppuccin-latte',

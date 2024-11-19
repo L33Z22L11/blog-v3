@@ -2,7 +2,7 @@ const promptLanguageMap: Record<string, string> = {
     '$': 'sh',
     '#': 'sh',
     'CMD': 'bat',
-    'PS': 'bash',
+    'PS': 'sh', // powershell 语言高亮有问题
 }
 
 export function formatNumber(num: number) {

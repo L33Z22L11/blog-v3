@@ -132,7 +132,7 @@ export default defineNuxtConfig({
     },
 
     shiki: {
-        bundledLangs: blogConfig.shiki.langs,
+        bundledLangs: blogConfig.shiki.bundledLangs,
         bundledThemes: blogConfig.shiki.themes,
         defaultLang: 'log',
         defaultTheme: {
