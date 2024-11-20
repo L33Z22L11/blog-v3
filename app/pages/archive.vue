@@ -8,6 +8,7 @@ useSeoMeta({
 })
 const sortOrder = ref(appConfig.pagination.sortOrder || 'date')
 const isAscending = ref<boolean>()
+const birthYear = appConfig.stats.birthYear
 
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog_stats', 'blog_log'])
@@ -60,6 +61,10 @@ const yearlyWordCount = computed(() => {
                 <h2 class="archive-year">
                     {{ year }}
                 </h2>
+                <div class="archive-age">
+                    <span>{{ Number(year) - birthYear + 1 }}</span>
+                    <span class="age-label">岁</span>
+                </div>
                 <div class="archive-info">
                     <span>{{ yearlyWordCount[year] }}字</span>
                     <span>{{ yearGroup?.length }}篇</span>
@@ -87,10 +92,16 @@ const yearlyWordCount = computed(() => {
 }
 
 .archive-group {
-    padding: 1rem 0;
+    margin: 1rem 0 3rem;
 
-    &:hover .archive-title {
-        color: var(--c-text-3);
+    &:hover {
+        .archive-title {
+            color: var(--c-text-3);
+        }
+
+        .archive-age {
+            opacity: 0;
+        }
     }
 }
 
@@ -107,7 +118,7 @@ const yearlyWordCount = computed(() => {
     color: transparent;
     transition: color 0.2s;
 
-    .archive-year {
+    .archive-year, .archive-age {
         margin-bottom: -0.3em;
         mask: linear-gradient(#fff 50%, transparent);
         font: 800 3em/1 var(--font-stroke-free);
@@ -115,13 +126,21 @@ const yearlyWordCount = computed(() => {
         -webkit-text-stroke: 1px var(--c-text-3);
     }
 
+    .archive-age {
+        position: absolute;
+        right: 0;
+        transition: opacity 0.2s;
+
+        .age-label {
+            font-size: 0.5em;
+            vertical-align: super;
+        }
+    }
+
     .archive-info {
         display: flex;
-        flex-grow: 1;
         justify-content: flex-end;
         column-gap: 0.5em;
-
-        // border-top: 0.2em dashed;
         flex-wrap: wrap;
     }
 }

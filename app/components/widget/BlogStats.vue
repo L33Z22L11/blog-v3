@@ -1,6 +1,10 @@
 <script setup lang="ts">
+import { toZonedTime } from 'date-fns-tz'
+
 const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()
+// 将服务器时区转换为博客指定时区
+const buildTime = toZonedTime(runtimeConfig.public.buildTime, appConfig.timezone)
 
 const totalWords = ref(appConfig.stats.wordCount)
 const yearlyTip = ref('')
@@ -11,8 +15,8 @@ const blogStats = computed(() => [{
     tip: `博客于${appConfig.timeEstablished}上线`,
 }, {
     label: '上次更新',
-    content: timeElapse(runtimeConfig.public.buildTime),
-    tip: `构建于${getLocaleDatetime(runtimeConfig.public.buildTime)}`,
+    content: timeElapse(buildTime),
+    tip: `构建于${getLocaleDatetime(buildTime)}`,
 }, {
     label: '总字数',
     content: totalWords,

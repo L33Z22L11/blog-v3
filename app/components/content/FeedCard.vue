@@ -19,7 +19,7 @@ const tip = joinWithBR(
         v-tippy="{ allowHTML: true, delay: [200, 0], content: tip }"
         class="friend-card gradient-card" :to="link" rel="noopener"
     >
-        <NuxtImg class="icon" :src="avatar || icon" :alt="author" />
+        <NuxtImg class="icon" :src="avatar || icon" :alt="author" loading="lazy" />
         <!-- <NuxtImg :src="icon" :alt="author" width="32" /> -->
         <div class="card-content">
             <div class="name-title">

@@ -20,6 +20,7 @@ const blogConfig = {
     favicon: 'https://www.zhilu.cyou/api/icon.png',
     language: 'zh-CN',
     timeEstablished: '2019-07-19',
+    /** 时区，修改后还应修改 time.ts 中引入的时区包 */
     timezone: 'Asia/Shanghai',
     url: 'https://blog.zhilu.cyou/',
 
