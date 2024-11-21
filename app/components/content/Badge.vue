@@ -15,7 +15,7 @@ const img = computed(() => {
     if (ghUsername)
         return getGhAvatar(ghUsername)
     if (props.link && isExtLink(props.link))
-        return `https://unavatar.webp.se/${getDomain(props.link)}`
+        return `https://unavatar.webp.se/${getDomain(props.link)}?w`
     return ''
 })
 
