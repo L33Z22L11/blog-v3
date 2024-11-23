@@ -12,11 +12,11 @@
     --c-bg-a50: hsl(var(--hue-theme) 10% 10% / 50%);
     --c-bg-a80: hsl(var(--hue-theme) 10% 10% / 80%);
     --c-primary: hsl(var(--hue-theme) 100% 70%);
-    --c-primary-soft: hsl(var(--hue-theme) 100% 60% / 30%);
+    --c-primary-soft: hsl(var(--hue-theme) 100% 60% / 20%);
     --ld-bg-blur: var(--c-bg-a80);
     --ld-bg-card: var(--c-bg-3);
     --ld-bg-active: var(--c-primary-soft);
-    --ld-shadow: var(--c-bg);
+    --ld-shadow: var(--c-bg-a50);
 }
 
 :root,

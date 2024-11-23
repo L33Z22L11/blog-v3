@@ -5,7 +5,7 @@
     </a>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .skip-link {
     position: fixed;
     width: 80%;

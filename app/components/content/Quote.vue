@@ -17,10 +17,11 @@ const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .quote {
     font-size: 1.2rem;
     font-weight: var(--font-weight-medium);
+    line-height: 1.5;
     color: var(--c-text-2);
 
     &:hover {
@@ -37,12 +38,12 @@ const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
         margin-bottom: -0.5em;
         mask: linear-gradient(#fff, transparent);
         font-size: 4rem;
-        line-height: 1;
         transition: all 0.2s;
         z-index: -1;
     }
 
     :deep(p) {
+        margin: 0;
         text-indent: 0;
     }
 }

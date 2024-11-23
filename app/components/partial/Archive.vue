@@ -18,25 +18,26 @@ const auxDateLabel = computed(() => props.date
 
 <template>
     <li class="article-line">
-        <time :datetime="mainDate">{{ dateLabel }}</time>
+        <time :datetime="mainDate" :title="getLocaleDatetime(mainDate)">{{ dateLabel }}</time>
         <ZRawLink class="article-link gradient-card" :to :title="description">
             <span class="article-title" :class="{ 'text-story': type === 'story' }">
                 {{ title }}
             </span>
-            <time v-if="useUpdated && isTimeDiffSignificant(date, updated)" class="aux-date" :datetime="date">
+            <time v-if="useUpdated && isTimeDiffSignificant(date, updated)" class="aux-date" :datetime="date" :title="getLocaleDatetime(date)">
                 &nbsp;{{ auxDateLabel }}</time>
             <NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" loading="lazy" />
         </ZRawLink>
     </li>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .article-line {
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
     gap: 0.5em;
     margin: 0.2em 0;
+    transition: all 0.2s;
 
     @media (max-width: $breakpoint-mobile) {
         font-size: 0.9em;
@@ -74,7 +75,7 @@ const auxDateLabel = computed(() => props.date
         .article-cover {
             opacity: 1;
             width: 50%;
-            object-position: center 44%;
+            object-position: center 43.5%;
         }
     }
 }

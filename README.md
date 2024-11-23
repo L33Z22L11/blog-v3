@@ -27,17 +27,20 @@ https://blog.zhilu.cyou
 │   ├── assets # 资源文件
 │   ├── components # 组件
 │   │   ├── content # 内容组件
-│   │   ├── patial # 模块组件
-│   │   ├── widgets # 小组件
+│   │   ├── partial # 模块组件
+│   │   ├── widget # 小组件
 │   │   ├── zhilu # 个人 VI 组件
 │   │   └── ... # 布局组件
 │   ├── composables # 组合式函数
 │   ├── pages # 页面
+│   │   ├── [...slug].vue # 正文、404
 │   │   ├── page.vue # 首页
 │   │   ├── page/[[id]].vue # 首页动态路由
 │   │   ├── archive.vue # 归档
-│   │   └── [...slug].vue # 正文、404
-│   ├── stores # 状态管理
+│   │   ├── link.vue # 友链
+│   │   └── preview.vue # 隐藏的文章（可被站内搜索）
+│   ├── plugins # Nuxt / Vue 插件
+│   ├── stores # Pinia 状态管理
 │   ├── types # 类型定义
 │   ├── utils # 工具函数
 │   ├── app.config.ts # 前端配置
@@ -47,8 +50,9 @@ https://blog.zhilu.cyou
 │   ├── drafts # 草稿，生产环境不显示
 │   ├── posts # 文章
 │   ├── previews # 预览
-│   ├── link.md # 友链
+│   ├── link.md # 友链（正文）
 │   └── theme.md # 主题介绍
+├── patches # npm 包补丁
 ├── public # 静态资源
 │   └── fonts # 字体
 ├── server # 服务端
@@ -62,6 +66,7 @@ https://blog.zhilu.cyou
 │       └── atom.xml.get.ts # Atom 订阅源
 ├── blog.config.ts # 博客公共配置
 ├── nuxt.config.ts # Nuxt 配置
+├── redirects.ts # 旧站点重定向配置
 └── vercel.json # Vercel 配置
 ```
 
@@ -69,12 +74,34 @@ https://blog.zhilu.cyou
 
 ### 安装依赖
 
-```bash
+```sh
 pnpm i
 ```
 
 ### 运行开发环境
 
-```bash
+```sh
 pnpm dev
 ```
+
+### 构建生产环境
+
+```sh
+pnpm generate
+```
+
+### 部署
+
+推荐使用 Vercel 部署。本站具有良好的 SSG 支持，可使用 Nuxt 预设（SSR）部署。目前的部署预设：
+
+- Build command: `pnpm generate`
+- Output directory: `dist`
+- Install command: `pnpm i`
+
+## 贡献
+
+欢迎提交 Issue 或 Pull Request。
+
+## 许可证
+
+[MIT](LICENSE)

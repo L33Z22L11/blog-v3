@@ -1,49 +1,37 @@
-import type { BundledLanguage, BundledTheme } from 'shiki'
 import blogConfig from './blog.config'
 import redirects from './redirects'
 
-const shikiOptions: {
-    langs: BundledLanguage[]
-    themes: BundledTheme[]
-    defaultTheme: BundledTheme
-    darkTheme: BundledTheme
-} = {
-    langs: ['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'java', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'shell', 'ssh-config', 'toml', 'ts', 'tsx', 'vb', 'vue', 'xml', 'yaml'],
-    themes: ['catppuccin-latte', 'one-dark-pro'],
-    defaultTheme: 'catppuccin-latte',
-    darkTheme: 'one-dark-pro',
-}
-
 export default defineNuxtConfig({
     app: {
-        rootId: 'z-root',
         head: {
             htmlAttrs: {
                 lang: blogConfig.language,
             },
             link: [
                 { rel: 'icon', href: blogConfig.favicon },
+                { rel: 'alternate', type: 'application/atom+xml', href: '/atom.xml' },
+                { rel: 'preconnect', href: blogConfig.twikoo.preload },
                 { rel: 'preconnect', href: 'https://cdn-font.hyperos.mi.com' },
                 // 浏览器渲染中文 VF 字重有问题
-                // https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap
                 { rel: 'stylesheet', href: 'https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap', media: 'none', onload: 'this.media="all"' },
+                // https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap
                 { rel: 'preconnect', href: 'https://fonts.googleapis.cn' },
                 { rel: 'preconnect', href: 'https://fonts.gstatic.cn' },
                 { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap', media: 'none', onload: 'this.media="all"' },
-                // { rel: 'preconnect', href: 'https://fonts.loli.net' },
-                // { rel: 'preconnect', href: 'https://gstatic.loli.net' },
-                // { rel: 'stylesheet', href: 'https://fonts.loli.net/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap', media: 'none', onload: 'this.media="all"' },
                 // { rel: 'stylesheet', href: 'https://gcore.jsdelivr.net/npm/nerdfonts-web/nf.min.css' },
+            ],
+            meta: [
+                { name: 'author', content: blogConfig.author.name },
+                { name: 'color-scheme', content: 'light dark' },
+                { 'name': 'generator', 'data-github-repo': 'https://github.com/L33Z22L11/blog-v3' },
             ],
             templateParams: {
                 separator: '|',
             },
             titleTemplate: `%s %separator ${blogConfig.title}`,
-            script: [
-               // { 'src': 'https://zhi.zhilu.cyou/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true },
-               // { 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
-            ],
+            script: blogConfig.scripts,
         },
+        rootId: 'z-root',
     },
 
     compatibilityDate: '2024-08-03',
@@ -60,15 +48,6 @@ export default defineNuxtConfig({
         '@/assets/css/main.scss',
         '@/assets/css/reusable.scss',
     ],
-
-    // devServer: {
-    //     host: '0.0.0.0',
-    //     port: 443,
-    //     https: {
-    //         key: './ssl/zhilu-y.key',
-    //         cert: './ssl/zhilu-y.crt',
-    //     },
-    // },
 
     experimental: {
         viewTransition: true,
@@ -102,11 +81,6 @@ export default defineNuxtConfig({
         },
     },
 
-    vue: {
-        propsDestructure: true,
-        runtimeCompiler: true,
-    },
-
     modules: [
         '@nuxt/content',
         '@nuxt/icon',
@@ -130,10 +104,10 @@ export default defineNuxtConfig({
             search: {},
         },
         highlight: {
-            langs: shikiOptions.langs,
+            langs: blogConfig.shiki.langs,
             theme: {
-                default: shikiOptions.defaultTheme,
-                dark: shikiOptions.darkTheme,
+                default: blogConfig.shiki.defaultTheme,
+                dark: blogConfig.shiki.darkTheme,
             },
         },
         markdown: {
@@ -150,26 +124,21 @@ export default defineNuxtConfig({
     },
 
     image: {
-        domains: [
-            // 'blog.zhilu.cyou',
-            // '7.isyangs.cn',
-        ],
+        domains: blogConfig.imageDomains,
         format: ['avif', 'webp'],
     },
 
-    ogImage: { enabled: false },
-
     robots: {
-        disallow: ['/preview', '/previews/*'],
+        disallow: blogConfig.robotsNotIndex,
     },
 
     shiki: {
-        bundledLangs: shikiOptions.langs,
-        bundledThemes: shikiOptions.themes,
+        bundledLangs: blogConfig.shiki.bundledLangs,
+        bundledThemes: blogConfig.shiki.themes,
         defaultLang: 'log',
         defaultTheme: {
-            light: shikiOptions.defaultTheme,
-            dark: shikiOptions.darkTheme,
+            light: blogConfig.shiki.defaultTheme,
+            dark: blogConfig.shiki.darkTheme,
         },
     },
 

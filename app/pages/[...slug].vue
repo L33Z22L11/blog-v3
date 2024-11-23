@@ -1,22 +1,27 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const UIStore = useUIStore()
-UIStore.setAside(['toc'])
+const layoutStore = useLayoutStore()
+layoutStore.setAside(['toc'])
 
 const { data: post } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
-const excerpt = post.value?.description || ''
+const excerpt = computed(() => post.value?.description || '')
 
 if (post.value) {
-    useContentHead(post.value)
-    UIStore.setAside(post.value.aside)
+    useSeoMeta({
+        title: post.value.title,
+        ogType: 'article',
+        ogImage: post.value.image,
+        description: post.value.description,
+    })
+    layoutStore.setAside(post.value.aside)
 }
 else {
     // // BUG: 部分文章在 Vercel 上以 404 状态码呈现，在 Linux SSG 模式下展示异常
     // const event = useRequestEvent()
     // event && setResponseStatus(event, 404)
     route.meta.title = '404'
-    UIStore.setAside (['blog_log'])
+    layoutStore.setAside (['blog_log'])
 }
 </script>
 
@@ -24,7 +29,7 @@ else {
     <ContentRenderer :value="post">
         <PostHeader v-bind="post" />
         <PostExcerpt v-if="excerpt" :excerpt />
-        <ContentRenderer
+        <ContentRendererMarkdown
             class="article"
             :class="{ 'md-story': post?.type === 'story' }"
             :value="post ?? {}"

@@ -1,20 +1,27 @@
 <script lang="tsx" setup>
-const slots = defineSlots()
+const slots = defineSlots<{
+    default: () => VNode[]
+}>()
+
 function render() {
-    const slotContent = slots.default?.()
+    const slotContent = slots.default()
     if (!slotContent)
         return <span>无会话内容</span>
 
     return slotContent.map((node: VNode) => {
         // WARN: 此处使用了非标准的 v-slot:default
-        const textContent = (node.children as any)?.default?.()[0].children || ''
-        const match = textContent?.match?.(/^\{(.*?)\}$/)
-        const matchMyself = match?.[1]?.match?.(/^\((.*?)\)$/)
-        return matchMyself
-            ? <div class="chat-caption chat-myself">{matchMyself[1]}</div>
-            : match
-                ? <div class="chat-caption">{match[1]}</div>
-                : <div class="chat-body">{node}</div>
+        const textContent = (node.children as any)?.default?.()[0].children
+        const body = <div class="chat-body">{node}</div>
+        if (typeof textContent !== 'string')
+            return body
+
+        const match = textContent.match(/^\{(?<control>\.|:)?(?<caption>.*)\}$/)
+        if (!match)
+            return body
+
+        const { caption, control } = match?.groups || {}
+        const controlClass = control === '.' ? 'chat-myself' : control === ':' ? 'chat-system' : ''
+        return <div class={`chat-caption ${controlClass}`}>{caption}</div>
     })
 }
 </script>
@@ -25,7 +32,7 @@ function render() {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .chat {
     margin-inline: 2vw;
     font-size: 0.9em;
@@ -50,6 +57,10 @@ function render() {
         p {
             text-indent: 0;
         }
+    }
+
+    .chat-system {
+        text-align: center;
     }
 
     .chat-myself {

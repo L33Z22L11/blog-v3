@@ -1,11 +1,9 @@
 <script setup lang="ts">
-// FIXME: [Vue warn]: Invalid prop: type check failed for prop "highlights". Expected Function, got Array
-// FIXME: [nuxt] Failed to stringify dev server logs. Received DevalueError: Cannot stringify a function.
 const props = withDefaults(defineProps<{
     code?: string
     language?: string
     filename?: string
-    highlights?: () => number[]
+    highlights?: number[]
     meta?: string
     class?: string
 }>(), {
@@ -13,20 +11,25 @@ const props = withDefaults(defineProps<{
     highlights: () => [],
 })
 
-const icon = computed(() => getFileIcon(props.language))
+interface CodeblockMeta {
+    icon?: string
+    wrap?: boolean
+    [meta: string]: string | boolean | undefined
+}
 
 const meta = computed(() => {
     if (!props.meta)
         return {}
 
-    return props.meta.split(' ').reduce((acc, item) => {
+    return props.meta.split(' ').reduce((acc: CodeblockMeta, item) => {
         const [key, value] = item.split('=')
         acc[key!] = value ?? true
         return acc
-    }, {} as { [meta: string]: string | boolean })
+    }, {})
 })
 
-const isWrap = ref<boolean>(Boolean(meta.value.wrap))
+const icon = computed(() => meta.value.icon || getFileIcon(props.filename) || getLangIcon(props.language))
+const isWrap = ref(meta.value.wrap)
 
 const codeblock = useTemplateRef('codeblock')
 const copyBtn = useTemplateRef('copy-btn')
@@ -38,10 +41,13 @@ useCopy(copyBtn, codeblock)
     <figure class="z-codeblock">
         <figcaption>
             <span v-if="filename" class="filename">
-                <!-- BUG: 初次访问时不添加 class="light" -->
-                <Icon :class="{ 'icon-revert': $colorMode.value === 'light' }" :name="icon" />
+                <ClientOnly>
+                    <!-- 颜色偏好存储于客户端，可能水合不匹配 -->
+                    <Icon :class="{ 'icon-revert': !meta.icon && $colorMode.value === 'light' }" :name="icon" />
+                </ClientOnly>
                 {{ filename }}
             </span>
+            <span v-else />
             <span v-if="language" class="language">{{ language }}</span>
             <div class="operations">
                 <button @click="isWrap = !isWrap">
@@ -62,11 +68,12 @@ useCopy(copyBtn, codeblock)
     </figure>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .z-codeblock {
     position: relative;
+    overflow: clip;
     margin-block: 1em;
-    border-radius: 8px;
+    border-radius: 0.5em;
     background-color: var(--c-bg-2);
     font-size: 0.8125rem;
     line-height: 1.4;
@@ -78,7 +85,6 @@ useCopy(copyBtn, codeblock)
 
 figcaption {
     display: flex;
-    flex-direction: row-reverse;
     justify-content: space-between;
     gap: 1em;
     position: sticky;
@@ -87,25 +93,27 @@ figcaption {
     z-index: 1;
 
     .filename {
-        order: 1;
         padding: 0.2em 0.8em;
-        border-radius: 0 0 8px 8px;
+        border-radius: 0 0 0.5em 0.5em;
         background-color: var(--c-border);
+        word-break: break-all;
     }
 
     .language {
         opacity: 0.4;
         height: 0;
-        padding: 0.2em;
+        line-height: 1.8em;
     }
 
     .operations {
         position: absolute;
         opacity: 0;
         top: 0;
-        padding: 0.2em;
-        border-radius: 0 8px 8px;
+        right: 0;
+        padding: 0 1em;
+        border-radius: 0 0.5em 0.5em;
         background-color: var(--c-bg-2);
+        line-height: 1.8em;
         transition: opacity 0.2s;
 
         > button {
@@ -117,7 +125,7 @@ figcaption {
             }
 
             & + button {
-                margin-left: 1em;
+                margin-left: 0.8em;
             }
         }
     }
@@ -168,5 +176,9 @@ pre {
         outline: 0.2em solid var(--ld-bg-active);
         background-color: var(--ld-bg-active);
     }
+}
+
+.icon-revert {
+    filter: invert(0.7) hue-rotate(180deg) saturate(4);
 }
 </style>

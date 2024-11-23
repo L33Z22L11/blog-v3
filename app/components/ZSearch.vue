@@ -1,8 +1,8 @@
 <script setup lang="ts">
-const UIStore = useUIStore()
+const layoutStore = useLayoutStore()
 const searchInput = ref<HTMLInputElement>()
 
-watch(() => UIStore.isSearchOpen, async (isOpen) => {
+watch(() => layoutStore.isOpen('search'), async (isOpen) => {
     await nextTick()
     isOpen && searchInput.value?.focus()
 })
@@ -26,7 +26,7 @@ watchDebounced(word, () => {
 useEventListener('keydown', (event: KeyboardEvent) => {
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault()
-        UIStore.toggleSearch()
+        layoutStore.toggle('search')
     }
 })
 
@@ -44,6 +44,7 @@ watch(activeIndex, (newVal, oldVal) => {
 
 function openActiveItem() {
     const item = listResult.value?.children[activeIndex.value] as HTMLLIElement
+    // 触发 vue-router 点击事件
     item.dispatchEvent(new Event('click'))
 }
 </script>
@@ -51,13 +52,13 @@ function openActiveItem() {
 <template>
     <Transition>
         <div
-            v-if="UIStore.isSearchOpen"
+            v-if="layoutStore.isOpen('search')"
             id="z-search-bgmask"
-            @click="UIStore.toggleSearch"
+            @click="layoutStore.toggle('search')"
         />
     </Transition>
     <Transition>
-        <div v-if="UIStore.isSearchOpen" id="z-search">
+        <div v-if="layoutStore.isOpen('search')" id="z-search">
             <form class="input" :class="{ searching: status === 'pending' }" @submit.prevent>
                 <Icon name="ph:magnifying-glass-bold" />
                 <input
@@ -86,30 +87,30 @@ function openActiveItem() {
                             :key="item.id"
                             v-bind="item"
                             :class="{ active: activeIndex === itemIndex }"
-                            @click="UIStore.toggleSearch"
+                            @click="layoutStore.toggle('search')"
                             @mouseover="activeIndex = itemIndex"
                         />
                     </TransitionGroup>
                 </ol>
                 <div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
-                    <ZKey code="ArrowUp" @press="activeIndex--">
+                    <Key code="arrowup" @press="activeIndex--">
                         ↑
-                    </ZKey> <ZKey code="ArrowDown" @press="activeIndex++">
+                    </Key> <Key code="arrowdown" @press="activeIndex++">
                         ↓
-                    </ZKey> 切换&emsp;
-                    <ZKey code="Enter" @press="openActiveItem">
+                    </Key> 切换&emsp;
+                    <Key code="enter" @press="openActiveItem">
                         Enter
-                    </ZKey> 选择&emsp;
-                    <ZKey code="Escape" @press="UIStore.toggleSearch">
+                    </Key> 选择&emsp;
+                    <Key code="escape" @press="layoutStore.toggle('search')">
                         Esc
-                    </ZKey> 关闭
+                    </Key> 关闭
                 </div>
             </TransitionGroup>
         </div>
     </Transition>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @keyframes scan {
     0% { left: -100%; }
     100% { left: 150%; }
@@ -127,7 +128,7 @@ function openActiveItem() {
     box-shadow: 0 0.5em 1em var(--ld-shadow);
     background-color: var(--ld-bg-card);
     transition: all 0.2s;
-    z-index: 100;
+    z-index: 1000;
 
     &.v-enter-from,
     &.v-leave-to {

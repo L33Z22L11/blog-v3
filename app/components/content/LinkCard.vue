@@ -20,11 +20,13 @@ const src = computed(() => getImgUrl(props.icon, props.mirror))
                 {{ description ?? getDomain(link) }}
             </div>
         </div>
-        <NuxtImg v-if="src" class="link-card-icon" :src :alt="title" />
+        <slot name="icon" class="link-card-icon-slot">
+            <NuxtImg v-if="src" class="link-card-icon" :src :alt="title" />
+        </slot>
     </ZRawLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .link-card {
     display: flex;
     align-items: center;
@@ -61,6 +63,7 @@ const src = computed(() => getImgUrl(props.icon, props.mirror))
     }
 
     .link-card-icon {
+        flex-shrink: 0;
         height: 3rem;
         max-width: 5rem;
         border-radius: 0.5rem;

@@ -4,12 +4,14 @@ import { alphabetical, sort } from 'radash'
 const appConfig = useAppConfig()
 useSeoMeta({
     description: appConfig.description,
+    ogImage: appConfig.author.avatar,
 })
-const perPage = appConfig.indexGenerator.perPage || 10
-const orderBy = ref(appConfig.indexGenerator.orderBy || 'date')
+const perPage = appConfig.pagination.perPage || 10
+const sortOrder = ref(appConfig.pagination.sortOrder || 'date')
+const isAscending = ref<boolean>()
 
-const UIStore = useUIStore()
-UIStore.setAside(['blog_log', 'blog_stats', 'connectivity'])
+const layoutStore = useLayoutStore()
+layoutStore.setAside(['blog_stats', 'connectivity'])
 
 const { data: listRaw } = await useAsyncData(
     'posts_index',
@@ -22,8 +24,8 @@ const { data: listRaw } = await useAsyncData(
 
 const listSorted = computed(() => alphabetical(
     listRaw.value,
-    item => item[orderBy.value],
-    'desc',
+    item => item[sortOrder.value],
+    isAscending.value ? 'asc' : 'desc',
 ))
 
 const { page, totalPages, listPaged } = usePagination(listSorted, {
@@ -31,22 +33,13 @@ const { page, totalPages, listPaged } = usePagination(listSorted, {
     bindParam: 'id',
 })
 
+useSeoMeta({ title: () => (page.value > 1 ? `第${page.value}页` : '') })
+
 const listRecommended = computed(() => sort(
     listRaw.value.filter(item => item?.recommend),
     post => post.recommend,
     true,
 ))
-
-useSeoMeta({
-    title: () => page.value > 1 ? `第${page.value}页` : '',
-})
-
-// 兼容 SSR
-onMounted(() => {
-    watch(page, () => {
-        window.scrollTo({ top: 0 })
-    })
-})
 </script>
 
 <template>
@@ -58,19 +51,23 @@ onMounted(() => {
     <div class="post-list">
         <div class="toolbar">
             <div class="preview-entrance">
+                <!-- 外层元素用于占位 -->
                 <ZRawLink to="/preview">
                     <Icon name="ph:file-lock-bold" />
                     查看预览文章
                 </ZRawLink>
             </div>
-            <ZOrderToggle v-model="orderBy" class="order-toggle" />
+            <ZOrderToggle
+                v-model:is-ascending="isAscending"
+                v-model:sort-order="sortOrder"
+            />
         </div>
-        <NuxtPage :list="listPaged" :order-by />
+        <NuxtPage :list="listPaged" :sort-order />
         <ZPagination v-model="page" :per-page :total-pages />
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .toolbar {
     display: flex;
     align-items: center;

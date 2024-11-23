@@ -1,23 +1,25 @@
 const archIcons = {
+    '服务器': 'ph:hard-drives-fill',
+    '国内 CDN': 'ph:cloud-check-fill',
+    '虚拟主机': 'ph:file-cloud-bold',
     'Astro': 'simple-icons:astro',
-    'CDN (国内)': 'ph:cloud-check-fill',
     'Cloudflare': 'simple-icons:cloudflare',
     'Deno Deploy': 'simple-icons:deno',
     'GitHub Pages': 'simple-icons:github',
+    'Gridea': 'tabler:circle-letter-g', // 不准确
     'Halo': 'tabler:square-letter-h-filled', // 不准确
     'Hexo': 'simple-icons:hexo',
+    'HTML': 'simple-icons:html5',
     'Hugo': 'simple-icons:hugo',
     'Jekyll': 'simple-icons:jekyll',
     'Mix Space': 'ph:yarn',
     'Netlify': 'simple-icons:netlify',
     'Next.js': 'simple-icons:nextdotjs',
     'Nuxt': 'simple-icons:nuxtdotjs',
-    'Server': 'ph:hard-drives-fill',
     'Typecho': 'icon-park-solid:align-text-left-one', // 不准确
     'Vercel': 'simple-icons:vercel',
-    'Gridea': 'tabler:circle-letter-g', // 不准确
-    'Vue': 'uim:vuejs',
     'VitePress': 'simple-icons:vitepress',
+    'Vue': 'uim:vuejs',
     'WordPress': 'simple-icons:wordpress',
     'Zebaur': 'tabler:square-letter-z-filled', // 不准确
 }
@@ -28,8 +30,10 @@ export function getArchIcon(arch: Arch) {
     return archIcons[arch] ?? ''
 }
 
+/** 主域名图标映射 */
 export const mainDomainIcons: Record<string, string> = {
     'bilibili.com': 'ri:bilibili-fill',
+    'creativecommons.org': 'ri:creative-commons-line',
     'github.com': 'ri:github-fill',
     'github.io': 'ri:github-fill',
     'microsoft.com': 'ri:microsoft-fill',
@@ -42,36 +46,75 @@ export const mainDomainIcons: Record<string, string> = {
     'zhihu.com': 'ri:zhihu-line',
 }
 
+/** 专门域名图标映射，优先级高于主域名图标 */
 export const domainIcons: Record<string, string> = {
     'mp.weixin.qq.com': 'ri:wechat-fill',
 }
 
 export function getDomainIcon(url: string) {
     const domain = getDomain(url)
-    const mainDomain = getMainDomain(url)
+    const mainDomain = getMainDomain(url, true)
     if (domain in domainIcons)
         return domainIcons[domain]
     return mainDomainIcons[mainDomain]
 }
 
-const ext2lang: Record<string, string> = {
-    bat: 'batch',
-    ini: 'properties',
-    js: 'javascript',
-    md: 'markdown',
-    mdc: 'markdown',
-    sh: 'bash',
-    ssh_config: 'properties',
-    ts: 'typescript',
-    tsx: 'typescript',
-    vb: 'visual-studio',
+/** 文件名后缀图标映射，优先级高于代码块语言图标映射 */
+const file2icon: Record<string, string> = {
+    '.crt': 'catppuccin:certificate',
+    '.gitattributes': 'catppuccin:git',
+    '.gitconfig': 'catppuccin:git',
+    '.gitignore': 'catppuccin:git',
+    '.key': 'catppuccin:key',
+    '.npmrc': 'catppuccin:npm',
+    '.patch': 'catppuccin:git',
+    '.prettierrc': 'catppuccin:prettier',
+    'CHANGELOG.md': 'catppuccin:changelog',
+    'CODE_OF_CONDUCT.md': 'catppuccin:code-of-conduct',
+    'CONTRIBUTING.md': 'catppuccin:contributing',
+    'eslint.config.mjs': 'catppuccin:eslint',
+    'LICENSE': 'catppuccin:license',
+    'netlify.toml': 'catppuccin:netlify',
+    'nuxt.config.ts': 'catppuccin:nuxt',
+    'package.json': 'catppuccin:package-json',
+    'pnpm-workspace.yaml': 'catppuccin:pnpm',
+    'README.md': 'catppuccin:readme',
+    'stylelint.config.mjs': 'catppuccin:stylelint',
+    'tsconfig.json': 'catppuccin:typescript-config',
+    'verccel.json': 'catppuccin:vercel',
 }
 
-export function getFileIcon(extension?: string): string {
+export function getFileIcon(filename?: string) {
+    if (!filename)
+        return undefined
+    const extension = Object.keys(file2icon).find(ext => filename.endsWith(ext))
+    return extension ? file2icon[extension] : undefined
+}
+
+/**
+ * 代码块语言简写或别名到 Catppuccin 图标库中的语言名映射
+ *
+ * 将 blogConfig.shiki.langs 的部分后缀名简写
+ * 转换为代码块语言对应的 Iconify Catppuccin图标
+ */
+const ext2lang: Record<string, string> = {
+    'bat': 'batch',
+    'ini': 'properties',
+    'js': 'javascript',
+    'md': 'markdown',
+    'mdc': 'markdown',
+    'sh': 'bash',
+    'ssh-config': 'properties',
+    'ts': 'typescript',
+    'tsx': 'typescript',
+    'vb': 'visual-studio',
+}
+
+export function getLangIcon(extension?: string): string {
     const config = useAppConfig()
 
-    if (!extension || !(config.fileExtensions as string[]).includes(extension))
-        return 'ph:file-bold'
+    if (!extension || !(config.shiki.langs as string[]).includes(extension))
+        extension = 'file'
 
     const fileType = ext2lang[extension] || extension
     return `catppuccin:${fileType}`

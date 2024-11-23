@@ -5,18 +5,12 @@ export default antfu({
         indent: 4,
     },
     rules: {
-        // 'json/indent': ['error', 2],
         'jsonc/indent': ['error', 2],
-        'vue/block-lang': ['error', {
-            script: {
-                lang: ['ts', 'tsx'],
-            },
-            style: {
-                lang: ['scss'],
-            },
+        'vue/block-lang': ['warn', {
+            script: { lang: ['ts', 'tsx'] },
+            style: { lang: ['scss'] },
         }],
-        'vue/enforce-style-attribute': ['error', { allow: ['scoped'] }],
-        'vue/no-unused-refs': 'off',
+        'vue/enforce-style-attribute': ['warn', { allow: ['scoped'] }],
         'yaml/indent': ['error', 2],
     },
 })

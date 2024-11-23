@@ -27,7 +27,7 @@ function toggleTheme(themeName: ThemeType) {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .theme-toggle {
     display: flex;
     justify-content: center;

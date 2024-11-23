@@ -2,9 +2,14 @@
     --font-family: "MiSans VF", "MiSans", "PingFang SC", system-ui, sans-serif;
     --font-serif: "Noto Serif SC", "华文中宋", "Times New Roman", serif;
     --font-monospace: "SFMono-Regular", "Cascadia Code", "Fira Code", "JetBrains Mono", "Menlo", "Monaco", "Consolas", "Noto Sans Mono", "monospace", "MiSans VF", "MiSans", "PingFang SC", system-ui, monospace;
+
+    // --font-stroke-free: "Helvetica";
+    --font-stroke-free: "Inter", "Helvetica", "Arial", system-ui, sans-serif;
     --font-weight-normal: 400;
     --font-weight-medium: 450;
     --font-weight-bold: 500;
+
+    overflow-y: scroll;
 
     // 兼容了一点 IE
     background-color: hsl(220deg 20% 98%);
@@ -15,7 +20,7 @@
     font-weight: var(--font-weight-normal);
     word-wrap: break-word;
     color: var(--c-text-1);
-    transition: background-color 0.2s;
+    transition: color 0.1s, background-color 0.2s;
     scroll-behavior: smooth;
     scroll-padding: 2rem;
     scrollbar-color: var(--c-text-3) transparent;
@@ -60,6 +65,10 @@ menu, ol, ul {
 
 button {
     cursor: pointer;
+
+    .iconify:only-child {
+        display: block;
+    }
 }
 
 button, input, textarea {
@@ -68,12 +77,7 @@ button, input, textarea {
     color: currentcolor;
 
     &:disabled {
-        color: var(--c-text-3);
         cursor: not-allowed;
-    }
-
-    .iconify:only-child {
-        display: block;
     }
 }
 
@@ -84,4 +88,22 @@ button, input, textarea {
 .text-story {
     font-family: serif;
     font-family: var(--font-serif);
+}
+
+.text-repeat {
+    text-shadow: 0.1em 0 var(--c-bg-soft), 0.2em 0 var(--c-bg-soft), 0.3em 0 var(--c-bg-soft), 0.4em 0 var(--c-bg-soft), 0.5em 0 var(--c-bg-soft);
+}
+
+.text-zoom {
+    display: inline-block;
+
+    @supports (animation-timeline: view()) {
+        animation: zoom 1s both;
+        animation-timeline: view();
+    }
+
+    @keyframes zoom {
+        from { transform: scale(0.8); }
+        to { transform: scale(1.25); }
+    }
 }

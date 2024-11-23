@@ -1,2 +1,4 @@
+*.md linguist-detectable=true
+
 * text eol=lf
 public/ binary

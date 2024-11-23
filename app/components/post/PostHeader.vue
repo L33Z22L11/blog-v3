@@ -15,12 +15,14 @@ const shareText = `【${appConfig.title}】${props.title}\n\n${
 
 const btnShareByText = useTemplateRef('text-share')
 useCopy(btnShareByText, btnShareByText, shareText)
+
+// TODO: 生成分享图片
+const _btnShareByText = useTemplateRef('image-share')
 </script>
 
 <template>
     <!-- 💩夸克浏览器，桌面端只有IE不支持 :has() 了 -->
     <div class="post-header" :class="{ 'has-cover': image, 'text-revert': cover_revert }">
-        <!-- TODO: 生成分享图片 -->
         <NuxtImg v-if="image" class="post-cover" :src="image" :alt="title" />
         <div class="post-nav">
             <div class="operations">
@@ -58,7 +60,7 @@ useCopy(btnShareByText, btnShareByText, shareText)
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .post-header {
     display: flex;
     flex-direction: column;
@@ -127,7 +129,7 @@ useCopy(btnShareByText, btnShareByText, shareText)
 
 .post-title {
     padding: 0.8em 1rem;
-    font-size: 1.8em;
+    font-size: 1.6em;
     line-height: 1.2;
 }
 
@@ -145,7 +147,7 @@ useCopy(btnShareByText, btnShareByText, shareText)
     .post-info {
         display: flex;
         gap: 0.5em 1.2em;
-        column-gap: clamp(1em, 3cqw, 1.5em);
+        column-gap: clamp(1em, 3%, 1.5em);
         flex-wrap: wrap;
     }
 }

@@ -1,3 +1,5 @@
+import { fromUrl, parseDomain, ParseResultType } from 'parse-domain'
+
 export const domainTip: Record<string, string> = {
     'github.io': 'GitHub Pages 域名',
     'netlify.app': 'Netlify 域名',
@@ -7,31 +9,38 @@ export const domainTip: Record<string, string> = {
     'zabaur.app': 'Zebaur 域名',
 }
 
-const noRouterExtensions = ['.css', '.csv', '.gif', '.ico', '.jpg', '.js', '.json', '.png', '.svg', '.txt', '.xml']
+const noRouterExtensions = ['.css', '.csv', '.gif', '.ico', '.jpg', '.js', '.json', '.opml', '.png', '.svg', '.txt', '.xml']
 
 export function getDomain(url: string) {
-    const match = url.match(/^(?:https?:\/\/)?(?:www\.)?([^/:]+)/i)
-    return match?.[1] ?? url
+    const domain = fromUrl(url)
+    if (typeof domain === 'symbol')
+        return url
+    else
+        return domain
 }
-export function getMainDomain(url: string) {
-    const domain = getDomain(url)
-    const parts = domain.split('.')
-    const getPartLength = (partIndex: number) => {
-        // Array.prototype.at() -> Chrome 92+
-        const seg = parts.length
-        return parts[(partIndex % seg + seg) % seg]?.length ?? 0
+export function getMainDomain(url: string, useIcann?: boolean) {
+    const hostname = getDomain(url)
+    const parseResult = parseDomain(hostname)
+    if (parseResult.type === ParseResultType.Listed) {
+        const { domain, topLevelDomains } = useIcann ? parseResult.icann : parseResult
+        return `${domain}.${topLevelDomains.join('.')}`
     }
-    if (getPartLength(-1) > 3)
-        return parts.slice(-2).join('.')
-    if (getPartLength(-2) <= 3) {
-        return parts.slice(-3).join('.')
+    else {
+        return hostname
     }
-    return parts.slice(-2).join('.')
 }
 
 export function getDomainType(mainDomain: string) {
     return domainTip[mainDomain]
 }
+
+export function getGhUsername(url?: string) {
+    if (!url)
+        return ''
+    const regex = /github\.com\/([a-zA-Z0-9-]+)(?:\/[^/]+)?(\/?)$/
+    return url.match(regex)?.[1] ?? ''
+}
+
 export function isExtLink(url?: string) {
     if (!url)
         return false

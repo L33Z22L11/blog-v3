@@ -21,7 +21,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 
 <template>
     <DefineTemplate v-slot="{ post, icon, fallbackIcon, fallbackText }">
-        <ZRawLink :to="post?._path">
+        <ZRawLink :to="post?._path" class="surround-link">
             <Icon :name="post ? icon : fallbackIcon" />
             <div>
                 <h4 class="title" :class="{ 'text-story': post?.type === 'story' }">
@@ -44,52 +44,52 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .surround-post {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
     margin: 3rem 1rem;
+}
 
-    > a {
-        display: flex;
-        align-items: center;
-        gap: 0.5em;
-        transition: all 0.2s;
+.surround-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    transition: all 0.2s;
 
-        &:not([href]) {
-            color: var(--c-text-3);
-            user-select: none;
-
-            > .iconify {
-                opacity: 0.8;
-            }
-        }
-
-        time {
-            opacity: 0.6;
-            font-size: 0.8rem;
-        }
-
-        &.align-right {
-            flex-direction: row-reverse;
-            text-align: right;
-        }
+    &:not([href]) {
+        color: var(--c-text-3);
+        user-select: none;
 
         > .iconify {
-            opacity: 0.5;
-            font-size: 2rem;
-            transition: all 0.2s;
+            opacity: 0.8;
         }
+    }
 
-        &[href]:hover {
-            gap: 0;
-            color: var(--c-primary);
+    time {
+        opacity: 0.6;
+        font-size: 0.8rem;
+    }
 
-            > .iconify {
-                opacity: 0.2;
-                transform: scale(2);
-            }
+    &.align-right {
+        flex-direction: row-reverse;
+        text-align: right;
+    }
+
+    > .iconify {
+        opacity: 0.5;
+        font-size: 2rem;
+        transition: all 0.2s;
+    }
+
+    &[href]:hover {
+        gap: 0;
+        color: var(--c-primary);
+
+        > .iconify {
+            opacity: 0.2;
+            transform: scale(2);
         }
     }
 }

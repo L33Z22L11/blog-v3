@@ -1,16 +1,19 @@
 <script lang="tsx" setup>
-const slots = defineSlots()
+const slots = defineSlots<{
+    default: () => VNode[]
+}>()
+
 function render() {
-    const slotContent = slots.default?.()
+    const slotContent = slots.default()
     if (!slotContent)
         return <span>时间线为空</span>
 
     return slotContent.map((node: VNode) => {
         // WARN: 此处使用了非标准的 v-slot:default
-        const textContent = (node.children as any)?.default?.()[0].children || ''
-        const match = textContent?.match?.(/^\{(.*?)\}$/)
-        return match
-            ? <div class="timeline-caption">{match[1]}</div>
+        const textContent: string = (node.children as any)?.default?.()[0].children || ''
+        const match = textContent?.match?.(/^\{(?<caption>.*)\}$/)
+        return match?.groups
+            ? <div class="timeline-caption">{match.groups.caption}</div>
             : <div class="timeline-body card">{node}</div>
     })
 }
@@ -22,7 +25,7 @@ function render() {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 // TODO: 优化时间线样式
 .timeline {
     position: relative;

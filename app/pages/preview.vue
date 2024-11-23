@@ -1,18 +1,16 @@
 <script setup lang="ts">
-import { alphabetical, group } from 'radash'
+import { alphabetical } from 'radash'
 
 const appConfig = useAppConfig()
 useSeoMeta({
     title: '预览',
-    description: `${appConfig.title}的预览。`,
+    description: `${appConfig.title}的文章预览。`,
 })
-const orderBy = useRouteQuery(
-    'order',
-    () => appConfig.indexGenerator.orderBy || 'date',
-)
+const sortOrder = ref(appConfig.pagination.sortOrder || 'date')
+const isAscending = ref<boolean>()
 
-const UIStore = useUIStore()
-UIStore.setAside(['blog_log'])
+const layoutStore = useLayoutStore()
+layoutStore.setAside(['blog_log'])
 
 const { data: listRaw } = await useAsyncData(
     'preview_list',
@@ -22,11 +20,12 @@ const { data: listRaw } = await useAsyncData(
     { default: () => [] },
 )
 
-const listSorted = computed(() => alphabetical(
-    listRaw.value,
-    item => item[orderBy.value],
-    'desc',
-))
+const listSorted = computed(() =>
+    alphabetical(
+        listRaw.value,
+        item => item[sortOrder.value],
+        isAscending.value ? 'desc' : 'asc',
+    ))
 </script>
 
 <template>
@@ -36,11 +35,13 @@ const listSorted = computed(() => alphabetical(
                 <h1>
                     <ZRawLink class="mobile-only" to="/">
                         <Icon name="ph:caret-left-bold" />
-                    </ZRawLink>
-                    预览
+                    </ZRawLink>预览
                 </h1>
             </div>
-            <ZOrderToggle v-model="orderBy" />
+            <ZOrderToggle
+                v-model:is-ascending="isAscending"
+                v-model:sort-order="sortOrder"
+            />
         </div>
         <p>勇敢的人探索世界。这里是一些还未发布的文章。</p>
 
@@ -50,13 +51,13 @@ const listSorted = computed(() => alphabetical(
                 :key="article._path"
                 v-bind="article"
                 :to="article._path"
-                :use-updated="orderBy === 'updated'"
+                :use-updated="sortOrder === 'updated'"
             />
         </menu>
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .preview {
     margin: 1rem;
 }

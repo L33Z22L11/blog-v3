@@ -8,13 +8,13 @@ defineProps<{
 
 <template>
     <menu>
-        <ZRawLink v-for="item in list" :key="item.text" v-tippy="item.text" :to="item.url">
+        <ZRawLink v-for="item in list" :key="item.text" v-tippy="item.text" :to="item.url" :aria-label="item.text">
             <Icon :name="item.icon" />
         </ZRawLink>
     </menu>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 menu {
     display: flex;
     justify-content: center;

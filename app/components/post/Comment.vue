@@ -28,7 +28,7 @@ onMounted(() => initTwikoo())
     </section>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .z-comment {
     margin: 3rem 1rem;
 
@@ -102,6 +102,25 @@ onMounted(() => initTwikoo())
                 font-size: 0.8em;
             }
         }
+    }
+
+    blockquote {
+        margin: 0.5em 0;
+        padding: 0.2em 0.5em;
+        border-left: 4px solid var(--c-border);
+        border-radius: 4px;
+        background-color: var(--c-bg-2);
+        font-size: 0.9rem;
+
+        > .z-codeblock {
+            margin: 0 -0.8rem;
+        }
+    }
+
+    .tk-owo-emotion {
+        width: auto;
+        height: 1.4em;
+        vertical-align: text-bottom;
     }
 
     .tk-extras, .tk-footer {

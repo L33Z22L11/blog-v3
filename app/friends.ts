@@ -1,10 +1,11 @@
-import type { FriendGroup } from '~/types/friend'
+import type { FeedGroup } from '~/types/feed'
+import { getGhAvatar } from './utils/img'
 
-export default <FriendGroup[]> [
+export default <FeedGroup[]>[
     {
         name: '大佬们',
         desc: 'Xlenco在网络上认识的大佬。',
-        items: [
+        entries: [
             {
                 name: '张洪Heo',
                 desc: '分享设计与科技生活',
@@ -55,7 +56,7 @@ export default <FriendGroup[]> [
     {
         name: '网上邻居',
         desc: '哔——啵——电波通讯中，欢迎常来串门。',
-        items: [
+        entries: [
             {
                 name: '陈鑫磊Blog',
                 desc: '这个人太懒了啥也没写......',
@@ -111,7 +112,7 @@ export default <FriendGroup[]> [
     {
         name: '漫游',
         desc: '网上冲浪时发现的精彩内容，与君共享。',
-        items: [
+        entries: [
             {
                 name: '静かな森',
                 link: 'https://innei.in/',

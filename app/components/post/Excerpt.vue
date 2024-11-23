@@ -21,6 +21,12 @@ if (appConfig.excerpt?.animation !== false) {
         caret.value = ''
     })
 }
+
+if (import.meta.dev) {
+    watch(() => props.excerpt, (newExcerpt) => {
+        excerpt.value = newExcerpt
+    })
+}
 </script>
 
 <template>
@@ -29,7 +35,7 @@ if (appConfig.excerpt?.animation !== false) {
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @keyframes fadein {
     from { opacity: 0; }
     to { opacity: 1; }

@@ -57,7 +57,7 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .z-slide {
     margin: 1rem;
 }
@@ -93,8 +93,9 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
     .embla-button {
         position: absolute;
         opacity: 0;
-        transition: opacity 0.2s;
-
+        padding: 0.5em 0.2em;
+        font-size: 1.5em;
+        transition: all 0.2s;
         &.prev { left: 1rem; }
         &.next { right: 1rem; }
     }

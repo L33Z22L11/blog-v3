@@ -8,7 +8,7 @@ const appConfig = useAppConfig()
 <template>
     <div class="post-footer">
         <section v-if="references" class="reference">
-            <div class="title">
+            <div id="references" class="title">
                 参考链接
             </div>
             <div class="content">
@@ -40,7 +40,7 @@ const appConfig = useAppConfig()
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .post-footer {
     margin: 2rem 0.5rem;
     border: 1px solid var(--c-border);
@@ -51,7 +51,7 @@ const appConfig = useAppConfig()
 section {
     padding: 1rem;
 
-    & + & {
+    & + section {
         border-top: 1px solid var(--c-border);
     }
 }

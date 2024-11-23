@@ -20,7 +20,7 @@ const repo = post.value?.github
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .card {
     padding: 0.5rem 0.8rem;
 

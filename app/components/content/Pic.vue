@@ -1,38 +1,54 @@
 <script setup lang="ts">
-const props = defineProps<{
+import { ZLightbox } from '#components'
+
+const props = withDefaults(defineProps<{
     src: string
     mirror?: ImgService
     caption?: string
     width?: string | number
-    fancybox?: boolean
-}>()
+    height?: string | number
+    zoom?: boolean
+}>(), {
+    caption: '',
+    zoom: true,
+})
 
 const src = computed(() => getImgUrl(props.src, props.mirror))
+const image = ref(null!)
+const elImage = useCurrentElement<HTMLImageElement>(image)
+
+const popoverStore = usePopoverStore()
+
+const { open, close } = popoverStore.use(() => h(ZLightbox, {
+    el: elImage.value,
+    caption: props.caption,
+    onClose() {
+        close()
+    },
+}), {
+    duration: 200,
+})
 </script>
 
 <template>
+    <!-- <ProseImg> 被 <p> 包裹，若内含块级元素会自动关闭，导致水合不匹配 -->
     <figure class="image">
-        <!-- TODO: 图片点击放大 -->
-        <NuxtImg :src :width alt="" />
-        <figcaption v-if="caption">
-            {{ caption }}
-        </figcaption>
+        <NuxtImg
+            ref="image"
+            class="image"
+            :style="{ cursor: zoom && 'zoom-in' }"
+            :src :alt="caption" :width :height
+            @click="zoom && open()"
+        />
+        <figcaption v-if="caption" aria-hidden v-text="caption" />
     </figure>
 </template>
 
-<style scoped lang="scss">
-.image {
-    margin-block: 1em;
+<style lang="scss" scoped>
+figcaption {
+    margin-top: -0.5em;
+    font-size: 0.8em;
     text-align: center;
-
-    img {
-        max-width: 100%;
-        border-radius: 0.5em;
-    }
-
-    figcaption {
-        font-size: 0.8rem;
-        color: var(--c-text-3);
-    }
+    color: var(--c-text-2);
 }
 </style>

@@ -1,41 +1,52 @@
 <script setup lang="ts">
-import allMyFriends from '~/assets/friend'
+import type { FeedGroup } from '~/types/feed'
+
+defineProps<{
+    label: string
+    feeds: FeedGroup[]
+}>()
 </script>
 
 <template>
-    <div v-for="group in allMyFriends" :key="group.name" class="friend-group">
-        <h2 class="friend-title">
+    <h2 class="feed-label">
+        {{ label }}
+    </h2>
+    <div v-for="group in feeds" :key="group.name" class="feed-group">
+        <h3 class="feed-title">
             {{ group.name }}
-        </h2>
-        <p class="friend-desc">
+        </h3>
+        <p class="feed-desc">
             {{ group.desc }}
         </p>
-        <menu class="friend-list">
-            <li v-for="friend in group.items" :key="friend.name" class="friend-card">
-                <FriendCard v-bind="friend" />
+        <menu class="feed-list">
+            <li v-for="enery in group.entries" :key="enery.link" class="feed-card">
+                <FeedCard v-bind="enery" />
             </li>
         </menu>
     </div>
 </template>
 
-<style scoped lang="scss">
-.friend-group {
-    // position: relative;
-    margin: 2rem 0;
+<style lang="scss" scoped>
+.feed-label {
+    margin: 2rem 1rem -1rem;
+}
 
-    &:hover > .friend-title {
+.feed-group {
+    // position: relative;
+    margin: 2rem 1rem;
+
+    &:hover > .feed-title {
         color: var(--c-text-3);
     }
 }
 
-.friend-title {
+.feed-title {
     position: sticky;
     opacity: 0.5;
     top: 0;
     margin-bottom: -0.3em;
     mask: linear-gradient(#fff 50%, transparent);
-    font-size: 5rem;
-    line-height: 1;
+    font: 800 5rem/1 var(--font-stroke-free);
     text-align: center;
     color: transparent;
     transition: color 0.2s;
@@ -43,12 +54,12 @@ import allMyFriends from '~/assets/friend'
     -webkit-text-stroke: 1px var(--c-text-3);
 }
 
-.friend-desc {
+.feed-desc {
     text-align: center;
     color: var(--c-text-2);
 }
 
-.friend-list {
+.feed-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
     gap: 0.5rem;
@@ -60,7 +71,7 @@ import allMyFriends from '~/assets/friend'
     }
 }
 
-.friend-card > a {
+.feed-card > a {
     width: auto;
     margin: 0;
 }

@@ -1,37 +1,37 @@
 <script setup lang="ts">
-const UIStore = useUIStore()
-const hasAside = computed(() => UIStore.aside?.length)
+const layoutStore = useLayoutStore()
+const hasAside = computed(() => layoutStore.asideItems?.length)
 
 useEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
-        UIStore.closeAll()
+        layoutStore.closeAll()
     }
 })
 </script>
 
 <template>
-    <div id="z-panel" :class="{ 'has-active': UIStore.isSidebarOpen || UIStore.isAsideOpen }">
+    <div id="z-panel" :class="{ 'has-active': layoutStore.isAnyOpen }">
         <button
             id="toggle-sidebar"
-            :class="{ active: UIStore.isSidebarOpen }"
+            :class="{ active: layoutStore.isOpen('sidebar') }"
             aria-label="切换菜单"
-            @click="UIStore.toggleSidebar"
+            @click="layoutStore.toggle('sidebar')"
         >
             <Icon name="ph:sidebar-duotone" />
         </button>
         <button
             v-if="hasAside"
             id="toggle-aside"
-            :class="{ active: UIStore.isAsideOpen }"
+            :class="{ active: layoutStore.isOpen('aside') }"
             aria-label="切换侧边栏"
-            @click="UIStore.toggleAside"
+            @click="layoutStore.toggle('aside')"
         >
             <Icon name="ph:align-right-duotone" />
         </button>
     </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 #z-panel {
     position: fixed;
     overflow: hidden;

@@ -10,7 +10,7 @@ defineProps<{
     </span>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .blur {
     transition: filter 0.2s;
     filter: blur(4px);

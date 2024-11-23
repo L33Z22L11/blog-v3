@@ -4,10 +4,10 @@
 
     > * {
         margin: 1rem 0;
-    }
 
-    p {
-        margin: 0.5em 0;
+        p {
+            margin: 0.5em 0;
+        }
     }
 
     :target {
@@ -52,10 +52,24 @@
         }
     }
 
-    > p > img:not([class]) {
+    img {
         max-width: 100%;
-        margin: 1rem auto;
-        border-radius: 0.5rem;
+
+        &.icon {
+            height: 1.4em;
+            vertical-align: text-bottom;
+        }
+
+        &:not([class]), &.image {
+            display: block;
+            margin: 1rem auto;
+            border-radius: 0.5rem;
+        }
+    }
+
+    > hr {
+        margin: 3em 0;
+        border-top: 0.4em dashed var(--c-border);
     }
 
     strong {

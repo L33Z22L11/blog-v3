@@ -1,10 +1,11 @@
 <script setup lang="ts">
 const props = defineProps<{
     href: string
+    icon?: string
 }>()
 
-const icon = computed(() => getDomainIcon(props.href))
-const tip = computed(() => isExtLink(props.href) && getDomain(props.href))
+const icon = computed(() => props.icon || getDomainIcon(props.href))
+const tip = computed(() => (isExtLink(props.href) && getDomain(props.href)) || decodeURIComponent(props.href))
 </script>
 
 <template>
@@ -14,8 +15,10 @@ const tip = computed(() => isExtLink(props.href) && getDomain(props.href))
     </ZRawLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .z-link {
+    margin: 0 -0.2em;
+    padding: 0 0.15em;
     background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 0.1em;
     color: var(--c-primary);
     transition: all 0.2s;
@@ -26,7 +29,7 @@ const tip = computed(() => isExtLink(props.href) && getDomain(props.href))
     }
 
     .domain-icon {
-        margin-right: 0.2em;
+        margin-right: 0.1em;
     }
 }
 </style>

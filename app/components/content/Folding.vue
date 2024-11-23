@@ -1,20 +1,24 @@
 <script setup lang="ts">
 defineProps<{
-    title: string
+    title?: string
     open?: boolean
 }>()
 </script>
 
 <template>
     <details :open>
-        <summary v-html="title" />
+        <summary>
+            <slot name="title">
+                {{ title }}
+            </slot>
+        </summary>
         <div class="detail">
             <slot />
         </div>
     </details>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 details {
     border: 1px solid var(--c-border);
     border-radius: 0.5em;
@@ -39,6 +43,10 @@ details {
         transition: all 0.2s;
         cursor: pointer;
 
+        > :deep(p) {
+            display: inline;
+        }
+
         &::before {
             content: "展开";
             float: right;
@@ -55,10 +63,10 @@ details {
 
     .detail {
         position: relative;
-        padding: 0 0.8rem;
+        padding: 0 0.8rem 0.5rem;
 
         :deep(.z-codeblock) {
-            margin: 0 -0.8rem;
+            margin: 0 -0.5rem -0.8rem;
         }
     }
 }

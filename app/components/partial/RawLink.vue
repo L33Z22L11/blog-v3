@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { NuxtLink } from '#components'
+
 defineProps<{ to?: string }>()
 </script>
 
 <template>
-    <NuxtLink :to :target="isExtLink(to) ? '_blank' : undefined">
+    <component :is="to ? NuxtLink : 'span'" :to :target="isExtLink(to) ? '_blank' : undefined">
         <slot />
-    </NuxtLink>
+    </component>
 </template>

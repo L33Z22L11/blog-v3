@@ -5,8 +5,8 @@ const props = defineProps({
     error: Object as () => NuxtError,
 })
 
-const UIStore = useUIStore()
-UIStore.setAside(['blog_log'])
+const layoutStore = useLayoutStore()
+layoutStore.setAside(['blog_log'])
 
 onMounted(() => {
     console.error(props.error?.stack)
@@ -39,7 +39,7 @@ const handleError = () => clearError({ redirect: '/' })
     <ZPanel />
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .app-error {
     margin: 1rem;
 

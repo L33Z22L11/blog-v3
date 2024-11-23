@@ -28,20 +28,26 @@ export default defineAppConfig({
             { icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
         ],
         nav: <Nav>[
-            { title: '探索', items: [
-                { icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
-                { icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
-              //  { icon: 'ph:flying-saucer-bold', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
-            ] },
-            { title: '社交', items: [
-                { icon: 'ph:github-logo-bold', text: 'xlenco', url: 'https://github.com/xlenco' },
-               // { icon: 'ri:qq-line', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
-                { icon: 'ph:envelope-simple-bold', text: blogConfig.author.email, url: `mailto:${blogConfig.author.email}` },
-            ] },
+            {
+                title: '探索',
+                items: [
+                    { icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
+                    { icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
+                //    { icon: 'ph:flying-saucer-bold', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
+                ],
+            },
+            {
+                title: '社交',
+                items: [
+                    { icon: 'ph:github-logo-bold', text: 'xlenco', url: 'https://github.com/xlenco' },
+                //    { icon: 'ri:qq-line', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
+                    { icon: 'ph:envelope-simple-bold', text: blogConfig.author.email, url: `mailto:${blogConfig.author.email}` },
+                ],
+            },
             {
                 title: '信息',
                 items: [
-                    { icon: 'ph:code-bold', text: '使用 MIT 协议开源', url: 'https://github.com/L33Z22L11/blog-v3' },
+                    { icon: 'simple-icons:nuxtdotjs', text: 'Nuxt博客已开源', url: 'https://github.com/L33Z22L11/blog-v3' },
                     { icon: 'ph:swatches-bold', text: '主题灵感源自Stellar', url: '/theme' },
                //     { icon: 'ph:certificate-bold', text: '萌ICP备20246888号', url: 'https://icp.gov.moe/?keyword=20246888' },
                 ],
@@ -57,18 +63,30 @@ export default defineAppConfig({
         emojiTail: ['📄', '🦌', '🙌', '🐟', '🏖️'],
     },
 
-    indexGenerator: {
+    pagination: {
         perPage: 10,
-        orderBy: <ArticleOrderType>'date',
+        sortOrder: <ArticleOrderType>'date',
+        /** 允许（普通/预览/归档）文章列表正序 */
+        allowAscending: false,
     },
 
     nav: <Nav>[
-        { title: '', items: [
-            { icon: 'ph:files-bold', text: '文章', url: '/' },
-            { icon: 'ph:link-bold', text: '友链', url: '/link' },
-            { icon: 'ph:archive-bold', text: '归档', url: '/archive' },
-        ] },
+        {
+            title: '',
+            items: [
+                { icon: 'ph:files-bold', text: '文章', url: '/' },
+                { icon: 'ph:link-bold', text: '友链', url: '/link' },
+                { icon: 'ph:archive-bold', text: '归档', url: '/archive' },
+            ],
+        },
     ],
+
+    stats: {
+        /** 归档页面每年标题对应的年龄 */
+        birthYear: 2003,
+        /** BlogStats 组件的预置文本 */
+        wordCount: '约10万',
+    },
 
     themes: {
         light: {
@@ -83,10 +101,5 @@ export default defineAppConfig({
             icon: 'ph:moon-bold',
             tip: '深色模式',
         },
-    },
-
-    twikoo: {
-        js: 'https://jsd.onmicrosoft.cn/npm/twikoo@1.6.39/dist/twikoo.all.min.js',
-        envId: 'https://twikoo2.xlenco.top/.netlify/functions/twikoo',
     },
 })

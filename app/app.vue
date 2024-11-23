@@ -64,17 +64,3 @@ aside {
     }
 }
 </style>
-
-// medium-zoom 图片点击放大
-<script setup>
-import mediumZoom from 'medium-zoom'
-
-onMounted(async () => {
-    await nextTick()
-    mediumZoom('img:not([class])', {
-        background: 'rgba(0, 0, 0, 0.8)',
-        margin: 24,
-        scrollOffset: 0,
-    })
-})
-</script>

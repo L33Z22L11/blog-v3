@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Friend } from '~/types/friend'
+import type { FeedEntry } from '~/types/feed'
 
-const props = defineProps<Friend>()
-const mainDomain = computed(() => getMainDomain(props.link))
-const domainIcon = computed(() => getDomainIcon(mainDomain.value))
+const props = defineProps<FeedEntry>()
+const mainDomain = computed(() => getMainDomain(props.link, true))
+const domainIcon = computed(() => getDomainIcon(props.link))
 
 // TODO: 优化鼠标悬浮提示
 const tip = joinWithBR(
@@ -19,17 +19,19 @@ const tip = joinWithBR(
         v-tippy="{ allowHTML: true, delay: [200, 0], content: tip }"
         class="friend-card gradient-card" :to="link" rel="noopener"
     >
-        <NuxtImg class="icon" :src="icon" :alt="name" />
+        <NuxtImg class="icon" :src="avatar || icon" :alt="author" loading="lazy" />
+        <!-- <NuxtImg :src="icon" :alt="author" width="32" /> -->
         <div class="card-content">
             <div class="name-title">
-                <span class="name">{{ name }}</span>
-                <span class="title">{{ title }}</span>
+                <span class="name">{{ author }}</span>
+                <span class="title">{{ sitenick }}</span>
             </div>
             <div class="domain-arch">
                 <span class="domain" :title="getDomainType(mainDomain)">
                     <span>{{ mainDomain }}</span>
                     <Icon v-if="domainIcon" class="domain-mark" :name="domainIcon" />
                 </span>
+                <Icon v-if="!feed" class="no-feed" name="ph:bell-simple-slash-bold" title="无订阅源" />
                 <Icon
                     v-for="arch in archs" :key="arch"
                     class="arch" :name="getArchIcon(arch)" :title="arch"
@@ -39,7 +41,7 @@ const tip = joinWithBR(
     </ZRawLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .friend-card {
     display: flex;
     align-items: center;
@@ -117,6 +119,11 @@ const tip = joinWithBR(
     .domain-mark {
         font-size: 0.4rem;
         vertical-align: super;
+    }
+
+    .no-feed {
+        opacity: 0.6;
+        margin-left: 0.2em;
     }
 
     .arch {

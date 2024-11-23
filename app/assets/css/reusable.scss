@@ -43,25 +43,31 @@
 
 // 横向滚动遮罩
 // PURE CSS MAGIC!
+.scrollcheck-x, .scrollcheck-y {
+    scrollbar-width: thin;
+    
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background-color: var(--c-bg-3);
+        cursor: default;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        box-shadow: inset 0 0 0 1px var(--c-bg-3);
+        background-color: var(--c-text-3);
+    }
+}
+
 .scrollcheck-x {
-    // 如果填写 0 会在 calc() 时出错
-    --left-offset: 0px;
+    --left-offset: 0px; // 如果填写 0 会在 calc() 时出错
     --guessed-scrollbar-height: 0.5rem;
     --fadeout-width: 2rem;
 
     overflow-x: auto;
     animation: scrollcheck-x;
     animation-timeline: scroll(x self);
-    scrollbar-width: thin;
-
-    &::-webkit-scrollbar {
-        height: var(--guessed-scrollbar-height);
-    }
-
-    &::-webkit-scrollbar-thumb {
-        border-radius: var(--guessed-scrollbar-height);
-        background-color: var(--c-text-3);
-    }
 }
 
 @keyframes scrollcheck-x {
@@ -93,16 +99,6 @@
     overflow-y: auto;
     animation: scrollcheck-y;
     animation-timeline: scroll(y self);
-    scrollbar-width: thin;
-
-    &::-webkit-scrollbar {
-        height: var(--guessed-scrollbar-width);
-    }
-
-    &::-webkit-scrollbar-thumb {
-        border-radius: var(--guessed-scrollbar-width);
-        background-color: var(--c-text-3);
-    }
 }
 
 @keyframes scrollcheck-y {
@@ -141,29 +137,20 @@ mark {
     }
 }
 
-
-
 // Iconify 图标复用了此类
-.iconify {
+:where(.iconify) {
+    display: inline-block;
     flex-shrink: 0;
     font-size: 1.2em;
-    vertical-align: text-bottom;
+    vertical-align: sub;
 }
 
-.icon-revert {
-    filter: invert(1) hue-rotate(180deg);
-}
-
-// fallback
+// 图片加载失败 fallback
 img {
     display: inline-block;
-
-    // Chrome 90- 😡
-    overflow: hidden;
-
-    // 🔥🦊😡
-    overflow: clip;
-    transform: scale(1);
+    overflow: hidden;    // Chrome 90- 😡
+    overflow: clip;      // 🔥🦊😡
+    transform: scale(1); // position: fixed 的定位祖先
 
     &::before {
         position: absolute;
@@ -189,7 +176,8 @@ img {
     display: none;
 
     @media (max-width: $breakpoint-mobile) {
-        display: initial;
+        display: revert;
+        overflow: hidden;
     }
 }
 
@@ -197,6 +185,6 @@ img {
     display: none;
 
     @media (min-width: $breakpoint-widescreen) {
-        display: initial;
+        display: revert;
     }
 }

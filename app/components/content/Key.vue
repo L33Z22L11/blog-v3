@@ -1,6 +1,11 @@
 <script setup lang="ts">
 const props = defineProps<{
+    /** Key 名称应当转为小写 */
     code?: string
+    ctrl?: boolean
+    shift?: boolean
+    alt?: boolean
+    meta?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -9,15 +14,22 @@ const emit = defineEmits<{
 
 const active = ref(false)
 
+function checkModifiers(e: KeyboardEvent) {
+    return ((!props.ctrl || props.ctrl === e.ctrlKey)
+        && (!props.shift || props.shift === e.shiftKey)
+        && (!props.alt || props.alt === e.altKey)
+        && (!props.meta || props.meta === e.metaKey))
+}
+
 useEventListener('keydown', (e) => {
-    if (e.key === props.code) {
+    if (e.key?.toLowerCase() === props.code && checkModifiers(e)) {
         emit('press')
         active.value = true
     }
 })
 
 useEventListener('keyup', (e) => {
-    if (e.key === props.code) {
+    if (e.key?.toLowerCase() === props.code && checkModifiers(e)) {
         active.value = false
     }
 })
@@ -27,7 +39,7 @@ useEventListener('keyup', (e) => {
     <kbd :class="{ active }" @click="emit('press')"><slot /></kbd>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 kbd {
     display: inline-block;
     padding: 0.1em 0.2em;

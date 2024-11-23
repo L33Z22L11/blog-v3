@@ -1,27 +1,36 @@
 <script setup lang="ts">
+import { toZonedTime } from 'date-fns-tz'
+
 const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()
+// 将服务器时区转换为博客指定时区
+const buildTime = toZonedTime(runtimeConfig.public.buildTime, appConfig.timezone)
 
-const timeEstablished = appConfig.timeEstablished
-const timeUpdated = runtimeConfig.public.buildTime
-const totalWords = ref('约8万')
+const totalWords = ref(appConfig.stats.wordCount)
+const yearlyTip = ref('')
 
-const blogStats = [{
-    title: '运营时长',
-    content: timeElapse(timeEstablished),
+const blogStats = computed(() => [{
+    label: '运营时长',
+    content: timeElapse(appConfig.timeEstablished),
+    tip: `博客于${appConfig.timeEstablished}上线`,
 }, {
-    title: '上次更新',
-    content: timeElapse(timeUpdated),
+    label: '上次更新',
+    content: timeElapse(buildTime),
+    tip: `构建于${getLocaleDatetime(buildTime)}`,
 }, {
-    title: '总字数',
+    label: '总字数',
     content: totalWords,
-}]
+    tip: yearlyTip.value,
+}])
 
 onMounted(async () => {
     const { data: stats } = await useFetch('/api/stats')
-    if (stats.value) {
-        totalWords.value = formatNumber(stats.value.totalWords)
-    }
+    if (!stats.value)
+        return
+    totalWords.value = formatNumber(stats.value.total.words)
+    yearlyTip.value = Object.entries(stats.value.annual).reverse().map(([year, item]) =>
+        `${year}年：${item.posts}篇，${formatNumber(item.words)}字`,
+    ).join('\n')
 })
 </script>
 
@@ -30,17 +39,15 @@ onMounted(async () => {
         博客统计
     </h3>
 
-    <div class="widget-card">
-        <ul>
-            <li v-for="(item, index) in blogStats" :key="index" data-allow-mismatch>
-                <small>{{ item.title }}</small><br>
-                {{ item.content }}
-            </li>
-        </ul>
-    </div>
+    <ul class="widget-card" data-allow-mismatch>
+        <li v-for="(item, index) in blogStats" :key="index" :title="item.tip">
+            <small>{{ item.label }}</small><br>
+            {{ item.content }}
+        </li>
+    </ul>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 ul {
     display: flex;
     flex-wrap: wrap;

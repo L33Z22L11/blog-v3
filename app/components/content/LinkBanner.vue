@@ -3,11 +3,11 @@ const props = defineProps<{
     banner?: string
     mirror?: ImgService
     title?: string
-    desc?: string
+    description?: string
     link: string
 }>()
 
-const src = getImgUrl(props.banner, props.mirror)
+const src = computed(() => getImgUrl(props.banner, props.mirror))
 </script>
 
 <template>
@@ -19,13 +19,13 @@ const src = getImgUrl(props.banner, props.mirror)
                 {{ title }}
             </div>
             <div class="link-banner-desc">
-                {{ desc ?? getDomain(link) }}
+                {{ description ?? getDomain(link) }}
             </div>
         </div>
     </ZRawLink>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .link-banner {
     display: flex;
     flex-direction: column;

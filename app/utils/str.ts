@@ -2,7 +2,7 @@ const promptLanguageMap: Record<string, string> = {
     '$': 'sh',
     '#': 'sh',
     'CMD': 'bat',
-    'PS': 'bash',
+    'PS': 'sh', // powershell 语言高亮有问题
 }
 
 export function formatNumber(num: number) {
@@ -18,10 +18,12 @@ export function formatNumber(num: number) {
     return num.toString()
 }
 
-export function getPromptLanguage(prompt: string) {
+export function getPromptLanguage(prompt: string | boolean) {
+    if (typeof prompt === 'boolean')
+        return 'plaintext'
     for (const promptPrefix in promptLanguageMap) {
         if (prompt.startsWith(promptPrefix))
-            return promptLanguageMap[promptPrefix]
+            return promptLanguageMap[promptPrefix] ?? 'plaintext'
     }
     return 'plaintext'
 }
@@ -30,8 +32,7 @@ export function highlightHTML(text: string, word: string, className: string = 'h
     const pattern = new RegExp(word, 'gi')
     const highlightedText = text
         .replace(pattern, matched => `<span class="${className}">${matched}</span>`)
-        // CSS white-space: pre-line 即可保留但合并连续的空白符
-        // .replace(/\n+/g, '<br>')
+        .replace(/\n+/g, '<br>')
     return highlightedText
 }
 
