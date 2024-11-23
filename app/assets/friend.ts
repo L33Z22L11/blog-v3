@@ -89,7 +89,7 @@ export default <FriendGroup[]> [
                 icon: 'https://zxalive.com/avatar.webp',
                 archs: ['Halo', 'CDN (国内)'],
                 date: '2024-10-03',
-            }, 
+            },
             {
                 name: 'Liu Zijian’s Blog',
                 desc: '道阻且长，行则将至',
@@ -105,15 +105,7 @@ export default <FriendGroup[]> [
                 icon: 'https://www.tasaed.top/upload/T832.png',
                 archs: ['Hexo', 'CDN (国内)'],
                 date: '2024-11-03',
-            },
-            {
-                name: '汐塔魔法屋',
-                desc: '种下一颗有故事的种子，让它带着魔法和奇迹生根发芽',
-                link: 'https://blog.sinzmise.top/',
-                icon: 'https://blog.sinzmise.top/images/icon.png',
-                archs: ['Hexo', 'CDN (国内)'],
-                date: '2024-11-15',
-            },                                             
+            },             
         ],
     },
     {
