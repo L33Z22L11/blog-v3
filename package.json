@@ -26,6 +26,7 @@
     "parse-domain": "^8.2.2",
     "plain-shiki": "^0.0.12",
     "radash": "^12.1.0",
+    "remark-mdc": "3.2.1",
     "vue-tippy": "^6.5.0"
   },
   "devDependencies": {
