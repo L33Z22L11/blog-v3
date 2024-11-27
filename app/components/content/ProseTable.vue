@@ -1,5 +1,24 @@
 <script setup lang="ts">
 const scroll = ref(true)
+const table = useTemplateRef('table')
+let thead: HTMLTableSectionElement | null = null
+
+onMounted(() => {
+    thead = table.value!.querySelector('thead')
+})
+
+const stickThead = autoDebounce(() => {
+    if (!thead)
+        return
+    const theadTop = table.value!.scrollTop - table.value!.getBoundingClientRect().top
+    const tableHeight = table.value!.getBoundingClientRect().height
+    const theadHeight = thead.getBoundingClientRect().height
+    const finalTop = Math.max(Math.min(tableHeight - theadHeight, theadTop), 0)
+    thead.style.transform = `translateY(${finalTop}px)`
+})
+
+useEventListener('scroll', stickThead)
+useEventListener('resize', stickThead)
 </script>
 
 <template>
@@ -9,7 +28,7 @@ const scroll = ref(true)
                 {{ scroll ? '自动换行' : '横向滚动' }}
             </ZButton>
         </div>
-        <table class="scrollcheck-x" :class="{ scroll }">
+        <table ref="table" class="scrollcheck-x" :class="{ scroll }">
             <slot />
         </table>
     </div>
@@ -53,7 +72,9 @@ const scroll = ref(true)
     :deep(table) {
         border-collapse: collapse;
 
-        // 表头 thead 滚动吸附
+        thead {
+            transition: transform 0.2s;
+        }
 
         th {
             background-color: var(--c-bg-2);
