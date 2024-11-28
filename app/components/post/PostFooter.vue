@@ -62,14 +62,11 @@ section {
 }
 
 .content {
+    margin-top: 0.5em;
     font-size: 0.9rem;
 
-    > * {
-        margin-top: 0.5em;
+    li {
+        margin: 0.5em 0;
     }
-}
-
-li {
-    margin: 0.5em 0;
 }
 </style>

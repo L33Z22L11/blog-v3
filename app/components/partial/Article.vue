@@ -19,7 +19,7 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
             <h2 class="article-title" :class="{ 'text-story': type === 'story' }">
                 {{ title }}
             </h2>
-            <p class="article-descrption">
+            <p v-if="description" class="article-descrption">
                 {{ description }}
             </p>
             <div class="article-info" data-allow-mismatch>
@@ -66,18 +66,10 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
     border-radius: 0.8rem;
     color: var(--c-text);
 
-    &:hover {
-        .article-cover {
-            opacity: 1;
-        }
-    }
-
     > article {
-        padding: 0.5rem 1rem;
-
-        > * {
-            margin: 0.7rem 0;
-        }
+        display: grid;
+        gap: 0.5rem;
+        padding: 1rem;
     }
 }
 
@@ -124,7 +116,11 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
     transition: all 0.2s;
     object-fit: cover;
 
-    & + * {
+    :hover > & {
+        opacity: 1;
+    }
+
+    & + article {
         position: relative;
         width: 60%;
         text-shadow: 0 0 0.5rem var(--ld-bg-card), 0 0 1rem var(--ld-bg-card);
@@ -140,7 +136,7 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
         margin-bottom: -10%;
         mask: linear-gradient(#fff 50%, transparent);
 
-        & + * {
+        & + article {
             width: auto;
         }
     }

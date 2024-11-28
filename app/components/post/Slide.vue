@@ -89,21 +89,19 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
     position: relative;
     overflow: hidden;
     mask: linear-gradient(to right, transparent, #fff var(--fadeout-width), #fff calc(100% - var(--fadeout-width)), transparent);
+}
 
-    .embla-button {
-        position: absolute;
-        opacity: 0;
-        padding: 0.5em 0.2em;
-        font-size: 1.5em;
-        transition: all 0.2s;
-        &.prev { left: 1rem; }
-        &.next { right: 1rem; }
-    }
+.embla-button {
+    position: absolute;
+    opacity: 0;
+    padding: 0.5em 0.2em;
+    font-size: 1.5em;
+    transition: all 0.2s;
+    &.prev { left: 1rem; }
+    &.next { right: 1rem; }
 
-    &:hover {
-        .embla-button {
-            opacity: 1;
-        }
+    :hover > & {
+        opacity: 1;
     }
 }
 

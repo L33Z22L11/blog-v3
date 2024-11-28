@@ -8,6 +8,7 @@ const appConfig = useAppConfig()
             <span
                 v-for="(emoji, emojiIndex) in appConfig.header.emojiTail"
                 :key="emojiIndex"
+                class="splitted-char"
                 :style="{ '--delay': `${emojiIndex * .6 - 3}s` }"
                 v-text="emoji"
             />
@@ -23,6 +24,7 @@ const appConfig = useAppConfig()
                 <span
                     v-for="(char, charIndex) in appConfig.title"
                     :key="charIndex"
+                    class="splitted-char"
                     :style="{ '--delay': `${(charIndex + 1) * .1}s` }"
                     v-text="char"
                 />
@@ -67,7 +69,7 @@ const appConfig = useAppConfig()
     font-synthesis: none;
     font-variation-settings: "wght" 600, "BEVL" 100;
 
-    span {
+    > .splitted-char {
         animation: 3.14s infinite alternate vf-weight, 2.72s infinite alternate vf-bevel;
         animation-delay: var(--delay);
         animation-play-state: paused;
@@ -104,7 +106,7 @@ const appConfig = useAppConfig()
     pointer-events: none;
     z-index: -2;
 
-    > * {
+    > .splitted-char {
         animation: 5s infinite alternate emoji-floating;
         animation-delay: var(--delay);
         animation-play-state: paused;
@@ -116,7 +118,7 @@ const appConfig = useAppConfig()
         opacity: 0.5;
     }
 
-    * {
+    .splitted-char {
         animation-play-state: running;
     }
 }

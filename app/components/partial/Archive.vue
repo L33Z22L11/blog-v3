@@ -32,8 +32,7 @@ const auxDateLabel = computed(() => props.date
 
 <style lang="scss" scoped>
 .article-line {
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
     align-items: center;
     gap: 0.5em;
     margin: 0.2em 0;
@@ -68,16 +67,9 @@ const auxDateLabel = computed(() => props.date
 }
 
 .article-link {
+    flex-grow: 1;
     overflow: hidden;
     padding: 0.3em 0.6em;
-
-    &:hover {
-        .article-cover {
-            opacity: 1;
-            width: 50%;
-            object-position: center 43.5%;
-        }
-    }
 }
 
 .article-cover {
@@ -92,5 +84,11 @@ const auxDateLabel = computed(() => props.date
     transition: all 0.2s;
     object-fit: cover;
     z-index: -1;
+
+    :hover > & {
+        opacity: 1;
+        width: 50%;
+        object-position: center 43.5%;
+    }
 }
 </style>

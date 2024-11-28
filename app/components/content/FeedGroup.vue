@@ -34,10 +34,6 @@ defineProps<{
 .feed-group {
     // position: relative;
     margin: 2rem 1rem;
-
-    &:hover > .feed-title {
-        color: var(--c-text-3);
-    }
 }
 
 .feed-title {
@@ -52,6 +48,10 @@ defineProps<{
     transition: color 0.2s;
     z-index: -1;
     -webkit-text-stroke: 1px var(--c-text-3);
+
+    :hover > & {
+        color: var(--c-text-3);
+    }
 }
 
 .feed-desc {

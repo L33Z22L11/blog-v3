@@ -50,9 +50,9 @@ const listRecommended = computed(() => sort(
     <PostSlide v-if="listRecommended?.length && page === 1" :list="listRecommended" />
     <div class="post-list">
         <div class="toolbar">
-            <div class="preview-entrance">
+            <div>
                 <!-- 外层元素用于占位 -->
-                <ZRawLink to="/preview">
+                <ZRawLink to="/preview" class="preview-entrance">
                     <Icon name="ph:file-lock-bold" />
                     查看预览文章
                 </ZRawLink>
@@ -72,22 +72,18 @@ const listRecommended = computed(() => sort(
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
 
-    .preview-entrance {
-        a {
-            position: relative;
-            opacity: 0;
-            transition: all 0.2s 1s, color 0.2s;
-            z-index: -1;
-        }
+.preview-entrance {
+    position: relative;
+    opacity: 0;
+    transition: all 0.2s 1s, color 0.2s;
+    z-index: -1;
 
-        &:hover {
-            a {
-                opacity: 1;
-                color: var(--c-primary);
-                z-index: 0;
-            }
-        }
+    :hover > & {
+        opacity: 1;
+        color: var(--c-primary);
+        z-index: 0;
     }
 }
 

@@ -96,10 +96,6 @@ useCopy(copyBtn, codeblock)
     font-size: 0.8125rem;
     line-height: 1.4;
 
-    &:hover .operations {
-        opacity: 1;
-    }
-
     &.collapsed {
         pre {
             overflow: hidden;
@@ -127,20 +123,20 @@ figcaption {
     padding: 0 1em;
     z-index: 1;
 
-    .filename {
+    > .filename {
         padding: 0.2em 0.8em;
         border-radius: 0 0 0.5em 0.5em;
         background-color: var(--c-border);
         word-break: break-all;
     }
 
-    .language {
+    > .language {
         opacity: 0.4;
         height: 0;
         line-height: 1.8em;
     }
 
-    .operations {
+    > .operations {
         position: absolute;
         opacity: 0;
         top: 0;
@@ -150,6 +146,10 @@ figcaption {
         background-color: var(--c-bg-2);
         line-height: 1.8em;
         transition: opacity 0.2s;
+
+        :hover > & {
+            opacity: 1;
+        }
 
         > button {
             opacity: 0.4;

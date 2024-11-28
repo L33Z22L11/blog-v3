@@ -40,8 +40,6 @@ function toggleTheme(themeName: ThemeType) {
     background-color: var(--c-bg-2);
 
     > button {
-        display: grid;
-        place-items: center;
         padding: 4px 1rem;
         border-radius: 1rem;
         transition: all 0.1s;

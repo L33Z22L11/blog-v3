@@ -154,12 +154,13 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 }
 
 .sidebar-footer {
+    --gap: clamp(0.5rem, 3vh, 1rem);
+
+    display: grid;
+    gap: var(--gap);
+    padding: var(--gap);
     font-size: 0.8em;
     text-align: center;
     color: var(--c-text-2);
-
-    > * {
-        margin-block: clamp(0.5rem, 3vh, 1rem);
-    }
 }
 </style>

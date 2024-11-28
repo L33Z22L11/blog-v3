@@ -29,55 +29,53 @@ const scroll = ref(true)
         white-space: nowrap;
         word-break: normal;
     }
+}
 
-    &:hover {
-        .table-header {
-            opacity: 0.4;
+.table-header {
+    position: sticky;
+    opacity: 0;
+    top: 0;
+    height: 0;
+    text-align: right;
+    transition: opacity 0.2s;
+    z-index: 1;
 
-            &:hover {
-                opacity: 1;
-            }
+    :hover > & {
+        opacity: 0.4;
+
+        &:hover {
+            opacity: 1;
         }
     }
+}
 
-    .table-header {
+:deep(table) {
+    max-height: 80vh;
+    max-height: 80dvh;
+    border-collapse: collapse;
+
+    > thead {
         position: sticky;
-        opacity: 0;
         top: 0;
-        height: 0;
-        text-align: right;
-        transition: opacity 0.2s;
-        z-index: 1;
     }
 
-    :deep(table) {
-        max-height: 80vh;
-        max-height: 80dvh;
-        border-collapse: collapse;
+    th {
+        background-color: var(--c-bg-2);
+        font-weight: var(--font-weight-bold);
+        text-align: center;
+    }
 
-        > thead {
-            position: sticky;
-            top: 0;
-        }
+    tr {
+        transition: background-color 0.2s;
 
-        th {
+        &:hover {
             background-color: var(--c-bg-2);
-            font-weight: var(--font-weight-bold);
-            text-align: center;
         }
+    }
 
-        tr {
-            transition: background-color 0.2s;
-
-            &:hover {
-                background-color: var(--c-bg-2);
-            }
-        }
-
-        th, td {
-            padding: 0.5em 0.8em;
-            border: 1px solid var(--c-border);
-        }
+    th, td {
+        padding: 0.5em 0.8em;
+        border: 1px solid var(--c-border);
     }
 }
 </style>
