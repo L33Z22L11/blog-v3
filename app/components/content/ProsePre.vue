@@ -28,6 +28,10 @@ const meta = computed(() => {
     }, {})
 })
 
+const rows = computed(() => props.code.split('\n').length)
+const collapsible = computed(() => rows.value > 10)
+const [isCollapsed, toggleCollapsed] = useToggle(collapsible.value)
+
 const icon = computed(() => meta.value.icon || getFileIcon(props.filename) || getLangIcon(props.language))
 const isWrap = ref(meta.value.wrap)
 
@@ -38,7 +42,7 @@ useCopy(copyBtn, codeblock)
 </script>
 
 <template>
-    <figure class="z-codeblock">
+    <figure class="z-codeblock" :class="{ collapsed: isCollapsed, collapsible }">
         <figcaption>
             <span v-if="filename" class="filename">
                 <ClientOnly>
@@ -65,6 +69,20 @@ useCopy(copyBtn, codeblock)
             class="scrollcheck-x"
             :class="[props.class, { wrap: isWrap }]"
         ><slot /></pre>
+        <button
+            v-if="collapsible"
+            type="button"
+            class="toggle-btn"
+            :aria-label="isCollapsed ? '展开代码块' : '折叠代码块'"
+            @click="toggleCollapsed()"
+        >
+            <Icon
+                class="toggle-icon"
+                :class="{ 'is-collapsed': isCollapsed }"
+                name="ph:caret-double-down-bold"
+            />
+            <span class="toggle-tip">{{ rows }} 行</span>
+        </button>
     </figure>
 </template>
 
@@ -80,6 +98,23 @@ useCopy(copyBtn, codeblock)
 
     &:hover .operations {
         opacity: 1;
+    }
+
+    &.collapsed {
+        pre {
+            overflow: hidden;
+            max-height: 10rem;
+            mask: linear-gradient(to bottom, #fff 80%, transparent);
+            animation: none;
+        }
+
+        .toggle-btn {
+            margin: 0.5em;
+        }
+    }
+
+    &.collapsible pre {
+        padding-bottom: 2rem;
     }
 }
 
@@ -175,6 +210,39 @@ pre {
 
         outline: 0.2em solid var(--ld-bg-active);
         background-color: var(--ld-bg-active);
+    }
+}
+
+.toggle-btn {
+    position: absolute;
+    inset: auto 0 0;
+    margin: 1.2em;
+    padding: 0.2em;
+    border-radius: 0.5em;
+    background-color: var(--c-bg-3);
+    color: var(--c-text-2);
+}
+
+.toggle-icon {
+    transition: all 0.2s;
+
+    &.is-collapsed {
+        transform: rotate(180deg);
+    }
+
+    :hover > & {
+        opacity: 0;
+    }
+}
+
+.toggle-tip {
+    position: absolute;
+    opacity: 0;
+    inset: auto 0;
+    transition: opacity 0.2s;
+
+    :hover > & {
+        opacity: 1;
     }
 }
 
