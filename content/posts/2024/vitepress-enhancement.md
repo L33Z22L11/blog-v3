@@ -127,7 +127,7 @@ Staticfile CDN、BootCDN（bootcss）、51LA 统计等公共服务已被发现�
   - :copy{prompt="loli.net" command="https://cdnjs.loli.net/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"}
   - :copy{prompt="ZStatic" command="https://s4.zstatic.net/nmp/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"}
 
-至于在 VitePress 站点的 `<head>` 标签中引入 CSS？[看文档](https://vitepress.dev/zh/reference/site-config#head) 吧。当然，引入后不要忘了设置“固定宽度”和“垂直居中”样式。
+至于在 VitePress 站点的 `<head>`{lang="html"} 标签中引入 CSS？[看文档](https://vitepress.dev/zh/reference/site-config#head) 吧。当然，引入后不要忘了设置“固定宽度”和“垂直居中”样式。
 
 ### Google Fonts
 
@@ -149,7 +149,7 @@ Staticfile CDN、BootCDN（bootcss）、51LA 统计等公共服务已被发现�
 - VitePress 适合安装 `@iconify/vue`
   :copy{command="pnpm i @iconify/vue"}
 - 在主题入口文件导入并注册 `Icon` 组件，成品入口文件在下一节
-- 在 Markdown 中通过 `<Icon icon="ph:hand-heart-duotone" />` 使用图标
+- 在 Markdown 中通过 `<Icon icon="ph:hand-heart-duotone" />`{lang="html"} 使用图标
 - 配置项里的字符串不会经过 Vue 渲染，需要将对应位置换用 Vue 组件或是回退至 CDN 引入的图标字体
 
 ## 自定义主题

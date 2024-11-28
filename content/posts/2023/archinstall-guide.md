@@ -75,15 +75,15 @@ Ventoy 需要加载自定义证书文件才能在启用“安全启动”特性�
 - 进入联网工具
   :copy{prompt="#" command="iwctl"}
 - 扫描 WiFi
-  :copy{prompt="[iwd]#" command="station wlan0 scan"}
+  :copy{prompt="[iwd]#" language="sh" command="station wlan0 scan"}
 - 查看 WiFi 列表
-  :copy{prompt="[iwd]#" command="station wlan0 get-networks"}
+  :copy{prompt="[iwd]#" language="sh" command="station wlan0 get-networks"}
 - 连接 WiFi
-  :copy{prompt="[iwd]#" command="station wlan0 connect [SSID]"}
+  :copy{prompt="[iwd]#" language="sh" command="station wlan0 connect [SSID]"}
   - 可以按 Tab 键补全 SSID（WiFi 名称）。
   - 安装镜像的 TTY 终端没有中文字体，不支持中文显示，所以用户可能无法区分中文名称的 WiFi。
 - 退出 iwctl
-  :copy{prompt="[iwd]#" command="exit"}
+  :copy{prompt="[iwd]#" language="sh" command="exit"}
 
 ### 检查硬盘分区
 

@@ -95,14 +95,14 @@ link: https://www.amyuni.com/forum/viewtopic.php?t=3030
 
 - 应用名称：`隐私串流`，下方“启动/退出时执行命令”(Command Preparations) 中添加以下命令：
 - 启动/退出时执行命令：
-  | ▶ Do Command                    | ↺ Undo Command                        | 🛡 Run as Admin |
-  | :------------------------------ | :------------------------------------ | :------------- |
-  | `deviceinstaller64 enableidd 0` | `deviceinstaller64 enableidd 0`       | ☑ Elevated     |
-  | `deviceinstaller64 enableidd 1` | `deviceinstaller64 enableidd 0`       | ☑ Elevated     |
-  |                                 | `rundll32 user32.dll,LockWorkStation` | ☐ Elevated     |
-  | `DisplaySwitch /external`       | `DisplaySwitch /internal`             | ☐ Elevated     |
+  | ▶ Do Command                               | ↺ Undo Command                                   | 🛡 Run as Admin |
+  | :----------------------------------------- | :----------------------------------------------- | :------------- |
+  | `deviceinstaller64 enableidd 0`{lang="sh"} | `deviceinstaller64 enableidd 0`{lang="sh"}       | ☑ Elevated     |
+  | `deviceinstaller64 enableidd 1`{lang="sh"} | `deviceinstaller64 enableidd 0`{lang="sh"}       | ☑ Elevated     |
+  |                                            | `rundll32 user32.dll,LockWorkStation`{lang="sh"} | ☐ Elevated     |
+  | `DisplaySwitch /external`{lang="sh"}       | `DisplaySwitch /internal`{lang="sh"}             | ☐ Elevated     |
   - 多执行一次“关闭虚拟显示器”是为了防止虚拟显示器多开导致串流主机分辨率异常且操作卡顿。
-  - `rundll32 user32.dll,LockWorkStation` 是为了在结束串流后锁定电脑。**注意，串流暂停或结束后电脑声音将不通过串流设备播放。**
+  - `rundll32 user32.dll,LockWorkStation`{lang="sh"} 是为了在结束串流后锁定电脑。**注意，串流暂停或结束后电脑声音将不通过串流设备播放。**
 - 工作目录：usbmmidd 解压后所在目录
   :copy{prompt command="D:\Software\usbmmidd_v2\"}
 

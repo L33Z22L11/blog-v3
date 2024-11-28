@@ -9,18 +9,18 @@ tags: [实验室, Lab, C语言]
 ---
 
 > 注:
-> - 本题目仅作`西邮Linux兴趣小组`2021纳新面试题的有限参考。
-> - 为节省版面本试题的程序源码中省略了`#include`指令。
+> - 本题目仅作 `西邮Linux兴趣小组` 2021 纳新面试题的有限参考。
+> - 为节省版面本试题的程序源码中省略了 `#include`{lang="c"} 指令。
 > - 本试题中的程序源码仅用于考察C语言基础，不应当作为C语言代码风格的范例。
 > - 题目难度与序号无关。
-> - 所有题目均假设编译并运行`x86_64 GNU/Linux`环境。
+> - 所有题目均假设编译并运行 `x86_64 GNU/Linux` 环境。
 >
 > Copyright © 2021 西邮Linux兴趣小组, All Rights Reserved.\
 > 本试题使用采用 [知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](http://creativecommons.org/licenses/by-nc-sa/4.0/) 进行许可。
 
 ## 1. 大小和长度竟然不是一个意思
 
-> `sizeof()`和`strlen()`有什么异同之处？
+> `sizeof()`{lang="c"} 和 `strlen()`{lang="c"} 有什么异同之处？
 >
 > 他们对于不同参数的结果有什么不同？请试举例子说明。
 >
@@ -33,13 +33,13 @@ tags: [实验室, Lab, C语言]
 > }
 > ```
 
-`a`为`sizeof(s)`，即字符数组`['I', ' ', 'l', 'o', 'v', 'e', ' ', 'L', 'i', 'n', 'u', 'x', '\0', '\0', '\0']`的大小；`b`为`strlen(s)`，即字符数组`"I love Linux"`的长度。
+`a`{lang="c"} 为 `sizeof(s)`{lang="c"}，即字符数组 `['I', ' ', 'l', 'o', 'v', 'e', ' ', 'L', 'i', 'n', 'u', 'x', '\0', '\0', '\0']`{lang="c"} 的大小；`b`{lang="c"} 为 `strlen(s)`{lang="c"}，即字符数组 `"I love Linux"`{lang="c"} 的长度。
 
-另外，如果声明`char s[20] = "I love Linux\0\0\0";`，则`a = sizeof(s);`的值变为`20`。
+另外，如果声明 `char s[20] = "I love Linux\0\0\0";`{lang="c"}，则 `a = sizeof(s);`{lang="c"} 的值变为`20`{lang="c"}。
 
 ## 2. 箱子的大小和装入物品的顺序有关
 
-> `test1`和`test2`都含有：1个`short`、1个`int`、1个`double`，那么`sizeof(t1)`和`sizeof(t2)`是否相等呢？这是为什么呢？
+> `test1`{lang="c"} 和 `test2`{lang="c"} 都含有：1个 `short`{lang="c"}、1个 `int`{lang="c"}、1个 `double`{lang="c"}，那么 `sizeof(t1)`{lang="c"} 和 `sizeof(t2)`{lang="c"} 是否相等呢？这是为什么呢？
 >
 > ```c
 > struct test1 {
@@ -77,7 +77,7 @@ struct test2 {
 
 ## 3. 哦，又是函数
 
-> 想必在高数老师的教导下大家十分熟悉函数这个概念。那么你了解计算机程序设计中的函数吗？请编写一个`func`函数，用来输出二维数组`arr`中每个元素的值。
+> 想必在高数老师的教导下大家十分熟悉函数这个概念。那么你了解计算机程序设计中的函数吗？请编写一个 `func`{lang="c"} 函数，用来输出二维数组 `arr`{lang="c"} 中每个元素的值。
 >
 > ```c
 > /*在这里补全func函数的定义*/
@@ -98,14 +98,13 @@ struct test2 {
 #include <stdio.h>
 #include <stdlib.h>
 void func(int a[10][13]) {
-    for (int i = 0; i < 10; i++)     {
+    for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 13; j++)
             printf("%d ", a[i][j]);
         printf("\n");
     }
 }
-int main(void)
-{
+int main(void) {
     int arr[10][13];
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 13; j++) {
@@ -118,7 +117,7 @@ int main(void)
 
 ## 4.就不能换个变量名吗？
 
-> - 请结合下面的程序，简要谈谈`传值`和`传址`的区别。
+> - 请结合下面的程序，简要谈谈 `传值` 和 `传址` 的区别。
 > - 简要谈谈你对C语言中变量的生命周期的认识。
 >
 > ```c
@@ -149,9 +148,9 @@ int main(void)
 > }
 > ```
 
-- `传值`后，修改形参的值，实参的值不会改变。
+- `传值` 后，修改形参的值，实参的值不会改变。
 
-- `传址`后，修改形参的值，实参的值会改变。
+- `传址` 后，修改形参的值，实参的值会改变。
 
 解读：
 
@@ -204,9 +203,9 @@ int main() {
 > int main(void) { printf("%u\n", sum(100)); }
 > ```
 
-通过递归完成求和，每次递归返回的为其先前的数之和。相当于`栈(Stack)`，只有其前的函数的表达式返回值（出栈），新的栈顶函数表达式才能返回值。
+通过递归完成求和，每次递归返回的为其先前的数之和。相当于 `栈(Stack)`，只有其前的函数的表达式返回值（出栈），新的栈顶函数表达式才能返回值。
 
-特别地，当栈顶元素为`sum(0)`时，会返回`0`以实现从`0`到`n`的求和。
+特别地，当栈顶元素为 `sum(0)`{lang="c"} 时，会返回 `0`{lang="c"} 以实现从 `0` 到 `n` 的求和。
 
 ## 6. 算不对的算术
 
@@ -286,11 +285,11 @@ int main(void) {
 
 ## 8. 移形换位之术
 
-> 下面有`a`、`b`、`c`三个变量和4个相似的函数。
+> 下面有 `a`{lang="c"}、`b`{lang="c"}、`c`{lang="c"} 三个变量和4个相似的函数。
 > - 你能说出使用这三个变量的值或地址作为参数分别调用这5个函数，在语法上是否正确吗？
 > - 请找出下面的代码中的错误。
-> - `const int`和`int const`是否有区别？如果有区别，请谈谈他们的区别。
-> - `const int *`和`int const *`是否有区别？如果有区别，请谈谈他们的区别。
+> - `const int`{lang="c"} 和 `int const`{lang="c"} 是否有区别？如果有区别，请谈谈他们的区别。
+> - `const int *`{lang="c"} 和 `int const *`{lang="c"} 是否有区别？如果有区别，请谈谈他们的区别。
 >
 > ```c
 > int a = 1;
@@ -355,7 +354,7 @@ void func4(const int *const n) {
 
 ## 9. 听说翻转字母大小写不影响英文的阅读？
 
-> 请编写`convert`函数用来将作为参数的字符串中的大写字母转换为小写字母，将小写字母转换为大写字母。返回转换完成得到的新字符串。
+> 请编写 `convert`{lang="c"} 函数用来将作为参数的字符串中的大写字母转换为小写字母，将小写字母转换为大写字母。返回转换完成得到的新字符串。
 >
 > ```c
 > char *convert(const char *s);
@@ -369,13 +368,11 @@ void func4(const int *const n) {
 ```c
 #include <stdio.h>
 #include <string.h>
-char *convert(const char *s)
-{
+char *convert(const char *s) {
     int len = strlen(s);
     char *result = malloc(sizeof(char) * (len + 1));
     strcpy(result, s);
-    for (int i = 0; i < len; i++)
-    {
+    for (int i = 0; i < len; i++) {
         if (result[i] >= 'A' && result[i] <= 'Z')
             result[i] += 32;
         else if (result[i] >= 'a' && result[i] <= 'z')
@@ -383,8 +380,7 @@ char *convert(const char *s)
     }
     return result;
 }
-int main(void)
-{
+int main(void) {
     char *str = "XiyouLinux Group 2022";
     char *temp = convert(str);
     puts(temp);
@@ -393,9 +389,9 @@ int main(void)
 
 ## 10. 交换礼物的方式
 
-> - 请判断下面的三种`Swap`的正误，分别分析他们的优缺点。
-> - 你知道这里的`do {...} while(0)`的作用吗？
-> - 你还有其他的方式实现`Swap`功能吗？
+> - 请判断下面的三种 `Swap`{lang="c"} 的正误，分别分析他们的优缺点。
+> - 你知道这里的 `do {...} while(0)`{lang="c"} 的作用吗？
+> - 你还有其他的方式实现 `Swap`{lang="c"} 功能吗？
 >
 > ```c
 > #define Swap1(a, b, t)   \
@@ -417,11 +413,11 @@ int main(void)
 > }
 > ```
 
-- `Swap1()`和`Swap2()`通过宏定义实现两数交换，`do {...} while(0)`可以用代码块花括号`{...}`替代，目的是防止宏替换后语句不在同一代码块内。
+- `Swap1()`{lang="c"} 和 `Swap2()`{lang="c"} 通过宏定义实现两数交换，`do {...} while(0)`{lang="c"} 可以用代码块花括号 `{...}`{lang="c"} 替代，目的是防止宏替换后语句不在同一代码块内。
 
-- `Swap3()`错误，交换形参的值并不能改变实参。
+- `Swap3()`{lang="c"} 错误，交换形参的值并不能改变实参。
 
-- `Swap4()`利用指针来实现。
+- `Swap4()`{lang="c"} 利用指针来实现。
 
 ```c
 void Swap4(int *a, int *b) {
@@ -433,7 +429,7 @@ void Swap4(int *a, int *b) {
 
 ## 11. 据说有个东西叫参数
 
-> 你知道`argc`和`argv`的含义吗？请解释下面的程序。你能在不使用`argc`的前提下，完成对`argv`的遍历吗？
+> 你知道 `argc`{lang="c"} 和 `argv`{lang="c"} 的含义吗？请解释下面的程序。你能在不使用 `argc`{lang="c"} 的前提下，完成对 `argv`{lang="c"} 的遍历吗？
 >
 > ```c
 > int main(int argc, char *argv[]) {
@@ -443,9 +439,9 @@ void Swap4(int *a, int *b) {
 > }
 > ```
 
-`argc`指argument count，即参数计数器，`argv`指argument vector，即参数数组。程序在运行时传入的第一个参数就是程序的启动路径/文件名，因此`argc`最小为`1`。在循环中，整型`argc`会自增到溢出，然后打印`argv[0]`即程序路径。
+`argc`{lang="c"} 指 argument count，即参数计数器，`argv`{lang="c"} 指 argument vector，即参数数组。程序在运行时传入的第一个参数就是程序的启动路径/文件名，因此 `argc`{lang="c"} 最小为 `1`{lang="c"}。在循环中，整型 `argc`{lang="c"} 会自增到溢出，然后打印 `argv[0]`{lang="c"} 即程序路径。
 
-不使用`argc`遍历`argv`的方法：
+不使用 `argc`{lang="c"} 遍历 `argv`{lang="c"} 的方法：
 
 ```c
 #include <stdio.h>
@@ -484,7 +480,7 @@ int main() {
 > }
 > ```
 
-`*func3()`返回的是局部变量，在外部赋值时此局部变量已被抛弃，成为了野指针。
+`*func3()`{lang="c"} 返回的是局部变量，在外部赋值时此局部变量已被抛弃，成为了野指针。
 
 ## 13. 奇怪的输出
 
@@ -533,16 +529,16 @@ int main(void) {
 
 > 一个程序在不使用任何头文件的情况下，如何使用另一个文件中的函数。
 
-## 17. (选做) `GNU/Linux`与文件
+## 17. (选做) `GNU/Linux` 与文件
 
-> - 你知道如何在 `GNU/Linux`下如何使用命令行创建文件与文件夹吗？
-> - 你知道`GNU/Linux`下的命令ls 的每一列的含义吗？
-> - 你知道`GNU/Linux`下文件的访问时间、修改时间、创建时间如何查看吗？并简单说说他们的区别。
+> - 你知道如何在 `GNU/Linux` 下如何使用命令行创建文件与文件夹吗？
+> - 你知道 `GNU/Linux` 下的命令 `ls`{lang="sh"} 的每一列的含义吗？
+> - 你知道 `GNU/Linux` 下文件的访问时间、修改时间、创建时间如何查看吗？并简单说说他们的区别。
 
-> 恭喜你做完了整套面试题，快来参加西邮Linux兴趣小组的面试吧！
+> 恭喜你做完了整套面试题，快来参加西邮 Linux 兴趣小组的面试吧！
 >
-> 西邮 Linux兴趣小组面试时间：\
+> 西邮 Linux 兴趣小组面试时间：\
 > 2021年10月25日至2021年10月31日晚8点。\
 > 听说面试来的早一点更能获得学长学姐的好感哦。
 >
-> 我们在FZ103等你！
+> 我们在 FZ103 等你！

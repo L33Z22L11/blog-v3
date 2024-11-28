@@ -37,9 +37,10 @@ hexo : 无法将“hexo”项识别为 cmdlet、函数、脚本文件或可运�
 
 ## 从 CSScomb 到 CSScomb，然后选择 Stylelint
 
-在我初学前端时，时常感到 CSS 声明的顺序难以决定和整理，后来找到了 [CSScomb](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-csscomb) 插件来整理 CSS 声明顺序。在 VS Code 配置文件中设置 `"csscomb.preset": "csscomb"` 即可使用这个插件。
+在我初学前端时，时常感到 CSS 声明的顺序难以决定和整理，后来找到了 [CSScomb](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-csscomb) 插件来整理 CSS 声明顺序。在 VS Code 配置文件中设置 `{ "csscomb.preset": "csscomb" }`{lang="json"} 即可使用这个插件。
 
 因为插件长期不更新，另一位俄国老哥创建了同名 VS Code 插件 [CSScomb](https://marketplace.visualstudio.com/items?itemName=naumstory.vscode-csscomb) 来吐槽。原插件在 2020 年更新后就 Archive 了，而且也没有 CSS 新特性的支持。
+
 ### “好装不好用”还是“好用不好装”？只知道我好菜。
 
 后来，我看到了 [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)，它比 CSScomb 更好用，而且支持 VS Code 的自动格式化功能。
@@ -74,7 +75,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 {Yuanfang}
 
-哥😭我给虚拟机编译内核，`make install` 时候 `/boot` 分区满了，我不敢整，怕搞崩，你能来给扩容一下不🥹
+哥😭我给虚拟机编译内核，`make install`{lang="sh"} 时候 `/boot` 分区满了，我不敢整，怕搞崩，你能来给扩容一下不🥹
 
 {Yuanfang}
 
@@ -121,7 +122,7 @@ link: https://github.com/KazariEX/hexo-server-live
 }
 ```
 
-为什么会有两个 monospace？第一个 `"monospace"` 是系统的 monospace 字体别名，而第二个才是浏览器的等宽字体设置，优先级最低，所以设置了看不到效果。
+为什么会有两个 monospace？第一个 `"monospace"`{lang="js"} 是系统的 monospace 字体别名，而第二个才是浏览器的等宽字体设置，优先级最低，所以设置了看不到效果。
 
 经过我和 Shawn 的探讨，打算安装 CSS 中优先级最高的 `Droid Sans Mono` 来满足需求。包管理器（Yay）里没有找到，我们就通过浏览器下载字体，再通过字体管理器安装了字体，问题就解决了。
 
@@ -190,15 +191,15 @@ link: https://github.com/KazariEX/hexo-server-live
 
 ### 在 Windows 下很好表现，使我的代码飘红
 
-我移除了 `stylelint.packageManager` 配置项，并尝试使用 npm 全局安装这些包，之前的问题在 Windows 上都解决了。所以 pnpm 呀，你还是把全局包交给 npm 来管理吧。
+我移除了 `stylelint.packageManager`{lang="js"} 配置项，并尝试使用 npm 全局安装这些包，之前的问题在 Windows 上都解决了。所以 pnpm 呀，你还是把全局包交给 npm 来管理吧。
 
 上手体验了一下。我的 CSS 代码飘红一片。修吧修吧。😢
 
 ## SSH 连接 Localhost，然后探寻 $Env:PATH 的秘密
 
-另外，我还发现换用 npm 管理全局包后，先前 SSH 环境中无法使用 `hexo-cli` 包提供的 `hexo` 命令的问题消失了。
+另外，我还发现换用 npm 管理全局包后，先前 SSH 环境中无法使用 `hexo-cli` 包提供的 `hexo`{lang="sh"} 命令的问题消失了。
 
-于是，我着手研究 pnpm 全局包在远程 SSH 环境中的问题。在一次远程执行 `pnpm add -g pnpm` 后，我从报错中发现了端倪：
+于是，我着手研究 pnpm 全局包在远程 SSH 环境中的问题。在一次远程执行 `pnpm add -g pnpm`{lang="sh"} 后，我从报错中发现了端倪：
 
 ```log
 [ERROR] The configured global bin directory
@@ -209,7 +210,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 ### PowerShell 糕手：SSH 就测一下，到底带不带 -t？
 
-简而言之，如果是交互式命令，就带上 `-t` 参数。起初我未使用 `-t` 参数，结果 Powershell Profile 中的 `Set-PSReadLineOption` 因为无法启用而报错了。
+简而言之，如果是交互式命令，就带上 `-t` 参数。起初我未使用 `-t` 参数，结果 Powershell Profile 中的 `Set-PSReadLineOption`{lang="sh"} 因为无法启用而报错了。
 
 我使用这行命令试图查看 SSH 环境中的 PATH：
 
@@ -239,7 +240,7 @@ stylelint/vscode-stylelint 仓库的 Issue [#331](https://github.com/stylelint/v
 
 ### Linux 下 npm 全局包的安装和索引——
 
-简而言之，Linux 下 `npm install -g <package>` 命令要么加 `sudo`，要么遇到 `EACCES` 错误。
+简而言之，Linux 下 `npm install -g <package>`{lang="sh"} 命令要么加 `sudo`{lang="sh"}，要么遇到 `EACCES` 错误。
 
 见 npm 官方文档给出的解决办法：[Resolving EACCES permissions errors when installing packages globally](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)。
 
@@ -280,25 +281,25 @@ NVM，再见了。我要试试这个新方法。
 - 执行 sudo 命令时报错“/usr/bin/sudo 必须属于用户 ID 0(的用户)并且设置 setuid 位”。
 - 执行 su 命令时报错“su: 身份验证失败”。
 
-再一执行 `ll /usr/bin/su*`，一看属于 `zhilu:zhilu` 而不是 `root:root`，立马感到**坏事了！**
+再一执行 `ll /usr/bin/su*`{lang="sh"}，一看属于 `zhilu:zhilu` 而不是 `root:root`，立马感到**坏事了！**
 
-为什么这些文件的权限会被更改？我立刻使用 `less $HISTFILE` 工具，按 Shift+G 跳转到文件末，从后向前查看终端中输入命令的历史记录。经过查找，发现这条命令十分可疑：
+为什么这些文件的权限会被更改？我立刻使用 `less $HISTFILE`{lang="sh"} 工具，按 Shift+G 跳转到文件末，从后向前查看终端中输入命令的历史记录。经过查找，发现这条命令十分可疑：
 
 ```sh [可疑命令]
 sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 ```
 
-再执行 `npm config get prefix` 一看：
+再执行 `npm config get prefix`{lang="sh"} 一看：
 
 ::alert{type="error"}
 #title
 npm 配置的前缀竟然是 `/usr`！
 
 #default
-所有 `/usr/bin`，即 `/bin` 下的所有程序都被修改了权限。我被一个简简单单的 `$(npm config get prefix)` 表达式蒙蔽，忽略了其中的风险。
+所有 `/usr/bin`，即 `/bin` 下的所有程序都被修改了权限。我被一个简简单单的 `$(npm config get prefix)`{lang="sh"} 表达式蒙蔽，忽略了其中的风险。
 ::
 
-众所周知，`/bin` 下的程序各有各的权限设置，修改它们权限的愚蠢程度与 `chmod -R 777 /` 相当。（另一个我听说的愚蠢的错误是在 WSL 里执行 `rm -rf /`，它并不安全，因为 Windows 文件挂载在 `/mnt` 下。）
+众所周知，`/bin` 下的程序各有各的权限设置，修改它们权限的愚蠢程度与 `chmod -R 777 /`{lang="sh"} 相当。（另一个我听说的愚蠢的错误是在 WSL 里执行 `rm -rf /`{lang="sh"}，它并不安全，因为 Windows 文件挂载在 `/mnt` 下。）
 
 🥺还能怎么办，修呗。
 

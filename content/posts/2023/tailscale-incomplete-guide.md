@@ -47,7 +47,7 @@ Windows 在安装、登录之后建议在任务栏上右键图标，在“Prefer
 
 有时 Tailscale 的直连会中断，变为 DERP 中转模式，此模式下延迟较高，若想以直连方式重连目标机器，可以重启目标机器上的 Tailscale 服务。
 
-特别地，如果在 SSH 中重启服务，请注意 SSH 中断会导致重启失败，无法进行后续连接，所以需要另起一个与 SSH 无关的进程。Linux 中可以使用 `screen` 命令，Windows 中可以执行这个脚本文件：
+特别地，如果在 SSH 中重启服务，请注意 SSH 中断会导致重启失败，无法进行后续连接，所以需要另起一个与 SSH 无关的进程。Linux 中可以使用 `screen`{lang="sh"} 命令，Windows 中可以执行这个脚本文件：
 
 ```bat [restart-tailscale.bat]
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd","/c %~s0 ::","","runas",1)(window.close) && exit
@@ -61,7 +61,7 @@ powershell Invoke-WmiMethod Win32_Process Create \"powershell Restart-Service Ta
   - 手机：选择分享文件，选择“Tailscale”，随后选择设备。
 - 接收文件
   - 文件会自动出现在接收设备的系统默认下载目录中。
-  - Linux 系统输入 `sudo tailscale file get` 接收文件。
+  - Linux 系统输入 `sudo tailscale file get`{lang="sh"} 接收文件。
 
 ## Windows 文件共享
 
@@ -77,10 +77,10 @@ powershell Invoke-WmiMethod Win32_Process Create \"powershell Restart-Service Ta
 
 - 方法一：删除对应的Windows凭据
   - 在开始菜单中搜索“凭据”，进入“控制面板\用户帐户\凭据管理器\管理 Windows 凭据”。
-  - 删除对应的用户账户，在命令行中输入 `net use /d *` 断开共享文件夹连接。
+  - 删除对应的用户账户，在命令行中输入 `net use /d *`{lang="sh"} 断开共享文件夹连接。
   - 重新访问目标电脑的共享文件夹，应该会弹出登录窗口。
 - 方法二：通过映射网络驱动器切换账号
-  - 在命令行中输入 `net use /d *`，断开先前的共享文件夹连接。
+  - 在命令行中输入 `net use /d *`{lang="sh"}，断开先前的共享文件夹连接。
   - 右键目标电脑的某一共享文件夹，选择“映射网络驱动器…”。
   - 勾选“使用其他凭据连接”，输入用户名、密码，勾选“记住我的凭据”。
   - 在文件资源管理器左侧树形导航（或者“此电脑”）中右键刚刚映射的网络驱动器，选择“断开连接”。
@@ -105,7 +105,7 @@ powershell Invoke-WmiMethod Win32_Process Create \"powershell Restart-Service Ta
 
 在“Windows 设置-系统-远程桌面”中启用远程连接。
 
-随后可以在客户端按下 `Win+R`，输入 `mstsc`，然后连接到主机名或者虚拟内网IP地址了。
+随后可以在客户端按下 `Win+R`，输入 `mstsc`{lang="cmd"}，然后连接到主机名或者虚拟内网IP地址了。
 
 ## Moonlight 串流
 

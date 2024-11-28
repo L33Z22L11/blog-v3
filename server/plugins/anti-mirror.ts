@@ -1,5 +1,5 @@
-import blogConfig from '~~/blog.config'
 import { minify } from 'terser'
+import blogConfig from '~~/blog.config'
 
 const encodedBlacklist = [
     'dgvhqt.com',

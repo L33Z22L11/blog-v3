@@ -27,4 +27,4 @@ tags: [实验室, Lab]
 CFLAGS = -Wall -O -fno-omit-frame-pointer -ggdb
 ```
 
-如果使用clangd作为VSCode的语法前端，需要在设置中向`clangd.fallbackFlags`添加一项：`-I${workspaceFolder}`。
+如果使用clangd作为VSCode的语法前端，需要在设置中向`clangd.fallbackFlags`{lang="js"}添加一项：`-I${workspaceFolder}`{lang="js"}。

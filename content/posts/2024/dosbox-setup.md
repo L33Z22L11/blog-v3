@@ -43,17 +43,18 @@ output=surface
 ```
 
 - 想要放大画面，可以修改 `windowresolution` 为以下值：
-  - `1280x800`（2倍）
-  - `960x600`（1.5倍）
+  - `1280x800`{lang="ini"}（2倍）
+  - `960x600`{lang="ini"}（1.5倍）
 - 如果修改了 `windowresolution`，`output` 方式也要修改。
-  - 网上的多数教程都改成了 `opengl`，这种方式会导致**缩放模糊**。并且多数学生使用的笔记本同时具有核显和独显，OpenGL 引擎启动时会调用独立显卡，**增加耗电**。
-  - 在这里，本人推荐改成 `overlay` 或者 `ddraw`，这些输出方式使用临近（Nearest）缩放算法，字体边缘更清晰，不会出现模糊。
+  - 网上的多数教程都改成了 `opengl`{lang="ini"}，这种方式会导致**缩放模糊**。并且多数学生使用的笔记本同时具有核显和独显，OpenGL 引擎启动时会调用独立显卡，**增加耗电**。
+  - 在这里，本人推荐改成 `overlay`{lang="ini"} 或者 `ddraw`{lang="ini"}，这些输出方式使用临近（Nearest）缩放算法，字体边缘更清晰，不会出现模糊。
 
 #### 自动挂载
 
-在配置文件末尾，`[autoexec]` 一节下添加以下内容，参数中的文件夹路径可以随自己喜好修改：
+在配置文件末尾，`[autoexec]`{lang="ini"} 一节下添加以下内容，参数中的文件夹路径可以随自己喜好修改：
 
 ```ini [doxbox-0.74-3.conf]
+[autoexec]
 # 将 Windows 系统 D:\Software\MASM 文件夹挂载到 DOS 虚拟磁盘 C:
 MOUNT C D:\Software\MASM
 # 设置 C: 为 PATH，使得 MASM 文件夹中的程序在任何目录下都可调用
@@ -64,7 +65,7 @@ MOUNT D D:\CodeXUPT\Assembly
 D:
 ```
 
-这样，启动 DOSBox 后，就会自动挂载 MASM 文件夹和代码文件夹。并且可以在代码目录下，直接通过 `masm` `debug` 等指令操作文件。
+这样，启动 DOSBox 后，就会自动挂载 MASM 文件夹和代码文件夹。并且可以在代码目录下，直接通过 `masm`{lang="sh"} `debug`{lang="sh"} 等指令操作文件。
 
 ## 使用网页版 DOSBox
 

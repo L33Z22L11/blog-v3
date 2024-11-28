@@ -90,7 +90,7 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
   :copy{command="cat /proc/cpuinfo | grep processor | wc -l"}
 - 编辑 makepkg 配置文件
   :copy{command="sudo vim /etc/makepkg.conf"}
-- 修改编译线程数：删除 `MAKEFLAGS=j[N]` 前面的注释标记，并将 `N` 替换为 CPU 线程数（输入 `/MAKE` 搜索）
+- 修改编译线程数：删除 `MAKEFLAGS=j[N]`{lang="ini"} 前面的注释标记，并将 `N` 替换为 CPU 线程数（输入 `/MAKE` 搜索）
   ```ini [/etc/makepkg.conf]
   MAKEFLAGS="-j8"
   ```

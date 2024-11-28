@@ -11,7 +11,7 @@ recommend: true
 
 ## 启动
 
-- 按 Win+R 打开运行窗口，输入 `wt`，回车即可打开 Windows Terminal。
+- 按 Win+R 打开运行窗口，输入 `wt`{lang="sh"}，回车即可打开 Windows Terminal。
 - 按 Win+X 打开开始按钮右键菜单，按 I（或 Alt+I）打开 Windows Terminal。
 
 ## PowerShell
@@ -75,10 +75,6 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
   - 在 Windows Terminal 中，按 Ctrl+, 打开设置
   - 配置文件 - 默认值 - 外观 - 字体 - 选择你下载的字体 - 保存
 
-#### VS Code 集成终端乱码
-
-这是一个 [bug](https://github.com/microsoft/vscode/issues/211922)，可以通过设置 `terminal.integrated.shellIntegration.enabled` 为 `false` 来解决。
-
 ## Git Bash
 
 在安装了 Git for Windows 后，可以将 Git Bash 添加到 Windows Terminal 中。
@@ -133,7 +129,7 @@ link: /2023/ssh-key-login
 
 ## 使用 Fastfetch 获取系统信息
 
-在 Windows 下，推荐使用 [Scoop](https://scoop.sh/) 安装命令行程序。安装 Scoop 后，可以通过 `scoop install fastfetch` 安装 [Fastfetch](https://github.com/fastfetch-cli/fastfetch)。（参考[Windows 上的开源软件入门 > 使用包管理器安装软件](/2024/sfd-xupt#使用包管理器安装软件)）
+在 Windows 下，推荐使用 [Scoop](https://scoop.sh/) 安装命令行程序。安装 Scoop 后，可以通过 `scoop install fastfetch`{lang="sh"} 安装 [Fastfetch](https://github.com/fastfetch-cli/fastfetch)。（参考[Windows 上的开源软件入门 > 使用包管理器安装软件](/2024/sfd-xupt#使用包管理器安装软件)）
 
 - 打印系统信息
   :copy{prompt="PS>" command="fastfetch"}
@@ -146,7 +142,7 @@ Fastfetch 还支持更进一步地定义配置文件。
 
 - 通过 PS ReadLine 获取历史记录
   :copy{prompt="PS>" command="Get-Content (Get-PSReadlineOption).HistorySavePath"}
-- 获取命令位置（类似于 Linux 的 `which`）
+- 获取命令位置（类似于 Linux 的 `which`{lang="sh"}）
   :copy{prompt="PS>" command="(Get-Command <command>).Definition"}
 - 在此次打开文件资源管理器
   :copy{prompt="PS>" command="explorer ."}

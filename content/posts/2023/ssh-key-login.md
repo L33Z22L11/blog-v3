@@ -25,7 +25,7 @@ ED225519 类型的密钥综合性能更好。
 
 :copy{command="ssh-keygen -t ed25519"}
 
-连续按回车键即可。如果你想自定义生成内容，请使用 `ssh-keygen -t ed25519 -C "内容"`。生成好的**公钥**可以通过 `cat ~/.ssh/id_ed25519.pub` 查看。
+连续按回车键即可。如果你想自定义生成内容，请使用 `ssh-keygen -t ed25519 -C "内容"`{lang="sh"}。生成好的**公钥**可以通过 `cat ~/.ssh/id_ed25519.pub` 查看。
 
 ## 将公钥加入认证列表
 
@@ -35,13 +35,13 @@ ED225519 类型的密钥综合性能更好。
 # PubkeyAuthentication yes
 ```
 
-在`~/.ssh/authorized_keys`文件中逐行添加**公钥**即可。此文件的权限应当是`644`，否则可能会被拒绝读取（也就是无法用SSH公钥认证登录）。
+在 `~/.ssh/authorized_keys` 文件中逐行添加**公钥**即可。此文件的权限应当是 `644`，否则可能会被拒绝读取（也就是无法用SSH公钥认证登录）。
 
 示例：[我的SSH公钥](https://gist.github.com/L33Z22L11/fdac255fe90aa9677bf530e7792db703)
 
 ## 避免每次输入用户名和IP地址
 
-在 SSH 配置文件中按照以下格式添加条目，即可直接通过 Host 项的名字连接，还能在 `ssh` 命令输到一半时按 Tab 键自动补全：
+在 SSH 配置文件中按照以下格式添加条目，即可直接通过 Host 项的名字连接，还能在 `ssh`{lang="sh"} 命令输到一半时按 Tab 键自动补全：
 
 ```ssh-config [~/.ssh/config]
 Host zhilu-server
@@ -62,8 +62,8 @@ Host zhilu-server
 
 大多数代理节点不允许直接访问 22 端口，因此在使用 SSH 连接 GitHub 仓库时，应使用 443 端口。
 
-- Linux 和 macOS：可以使用 `nc` 工具来实现 SOCKS5 代理。
-- Windows：需要用 `connect` 命令，该命令可在 Git for Windows 提供的 Git Bash 中找到。
+- Linux 和 macOS：可以使用 `nc`{lang="sh"} 工具来实现 SOCKS5 代理。
+- Windows：需要用 `connect`{lang="sh"} 命令，该命令可在 Git for Windows 提供的 Git Bash 中找到。
 
 设置代理时，在 SSH 配置文件中启用以下内容，将 `ProxyCommand` 的代理地址替换为实际的 SOCKS5 地址：
 
@@ -74,7 +74,7 @@ Host github.com
     User git
     ProxyCommand connect -S 127.0.0.1:10808 %h %p
 ```
-若不是 Windows，需要把 `connect -S` 更改为 `nc -v -x`。
+若不是 Windows，需要把 `connect -S`{lang="sh"} 更改为 `nc -v -x`{lang="sh"}。
 
 这样配置后，SSH 将通过代理访问 GitHub。注释掉这几行，即可关闭代理设置。
 

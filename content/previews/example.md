@@ -17,7 +17,7 @@ Nuxt Content 使用 Markdown 语法和约定来提供丰富的文本编辑体验
 ### 通过 CSS 类名控制的样式
 
 - 各级标题
-  - 在 Front matter 中设置 `type: story` 可以换用不同样式。
+  - 在 Front matter 中设置 `type: story`{lang="yaml"} 可以换用不同样式。
   - 跟随 URL Hash（网址锚点）的高亮。
 - > 引用。
 - 无序和有序列表。
@@ -25,7 +25,7 @@ Nuxt Content 使用 Markdown 语法和约定来提供丰富的文本编辑体验
 - 分割线。
 ---
 - 带有 `icon` 类名的图片，如 ![图片](https://picsum.photos/100/100){.icon}。
-- [只在 `type: story` 时🀄]{.title-like}
+- [只在 `type: story`{lang="yaml"} 时🀄]{.title-like}
 - [故事感。]{.text-story}
 - [阴 影 回 声]{.text-repeat}
 - 滚动，然后悄悄[变大变高]{.text-zoom}，惊艳所有人。

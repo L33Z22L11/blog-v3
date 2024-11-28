@@ -19,7 +19,7 @@ SMB (Server Message Block) 是一种网络文件共享协议；Samba 是在 Linu
 
 ## 简单传输文件
 
-如果只是单次传输文件，可以考虑使用 `scp` 或 `rsync`。
+如果只是单次传输文件，可以考虑使用 `scp`{lang="sh"} 或 `rsync`{lang="sh"}。
 
 ```sh
 scp -P 22 /path/to/file user@host:/path/to/destination

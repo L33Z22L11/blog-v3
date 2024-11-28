@@ -70,4 +70,4 @@ tags: [教程, 系统, archlinux]
 
 按 Ctrl-Alt-Delete 键。
 
-更规范的方式是输入 `exit` 或按 Ctrl-D 键退出 chroot 环境，然后执行 `reboot` 命令重启。
+更规范的方式是输入 `exit`{lang="sh"} 或按 Ctrl-D 键退出 chroot 环境，然后执行 `reboot`{lang="sh"} 命令重启。

@@ -24,7 +24,7 @@ references:
 
 ## 移动文章到年份文件夹
 
-看了 [参考资料](#references)，博主给出了一个实用命令 `grep -r "date: '2015-" *.md -l | xargs mv -v -t 2015/`，用于批量移动文件，我借助 Poe Assistant 写出了对应的 PowerShell 脚本。
+看了 [参考资料](#references)，博主给出了一个实用命令 `grep -r "date: '2015-" *.md -l | xargs mv -v -t 2015/`{lang="cmd"}，用于批量移动文件，我借助 Poe Assistant 写出了对应的 PowerShell 脚本。
 
 ```powershell
 # 搜索匹配的文件
@@ -109,7 +109,7 @@ permalink: :year:month/:name/
 
 - 尝试用命令生成先前博客链接路径和新的博客链接路径
   :copy{prompt="PS>" command="hexo clean; hexo generate"}
-- findstr 不完全支持 PCRE，可以用 `Select-String "\\\d{6}\\"` 代替
+- findstr 不完全支持 PCRE，可以用 `Select-String "\\\d{6}\\"`{lang="powershell"} 代替
   :copy{prompt="PS>" command="dir -s .\public\ | findstr -r &quot;\\[0-9][0-9][0-9][0-9][0-9][0-9]\\&quot;"}
 
 再用正则表达式稍微替换一下输出（不要忘了`/`），就能得到 Netlify 的重定向规则文件了。

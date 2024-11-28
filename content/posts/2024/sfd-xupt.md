@@ -25,7 +25,7 @@ tags: [开源, 软件自由日, 大学, 分享]
 
 #### 命令即程序
 
-你也许在 Windows 上使用过 `ping` 命令检测网络连通性。
+你也许在 Windows 上使用过 `ping`{lang="cmd"} 命令检测网络连通性。
 
 ::folding{title="示例：ping 命令的输出" nopadding}
 ```log
@@ -44,7 +44,7 @@ PS> ping baidu.com
 ```
 ::
 
-实际上 `ping` 是一个程序，位于 `C:\Windows\System32\PING.EXE`，你可以通过 `Get-Command ping` 查看到它的路径。
+实际上 `ping`{lang="cmd"} 是一个程序，位于 `C:\Windows\System32\PING.EXE`，你可以通过 `Get-Command ping`{lang="powershell"} 查看到它的路径。
 
 ::alert{type="question"}
 #title
@@ -53,7 +53,7 @@ PS> ping baidu.com
 
 #### 环境变量 PATH
 
-在命令行输入 `ping` 命令，系统会去 `PATH` 环境变量中寻找可执行文件，并执行。
+在命令行输入 `ping`{lang="cmd"} 命令，系统会去 `PATH` 环境变量中寻找可执行文件，并执行。
 
 ::folding{title="示例：打印 PATH 环境变量" nopadding}
 ```log {2}
@@ -67,18 +67,18 @@ C:\WINDOWS\System32\OpenSSH\
 ```
 ::
 
-同时，环境变量 `PATHEXT` 规定了执行命令时可省略的后缀（其中包含 `.EXE`），Windows 又对大小写不敏感，因此我们可以通过 `ping` 直接访问 `C:\Windows\System32\PING.EXE`。
+同时，环境变量 `PATHEXT` 规定了执行命令时可省略的后缀（其中包含 `.EXE`），Windows 又对大小写不敏感，因此我们可以通过 `ping`{lang="cmd"} 直接访问 `C:\Windows\System32\PING.EXE`。
 
 #### 编写自己的命令行程序
 
-有些同学想要使用 VS Code 编写 C 语言程序，这时就需要把下载到的 `x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0.7z` 解压后的 `bin` 目录加入到 `PATH` 中。这个目录中含有 `gcc.exe`，VS Code 识别到后就可以调用 `gcc` 编译 C 程序。
+有些同学想要使用 VS Code 编写 C 语言程序，这时就需要把下载到的 `x86_64-14.2.0-release-win32-seh-ucrt-rt_v12-rev0.7z` 解压后的 `bin` 目录加入到 `PATH` 中。这个目录中含有 `gcc.exe`，VS Code 识别到后就可以调用 `gcc`{lang="sh"} 编译 C 程序。
 
 ::alert{type="question"}
 #title
-清楚了 `ping` 的由来，其后的参数 `baidu.com` 呢？
+清楚了 `ping`{lang="cmd"} 的由来，其后的参数 `baidu.com` 呢？
 ::
 
-命令行程序的参数是命令行参数，通过 `main` 函数获取。
+命令行程序的参数是命令行参数，通过 `main()`{lang="c"} 函数获取。
 
 ::folding{title="示例：编写参数读取程序" nopadding}
 ```c [print_argv.c]
@@ -245,7 +245,7 @@ link: https://www.criwits.top/missing/
 
 #### GitHub 增强 - 高速下载
 
-> 高速下载 Git Clone/SSH、Release、Raw、Code(ZIP) 等文件 (公益加速)、项目列表单文件快捷下载、添加 `git clone` 命令。
+> 高速下载 Git Clone/SSH、Release、Raw、Code(ZIP) 等文件 (公益加速)、项目列表单文件快捷下载、添加 `git clone`{lang="sh"} 命令。
 
 项目开源于 [XIU2/UserScript](https://github.com/XIU2/UserScript)，采用 GPL v3 协议。使用前需要在浏览器安装 “篡改猴” 插件。
 

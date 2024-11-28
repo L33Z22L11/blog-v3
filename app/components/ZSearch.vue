@@ -4,7 +4,7 @@ const searchInput = ref<HTMLInputElement>()
 
 watch(() => layoutStore.isOpen('search'), async (isOpen) => {
     await nextTick()
-    isOpen && searchInput.value?.focus()
+    isOpen && searchInput.value?.select()
 })
 
 // TODO: 随机展示热门搜索词

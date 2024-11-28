@@ -127,11 +127,11 @@ Ubuntu 系统。实例名叫 Windows Server。
 
 ### 博客本体
 
-这个博客文件夹没有初始化为 Git 仓库，使用 hexo-deployer-git 将生成的静态页面部署到 GitHub 仓库。博客主题文件夹使用 git clone 命令克隆，这样做有几个问题：
+这个博客文件夹没有初始化为 Git 仓库，使用 `hexo-deployer-git` 将生成的静态页面部署到 GitHub 仓库。博客主题文件夹使用 `git clone`{lang="sh"} 命令克隆，这样做有几个问题：
 
 - 博客源文件未部署到 GitHub，容易丢失。
-- 更改内容后不仅需要提交 git，还需要执行 hexo deploy 命令。
-- 未使用 git submodule 管理主题文件夹，不好使用在线部署功能。
+- 更改内容后不仅需要 `git commit`{lang="sh"}，还需要执行 `hexo deploy`{lang="sh"} 命令。
+- 未使用 Git submodule 管理主题文件夹，不好使用在线部署功能。
 
 ### npm 环境
 
@@ -242,9 +242,7 @@ C 盘和 D 盘之间横亘着一个 S: 分区、Ubuntu 的 ESP 分区、Ext4 格
 
 可以开始优雅的博客部署环节了。
 
-删除通过 `git clone` 克隆的原主题文件夹，使用 `git submodule add 主题.git themes/主题名` 添加主题。这样便可以之间在 Git Push 时云 build，而不用 `hexo deploy`。
-
-同时，pnpm 下载包的体验十分顺畅，丝毫没有先前 npm 的凝滞感。
+pnpm 下载包的体验十分顺畅，丝毫没有先前 npm 的凝滞感。
 
 ```sh
 pnpm install -g hexo-cli
@@ -256,7 +254,7 @@ hexo cl; hexo s
 
 ### Git submodule 的轻松实践
 
-命令比较强劲，审慎使用，确保做好备份。
+删除通过 `git clone`{lang="sh"} 克隆的原主题文件夹，再通过 Git submodule 添加主题。这样便可以之间在 Git Push 时云 build，而不用 `hexo deploy`{lang="sh"}。命令比较强劲，审慎使用，确保做好备份。
 
 ```sh
 git rm -f --cached themes/主题文件夹
@@ -304,8 +302,8 @@ git submodule add 主题git地址 themes/主题文件夹
 简短地，我告诉他：
 
 - 写博客文章，保存
-- 如果修改配置需要参阅主题文档，修改后执行 `hexo cl` 清除缓存
-- 通过 `hexo s` 在本地预览
+- 如果修改配置需要参阅主题文档，修改后执行 `hexo cl`{lang="sh"} 清除缓存
+- 通过 `hexo s`{lang="sh"} 在本地预览
 - 通过「Git 三部曲」提交到 GitHub，触发云端博客更新
   ```sh
   git add .

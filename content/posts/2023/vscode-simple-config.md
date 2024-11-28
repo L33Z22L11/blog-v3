@@ -65,7 +65,7 @@ recommend: true
 }
 ```
 
-VS Code 1.90 集成终端乱码是一个 [bug](https://github.com/microsoft/vscode/issues/211922)，可以通过设置 `terminal.integrated.shellIntegration.enabled` 为 `false` 来解决。
+VS Code 1.90 集成终端乱码是一个 [bug](https://github.com/microsoft/vscode/issues/211922)，可以通过设置 `terminal.integrated.shellIntegration.enabled`{lang="js"} 为 `false`{lang="js"} 来解决。
 
 ### 便捷使用
 

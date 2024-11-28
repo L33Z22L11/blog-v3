@@ -1,5 +1,5 @@
-import blogConfig from '~~/blog.config'
 import { getTimezoneOffset } from 'date-fns-tz'
+import blogConfig from '~~/blog.config'
 
 const timezoneOffset = getTimezoneOffset(blogConfig.timezone)
 

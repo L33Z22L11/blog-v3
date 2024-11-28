@@ -19,7 +19,7 @@ recommend: true
   :copy{command="termux-change-repo"}
 - 包列表会自动更新，可以直接升级
   :copy{command="pkg upgrade"}
-- 此时 `termux-change-repo` 也会更新，你可以重新选择镜像群组
+- 此时 `termux-change-repo`{lang="sh"} 也会更新，你可以重新选择镜像群组
   :copy{command="termux-change-repo"}
 - 启用 root 和 x11 仓库
   :copy{command="pkg install root-repo x11-repo"}
@@ -28,12 +28,12 @@ recommend: true
 
 - 安装 OpenSSH
   :copy{command="pkg install openssh"}
-  - 如果报错可能是因为没有执行 `pkg upgrade`。
+  - 如果报错可能是因为没有执行 `pkg upgrade`{lang="sh"}。
 - 设置密码
   :copy{command="passwd"}
 - 启动 SSH 服务
   :copy{command="sshd"}
-- 如果想要在 Termux 启动后自动启动 `sshd`，可以执行：
+- 如果想要在 Termux 启动后自动启动 `sshd`{lang="sh"}，可以执行：
   :copy{command="echo &quot;sshd&quot; >> ~/../usr/etc/profile"}
 
 ## 使用 Pacman 包管理器(可选)
@@ -45,7 +45,7 @@ recommend: true
 - 更新
   :copy{command="pacman -Syyu"}
 
-如果安装遇到 `<filename> exists in filesystem` 问题，可以在安装时添加 `--overwrite="*"` 参数。
+如果安装遇到 `<filename> exists in filesystem` 问题，可以在安装时添加 `--overwrite="*"`{lang="sh"} 参数。
 
 ## 修改欢迎语(Message of the day)
 
@@ -109,7 +109,7 @@ alias grep='grep --color=auto'
   :copy{command="chsh -s zsh && exec zsh"}
   其他 Linux 发行版的终端名称应当是绝对路径（如 `/usr/bin/zsh`）而不是别名（如 `zsh`）。
 - 初次启动时会进入 Powerlevel10k 的配置界面
-  - 配置结束后，你也可以通过 `p10k configure` 重新配置主题。
+  - 配置结束后，你也可以通过 `p10k configure`{lang="sh"} 重新配置主题。
 
 ## 安装 Termux:X11 图形界面
 

@@ -17,7 +17,7 @@ references:
 
 - 2022 年秋《高级语言程序设计 (C)》
   - 使用1998年发布的微软 VC 6.0 开发环境
-  - 学校编写的教材使用了大量的非标准写法 `void main()`，此写法在 2000 年代初逐渐废弃
+  - 学校编写的教材使用了大量的非标准写法 `void main()`{lang="c"}，此写法在 2000 年代初逐渐废弃
 - 2024 年春《面向对象与 C++ 程序设计》
   - 课程使用谭浩强的《C++ 程序设计（第4版）》
   <!-- - 上机实验时老师曾疑惑学生编写的函数中为何使用 `&` 引用传递字符串参数 -->
@@ -46,7 +46,7 @@ center: true
 > - Java小程序（Java Applet）
 >
 > 如何区分？
-> - 前者有`main()`方法，后者没有`main()`方法
+> - 前者有`main()`{lang="java"}方法，后者没有`main()`{lang="java"}方法
 ::
 
 听到别人讲述这些事情时，我只感到幸灾乐祸，但当这一切发生在自己身上时，我便无话可说、无言以对也无可奈何了。
@@ -63,7 +63,7 @@ OpenJDK 17 默认使用 ANSI 编码（GB2312/GBK/GB18030），在我的 PATH 环
 
 - 将文件编码设置为 ANSI（GB2312/GBK/GB18030）
 - 提升 PATH 环境变量中的 Java 21 的优先级
-- 在编译时通过 `-encoding UTF-8` 手动指定字符编码
+- 在编译时通过 `javac -encoding UTF-8`{lang="sh"} 手动指定字符编码
 
 说干就干，我很快完成了 `HelloWorld` 任务，但是我在 Java Applet 代码瞥见弃用提示，又在网上查到它需要**在 IE 内运行**，便瞬间不淡定了。
 
@@ -152,7 +152,7 @@ CreateObject("InternetExplorer.Application").Visible=true
 
 #### 通过 Applet 查看器
 
-正当我打算放弃的时候，我忽然发现了 Applet 查看器（`appletviewer`）。上文提到的 Adoptium OpenJDK 8 带有这个工具。于是，很容易地：
+正当我打算放弃的时候，我忽然发现了 Applet 查看器（`appletviewer`{lang="sh"}）。上文提到的 Adoptium OpenJDK 8 带有这个工具。于是，很容易地：
 
 :copy{prompt="PS>" command="appletviewer fitst-applet.html"}
 

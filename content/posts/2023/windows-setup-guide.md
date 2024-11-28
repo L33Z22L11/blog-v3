@@ -113,7 +113,7 @@ recommend: true
 
 - **断开电脑所有的网络连接**
 - 在Windows的安装界面中，按下`Shift + F10`键，打开命令提示符
-- 输入`oobe\BypassNRO.cmd`并按下回车，电脑会重启
+- 输入`oobe\BypassNRO.cmd`{lang="cmd"}并按下回车，电脑会重启
 - 在联网界面中，点击“我没有Internet连接”和“继续执行受限设置”
 
 ## 设置非中文用户名和空密码
