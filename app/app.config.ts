@@ -18,6 +18,10 @@ export default defineAppConfig({
         },
     },
 
+    content: {
+        codeblockCollapsibleRows: 16,
+    },
+
     footer: {
         copyright: `© ${new Date().getFullYear()} ${blogConfig.author.name}`,
         iconNav: <NavItem[]>[

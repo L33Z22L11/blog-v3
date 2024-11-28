@@ -28,8 +28,11 @@ const meta = computed(() => {
     }, {})
 })
 
+const appConfig = useAppConfig()
+
 const rows = computed(() => props.code.split('\n').length)
-const collapsible = computed(() => rows.value > 10)
+const collapsibleHeight = computed(() => `${appConfig.content.codeblockCollapsibleRows}em`)
+const collapsible = computed(() => rows.value > appConfig.content.codeblockCollapsibleRows)
 const [isCollapsed, toggleCollapsed] = useToggle(collapsible.value)
 
 const icon = computed(() => meta.value.icon || getFileIcon(props.filename) || getLangIcon(props.language))
@@ -79,7 +82,7 @@ useCopy(copyBtn, codeblock)
             <Icon
                 class="toggle-icon"
                 :class="{ 'is-collapsed': isCollapsed }"
-                name="ph:caret-double-down-bold"
+                name="ph:caret-double-up-bold"
             />
             <span class="toggle-tip">{{ rows }} 行</span>
         </button>
@@ -99,7 +102,7 @@ useCopy(copyBtn, codeblock)
     &.collapsed {
         pre {
             overflow: hidden;
-            max-height: 10rem;
+            max-height: v-bind("collapsibleHeight");
             mask: linear-gradient(to bottom, #fff 80%, transparent);
             animation: none;
         }
@@ -216,10 +219,11 @@ pre {
 .toggle-btn {
     position: absolute;
     inset: auto 0 0;
-    margin: 1.2em;
+    margin: 0.8em;
     padding: 0.2em;
     border-radius: 0.5em;
     background-color: var(--c-bg-3);
+    text-align: center;
     color: var(--c-text-2);
 }
 
