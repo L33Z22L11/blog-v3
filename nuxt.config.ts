@@ -49,10 +49,6 @@ export default defineNuxtConfig({
         '@/assets/css/reusable.scss',
     ],
 
-    experimental: {
-        viewTransition: true,
-    },
-
     future: {
         compatibilityVersion: 4,
     },

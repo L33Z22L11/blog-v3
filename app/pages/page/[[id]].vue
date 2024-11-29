@@ -20,13 +20,32 @@ watch(props, () => {
 
 <template>
     <!-- FIXME: 指定 id 范围以 SSG -->
-    <TransitionGroup>
+    <TransitionGroup appear>
         <ZArticle
-            v-for="article in list"
+            v-for="article, index in list"
             :key="article._path"
             v-bind="article"
             :to="article._path"
             :use-updated="sortOrder === 'updated'"
+            :style="{ '--dalay': `${index * 0.1}s` }"
         />
     </TransitionGroup>
 </template>
+
+<style lang="scss" scoped>
+.v-enter-active,
+.v-leave-active {
+    transition: all 0.2s;
+    transition-delay: var(--dalay);
+}
+
+.v-leave-active {
+    position: absolute;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+    transform: translateY(10%);
+}
+</style>

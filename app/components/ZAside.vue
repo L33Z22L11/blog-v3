@@ -31,14 +31,18 @@ const widgets = computed(() => (layoutStore.asideItems || []).map(componentAlias
     </Transition>
     <!-- 此处不能使用 Transition，因为宽屏状态始终显示 -->
     <!-- 如果为空数组则隐藏 -->
-    <aside v-if="layoutStore.asideItems?.length" id="z-aside" class="scrollcheck-y" :class="{ show: layoutStore.isOpen('aside') }">
-        <div class="container">
-            <div v-for="widget in widgets" :key="widget" class="widget">
-                <!-- 更换页面时通过 key 更新这些组件，防止旧数据导致问题 -->
-                <component :is="widgetList[widget]" :key="$route.path" />
+    <Transition>
+        <aside v-if="layoutStore.asideItems?.length" id="z-aside" class="scrollcheck-y" :class="{ show: layoutStore.isOpen('aside') }">
+            <div class="container">
+                <TransitionGroup>
+                    <div v-for="widget in widgets" :key="widget" class="widget">
+                        <!-- 更换页面时通过 key 更新这些组件，防止旧数据导致问题 -->
+                        <component :is="widgetList[widget]" :key="$route.path" />
+                    </div>
+                </TransitionGroup>
             </div>
-        </div>
-    </aside>
+        </aside>
+    </Transition>
 </template>
 
 <style lang="scss" scoped>
@@ -78,19 +82,33 @@ const widgets = computed(() => (layoutStore.asideItems || []).map(componentAlias
     transition: opacity 0.2s;
     z-index: 100;
 
-    &.v-enter-from,
-    &.v-leave-to {
-        opacity: 0;
-    }
-
     @media (min-width: $breakpoint-widescreen) {
         display: none;
     }
 }
 
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+
+.v-enter-active,
+.v-leave-active {
+    transition: all 0.2s;
+}
+
 // 对于标准 widget 的规范样式
 :deep(.widget) {
     font-size: 0.9em;
+
+    &.v-enter-from,
+    &.v-leave-to {
+        transform: translateY(10%);
+    }
+
+    &.v-leave-active {
+        position: absolute;
+    }
 
     & + .widget {
         margin-top: 1rem;
