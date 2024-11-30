@@ -162,7 +162,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 删除了配置文件里的无用配置项，我就着手全局安装 Stylelint 相关包了。
 
-:copy{command="pnpm i -g stylelint stylelint-config-standard stylelint-order"}
+:copy{code="pnpm i -g stylelint stylelint-config-standard stylelint-order"}
 
 我原本想在用户目录写 `~/stylelint.config.js` 或者 `~/.stylelintrc.js` 文件，就像 `~/.clang-format` 可以作为 `clangd` 的配置文件一样，但发现 VS Code 插件不读取用户目录的配置作为配置文件。
 
@@ -195,36 +195,35 @@ link: https://github.com/KazariEX/hexo-server-live
 
 上手体验了一下。我的 CSS 代码飘红一片。修吧修吧。😢
 
-## SSH 连接 Localhost，然后探寻 $Env:PATH 的秘密
+## SSH 连接 Localhost，然后探寻 $env:PATH 的秘密
 
 另外，我还发现换用 npm 管理全局包后，先前 SSH 环境中无法使用 `hexo-cli` 包提供的 `hexo`{lang="sh"} 命令的问题消失了。
 
 于是，我着手研究 pnpm 全局包在远程 SSH 环境中的问题。在一次远程执行 `pnpm add -g pnpm`{lang="sh"} 后，我从报错中发现了端倪：
 
 ```log
-[ERROR] The configured global bin directory
-"C:\Users\Zhilu\AppData\Local\pnpm" is not in PATH
+[ERROR] The configured global bin directory "C:\Users\Zhilu\AppData\Local\pnpm" is not in PATH
 ```
 
 它不在 PATH，那谁在 PATH？
 
 ### PowerShell 糕手：SSH 就测一下，到底带不带 -t？
 
-简而言之，如果是交互式命令，就带上 `-t` 参数。起初我未使用 `-t` 参数，结果 Powershell Profile 中的 `Set-PSReadLineOption`{lang="sh"} 因为无法启用而报错了。
+简而言之，如果是交互式命令，就带上 `-t` 参数。起初我未使用 `-t` 参数，结果 Powershell Profile 中的 `Set-PSReadLineOption`{lang="powershell"} 因为无法启用而报错了。
 
 我使用这行命令试图查看 SSH 环境中的 PATH：
 
-:copy{prompt="PS>" command="ssh localhost -t &quot;echo '$Env:PATH'&quot;"}
+:copy{prompt="PS>" code="ssh localhost -t &quot;echo '$env:PATH'&quot;"}
 
 但输出一切正常，`C:\Users\Zhilu\AppData\Local\pnpm` 完好地存在于 PATH 中。
 
 ### 我这 `%pnpm_HOME%`，如履薄冰。
 
-后来，我通过 SSH 连接后执行 `$Env:PATH`，终于露出了它的本来面目：
+后来，我通过 SSH 连接后执行 `$env:PATH`{lang="powershell"}，终于露出了它的本来面目：
 
 > C:\WINDOWS\system32;……C:\Program Files\Git\cmd;C:\Program Files\nodejs\;……<mark>%PNPM_HOME%</mark>;……C:\Users\Zhilu\AppData\Roaming\npm;C:\Program Files\Neovim\bin;C:\Users\Zhilu\go\bin;C:\ProgramData\chocolatey\bin;
 
-看起来在本地环境中，`%PNPM_HOME%` 在 `$Env:PATH` 会被正常解析为 `C:\Users\Zhilu\AppData\Local\pnpm`，而在远程 SSH 环境中，`PATH` 中的 `%PNPM_HOME%` 项不能被正常解析。我向 pnpm 提出了 [Issue #8110](https://github.com/pnpm/pnpm/issues/8110) 反馈这个问题，<blur>我并不清楚这个奇奇怪怪的问题应该向谁反馈，但 pnpm 应当做好这些情况的兼容</blur>。不过此时仓库有 1.5k 个未关闭的 Issue，也许我提出的问题得到回复的概率很渺茫。
+看起来在本地环境中，`%PNPM_HOME%` 在 `$env:PATH`{lang="powershell"} 会被正常解析为 `C:\Users\Zhilu\AppData\Local\pnpm`，而在远程 SSH 环境中，`PATH` 中的 `%PNPM_HOME%` 项不能被正常解析。我向 pnpm 提出了 [Issue #8110](https://github.com/pnpm/pnpm/issues/8110) 反馈这个问题，<blur>我并不清楚这个奇奇怪怪的问题应该向谁反馈，但 pnpm 应当做好这些情况的兼容</blur>。不过此时仓库有 1.5k 个未关闭的 Issue，也许我提出的问题得到回复的概率很渺茫。
 
 ### 聪明一修
 
@@ -257,7 +256,7 @@ stylelint/vscode-stylelint 仓库的 Issue [#331](https://github.com/stylelint/v
 全局安装的 Stylelint 包似乎找不到各种东西。在 stylelint/stylelint 的另一个 Issue [#7297](https://github.com/stylelint/stylelint/issues/7297) 中，提出者给出了一个“dirty fix”：
 
 - 创建软链接 `/usr/node_modules` 指向 `/lib64/node_modules`。
-  :copy{command="sudo ln -s /lib64/node_modules /usr/node_modules"}
+  :copy{code="sudo ln -s /lib64/node_modules /usr/node_modules"}
 
 #### 如果 npm 被升级的话，也许就结束了吧
 
@@ -305,17 +304,17 @@ npm 配置的前缀竟然是 `/usr`！
 
 - 按照 [Arch Linux 启动引导修复](/2024/archlinux-boot-repair) 一文中的方式挂载分区、进入系统。
 - 尝试恢复被修改的权限
-  :copy{prompt="#" command="chown -R root:root /usr/{lib/node_modules,bin,share}"}
+  :copy{prompt="#" code="chown -R root:root /usr/{lib/node_modules,bin,share}"}
 - 尝试恢复部分关键程序的 setuid 位
-  :copy{prompt="#" command="chmod u+s /usr/bin/sudo /usr/bin/su"}
+  :copy{prompt="#" code="chmod u+s /usr/bin/sudo /usr/bin/su"}
 - 建议切换到自己的用户上，实在切不了就算了
-  :copy{prompt="#" command="su <你的用户名>"}
+  :copy{prompt="#" code="su <你的用户名>"}
   - 如果忘了自己的用户名，可以执行这个命令：
-  :copy{prompt="#" command="cat /etc/passwd | grep &quot;:1000&quot;"}
+  :copy{prompt="#" code="cat /etc/passwd | grep &quot;:1000&quot;"}
 - 安装权限修复工具
-  :copy{command="yay -S pacman-fix-permissons"}
+  :copy{code="yay -S pacman-fix-permissons"}
 - 修复权限
-  :copy{command="sudo pacman-fix-permissions"}
+  :copy{code="sudo pacman-fix-permissions"}
 
 ```log [pacman-fix-permissions 的输出]
 ……

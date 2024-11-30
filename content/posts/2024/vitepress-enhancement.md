@@ -17,18 +17,18 @@ VitePress 是一个非常优秀的静态站点生成器，它使用 Vite 作为�
 使用 pnpm 可以提高安装速度并减少磁盘占用。按照提示操作即可。
 
 - 通过 npm 安装 pnpm
-  :copy{command="npm install -g pnpm"}
+  :copy{code="npm install -g pnpm"}
 - 更改 PowerShell 脚本 [执行策略](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies)
-  :copy{command="Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"}
+  :copy{code="Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"}
   - 也可通过管理员权限更改系统策略
-    :copy{command="sudo Set-ExecutionPolicy RemoteSigned"}
+    :copy{code="sudo Set-ExecutionPolicy RemoteSigned"}
 - 初始化 pnpm
-  :copy{command="pnpm setup"}
+  :copy{code="pnpm setup"}
   - 初始化后，由于环境变量变化，需要启动一个新的 PowerShell 会话
 - 通过 pnpm 重新安装 pnpm
-  :copy{command="pnpm install -g pnpm"}
+  :copy{code="pnpm install -g pnpm"}
 - 卸载通过 npm 安装的 pnpm
-  :copy{command="npm uninstall -g pnpm"}
+  :copy{code="npm uninstall -g pnpm"}
 
 ### 会的话看看文档，不会了就多看文档
 
@@ -120,12 +120,12 @@ Staticfile CDN、BootCDN（bootcss）、51LA 统计等公共服务已被发现�
 ::
 
 - ![](https://fontawesome.com/images/favicon/icon.svg){.icon title="其实我不是 CDN 引入的，我也不是 Iconify，我是图片"} Font Awesome（6.5.1）[图标搜索](https://fontawesome.com/search?m=free)
-  - :copy{prompt="75CDN" command="https://lib.baomitu.com/font-awesome/6.5.1/css/all.min.css"}
-  - :copy{prompt="未闻花名" command="https://cdnjs.snrat.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"}
+  - :copy{prompt="75CDN" code="https://lib.baomitu.com/font-awesome/6.5.1/css/all.min.css"}
+  - :copy{prompt="未闻花名" code="https://cdnjs.snrat.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"}
 - ![](https://api.iconify.design/devicon:bootstrap.svg){.icon title="我是通过 Iconify API 引入的，但我是图片"} Bootstrap Icons（1.11.3）[图标搜索](https://icons.getbootstrap.com/)
-  - :copy{prompt="南方科技大学" command="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"}
-  - :copy{prompt="loli.net" command="https://cdnjs.loli.net/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"}
-  - :copy{prompt="ZStatic" command="https://s4.zstatic.net/nmp/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"}
+  - :copy{prompt="南方科技大学" code="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"}
+  - :copy{prompt="loli.net" code="https://cdnjs.loli.net/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"}
+  - :copy{prompt="ZStatic" code="https://s4.zstatic.net/nmp/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"}
 
 至于在 VitePress 站点的 `<head>`{lang="html"} 标签中引入 CSS？[看文档](https://vitepress.dev/zh/reference/site-config#head) 吧。当然，引入后不要忘了设置“固定宽度”和“垂直居中”样式。
 
@@ -134,7 +134,7 @@ Staticfile CDN、BootCDN（bootcss）、51LA 统计等公共服务已被发现�
 谷歌字体除了字体外还有图标，使用文档参见 [Material 符号指南](https://developers.google.cn/fonts/docs/material_symbols)。
 
 - 为增强可访问性，可以将谷歌字体 CSS 资源替换为以 `.cn` 结尾的域名。
-  :copy{prompt="CSS" command="https://fonts.googleapis.cn/css2?family=Material+Symbols+Outlined"}
+  :copy{prompt="CSS" code="https://fonts.googleapis.cn/css2?family=Material+Symbols+Outlined"}
 
 ### 其实我在用 Iconify
 
@@ -147,7 +147,7 @@ Staticfile CDN、BootCDN（bootcss）、51LA 统计等公共服务已被发现�
 它收录了 :icon{name="ic:baseline-android"} :icon{name="ic:baseline-signal-wifi-bad"} :icon{name="ic:baseline-battery-charging-60"} Material Design 的符号图标、 :icon{name="simple-icons:3m"} :icon{name="simple-icons:xiaohongshu"} :icon{name="simple-icons:xiaomi"} Simple Icons 的品牌图标、 :icon{name="vscode-icons:file-type-photoshop2"} :icon{name="catppuccin:kotlin"} 各种文件图标、 :icon{name="ph:chats-circle-duotone"} :icon{name="noto:crystal-ball"} 双色/彩色图标和 :icon{name="line-md:uploading-loop"} :icon{name="svg-spinners:bars-rotate-fade"} 动画图标等。相比 Iconfont，这些图标的风格更容易统一，并且引入前端项目更加方便，支持 Tailwind CSS、UnoCSS、React、Vue、Svelte 等多种框架。我偶尔也会下载这些图标用于 PPT 演示。
 
 - VitePress 适合安装 `@iconify/vue`
-  :copy{command="pnpm i @iconify/vue"}
+  :copy{code="pnpm i @iconify/vue"}
 - 在主题入口文件导入并注册 `Icon` 组件，成品入口文件在下一节
 - 在 Markdown 中通过 `<Icon icon="ph:hand-heart-duotone" />`{lang="html"} 使用图标
 - 配置项里的字符串不会经过 Vue 渲染，需要将对应位置换用 Vue 组件或是回退至 CDN 引入的图标字体

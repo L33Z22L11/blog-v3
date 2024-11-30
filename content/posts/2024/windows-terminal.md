@@ -21,7 +21,7 @@ recommend: true
 如果你还没有升级到 Windows 24H2，你可以通过安装 gsudo 来添加 sudo 支持。
 
 - 安装 gsudo
-  :copy{prompt="PS>" command="winget install gsudo"}
+  :copy{prompt="PS>" code="winget install gsudo"}
 
 ### 如果使用 Windows Powershell
 
@@ -30,17 +30,17 @@ recommend: true
 PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是旧版本的 PSReadLine 模块，需要强制更新。
 
 - 安装新版 PSReadLine 模块
-  :copy{prompt="PS>" command="sudo Install-Module PSReadLine -Force"}
+  :copy{prompt="PS>" code="sudo Install-Module PSReadLine -Force"}
   如果第一次执行时提示安装 NuGet 提供程序，那么可能需要再次执行命令才能安装 PSReadLine。
 
 ### 启用自动补全
 
 - 新建 PS 配置文件的文件夹，若已存在可以忽略
-  :copy{prompt="PS>" command="mkdir $PROFILE/.."}
+  :copy{prompt="PS>" code="mkdir $PROFILE/.."}
 - 打开 PS 配置文件
-  :copy{prompt="PS>" command="notepad $PROFILE"}
+  :copy{prompt="PS>" code="notepad $PROFILE"}
   - 也可以更改系统全局配置文件
-  :copy{prompt="PS>" command="sudo notepad $PSHOME\profile.ps1"}
+  :copy{prompt="PS>" code="sudo notepad $PSHOME\profile.ps1"}
 - 添加以下内容
   ```powershell [$PROFILE]
   # 按 Tab 键显示补全菜单，按方向键切换选项
@@ -53,17 +53,24 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
   Set-PSReadLineKeyHandler -Chord "Ctrl+RightArrow" -Function ForwardWord
   ```
 
+### 小技巧
+
+- 快速切换到管理员终端（需要配置 OpenSSH 服务）
+  :copy{prompt="PS>" code="ssh localhost"}
+- 在配置文件中添加此行，快速进入 Git Bash
+  :copy{prompt="$PROFILE" lang="sh" code="Set-Alias bash $env:ProgramFiles\Git\bin\bash"}
+
 ### Oh My Posh
 
 - 安装 oh-my-posh（参见 [官方文档](https://ohmyposh.dev/docs/installation/windows)）
-  :copy{prompt="PS>" command="winget install JanDeDobbeleer.OhMyPosh"}
+  :copy{prompt="PS>" code="winget install JanDeDobbeleer.OhMyPosh"}
 - 更改 PowerShell [执行策略](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies)
-  :copy{prompt="PS>" command="Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"}
+  :copy{prompt="PS>" code="Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"}
   - 也可通过管理员权限更改系统策略
-  :copy{command="sudo Set-ExecutionPolicy RemoteSigned"}
+  :copy{code="sudo Set-ExecutionPolicy RemoteSigned"}
 - 配置（参见 [官方文档](https://ohmyposh.dev/docs/installation/prompt)）
   - 打开 PS 配置文件
-  :copy{prompt="PS>" command="notepad $PROFILE"}
+  :copy{prompt="PS>" code="notepad $PROFILE"}
   - 在文件中添加以下内容
     ```powershell [$PROFILE]
     oh-my-posh init pwsh | Invoke-Expression
@@ -81,10 +88,10 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 
 - 打开 Windows Terminal 设置
 - 配置文件 - 添加新配置文件
-  - :copy{prompt="名称" command="Git Bash"}
-  - :copy{prompt="命令" command="%ProgramFiles%\Git\bin\bash.exe --login -i"}
-  - :copy{prompt="启动目录" command="%USERPROFILE%"}
-  - :copy{prompt="图标" command="%ProgramFiles%\Git\mingw64\share\git\git-for-windows.ico"}
+  - :copy{prompt="名称" code="Git Bash"}
+  - :copy{prompt="命令" code="%ProgramFiles%\Git\bin\bash.exe --login -i"}
+  - :copy{prompt="启动目录" code="%USERPROFILE%"}
+  - :copy{prompt="图标" code="%ProgramFiles%\Git\mingw64\share\git\git-for-windows.ico"}
 
 ::link-banner
 ---
@@ -132,19 +139,19 @@ link: /2023/ssh-key-login
 在 Windows 下，推荐使用 [Scoop](https://scoop.sh/) 安装命令行程序。安装 Scoop 后，可以通过 `scoop install fastfetch`{lang="sh"} 安装 [Fastfetch](https://github.com/fastfetch-cli/fastfetch)。（参考[Windows 上的开源软件入门 > 使用包管理器安装软件](/2024/sfd-xupt#使用包管理器安装软件)）
 
 - 打印系统信息
-  :copy{prompt="PS>" command="fastfetch"}
+  :copy{prompt="PS>" code="fastfetch"}
 - 更详细地显示系统信息，并隐藏 Logo
-  :copy{prompt="PS>" command="fastfetch -c all -l none"}
+  :copy{prompt="PS>" code="fastfetch -c all -l none"}
 
 Fastfetch 还支持更进一步地定义配置文件。
 
 ## 一些有趣的命令
 
 - 通过 PS ReadLine 获取历史记录
-  :copy{prompt="PS>" command="Get-Content (Get-PSReadlineOption).HistorySavePath"}
+  :copy{prompt="PS>" code="Get-Content (Get-PSReadlineOption).HistorySavePath"}
 - 获取命令位置（类似于 Linux 的 `which`{lang="sh"}）
-  :copy{prompt="PS>" command="(Get-Command <command>).Definition"}
+  :copy{prompt="PS>" code="(Get-Command <command>).Definition"}
 - 在此次打开文件资源管理器
-  :copy{prompt="PS>" command="explorer ."}
+  :copy{prompt="PS>" code="explorer ."}
 - 在无网状态下开启移动热点
-  :copy{prompt="PS>" command="[Windows.Networking.NetworkOperators.NetworkOperatorTetheringManager,Windows.Networking.NetworkOperators,ContentType=WindowsRuntime]::CreateFromConnectionProfile([Windows.Networking.Connectivity.NetworkInformation,Windows.Networking.Connectivity,ContentType=WindowsRuntime]::GetInternetConnectionProfile()).StartTetheringAsync()"}
+  :copy{prompt="PS>" code="[Windows.Networking.NetworkOperators.NetworkOperatorTetheringManager,Windows.Networking.NetworkOperators,ContentType=WindowsRuntime]::CreateFromConnectionProfile([Windows.Networking.Connectivity.NetworkInformation,Windows.Networking.Connectivity,ContentType=WindowsRuntime]::GetInternetConnectionProfile()).StartTetheringAsync()"}

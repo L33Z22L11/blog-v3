@@ -665,9 +665,9 @@ export default <FeedGroup[]>[
             {
                 author: '浩瀚星河',
                 desc: 'A Go Enthusiast',
-                link: 'https://blog.codepzj.cn/',
-                feed: 'https://blog.codepzj.cn/atom.xml',
-                icon: 'https://blog.codepzj.cn/assets/images/avatar.jpg',
+                link: 'https://haohanxinghe.com/',
+                feed: 'https://haohanxinghe.com/atom.xml',
+                icon: 'https://haohanxinghe.com/assets/images/avatar.jpg',
                 avatar: getGhAvatar('codepzj'),
                 archs: ['Hexo', '服务器'],
                 date: '2024-10-31',

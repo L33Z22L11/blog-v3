@@ -5,29 +5,29 @@ import { useTippy } from 'vue-tippy'
 const props = withDefaults(defineProps<{
     /* noprompt?: boolean */
     prompt?: string | boolean
-    command?: string
-    language?: string
+    code?: string
+    lang?: string
 }>(), {
     prompt: '$',
 })
 
 // prompt 传入空字符串会变成 true
 const showPrompt = computed(() => /* !props.noprompt && */ props.prompt as unknown !== true)
-const language = computed(() => props.language ?? getPromptLanguage(props.prompt))
+const language = computed(() => props.lang ?? getPromptLanguage(props.prompt))
 
 const showUndo = ref(false)
-const commandInput = useTemplateRef('command-input')
+const codeInput = useTemplateRef('code-input')
 const copyBtn = useTemplateRef('copy-btn')
 
-useTippy(commandInput, { content: '可以修改命令后再复制', trigger: 'focus' })
-useCopy(copyBtn, commandInput)
+useTippy(codeInput, { content: '可以修改命令后再复制', trigger: 'focus' })
+useCopy(copyBtn, codeInput)
 
 function undo() {
-    if (!commandInput.value)
+    if (!codeInput.value)
         return
-    commandInput.value.textContent = props.command ?? ''
+    codeInput.value.textContent = props.code ?? ''
     // 触发 shiki 高亮
-    commandInput.value.dispatchEvent(new Event('input'))
+    codeInput.value.dispatchEvent(new Event('input'))
     showUndo.value = false
 }
 
@@ -40,27 +40,27 @@ function beforeInput(event: InputEvent) {
 }
 
 function onInput(event: InputEvent) {
-    showUndo.value = props.command !== (event.target as Element).textContent
+    showUndo.value = props.code !== (event.target as Element).textContent
 }
 
 onMounted(async () => {
     const shiki = await getShikiHighlighter()
     // BUG: 无法高亮特定语言 PowerShell
     const shikiOptions = await resolveShikiOptions({ lang: language.value })
-    createPlainShiki(shiki).mount(commandInput.value!, shikiOptions as MountPlainShikiOptions)
+    createPlainShiki(shiki).mount(codeInput.value!, shikiOptions as MountPlainShikiOptions)
 })
 </script>
 
 <template>
-    <code class="command">
+    <code class="copy">
         <span v-if="showPrompt" class="prompt">{{ prompt }}</span>
         <div
-            ref="command-input"
+            ref="code-input"
             contenteditable="plaintext-only"
             class="code"
             @beforeinput="beforeInput($event as InputEvent)"
             @input="onInput($event as InputEvent)"
-            v-text="command"
+            v-text="code"
         />
         <div class="mask" />
         <button v-if="showUndo" v-tippy="'恢复原始内容'" class="operation" aria-label="恢复原始内容" @click="undo">
@@ -73,7 +73,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-.command {
+.copy {
     display: flex;
     margin: 0.5rem 0;
     border: 1px solid var(--c-border);

@@ -200,11 +200,11 @@ GitHub链接能自动识别头像 :badge[KazariEX]{link="https://github.com/Kaza
 
 #### Copy
 
-:copy{command="rm -rf # 修改命令后再复制，也可撤销修改"}
+:copy{code="rm -rf # 修改命令后再复制，也可撤销修改"}
 
-:copy{prompt command="不带提示符的命令，可以是 URL、单行代码"}
+:copy{prompt code="不带提示符的命令，可以是 URL、单行代码"}
 
-:copy{prompt="自定义命令提示符、高亮语言" language="js" command="const customLanguage = 'js' // 滚动条、边缘羽化会出现，假如它特别特别特别特别特别特别特别特别长"}
+:copy{prompt="自定义命令提示符、高亮语言" lang="js" code="const customLang = 'js' // 滚动条、边缘羽化会出现，假如它特别特别特别特别特别特别特别特别长"}
 
 ##### 自动推断语言
 
