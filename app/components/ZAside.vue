@@ -34,7 +34,7 @@ const widgets = computed(() => (layoutStore.asideItems || []).map(componentAlias
     <Transition>
         <aside v-if="layoutStore.asideItems?.length" id="z-aside" class="scrollcheck-y" :class="{ show: layoutStore.isOpen('aside') }">
             <div class="container">
-                <TransitionGroup>
+                <TransitionGroup name="float-in">
                     <div v-for="widget in widgets" :key="widget" class="widget">
                         <!-- 更换页面时通过 key 更新这些组件，防止旧数据导致问题 -->
                         <component :is="widgetList[widget]" :key="$route.path" />
@@ -100,15 +100,6 @@ const widgets = computed(() => (layoutStore.asideItems || []).map(componentAlias
 // 对于标准 widget 的规范样式
 :deep(.widget) {
     font-size: 0.9em;
-
-    &.v-enter-from,
-    &.v-leave-to {
-        transform: translateY(10%);
-    }
-
-    &.v-leave-active {
-        position: absolute;
-    }
 
     & + .widget {
         margin-top: 1rem;

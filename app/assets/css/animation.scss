@@ -1,0 +1,27 @@
+@keyframes float-in {
+    0% {
+        opacity: 0;
+        transform: translateY(10%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.float-in-enter-active,
+.float-in-leave-active {
+    transition: all 0.2s;
+}
+
+.float-in-leave-active {
+    position: absolute;
+}
+
+.float-in-enter-from,
+.float-in-leave-to {
+    opacity: 0;
+    transform: translateY(10%);
+}
+

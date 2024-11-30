@@ -18,12 +18,12 @@ defineProps<{
         <p class="feed-desc">
             {{ group.desc }}
         </p>
-        <TransitionGroup tag="menu" class="feed-list" appear>
+        <TransitionGroup tag="menu" class="feed-list" appear name="float-in">
             <li
                 v-for="entry, index in group.entries"
                 :key="index"
                 class="feed-card"
-                :style="`--dalay: ${index * 0.05}s;`"
+                :style="`--delay: ${index * 0.05}s;`"
             >
                 <FeedCard v-bind="entry" />
             </li>
@@ -32,22 +32,6 @@ defineProps<{
 </template>
 
 <style lang="scss" scoped>
-.v-enter-active,
-.v-leave-active {
-    transition: all 0.2s;
-    transition-delay: var(--dalay);
-}
-
-.v-leave-active {
-    position: absolute;
-}
-
-.v-enter-from,
-.v-leave-to {
-    opacity: 0;
-    transform: translateY(10%);
-}
-
 .feed-label {
     margin: 2rem 1rem -1rem;
 }

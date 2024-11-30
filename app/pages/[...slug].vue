@@ -46,3 +46,9 @@ else {
         <PostComment :key="route.path" />
     </ContentRenderer>
 </template>
+
+<style lang="scss" scoped>
+.article {
+    animation: float-in 0.2s backwards;
+}
+</style>

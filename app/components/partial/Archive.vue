@@ -17,7 +17,7 @@ const auxDateLabel = computed(() => props.date
 </script>
 
 <template>
-    <li class="article-line">
+    <li class="article-item">
         <time :datetime="mainDate" :title="getLocaleDatetime(mainDate)">{{ dateLabel }}</time>
         <ZRawLink class="article-link gradient-card" :to :title="description">
             <span class="article-title" :class="{ 'text-story': type === 'story' }">
@@ -31,12 +31,13 @@ const auxDateLabel = computed(() => props.date
 </template>
 
 <style lang="scss" scoped>
-.article-line {
+.article-item {
     display: flex;
     align-items: center;
     gap: 0.5em;
     margin: 0.2em 0;
     transition: all 0.2s;
+    animation: float-in 0.2s var(--delay) backwards;
 
     @media (max-width: $breakpoint-mobile) {
         font-size: 0.9em;

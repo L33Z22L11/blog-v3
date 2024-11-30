@@ -50,6 +50,7 @@ const tip = joinWithBR(
     margin: 1rem auto;
     padding: 0.5rem;
     line-height: initial;
+    animation: float-in 0.2s var(--delay) backwards;
 
     &:hover {
         transform: translateY(-2px);

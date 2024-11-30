@@ -43,6 +43,7 @@ export default defineNuxtConfig({
     ],
 
     css: [
+        '@/assets/css/animation.scss',
         '@/assets/css/article.scss',
         '@/assets/css/color.scss',
         '@/assets/css/main.scss',

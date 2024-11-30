@@ -144,6 +144,10 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
         background-color: transparent;
     }
 
+    .nav-text {
+        opacity: 0.5;
+    }
+
     .keycut {
         opacity: 0.5;
         padding: 0 0.2em;

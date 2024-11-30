@@ -81,7 +81,7 @@ function openActiveItem() {
                     ref="list-result"
                     class="scrollcheck-y search-result"
                 >
-                    <TransitionGroup name="expand">
+                    <TransitionGroup name="expand" appear>
                         <ZSearchItem
                             v-for="(item, itemIndex) in result"
                             :key="item.id"
