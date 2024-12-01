@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
 const layoutStore = useLayoutStore()
+const searchStore = useSearchStore()
 
 const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' : 'Ctrl+K')
 </script>
@@ -14,7 +15,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
     <aside id="z-sidebar" :class="{ show: layoutStore.isOpen('sidebar') }">
         <ZhiluHeader class="sidebar-header" to="/" />
         <nav class="sidebar-nav scrollcheck-y">
-            <div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
+            <div class="search-btn sidebar-nav-item gradient-card" @click="searchStore.open()">
                 <Icon name="ph:magnifying-glass-bold" />
                 <span class="nav-text">搜索</span>
                 <span class="keycut widescreen-only">{{ keycut }}</span>

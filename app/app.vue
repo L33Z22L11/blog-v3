@@ -9,7 +9,6 @@
         </main>
         <ZAside />
     </div>
-    <ZSearch />
     <ZPanel />
     <ZPopover />
 </template>

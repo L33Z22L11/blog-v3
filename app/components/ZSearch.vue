@@ -1,18 +1,21 @@
 <script setup lang="ts">
-const layoutStore = useLayoutStore()
+const props = defineProps<{
+    isOpening?: boolean
+}>()
+const searchStore = useSearchStore()
 const searchInput = ref<HTMLInputElement>()
 
-watch(() => layoutStore.isOpen('search'), async (isOpen) => {
+watch(() => props.isOpening, async (isOpen) => {
     await nextTick()
     isOpen && searchInput.value?.select()
 })
 
 // TODO: 随机展示热门搜索词
-const word = ref('')
+const { word, result } = storeToRefs(searchStore)
 const activeIndex = ref(0)
 const listResult = useTemplateRef('list-result')
 
-const { data: result, execute: execSearch, status } = await useAsyncData(
+const { data, execute: execSearch, status } = useLazyAsyncData(
     word.value,
     () => searchContent(word.value),
     { immediate: false, transform: data => data.value },
@@ -23,11 +26,8 @@ watchDebounced(word, () => {
     word.value && execSearch()
 }, { debounce: 300 })
 
-useEventListener('keydown', (event: KeyboardEvent) => {
-    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
-        event.preventDefault()
-        layoutStore.toggle('search')
-    }
+watch(() => data.value, (newData) => {
+    result.value = newData as any
 })
 
 watch(activeIndex, (newVal, oldVal) => {
@@ -52,13 +52,13 @@ function openActiveItem() {
 <template>
     <Transition>
         <div
-            v-if="layoutStore.isOpen('search')"
+            v-if="isOpening"
             id="z-search-bgmask"
-            @click="layoutStore.toggle('search')"
+            @click="searchStore.close()"
         />
     </Transition>
     <Transition>
-        <div v-if="layoutStore.isOpen('search')" id="z-search">
+        <div v-if="isOpening" id="z-search">
             <form class="input" :class="{ searching: status === 'pending' }" @submit.prevent>
                 <Icon name="ph:magnifying-glass-bold" />
                 <input
@@ -81,13 +81,13 @@ function openActiveItem() {
                     ref="list-result"
                     class="scrollcheck-y search-result"
                 >
-                    <TransitionGroup name="expand" appear>
+                    <TransitionGroup name="expand">
                         <ZSearchItem
                             v-for="(item, itemIndex) in result"
                             :key="item.id"
                             v-bind="item"
                             :class="{ active: activeIndex === itemIndex }"
-                            @click="layoutStore.toggle('search')"
+                            @click="searchStore.close()"
                             @mouseover="activeIndex = itemIndex"
                         />
                     </TransitionGroup>
@@ -101,7 +101,7 @@ function openActiveItem() {
                     <Key code="enter" @press="openActiveItem">
                         Enter
                     </Key> 选择&emsp;
-                    <Key code="escape" @press="layoutStore.toggle('search')">
+                    <Key code="escape" @press="searchStore.close()">
                         Esc
                     </Key> 关闭
                 </div>
