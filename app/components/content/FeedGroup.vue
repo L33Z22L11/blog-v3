@@ -23,7 +23,7 @@ defineProps<{
                 v-for="entry, index in group.entries"
                 :key="index"
                 class="feed-card"
-                :style="`--delay: ${index * 0.05}s;`"
+                :style="`--delay: ${index * 0.1}s;`"
             >
                 <FeedCard v-bind="entry" />
             </li>

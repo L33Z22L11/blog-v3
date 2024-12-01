@@ -2,6 +2,9 @@
 const props = defineProps<{
     isOpening?: boolean
 }>()
+
+// 应通过 layoutStore 传递关闭事件
+const layoutStore = useLayoutStore()
 const searchStore = useSearchStore()
 const searchInput = ref<HTMLInputElement>()
 
@@ -50,67 +53,79 @@ function openActiveItem() {
 </script>
 
 <template>
-    <Transition>
-        <div
-            v-if="isOpening"
-            id="z-search-bgmask"
-            @click="searchStore.close()"
-        />
-    </Transition>
-    <Transition>
-        <div v-if="isOpening" id="z-search">
-            <form class="input" :class="{ searching: status === 'pending' }" @submit.prevent>
-                <Icon name="ph:magnifying-glass-bold" />
-                <input
-                    ref="searchInput"
-                    v-model="word"
-                    class="search-input"
-                    placeholder="键入开始搜索"
-                    @keydown.up.prevent
-                    @keydown.down.prevent
-                >
-                <!-- 方向键切换搜索结果不应只在搜索框内触发 -->
-                <Icon v-if="word" class="close" name="ph:x-bold" @click="word = ''" />
-            </form>
-            <TransitionGroup name="expand">
-                <div v-if="word && status === 'success' && !result?.length" class="no-result">
-                    无结果
-                </div>
-                <ol
-                    v-if="word && result?.length"
-                    ref="list-result"
-                    class="scrollcheck-y search-result"
-                >
-                    <TransitionGroup name="expand">
-                        <ZSearchItem
-                            v-for="(item, itemIndex) in result"
-                            :key="item.id"
-                            v-bind="item"
-                            :class="{ active: activeIndex === itemIndex }"
-                            @click="searchStore.close()"
-                            @mouseover="activeIndex = itemIndex"
-                        />
-                    </TransitionGroup>
-                </ol>
-                <div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
-                    <Key code="arrowup" @press="activeIndex--">
-                        ↑
-                    </Key> <Key code="arrowdown" @press="activeIndex++">
-                        ↓
-                    </Key> 切换&emsp;
-                    <Key code="enter" @press="openActiveItem">
-                        Enter
-                    </Key> 选择&emsp;
-                    <Key code="escape" @press="searchStore.close()">
-                        Esc
-                    </Key> 关闭
-                </div>
-            </TransitionGroup>
-        </div>
-    </Transition>
+    <div class="z-search">
+        <Transition>
+            <div
+                v-if="isOpening"
+                id="z-search-bgmask"
+                @click="layoutStore.toggle('search')"
+            />
+        </Transition>
+        <Transition name="float-in">
+            <div v-if="isOpening" id="z-search">
+                <form class="input" :class="{ searching: status === 'pending' }" @submit.prevent>
+                    <Icon name="ph:magnifying-glass-bold" />
+                    <input
+                        ref="searchInput"
+                        v-model="word"
+                        class="search-input"
+                        placeholder="键入开始搜索"
+                        @keydown.up.prevent
+                        @keydown.down.prevent
+                    >
+                    <!-- 方向键切换搜索结果不应只在搜索框内触发 -->
+                    <Icon v-if="word" class="close" name="ph:x-bold" @click="word = ''" />
+                </form>
+                <TransitionGroup name="expand">
+                    <div v-if="word && status === 'success' && !result?.length" class="no-result">
+                        无结果
+                    </div>
+                    <ol
+                        v-if="word && result?.length"
+                        ref="list-result"
+                        class="scrollcheck-y search-result"
+                    >
+                        <TransitionGroup name="expand">
+                            <ZSearchItem
+                                v-for="(item, itemIndex) in result"
+                                :key="item.id"
+                                v-bind="item"
+                                :class="{ active: activeIndex === itemIndex }"
+                                @click="layoutStore.toggle('search')"
+                                @mouseover="activeIndex = itemIndex"
+                            />
+                        </TransitionGroup>
+                    </ol>
+                    <div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
+                        <Key code="arrowup" @press="activeIndex--">
+                            ↑
+                        </Key> <Key code="arrowdown" @press="activeIndex++">
+                            ↓
+                        </Key> 切换&emsp;
+                        <Key code="enter" @press="openActiveItem">
+                            Enter
+                        </Key> 选择&emsp;
+                        <Key code="escape" @press="layoutStore.toggle('search')">
+                            Esc
+                        </Key> 关闭
+                    </div>
+                </TransitionGroup>
+            </div>
+        </Transition>
+    </div>
 </template>
 
 <style lang="scss" scoped>
+.z-search {
+    --float-distance: 20vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+}
+
 @keyframes scan {
     0% { left: -100%; }
     100% { left: 150%; }
@@ -119,22 +134,14 @@ function openActiveItem() {
 #z-search {
     position: fixed;
     overflow: hidden;
-    top: 10vh;
-    top: 10dvh;
     width: 95%;
     max-width: $breakpoint-mobile;
     border: 1px solid var(--c-primary);
     border-radius: 1em;
     box-shadow: 0 0.5em 1em var(--ld-shadow);
     background-color: var(--ld-bg-card);
-    transition: all 0.2s;
+    transition: all var(--delay, 200);
     z-index: 1000;
-
-    &.v-enter-from,
-    &.v-leave-to {
-        opacity: 0;
-        top: 20%;
-    }
 }
 
 #z-search-bgmask {
@@ -143,7 +150,7 @@ function openActiveItem() {
     background-color: #0003;
     backdrop-filter: blur(0.2em);
     transition: backdrop-filter 1s;
-    transition: opacity 0.2s;
+    transition: opacity var(--delay, 200);
     z-index: 100;
 
     &.v-enter-from,

@@ -1,7 +1,7 @@
 @keyframes float-in {
     0% {
         opacity: 0;
-        transform: translateY(10%);
+        transform: translateY(var(--float-distance, 10%));
     }
 
     100% {
@@ -22,6 +22,6 @@
 .float-in-enter-from,
 .float-in-leave-to {
     opacity: 0;
-    transform: translateY(10%);
+    transform: translateY(var(--float-distance, 10%));
 }
 

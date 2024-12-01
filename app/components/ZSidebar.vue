@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
 const layoutStore = useLayoutStore()
-const searchStore = useSearchStore()
+const _searchStore = useSearchStore()
 
 const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' : 'Ctrl+K')
 </script>
@@ -15,7 +15,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
     <aside id="z-sidebar" :class="{ show: layoutStore.isOpen('sidebar') }">
         <ZhiluHeader class="sidebar-header" to="/" />
         <nav class="sidebar-nav scrollcheck-y">
-            <div class="search-btn sidebar-nav-item gradient-card" @click="searchStore.open()">
+            <div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
                 <Icon name="ph:magnifying-glass-bold" />
                 <span class="nav-text">搜索</span>
                 <span class="keycut widescreen-only">{{ keycut }}</span>
@@ -26,7 +26,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
                 </h3>
                 <menu>
                     <li v-for="(item, itemIndex) in group.items" :key="itemIndex">
-                        <ZRawLink :to="item.url" class="sidebar-nav-item">
+                        <ZRawLink :to="item.url" class="sidebar-nav-item" @click="layoutStore.toggle('sidebar')">
                             <Icon :name="item.icon" />
                             <span class="nav-text">{{ item.text }}</span>
                             <Icon v-if="item?.external" class="external-tip" name="ph:arrow-up-right" />

@@ -1,5 +1,5 @@
 import type { SearchResult } from 'minisearch'
-import { LazyZSearch } from '#components'
+import { LazyPopoverSearch } from '#components'
 
 export const useSearchStore = defineStore('search', () => {
     const layoutStore = useLayoutStore()
@@ -14,7 +14,8 @@ export const useSearchStore = defineStore('search', () => {
         }
     })
 
-    const { open, close } = popoverStore.use(() => h(LazyZSearch), { duration: 200 })
+    const { open, close } = popoverStore.use(() => h(LazyPopoverSearch))
+
     watch(() => layoutStore.isOpen('search'), (searchOpen) => {
         searchOpen ? open() : close()
     })
@@ -22,7 +23,5 @@ export const useSearchStore = defineStore('search', () => {
     return {
         word,
         result,
-        open,
-        close,
     }
 })

@@ -3,7 +3,6 @@ const props = defineProps<{
     el: HTMLImageElement
     caption?: string
     isOpening?: boolean
-    duration?: number
 }>()
 
 const emit = defineEmits<{
@@ -131,7 +130,7 @@ useEventListener('keydown', (e) => {
 </script>
 
 <template>
-    <div class="z-lightbox" :style="{ '--delay': `${duration}ms` }">
+    <div class="z-lightbox">
         <Transition>
             <div
                 v-if="isOpening"

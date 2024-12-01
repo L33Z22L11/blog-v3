@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { LazyZLightbox } from '#components'
+import { LazyPopoverLightbox } from '#components'
 
 const props = withDefaults(defineProps<{
     src: string
@@ -19,15 +19,10 @@ const elImage = useCurrentElement<HTMLImageElement>(image)
 
 const popoverStore = usePopoverStore()
 
-const { open, close } = popoverStore.use(() => h(LazyZLightbox, {
+const { open } = popoverStore.use(() => h(LazyPopoverLightbox, {
     el: elImage.value,
     caption: props.caption,
-    onClose() {
-        close()
-    },
-}), {
-    duration: 200,
-})
+}))
 </script>
 
 <template>

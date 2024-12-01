@@ -23,15 +23,15 @@ export const usePopoverStore = defineStore('popover', () => {
             state = {
                 vnode,
                 isOpening,
-                duration: options?.duration ?? 0,
+                duration: options?.duration ?? 200,
                 zIndex,
             }
             pops.value.push(state)
-            vnode.props ??= {}
-            vnode.props.onClose ??= close
-            vnode.props.onVnodeMounted = () => {
-                isOpening.value = true
-            }
+            Object.assign(vnode.props ??= {}, {
+                style: { '--delay': `${state.duration}ms` },
+                onClose: vnode.props?.onClose ?? close,
+                onVnodeMounted: () => (isOpening.value = true),
+            })
         }
 
         async function close() {
