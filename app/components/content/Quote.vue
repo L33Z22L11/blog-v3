@@ -23,6 +23,11 @@ const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
     color: var(--c-text-2);
+
+    :deep(p) {
+        margin: 0;
+        text-indent: 0;
+    }
 }
 
 .icon-line {
@@ -39,10 +44,5 @@ const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
         opacity: 1;
         transform: translateY(-0.5rem);
     }
-}
-
-:deep(p) {
-    margin: 0;
-    text-indent: 0;
 }
 </style>

@@ -1,8 +1,9 @@
+import type { ParsedContent } from '@nuxt/content'
 import type { XmlBuilderOptions } from 'fast-xml-parser'
 import { serverQueryContent } from '#content/server'
+import { XMLBuilder } from 'fast-xml-parser'
 import blogConfig from '~~/blog.config'
 import { version } from '~~/package.json'
-import { XMLBuilder } from 'fast-xml-parser'
 
 const runtimeConfig = useRuntimeConfig()
 
@@ -20,15 +21,12 @@ function getUrl(path: string | undefined) {
     return new URL(path ?? '', blogConfig.url).toString()
 }
 
-function renderContent(post: Record<string, string>) {
-    return builder.build({
-        img: post.image ? { $src: post.image } : undefined,
-        p: post.description,
-        a: {
-            $href: getUrl(post._path),
-            _: '点击查看全文',
-        },
-    })
+function renderContent(post: ParsedContent) {
+    return [
+        post.image && `<img src="${post.image}" />`,
+        post.description && `<p>${post.description}</p>`,
+        `<a href="${getUrl(post._path)}">点击查看全文</a>`,
+    ].join(' ')
 }
 
 export default defineEventHandler(async (event) => {

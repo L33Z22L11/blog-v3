@@ -59,6 +59,8 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
   :copy{prompt="PS>" code="ssh localhost"}
 - 在配置文件中添加此行，快速进入 Git Bash
   :copy{prompt="$PROFILE" lang="sh" code="Set-Alias bash $env:ProgramFiles\Git\bin\bash"}
+- 在配置文件中添加此行，按 `Ctrl+D` 退出 PowerShell
+  :copy{prompt="$PROFILE" lang="sh" code="Set-PSReadlineKeyHandler -Chord Ctrl+d -Function DeleteCharOrExit"}
 
 ### Oh My Posh
 
@@ -77,9 +79,9 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
     ```
 - 安装字体
   - 访问 [Nerd Fonts 网站](https://www.nerdfonts.com/font-downloads) 或者 [Release 页面](https://github.com/ryanoasis/nerd-fonts/releases)
-  - 按 Ctrl+F 搜索你常使用的字体，并下载
+  - 按 `Ctrl+F` 搜索你常使用的字体，并下载
   - 解压后选中字体，右键安装
-  - 在 Windows Terminal 中，按 Ctrl+, 打开设置
+  - 在 Windows Terminal 中，按 `Ctrl+,` 打开设置
   - 配置文件 - 默认值 - 外观 - 字体 - 选择你下载的字体 - 保存
 
 ## Git Bash
