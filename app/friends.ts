@@ -696,6 +696,17 @@ export default <FeedGroup[]>[
                 date: '2024-11-07',
                 comment: 'Hexo博客折腾，技术分享。',
             },
+            {
+                author: 'Tianli',
+                desc: '自知之明是最可贵的知识！',
+                link: 'https://blog.tianli0.top/',
+                feed: 'https://blog.tianli0.top/rss.xml',
+                icon: 'https://q1.qlogo.cn/g?b=qq&nk=507249007&s=3',
+                avatar: 'https://q1.qlogo.cn/g?b=qq&nk=507249007&s=4',
+                archs: ['VitePress', '国内 CDN'],
+                date: '2024-12-04',
+                comment: '技术学习笔记，TianliGPT开发者。',
+            },
         ],
     },
 ]

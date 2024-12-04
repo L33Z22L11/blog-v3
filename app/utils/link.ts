@@ -13,21 +13,16 @@ const noRouterExtensions = ['.css', '.csv', '.gif', '.ico', '.jpg', '.js', '.jso
 
 export function getDomain(url: string) {
     const domain = fromUrl(url)
-    if (typeof domain === 'symbol')
-        return url
-    else
-        return domain
+    return typeof domain === 'symbol' ? url : domain
 }
+
 export function getMainDomain(url: string, useIcann?: boolean) {
     const hostname = getDomain(url)
     const parseResult = parseDomain(hostname)
-    if (parseResult.type === ParseResultType.Listed) {
-        const { domain, topLevelDomains } = useIcann ? parseResult.icann : parseResult
-        return `${domain}.${topLevelDomains.join('.')}`
-    }
-    else {
+    if (parseResult.type !== ParseResultType.Listed)
         return hostname
-    }
+    const { domain, topLevelDomains } = useIcann ? parseResult.icann : parseResult
+    return `${domain}.${topLevelDomains.join('.')}`
 }
 
 export function getDomainType(mainDomain: string) {
@@ -44,7 +39,6 @@ export function getGhUsername(url?: string) {
 export function isExtLink(url?: string) {
     if (!url)
         return false
-
     return url.includes(':')
         || noRouterExtensions.some(ext => url.endsWith(ext))
 }

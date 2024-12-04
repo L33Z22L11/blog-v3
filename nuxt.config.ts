@@ -22,7 +22,6 @@ export default defineNuxtConfig({
             ],
             meta: [
                 { name: 'author', content: blogConfig.author.name },
-                { name: 'color-scheme', content: 'light dark' },
                 { 'name': 'generator', 'data-github-repo': 'https://github.com/L33Z22L11/blog-v3' },
             ],
             templateParams: {
@@ -49,6 +48,10 @@ export default defineNuxtConfig({
         '@/assets/css/main.scss',
         '@/assets/css/reusable.scss',
     ],
+
+    features: {
+        inlineStyles: false,
+    },
 
     future: {
         compatibilityVersion: 4,
