@@ -1,5 +1,5 @@
 import { XMLBuilder } from 'fast-xml-parser'
-import blogConfig, { feedEntry } from '~~/blog.config'
+import blogConfig, { myFeed } from '~~/blog.config'
 import friends from '~/friends'
 import subscriptions from '~/subscriptions'
 import type { FeedEntry, FeedGroup } from '~/types/feed'
@@ -33,7 +33,7 @@ function flattenGroups(groups: FeedGroup[]) {
 
 export default defineEventHandler(async (event) => {
     const outlines = [
-        mapEntry(feedEntry),
+        mapEntry(myFeed),
         ...flattenGroups(subscriptions),
         ...flattenGroups(friends),
     ]

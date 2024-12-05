@@ -1,20 +1,27 @@
 <script setup lang="ts">
-import { feedEntry } from '~~/blog.config'
+import { myFeed } from '~~/blog.config'
 import friends from '~/friends'
 import subscriptions from '~/subscriptions'
 
-// FIXME: 数据无法传入 ContentRenderMarkdown 组件
-const postExtraData = ref({ feedEntry })
-
+const appConfig = useAppConfig()
 const layoutStore = useLayoutStore()
 layoutStore.setAside([])
 
-const { data: postLink } = await useAsyncData('/link', () => queryContent('/link').findOne())
-postLink.value && useSeoMeta({
-    title: postLink.value.title,
+useSeoMeta({
+    title: '友链',
     ogType: 'profile',
-    description: postLink.value.description,
+    description: `${appConfig.title}的友链页面，收集了添加他为友链的网站和他订阅的网站列表。`,
 })
+
+const copyFields = {
+    博主: myFeed.author,
+    标题: myFeed.title,
+    介绍: myFeed.desc,
+    网址: myFeed.link,
+    头像: myFeed.avatar,
+}
+
+const { data: postLink } = await useAsyncData('/link', () => queryContent('/link').findOne())
 </script>
 
 <template>
@@ -23,7 +30,7 @@ postLink.value && useSeoMeta({
             <p><Icon name="ph:newspaper-clipping-bold" /> 我会通过订阅源阅读友链文章。</p>
             <p>
                 欢迎加入 QQ 群 <Tip copy>
-                    169994096
+                    {{ appConfig.qqGroup }}
                 </Tip> 闲聊或技术交流。
             </p>
             <p>
@@ -47,16 +54,25 @@ postLink.value && useSeoMeta({
     <FeedGroup label="友链" :feeds="friends" />
     <FeedGroup label="订阅" :feeds="subscriptions" />
 
-    <ContentRendererMarkdown
-        v-if="postLink"
-        :data="postExtraData"
-        :value="postLink"
-        class="article"
-        tag="article"
-    />
-    <p v-else class="text-center">
-        可于 link.md 配置友链补充说明。
-    </p>
+    <Tab :tabs="['我的博客信息', '申请友链']" center>
+        <template #tab1>
+            <div>
+                <FeedCard v-bind="myFeed" />
+                <Copy v-for="[prompt, code] in Object.entries(copyFields)" :key="prompt" :prompt :code />
+            </div>
+        </template>
+        <template #tab2>
+            <ContentRendererMarkdown
+                v-if="postLink"
+                :value="postLink"
+                class="article"
+                tag="article"
+            />
+            <p v-else class="text-center">
+                可于 link.md 配置友链补充说明。
+            </p>
+        </template>
+    </Tab>
 
     <PostComment key="/link" />
 </template>

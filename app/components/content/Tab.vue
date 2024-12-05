@@ -23,12 +23,19 @@ const activeTab = ref(Number(props.active) || 1)
             </button>
         </div>
         <div class="tab-content">
-            <slot :name="`tab${activeTab}`" />
+            <!-- mode="out-in" 会引发插槽问题 -->
+            <Transition name="float-in">
+                <slot :name="`tab${activeTab}`" />
+            </Transition>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
+.float-in-leave-active {
+    position: revert;
+}
+
 .center {
     width: fit-content;
     max-width: 100%;
@@ -45,6 +52,7 @@ const activeTab = ref(Number(props.active) || 1)
     margin: 0 auto;
     padding: 0.5em 0;
     font-size: 0.9em;
+    line-height: normal;
 
     &::before {
         content: "";
@@ -58,7 +66,7 @@ const activeTab = ref(Number(props.active) || 1)
 }
 
 button {
-    padding: 0.1em 0.5em;
+    padding: 0.3em 0.5em;
     border-radius: 0.4em;
     color: var(--c-text-2);
     transition: all 0.2s;

@@ -19,6 +19,7 @@ const blogConfig = {
     },
     favicon: 'https://www.zhilu.cyou/api/icon.png',
     language: 'zh-CN',
+    qqGroup: '169994096',
     timeEstablished: '2019-07-19',
     /** 时区，修改后还应修改 time.ts 中引入的时区包 */
     timezone: 'Asia/Shanghai',
@@ -54,14 +55,14 @@ const blogConfig = {
     },
 
     twikoo: {
-        js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.39/dist/twikoo.all.min.js',
+        js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.40/dist/twikoo.all.min.js',
         envId: 'https://twikoo.zhilu.cyou/',
         preload: 'https://twikoo.zhilu.cyou/',
     },
 }
 
 // 用于生成 OPML 和友链页面配置
-export const feedEntry = <FeedEntry>{
+export const myFeed = <FeedEntry>{
     author: blogConfig.author.name,
     sitenick: '摸鱼处',
     title: blogConfig.title,

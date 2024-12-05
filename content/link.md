@@ -1,27 +1,4 @@
----
-title: 友链
-description: 纸鹿摸鱼处的友链页面，收集了添加他为友链的网站和他订阅的网站列表。
-aside: []
----
-
-::tab
----
-tabs: ["我的博客信息", "申请友链"]
-center: true
----
-
-#tab1
-
-```yaml
-- author: 纸鹿本鹿
-  title: 纸鹿摸鱼处
-  desc: 纸鹿至麓不知路，支炉制露不止漉
-  link: https://blog.zhilu.cyou
-  feed: https://blog.zhilu.cyou/atom.xml
-  icon: https://www.zhilu.cyou/api/avatar.png
-```
-
-#tab2
+<!-- 友链页面的“申请友链”要求 -->
 
 - 申请要求：原则上与多数独立博客的友链要求一致
   - 能够**长期更新维护**，并输出**有价值的原创内容**
@@ -38,4 +15,3 @@ center: true
     }
     ```
 - 信息可能会被适当修改，以保证展示效果
-::
