@@ -1,17 +1,18 @@
 <script setup lang="ts">
+import type ArticleProps from '~/types/article'
 import Autoplay from 'embla-carousel-autoplay'
 import emblaCarouselVue from 'embla-carousel-vue'
-import type ArticleProps from '~/types/article'
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
 
 defineProps<{ list: ArticleProps[] }>()
 
 const [emblaRef, emblaApi] = emblaCarouselVue({
-    dragFree: true,
+    skipSnaps: true,
     loop: true,
-}, [Autoplay({
-    stopOnInteraction: false,
-    stopOnMouseEnter: true,
-})])
+}, [
+    Autoplay({ stopOnInteraction: false, stopOnMouseEnter: true }),
+    WheelGesturesPlugin(),
+])
 </script>
 
 <template>
@@ -89,6 +90,8 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
     position: relative;
     overflow: hidden;
     mask: linear-gradient(to right, transparent, #fff var(--fadeout-width), #fff calc(100% - var(--fadeout-width)), transparent);
+    cursor: grab;
+    user-select: none;
 }
 
 .embla-button {
