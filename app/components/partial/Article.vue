@@ -60,7 +60,6 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
 <style lang="scss" scoped>
 .article-card {
     container-type: inline-size;
-    display: block;
     position: relative;
     margin: 1rem 0;
     border-radius: 0.8rem;

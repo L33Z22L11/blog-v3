@@ -1,6 +1,6 @@
 import type { ArticleOrderType } from './types/article'
-import blogConfig from '~~/blog.config'
 import type { Nav, NavItem } from '~/types/nav'
+import blogConfig from '~~/blog.config'
 
 export default defineAppConfig({
     ...blogConfig,
@@ -25,7 +25,7 @@ export default defineAppConfig({
     footer: {
         copyright: `© ${new Date().getFullYear()} ${blogConfig.author.name}`,
         iconNav: <NavItem[]>[
-            { icon: 'ph:house-bold', text: '个人主页', url: 'https://zhilu.cyou/' },
+            { icon: 'ph:house-bold', text: '个人主页', url: blogConfig.author.homepage },
             { icon: 'ri:qq-line', text: '交流群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
             { icon: 'ph:github-logo-bold', text: 'GitHub: L33Z22L11', url: 'https://github.com/L33Z22L11' },
             { icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },

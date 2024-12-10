@@ -1,8 +1,8 @@
+import type { FeedEntry, FeedGroup } from '~/types/feed'
 import { XMLBuilder } from 'fast-xml-parser'
 import blogConfig, { myFeed } from '~~/blog.config'
 import friends from '~/friends'
 import subscriptions from '~/subscriptions'
-import type { FeedEntry, FeedGroup } from '~/types/feed'
 
 const runtimeConfig = useRuntimeConfig()
 

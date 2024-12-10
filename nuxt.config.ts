@@ -21,7 +21,7 @@ export default defineNuxtConfig({
                 // { rel: 'stylesheet', href: 'https://gcore.jsdelivr.net/npm/nerdfonts-web/nf.min.css' },
             ],
             meta: [
-                { name: 'author', content: blogConfig.author.name },
+                { name: 'author', content: `${blogConfig.author.name} <${blogConfig.author.email}>` },
                 { 'name': 'generator', 'data-github-repo': 'https://github.com/L33Z22L11/blog-v3' },
             ],
             templateParams: {

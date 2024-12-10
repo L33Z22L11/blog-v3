@@ -20,7 +20,7 @@ watch(props, () => {
 
 <template>
     <!-- FIXME: 指定 id 范围以 SSG -->
-    <TransitionGroup appear name="float-in">
+    <TransitionGroup name="float-in">
         <ZArticle
             v-for="article, index in list"
             :key="article._path"
@@ -31,3 +31,9 @@ watch(props, () => {
         />
     </TransitionGroup>
 </template>
+
+<style lang="scss" scoped>
+.article-card {
+    transition-delay: var(--delay);
+}
+</style>
