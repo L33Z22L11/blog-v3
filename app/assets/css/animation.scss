@@ -16,7 +16,8 @@
 }
 
 .float-in-leave-active {
-    position: absolute;
+    /* stylelint-disable-next-line declaration-no-important */
+    position: absolute !important;
 }
 
 .float-in-enter-from,

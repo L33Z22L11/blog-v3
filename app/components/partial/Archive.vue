@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { format } from 'date-fns'
 import type ArticleProps from '~/types/article'
+import { format } from 'date-fns'
 
 const props = defineProps<{
     to?: string
