@@ -2,6 +2,7 @@
 const route = useRoute()
 
 const layoutStore = useLayoutStore()
+layoutStore.setAside(['toc'])
 
 const { data: post } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
 const excerpt = computed(() => post.value?.description || '')
@@ -13,7 +14,7 @@ if (post.value) {
         ogImage: post.value.image,
         description: post.value.description,
     })
-    layoutStore.setAside(post.value.aside || ['toc'])
+    layoutStore.setAside(post.value.aside)
 }
 else {
     // // BUG: 部分文章在 Vercel 上以 404 状态码呈现，在 Linux SSG 模式下展示异常

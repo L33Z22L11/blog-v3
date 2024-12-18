@@ -34,7 +34,7 @@ mirror: true
 
 ```js
 oncontextmenu = onkeydown = onselectstart = function () {
-    return false
+    return false;
 }
 ```
 
@@ -54,20 +54,20 @@ mirror: true
 ```js
 function change(totype) {
     // 切换类型时需要重新初始化的内容
-    now = new Date()
-    end = 0, progress = 0, order = 0
-    today = `${fixDigit(now.getMonth() + 1)}-${fixDigit(now.getDate())}`
+    now = new Date();
+    end = 0, progress = 0, order = 0;
+    today = fixDigit(now.getMonth() + 1) + "-" + fixDigit(now.getDate());
 
-    type = totype
+    type = totype;
     // console.log(type);
-    output('type', type)
+    output("type", type);
 
     // 切换类型的对焦动画
-    eleMain.style.filter = 'blur(.5em)'
-    setTimeout(() => {
-        eleMain.style.filter = 'blur(0)'
-        updateTime()
-    }, 500)
+    eleMain.style.filter = "blur(.5em)";
+    setTimeout(function () {
+        eleMain.style.filter = "blur(0)";
+        updateTime();
+    }, 500);
 }
 ```
 
@@ -111,13 +111,15 @@ width: 360px
 
 ```js
 function setTemp(sh, sm, eh, em) {
-    sh = prompt('考试开始时间所在的小时', 17)
-    sm = prompt('考试开始时间所在的分钟', 0)
-    eh = prompt('考试结束时间所在的小时', 18)
-    em = prompt('考试结束时间所在的分钟', 0)
-    $(prompt('考试科目名称', '临时'), `${today}T${fixDigit(sh)}:${fixDigit(sm)}`, `${today}T${fixDigit(eh)}:${fixDigit(em)}`)
-    alert(`考试科目：${subject}\n起止时间：${
-        getClock(start)}~${getClock(end)}`)
+    sh = prompt("考试开始时间所在的小时", 17);
+    sm = prompt("考试开始时间所在的分钟", 0);
+    eh = prompt("考试结束时间所在的小时", 18);
+    em = prompt("考试结束时间所在的分钟", 0);
+    $(prompt("考试科目名称", "临时"),
+        today + "T" + fixDigit(sh) + ":" + fixDigit(sm),
+        today + "T" + fixDigit(eh) + ":" + fixDigit(em));
+    alert("考试科目：" + subject + "\n起止时间："
+        + getClock(start) + "~" + getClock(end));
 }
 ```
 
@@ -154,12 +156,12 @@ mirror: true
 
 ```js
 function relStyle(prop, delta, unit, minVal, maxVal) {
-    propVal = Number(eleMain.style[prop].replace(unit, '')) + delta
-    propVal = Math.max(propVal, minVal)
-    propVal = Math.min(propVal, maxVal)
-    eleMain.style[prop] = propVal + unit
+    propVal = Number(eleMain.style[prop].replace(unit, "")) + delta;
+    propVal = Math.max(propVal, minVal);
+    propVal = Math.min(propVal, maxVal);
+    eleMain.style[prop] = propVal + unit;
     // 保留两位小数
-    output(prop, Math.round(propVal * 1e2) / 1e2)
+    output(prop, Math.round(propVal * 1e2) / 1e2);
 }
 ```
 
@@ -175,38 +177,38 @@ mirror: true
 只是为了测试考试时间轮换是否正常而写出来的功能。
 
 ```js
-if (!String(location).includes('debug')) {
+if (String(location).indexOf("debug") == -1) {
     updateTime = function () {
-        now = new Date()
+        now = new Date();
         // 铃声校准
         // now.setMinutes(now.getMinutes() + 1);
-        output('clock', getClock(now))
-        updateExam()
+        output("clock", getClock(now));
+        updateExam();
     }
-    setInterval(updateTime, 2000)
+    setInterval(updateTime, 2000);
 }
 else {
-    alert('已进入调试模式，关闭本页面可返回正常模式。')
+    alert("已进入调试模式，关闭本页面可返回正常模式。")
     // 调试模式初始时间
-    now = new Date('2021-09-18T15:00+08:00')
+    now = new Date("2021-09-18T15:00+08:00");
     updateTime = function () {
         // 最晚结束时间
-        now > new Date('2021-09-20T19:00+08:00') ? change(type) : null
+        now > new Date("2021-09-20T19:00+08:00") ? change(type) : null;
         // 调试模式跳过夜晚
         if (now.getHours() == 19) {
-            now.setHours(31)
-            today = `${fixDigit(now.getMonth() + 1)
-            }-${fixDigit(now.getDate())}`
+            now.setHours(31);
+            today = fixDigit(now.getMonth() + 1)
+            + "-" + fixDigit(now.getDate());
         }
         // 调试模式速度设置
         // now.setMinutes(now.getMinutes() + 1);
-        now.setSeconds(now.getSeconds() + 30)
-        output('clock', getClock(now))
-        updateExam()
+        now.setSeconds(now.getSeconds() + 30);
+        output("clock", getClock(now));
+        updateExam();
     }
-    setInterval(updateTime, 20)
+    setInterval(updateTime, 20);
 }
-updateTime()
+updateTime();
 ```
 
 ## 06 “屏保预警已关闭”
@@ -229,30 +231,30 @@ mirror: true
 ```js
 onload = function () {
     // 希沃屏保剩余时间
-    SCREENSAVER_TIME = 45
-    !String(location).includes('noscreensaver')
+    SCREENSAVER_TIME = 45;
+    String(location).indexOf("noscreensaver") == -1
         ? setInterval(updateSST, 60000)
-        : null
+        : null;
 }
 
 onmousemove = onmousedown = onkeydown
-    = function () { SCREENSAVER_TIME = 45 }
+    = function () { SCREENSAVER_TIME = 45; }
 
 // 希沃屏保预警，2021-09屏保已经更换内容且被信息中心关闭
 function updateSST() {
-    eleSST = document.getElementById('SSTBubble')
-    SCREENSAVER_TIME -= 1
+    eleSST = document.getElementById("SSTBubble");
+    SCREENSAVER_TIME -= 1;
     if (SCREENSAVER_TIME < 0) {
-        eleSST.style.backgroundColor = 'rgba(255,255,255,.2)'
-        output('SST', '已经')
+        eleSST.style.backgroundColor = "rgba(255,255,255,.2)";
+        output("SST", "已经");
     }
     else if (SCREENSAVER_TIME < 10) {
-        eleSST.style.display = 'flex'
-        eleSST.style.backgroundColor = '#f52'
-        output('SST', `在${SCREENSAVER_TIME}分钟后`)
+        eleSST.style.display = "flex";
+        eleSST.style.backgroundColor = "#f52";
+        output("SST", "在" + SCREENSAVER_TIME + "分钟后");
     }
     else {
-        eleSST.style.display = ''
+        eleSST.style.display = "";
     }
 }
 ```

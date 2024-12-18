@@ -10,7 +10,30 @@ export default antfu({
             script: { lang: ['ts', 'tsx'] },
             style: { lang: ['scss'] },
         }],
-        'vue/enforce-style-attribute': ['warn', { allow: ['scoped'] }],
+        'vue/enforce-style-attribute': ['warn', {
+            allow: ['scoped'],
+        }],
         'yaml/indent': ['error', 2],
+    },
+}, {
+    files: ['**/*.json'],
+    ignores: ['content/**'],
+    rules: {
+        'style/eol-last': ['warn', 'never'],
+    },
+}, {
+    files: ['content/**'],
+    rules: {
+        'antfu/consistent-list-newline': 'off',
+        'eqeqeq': 'off',
+        'jsonc/comma-dangle': ['warn', 'always'],
+        'no-irregular-whitespace': 'off',
+        'no-sequences': 'off',
+        'prefer-arrow-callback': 'off',
+        'prefer-template': 'off',
+        'style/no-seqences': 'off',
+        'style/quotes': 'off',
+        'style/semi': 'off',
+        'unicorn/prefer-includes': 'off',
     },
 })

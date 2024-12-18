@@ -142,7 +142,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 ```json [settings.json]
 {
-  "Lingma.LocalStoragePath": "C:\\Users\\Zhilu\\.lingma"
+  "Lingma.LocalStoragePath": "C:\\Users\\Zhilu\\.lingma",
 }
 ```
 
@@ -151,8 +151,8 @@ link: https://github.com/KazariEX/hexo-server-live
 ```json [settings.json]
 {
   "settingsSync.ignoredSettings": [
-    "Lingma.LocalStoragePath"
-  ]
+    "Lingma.LocalStoragePath",
+  ],
 }
 ```
 
@@ -172,10 +172,10 @@ link: https://github.com/KazariEX/hexo-server-live
 {
   "stylelint.config": {
     "plugins": [
-      "stylelint-order"
+      "stylelint-order",
     ],
-    "extends": "stylelint-config-standard"
-  }
+    "extends": "stylelint-config-standard",
+  },
 }
 ```
 
@@ -183,7 +183,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 ```json [settings.json]
 {
-  "stylelint.packageManager": "pnpm"
+  "stylelint.packageManager": "pnpm",
 }
 ```
 
