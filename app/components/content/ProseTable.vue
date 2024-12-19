@@ -26,6 +26,7 @@ const scroll = ref(true)
     table.scroll {
         display: block;
         overflow: auto;
+        max-width: fit-content;
         white-space: nowrap;
         word-break: normal;
     }
@@ -52,6 +53,7 @@ const scroll = ref(true)
 :deep(table) {
     max-height: 80vh;
     max-height: 80dvh;
+    margin: auto;
     border-collapse: collapse;
 
     > thead {

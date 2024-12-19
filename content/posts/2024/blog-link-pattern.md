@@ -6,8 +6,6 @@ updated: 2024-09-27 08:37:52
 categories: [经验分享]
 tags: [网站, 博客]
 references:
-  - title: 如何写好博客？（或如何写好文章？）
-    link: https://pathos.page/blog/how-to-write-blog
   - title: 使用子文件夹管理 Hexo 文章且不改变文章永久链接
     link: https://prinsss.github.io/hexo-posts-in-subfolder/
   - title: 更改Hugo博客的永久URL链接，并用Netlify实现旧博文跳转

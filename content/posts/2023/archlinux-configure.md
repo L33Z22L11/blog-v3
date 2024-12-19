@@ -2,7 +2,7 @@
 title: Arch Linux 初步配置
 description: 在 Arch Linux 系统上安装配置必备软件，如蓝牙、Yay、Zsh、输入法等。
 date: 2023-06-24 09:31:15
-updated: 2024-09-01 19:17:36
+updated: 2024-12-19 08:23:15
 image: https://7.isyangs.cn/24/6664009851eb0-24.jpg
 categories: [经验分享]
 tags: [教程, archlinux, 系统]
@@ -28,12 +28,16 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
   :copy{code="sudo pacman -S reflector"}
 - 使用 Reflector 更新源
   :copy{code="sudo reflector --verbose --country China --sort rate --save /etc/pacman.d/mirrorlist"}
+- 移除风控严格的镜像源，防止滚包中断或损坏本地数据库
+  :copy{code="sudo sed -i '/zju/d' /etc/pacman.d/mirrorlist"}
+
+如果你在日常滚包时更新时提示 `-> could not open file /var/lib/pacman/sync/core.db: Unrecognized archive format`，说明数据库文件被替换为风控页面的 HTML 文件，需要手动删除被篡改的本地数据库，然后重新滚包。
 
 ## 字体
 
 - 中文字体
   :copy{code="sudo pacman -S ttf-sarasa-gothic"}
-- Nerd 字体 (zsh主题需要)
+- Nerd 字体 (zsh 主题需要)
   :copy{code="sudo pacman -S ttf-nerd-fonts-symbols"}
 
 ## 设置时间策略
@@ -71,15 +75,15 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 
 :copy{code="sudo pacman -S git"}
 
-## Goproxy
+## GOPROXY 环境变量
 
-可以使用 [七牛云GoProxy.cn](https://goproxy.cn/)、[GoProxy.io](https://goproxy.io/zh/) 镜像加速。
+可以使用 [七牛云Goproxy.cn](https://goproxy.cn/)、[goproxy.io](https://goproxy.io/zh/) 镜像加速。
 
 - 编辑环境变量文件
   :copy{code="sudo vim /etc/environment"}
 - 向环境变量中添加以下内容（按 `i` 键进入编辑模式，按 `Esc` 键退出编辑模式，输入 `:wq` 保存并退出）
   ```ini [/etc/environment]
-  # GoProxy
+  # GOPROXY
   GO111MODULE=on
   GOPROXY=https://goproxy.cn
   ```

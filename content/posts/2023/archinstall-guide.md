@@ -2,7 +2,7 @@
 title: 使用 ArchInstall 安装 Arch Linux
 description: 在2024年5月版的 Arch Linux 安装镜像的基础上，使用 ArchInstall 安装系统全过程。
 date: 2023-05-23 20:37:07
-updated: 2024-05-12 20:54:15
+updated: 2024-12-19 08:22:57
 image: https://7.isyangs.cn/24/66640095c770c-24.jpg
 categories: [经验分享]
 tags: [教程, archlinux, 系统]
@@ -106,6 +106,17 @@ Ventoy 需要加载自定义证书文件才能在启用“安全启动”特性�
 
 换源后，请**不要**在 ArchInstall 中设置 Mirrors 选项。
 
+### 关于浙大镜像源
+
+在安装 Arch Linux 时下载数据量较大，校园网易被标记为风险 IP，浙大镜像源会对此做出风控，导致下载失败。因此，浙大镜像源不适合用来安装 Arch Linux、日常滚包。
+
+- 删除浙大镜像源
+  :copy{prompt="#" code="sed -i '/zju/d' /etc/pacman.d/mirrorlist"}
+
+## 在安装过程中执行其他命令
+
+如果你在 ArchInstall 过程遇到一些不得不输入命令的情况，可以按 `Ctrl+Alt+F2` 进入 2 号虚拟终端，登录 `root` 用户执行命令后，按 `Ctrl+Alt+F1` 回到安装界面即可。
+
 ## 使用 ArchInstall 安装
 
 - 进入安装工具
@@ -132,7 +143,7 @@ Ventoy 需要加载自定义证书文件才能在启用“安全启动”特性�
 
 进入 `Disk configuration` 选项：
 
-- 选择 `Use a best-effort default partition layout` 会清空硬盘并自动规划分区。
+- 选择 `Use a best-effort default partition layout` 会⚠**清空硬盘**⚠并自动规划分区。
 - 选择 `Manual Partitioning` 项可以手动配置分区。
   - 选择的设备（Device）应该是你的硬盘。
   - 随后选择 EFI 启动分区，指定挂载点（Mount Point）为 `/boot`（更规范的配置是 `/boot/efi`，但可能会安装失败）。可以选择 Windows 的引导分区作为启动分区，这个分区一般有以下特征：

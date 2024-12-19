@@ -2,7 +2,7 @@
 title: Arch Linux 易用性及美化
 description: Plasma 桌面环境下优化小键盘、触摸板行为，配置字体。
 date: 2023-07-24 21:27:45
-updated: 2024-05-13 22:21:16
+updated: 2024-12-19 08:54:18
 image: https://7.isyangs.cn/24/666400971559b-24.jpg
 categories: [经验分享]
 tags: [教程, archlinux, 系统]
@@ -36,10 +36,9 @@ tags: [教程, archlinux, 系统]
 
 在“文字和字体-字体”中点击“调整所有字体”，在弹出的窗口中勾选“字体”，选择字体列表最上方的“无衬线/Sans Serif”，点击“确定”，然后将“等宽”设置为“等宽/Monospace”。
 
-随后将“~/.config/fontconfig/fonts.conf”文件设置为如下内容，也可以根据自己的喜好调整 sans-serif 和 monospace 的 fallback 列表。
+随后将 `~/.config/fontconfig/fonts.conf` 文件设置为如下内容，也可以根据自己的喜好调整 sans-serif 和 monospace 的 fallback 列表。
 
-::folding{title="fonts.conf"}
-```xml
+```xml [fonts.conf]
 <?xml version='1.0'?>
 <!DOCTYPE fontconfig SYSTEM 'urn:fontconfig:fonts.dtd'>
 <fontconfig>
@@ -110,13 +109,16 @@ tags: [教程, archlinux, 系统]
   </match>
 </fontconfig>
 ```
-::
 
 ### 开机密码时启用小键盘数字
 
 在“键盘”中将“NumLock 在 Plasma 启动时的状态”设置为“打开”，点击“应用”。
 
 如果之前设置过显示器缩放、字体配置文件最好，这步可以一次性应用这些设置。在“颜色和主题-登录屏幕 (SDDM)”中“应用Plasma设置”。
+
+### 开机时不恢复程序
+
+在“系统”分类下的“会话-桌面会话”中，将“会话恢复”一节的“登录时自动启动应用程序”改为“启动为空会话”。
 
 ### 调整输入法候选框
 
@@ -128,7 +130,7 @@ tags: [教程, archlinux, 系统]
 
 ### 更改休眠策略
 
-在“省电功能”（左侧导航栏底部）中设置接通交流电时不休眠，可以防止“睡不醒”“睡醒花脸”等问题。
+在“省电功能”（左侧导航栏底部）中设置接通交流电时不休眠，可以防止“睡不醒”“睡醒花屏”等问题。
 
 如果遇到了唤醒时花屏的问题，请尝试：
 
