@@ -2,7 +2,7 @@
 title: SSH 免密登录
 description: 生成SSH密钥，启用公钥认证，将公钥添加至授权列表，实现 Windows/Linux/GitHub SSH 免密登录。
 date: 2023-12-25 16:15:00
-updated: 2024-11-02 17:24:04
+updated: 2024-12-26 20:32:04
 image: https://7.isyangs.cn/24/6664009c87ec5-24.jpg
 categories: [经验分享]
 tags: [教程, ssh, 远程]
@@ -58,12 +58,12 @@ Host zhilu-server
 
 ### 设置 SSH 代理
 
-通常，不建议使用 HTTPS 连接到 GitHub，通过 SSH 连接时一般不需要代理即可直接访问。如果没有使用“TUN 模式”或透明代理（Proxy），系统代理设置不会自动应用到 SSH 连接上。
+通常，不建议使用 HTTPS 连接到 GitHub，通过 SSH 连接时一般不需要代理即可直接访问。如果没有使用“TUN 模式”或透明代理，系统代理设置不会自动应用到 SSH 连接上。
 
-大多数代理节点不允许直接访问 22 端口，因此在使用 SSH 连接 GitHub 仓库时，应使用 443 端口。
+大多数代理节点**不允许直接访问 22 端口**，因此在使用 SSH 连接 GitHub 仓库时，应使用 443 端口。
 
 - Linux 和 macOS：可以使用 `nc`{lang="sh"} 工具来实现 SOCKS5 代理。
-- Windows：需要用 `connect`{lang="sh"} 命令，该命令可在 Git for Windows 提供的 Git Bash 中找到。
+- Windows：需要用 `connect`{lang="sh"} 命令，该命令可在 Git for Windows 提供的 Git Bash 中找到，如果无法执行 connect，可能需要使用 Git Bash 操作。
 
 设置代理时，在 SSH 配置文件中启用以下内容，将 `ProxyCommand` 的代理地址替换为实际的 SOCKS5 地址：
 
@@ -72,9 +72,16 @@ Host github.com
     Hostname ssh.github.com
     Port 443
     User git
-    ProxyCommand connect -S 127.0.0.1:10808 %h %p
+    # TUN 模式或透明代理不需要 ProxyCommand
+    # Windows下SOCKS5
+    # ProxyCommand connect -S 127.0.0.1:10808 %h %p
+    # Windows下HTTP
+    # ProxyCommand connect -H 127.0.0.1:10809 %h %p
+    # Linux和macOS下SOCKS5
+    # ProxyCommand nc -v -x 127.0.0.1:20170 %h %p
+    # Linux和macOS下HTTP
+    # ProxyCommand nc -v -X connect -x 127.0.0.1:20172 %h %p
 ```
-若不是 Windows，需要把 `connect -S`{lang="sh"} 更改为 `nc -v -x`{lang="sh"}。
 
 这样配置后，SSH 将通过代理访问 GitHub。注释掉这几行，即可关闭代理设置。
 

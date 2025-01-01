@@ -31,7 +31,6 @@ const meta = computed(() => {
 const appConfig = useAppConfig()
 
 const rows = computed(() => props.code.split('\n').length)
-const collapsibleHeight = computed(() => `${appConfig.content.codeblockCollapsibleRows}em`)
 const collapsible = computed(() => rows.value > appConfig.content.codeblockCollapsibleRows)
 const [isCollapsed, toggleCollapsed] = useToggle(collapsible.value)
 
@@ -45,7 +44,11 @@ useCopy(copyBtn, codeblock)
 </script>
 
 <template>
-    <figure class="z-codeblock" :class="{ collapsed: isCollapsed, collapsible }">
+    <figure
+        class="z-codeblock"
+        :class="{ collapsed: isCollapsed, collapsible }"
+        :style="{ '--collapsible-height': `${appConfig.content.codeblockCollapsibleRows}em` }"
+    >
         <figcaption>
             <span v-if="filename" class="filename">
                 <ClientOnly>
@@ -102,7 +105,7 @@ useCopy(copyBtn, codeblock)
     &.collapsed {
         pre {
             overflow: hidden;
-            max-height: v-bind("collapsibleHeight");
+            max-height: var(--collapsible-height);
             mask: linear-gradient(to bottom, #fff 80%, transparent);
             animation: none;
         }

@@ -85,6 +85,11 @@ export default defineAppConfig({
         },
     ],
 
+    seasonal: {
+        widgetBackground: 'https://wsrv.nl/?url=i2.hdslb.com/bfs/archive/46165212e09842103752c453d7987a470059760b.jpg@320w',
+        emoji: '🧧',
+    },
+
     stats: {
         /** 归档页面每年标题对应的年龄 */
         birthYear: 2003,
