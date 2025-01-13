@@ -54,7 +54,7 @@ export default <FeedGroup[]>[{
         author: '唤青',
         sitenick: 'Evereen',
         title: '唤青映记',
-        desc: '我崇拜流浪、变化和幻想。',
+        desc: '我崇拜流浪、变化和幻想',
         link: 'https://eees.blog/',
         feed: 'https://eees.blog/atom.xml',
         icon: getGhAvatar('Evereen2023', { preset: 'icon' }),
@@ -666,5 +666,14 @@ export default <FeedGroup[]>[{
         archs: ['VitePress', '国内 CDN'],
         date: '2024-12-04',
         comment: '技术学习笔记，TianliGPT开发者。',
+    }, {
+        author: '花生莲子粥',
+        desc: '与世无争，不染于泥',
+        link: 'https://blog.hslzz.cn/',
+        icon: 'https://hslzz.cn/assets/img/favicon.png',
+        avatar: 'https://hslzz.cn/assets/img/favicon.png',
+        archs: ['Hexo', 'Vercel'],
+        date: '2025-01-03',
+        comment: 'Hexo博客，记得加更。',
     }],
 }]

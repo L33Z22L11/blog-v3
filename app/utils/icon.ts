@@ -111,9 +111,9 @@ const ext2lang: Record<string, string> = {
 }
 
 export function getLangIcon(extension?: string): string {
-    const config = useAppConfig()
+    const appConfig = useAppConfig()
 
-    if (!extension || !(config.shiki.langs as string[]).includes(extension))
+    if (!extension || !(appConfig.shiki.langs as string[]).includes(extension))
         extension = 'file'
 
     const fileType = ext2lang[extension] || extension

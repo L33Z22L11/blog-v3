@@ -6,6 +6,7 @@ updated: 2024-12-26 20:32:04
 image: https://7.isyangs.cn/24/6664009c87ec5-24.jpg
 categories: [经验分享]
 tags: [教程, ssh, 远程]
+recommend: true
 ---
 
 在终端中使用 SSH 之前，可以先美化终端以提升用户体验。
@@ -41,7 +42,7 @@ ED225519 类型的密钥综合性能更好。
 
 ## 避免每次输入用户名和IP地址
 
-在 SSH 配置文件中按照以下格式添加条目，即可直接通过 Host 项的名字连接，还能在 `ssh`{lang="sh"} 命令输到一半时按 Tab 键自动补全：
+如果你有经常连接的 SSH 服务器，可以在 SSH 配置文件中按照以下格式添加条目，即可直接通过 Host 项的名字连接，还能在 `ssh`{lang="sh"} 命令输到一半时按 Tab 键自动补全：
 
 ```ssh-config [~/.ssh/config]
 Host zhilu-server
@@ -58,14 +59,12 @@ Host zhilu-server
 
 ### 设置 SSH 代理
 
-通常，不建议使用 HTTPS 连接到 GitHub，通过 SSH 连接时一般不需要代理即可直接访问。如果没有使用“TUN 模式”或透明代理，系统代理设置不会自动应用到 SSH 连接上。
+通常不建议使用 HTTPS 连接到 GitHub，通过 SSH 连接时一般不需要代理即可直接访问。如果没有使用“TUN 模式”或透明代理，系统代理设置不会自动应用到 SSH 连接上。
 
-大多数代理节点**不允许直接访问 22 端口**，因此在使用 SSH 连接 GitHub 仓库时，应使用 443 端口。
+- 更改仓库的远程地址
+  :copy{code="git remote set-url origin git@github.com:username/repo.git"}
 
-- Linux 和 macOS：可以使用 `nc`{lang="sh"} 工具来实现 SOCKS5 代理。
-- Windows：需要用 `connect`{lang="sh"} 命令，该命令可在 Git for Windows 提供的 Git Bash 中找到，如果无法执行 connect，可能需要使用 Git Bash 操作。
-
-设置代理时，在 SSH 配置文件中启用以下内容，将 `ProxyCommand` 的代理地址替换为实际的 SOCKS5 地址：
+当使用代理时，大多数节点**不允许直接访问 22 端口**，因此应在 443 端口通过 SSH 连接到 GitHub 仓库。可以通过修改 SSH 配置文件实现：
 
 ```ssh-config [~/.ssh/config]
 Host github.com
@@ -83,7 +82,10 @@ Host github.com
     # ProxyCommand nc -v -X connect -x 127.0.0.1:20172 %h %p
 ```
 
-这样配置后，SSH 将通过代理访问 GitHub。注释掉这几行，即可关闭代理设置。
+这样一般能正常执行 git 操作，如果不行，可以通过启用或取消注释来通过代理访问 GitHub，端口可能需要更改。
+
+- Linux 和 macOS：可以使用 `nc`{lang="sh"} 工具来实现 SOCKS5 代理。
+- Windows：需要用 `connect`{lang="sh"} 命令，该命令可在 Git for Windows 提供的 Git Bash 中找到，如果无法执行 connect，可能需要使用 Git Bash 操作。
 
 ## 关于 SSH 的更多玩法
 

@@ -23,6 +23,11 @@ recommend: true
 - 安装 gsudo
   :copy{prompt="PS>" code="winget install gsudo"}
 
+新系统的 sudo 命令十分令人恼火，它貌似无法执行 PowerShell 命令。要想在同一目录以管理员权限执行命令：
+
+- 在此目录以管理员权限启动新的终端：
+  :copy{prompt="PS>" code="sudo wt -d $(pwd)"}
+
 ### 如果使用 Windows Powershell
 
 根据 Microsoft 官方文档，PowerShell 和 Windows PowerShell 是两款不同的产品。
@@ -30,7 +35,7 @@ recommend: true
 PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是旧版本的 PSReadLine 模块，需要强制更新。
 
 - 安装新版 PSReadLine 模块
-  :copy{prompt="PS>" code="sudo Install-Module PSReadLine -Force"}
+  :copy{prompt="PS(管理员)>" code="Install-Module PSReadLine -Force"}
   如果第一次执行时提示安装 NuGet 提供程序，那么可能需要再次执行命令才能安装 PSReadLine。
 
 ### 启用自动补全
