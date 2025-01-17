@@ -675,5 +675,15 @@ export default <FeedGroup[]>[{
         archs: ['Hexo', 'Vercel'],
         date: '2025-01-03',
         comment: 'Hexo博客，记得加更。',
+    }, {
+        author: '伍十七',
+        sitenick: 'everfu',
+        desc: '你好👋，我是伍十七，一个三流编程狮。',
+        link: 'https://www.efu.me/',
+        icon: getGhAvatar('everfu', { preset: 'icon' }),
+        avatar: getGhAvatar('everfu'),
+        archs: ['Next.js', 'Vercel'],
+        date: '2025-01-12',
+        comment: 'Hexo Solitude 主题作者，经常换自己网站。',
     }],
 }]

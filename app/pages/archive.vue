@@ -1,37 +1,32 @@
 <script setup lang="ts">
-import { alphabetical, group } from 'radash'
+import { group } from 'radash'
 
 const appConfig = useAppConfig()
 useSeoMeta({
     title: '归档',
     description: `${appConfig.title}的所有文章归档。`,
 })
-const sortOrder = ref(appConfig.pagination.sortOrder || 'date')
-const isAscending = ref<boolean>()
 const birthYear = appConfig.stats.birthYear
 
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog_stats', 'blog_log'])
 
 const { data: listRaw } = await useAsyncData(
-    'posts_archive',
+    'posts_index',
     () => queryContent()
-        .only(['_path', 'image', 'date', 'description', 'readingTime', 'title', 'updated'])
+        .only(['_path', 'categories', 'image', 'date', 'description', 'readingTime', 'recommend', 'title', 'updated'])
         .where({ _original_dir: { $eq: '/posts' } })
         .find(),
     { default: () => [] },
 )
 
-const listSorted = computed(() => alphabetical(
-    listRaw.value,
-    item => item[sortOrder.value],
-    isAscending.value ? 'asc' : 'desc',
-))
+const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
+const { category, categories, listCategorized } = useCategory(listSorted)
 
 const listGrouped = computed(() => {
     const groupList = Object.entries(group(
-        listSorted.value,
-        article => new Date(article[sortOrder.value]).getFullYear(),
+        listCategorized.value,
+        article => new Date(article[sortOrder.value] || 0).getFullYear(),
     ))
     return isAscending.value ? groupList : groupList.reverse()
 })
@@ -39,7 +34,7 @@ const listGrouped = computed(() => {
 // 不能使用 /api/stats，因为可能切换分组方式
 const yearlyWordCount = computed(() => {
     return listGrouped.value.reduce<Record<string, string>>((acc, [year, yearGroup]) => {
-        const totalWords = yearGroup?.reduce((sum, cur) => sum + cur.readingTime.words, 0) || 0
+        const totalWords = yearGroup?.reduce((sum, cur) => sum + cur.readingTime!.words, 0) || 0
         acc[year] = formatNumber(totalWords)
         return acc
     }, {})
@@ -51,6 +46,8 @@ const yearlyWordCount = computed(() => {
         <ZOrderToggle
             v-model:is-ascending="isAscending"
             v-model:sort-order="sortOrder"
+            v-model:category="category"
+            :categories
         />
         <div
             v-for="[year, yearGroup] in listGrouped"

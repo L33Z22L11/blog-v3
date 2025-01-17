@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
     totalPages: number
-    perPage: number
 }>()
 
 const page = defineModel<number>({ required: true })
