@@ -13,10 +13,10 @@ layoutStore.setAside(['blog_stats', 'blog_log'])
 
 const { data: listRaw } = await useAsyncData(
     'posts_index',
-    () => queryContent()
-        .only(['_path', 'categories', 'image', 'date', 'description', 'readingTime', 'recommend', 'title', 'updated'])
-        .where({ _original_dir: { $eq: '/posts' } })
-        .find(),
+    () => queryCollection('content')
+        .where('stem', 'LIKE', 'posts/%')
+        .select('categories', 'date', 'description', 'image', 'path', 'readingTime', 'recommend', 'title', 'updated')
+        .all(),
     { default: () => [] },
 )
 
@@ -71,9 +71,9 @@ const yearlyWordCount = computed(() => {
                 <TransitionGroup appear name="float-in">
                     <ZArchive
                         v-for="article, index in yearGroup"
-                        :key="article._path"
+                        :key="article.path"
                         v-bind="article"
-                        :to="article._path"
+                        :to="article.path"
                         :use-updated="sortOrder === 'updated'"
                         :style="{ '--delay': `${index * 0.03}s` }"
                     />

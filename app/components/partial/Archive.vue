@@ -7,7 +7,7 @@ const props = defineProps<{
     useUpdated?: boolean
 } & ArticleProps>()
 
-const mainDate = computed(() => (props.useUpdated ? props.updated : props.date))
+const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 const dateLabel = computed(() => mainDate.value
     ? format(new Date(mainDate.value), 'MM-dd')
     : '')
@@ -20,7 +20,7 @@ const auxDateLabel = computed(() => props.date
     <li class="article-item">
         <time :datetime="mainDate" :title="getLocaleDatetime(mainDate)">{{ dateLabel }}</time>
         <ZRawLink class="article-link gradient-card" :to :title="description">
-            <span class="article-title" :class="{ 'text-story': type === 'story' }">
+            <span class="article-title">
                 {{ title }}
             </span>
             <time v-if="useUpdated && isTimeDiffSignificant(date, updated)" class="aux-date" :datetime="date" :title="getLocaleDatetime(date)">

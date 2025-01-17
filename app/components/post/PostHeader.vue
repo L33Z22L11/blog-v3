@@ -9,11 +9,11 @@ const publishedLabel = getPostDate(props.date)
 const updatedLabel = getPostDate(props.updated)
 
 const categoryLabel = props.categories?.[0]
-const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
+const categoryIcon = Reflect.get(appConfig.article.categories, categoryLabel!)?.icon
 
 const shareText = `【${appConfig.title}】${props.title}\n\n${
     props.description ? `${props.description}\n\n` : ''}${
-    new URL(props._path!, appConfig.url).href}`
+    new URL(props.path!, appConfig.url).href}`
 
 const btnShareByText = useTemplateRef('text-share')
 useCopy(btnShareByText, btnShareByText, shareText)

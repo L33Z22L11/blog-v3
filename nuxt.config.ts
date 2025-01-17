@@ -1,3 +1,4 @@
+import type { FileAfterParseHook } from '@nuxt/content'
 import blogConfig from './blog.config'
 import redirects from './redirects'
 
@@ -87,7 +88,7 @@ export default defineNuxtConfig({
         '@nuxt/icon',
         '@nuxt/image',
         '@nuxtjs/color-mode',
-        '@nuxtjs/seo',
+        // '@nuxtjs/seo',
         '@pinia/nuxt',
         '@vueuse/nuxt',
         '@zinkawaii/nuxt-shiki',
@@ -101,19 +102,18 @@ export default defineNuxtConfig({
     },
 
     content: {
-        experimental: {
-            search: {},
-        },
-        highlight: {
-            langs: blogConfig.shiki.langs,
-            theme: {
-                default: blogConfig.shiki.defaultTheme,
-                dark: blogConfig.shiki.darkTheme,
+        build: {
+            markdown: {
+                highlight: {
+                    langs: blogConfig.shiki.langs,
+                    theme: {
+                        default: blogConfig.shiki.defaultTheme,
+                        dark: blogConfig.shiki.darkTheme,
+                    },
+                },
+                remarkPlugins: { 'remark-reading-time': {} },
+                toc: { depth: 4, searchDepth: 4 },
             },
-        },
-        markdown: {
-            remarkPlugins: ['remark-reading-time'],
-            toc: { depth: 4, searchDepth: 4 },
         },
     },
 
@@ -130,6 +130,7 @@ export default defineNuxtConfig({
     },
 
     robots: {
+        disableNuxtContentIntegration: true,
         disallow: blogConfig.robotsNotIndex,
     },
 

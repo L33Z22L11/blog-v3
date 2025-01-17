@@ -6,20 +6,20 @@ export type ArticleCategory = keyof typeof _appConfig.article.categories & strin
 export type ArticleOrderType = 'date' | 'updated'
 
 export default interface ArticleProps extends Partial<{
-    _path: string
+    path: string
+    readingTime: ReadTimeResults
+
     title: string
     description: string
     link: string
     date: string
     updated: string
-    published: string
-    categories: [ArticleCategory, ...string[]]
+    categories: string[]
     tags: string[]
     type: 'tech' | 'story'
     image: string
     cover_revert: boolean
     hideInfo: boolean
-    recommend: number | boolean
+    recommend: number
     references: { title: string, link: string }[]
-    readingTime: ReadTimeResults
 }> { }

@@ -12,10 +12,10 @@ layoutStore.setAside(['blog_stats', 'connectivity'])
 
 const { data: listRaw } = await useAsyncData(
     'posts_index',
-    () => queryContent()
-        .only(['_path', 'categories', 'image', 'date', 'description', 'readingTime', 'recommend', 'title', 'updated'])
-        .where({ _original_dir: { $eq: '/posts' } })
-        .find(),
+    () => queryCollection('content')
+        .where('stem', 'LIKE', 'posts/%')
+        .select('categories', 'date', 'description', 'image', 'path', 'readingTime', 'recommend', 'title', 'updated')
+        .all(),
     { default: () => [] },
 )
 
@@ -27,7 +27,7 @@ useSeoMeta({ title: () => (page.value > 1 ? `第${page.value}页` : '') })
 
 const listRecommended = computed(() => sort(
     listRaw.value.filter(item => item?.recommend),
-    post => post.recommend,
+    post => post.recommend || 0,
     true,
 ))
 </script>

@@ -8,15 +8,14 @@ const appConfig = useAppConfig()
 const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 
 const categoryLabel = props.categories?.[0]
-const categoryColor = appConfig.article.categories[categoryLabel!]?.color
-const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
+const categoryInfo = categoryLabel && Reflect.get(appConfig.article.categories, categoryLabel)
 </script>
 
 <template>
     <ZRawLink class="article-card card">
         <NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" />
         <article>
-            <h2 class="article-title" :class="{ 'text-story': type === 'story' }">
+            <h2 class="article-title">
                 {{ title }}
             </h2>
             <p v-if="description" class="article-descrption">
@@ -43,14 +42,14 @@ const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
                 <span
                     v-if="categoryLabel"
                     class="article-category"
-                    :style="{ '--cg-color': categoryColor }"
+                    :style="{ '--cg-color': categoryInfo?.color }"
                 >
-                    <Icon :name="categoryIcon" />
+                    <Icon :name="categoryInfo?.icon" />
                     {{ categoryLabel }}
                 </span>
                 <span v-if="readingTime?.words" class="article-words">
                     <Icon name="ph:paragraph-bold" />
-                    {{ formatNumber(readingTime.words) }}字
+                    {{ formatNumber(readingTime?.words) }}字
                 </span>
             </div>
         </article>

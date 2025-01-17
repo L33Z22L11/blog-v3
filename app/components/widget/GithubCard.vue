@@ -1,7 +1,12 @@
 <script setup lang="ts">
+interface Repo {
+    name: string
+    description: string
+    url: string
+}
 const route = useRoute()
-const { data: post } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
-const repo = post.value?.github
+const { data: post } = await useAsyncData(route.path, () => queryCollection('content').path(route.path).first())
+const repo = computed(() => post.value?.meta?.github as Repo | undefined)
 </script>
 
 <template>

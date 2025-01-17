@@ -1,7 +1,5 @@
-import type { ParsedContent } from '@nuxt/content'
-import type { XmlBuilderOptions } from 'fast-xml-parser'
-import { serverQueryContent } from '#content/server'
-import { XMLBuilder } from 'fast-xml-parser'
+import type { ContentCollectionItem } from '@nuxt/content'
+import { XMLBuilder, type XmlBuilderOptions } from 'fast-xml-parser'
 import blogConfig from '~~/blog.config'
 import { version } from '~~/package.json'
 
@@ -21,23 +19,23 @@ function getUrl(path: string | undefined) {
     return new URL(path ?? '', blogConfig.url).toString()
 }
 
-function renderContent(post: ParsedContent) {
+function renderContent(post: ContentCollectionItem) {
     return [
         post.image && `<img src="${post.image}" />`,
         post.description && `<p>${post.description}</p>`,
-        `<a href="${getUrl(post._path)}">点击查看全文</a>`,
+        `<a href="${getUrl(post.path)}">点击查看全文</a>`,
     ].join(' ')
 }
 
 export default defineEventHandler(async (event) => {
-    const posts = await serverQueryContent(event)
-        .where({ _original_dir: { $eq: '/posts' } })
-        .sort({ updated: -1 })
+    const posts = await queryCollection(event, 'content')
+        .where('stem', 'LIKE', 'posts/%')
+        .order('updated', 'DESC')
         .limit(blogConfig.feed.limit)
-        .find()
+        .all()
 
     const entries = posts.map(post => ({
-        id: getUrl(post._path),
+        id: getUrl(post.path),
         title: post.title ?? '',
         updated: post.updated && new Date(post.updated).toISOString(),
         author: { name: post.author || blogConfig.author.name },
@@ -45,7 +43,7 @@ export default defineEventHandler(async (event) => {
             $type: 'html',
             $: renderContent(post),
         },
-        link: { $href: getUrl(post._path) },
+        link: { $href: getUrl(post.path) },
         summary: post.description,
         category: { $term: post.categories?.[0] },
         published: post.date && new Date(post.date).toISOString(),

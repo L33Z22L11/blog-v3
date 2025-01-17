@@ -25,7 +25,7 @@ const handleError = () => clearError({ redirect: '/' })
                 <ZError
                     :code="error?.message"
                     :message="error?.url"
-                    :title="`出错了 - ${error?.statusCode} ${error?.statusMessage ?? ''}`"
+                    :title="`[${error?.statusCode}] ${error?.statusMessage ?? ''}`"
                 >
                     <ZButton @click="handleError">
                         返回主页
