@@ -74,7 +74,7 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 - 更改 PowerShell [执行策略](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies)
   :copy{prompt="PS>" code="Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"}
   - 也可通过管理员权限更改系统策略
-  :copy{code="sudo Set-ExecutionPolicy RemoteSigned"}
+  :copy{prompt="PS>" code="sudo Set-ExecutionPolicy RemoteSigned"}
 - 配置（参见 [官方文档](https://ohmyposh.dev/docs/installation/prompt)）
   - 打开 PS 配置文件
   :copy{prompt="PS>" code="notepad $PROFILE"}

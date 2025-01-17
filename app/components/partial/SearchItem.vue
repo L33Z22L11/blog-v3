@@ -18,7 +18,6 @@ const highlightContent = computed(() => highlightHTML(props.content ?? '', word.
 </script>
 
 <template>
-    <!-- FIXME: props 上不存在属性“id” -->
     <ZRawLink :to="id" class="search-item">
         <h2>
             <Badge v-if="!isPara" round>

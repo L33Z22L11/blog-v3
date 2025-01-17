@@ -34,8 +34,8 @@ categories: []
 tags: []
 
 draft: true
----\n\n
-`, 'utf8')
+---
+\n\n`, 'utf8')
 
 // 使用 VS Code 打开文件
 exec(`code "${filePath}"`, (error) => {

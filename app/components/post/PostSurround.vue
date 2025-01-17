@@ -12,6 +12,7 @@ const { data: surrounds } = await useAsyncData(`surround-${route.path}`, () => q
 const [prev = null, next = null] = surrounds.value ?? []
 
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
+    // TODO: defineOptions({ inheritAttrs: false })
     post: ArticleProps | null
     icon: string
     fallbackIcon: string

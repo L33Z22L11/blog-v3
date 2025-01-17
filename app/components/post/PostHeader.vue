@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type ArticleProps from '~/types/article'
 
+defineOptions({ inheritAttrs: false })
 const props = defineProps<ArticleProps>()
+
 const appConfig = useAppConfig()
 const publishedLabel = getPostDate(props.date)
 const updatedLabel = getPostDate(props.updated)
@@ -15,9 +17,6 @@ const shareText = `【${appConfig.title}】${props.title}\n\n${
 
 const btnShareByText = useTemplateRef('text-share')
 useCopy(btnShareByText, btnShareByText, shareText)
-
-// TODO: 生成分享图片
-const _btnShareByText = useTemplateRef('image-share')
 </script>
 
 <template>
@@ -28,9 +27,6 @@ const _btnShareByText = useTemplateRef('image-share')
             <div class="operations">
                 <ZButton ref="text-share" icon="ph:share-bold">
                     文字分享
-                </ZButton>
-                <ZButton v-if="false" ref="image-share" icon="ph:share-bold">
-                    图片分享
                 </ZButton>
             </div>
             <div v-if="!hideInfo" class="post-info">
@@ -50,7 +46,7 @@ const _btnShareByText = useTemplateRef('image-share')
                     <Icon :name="categoryIcon" /> {{ categoryLabel }}
                 </span>
                 <span class="wordcount">
-                    <Icon name="ph:paragraph-bold" /> {{ formatNumber(readingTime.words) }} 字
+                    <Icon name="ph:paragraph-bold" /> {{ formatNumber(readingTime?.words) }} 字
                 </span>
             </div>
         </div>

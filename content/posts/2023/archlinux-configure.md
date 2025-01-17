@@ -15,7 +15,7 @@ tags: [教程, archlinux, 系统]
   :copy{code="sudo systemctl start sshd"}
 - 查看 IP 地址
   :copy{code="ip -br a"}
-- 在其他有浏览器的设备上通过 SSH 连接到这台设备（复制后按 Ctrl-Shift-V 粘贴内容）
+- 在其他有浏览器的设备上通过 SSH 连接到这台设备（复制后按 Ctrl+Shift+V 粘贴内容）
   :copy{prompt="PS>" code="ssh 用户名@IP地址"}
 
 ## 换源

@@ -69,7 +69,7 @@ link: https://github.com/KazariEX/hexo-server-live
 
 ### 同时也是被 Yuanfang 拉着帮忙的纸鹿
 
-中文睡醒刚下床，微信电话铃声就响个不停，接听却没声音。打字吧：
+中午睡醒刚下床，微信电话铃声就响个不停，接听却没声音。打字吧：
 
 ::chat
 
@@ -266,7 +266,7 @@ NVM，再见了。我要试试这个新方法。
 
 ### 两个 dirty fix 让我不假思索
 
-我在必应 [搜索“npm 全局安装 sudo”](https://cn.bing.com/search?q=npm+%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85+sudo) 时，不知是幸运还是不幸，恰好被推荐了 <a href="https://lunashu.org/sudo-npm/" rel="noopener noreferrer nofollow">npm i -g 全局安装 sudo 消除</a> 这篇博文。里面提到修改部分 `node_modules` 相关目录的权限可以免 sudo 安装 npm 全局包。
+我在必应 [搜索“npm 全局安装 sudo”](https://cn.bing.com/search?q=npm+%E5%85%A8%E5%B1%80%E5%AE%89%E8%A3%85+sudo) 时，不知是幸运还是不幸，恰好被推荐了 <a href="https://lunashu.org/sudo-npm/" rel="noopener noreferrer nofollow">~~npm i -g 全局安装 sudo 消除~~</a> 这篇博文。里面提到修改部分 `node_modules` 相关目录的权限可以免 sudo 安装 npm 全局包。
 
 试试就试试吧。
 
@@ -353,18 +353,21 @@ yes
 
 ### 原因竟是……网络不好
 
-我在用安装盘修复文件权限的过程中，用朋友的电脑重新看了一眼之前的 <a href="https://lunashu.org/sudo-npm/" rel="noopener noreferrer nofollow">npm i -g 全局安装 sudo 消除</a>，发现评论区有人在谴责：
+我在用安装盘修复文件权限的过程中，用朋友的电脑重新看了一眼之前的 <a href="https://lunashu.org/sudo-npm/" rel="noopener noreferrer nofollow">~~npm i -g 全局安装 sudo 消除~~</a>，发现评论区有人在谴责：
 
 > **Chen** 2019-11-16 23:24
 >
 > 请您了解一下您的这篇教程会带来的问题，不要再害人了
 > [arch linux论坛相关问题](https://bbs.archlinux.org/viewtopic.php?id=235650)
 
-为什么我当时没看见这条评论？我用自己的电脑打开评论区，发现 DISQUS 评论区居然由于网络问题没能加载出来。
+::quote
+#icon
+😾🔪
+#default
+为什么我当时没看见这条评论？
+::
 
-<center style="font-size: 5em;">😾</center>
-
-再看到博客作者在文中提到（sudo 方法）“**但之后会产生一系列其他的权限问题，简直是后患无穷**”，在文中末尾用大大大标题讲（自己给出的方法）“**Have Fun～**”“**精彩！**”，简直是一种莫大的讽刺。
+我用自己的电脑打开评论区，发现 DISQUS 评论区居然由于**网络问题**没能加载出来。再看到博客作者在文中提到（sudo 方法）“**但之后会产生一系列其他的权限问题，简直是后患无穷**”，在文中末尾用大大大标题讲（自己给出的方法）“**Have Fun～**”“**精彩！**”，简直是一种莫大的讽刺。
 
 ## 重新思考最佳实践
 

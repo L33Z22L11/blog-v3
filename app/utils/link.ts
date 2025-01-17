@@ -1,6 +1,6 @@
 import { fromUrl, parseDomain, ParseResultType } from 'parse-domain'
 
-export const domainTip: Record<string, string> = {
+const domainTip: Record<string, string> = {
     'github.io': 'GitHub Pages 域名',
     'netlify.app': 'Netlify 域名',
     'pages.dev': 'Cloudflare 域名',
@@ -32,13 +32,13 @@ export function getDomainType(mainDomain: string) {
 export function getGhUsername(url?: string) {
     if (!url)
         return ''
-    const regex = /github\.com\/([a-zA-Z0-9-]+)(?:\/[^/]+)?(\/?)$/
-    return url.match(regex)?.[1] ?? ''
+    const usernameRegex = /github\.com\/([a-zA-Z0-9-]+)(?:\/[^/]+)?(\/?)$/
+    return url.match(usernameRegex)?.[1] ?? ''
 }
 
 export function isExtLink(url?: string) {
-    if (!url)
-        return false
-    return url.includes(':')
+    return url
+        ? url.includes(':')
         || noRouterExtensions.some(ext => url.endsWith(ext))
+        : false
 }

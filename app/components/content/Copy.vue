@@ -45,7 +45,6 @@ function onInput(event: InputEvent) {
 
 onMounted(async () => {
     const shiki = await getShikiHighlighter()
-    // BUG: 无法高亮特定语言 PowerShell
     const shikiOptions = await resolveShikiOptions({ lang: language.value })
     createPlainShiki(shiki).mount(codeInput.value!, shikiOptions as MountPlainShikiOptions)
 })
@@ -58,6 +57,7 @@ onMounted(async () => {
             ref="code-input"
             contenteditable="plaintext-only"
             class="code"
+            spellcheck="false"
             @beforeinput="beforeInput($event as InputEvent)"
             @input="onInput($event as InputEvent)"
             v-text="code"
