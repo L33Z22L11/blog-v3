@@ -33,13 +33,13 @@ useCopy(btnShareByText, btnShareByText, shareText)
                 <time
                     v-if="date"
                     v-tippy="`创建于 ${getLocaleDatetime(props.date)}`"
-                    :datetime="date"
+                    :datetime="getIsoDatetime(date)"
                 >
                     <Icon name="ph:calendar-dots-bold" /> {{ publishedLabel }}</time>
                 <time
                     v-if="isTimeDiffSignificant(date, updated, .999)"
                     v-tippy="`修改于 ${getLocaleDatetime(props.updated)}`"
-                    :datetime="updated"
+                    :datetime="getIsoDatetime(updated)"
                 >
                     <Icon name="ph:calendar-plus-bold" /> {{ updatedLabel }}</time>
                 <span v-if="categoryLabel" class="article-category">

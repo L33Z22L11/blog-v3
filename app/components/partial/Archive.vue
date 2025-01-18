@@ -18,12 +18,12 @@ const auxDateLabel = computed(() => props.date
 
 <template>
     <li class="article-item">
-        <time :datetime="mainDate" :title="getLocaleDatetime(mainDate)">{{ dateLabel }}</time>
+        <time :datetime="getLocaleDatetime(mainDate)" :title="getLocaleDatetime(mainDate)">{{ dateLabel }}</time>
         <ZRawLink class="article-link gradient-card" :to :title="description">
             <span class="article-title" :class="{ 'text-story': type === 'story' }">
                 {{ title }}
             </span>
-            <time v-if="useUpdated && isTimeDiffSignificant(date, updated)" class="aux-date" :datetime="date" :title="getLocaleDatetime(date)">
+            <time v-if="useUpdated && isTimeDiffSignificant(date, updated)" class="aux-date" :datetime="getLocaleDatetime(date)" :title="getLocaleDatetime(date)">
                 &nbsp;{{ auxDateLabel }}</time>
             <NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" loading="lazy" />
         </ZRawLink>

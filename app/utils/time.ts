@@ -1,6 +1,16 @@
 import { differenceInMilliseconds, format, formatDistanceToNow } from 'date-fns'
 import { zhCN } from 'date-fns/locale'
 
+export function getIsoDatetime(date?: string | Date) {
+    if (!date)
+        return ''
+
+    if (typeof date === 'string')
+        date = new Date(date)
+
+    return date.toISOString()
+}
+
 export function getLocaleDatetime(date?: string | Date) {
     if (!date)
         return ''

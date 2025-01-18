@@ -6,7 +6,7 @@ const promptLanguageMap: Record<string, string> = {
 }
 
 export function formatNumber(num?: number) {
-    if (!num)
+    if (typeof num !== 'number')
         return ''
     const intervals = [
         { label: '万亿', threshold: 1e12 },
