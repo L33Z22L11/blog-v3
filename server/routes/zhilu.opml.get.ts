@@ -1,18 +1,16 @@
 import type { FeedEntry, FeedGroup } from '~/types/feed'
-import { XMLBuilder } from 'fast-xml-parser'
+import { XMLBuilder, type XmlBuilderOptions } from 'fast-xml-parser'
 import blogConfig, { myFeed } from '~~/blog.config'
 import friends from '~/friends'
 import subscriptions from '~/subscriptions'
 
 const runtimeConfig = useRuntimeConfig()
 
-const xmlBuilderOptions = {
+const builder = new XMLBuilder({
     attributeNamePrefix: '$',
     format: true,
     ignoreAttributes: false,
-}
-
-const builder = new XMLBuilder(xmlBuilderOptions)
+})
 
 function mapEntry(item: FeedEntry) {
     return {

@@ -53,12 +53,13 @@ const widgets = computed(() => (layoutStore.asideItems || []).map(componentAlias
     @media (max-width: $breakpoint-widescreen) {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: 0;
         width: 320px;
         height: auto;
         max-width: 100%;
         max-height: 100%;
-        transition: right 0.2s;
+        transform: translateX(100%);
+        transition: transform 0.2s;
         z-index: 100;
 
         .container {
@@ -70,7 +71,7 @@ const widgets = computed(() => (layoutStore.asideItems || []).map(componentAlias
         }
 
         &.show {
-            right: 0;
+            transform: none;
         }
     }
 }

@@ -1,5 +1,4 @@
 import type { ParsedContent } from '@nuxt/content'
-import type { XmlBuilderOptions } from 'fast-xml-parser'
 import { serverQueryContent } from '#content/server'
 import { XMLBuilder } from 'fast-xml-parser'
 import blogConfig from '~~/blog.config'
@@ -7,15 +6,13 @@ import { version } from '~~/package.json'
 
 const runtimeConfig = useRuntimeConfig()
 
-const xmlBuilderOptions: XmlBuilderOptions = {
+const builder = new XMLBuilder({
     attributeNamePrefix: '$',
     cdataPropName: '$',
     format: true,
     ignoreAttributes: false,
     textNodeName: '_',
-}
-
-const builder = new XMLBuilder(xmlBuilderOptions)
+})
 
 function getUrl(path: string | undefined) {
     return new URL(path ?? '', blogConfig.url).toString()

@@ -20,10 +20,10 @@ defineProps<{
         </p>
         <TransitionGroup tag="menu" class="feed-list" appear name="float-in">
             <li
-                v-for="entry, index in group.entries"
-                :key="index"
+                v-for="entry in group.entries"
+                :key="entry.link"
                 class="feed-card"
-                :style="`--delay: ${index * 0.1}s;`"
+                :style="`--delay: ${Math.random() * .8}s;`"
             >
                 <FeedCard v-bind="entry" />
             </li>
