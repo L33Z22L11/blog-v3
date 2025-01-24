@@ -3,11 +3,20 @@ import blogConfig from '~~/blog.config'
 
 const timezoneOffset = getTimezoneOffset(blogConfig.timezone) + new Date().getTimezoneOffset() * 60 * 1000
 
+function fixDate(date?: string | Date) {
+    if (!date)
+        return date
+
+    if (typeof date === 'string')
+        date = new Date(date)
+
+    return new Date(date.getTime() - timezoneOffset)
+}
+
 export default defineNitroPlugin((nitroApp) => {
     nitroApp.hooks.hook('content:file:afterParse', (file) => {
-        if (file.date)
-            file.date = new Date(new Date(file.date).getTime() - timezoneOffset)
-        if (file.updated)
-            file.updated = new Date(new Date(file.updated).getTime() - timezoneOffset)
+        file.date = fixDate(file.date)
+        file.updated = fixDate(file.updated)
+        file.published = fixDate(file.published)
     })
 })

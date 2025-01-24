@@ -1,8 +1,13 @@
 import { minify } from 'terser'
 import blogConfig from '~~/blog.config'
 
+/** 通过 Google Search Console 检索到的恶意反代域名 */
 const encodedBlacklist = [
-    'dgvhqt.com',
+    'dgjlx.com', // blog.revincx.icu
+    'dgvhqt.com', // blog.zhilu.cyou
+    'hcmsla.com', // thyuu.com
+    'wmlop.com', // xaoxuu.com
+    'yswjxs.com', // blog.zhilu.cyou
 ].map(btoa)
 
 const encodedOfficial = btoa(new URL(blogConfig.url).host)
@@ -13,9 +18,9 @@ function handleMirror(sourcesEncoded: string[], targetEncoded: string) {
     const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     const isBadMirror = sources.some(domain => location.hostname.endsWith(domain))
     if (isBadMirror) {
-        location.host = target
         if (canonical)
             canonical.href = canonical.href.replace(location.host, target)
+        location.host = target
     }
 }
 

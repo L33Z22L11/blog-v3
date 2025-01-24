@@ -3,6 +3,7 @@ import { serverQueryContent } from '#content/server'
 import { XMLBuilder } from 'fast-xml-parser'
 import blogConfig from '~~/blog.config'
 import { version } from '~~/package.json'
+import { getIsoDatetime } from '~/utils/time'
 
 const runtimeConfig = useRuntimeConfig()
 
@@ -36,7 +37,7 @@ export default defineEventHandler(async (event) => {
     const entries = posts.map(post => ({
         id: getUrl(post._path),
         title: post.title ?? '',
-        updated: post.updated && new Date(post.updated).toISOString(),
+        updated: getIsoDatetime(post.updated),
         author: { name: post.author || blogConfig.author.name },
         content: {
             $type: 'html',
@@ -45,7 +46,7 @@ export default defineEventHandler(async (event) => {
         link: { $href: getUrl(post._path) },
         summary: post.description,
         category: { $term: post.categories?.[0] },
-        published: post.date && new Date(post.date).toISOString(),
+        published: getIsoDatetime(post.published) ?? getIsoDatetime(post.date),
     }))
 
     const feed = {
@@ -71,7 +72,7 @@ export default defineEventHandler(async (event) => {
         },
         icon: blogConfig.favicon,
         logo: blogConfig.author.avatar, // Ratio should be 2:1
-        rights: `© ${new Date().getFullYear()} Zhilu`,
+        rights: `© ${new Date().getFullYear()} ${blogConfig.author.name}`,
         subtitle: blogConfig.subtitle || blogConfig.description,
         entry: entries,
     }

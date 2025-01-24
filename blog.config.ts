@@ -1,5 +1,6 @@
 import type { BundledLanguage, BundledTheme } from 'shiki'
 import type { FeedEntry } from '~/types/feed'
+import { zhCN } from 'date-fns/locale'
 
 // 存储 nuxt.config 和 app.config 共用的配置
 const blogConfig = {
@@ -21,7 +22,6 @@ const blogConfig = {
     language: 'zh-CN',
     qqGroup: '169994096',
     timeEstablished: '2019-07-19',
-    /** 时区，修改后还应修改 time.ts 中引入的时区包 */
     timezone: 'Asia/Shanghai',
     url: 'https://blog.zhilu.cyou/',
 
@@ -60,6 +60,8 @@ const blogConfig = {
         preload: 'https://twikoo.zhilu.cyou/',
     },
 }
+
+export const dateLocale = zhCN
 
 // 用于生成 OPML 和友链页面配置
 export const myFeed = <FeedEntry>{

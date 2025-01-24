@@ -86,7 +86,6 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 
 .sidebar-nav {
     flex-grow: 1;
-    top: 0;
     padding: 0 5%;
     font-size: 0.9em;
 
