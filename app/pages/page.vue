@@ -23,6 +23,10 @@ const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted, { bindQuery: 'category' })
 const { page, totalPages, listPaged } = usePagination(listCategorized, { bindParam: 'id' })
 
+watch(category, () => {
+    page.value = 1
+})
+
 useSeoMeta({ title: () => (page.value > 1 ? `第${page.value}页` : '') })
 
 const listRecommended = computed(() => sort(
@@ -37,7 +41,7 @@ const listRecommended = computed(() => sort(
         <!-- 若不包裹，display: none 在 JS 加载后才有足够优先级 -->
         <ZhiluHeader to="/" />
     </div>
-    <PostSlide v-if="listRecommended?.length && page === 1" :list="listRecommended" />
+    <PostSlide v-if="listRecommended?.length && page === 1 && !category" :list="listRecommended" />
     <div class="post-list">
         <div class="toolbar">
             <div>

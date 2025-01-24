@@ -23,7 +23,7 @@ defineProps<{
                 v-for="entry in group.entries"
                 :key="entry.link"
                 class="feed-card"
-                :style="`--delay: ${Math.random() * .8}s;`"
+                :style="`--delay: ${(Math.random() * .8).toFixed(2)}s;`"
             >
                 <FeedCard v-bind="entry" />
             </li>

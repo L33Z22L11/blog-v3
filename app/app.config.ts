@@ -6,12 +6,13 @@ export default defineAppConfig({
     ...blogConfig,
 
     article: {
-        categories: {
+        categories: <{ [key: string]: { icon: string, color?: string } }>{
             经验分享: { icon: 'ph:mouse-bold', color: '#3af' },
             生活: { icon: 'ph:shooting-star-bold', color: '#3ba' },
             代码: { icon: 'ph:code-bold', color: '#77f' },
             未分类: { icon: 'ph:folder-dotted-bold' },
         },
+        defaultCategoryIcon: 'ph:folder-bold',
         order: {
             date: '创建日期',
             updated: '更新日期',
@@ -23,6 +24,10 @@ export default defineAppConfig({
 
     content: {
         codeblockCollapsibleRows: 16,
+        excerpt: {
+            animation: true,
+            caret: '_',
+        },
     },
 
     footer: {
