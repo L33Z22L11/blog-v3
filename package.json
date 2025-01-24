@@ -15,8 +15,6 @@
     "new": "node scripts/new-blog.js"
   },
   "dependencies": {
-    "@vueuse/core": "^12.4.0",
-    "@vueuse/router": "^12.4.0",
     "clipboard": "^2.0.11",
     "date-fns": "^4.1.0",
     "date-fns-tz": "^3.2.0",
@@ -38,7 +36,9 @@
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/seo": "^2.0.3",
     "@pinia/nuxt": "^0.9.0",
+    "@vueuse/core": "^12.4.0",
     "@vueuse/nuxt": "^12.4.0",
+    "@vueuse/router": "^12.4.0",
     "@zinkawaii/nuxt-shiki": "^0.7.1",
     "@zinkawaii/stylelint-config": "^0.2.2",
     "cross-env": "^7.0.3",

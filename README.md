@@ -60,8 +60,7 @@ https://blog.zhilu.cyou
 │   │   └── stats.get.ts # 博客静态统计
 │   ├── plugins # Nitro 插件
 │   │   ├── anti-mirror.ts # 恶意反代跳转
-│   │   ├── fix-post-date.ts # 修复文章时区
-│   │   └── fix-post-path.ts # 美化文章链接
+│   │   └── fix-post.ts # 修复文章时区/链接
 │   └── routes # 路由
 │       └── atom.xml.get.ts # Atom 订阅源
 ├── blog.config.ts # 博客公共配置

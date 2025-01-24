@@ -10,12 +10,15 @@ export default defineAppConfig({
             经验分享: { icon: 'ph:mouse-bold', color: '#3af' },
             生活: { icon: 'ph:shooting-star-bold', color: '#3ba' },
             代码: { icon: 'ph:code-bold', color: '#77f' },
+            未分类: { icon: 'ph:folder-dotted-bold' },
         },
         order: {
             date: '创建日期',
             updated: '更新日期',
             // title: '标题',
         },
+        // 需要同时修改上方分类图标对应的键名
+        uncategorizedLabel: '未分类',
     },
 
     content: {

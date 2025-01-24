@@ -11,7 +11,6 @@ const orderMap = appConfig.article.order
 // 配置文件中允许升序时，且未明确禁用升序时，允许升序
 const allowAscending = computed(() => appConfig.pagination.allowAscending ? !props.disableAscending : props.enableAscending)
 
-// '' 代表全部分类，undefined 代表未分类
 const category = defineModel<string>('category')
 const sortOrder = defineModel<keyof typeof orderMap>('sortOrder', { default: 'date' })
 const isAscending = defineModel<boolean>('isAscending')
@@ -33,17 +32,17 @@ function toggleDirection() {
         <DropdownMenuRoot :modal="false">
             <DropdownMenuTrigger>
                 <Icon :name="getCategoryIcon(category)" />
-                <span class="order-text">{{ (category ?? '未分类') || '全部分类' }}</span>
+                <span class="order-text">{{ category ?? '全部分类' }}</span>
             </DropdownMenuTrigger>
             <DropdownMenuPortal>
                 <DropdownMenuContent class="order-category">
-                    <DropdownMenuItem @click="category = ''">
-                        <Icon :name="getCategoryIcon('')" />
-                        全部分类
+                    <DropdownMenuItem @click="category = undefined">
+                        <Icon :name="getCategoryIcon()" />
+                        <span>全部分类</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem v-for="item in categories" :key="item" @click="category = item">
                         <Icon :name="getCategoryIcon(item)" />
-                        {{ item || '未分类' }}
+                        <span>{{ item }}</span>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenuPortal>
@@ -75,10 +74,6 @@ function toggleDirection() {
         &:hover {
             color: var(--c-primary);
         }
-
-        .iconify + span {
-            margin-left: 0.1em;
-        }
     }
 
     .toggle-direction {
@@ -92,14 +87,19 @@ function toggleDirection() {
     }
 }
 
+.iconify + span {
+    margin-left: 0.1em;
+}
+
 :deep(.order-category) {
-    overflow: hidden;
-    border-radius: 0.5em;
+    padding: 0.3em;
+    border-radius: 0.6em;
     box-shadow: 0.1em 0.2em 0.5em var(--ld-shadow);
     background-color: var(--ld-bg-card);
 
-    > * {
-        padding: 0.2em 0.5em;
+    > div {
+        padding: 0.3em 0.5em;
+        border-radius: 0.3em;
         transition: background-color 0.2s;
         cursor: pointer;
 

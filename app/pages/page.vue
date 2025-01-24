@@ -20,7 +20,7 @@ const { data: listRaw } = await useAsyncData(
 )
 
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
-const { category, categories, listCategorized } = useCategory(listSorted)
+const { category, categories, listCategorized } = useCategory(listSorted, { bindQuery: 'category' })
 const { page, totalPages, listPaged } = usePagination(listCategorized, { bindParam: 'id' })
 
 useSeoMeta({ title: () => (page.value > 1 ? `第${page.value}页` : '') })

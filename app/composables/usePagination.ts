@@ -15,8 +15,8 @@ export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: 
     const totalPages = computed(() => Math.ceil(toValue(list).length / perPage) || initialPage)
 
     const page = bindParam
-        ? useRouteParams(bindParam, initialPage, {
-            transform(val) {
+        ? useRouteParams(bindParam, initialPage.toString(), {
+            transform(val: string) {
                 const page = Number(val)
                 return page >= 1 && page <= totalPages.value ? page : initialPage
             },
