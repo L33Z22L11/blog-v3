@@ -8,9 +8,11 @@ defineProps<{
 
 <template>
     <menu>
-        <ZRawLink v-for="item in list" :key="item.text" v-tippy="item.text" :to="item.url" :aria-label="item.text">
-            <Icon :name="item.icon" />
-        </ZRawLink>
+        <ZTip v-for="item in list" :key="item.text" :tip="item.text">
+            <ZRawLink :to="item.url" :aria-label="item.text">
+                <Icon :name="item.icon" />
+            </ZRawLink>
+        </ZTip>
     </menu>
 </template>
 

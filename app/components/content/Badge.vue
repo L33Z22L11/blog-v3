@@ -33,12 +33,14 @@ const tip = computed(() => {
 </script>
 
 <template>
-    <ZRawLink v-tippy="tip" class="badge" :class="{ 'badge-img': img, 'badge-round': round }" :to="link">
-        <NuxtImg v-if="img" class="badge-icon" :src="img" :alt="img" />
-        <span class="badge-text">
-            <slot>{{ text }}</slot>
-        </span>
-    </ZRawLink>
+    <ZTip v-if="tip" :tip="tip">
+        <ZRawLink class="badge" :class="{ 'badge-img': img, 'badge-round': round }" :to="link">
+            <NuxtImg v-if="img" class="badge-icon" :src="img" :alt="img" />
+            <span class="badge-text">
+                <slot>{{ text }}</slot>
+            </span>
+        </ZRawLink>
+    </ZTip>
 </template>
 
 <style lang="scss" scoped>

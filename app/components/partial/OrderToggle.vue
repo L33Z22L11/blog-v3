@@ -29,7 +29,7 @@ function toggleDirection() {
 
 <template>
     <div class="order-toggle">
-        <DropdownMenuRoot :modal="false">
+        <DropdownMenuRoot>
             <DropdownMenuTrigger>
                 <Icon :name="getCategoryIcon(category)" />
                 <span class="order-text">{{ category ?? '全部分类' }}</span>

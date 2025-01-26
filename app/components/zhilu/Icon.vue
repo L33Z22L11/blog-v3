@@ -12,7 +12,7 @@ const appConfig = useAppConfig()
 
 <!-- eslint-disable-next-line vue/block-lang -->
 <style scoped>
-.icon {
+.avatar {
     width: 1.2em;
     vertical-align: text-bottom;
 }

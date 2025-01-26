@@ -25,21 +25,25 @@ export default function (
 ) {
     let clipboard: ClipboardJS
     const getEl = (element: any) => element?.$el ?? element
+    const getText = () => {
+        const el = getEl(toValue(target))
 
-    onMounted(() => {
-        const elTrigger = getEl(toValue(trigger))
-        const elTarget = getEl(toValue(target))
-        const getText = () => {
-            if (text)
-                return text
-            if (elTarget instanceof HTMLInputElement)
-                return elTarget.value
-            return elTarget?.textContent as string || ''
-        }
+        if (text)
+            return text
+        if (el instanceof HTMLInputElement)
+            return el.value
+        return el?.textContent as string || ''
+    }
 
-        clipboard = new ClipboardJS(elTrigger, { text: getText })
-        clipboard.on('success', () => showTooltipMessage(elTrigger, '已复制'))
-        clipboard.on('error', () => showTooltipMessage(elTrigger, '复制失败'))
+    watch(() => getEl(toValue(trigger)), (el) => {
+        console.log('el', el)
+
+        if (!el)
+            return
+        clipboard?.destroy()
+        clipboard = new ClipboardJS(el, { text: getText })
+        clipboard.on('success', () => showTooltipMessage(el, '已复制'))
+        clipboard.on('error', () => showTooltipMessage(el, '复制失败'))
     })
 
     onUnmounted(() => {

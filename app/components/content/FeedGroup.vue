@@ -22,7 +22,6 @@ defineProps<{
             <li
                 v-for="entry in group.entries"
                 :key="entry.link"
-                class="feed-card"
                 :style="`--delay: ${(Math.random() * .8).toFixed(2)}s;`"
             >
                 <FeedCard v-bind="entry" />
@@ -38,6 +37,7 @@ defineProps<{
 
 .feed-group {
     // position: relative;
+    container-type: inline-size;
     margin: 2rem 1rem;
 }
 
@@ -66,17 +66,34 @@ defineProps<{
 
 .feed-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
-    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    gap: 0.2rem 0.5rem;
     margin: 1rem auto;
 
-    @media (max-width: $breakpoint-phone) {
-        grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+    @mixin feed-narrow {
+        grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
         font-size: 0.9em;
+
+        :deep(.feed-card) {
+            flex-direction: column;
+            text-align: center;
+
+            .avatar.avatar {
+                margin: 0 0 0.2rem;
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-phone) {
+        @include feed-narrow;
+    }
+
+    @container (max-width: #{$breakpoint-phone}) {
+        @include feed-narrow;
     }
 }
 
-.feed-card > a {
+:deep(a.feed-card) {
     width: auto;
     margin: 0;
 }

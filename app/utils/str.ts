@@ -37,7 +37,3 @@ export function highlightHTML(text: string, word: string, className: string = 'h
         .replace(/\n+/g, '<br>')
     return highlightedText
 }
-
-export function joinWithBR(...strs: (string | undefined)[]) {
-    return strs.filter(str => str?.trim()).join('<br>')
-}

@@ -24,7 +24,7 @@ function handleMirror(sourcesEncoded: string[], targetEncoded: string) {
     }
 }
 
-async function toIIFEString(fn: (...args: any[]) => void, ...args: any[]) {
+async function toIifeString(fn: (...args: any[]) => void, ...args: any[]) {
     const fnString = fn.toString()
     const argsString = JSON.stringify(args).slice(1, -1)
     const minified = await minify(`(${fnString})(${argsString})`)
@@ -32,7 +32,7 @@ async function toIIFEString(fn: (...args: any[]) => void, ...args: any[]) {
 }
 
 export default defineNitroPlugin(async (nitroApp) => {
-    const script = await toIIFEString(handleMirror, encodedBlacklist, encodedOfficial)
+    const script = await toIifeString(handleMirror, encodedBlacklist, encodedOfficial)
     nitroApp.hooks.hook('render:html', (html) => {
         html.head.push(`<script>${script}</script>`)
     })

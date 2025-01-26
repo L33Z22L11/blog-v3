@@ -6,7 +6,7 @@ const props = defineProps<{
     copy?: boolean
 }>()
 
-const tip = useTemplateRef('tip')
+const tip = useTemplateRef('tip-text')
 const tooltipText = computed(() => props.tip || (props.copy ? '点击复制' : ''))
 const icon = computed(() => props.icon || (props.copy ? 'ph:copy-bold' : 'ph:question-bold'))
 
@@ -14,7 +14,7 @@ props.copy && useCopy(tip, tip)
 </script>
 
 <template>
-    <span ref="tip" v-tippy="tooltipText" class="tip">
+    <span ref="tip-text" v-tippy="tooltipText" class="tip">
         <!-- 元素间不留空格 -->
         <slot>{{ text }}</slot>
         <Icon v-if="typeof icon === 'string'" :name="icon" class="tip-icon" />

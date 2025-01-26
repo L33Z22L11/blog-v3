@@ -9,7 +9,7 @@ const publishedLabel = getPostDate(props.date)
 const updatedLabel = getPostDate(props.updated)
 
 const categoryLabel = props.categories?.[0]
-const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon
+const categoryIcon = getCategoryIcon(props.categories?.[0])
 
 const shareText = `【${appConfig.title}】${props.title}\n\n${
     props.description ? `${props.description}\n\n` : ''}${
@@ -30,18 +30,19 @@ useCopy(btnShareByText, btnShareByText, shareText)
                 </ZButton>
             </div>
             <div v-if="!hideInfo" class="post-info">
-                <time
-                    v-if="date"
-                    v-tippy="`创建于 ${getLocaleDatetime(props.date)}`"
-                    :datetime="getIsoDatetime(date)"
-                >
-                    <Icon name="ph:calendar-dots-bold" /> {{ publishedLabel }}</time>
-                <time
+                <ZTip v-if="date" :tip="`创建于 ${getLocaleDatetime(props.date)}`">
+                    <time :datetime="getIsoDatetime(date)">
+                        <Icon name="ph:calendar-dots-bold" /> {{ publishedLabel }}
+                    </time>
+                </ZTip>
+                <ZTip
                     v-if="isTimeDiffSignificant(date, updated, .999)"
-                    v-tippy="`修改于 ${getLocaleDatetime(props.updated)}`"
-                    :datetime="getIsoDatetime(updated)"
+                    :tip="`修改于 ${getLocaleDatetime(props.updated)}`"
                 >
-                    <Icon name="ph:calendar-plus-bold" /> {{ updatedLabel }}</time>
+                    <time :datetime="getIsoDatetime(updated)">
+                        <Icon name="ph:calendar-plus-bold" /> {{ updatedLabel }}
+                    </time>
+                </ZTip>
                 <span v-if="categoryLabel" class="article-category">
                     <Icon :name="categoryIcon" /> {{ categoryLabel }}
                 </span>

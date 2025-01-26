@@ -63,9 +63,11 @@ onMounted(async () => {
             v-text="code"
         />
         <div class="mask" />
-        <button v-if="showUndo" v-tippy="'恢复原始内容'" class="operation" aria-label="恢复原始内容" @click="undo">
-            <Icon name="ph:arrow-u-up-left-bold" />
-        </button>
+        <ZTip v-if="showUndo" tip="恢复原始内容">
+            <button class="operation" aria-label="恢复原始内容" @click="undo">
+                <Icon name="ph:arrow-u-up-left-bold" />
+            </button>
+        </ZTip>
         <button ref="copy-btn" v-tippy="'复制'" class="operation" aria-label="复制">
             <Icon name="ph:copy-bold" />
         </button>

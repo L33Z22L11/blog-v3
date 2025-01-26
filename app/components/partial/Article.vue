@@ -9,7 +9,7 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 
 const categoryLabel = props.categories?.[0]
 const categoryColor = appConfig.article.categories[categoryLabel!]?.color
-const categoryIcon = appConfig.article.categories[categoryLabel!]?.icon || appConfig.article.defaultCategoryIcon
+const categoryIcon = getCategoryIcon(props.categories?.[0])
 </script>
 
 <template>
