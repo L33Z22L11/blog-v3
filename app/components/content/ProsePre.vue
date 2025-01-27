@@ -38,9 +38,8 @@ const icon = computed(() => meta.value.icon || getFileIcon(props.filename) || ge
 const isWrap = ref(meta.value.wrap)
 
 const codeblock = useTemplateRef('codeblock')
-const copyBtn = useTemplateRef('copy-btn')
 
-useCopy(copyBtn, codeblock)
+const { copy, copied } = useCopy(codeblock)
 </script>
 
 <template>
@@ -63,8 +62,8 @@ useCopy(copyBtn, codeblock)
                 <button @click="isWrap = !isWrap">
                     {{ isWrap ? '横向滚动' : '自动换行' }}
                 </button>
-                <button ref="copy-btn">
-                    复制
+                <button @click="copy()">
+                    {{ copied ? '已复制' : '复制' }}
                 </button>
             </div>
         </figcaption>
@@ -77,7 +76,6 @@ useCopy(copyBtn, codeblock)
         ><slot /></pre>
         <button
             v-if="collapsible"
-            type="button"
             class="toggle-btn"
             :aria-label="isCollapsed ? '展开代码块' : '折叠代码块'"
             @click="toggleCollapsed()"

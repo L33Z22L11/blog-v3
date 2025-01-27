@@ -56,7 +56,8 @@ shamefully-hoist=true
 在使用 VitePress 的时候，你也许会发现一些内容是英文，这时可以通过添加如下配置项来汉化（不要删除原有配置），在使用此配置时应对照文档弄清每一项作用。
 
 ```ts [docs/.vitepress/config.mts]
-import { type DefaultTheme, defineConfig } from 'vitepress'
+import type { DefaultTheme } from 'vitepress';
+import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/zh/reference/site-config
 export default defineConfig({

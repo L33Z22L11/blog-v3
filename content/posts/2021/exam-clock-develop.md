@@ -198,7 +198,7 @@ else {
         if (now.getHours() == 19) {
             now.setHours(31);
             today = fixDigit(now.getMonth() + 1)
-            + "-" + fixDigit(now.getDate());
+                + "-" + fixDigit(now.getDate());
         }
         // 调试模式速度设置
         // now.setMinutes(now.getMinutes() + 1);

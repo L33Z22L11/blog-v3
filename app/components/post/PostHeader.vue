@@ -15,8 +15,7 @@ const shareText = `【${appConfig.title}】${props.title}\n\n${
     props.description ? `${props.description}\n\n` : ''}${
     new URL(props._path!, appConfig.url).href}`
 
-const btnShareByText = useTemplateRef('text-share')
-useCopy(btnShareByText, btnShareByText, shareText)
+const { copy, copied } = useCopy(shareText)
 </script>
 
 <template>
@@ -25,7 +24,10 @@ useCopy(btnShareByText, btnShareByText, shareText)
         <NuxtImg v-if="image" class="post-cover" :src="image" :alt="title" />
         <div class="post-nav">
             <div class="operations">
-                <ZButton ref="text-share" icon="ph:share-bold">
+                <ZButton
+                    :icon="copied ? 'ph:check-bold' : 'ph:share-bold' "
+                    @click="copy()"
+                >
                     文字分享
                 </ZButton>
             </div>

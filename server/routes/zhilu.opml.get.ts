@@ -1,5 +1,5 @@
 import type { FeedEntry, FeedGroup } from '~/types/feed'
-import { XMLBuilder, type XmlBuilderOptions } from 'fast-xml-parser'
+import { XMLBuilder } from 'fast-xml-parser'
 import blogConfig, { myFeed } from '~~/blog.config'
 import friends from '~/friends'
 import subscriptions from '~/subscriptions'

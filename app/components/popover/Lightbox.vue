@@ -160,7 +160,6 @@ useEventListener('keydown', (e) => {
                 <span v-if="caption" class="caption">{{ caption }}</span>
                 <button
                     class="close"
-                    type="button"
                     aria-label="关闭灯箱"
                     @click="emit('close')"
                 >

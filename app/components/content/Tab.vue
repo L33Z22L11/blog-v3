@@ -15,7 +15,6 @@ const activeTab = ref(Number(props.active) || 1)
             <button
                 v-for="(tab, tabIndex) in tabs"
                 :key="tabIndex"
-                type="button"
                 :class="{ active: activeTab === tabIndex + 1 }"
                 @click="activeTab = tabIndex + 1"
             >

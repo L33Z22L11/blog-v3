@@ -11,7 +11,6 @@ const colorMode = useColorMode()
             :tip="themeData.tip"
         >
             <button
-                type="button"
                 :aria-label="themeData.tip"
                 :class="{ active: colorMode.preference === themeName }"
                 @click="colorMode.preference = themeName"

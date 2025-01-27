@@ -3,13 +3,14 @@ withDefaults(defineProps<{
     tip?: string
     delay?: number
     wrap?: boolean
+    hoverable?: boolean
 }>(), {
-    delay: 0,
+    delay: 100,
 })
 </script>
 
 <template>
-    <TooltipProvider>
+    <TooltipProvider :disable-hoverable-content="!hoverable">
         <TooltipRoot :delay-duration="delay">
             <TooltipTrigger :as-child="!wrap">
                 <slot />
