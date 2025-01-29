@@ -11,116 +11,177 @@ const emit = defineEmits<{
 
 const originRect = props.el.getBoundingClientRect()
 const rate = 0.8
-const zoomImage = ref(null!)
+
+const style = ref({
+    left: `${originRect.left}px`,
+    top: `${originRect.top}px`,
+    width: `${originRect.width}px`,
+    height: `${originRect.height}px`,
+})
+
+const zoomImage = ref()
 const elZoomImage = useCurrentElement<HTMLImageElement>(zoomImage)
 
-const touchStart = ref({
-    singleFinger: true,
-    fingerDistance: 0,
-    left: 0,
-    top: 0,
-    width: 0,
-    height: 0,
-})
+const { width: winW, height: winH } = useWindowSize()
 
-const { style } = useDraggable(elZoomImage, {
-    initialValue: { x: originRect.x, y: originRect.y },
-    disabled: () => !touchStart.value.singleFinger,
-})
-
-function onWheel(e: WheelEvent) {
-    const { left, top, width, height } = elZoomImage.value.getBoundingClientRect()
-    const isTooLarge = width > Math.max(window.innerWidth, originRect.width) * 2
-        && height > Math.max(window.innerHeight, originRect.height) * 2
-    const isTooSmall = width < Math.min(window.innerWidth, originRect.width) * 0.5
-        && height < Math.min(window.innerHeight, originRect.height) * 0.5
-    if ((e.deltaY < 0 && isTooLarge) || (e.deltaY > 0 && isTooSmall))
-        return
-    const isTouchpad = Math.abs(e.deltaY) < 8
-    let delta = isTouchpad ? Math.abs(e.deltaY) * 0.05 : 0.5
-    delta = e.deltaY > 0 ? 1 / (1 + delta) : 1 + delta
-    const finalX = left - (e.clientX - left) * (delta - 1)
-    const finalY = top - (e.clientY - top) * (delta - 1)
-    Object.assign(elZoomImage.value.style, {
-        left: `${finalX}px`,
-        top: `${finalY}px`,
-        width: `${width * delta}px`,
-        height: `${height * delta}px`,
-    })
+interface Pointer {
+    startX: number
+    startY: number
+    currentX: number
+    currentY: number
 }
 
-// FIXME: 触发区域应当是全屏
-function onTouchStart(e: TouchEvent) {
-    if (e.touches.length < 2)
-        return
-    touchStart.value.singleFinger = false
-    const [touch1, touch2] = e.touches
-    if (!touch1 || !touch2)
-        return
+let startRect: DOMRect
+let startCenter: typeof center.value
+let startDistance: typeof distance.value
+const pointers = ref<Record<number, Pointer>>({})
+const usingPointers = computed(() => Object.values(pointers.value).slice(0, 2))
 
-    const { left, top, width, height } = elZoomImage.value.getBoundingClientRect()
-    Object.assign(touchStart.value, { left, top, width, height })
-    touchStart.value.fingerDistance = Math.hypot(
-        touch1.clientX - touch2.clientX,
-        touch1.clientY - touch2.clientY,
-    )
-}
+const center = computed(() => getCenter('current'))
+const distance = computed(() => getDistance('current'))
 
-function onTouchMove(e: TouchEvent) {
-    if (e.touches.length < 2)
-        return
-    touchStart.value.singleFinger = false
-    const [touch1, touch2] = e.touches
-    if (!touch1 || !touch2)
-        return
-
-    const currentDistance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY)
-    const scale = currentDistance / touchStart.value.fingerDistance
-
-    const finalWidth = touchStart.value.width * scale
-    const finalHeight = touchStart.value.height * scale
-    const finalX = (touch1.clientX + touch2.clientX - finalWidth) / 2
-    const finalY = (touch1.clientY + touch2.clientY - finalHeight) / 2
-
-    Object.assign(elZoomImage.value.style, {
-        left: `${finalX}px`,
-        top: `${finalY}px`,
-        width: `${finalWidth}px`,
-        height: `${finalHeight}px`,
-    })
-}
-
-function onTouchEnd(e: TouchEvent) {
-    if (e.touches.length < 2) {
-        touchStart.value.singleFinger = true
+function restrictScale(width: number, height: number, delta: number) {
+    if (delta > 0) {
+        return height < Math.min(winH.value, originRect.height) * 0.5
+            && width < Math.min(winW.value, originRect.width) * 0.5
+    }
+    else {
+        return width > Math.max(winW.value, originRect.width) * 2
+            && height > Math.max(winH.value, originRect.height) * 2
     }
 }
 
-async function onEnter() {
+function onWheel(e: WheelEvent) {
+    const { left, top, width, height } = elZoomImage.value.getBoundingClientRect()
+    if (restrictScale(width, height, e.deltaY))
+        return
+    const isTouchpad = Math.abs(e.deltaY) < 8
+    let scale = isTouchpad ? Math.abs(e.deltaY) * 0.05 : 0.5
+    scale = e.deltaY > 0 ? 1 / (1 + scale) : 1 + scale
+    const finalX = left - (e.clientX - left) * (scale - 1)
+    const finalY = top - (e.clientY - top) * (scale - 1)
+    elZoomImage.value.animate({
+        left: `${finalX}px`,
+        top: `${finalY}px`,
+        width: `${width * scale}px`,
+        height: `${height * scale}px`,
+    }, {
+        duration: 100,
+        fill: 'forwards',
+    })
+}
+function initPointer() {
+    for (const p of Object.values(pointers.value)) {
+        p.startX = p.currentX
+        p.startY = p.currentY
+    }
+
+    startRect = elZoomImage.value.getBoundingClientRect()
+    startCenter = getCenter('start')
+    startDistance = getDistance('start')
+}
+
+function getCenter(mode: 'start' | 'current') {
+    return {
+        x: usingPointers.value.reduce((sum, p) => sum + p[`${mode}X`], 0) / usingPointers.value.length,
+        y: usingPointers.value.reduce((sum, p) => sum + p[`${mode}Y`], 0) / usingPointers.value.length,
+    }
+}
+
+function getDistance(mode: 'start' | 'current') {
+    const [p1, p2] = usingPointers.value
+    if (!p1 || !p2)
+        return 0
+    return Math.hypot(
+        p1[`${mode}X`] - p2[`${mode}X`],
+        p1[`${mode}Y`] - p2[`${mode}Y`],
+    )
+}
+
+// FIXME: 触发区域应当是全屏
+useEventListener('pointerdown', (e) => {
+    pointers.value[e.pointerId] = {
+        startX: e.clientX,
+        startY: e.clientY,
+        currentX: e.clientX,
+        currentY: e.clientY,
+    }
+    initPointer()
+})
+
+useEventListener('pointermove', (e) => {
+    const p = pointers.value[e.pointerId]
+
+    if (!p)
+        return
+
+    p.currentX = e.clientX
+    p.currentY = e.clientY
+
+    const scale = distance.value / startDistance || 1
+    const width = startRect.width * scale
+    const height = startRect.height * scale
+    if (restrictScale(width, height, 1 - scale))
+        return
+
+    const left = startRect.left + center.value.x - startCenter.x
+    const top = startRect.top + center.value.y - startCenter.y
+    const finalLeft = left - (center.value.x - left) * (scale - 1)
+    const finalTop = top - (center.value.y - top) * (scale - 1)
+
+    elZoomImage.value.animate({
+        left: `${finalLeft}px`,
+        top: `${finalTop}px`,
+        width: `${width}px`,
+        height: `${height}px`,
+    }, {
+        fill: 'forwards',
+    })
+})
+
+useEventListener('pointerup', (e) => {
+    delete pointers.value[e.pointerId]
+    if (Object.keys(pointers.value).length)
+        initPointer()
+})
+
+function onEnter() {
     const fixedWidth = window.innerWidth * rate
     const fixedHeight = window.innerHeight * rate
     const ratio = props.el.naturalWidth / props.el.naturalHeight
     const [finalWidth, finalHeight] = (fixedWidth / fixedHeight > ratio)
         ? [fixedHeight * ratio, fixedHeight]
         : [fixedWidth, fixedWidth / ratio]
-    await delay(0)
-    Object.assign(elZoomImage.value.style, {
+
+    elZoomImage.value.animate([{
+        left: `${originRect.left}px`,
+        top: `${originRect.top}px`,
+        width: `${originRect.width}px`,
+        height: `${originRect.height}px`,
+    }, {
         top: `calc(50% - ${Math.floor(finalHeight / 2)}px)`,
         left: `calc(50% - ${Math.floor(finalWidth / 2)}px)`,
         width: `${finalWidth}px`,
         height: `${finalHeight}px`,
+    }], {
+        duration: 200,
+        fill: 'forwards',
     })
 }
 
-function onLeave() {
+function onLeave(_el: Element, done: () => void) {
     // 重新获取元素位置
     const { x, y, width, height } = props.el.getBoundingClientRect()
-    Object.assign(elZoomImage.value.style, {
+    const animation = elZoomImage.value.animate({
         left: `${x}px`,
         top: `${y}px`,
         width: `${width}px`,
         height: `${height}px`,
+    }, {
+        duration: 200,
+        fill: 'forwards',
     })
+    animation.onfinish = done
 }
 
 useEventListener('keydown', (e) => {
@@ -149,10 +210,8 @@ useEventListener('keydown', (e) => {
                 :src="el.src"
                 :style
                 draggable="false"
+
                 @wheel.prevent="onWheel"
-                @touchstart.prevent="onTouchStart"
-                @touchmove.prevent="onTouchMove"
-                @touchend="onTouchEnd"
             />
         </Transition>
         <Transition>
@@ -173,6 +232,7 @@ useEventListener('keydown', (e) => {
 <style lang="scss" scoped>
 .z-lightbox {
     position: fixed;
+    touch-action: none;
 }
 
 #z-lightbox-bgmask {
@@ -192,7 +252,6 @@ useEventListener('keydown', (e) => {
     position: fixed;
     cursor: move;
     object-fit: cover;
-    touch-action: none;
 
     &.v-enter-active,
     &.v-leave-active {
