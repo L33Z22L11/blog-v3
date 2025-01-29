@@ -40,7 +40,7 @@ export default <FeedGroup[]>[{
         link: 'https://myth.cx/',
         feed: 'https://myth.cx/index.xml',
         icon: 'https://myth.cx/favicon.ico',
-        avatar: 'https://myth.cx/img/avatar_hu4881e27882f65e048194c2e8319e9874_294915_300x0_resize_box_3.png',
+        avatar: 'https://myth.cx/img/avatar_hu_a008ef868a8cf25a.png',
         archs: ['Hugo', 'Cloudflare'],
         date: '2024-04-11',
     }, {

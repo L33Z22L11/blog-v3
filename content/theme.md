@@ -40,10 +40,10 @@ github:
 ---
 title: 组件样式示例
 link: /previews/example
-style: { background: var(--c-primary-soft) }
+class: gradient-card active
 ---
 #icon
-[**看就对了**]<br>👉👉🎨
+**看就对了**<br>👉👉🎨
 ::
 
 ## 主题特性
@@ -59,13 +59,14 @@ style: { background: var(--c-primary-soft) }
 ## 开源衍生
 
 - 灵感源自 [xaoxuu/hexo-theme-stellar](https://github.com/xaoxuu/hexo-theme-stellar)，这是一个经过精致设计的简洁 Hexo 主题。
-- 为 :tip[许多项目]{tip="真的有不少！"} 提供样式灵感。
+- 为 :tip[许多朋友的博客项目]{tip="真的有不少！"} 提供样式灵感。
+- 项目被多人用作个人博客，详见 [`README.md`](https://github.com/L33Z22L11/blog-v3)。
 
-### 部署
+### 使用
 
-自用项目，目前已经开源。修改需要具备一定的前端开发知识，可阅读项目的 `README.md` 文件。
+自用项目，目前已经开源。修改需要具备一定的前端开发知识，请阅读 `README`。
 
-## 开发过程
+### 开发过程
 
 ::link-banner
 ---
@@ -82,12 +83,13 @@ link: /2024/blog-using-nuxt
   - **前端框架**：Nuxt 3
   - **开发语言**：TypeScript + Vue 3 + Scss
 - 内容与服务
-  - **内容管理**：Nuxt Content
+  - **内容管理**：Nuxt Content V2
   - **部署平台**：Vercel
   - **评论系统**：Twikoo
-  - **数据库**：MongoDB
+  - **评论数据库**：MongoDB
   - **包管理器**：pnpm
 - 功能模块
+  - **无头组件库**：Radix Vue
   - **状态管理**：Pinia
   - **图标管理**：Nuxt Icon
   - **SEO优化**：Nuxt SEO

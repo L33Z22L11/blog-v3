@@ -8,9 +8,9 @@ const domainIcon = computed(() => getDomainIcon(props.link))
 
 <template>
     <HoverCardRoot>
-        <HoverCardTrigger class="feed-card gradient-card" :href="link">
+        <HoverCardTrigger class="feed-card gradient-card" :href="error ? undefined : link" :data-error="error">
             <div class="avatar">
-                <NuxtImg :src="avatar || icon" :alt="author" loading="lazy" :title="feed ? undefined : '无订阅源'" />
+                <NuxtImg :src="avatar ?? icon" :alt="author" loading="lazy" :title="feed ? undefined : '无订阅源'" />
                 <Icon v-if="!feed" class="no-feed" name="ph:bell-simple-slash-bold" />
             </div>
             <span class="name">{{ author }}</span>
@@ -19,7 +19,7 @@ const domainIcon = computed(() => getDomainIcon(props.link))
         <HoverCardPortal>
             <HoverCardContent side="top" class="card-content">
                 <div class="site-content">
-                    <NuxtImg class="site-icon" :src="icon" :alt="title" />
+                    <NuxtImg class="site-icon" :src="icon" :alt="title ?? sitenick ?? author" />
                     <div class="site-info">
                         <h3>{{ title ?? sitenick ?? author }}</h3>
                         <code class="domain" :title="getDomainType(mainDomain)">
@@ -36,7 +36,7 @@ const domainIcon = computed(() => getDomainIcon(props.link))
                     <div class="date">
                         {{ date }}
                     </div>
-                    <p>{{ desc }}</p>
+                    <p>{{ error ?? desc }}</p>
                     <p v-if="comment">
                         <Icon name="ph:chat-centered-dots-bold" /> {{ comment }}
                     </p>
@@ -60,6 +60,11 @@ const domainIcon = computed(() => getDomainIcon(props.link))
 
     &:hover {
         transform: translateY(-2px);
+    }
+
+    &[data-error] {
+        opacity: 0.5;
+        cursor: not-allowed;
     }
 
     .avatar {

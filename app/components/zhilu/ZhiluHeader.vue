@@ -16,10 +16,10 @@ const appConfig = useAppConfig()
         <NuxtImg
             :src="appConfig.header.logo"
             class="zhilu-logo"
-            :class="{ 'with-text': appConfig.header.text }"
+            :class="{ circle: appConfig.header.showTitle }"
             :alt="appConfig.title"
         />
-        <div v-if="appConfig.header.text" class="zhilu-text">
+        <div v-if="appConfig.header.showTitle" class="zhilu-text">
             <div class="header-title">
                 <span
                     v-for="(char, charIndex) in appConfig.title"
@@ -51,7 +51,7 @@ const appConfig = useAppConfig()
 .zhilu-logo {
     height: 3em;
 
-    &.with-text {
+    &.circle {
         aspect-ratio: 1;
         border-radius: 2em;
         box-shadow: 2px 4px 1rem var(--ld-shadow);

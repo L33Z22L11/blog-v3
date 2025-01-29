@@ -9,15 +9,17 @@
 
 我的第三代个人博客，于 2024 年 8 月 11 日上线。
 
-## 预览
+## 使用本主题的博客
 
-https://blog.zhilu.cyou
+- [纸鹿摸鱼处 @L33Z22L11](https://blog.zhilu.cyou/) · [开发经历](https://blog.zhilu.cyou/2024/blog-using-nuxt)
+- [希乐博客 @Xlenco](https://blog.xlenco.top/)
+- [SteinsNote @Labmem-00](https://blog.labmem.chat/) · [迁移经历](https://blog.labmem.chat/2024/beforeeverything)
+- [月空人 @Whbbit1999](https://whbbit.cn/) · [迁移评价](https://whbbit.cn/2025/why-migrate-to-nuxt)
+- [地球驿站 @mugzx](https://blog.mugzx.top/) · [迁移记录](https://blog.mugzx.top/)
 
 ## 特性
 
-> [!Tip]
->
-> 请阅读 [在线文档](https://blog.zhilu.cyou/theme) 或 [仓库源文件](/content/theme.md)。
+[主题特性](https://blog.zhilu.cyou/theme) · [组件示例](https://blog.zhilu.cyou/previews/example)
 
 ## 目录结构
 

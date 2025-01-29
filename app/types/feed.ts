@@ -11,7 +11,7 @@ export interface FeedEntry {
     link: string
     /** 订阅源 */
     feed?: string
-    /** 站点小图标，不建议为方形 */
+    /** 站点小图标 */
     icon: string
     /** 个人头像，为空则使用站点图标 */
     avatar: string
@@ -21,6 +21,8 @@ export interface FeedEntry {
     date: string
     /** 博主备注 */
     comment?: string
+    /** 错误信息 */
+    error?: string
 }
 
 export interface FeedGroup {
