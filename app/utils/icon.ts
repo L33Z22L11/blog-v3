@@ -101,12 +101,13 @@ const ext2lang: Record<string, string> = {
     'bat': 'batch',
     'ini': 'properties',
     'js': 'javascript',
+    'jsx': 'javascript-react',
     'md': 'markdown',
     'mdc': 'markdown',
     'sh': 'bash',
     'ssh-config': 'properties',
     'ts': 'typescript',
-    'tsx': 'typescript',
+    'tsx': 'typescript-react',
     'vb': 'visual-studio',
 }
 

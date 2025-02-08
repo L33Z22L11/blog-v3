@@ -3,6 +3,7 @@ import type { Nav, NavItem } from '~/types/nav'
 import blogConfig from '~~/blog.config'
 
 export default defineAppConfig({
+    // 将 blog.config.ts 中的配置项复制到 appConfig
     ...blogConfig,
 
     article: {
