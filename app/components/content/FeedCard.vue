@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { FeedEntry } from '~/types/feed'
+import { ZRawLink } from '#components'
 
 const props = defineProps<FeedEntry>()
 const mainDomain = computed(() => getMainDomain(props.link, true))
@@ -8,7 +9,12 @@ const domainIcon = computed(() => getDomainIcon(props.link))
 
 <template>
     <HoverCardRoot>
-        <HoverCardTrigger class="feed-card gradient-card" :href="error ? undefined : link" :data-error="error">
+        <HoverCardTrigger
+            class="feed-card gradient-card"
+            :as="ZRawLink"
+            :to="error ? undefined : link"
+            :data-error="error"
+        >
             <div class="avatar">
                 <NuxtImg :src="avatar ?? icon" :alt="author" loading="lazy" :title="feed ? undefined : '无订阅源'" />
                 <Icon v-if="!feed" class="no-feed" name="ph:bell-simple-slash-bold" />

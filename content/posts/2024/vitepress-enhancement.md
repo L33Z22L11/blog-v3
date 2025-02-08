@@ -188,7 +188,7 @@ export default {
             'not-found': () => h(NotFound),
         })
     },
-    enhanceApp({ app, router, siteData }) {
+    enhanceApp({ app }) {
         app.component('Icon', Icon)
     },
 } satisfies Theme
@@ -205,7 +205,7 @@ export default {
     text-align: center;
 }
 
-:where(.iconify) {
+svg:where(.iconify) {
     display: inline-block;
     flex-shrink: 0;
     font-size: 1.2em;

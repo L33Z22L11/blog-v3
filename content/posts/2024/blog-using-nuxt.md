@@ -144,7 +144,8 @@ active: 2 # 默认显示第二个选项卡，可选
 ```
 
 #tab3
-```tsx [Timeline.vue > script setup]
+```vue [Timeline.vue]
+<script lang="tsx" setup>
 function render() {
     return defineSlots().default?.().map((node: VNode) => {
         const textContent = (node.children as any)?.default?.()[0].children || ''
@@ -154,6 +155,7 @@ function render() {
             : <div class="timeline-body card">{node}</div>
     })
 }
+</script>
 ```
 :::
 

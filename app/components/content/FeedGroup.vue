@@ -94,7 +94,7 @@ defineProps<{
     }
 }
 
-:deep(a.feed-card) {
+:deep(.feed-card.feed-card) {
     width: auto;
     margin: 0;
 }

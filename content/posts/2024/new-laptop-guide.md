@@ -149,7 +149,7 @@ caption: 超级文本编辑器在联想应用商店的宣传图
 广告链接、百度、搜索来源都赚到了钱，这是一场三赢的局面。什么？你说钱从哪来？
 ::
 
-倘若你摆脱了联想电脑管家的主页劫持，Windows 默认的 Edge 浏览器现在也有类型行为了（[微软的入乡随俗：Edge访问百度时会自动追加推广追踪符获取流量分成 - 蓝点网](https://www.landiannews.com/archives/103486.html)）。[你逃不掉的。]{.text-repeat}
+倘若你摆脱了联想电脑管家的主页劫持，Windows 默认的 Edge 浏览器现在也有类似行为了（[微软的入乡随俗：Edge访问百度时会自动追加推广追踪符获取流量分成 - 蓝点网](https://www.landiannews.com/archives/103486.html)）。[你逃不掉的。]{.text-repeat}
 
 ### 默认浏览器
 
