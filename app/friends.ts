@@ -81,11 +81,11 @@ export default <FeedGroup[]>[{
     }, {
         author: '学习爱我',
         sitenick: 'Studio',
-        title: 'plus studio - StudyingLover',
+        title: 'StudyingLover\'s Blog',
         desc: '要偷偷努力，下回惊艳所有人',
         link: 'https://www.studyinglover.com/',
         feed: 'https://www.studyinglover.com/rss.xml',
-        icon: 'https://proxy.thisis.plus/favicon.ico',
+        icon: getGhAvatar('StudyingLover', { preset: 'icon' }),
         avatar: getGhAvatar('StudyingLover'),
         archs: ['Astro', 'Vercel'],
         date: '2024-02-03',

@@ -53,6 +53,8 @@ const tip = computed(() => {
     font-size: 0.875em;
     line-height: normal;
     vertical-align: text-bottom;
+
+    // text-indent: 0;
     transition: color 0.2s;
 
     @supports (color: color-mix(in srgb, transparent, transparent)) {
