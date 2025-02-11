@@ -30,10 +30,14 @@ export function getPromptLanguage(prompt: string | boolean) {
     return 'plaintext'
 }
 
-export function highlightHTML(text: string, word: string, className: string = 'highlight') {
+export function highlightHtml(text: string, word: string, className: string = 'highlight') {
     const pattern = new RegExp(word, 'gi')
     const highlightedText = text
         .replace(pattern, matched => `<span class="${className}">${matched}</span>`)
         .replace(/\n+/g, '<br>')
     return highlightedText
+}
+
+export function removeHtmlTags(str: string) {
+    return str.replace(/<[^>]+(>|$)/g, '')
 }

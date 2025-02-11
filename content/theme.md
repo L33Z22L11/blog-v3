@@ -9,7 +9,15 @@ github:
   url: https://github.com/L33Z22L11/blog-v3
 ---
 
-## 设计原则
+## 主题特性
+
+::card-list
+- **响应式设计和夜间模式**：支持移动端和桌面端，同时适配系统颜色偏好，确保在不同设备上都能提供良好的阅读体验。
+- **兼容性**：样式在多个浏览器上兼容良好（如安卓夸克 APP），在 Chrome 88（2021年1月）上显示美观，并且有适当的回退策略。
+- **订阅源**：支持 Atom 订阅源，能显示文章封面（由于 Nuxt Content 特性，订阅源中只有摘要）。
+- **SEO 优化**：使用 Nuxt SEO 插件，优化搜索引擎的收录和排名。
+- **评论系统**：集成 Twikoo 评论系统，方便用户留言和互动。
+::
 
 ### 减少干扰
 
@@ -36,6 +44,10 @@ github:
 - 故事类文章标题居中且使用衬线体，正文有缩进。
 ::
 
+## 使用
+
+自用项目，目前已经开源。修改需要具备一定的前端开发知识，请阅读 `README`。
+
 ::link-card
 ---
 title: 组件样式示例
@@ -43,28 +55,8 @@ link: /previews/example
 class: gradient-card active
 ---
 #icon
-**看就对了**<br>👉👉🎨
+**使用必读**<br>👉👉🎨
 ::
-
-## 主题特性
-
-::card-list
-- **响应式设计和夜间模式**：支持移动端和桌面端，同时适配系统颜色偏好，确保在不同设备上都能提供良好的阅读体验。
-- **兼容性**：样式在多个浏览器上兼容良好（如安卓夸克 APP），在 Chrome 88（2021年1月）上显示美观，并且有适当的回退策略。
-- **订阅源**：支持 Atom 订阅源，能显示文章封面（由于 Nuxt Content 特性，订阅源中只有摘要）。
-- **SEO 优化**：使用 Nuxt SEO 插件，优化搜索引擎的收录和排名。
-- **评论系统**：集成 Twikoo 评论系统，方便用户留言和互动。
-::
-
-## 开源衍生
-
-- 灵感源自 [xaoxuu/hexo-theme-stellar](https://github.com/xaoxuu/hexo-theme-stellar)，这是一个经过精致设计的简洁 Hexo 主题。
-- 为 :tip[许多朋友的博客项目]{tip="真的有不少！"} 提供样式灵感。
-- 项目被多人用作个人博客，详见 [`README.md`](https://github.com/L33Z22L11/blog-v3)。
-
-### 使用
-
-自用项目，目前已经开源。修改需要具备一定的前端开发知识，请阅读 `README`。
 
 ### 开发过程
 
@@ -76,7 +68,13 @@ link: /2024/blog-using-nuxt
 ---
 ::
 
-## 技术架构
+## 开源与衍生
+
+- 灵感源自 [xaoxuu/hexo-theme-stellar](https://github.com/xaoxuu/hexo-theme-stellar)，这是一个经过精致设计的简洁 Hexo 主题。
+- 借鉴了众多优秀设计，自己的一些设计也为 :tip[许多朋友的博客项目]{tip="真的有不少！"} 提供了灵感。
+- 项目被多人用作个人博客，详见 [`README.md`](https://github.com/L33Z22L11/blog-v3)。
+
+### 技术架构
 
 ::card-list
 - 主要框架与语言
@@ -88,14 +86,20 @@ link: /2024/blog-using-nuxt
   - **评论系统**：Twikoo
   - **评论数据库**：MongoDB
   - **包管理器**：pnpm
-- 功能模块
-  - **无头组件库**：Radix Vue
-  - **状态管理**：Pinia
-  - **图标管理**：Nuxt Icon
-  - **SEO优化**：Nuxt SEO
-  - **颜色模式**：Nuxt Color Mode
 - 工具库
-  - **日期处理**：Date-fns
-  - **工具库**：VueUse
+  - **日期处理**：date-fns
+  - **轮播图**：Embla Carousel
+  - **订阅源生成**：Fast XML Parser
+  - **域名解析**：parse-domain
+  - **动态代码高亮**：Plain Shiki
+  - **实用算法片段库**：Radash
+  - **无头组件库**：Radix Vue
+- 依赖模块
+  - **图标管理**：Nuxt Icon
+  - **颜色模式**：Nuxt Color Mode
+  - **SEO优化**：Nuxt SEO
+  - **状态管理**：Pinia
+  - **Vue 实用功能库**：VueUse
   - **代码质量**：ESLint + Stylelint
+  - **代码压缩**：Terser
 ::

@@ -7,11 +7,22 @@ interface Rect {
     height: number | string
 }
 
-export function animateBetweenRects(el: MaybeRefOrGetter<Element>, rect: Rect | Rect[], options?: KeyframeAnimationOptions) {
-    const frames = toArray(rect)
-    const ensurePx = (val: number | string) => typeof val === 'number' ? `${val}px` : val
+type MaybeArray<T> = T | T[]
 
-    return toValue(el).animate(frames.map(r => ({
+function toRect(rect: Element | Rect): Rect {
+    return rect instanceof Element ? rect.getBoundingClientRect() : rect
+}
+
+const ensurePx = (val: number | string) => typeof val === 'number' ? `${val}px` : val
+
+export function animateBetweenRects(
+    el: MaybeRefOrGetter<Element>,
+    rect: MaybeArray<MaybeRefOrGetter<Element> | Rect>,
+    options?: KeyframeAnimationOptions,
+) {
+    const rects = toArray(rect).map(r => toRect(toValue(r)))
+
+    return toValue(el).animate(rects.map(r => ({
         left: ensurePx(r.left),
         top: ensurePx(r.top),
         width: ensurePx(r.width),

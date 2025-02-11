@@ -13,8 +13,8 @@ const title = computed(() => [...props.titles ?? [], props.title].join(' > '))
 const isPara = computed(() => props.titles?.length)
 const word = computed(() => props.queryTerms?.[0] ?? '')
 
-const highlightTitle = computed(() => highlightHTML(title.value, word.value))
-const highlightContent = computed(() => highlightHTML(props.content ?? '', word.value))
+const highlightTitle = computed(() => highlightHtml(title.value, word.value))
+const highlightContent = computed(() => highlightHtml(props.content ?? '', word.value))
 </script>
 
 <template>

@@ -45,7 +45,7 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 - 打开 PS 配置文件
   :copy{prompt="PS>" code="notepad $PROFILE"}
   - 也可以更改系统全局配置文件
-  :copy{prompt="PS>" code="sudo notepad $PSHOME\profile.ps1"}
+  :copy{prompt="PS>" code="sudo notepad $PROFILE.AllUsersAllHosts"}
 - 添加以下内容
   ```powershell [$PROFILE]
   # 按 Tab 键显示补全菜单，按方向键切换选项
@@ -158,6 +158,7 @@ Fastfetch 还支持更进一步地定义配置文件。
   :copy{prompt="PS>" code="Get-Content (Get-PSReadlineOption).HistorySavePath"}
 - 获取命令位置（类似于 Linux 的 `which`{lang="sh"}）
   :copy{prompt="PS>" code="(Get-Command <command>).Definition"}
+  :copy{prompt="PS>" code="where.exe <command>"}
 - 在此次打开文件资源管理器
   :copy{prompt="PS>" code="explorer ."}
 - 在无网状态下开启移动热点

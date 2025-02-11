@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
+    /** tab 下标从 1 开始 */
     tabs: string[]
     center?: boolean
     active?: number
@@ -22,10 +23,9 @@ const activeTab = ref(Number(props.active) || 1)
             </button>
         </div>
         <div class="tab-content">
-            <!-- mode="out-in" 会引发插槽问题 -->
-            <Transition name="float-in">
-                <slot :name="`tab${activeTab}`" />
-            </Transition>
+            <!-- <Transition> -->
+            <slot :name="`tab${activeTab}`" />
+            <!-- </Transition> -->
         </div>
     </div>
 </template>

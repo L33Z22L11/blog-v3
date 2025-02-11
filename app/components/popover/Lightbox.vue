@@ -12,8 +12,8 @@ const emit = defineEmits<{
 const originRect = props.el.getBoundingClientRect()
 const rate = 0.8
 
-const zoomImage = ref()
-const elZoomImage = useCurrentElement<HTMLImageElement>(zoomImage)
+const lightbox = ref()
+const lightboxEl = useCurrentElement<HTMLImageElement>(lightbox)
 
 const { width: winW, height: winH } = useWindowSize()
 
@@ -46,14 +46,14 @@ function restrictScale(width: number, height: number, scale: number) {
 }
 
 function onWheel(e: WheelEvent) {
-    const { left: startX, top: startY, width, height } = elZoomImage.value.getBoundingClientRect()
+    const { left: startX, top: startY, width, height } = lightboxEl.value.getBoundingClientRect()
     if (restrictScale(width, height, 1 - e.deltaY))
         return
     const isTouchpad = Math.abs(e.deltaY) < 8
     const delta = isTouchpad ? Math.abs(e.deltaY) * 0.05 : 0.5
     const scale = e.deltaY > 0 ? 1 / (1 + delta) : 1 + delta
 
-    animateBetweenRects(elZoomImage, {
+    animateBetweenRects(lightboxEl, {
         left: startX - (e.clientX - startX) * (scale - 1),
         top: startY - (e.clientY - startY) * (scale - 1),
         width: width * scale,
@@ -65,7 +65,7 @@ function initPointer() {
         p.startX = p.currentX
         p.startY = p.currentY
     }
-    startRect = elZoomImage.value.getBoundingClientRect()
+    startRect = lightboxEl.value.getBoundingClientRect()
     startCenter = getCenter('start')
     startDistance = getDistance('start')
 }
@@ -114,7 +114,7 @@ useEventListener('pointermove', (e) => {
     const startY = startRect.top + center.value.y - startCenter.y
     const left = startX - (center.value.x - startX) * (scale - 1)
     const top = startY - (center.value.y - startY) * (scale - 1)
-    animateBetweenRects(elZoomImage, { left, top, width, height }, { duration: 0 })
+    animateBetweenRects(lightboxEl, { left, top, width, height }, { duration: 0 })
 })
 
 useEventListener('pointerup', (e) => {
@@ -137,10 +137,7 @@ function onEnter(el: Element, done: () => void) {
 }
 
 function onLeave(el: Element, done: () => void) {
-    // 重新获取元素位置
-    const { x: left, y: top, width, height } = props.el.getBoundingClientRect()
-
-    animateBetweenRects(el, { left, top, width, height }).onfinish = done
+    animateBetweenRects(el, props.el).onfinish = done
 }
 
 useEventListener('keydown', (e) => {
@@ -161,7 +158,7 @@ useEventListener('keydown', (e) => {
         <Transition @enter="onEnter" @leave="onLeave">
             <NuxtImg
                 v-if="isOpening"
-                ref="zoomImage"
+                ref="lightbox"
                 class="image"
                 :alt="el.alt"
                 :width="el.width"

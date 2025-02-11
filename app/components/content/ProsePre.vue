@@ -30,8 +30,8 @@ const meta = computed(() => {
 
 const appConfig = useAppConfig()
 
-const rows = computed(() => props.code.split('\n').length)
-const collapsible = computed(() => rows.value > appConfig.content.codeblockCollapsibleRows)
+const rows = computed(() => props.code.split('\n').length - 1)
+const collapsible = computed(() => !meta.value.expand && rows.value > appConfig.content.codeblockCollapsibleRows)
 const [isCollapsed, toggleCollapsed] = useToggle(collapsible.value)
 
 const icon = computed(() => meta.value.icon || getFileIcon(props.filename) || getLangIcon(props.language))
@@ -45,7 +45,7 @@ const { copy, copied } = useCopy(codeblock)
 <template>
     <figure
         class="z-codeblock"
-        :class="{ collapsed: isCollapsed, collapsible }"
+        :class="{ collapsed: collapsible && isCollapsed, collapsible }"
         :style="{ '--collapsible-height': `${appConfig.content.codeblockCollapsibleRows}em` }"
     >
         <figcaption>
@@ -177,7 +177,6 @@ pre {
 
     overflow: auto;
     padding: 1rem;
-    background-color: transparent;
 
     &.wrap {
         white-space: pre-wrap;
