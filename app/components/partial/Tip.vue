@@ -15,7 +15,7 @@ withDefaults(defineProps<{
             <TooltipTrigger :as-child="!wrap">
                 <slot />
             </TooltipTrigger>
-            <TooltipPortal>
+            <TooltipPortal v-if="tip || $slots.tip">
                 <TooltipContent class="tip-content">
                     <slot name="tip">
                         {{ tip }}

@@ -1,18 +1,29 @@
 ---
 title: 组件样式示例
 date: 2024-09-21 23:18:18
-updated: 2025-02-21 15:33:43
+updated: 2025-02-12 11:18:33
+
+# type: story
 ---
 
 ## Markdown 内容组件
 
-Nuxt Content 使用 Markdown 语法和约定来提供丰富的文本编辑体验。它使用自定的 MDC 语法（[文档](https://v2.content.nuxt.com/usage/markdown)），可以让你在 Markdown 中使用 Vue 组件，并支持多种 remark 扩展。
+Nuxt Content 使用 Markdown 语法和约定来提供丰富的文本编辑体验。它使用自定的 MDC 语法，可以让你在 Markdown 中使用 Vue 组件，并支持多种 remark 扩展。
 
-::render-with-raw
+:::render-with-raw
 ```mdc wrap
+::link-card
+---
+title: MDC 基本语法（必读）
+icon: https://v2.content.nuxt.com/favicon.ico
+link: https://v2.content.nuxt.com/usage/markdown
+class: gradient-card active
+---
+::
+
 ~~也许要看到 [本页源码](https://github.com/L33Z22L11/blog-v3/blob/main/content/previews/example.md) 才能领会到这种语法的特性~~，现在可以在页面内看源代码了，[就像**这样**——]{.example-info #just-like-this style="color: #00bb66"}，或是主题介绍页面的组件入口卡片那样……确定不对照源码阅读吗？
 ```
-::
+:::
 
 ## 内容组件样式示例
 

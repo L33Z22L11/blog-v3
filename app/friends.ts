@@ -685,5 +685,16 @@ export default <FeedGroup[]>[{
         archs: ['Next.js', 'Vercel'],
         date: '2025-01-12',
         comment: 'Hexo Solitude 主题作者，经常换自己网站。',
+    }, {
+        author: '鸢栀',
+        sitenick: '万事屋日记',
+        desc: '每天写下自己的喜欢',
+        link: 'https://rjjr.cn/',
+        feed: 'https://rjjr.cn/index.php/feed/',
+        icon: 'https://cdn.motsuni.cn/1739176973_20250208101223856.png',
+        avatar: 'https://weavatar.com/avatar/1dc444f85a6673099a47170588bbc6d7?s=96',
+        archs: ['WordPress', '国内 CDN'],
+        date: '2025-02-12',
+        comment: '日常、前端、福瑞。',
     }],
 }]
