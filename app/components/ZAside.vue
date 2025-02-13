@@ -1,28 +1,7 @@
 <script setup lang="ts">
-import {
-    LazyWidgetBlogLog,
-    LazyWidgetBlogStats,
-    LazyWidgetConnectivity,
-    LazyWidgetEmpty,
-    LazyWidgetGithubCard,
-    LazyWidgetToc,
-} from '#components'
-import { pascal } from 'radash'
-
 const layoutStore = useLayoutStore()
 
-const widgetList = {
-    LazyWidgetBlogLog,
-    LazyWidgetBlogStats,
-    LazyWidgetConnectivity,
-    LazyWidgetEmpty,
-    LazyWidgetGithubCard,
-    LazyWidgetToc,
-}
-
-const widgets = computed(() => (layoutStore.asideItems || []).map(componentAlias =>
-    `LazyWidget${pascal(componentAlias)}` as keyof typeof widgetList),
-)
+const { widgets } = useWidgets(() => layoutStore.asideWidgets)
 </script>
 
 <template>
@@ -32,12 +11,12 @@ const widgets = computed(() => (layoutStore.asideItems || []).map(componentAlias
     <!-- 此处不能使用 Transition，因为宽屏状态始终显示 -->
     <!-- 如果为空数组则隐藏 -->
     <Transition>
-        <aside v-if="layoutStore.asideItems?.length" id="z-aside" class="scrollcheck-y" :class="{ show: layoutStore.isOpen('aside') }">
+        <aside v-if="layoutStore.asideWidgets?.length" id="z-aside" class="scrollcheck-y" :class="{ show: layoutStore.isOpen('aside') }">
             <div class="container">
                 <TransitionGroup name="float-in">
-                    <div v-for="widget in widgets" :key="widget" class="widget">
+                    <div v-for="widget in widgets" :key="widget.name" class="widget">
                         <!-- 更换页面时通过 key 更新这些组件，防止旧数据导致问题 -->
-                        <component :is="widgetList[widget]" :key="$route.path" />
+                        <component :is="widget.comp" :key="$route.path" />
                     </div>
                 </TransitionGroup>
             </div>

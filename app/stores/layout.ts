@@ -1,6 +1,3 @@
-// FIXME: 完善 Aside 类型
-export type AsideItem = string[]
-
 const defaultState = {
     sidebar: false,
     aside: false,
@@ -13,8 +10,7 @@ export const useLayoutStore = defineStore('layout', () => {
     const open = ref({ ...defaultState })
     const isAnyOpen = computed(() => Object.values(open.value).some(Boolean))
 
-    // 为空数组时占位，为 false 时隐藏
-    const asideItems = ref<AsideItem>([])
+    const asideWidgets = ref<WidgetName[]>([])
 
     const closeAll = () => {
         Object.keys(open.value).forEach((key) => {
@@ -28,9 +24,9 @@ export const useLayoutStore = defineStore('layout', () => {
         open.value[key] = !isActive
     }
 
-    const setAside = (items?: AsideItem) => {
-        if (items)
-            asideItems.value = items ?? []
+    const setAside = (widgets?: WidgetName[]) => {
+        if (widgets)
+            asideWidgets.value = widgets ?? []
     }
 
     const isOpen = (key: LayoutSection) => open.value[key]
@@ -38,7 +34,7 @@ export const useLayoutStore = defineStore('layout', () => {
     return {
         open,
         isAnyOpen,
-        asideItems,
+        asideWidgets,
         closeAll,
         toggle,
         setAside,

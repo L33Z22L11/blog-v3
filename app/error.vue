@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
 
-defineProps({
+const props = defineProps({
     error: Object as () => NuxtError,
 })
 
 const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog_log'])
+layoutStore.setAside(['blog-log'])
 
-const errorStack = removeHtmlTags(error?.stack)
+const errorStack = removeHtmlTags(props.error?.stack)
 
 onMounted(() => {
     console.error(errorStack)

@@ -1,8 +1,8 @@
 ---
 title: 主题
-hideInfo: true
+hide-info: true
 
-aside: [toc, github_card]
+aside: [toc, github-card]
 github:
   name: L33Z22L11/blog-v3
   description: 基于 Nuxt Content 的博客主题，使用 Nuxt 3 构建。

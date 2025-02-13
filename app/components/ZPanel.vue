@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const layoutStore = useLayoutStore()
-const hasAside = computed(() => layoutStore.asideItems?.length)
+const hasAside = computed(() => layoutStore.asideWidgets?.length)
 
 useEventListener('keydown', (event) => {
     if (event.key === 'Escape') {

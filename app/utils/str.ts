@@ -38,6 +38,8 @@ export function highlightHtml(text: string, word: string, className: string = 'h
     return highlightedText
 }
 
-export function removeHtmlTags(str: string) {
+export function removeHtmlTags(str?: string) {
+    if (typeof str !== 'string')
+        return ''
     return str.replace(/<[^>]+(>|$)/g, '')
 }

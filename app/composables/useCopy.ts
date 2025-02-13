@@ -16,10 +16,5 @@ export default function (
         return el?.textContent as string || ''
     }
 
-    const { copy, copied } = useClipboard({ source: getText, legacy: true })
-
-    return {
-        copy,
-        copied,
-    }
+    return useClipboard({ source: getText, legacy: true })
 }
