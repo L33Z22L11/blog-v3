@@ -27,8 +27,8 @@ function renderContent(post: ParsedContent) {
     ].join(' ')
 }
 
-export default defineEventHandler(async (event) => {
-    const posts = await serverQueryContent(event)
+export default defineEventHandler(async (e) => {
+    const posts = await serverQueryContent(e)
         .where({ _original_dir: { $eq: '/posts' } })
         .sort({ updated: -1 })
         .limit(blogConfig.feed.limit)
@@ -77,7 +77,6 @@ export default defineEventHandler(async (event) => {
         entry: entries,
     }
 
-    setHeader(event, 'Content-Type', 'application/xml; charset=UTF-8')
     return builder.build({
         '?xml': { $version: '1.0', $encoding: 'UTF-8' },
         feed,

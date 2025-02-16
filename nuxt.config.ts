@@ -1,4 +1,5 @@
 import blogConfig from './blog.config'
+import headers from './headers'
 import redirects from './redirects'
 
 export default defineNuxtConfig({
@@ -62,9 +63,7 @@ export default defineNuxtConfig({
 
     routeRules: {
         ...redirects,
-        '/api/stats': { prerender: true },
-        '/atom.xml': { prerender: true },
-        '/zhilu.opml': { prerender: true },
+        ...headers,
     },
 
     runtimeConfig: {
@@ -130,6 +129,8 @@ export default defineNuxtConfig({
     },
 
     image: {
+        // BUG: https://github.com/nuxt/image/issues/1353
+        provider: 'ipx',
         domains: blogConfig.imageDomains,
         format: ['avif', 'webp'],
     },

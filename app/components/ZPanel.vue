@@ -35,13 +35,17 @@ useEventListener('keydown', (event) => {
 #z-panel {
     position: fixed;
     overflow: hidden;
-    right: 2rem;
-    bottom: 2rem;
+    right: min(2rem, 5%);
+    bottom: min(2rem, 5%);
     border-radius: 0.5rem;
     background-color: var(--c-bg-a50);
     backdrop-filter: blur(0.5rem);
     font-size: 1.4rem;
     z-index: 100;
+
+    @media (max-height: $breakpoint-phone) {
+        display: flex;
+    }
 
     @media (min-width: $breakpoint-widescreen) {
         display: none;

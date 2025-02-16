@@ -1,3 +1,5 @@
+import type { NitroConfig } from 'nitropack'
+
 // 谷歌上的文章还是旧链接
 const redirectList = {
     '/201103/essay1-where': '/2010s/essay1-where',
@@ -48,9 +50,10 @@ const redirectList = {
     '/202404/magic-code': '/2024/magic-code',
 }
 
-const redirectRouteRules = Object.entries(redirectList).reduce((acc, [from, to]) => {
-    acc[from] = { redirect: { to, statusCode: 301 } }
-    return acc
-}, {} as { [path: string]: { redirect: { to: string, statusCode: number } } })
+const redirectRouteRules = Object.entries(redirectList)
+    .reduce<NitroConfig['routeRules']>((acc, [from, to]) => {
+        acc![from] = { redirect: { to, statusCode: 301 } }
+        return acc
+    }, {})
 
 export default redirectRouteRules
