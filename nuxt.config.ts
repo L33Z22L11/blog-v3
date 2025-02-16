@@ -51,7 +51,7 @@ export default defineNuxtConfig({
     ],
 
     // BUG: 3.14+ Windows 平台内存泄漏
-    // devtools: { enabled: false },
+    devtools: { enabled: false },
 
     features: {
         inlineStyles: false,

@@ -52,7 +52,7 @@ const appConfig = useAppConfig()
     height: 3em;
 
     &.circle {
-        aspect-ratio: 1;
+        width: 3em;
         border-radius: 2em;
         box-shadow: 2px 4px 1rem var(--ld-shadow);
     }

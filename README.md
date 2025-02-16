@@ -16,6 +16,7 @@
 - [SteinsNote @Labmem-00](https://blog.labmem.chat/) · [迁移经历](https://blog.labmem.chat/2024/beforeeverything)
 - [月空人 @Whbbit1999](https://whbbit.cn/) · [迁移评价](https://whbbit.cn/2025/why-migrate-to-nuxt)
 - [地球驿站 @mugzx](https://blog.mugzx.top/) · [迁移记录](https://blog.mugzx.top/)
+- [克喵Kemeow @Kemeow815](https://blog.kemiaofx.top/)
 
 ## 特性
 
@@ -23,19 +24,21 @@
 
 ## 目录结构
 
+项目使用 Nuxt 4 项目目录结构，可以参照 [Nuxt 3 目录结构（左侧栏有导航）](https://nuxt.com/docs/guide/directory-structure/app)。
+
 ```sh
 .
 ├── app # 前端
 │   ├── assets # 资源文件
 │   ├── components # 组件
-│   │   ├── content # 内容组件
-│   │   ├── partial # 模块组件
-│   │   ├── widget # 小组件
-│   │   ├── zhilu # 个人 VI 组件
+│   │   ├── content # MDC组件
+│   │   ├── partial # 微型组件
+│   │   ├── widget # 侧边栏组件
+│   │   ├── zhilu # 个人标识组件
 │   │   └── ... # 布局组件
-│   ├── composables # 组合式函数
+│   ├── composables # Vue 组合式函数
 │   ├── pages # 页面
-│   │   ├── [...slug].vue # 正文、404
+│   │   ├── [...slug].vue # 正文、404页面
 │   │   ├── page.vue # 首页
 │   │   ├── page/[[id]].vue # 首页动态路由
 │   │   ├── archive.vue # 归档
@@ -45,16 +48,16 @@
 │   ├── stores # Pinia 状态管理
 │   ├── types # 类型定义
 │   ├── utils # 工具函数
-│   ├── app.config.ts # 前端配置
-│   ├── app.vue # 布局
-│   └── error.vue # 错误页
+│   ├── app.config.ts # 前端响应式配置
+│   ├── app.vue # 基本布局
+│   └── error.vue # 意外错误页
 ├── content # 文章
 │   ├── posts # 文章
 │   ├── previews # 预览文章，可被站内搜索
-│   ├── link.md # 友链（正文）
+│   ├── link.md # 友链要求
 │   └── theme.md # 主题介绍
 ├── patches # npm 包补丁
-├── public # 静态资源
+├── public # 静态资源，生成在站点根目录
 │   └── fonts # 字体
 ├── server # 服务端
 │   ├── api # 接口
@@ -64,10 +67,10 @@
 │   │   └── fix-post.ts # 修复文章时区/链接
 │   └── routes # 路由
 │       └── atom.xml.get.ts # Atom 订阅源
-├── blog.config.ts # 博客公共配置
+├── blog.config.ts # 博客静态公共配置
+├── headers.ts # 静态路径响应头配置
 ├── nuxt.config.ts # Nuxt 配置
-├── redirects.ts # 旧站点重定向配置
-└── vercel.json # Vercel 配置
+└── redirects.ts # 旧站点重定向配置
 ```
 
 ## 快速开始
@@ -84,6 +87,16 @@ pnpm i
 pnpm dev
 ```
 
+### 删除原有文章
+
+`content/` 目录下仅保留 `link.md`，在 `app.config.ts` 中将 `footer.nav[2].items[1].url` 由 `/theme` 改为 `https://blog.zhilu.cyou/theme` 即可。
+
+### 创建文章
+
+```sh
+pnpm new my-post-title
+```
+
 ### 构建生产环境
 
 ```sh
@@ -91,18 +104,25 @@ pnpm generate
 pnpm preview
 ```
 
-### 部署
+### 部署指南
 
-推荐使用 Vercel 部署。本站具有良好的 SSG 支持，可使用 Nuxt 预设（SSR）部署。目前的部署预设：
+推荐使用 Vercel 进行部署，同时也支持 Netlify、Cloudflare Pages 等平台。建议采用静态（SSG）部署方式，也可直接使用“Nuxt 预设”部署。我的部署配置如下：
 
-- Build command: `pnpm generate`
-- Output directory: `dist`
-- Install command: `pnpm i`
+- 构建命令: `pnpm generate`
+- 输出目录: `dist`
+- 安装命令: `pnpm i`
 
 ## 贡献
 
-欢迎提交 Issue 或 Pull Request。
+欢迎参与项目：如果有具体问题或功能建议，可以发起 Issue；如果愿意在已确定的方向上增加功能或修复问题，可以提交 Pull Request。
+
+### 使用答疑
+
+使用需要具备一定的前端**项目基础**。如果你不确定代码是否有问题，可以加入 QQ 群 `169994096` 讨论（也欢迎闲聊），我很乐意在空闲时解答问题。
 
 ## 许可证
 
-[MIT](LICENSE)
+- 项目本体：[MIT](LICENSE)
+- 博客文章：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans)
+- 不得以“纸鹿”或我的相关名义发布网站。
+- 希望你在页脚保留此项目链接，助力开源传播。
