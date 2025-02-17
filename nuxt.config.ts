@@ -1,6 +1,5 @@
-import blogConfig from './blog.config'
-import headers from './headers'
-import redirects from './redirects'
+import process from 'node:process'
+import blogConfig, { routeRules } from './blog.config'
 
 export default defineNuxtConfig({
     app: {
@@ -61,10 +60,7 @@ export default defineNuxtConfig({
         compatibilityVersion: 4,
     },
 
-    routeRules: {
-        ...redirects,
-        ...headers,
-    },
+    routeRules,
 
     runtimeConfig: {
         public: {
@@ -130,7 +126,7 @@ export default defineNuxtConfig({
 
     image: {
         // BUG: https://github.com/nuxt/image/issues/1353
-        provider: 'ipx',
+        provider: process.env.NUXT_IMAGE_PROVIDER || undefined,
         domains: blogConfig.imageDomains,
         format: ['avif', 'webp'],
     },
