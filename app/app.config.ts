@@ -9,7 +9,7 @@ export default defineAppConfig({
     ...blogConfig,
 
     article: {
-        categories: <{ [key: string]: { icon: string, color?: string } }>{
+        categories: <{ [category: string]: { icon: string, color?: string } }>{
             经验分享: { icon: 'ph:mouse-bold', color: '#3af' },
             生活: { icon: 'ph:shooting-star-bold', color: '#3ba' },
             代码: { icon: 'ph:code-bold', color: '#77f' },
@@ -40,15 +40,15 @@ export default defineAppConfig({
         /** 页脚版权信息 */
         copyright: `© ${new Date().getFullYear()} ${blogConfig.author.name}`,
         /** 侧边栏底部图标导航 */
-        iconNav: <NavItem[]>[
+        iconNav: [
             { icon: 'ph:house-bold', text: '个人主页', url: blogConfig.author.homepage },
             { icon: 'ri:qq-line', text: '交流群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
             { icon: 'ph:github-logo-bold', text: 'GitHub: L33Z22L11', url: 'https://github.com/L33Z22L11' },
             { icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
             { icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
-        ],
+        ] satisfies NavItem[],
         /** 页脚站点地图 */
-        nav: <Nav>[
+        nav: [
             {
                 title: '探索',
                 items: [
@@ -73,7 +73,7 @@ export default defineAppConfig({
                     { icon: 'ph:certificate-bold', text: '萌ICP备20246888号', url: 'https://icp.gov.moe/?keyword=20246888' },
                 ],
             },
-        ],
+        ] satisfies Nav,
         /** 页脚版权信息底部的其他信息 */
         message: '',
     },
@@ -96,7 +96,7 @@ export default defineAppConfig({
     },
 
     /** 左侧栏导航 */
-    nav: <Nav>[
+    nav: [
         {
             title: '',
             items: [
@@ -105,7 +105,7 @@ export default defineAppConfig({
                 { icon: 'ph:archive-bold', text: '归档', url: '/archive' },
             ],
         },
-    ],
+    ] satisfies Nav,
 
     /** 风格化 blog-stats widget */
     seasonal: {

@@ -31,7 +31,7 @@ export function useArticleSort(list: MaybeRefOrGetter<ArticleProps[]>) {
     const isAscending = ref<boolean>()
     const listSorted = computed(() => alphabetical(
         toValue(list),
-        item => item[sortOrder.value] || '',
+        item => Reflect.get(item, sortOrder.value) || '',
         isAscending.value ? 'asc' : 'desc',
     ))
     return {

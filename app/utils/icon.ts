@@ -6,8 +6,8 @@ const archIcons = {
     'Cloudflare': 'simple-icons:cloudflare',
     'Deno Deploy': 'simple-icons:deno',
     'GitHub Pages': 'simple-icons:github',
-    'Gridea': 'tabler:circle-letter-g', // 不准确
-    'Halo': 'tabler:square-letter-h-filled', // 不准确
+    'Gridea': 'tabler:square-rounded-letter-g-filled', // 不准确
+    'Halo': 'material-symbols:h-mobiledata-badge', // 不准确
     'Hexo': 'simple-icons:hexo',
     'HTML': 'simple-icons:html5',
     'Hugo': 'simple-icons:hugo',
@@ -48,6 +48,7 @@ export const mainDomainIcons: Record<string, string> = {
 
 /** 专门域名图标映射，优先级高于主域名图标 */
 export const domainIcons: Record<string, string> = {
+    'developer.mozilla.org': 'simple-icons:mdnwebdocs',
     'mp.weixin.qq.com': 'ri:wechat-fill',
 }
 
@@ -61,27 +62,53 @@ export function getDomainIcon(url: string) {
 
 /** 文件名后缀图标映射，优先级高于代码块语言图标映射 */
 const file2icon: Record<string, string> = {
+    '.babelrc': 'catppuccin:babel',
+    '.babelrc.js': 'catppuccin:babel',
     '.crt': 'catppuccin:certificate',
+    '.editorconfig': 'catppuccin:editorconfig',
+    '.env': 'catppuccin:env',
     '.gitattributes': 'catppuccin:git',
     '.gitconfig': 'catppuccin:git',
     '.gitignore': 'catppuccin:git',
+    '.gitkeep': 'catppuccin:git',
+    '.gitlab-ci.yml': 'catppuccin:gitlab',
+    '.gitmodules': 'catppuccin:git',
     '.key': 'catppuccin:key',
     '.npmrc': 'catppuccin:npm',
     '.patch': 'catppuccin:git',
     '.prettierrc': 'catppuccin:prettier',
+    'astro.config.mjs': 'catppuccin:astro-config',
     'CHANGELOG.md': 'catppuccin:changelog',
     'CODE_OF_CONDUCT.md': 'catppuccin:code-of-conduct',
+    'CODEOWNERS': 'catppuccin:codeowners',
     'CONTRIBUTING.md': 'catppuccin:contributing',
+    'docker-compose.yml': 'catppuccin:docker-compose',
+    'eslint.config.js': 'catppuccin:eslint',
     'eslint.config.mjs': 'catppuccin:eslint',
     'LICENSE': 'catppuccin:license',
     'netlify.toml': 'catppuccin:netlify',
+    'next.config.ts': 'catppuccin:next',
     'nuxt.config.ts': 'catppuccin:nuxt',
     'package.json': 'catppuccin:package-json',
     'pnpm-workspace.yaml': 'catppuccin:pnpm',
+    'postcss.config.js': 'catppuccin:postcss',
+    'prettier.config.js': 'catppuccin:prettier',
+    'pyproject.toml': 'catppuccin:python-config',
     'README.md': 'catppuccin:readme',
+    'renovate.json': 'catppuccin:renovate',
+    'requirements.txt': 'catppuccin:python-config',
+    'robots.txt': 'catppuccin:robots',
+    'rollup.config.js': 'catppuccin:rollup',
+    'SECURITY.md': 'catppuccin:security',
+    'stylelint.config.js': 'catppuccin:stylelint',
     'stylelint.config.mjs': 'catppuccin:stylelint',
+    'tailwind.config.js': 'catppuccin:tailwind',
     'tsconfig.json': 'catppuccin:typescript-config',
     'verccel.json': 'catppuccin:vercel',
+    'vite.config.js': 'catppuccin:vite',
+    'vite.config.ts': 'catppuccin:vite',
+    'webpack.config.js': 'catppuccin:webpack',
+    'yarn.lock': 'catppuccin:yarn',
 }
 
 export function getFileIcon(filename?: string) {

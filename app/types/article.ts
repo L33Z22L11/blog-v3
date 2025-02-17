@@ -12,7 +12,7 @@ export default interface ArticleProps extends Partial<{
     date: string
     updated: string
     published: string
-    categories: [string[]]
+    categories: string[]
     tags: string[]
     type: 'tech' | 'story'
     image: string
