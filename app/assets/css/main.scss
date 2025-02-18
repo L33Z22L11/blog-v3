@@ -79,6 +79,21 @@ button, input, textarea {
     }
 }
 
+.tippy-box {
+    padding: 0.3em 0.6em;
+    border-radius: 0.5em;
+    box-shadow: 0 0 1rem var(--ld-shadow);
+    background-color: var(--ld-bg-card);
+    font-size: 0.8em;
+    color: var(--c-text-2);
+    animation: float-in 0.2s;
+
+    > .tippy-svg-arrow {
+        fill: var(--ld-bg-card);
+    }
+}
+  
+
 .text-center {
     text-align: center;
 }

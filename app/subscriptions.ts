@@ -1,7 +1,7 @@
 import type { FeedGroup } from '~/types/feed'
 import { getGhAvatar } from './utils/img'
 
-export default <FeedGroup[]>[{
+export default [{
     name: '漫游',
     desc: '网上冲浪时发现的精彩内容与常读订阅，与君共享。',
     entries: [{
@@ -103,4 +103,4 @@ export default <FeedGroup[]>[{
         archs: ['WordPress', '虚拟主机'],
         date: '2024-10-29',
     }],
-}]
+}] satisfies FeedGroup[]

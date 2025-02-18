@@ -8,10 +8,9 @@ const domainIcon = computed(() => getDomainIcon(props.link))
 </script>
 
 <template>
-    <HoverCardRoot>
-        <HoverCardTrigger
+    <Tooltip :delay="200" interactive hide-on-click="toggle">
+        <ZRawLink
             class="feed-card gradient-card"
-            :as="ZRawLink"
             :to="error ? undefined : link"
             :data-error="error"
         >
@@ -21,36 +20,33 @@ const domainIcon = computed(() => getDomainIcon(props.link))
             </div>
             <span class="name">{{ author }}</span>
             <span class="title">{{ sitenick }}</span>
-        </HoverCardTrigger>
-        <HoverCardPortal>
-            <HoverCardContent side="top" class="card-content">
-                <div class="site-content">
-                    <NuxtImg class="site-icon" :src="icon" :alt="title ?? sitenick ?? author" />
-                    <div class="site-info">
-                        <h3>{{ title ?? sitenick ?? author }}</h3>
-                        <code class="domain" :title="getDomainType(mainDomain)">
-                            <span>{{ getDomain(link) }}</span>
-                            <Icon v-if="domainIcon" class="domain-mark" :name="domainIcon" />
-                        </code>
-                    </div>
-                    <Icon
-                        v-for="arch in archs" :key="arch"
-                        class="arch" :name="getArchIcon(arch)" :title="arch"
-                    />
+        </ZRawLink>
+        <template #content>
+            <div class="site-content">
+                <NuxtImg class="site-icon" :src="icon" :alt="title ?? sitenick ?? author" />
+                <div class="site-info">
+                    <h3>{{ title ?? sitenick ?? author }}</h3>
+                    <code class="domain" :title="getDomainType(mainDomain)">
+                        <span>{{ getDomain(link) }}</span>
+                        <Icon v-if="domainIcon" class="domain-mark" :name="domainIcon" />
+                    </code>
                 </div>
-                <div class="desc-content">
-                    <div class="date">
-                        {{ date }}
-                    </div>
-                    <p>{{ error ?? desc }}</p>
-                    <p v-if="comment">
-                        <Icon name="ph:chat-centered-dots-bold" /> {{ comment }}
-                    </p>
+                <Icon
+                    v-for="arch in archs" :key="arch"
+                    class="arch" :name="getArchIcon(arch)" :title="arch"
+                />
+            </div>
+            <div class="desc-content">
+                <div class="date">
+                    {{ date }}
                 </div>
-                <HoverCardArrow class="card-arrow" />
-            </HoverCardContent>
-        </HoverCardPortal>
-    </HoverCardRoot>
+                <p>{{ error ?? desc }}</p>
+                <p v-if="comment">
+                    <Icon name="ph:chat-centered-dots-bold" /> {{ comment }}
+                </p>
+            </div>
+        </template>
+    </Tooltip>
 </template>
 
 <style lang="scss" scoped>
@@ -105,75 +101,63 @@ const domainIcon = computed(() => getDomainIcon(props.link))
     }
 }
 
-:deep() {
-    .card-content {
-        --c-fill: var(--ld-bg-card);
+// https://vue-tippy.netlify.app/props#appendto
+// Tooltip 位于组件根部时，interactive tippy 会插入到父组件
+:deep() ~ [data-tippy-root] > .tippy-box {
+    padding: 0;
 
-        width: min(20em, 90vw);
-        border-radius: 0.5em;
-        box-shadow: 0.1em 0.2em 1rem var(--ld-shadow);
-        background-color: var(--ld-bg-card);
-        font-size: 0.8em;
-        color: var(--c-text-2);
-        animation: float-in 0.2s;
+    &[data-placement="top"] {
+        --c-fill: var(--c-bg-1);
+    }
+}
 
-        &[data-side="top"] {
-            --c-fill: var(--c-bg-1);
-        }
+.site-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5em 1em;
+
+    .site-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 0.2em;
+        object-fit: contain;
     }
 
-    .site-content {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5em 1em;
+    .site-info {
+        flex: 1;
 
-        .site-icon {
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: 0.2em;
-            object-fit: contain;
+        .domain {
+            font-size: 0.9em;
         }
 
-        .site-info {
-            flex: 1;
-
-            .domain {
-                font-size: 0.9em;
-            }
-
-            .domain-mark {
-                font-size: 0.4rem;
-                vertical-align: super;
-            }
+        .domain-mark {
+            font-size: 0.4rem;
+            vertical-align: super;
         }
     }
+}
 
-    .desc-content {
-        position: relative;
-        overflow: hidden;
-        padding: 0.5em 1em;
-        border-radius: 0 0 0.5em 0.5em;
-        background-color: var(--c-bg-1);
+.desc-content {
+    position: relative;
+    overflow: hidden;
+    padding: 0.5em 1em;
+    border-radius: 0 0 0.5em 0.5em;
+    background-color: var(--c-bg-1);
 
-        p + p {
-            margin-top: 0.5em;
-        }
-
-        .date {
-            position: absolute;
-            opacity: 0.1;
-            right: -0.1em;
-            bottom: -0.3em;
-            font-size: 3em;
-            font-weight: bold;
-            white-space: nowrap;
-            pointer-events: none;
-        }
+    p + p {
+        margin-top: 0.5em;
     }
 
-    .card-arrow {
-        fill: var(--c-fill);
+    .date {
+        position: absolute;
+        opacity: 0.1;
+        right: -0.1em;
+        bottom: -0.3em;
+        font-size: 3em;
+        font-weight: bold;
+        white-space: nowrap;
+        pointer-events: none;
     }
 }
 </style>

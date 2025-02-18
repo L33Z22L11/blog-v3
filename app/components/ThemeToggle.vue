@@ -5,19 +5,16 @@ const colorMode = useColorMode()
 
 <template>
     <div class="theme-toggle">
-        <ZTip
+        <button
             v-for="(themeData, themeName) in appConfig.themes"
             :key="themeName"
-            :tip="themeData.tip"
+            v-tip="themeData.tip"
+            :aria-label="themeData.tip"
+            :class="{ active: colorMode.preference === themeName }"
+            @click="colorMode.preference = themeName"
         >
-            <button
-                :aria-label="themeData.tip"
-                :class="{ active: colorMode.preference === themeName }"
-                @click="colorMode.preference = themeName"
-            >
-                <Icon :name="themeData.icon" />
-            </button>
-        </ZTip>
+            <Icon :name="themeData.icon" />
+        </button>
     </div>
 </template>
 

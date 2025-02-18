@@ -9,12 +9,10 @@ const tip = computed(() => (isExtLink(props.href) && getDomain(props.href)) || d
 </script>
 
 <template>
-    <ZTip v-if="tip" :tip="tip">
-        <ZRawLink class="z-link" :to="href">
-            <Icon v-if="icon" class="domain-icon" :name="icon" />
-            <slot />
-        </ZRawLink>
-    </ZTip>
+    <ZRawLink v-tip="tip" class="z-link" :to="href">
+        <Icon v-if="icon" class="domain-icon" :name="icon" />
+        <slot />
+    </ZRawLink>
 </template>
 
 <style lang="scss" scoped>

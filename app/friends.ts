@@ -1,7 +1,7 @@
 import type { FeedGroup } from '~/types/feed'
 import { getGhAvatar } from './utils/img'
 
-export default <FeedGroup[]>[{
+export default [{
     name: '相谈甚多',
     desc: '',
     entries: [{
@@ -301,7 +301,7 @@ export default <FeedGroup[]>[{
         feed: 'https://www.skira.top/feed.xml',
         icon: 'https://www.skira.top/img/skira.ico',
         avatar: 'https://www.skira.top/img/lemonsuka.webp',
-        arcahs: ['Hexo', 'Vercel'],
+        archs: ['Hexo', 'Vercel'],
         date: '2024-02-01',
         comment: '搞机发烧友，小众系统爱好者，前端研究员。',
     }, {
@@ -697,4 +697,4 @@ export default <FeedGroup[]>[{
         date: '2025-02-12',
         comment: '日常、前端、福瑞。',
     }],
-}]
+}] satisfies FeedGroup[]
