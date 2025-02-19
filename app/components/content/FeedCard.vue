@@ -106,8 +106,8 @@ const domainIcon = computed(() => getDomainIcon(props.link))
 :deep() ~ [data-tippy-root] > .tippy-box {
     padding: 0;
 
-    &[data-placement="top"] {
-        --c-fill: var(--c-bg-1);
+    &[data-placement="top"] > .tippy-svg-arrow {
+        fill: var(--c-bg-1);
     }
 }
 
