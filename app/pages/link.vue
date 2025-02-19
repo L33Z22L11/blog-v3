@@ -58,7 +58,7 @@ const { data: postLink } = await useAsyncData('/link', () => queryContent('/link
         <template #tab1>
             <div class="link-tab">
                 <FeedCard v-bind="myFeed" />
-                <Copy v-for="[prompt, code] in Object.entries(copyFields)" :key="prompt" :prompt :code />
+                <Copy v-for="(prompt, code) in copyFields" :key="prompt" :prompt :code />
             </div>
         </template>
         <template #tab2>

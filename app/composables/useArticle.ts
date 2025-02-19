@@ -1,4 +1,5 @@
 import type ArticleProps from '~/types/article'
+import type { ArticleOrderType } from '~/types/article'
 import { alphabetical } from 'radash'
 
 interface UseCategoryOptions {
@@ -27,7 +28,7 @@ export function useCategory(list: MaybeRefOrGetter<ArticleProps[]>, options?: Us
 
 export function useArticleSort(list: MaybeRefOrGetter<ArticleProps[]>) {
     const appConfig = useAppConfig()
-    const sortOrder = ref(appConfig.pagination.sortOrder || 'date')
+    const sortOrder = ref<ArticleOrderType>(appConfig.pagination.sortOrder || 'date')
     const isAscending = ref<boolean>()
     const listSorted = computed(() => alphabetical(
         toValue(list),

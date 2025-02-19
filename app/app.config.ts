@@ -90,7 +90,7 @@ export default defineAppConfig({
     pagination: {
         perPage: 10,
         /** 默认排序方式，需要是 this.article.order 中的键名 */
-        sortOrder: 'date',
+        sortOrder: 'date' as const,
         /** 允许（普通/预览/归档）文章列表正序，开启后排序方式左侧图标可切换顺序 */
         allowAscending: false,
     },

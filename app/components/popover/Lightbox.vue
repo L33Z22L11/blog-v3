@@ -60,6 +60,7 @@ function onWheel(e: WheelEvent) {
         height: height * scale,
     })
 }
+
 function initPointer() {
     for (const p of Object.values(pointers.value)) {
         p.startX = p.currentX
