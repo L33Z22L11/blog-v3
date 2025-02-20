@@ -6,10 +6,12 @@ const props = defineProps({
 })
 
 const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog_log'])
+layoutStore.setAside(['blog-log'])
+
+const errorStack = removeHtmlTags(props.error?.stack)
 
 onMounted(() => {
-    console.error(props.error?.stack)
+    console.error(errorStack)
 })
 
 const handleError = () => clearError({ redirect: '/' })
@@ -23,9 +25,9 @@ const handleError = () => clearError({ redirect: '/' })
         <main>
             <div class="app-error">
                 <ZError
-                    :code="error?.message"
+                    :code="errorStack"
                     :message="error?.url"
-                    :title="`[${error?.statusCode}] ${error?.statusMessage ?? ''}`"
+                    :title="`[${error?.statusCode}] ${error?.message}`"
                 >
                     <ZButton @click="handleError">
                         返回主页

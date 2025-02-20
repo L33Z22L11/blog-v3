@@ -1,26 +1,17 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
 const colorMode = useColorMode()
-const themeToggle = ref<HTMLDivElement[] | undefined>()
-
-const themes = appConfig.themes
-type ThemeType = keyof typeof themes
-function toggleTheme(themeName: ThemeType) {
-    colorMode.preference = themeName
-}
 </script>
 
 <template>
     <div class="theme-toggle">
         <button
-            v-for="(themeData, themeName) in themes"
+            v-for="(themeData, themeName) in appConfig.themes"
             :key="themeName"
-            ref="themeToggle"
-            v-tippy="themeData.tip"
-            type="button"
+            v-tip="themeData.tip"
             :aria-label="themeData.tip"
             :class="{ active: colorMode.preference === themeName }"
-            @click="toggleTheme(themeName)"
+            @click="colorMode.preference = themeName"
         >
             <Icon :name="themeData.icon" />
         </button>
@@ -50,7 +41,7 @@ function toggleTheme(themeName: ThemeType) {
         }
 
         &.active {
-            box-shadow: 0 0 0.5rem var(--ld-shadow);
+            box-shadow: 0.1em 0.2em 0.5rem var(--ld-shadow);
             background-color: var(--ld-bg-card);
             color: var(--c-text-1);
             cursor: auto;

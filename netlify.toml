@@ -1,0 +1,5 @@
+[context.production.environment]
+# BUG: https://github.com/nuxt/image/issues/1353
+NUXT_IMAGE_PROVIDER = "ipx"
+# FIXME: https://answers.netlify.com/t/corepack-and-pnpm-10-2-0-failing-on-build/138964
+COREPACK_INTEGRITY_KEYS = "0"

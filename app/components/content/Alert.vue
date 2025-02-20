@@ -59,6 +59,7 @@ const title = computed(() => props.title || defaultProps.value.title)
 
 <style lang="scss" scoped>
 .alert {
+    margin: 1em 0;
     padding: 0.2em 0.8em;
     background-image:
         radial-gradient(circle at 4em -25em, var(--c-primary), transparent 30em),

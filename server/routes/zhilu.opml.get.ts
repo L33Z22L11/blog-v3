@@ -6,13 +6,11 @@ import subscriptions from '~/subscriptions'
 
 const runtimeConfig = useRuntimeConfig()
 
-const xmlBuilderOptions = {
+const builder = new XMLBuilder({
     attributeNamePrefix: '$',
     format: true,
     ignoreAttributes: false,
-}
-
-const builder = new XMLBuilder(xmlBuilderOptions)
+})
 
 function mapEntry(item: FeedEntry) {
     return {
@@ -31,7 +29,7 @@ function flattenGroups(groups: FeedGroup[]) {
         group.entries.filter(entry => entry.feed).map(mapEntry))
 }
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async (_e) => {
     const outlines = [
         mapEntry(myFeed),
         ...flattenGroups(subscriptions),
@@ -52,7 +50,6 @@ export default defineEventHandler(async (event) => {
         body: { outline: outlines },
     }
 
-    setHeader(event, 'Content-Type', 'application/xml; charset=UTF-8')
     return builder.build({
         '?xml': { $version: '1.0', $encoding: 'UTF-8' },
         opml,

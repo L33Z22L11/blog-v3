@@ -14,13 +14,13 @@ const props = withDefaults(defineProps<{
 })
 
 const src = computed(() => getImgUrl(props.src, props.mirror))
-const image = ref(null!)
-const elImage = useCurrentElement<HTMLImageElement>(image)
+const pic = ref()
+const picEl = useCurrentElement<HTMLImageElement>(pic)
 
 const popoverStore = usePopoverStore()
 
 const { open } = popoverStore.use(() => h(LazyPopoverLightbox, {
-    el: elImage.value,
+    el: picEl.value,
     caption: props.caption,
 }))
 </script>
@@ -29,7 +29,7 @@ const { open } = popoverStore.use(() => h(LazyPopoverLightbox, {
     <!-- <ProseImg> 被 <p> 包裹，若内含块级元素会自动关闭，导致水合不匹配 -->
     <figure class="image">
         <NuxtImg
-            ref="image"
+            ref="pic"
             class="image"
             :style="{ cursor: zoom && 'zoom-in' }"
             :src :alt="caption" :width :height

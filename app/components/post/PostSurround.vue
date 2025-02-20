@@ -23,10 +23,10 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
         <ZRawLink :to="post?.path" class="surround-link">
             <Icon :name="post ? icon : fallbackIcon" />
             <div>
-                <h4 class="title" :class="{ 'text-story': post?.type === 'story' }">
+                <strong class="title" :class="{ 'text-story': post?.type === 'story' }">
                     {{ post?.title || fallbackText }}
-                </h4>
-                <time v-if="post" :datetime="post.date">{{ getPostDate(post.date) }}</time>
+                </strong>
+                <time v-if="post" :datetime="getIsoDatetime(post.date)">{{ getPostDate(post.date) }}</time>
             </div>
         </ZRawLink>
     </DefineTemplate>
@@ -67,6 +67,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
     }
 
     time {
+        display: block;
         opacity: 0.6;
         font-size: 0.8rem;
     }

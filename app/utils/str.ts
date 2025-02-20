@@ -30,7 +30,7 @@ export function getPromptLanguage(prompt: string | boolean) {
     return 'plaintext'
 }
 
-export function highlightHTML(text: string, word: string, className: string = 'highlight') {
+export function highlightHtml(text: string, word: string, className: string = 'highlight') {
     const pattern = new RegExp(word, 'gi')
     const highlightedText = text
         .replace(pattern, matched => `<span class="${className}">${matched}</span>`)
@@ -38,6 +38,8 @@ export function highlightHTML(text: string, word: string, className: string = 'h
     return highlightedText
 }
 
-export function joinWithBR(...strs: (string | undefined)[]) {
-    return strs.filter(str => str?.trim()).join('<br>')
+export function removeHtmlTags(str?: string) {
+    if (typeof str !== 'string')
+        return ''
+    return str.replace(/<[^>]+(>|$)/g, '')
 }

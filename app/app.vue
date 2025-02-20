@@ -1,18 +1,16 @@
 <template>
-    <ConfigProvider>
-        <NuxtLoadingIndicator />
-        <SkipToContent />
-        <ZSidebar />
-        <div id="content">
-            <main id="main-content">
-                <NuxtPage />
-                <ZFooter />
-            </main>
-            <ZAside />
-        </div>
-        <ZPanel />
-        <ZPopover />
-    </ConfigProvider>
+    <NuxtLoadingIndicator />
+    <SkipToContent />
+    <ZSidebar />
+    <div id="content">
+        <main id="main-content">
+            <NuxtPage />
+            <ZFooter />
+        </main>
+        <ZAside />
+    </div>
+    <ZPanel />
+    <ZPopover />
 </template>
 
 <!-- eslint-disable-next-line vue/enforce-style-attribute -->

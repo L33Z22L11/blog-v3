@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { Element } from 'hast'
 import type { BundledLanguage } from 'shiki'
 
 const props = withDefaults(defineProps<{
@@ -16,20 +15,12 @@ const props = withDefaults(defineProps<{
 const codeHighlighted = await useShikiHighlighted(() => props.code, {
     lang: props.language,
     unwrap: true,
-    transformers: [{
-        root(hast) {
-            const pre = hast.children[0]! as Element
-            const code = pre.children[0]! as Element
-            code.properties.class = pre.properties.class
-            hast.children[0] = code
-            return hast
-        },
-    }],
 })
 </script>
 
 <template>
     <div class="error">
+        <div />
         <Icon class="error-icon" :name="icon" />
         <div class="error-title" v-html="title" />
 
@@ -39,7 +30,7 @@ const codeHighlighted = await useShikiHighlighted(() => props.code, {
             :language="language"
             meta="wrap"
         >
-            <code v-html="codeHighlighted" />
+            <span v-html="codeHighlighted" />
         </ProsePre>
 
         <slot />
@@ -67,6 +58,10 @@ const codeHighlighted = await useShikiHighlighted(() => props.code, {
 
     .z-codeblock {
         max-width: 100%;
+
+        :deep(.shiki) {
+            background-color: transparent !important; /* stylelint-disable-line declaration-no-important */
+        }
     }
 }
 </style>

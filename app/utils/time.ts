@@ -1,5 +1,15 @@
 import { differenceInMilliseconds, format, formatDistanceToNow } from 'date-fns'
-import { zhCN } from 'date-fns/locale'
+import { dateLocale } from '~~/blog.config'
+
+export function getIsoDatetime(date?: string | Date) {
+    if (!date)
+        return date
+
+    if (typeof date === 'string')
+        date = new Date(date)
+
+    return date.toISOString()
+}
 
 export function getLocaleDatetime(date?: string | Date) {
     if (!date)
@@ -8,7 +18,7 @@ export function getLocaleDatetime(date?: string | Date) {
     if (typeof date === 'string')
         date = new Date(date)
 
-    return format(date, 'yyyy年M月d日 E HH:mm:ss', { locale: zhCN })
+    return format(date, 'yyyy年M月d日 E HH:mm:ss', { locale: dateLocale })
 }
 export function getPostDate(date?: string | Date) {
     if (!date)
@@ -18,7 +28,7 @@ export function getPostDate(date?: string | Date) {
 
     const isWithinAWeek = differenceInMilliseconds(now, date) < 1000 * 60 * 60 * 24 * 7
     if (isWithinAWeek) {
-        return formatDistanceToNow(date, { addSuffix: true, locale: zhCN })
+        return formatDistanceToNow(date, { addSuffix: true, locale: dateLocale })
     }
     else if (isSameYear(now, date)) {
         return format(date, 'M月d日')
@@ -29,7 +39,7 @@ export function getPostDate(date?: string | Date) {
 }
 
 export function getReadingTime(ms: number): string {
-    return formatDistanceToNow(new Date().getTime() - ms, { locale: zhCN })
+    return formatDistanceToNow(new Date().getTime() - ms, { locale: dateLocale })
 }
 
 export function isTimeDiffSignificant(

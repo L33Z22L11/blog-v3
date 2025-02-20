@@ -20,6 +20,7 @@ defineProps<{
 
 <style lang="scss" scoped>
 details {
+    margin: 1em 0;
     border: 1px solid var(--c-border);
     border-radius: 0.5em;
     background-color: var(--c-bg-2);

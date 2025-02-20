@@ -1,0 +1,40 @@
+<template>
+    <Tooltip class="dropdown" interactive placement="bottom" :arrow="false" :offset="[0, 0]">
+        <slot />
+        <template #content="{ hide }">
+            <div class="dropdown-content" @click="hide()">
+                <slot name="content" />
+            </div>
+        </template>
+    </Tooltip>
+</template>
+
+<style lang="scss" scoped>
+.dropdown-content.dropdown-content {
+    display: grid;
+
+    > :deep(button) {
+        padding: 0.3em 0.5em;
+        border-radius: 0.3em;
+        text-align: start;
+        color: var(--c-text-1);
+        transition: color 0.1s, background-color 0.2s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--c-bg-soft);
+        }
+    }
+}
+
+// https://vue-tippy.netlify.app/props#appendto
+// Tooltip 位于组件根部时，interactive tippy 会插入到父组件
+:deep() ~ [data-tippy-root] > .tippy-box {
+    padding: 0.3em;
+    font-size: inherit;
+
+    &[data-placement="top"] {
+        --c-fill: var(--c-bg-1);
+    }
+}
+</style>

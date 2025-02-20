@@ -1,10 +1,15 @@
+import type { NitroConfig } from 'nitropack'
 import type { BundledLanguage, BundledTheme } from 'shiki'
 import type { FeedEntry } from '~/types/feed'
+import redirectList from './redirects.json'
+
+export { zhCN as dateLocale } from 'date-fns/locale/zh-CN'
 
 // 存储 nuxt.config 和 app.config 共用的配置
 const blogConfig = {
     title: '纸鹿摸鱼处',
     subtitle: '纸鹿至麓不知路，支炉制露不止漉',
+    // 长 description 利好于 SEO
     description: '纸鹿本鹿的个人博客，分享技术与生活。“折腾不止，摸鱼生活——摸门🙏🏻”。纸鹿是一名开源爱好者，结识了许多志同道合的朋友。这个博客记录了他在生活和技术学习中的点滴经历，充满启发与思考。网站界面简洁美观，内容丰富实用，人气互动活跃，涵盖了编程、生活、学习等多个领域，为读者提供了卓越的阅读体验。',
     author: {
         name: '纸鹿本鹿',
@@ -21,7 +26,6 @@ const blogConfig = {
     language: 'zh-CN',
     qqGroup: '169994096',
     timeEstablished: '2019-07-19',
-    /** 时区，修改后还应修改 time.ts 中引入的时区包 */
     timezone: 'Asia/Shanghai',
     url: 'https://blog.zhilu.cyou/',
 
@@ -29,6 +33,7 @@ const blogConfig = {
         limit: 50,
     },
 
+    // 在 URL 中隐藏的路径前缀
     hideContentPrefixes: ['/posts'],
 
     imageDomains: [
@@ -37,10 +42,13 @@ const blogConfig = {
         // '7.isyangs.cn',
     ],
 
+    // 禁止搜索引擎收录的路径
     robotsNotIndex: ['/preview', '/previews/*'],
 
     scripts: [
+        // 自己部署的 umami 统计服务
         { 'src': 'https://zhi.zhilu.cyou/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true },
+        // Cloudflare Insights 统计服务
         { 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
     ],
 
@@ -54,6 +62,7 @@ const blogConfig = {
         darkTheme: <BundledTheme>'one-dark-pro',
     },
 
+    // 用于 Twikoo 评论系统
     twikoo: {
         js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.40/dist/twikoo.all.min.js',
         envId: 'https://twikoo.zhilu.cyou/',
@@ -74,6 +83,21 @@ export const myFeed = <FeedEntry>{
     archs: ['Nuxt', 'Vercel'],
     date: blogConfig.timeEstablished,
     comment: '这是我自己',
+}
+
+// 将旧页面永久重定向到新页面
+const redirectRouteRules = Object.entries(redirectList)
+    .reduce<NitroConfig['routeRules']>((acc, [from, to]) => {
+        acc![from] = { redirect: { to, statusCode: 301 } }
+        return acc
+    }, {})
+
+// https://nitro.build/config#routerules
+export const routeRules = <NitroConfig['routeRules']>{
+    ...redirectRouteRules,
+    '/api/stats': { prerender: true, headers: { 'Content-Type': 'application/json' } },
+    '/atom.xml': { prerender: true, headers: { 'Content-Type': 'application/xml' } },
+    '/zhilu.opml': { prerender: true, headers: { 'Content-Type': 'application/xml' } },
 }
 
 export default blogConfig

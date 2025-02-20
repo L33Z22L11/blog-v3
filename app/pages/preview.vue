@@ -5,7 +5,7 @@ useSeoMeta({
     description: `${appConfig.title}的文章预览。`,
 })
 const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog_log'])
+layoutStore.setAside(['blog-log'])
 
 const { data: listRaw } = await useAsyncData(
     'preview_list',

@@ -1,14 +1,29 @@
 ---
 title: 组件样式示例
 date: 2024-09-21 23:18:18
-updated: 2024-11-18 09:26:38
+updated: 2025-02-12 11:18:33
+
+# type: story
 ---
 
 ## Markdown 内容组件
 
-Nuxt Content 使用 Markdown 语法和约定来提供丰富的文本编辑体验。它使用自定的 MDC 语法（[文档](https://content.nuxt.com/usage/markdown)），可以让你在 Markdown 中使用 Vue 组件，并支持多种 remark 扩展。
+Nuxt Content 使用 Markdown 语法和约定来提供丰富的文本编辑体验。它使用自定的 MDC 语法，可以让你在 Markdown 中使用 Vue 组件，并支持多种 remark 扩展。
 
-也许要看到[本页源码](https://github.com/L33Z22L11/blog-v3/blob/main/content/previews/example.md)才能领会到这种语法的特性，[就像**这样**——]{.example-info #just-like-this style="color: #00bb66"}，或是主题介绍页面的组件入口卡片那样。
+:::render-with-raw
+```mdc wrap
+::link-card
+---
+title: MDC 基本语法（必读）
+icon: https://v2.content.nuxt.com/favicon.ico
+link: https://v2.content.nuxt.com/usage/markdown
+class: gradient-card active
+---
+::
+
+~~也许要看到 [本页源码](https://github.com/L33Z22L11/blog-v3/blob/main/content/previews/example.md) 才能领会到这种语法的特性~~，现在可以在页面内看源代码了，[就像**这样**——]{.example-info #just-like-this style="color: #00bb66"}，或是主题介绍页面的组件入口卡片那样……确定不对照源码阅读吗？
+```
+:::
 
 ## 内容组件样式示例
 
@@ -16,6 +31,8 @@ Nuxt Content 使用 Markdown 语法和约定来提供丰富的文本编辑体验
 
 ### 通过 CSS 类名控制的样式
 
+::render-with-raw
+```mdc
 - 各级标题
   - 在 Front matter 中设置 `type: story`{lang="yaml"} 可以换用不同样式。
   - 跟随 URL Hash（网址锚点）的高亮。
@@ -29,6 +46,8 @@ Nuxt Content 使用 Markdown 语法和约定来提供丰富的文本编辑体验
 - [故事感。]{.text-story}
 - [阴 影 回 声]{.text-repeat}
 - 滚动，然后悄悄[变大变高]{.text-zoom}，惊艳所有人。
+```
+::
 
 ### Markdown 原生组件
 
@@ -40,9 +59,13 @@ Nuxt Content 使用 Markdown 语法和约定来提供丰富的文本编辑体验
 
 还会根据域名展示图标，例如 [微软文档](https://learn.microsoft.com/zh-cn/)、[GitHub](https://github.com/)、[Bilibili](https://www.bilibili.com/)、[QQ 官网](https://im.qq.com/)、[微信公众号](https://mp.weixin.qq.com/) 等。
 
-::alert{title="自定义图标"}
-你可以将 `icon` 属性指定为 Iconify 图标名，例如 :a[a]{href="#链接-prosea" icon="ph:swatches-duotone"}。
+:::alert{title="自定义图标"}
+::render-with-raw
+```mdc wrap
+你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="ph:swatches-duotone"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
+```
 ::
+:::
 
 ##### 为更多站点匹配图标
 
@@ -52,35 +75,62 @@ Nuxt Content 使用 Markdown 语法和约定来提供丰富的文本编辑体验
 
 `行内代码` 和 [在超链接中的 `行内代码`](#代码-proseinlinecode)。
 
+还可以通过在反引号后加 `{lang="js"}` 等语言实现高亮，例如 `const a = 1`{lang="js"} 。
+
 #### 代码块 `ProsePre`
 
 ```
-only text
+纯文本代码块
 ```
 
-``` [filename]
-without language
+``` [文件名]
+带文件夹名、未指定语言的代码块
 ```
 
 ```yaml
-language: yaml # without filename
+语言: yaml # 指定语言但无文件名
 ```
 
-```yaml [code block with a loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog filename]
-feature: |
-  如果一行过于loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog，溢出滚动时有羽化边缘。
+```yaml [特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别长的文件名]
+羽化边缘: 如果一行特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别长，溢出滚动时有羽化边缘。
 ```
 
 ```md [CHANGELOG.md]
 # 更新日志
-- 为特殊文件名指定图标
+- 特殊文件名自动匹配图标
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
 ```
 
-```md [更多功能] icon=ph:files-duotone wrap
+````md [更多功能] icon=ph:files-duotone wrap expand
 - 在 Markdown 文件中，可以通过代码块语法的 meta 标记
-  - 直接启用自动换行功能，以展示 loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog 文本
-  - 自定义代码块图标
+  - `wrap` 直接启用自动换行功能，以展示特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别长的文本而不换行
+  - `icon=ph:files-duotone` 自定义代码块图标
+  - `expand` 禁用自动折叠功能
+
+# 代码块语法
+
+```语言简写 [文件名] icon=图标 wrap expand
+- 上面这几项都是可选的。
+- 如果有语言简写，必须位于反引号后的第一项。
+- 方括号包裹的是文件名。
+- icon=图标、wrap、expand 都是 meta 标记。
+- 如果要在代码块中嵌套代码块语法，外层可以用四个反引号包裹。
 ```
+````
 
 ##### 高亮
 
@@ -96,7 +146,7 @@ feature: |
 
 #### 表格 `ProseTable`
 
-> 打算做表头滚动吸附，但还未实现。目前支持表格横向滚动或自动换行的切换。
+> 支持表格横向滚动或自动换行的切换。
 
 | 表头滚动吸附 | 滚动时边缘羽化 | 如果标题或内容很 loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog | 这里还有一列，但是是空内容 |
 | :----------- | :------------- | :-------------------------------------------------------------------------------- | :------------------------- |
@@ -107,6 +157,12 @@ feature: |
 可以通过 Vue 模板语法、MDC 语法使用的组件。
 
 #### Alert
+
+:::render-with-raw
+```mdc
+::alert
+你好
+::
 
 ::alert{type="question"}
 #title
@@ -137,9 +193,13 @@ feature: |
 ::
 
 :alert{icon="ph:files-duotone" color="var(--c-accent)" title="仅标题，并且自定义图标和颜色"}
+```
+:::
 
 #### Badge
 
+:::render-with-raw
+```mdc
 :badge[普通带链接]{link="#badge"} :badge[纯文本指定圆形]{round} :badge[纯文本指定方形]{square}
 
 可以 :badge[带个图]{img="https://picsum.photos/100/100"} 也可以只有图 :badge{img="https://picsum.photos/100/100" round}，也能指定方形 :badge{img="https://picsum.photos/100/100" square}
@@ -155,26 +215,43 @@ GitHub链接能自动识别头像 :badge[KazariEX]{link="https://github.com/Kaza
 #default
 :badge{img="https://picsum.photos/100/100" text="指定圆形" round} 背景色 [可以 :badge{img="https://picsum.photos/100/100" text="动态变化" square} 使用](#badge)
 ::
+```
+:::
 
 #### :blur[Blur]
 
+::::render-with-raw
+```mdc
 :blur[你知道得太多了。]
+
+::blur
+:::quote
+也未必。
+:::
+::
+```
+::::
 
 #### CardList
 
 > 给列表刷上了自定义样式，待完善。
 
+:::render-with-raw
+```mdc
 ::card-list
 - 无序列表项1
 - 无序列表项2
   - 无序列表项2-1
   - 无序列表项2-2
 ::
+```
+:::
 
 #### Chat
 
+:::render-with-raw
+```mdc expand
 ::chat
-
 {:2024-11-09 23:39:30}
 
 {.}
@@ -195,16 +272,21 @@ GitHub链接能自动识别头像 :badge[KazariEX]{link="https://github.com/Kaza
 
 有趣\
 我学到了。
-
 ::
+```
+:::
 
 #### Copy
 
+:::render-with-raw
+```mdc
 :copy{code="rm -rf # 修改命令后再复制，也可撤销修改"}
 
 :copy{prompt code="不带提示符的命令，可以是 URL、单行代码"}
 
 :copy{prompt="自定义命令提示符、高亮语言" lang="js" code="const customLang = 'js' // 滚动条、边缘羽化会出现，假如它特别特别特别特别特别特别特别特别长"}
+```
+:::
 
 ##### 自动推断语言
 
@@ -214,7 +296,11 @@ GitHub链接能自动识别头像 :badge[KazariEX]{link="https://github.com/Kaza
 
 > 现在几点了？
 
+::render-with-raw
+```mdc
 :emoji-clock
+```
+::
 
 #### FeedCard 和 FeedGroup
 
@@ -224,6 +310,8 @@ GitHub链接能自动识别头像 :badge[KazariEX]{link="https://github.com/Kaza
 
 > 折叠组件，支持折叠和展开，可以嵌套使用。
 
+::::render-with-raw
+````mdc expand
 ::folding
 #title
 可以通过标题插槽传值 [超链接](#folding) **粗体** `Inline code`
@@ -246,19 +334,27 @@ GitHub链接能自动识别头像 :badge[KazariEX]{link="https://github.com/Kaza
 - 默认展开的折叠。
 ```
 ::
+````
+::::
 
 #### Key
 
 > 按下键时会亮，可以通过 `@press` 配置触发事件，鼠标点击也会触发事件，博客全站搜索框的按键提示使用了这个组件。
 
+::render-with-raw
+```mdc wrap
 :key[Esc]{code="escape"} :key[F2]{code="f2"} :key[Ctrl]{code="control"} :key[Shift]{code="shift"} :key[a]{code="a"} :key[Space]{code=" "} :key[Tab]{code="tab"} :key[Enter]{code="enter"}
 
 :key[Ctrl+Shift+A]{code="a" ctrl shift} :key[Alt]{code="alt"} :key[Alt+Shift]{code="shift" alt} :key[Ctrl+Alt]{code="alt" ctrl}
 
 :key[↑]{code="arrowup"} :key[↑]{code="arrowup"} :key[↓]{code="arrowdown"} :key[↓]{code="arrowdown"} :key[←]{code="arrowleft"} :key[→]{code="arrowright"} :key[←]{code="arrowleft"} :key[→]{code="arrowright"} :key[B]{code="b"} :key[A]{code="a"} :key[B]{code="b"} :key[A]{code="a"}
+```
+::
 
 #### LinkBanner
 
+:::render-with-raw
+```mdc
 ::link-banner
 ---
 banner: https://picsum.photos/480/240
@@ -268,9 +364,13 @@ link: "#link-banner"
 # mirror: # 是否借助第三方图片加载服务，见源代码
 ---
 ::
+```
+:::
 
 #### LinkCard
 
+:::render-with-raw
+```mdc
 ::link-card
 ---
 icon: https://picsum.photos/100/100
@@ -280,11 +380,15 @@ link: "#link-card"
 # mirror: # 是否借助第三方图片加载服务，见源代码
 ---
 ::
+```
+:::
 
 #### Pic
 
 > 用于展示图片，支持说明文字、点击后打开灯箱缩放。
 
+:::render-with-raw
+```mdc
 ::pic
 ---
 src: https://picsum.photos/480/240
@@ -293,11 +397,15 @@ caption: 说明文字，还支持通过 width 或 height 属性指定尺寸
 # zoom: false # 是否开启灯箱缩放，默认开启
 ---
 ::
+```
+:::
 
 #### Poetry
 
 > 在文章的 type 为 `tech` 或 `story` 时，它有不同的样式。
 
+:::render-with-raw
+```mdc
 ::poetry
 ---
 title: 诗有诗的标题
@@ -309,11 +417,15 @@ footer: 可选的落款
 是一首——
 *诗*。
 ::
+```
+:::
 
 #### Quote
 
 > 在文章的 type 为 `tech` 或 `story` 时，它有不同的样式。
 
+:::render-with-raw
+```mdc
 :quote[有时候，有些话，有点意思。]
 
 ::quote{icon="ph:files-duotone"}
@@ -326,9 +438,27 @@ footer: 可选的落款
 #default
 图标插槽也可以是 Emoji 或颜文字，或者英文装饰。
 ::
+```
+:::
+
+#### RenderWithRaw
+
+> 这是一个元组件，用于同时渲染 MDC 和原始 MDC 代码，使用时请清楚自己在做什么。
+
+::::render-with-raw
+````mdc wrap
+:::render-with-raw
+```mdc wrap
+:tip[Tip我啊，被包了又包]{tip="怎么包，都有面"}
+```
+:::
+````
+::::
 
 #### Tab
 
+:::render-with-raw
+````mdc wrap expand
 ::tab{:tabs='["一个简单的", "Tab"]'}
 #tab1
 ```md
@@ -355,9 +485,13 @@ active: 2 # 默认显示第二个选项卡，可选
 #tab3
 你找到我了吗？
 ::
+````
+:::
 
 #### Timeline
 
+:::render-with-raw
+```mdc expand
 ::timeline
 {前天}
 
@@ -384,25 +518,45 @@ active: 2 # 默认显示第二个选项卡，可选
 
 *再添一笔*。
 ::
+```
+:::
 
 #### Tip
 
+::render-with-raw
+```mdc wrap
 :tip[我是一条小提示]{tip="提示的内容是提示"}， :tip[我没有图标]{icon tip="或许也可以没有内容"}， :tip[+v 点击就能复制，太方便了！]{copy}
+```
+::
 
 #### VideoEmbed
 
 > 放点视频给你看。
 
+:::render-with-raw
+```mdc
 ::video-embed
 ---
 type: bilibili
 id: BV1Yr421p7rW
 ---
 ::
+```
+:::
+
+#### ZhiluHeader
+
+::render-with-raw
+```mdc
+:zhilu-header
+```
+::
+
+鼠标悬浮时的动画 Emoji `📄🦌🙌🐟🏖️` 对应“纸鹿摸鱼处”的汉字，在 `app.config.ts` 中配置，字体由 `阿里妈妈方圆体` 分割而来。
 
 ## 组件使用方法
 
-一是看开头提到的 MDC 文档，至关重要。二是看这篇文章的源代码，也很重要。三是看我文章的调用方式，没有就慎用。
+一是看开头提到的 MDC 文档，至关重要。二是看使用组件对应的源代码 (`example.md`)，也很重要。三是看我文章的调用方式，没有就慎用。
 
 ### 组件的不完美性
 

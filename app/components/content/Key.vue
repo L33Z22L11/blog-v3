@@ -50,6 +50,7 @@ kbd {
     font-size: 0.9em;
     letter-spacing: -0.05em;
     line-height: 1;
+    text-indent: 0;
     color: var(--c-text-2);
     transition: all 0.1s;
     user-select: none;

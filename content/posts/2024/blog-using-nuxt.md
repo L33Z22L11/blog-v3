@@ -8,7 +8,7 @@ categories: [经验分享]
 tags: [网站, 博客]
 type: story
 
-aside: [toc, github_card]
+aside: [toc, github-card]
 github:
   name: L33Z22L11/blog-v3
   description: 基于 Nuxt Content 的博客主题，使用 Nuxt 3 构建。
@@ -144,7 +144,8 @@ active: 2 # 默认显示第二个选项卡，可选
 ```
 
 #tab3
-```tsx [Timeline.vue > script setup]
+```vue [Timeline.vue]
+<script lang="tsx" setup>
 function render() {
     return defineSlots().default?.().map((node: VNode) => {
         const textContent = (node.children as any)?.default?.()[0].children || ''
@@ -154,6 +155,7 @@ function render() {
             : <div class="timeline-body card">{node}</div>
     })
 }
+</script>
 ```
 :::
 
@@ -205,7 +207,7 @@ Stellar 主题使用 Grid 布局，而我选择借鉴 VitePress 默认主题的 
 ```yaml [blog-using-nuxt.md]
 ---
 # hideAside: true # 隐藏右侧栏
-aside: [toc, github_card]
+aside: [toc, github-card]
 ---
 ```
 

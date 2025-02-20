@@ -11,116 +11,134 @@ const emit = defineEmits<{
 
 const originRect = props.el.getBoundingClientRect()
 const rate = 0.8
-const zoomImage = ref(null!)
-const elZoomImage = useCurrentElement<HTMLImageElement>(zoomImage)
 
-const touchStart = ref({
-    singleFinger: true,
-    fingerDistance: 0,
-    left: 0,
-    top: 0,
-    width: 0,
-    height: 0,
-})
+const lightbox = ref()
+const lightboxEl = useCurrentElement<HTMLImageElement>(lightbox)
 
-const { style } = useDraggable(elZoomImage, {
-    initialValue: { x: originRect.x, y: originRect.y },
-    disabled: () => !touchStart.value.singleFinger,
-})
+const { width: winW, height: winH } = useWindowSize()
 
-function onWheel(e: WheelEvent) {
-    const { left, top, width, height } = elZoomImage.value.getBoundingClientRect()
-    const isTooLarge = width > Math.max(window.innerWidth, originRect.width) * 2
-        && height > Math.max(window.innerHeight, originRect.height) * 2
-    const isTooSmall = width < Math.min(window.innerWidth, originRect.width) * 0.5
-        && height < Math.min(window.innerHeight, originRect.height) * 0.5
-    if ((e.deltaY < 0 && isTooLarge) || (e.deltaY > 0 && isTooSmall))
-        return
-    const isTouchpad = Math.abs(e.deltaY) < 8
-    let delta = isTouchpad ? Math.abs(e.deltaY) * 0.05 : 0.5
-    delta = e.deltaY > 0 ? 1 / (1 + delta) : 1 + delta
-    const finalX = left - (e.clientX - left) * (delta - 1)
-    const finalY = top - (e.clientY - top) * (delta - 1)
-    Object.assign(elZoomImage.value.style, {
-        left: `${finalX}px`,
-        top: `${finalY}px`,
-        width: `${width * delta}px`,
-        height: `${height * delta}px`,
-    })
+interface Pointer {
+    startX: number
+    startY: number
+    currentX: number
+    currentY: number
 }
 
-// FIXME: 触发区域应当是全屏
-function onTouchStart(e: TouchEvent) {
-    if (e.touches.length < 2)
-        return
-    touchStart.value.singleFinger = false
-    const [touch1, touch2] = e.touches
-    if (!touch1 || !touch2)
-        return
+// 每次触控开始时的状态
+let startRect: DOMRect
+let startCenter: typeof center.value
+let startDistance: typeof distance.value
+const pointers = ref<Record<number, Pointer>>({})
+const activePointers = computed(() => Object.values(pointers.value).slice(0, 2))
 
-    const { left, top, width, height } = elZoomImage.value.getBoundingClientRect()
-    Object.assign(touchStart.value, { left, top, width, height })
-    touchStart.value.fingerDistance = Math.hypot(
-        touch1.clientX - touch2.clientX,
-        touch1.clientY - touch2.clientY,
-    )
-}
+const center = computed(() => getCenter('current'))
+const distance = computed(() => getDistance('current'))
 
-function onTouchMove(e: TouchEvent) {
-    if (e.touches.length < 2)
-        return
-    touchStart.value.singleFinger = false
-    const [touch1, touch2] = e.touches
-    if (!touch1 || !touch2)
-        return
-
-    const currentDistance = Math.hypot(touch1.clientX - touch2.clientX, touch1.clientY - touch2.clientY)
-    const scale = currentDistance / touchStart.value.fingerDistance
-
-    const finalWidth = touchStart.value.width * scale
-    const finalHeight = touchStart.value.height * scale
-    const finalX = (touch1.clientX + touch2.clientX - finalWidth) / 2
-    const finalY = (touch1.clientY + touch2.clientY - finalHeight) / 2
-
-    Object.assign(elZoomImage.value.style, {
-        left: `${finalX}px`,
-        top: `${finalY}px`,
-        width: `${finalWidth}px`,
-        height: `${finalHeight}px`,
-    })
-}
-
-function onTouchEnd(e: TouchEvent) {
-    if (e.touches.length < 2) {
-        touchStart.value.singleFinger = true
+function restrictScale(width: number, height: number, scale: number) {
+    if (scale < 1) {
+        return width < Math.min(winW.value, originRect.width, props.el.naturalWidth)
+            && height < Math.min(winH.value, originRect.height, props.el.naturalHeight)
+    }
+    else if (scale > 1) {
+        return width > Math.max(winW.value, originRect.width, props.el.naturalWidth)
+            && height > Math.max(winH.value, originRect.height, props.el.naturalHeight)
     }
 }
 
-async function onEnter() {
-    const fixedWidth = window.innerWidth * rate
-    const fixedHeight = window.innerHeight * rate
-    const ratio = props.el.naturalWidth / props.el.naturalHeight
-    const [finalWidth, finalHeight] = (fixedWidth / fixedHeight > ratio)
-        ? [fixedHeight * ratio, fixedHeight]
-        : [fixedWidth, fixedWidth / ratio]
-    await delay(0)
-    Object.assign(elZoomImage.value.style, {
-        top: `calc(50% - ${Math.floor(finalHeight / 2)}px)`,
-        left: `calc(50% - ${Math.floor(finalWidth / 2)}px)`,
-        width: `${finalWidth}px`,
-        height: `${finalHeight}px`,
+function onWheel(e: WheelEvent) {
+    const { left: startX, top: startY, width, height } = lightboxEl.value.getBoundingClientRect()
+    if (restrictScale(width, height, 1 - e.deltaY))
+        return
+    const isTouchpad = Math.abs(e.deltaY) < 8
+    const delta = isTouchpad ? Math.abs(e.deltaY) * 0.05 : 0.5
+    const scale = e.deltaY > 0 ? 1 / (1 + delta) : 1 + delta
+
+    animateBetweenRects(lightboxEl, {
+        left: startX - (e.clientX - startX) * (scale - 1),
+        top: startY - (e.clientY - startY) * (scale - 1),
+        width: width * scale,
+        height: height * scale,
     })
 }
 
-function onLeave() {
-    // 重新获取元素位置
-    const { x, y, width, height } = props.el.getBoundingClientRect()
-    Object.assign(elZoomImage.value.style, {
-        left: `${x}px`,
-        top: `${y}px`,
-        width: `${width}px`,
-        height: `${height}px`,
-    })
+function initPointer() {
+    for (const p of Object.values(pointers.value)) {
+        p.startX = p.currentX
+        p.startY = p.currentY
+    }
+    startRect = lightboxEl.value.getBoundingClientRect()
+    startCenter = getCenter('start')
+    startDistance = getDistance('start')
+}
+
+function getCenter(mode: 'start' | 'current') {
+    const pointers = activePointers.value
+    return {
+        x: pointers.reduce((sum, p) => sum + p[`${mode}X`], 0) / pointers.length,
+        y: pointers.reduce((sum, p) => sum + p[`${mode}Y`], 0) / pointers.length,
+    }
+}
+
+function getDistance(mode: 'start' | 'current') {
+    const [p1, p2] = activePointers.value
+    if (!p1 || !p2)
+        return 0
+    return Math.hypot(
+        p1[`${mode}X`] - p2[`${mode}X`],
+        p1[`${mode}Y`] - p2[`${mode}Y`],
+    )
+}
+
+useEventListener('pointerdown', (e) => {
+    pointers.value[e.pointerId] = {
+        startX: e.clientX,
+        startY: e.clientY,
+        currentX: e.clientX,
+        currentY: e.clientY,
+    }
+    initPointer()
+})
+
+useEventListener('pointermove', (e) => {
+    const p = pointers.value[e.pointerId]
+    if (!p)
+        return
+    p.currentX = e.clientX
+    p.currentY = e.clientY
+    const scale = distance.value / startDistance || 1
+
+    const width = startRect.width * scale
+    const height = startRect.height * scale
+    if (restrictScale(width, height, scale))
+        return
+    const startX = startRect.left + center.value.x - startCenter.x
+    const startY = startRect.top + center.value.y - startCenter.y
+    const left = startX - (center.value.x - startX) * (scale - 1)
+    const top = startY - (center.value.y - startY) * (scale - 1)
+    animateBetweenRects(lightboxEl, { left, top, width, height }, { duration: 0 })
+})
+
+useEventListener('pointerup', (e) => {
+    delete pointers.value[e.pointerId]
+    if (Object.keys(pointers.value).length)
+        initPointer()
+})
+
+function onEnter(el: Element, done: () => void) {
+    const fixedWidth = window.innerWidth * rate
+    const fixedHeight = window.innerHeight * rate
+    const ratio = props.el.naturalWidth / props.el.naturalHeight
+    const [width, height] = (fixedWidth / fixedHeight > ratio)
+        ? [fixedHeight * ratio, fixedHeight]
+        : [fixedWidth, fixedWidth / ratio]
+    const left = (winW.value - width) / 2
+    const top = (winH.value - height) / 2
+
+    animateBetweenRects(el, [originRect, { left, top, width, height }]).onfinish = done
+}
+
+function onLeave(el: Element, done: () => void) {
+    animateBetweenRects(el, props.el).onfinish = done
 }
 
 useEventListener('keydown', (e) => {
@@ -141,18 +159,14 @@ useEventListener('keydown', (e) => {
         <Transition @enter="onEnter" @leave="onLeave">
             <NuxtImg
                 v-if="isOpening"
-                ref="zoomImage"
+                ref="lightbox"
                 class="image"
                 :alt="el.alt"
                 :width="el.width"
                 :height="el.height"
                 :src="el.src"
-                :style
                 draggable="false"
                 @wheel.prevent="onWheel"
-                @touchstart.prevent="onTouchStart"
-                @touchmove.prevent="onTouchMove"
-                @touchend="onTouchEnd"
             />
         </Transition>
         <Transition>
@@ -160,7 +174,6 @@ useEventListener('keydown', (e) => {
                 <span v-if="caption" class="caption">{{ caption }}</span>
                 <button
                     class="close"
-                    type="button"
                     aria-label="关闭灯箱"
                     @click="emit('close')"
                 >
@@ -174,6 +187,7 @@ useEventListener('keydown', (e) => {
 <style lang="scss" scoped>
 .z-lightbox {
     position: fixed;
+    touch-action: none;
 }
 
 #z-lightbox-bgmask {
@@ -193,7 +207,6 @@ useEventListener('keydown', (e) => {
     position: fixed;
     cursor: move;
     object-fit: cover;
-    touch-action: none;
 
     &.v-enter-active,
     &.v-leave-active {

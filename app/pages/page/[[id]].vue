@@ -2,7 +2,7 @@
 import type { ArticleOrderType } from '~/types/article'
 import type ArticleProps from '~/types/article'
 
-const props = defineProps<{
+defineProps<{
     list: ArticleProps[]
     sortOrder: ArticleOrderType
 }>()
@@ -12,10 +12,8 @@ definePageMeta({
     alias: ['/'],
 })
 
-// 父级更新时滚动到顶部，若书写在父级中需在客户端中执行
-watch(props, () => {
-    window.scrollTo({ top: 0 })
-})
+// 使用 VueUse 的 useRouteParams 时，会直接跳转到顶部
+// 无法实现翻页滚回顶部动画
 </script>
 
 <template>

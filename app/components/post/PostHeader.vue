@@ -15,8 +15,7 @@ const shareText = `【${appConfig.title}】${props.title}\n\n${
     props.description ? `${props.description}\n\n` : ''}${
     new URL(props.path!, appConfig.url).href}`
 
-const btnShareByText = useTemplateRef('text-share')
-useCopy(btnShareByText, btnShareByText, shareText)
+const { copy, copied } = useCopy(shareText)
 </script>
 
 <template>
@@ -25,23 +24,24 @@ useCopy(btnShareByText, btnShareByText, shareText)
         <NuxtImg v-if="image" class="post-cover" :src="image" :alt="title" />
         <div class="post-nav">
             <div class="operations">
-                <ZButton ref="text-share" icon="ph:share-bold">
+                <ZButton
+                    :icon="copied ? 'ph:check-bold' : 'ph:share-bold' "
+                    @click="copy()"
+                >
                     文字分享
                 </ZButton>
             </div>
             <div v-if="!hideInfo" class="post-info">
-                <time
-                    v-if="date"
-                    v-tippy="`创建于 ${getLocaleDatetime(props.date)}`"
-                    :datetime="date"
-                >
-                    <Icon name="ph:calendar-dots-bold" /> {{ publishedLabel }}</time>
+                <time v-if="date" v-tip="`创建于 ${getLocaleDatetime(props.date)}`" :datetime="getIsoDatetime(date)">
+                    <Icon name="ph:calendar-dots-bold" /> {{ publishedLabel }}
+                </time>
                 <time
                     v-if="isTimeDiffSignificant(date, updated, .999)"
-                    v-tippy="`修改于 ${getLocaleDatetime(props.updated)}`"
-                    :datetime="updated"
+                    :tip="`修改于 ${getLocaleDatetime(props.updated)}`"
+                    :datetime="getIsoDatetime(updated)"
                 >
-                    <Icon name="ph:calendar-plus-bold" /> {{ updatedLabel }}</time>
+                    <Icon name="ph:calendar-plus-bold" /> {{ updatedLabel }}
+                </time>
                 <span v-if="categoryLabel" class="article-category">
                     <Icon :name="categoryIcon" /> {{ categoryLabel }}
                 </span>

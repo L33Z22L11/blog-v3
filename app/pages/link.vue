@@ -55,9 +55,9 @@ const copyFields = {
 
     <Tab :tabs="['我的博客信息', '申请友链']" center>
         <template #tab1>
-            <div>
+            <div class="link-tab">
                 <FeedCard v-bind="myFeed" />
-                <Copy v-for="[prompt, code] in Object.entries(copyFields)" :key="prompt" :prompt :code />
+                <Copy v-for="(prompt, code) in copyFields" :key="prompt" :prompt :code />
             </div>
         </template>
         <template #tab2>
@@ -105,5 +105,9 @@ const copyFields = {
         gap: 0.2em 1rem;
         flex-wrap: wrap;
     }
+}
+
+.link-tab {
+    margin: 1rem;
 }
 </style>

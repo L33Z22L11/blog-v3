@@ -1,6 +1,6 @@
 import type { FileAfterParseHook } from '@nuxt/content'
-import blogConfig from './blog.config'
-import redirects from './redirects'
+import process from 'node:process'
+import blogConfig, { routeRules } from './blog.config'
 
 export default defineNuxtConfig({
     app: {
@@ -50,21 +50,18 @@ export default defineNuxtConfig({
         '@/assets/css/reusable.scss',
     ],
 
+    // BUG: 3.14+ Windows 平台内存泄漏
+    devtools: { enabled: false },
+
     features: {
         inlineStyles: false,
     },
 
     future: {
-        // BUG: 3.14+ Windows 平台内存泄漏
         compatibilityVersion: 4,
     },
 
-    routeRules: {
-        ...redirects,
-        '/api/stats': { prerender: true },
-        '/atom.xml': { prerender: true },
-        '/zhilu.opml': { prerender: true },
-    },
+    routeRules,
 
     runtimeConfig: {
         public: {
@@ -81,6 +78,9 @@ export default defineNuxtConfig({
                 },
             },
         },
+        server: {
+            allowedHosts: true,
+        },
     },
 
     modules: [
@@ -92,7 +92,6 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
         '@vueuse/nuxt',
         '@zinkawaii/nuxt-shiki',
-        'radix-vue/nuxt',
     ],
 
     colorMode: {
@@ -125,6 +124,8 @@ export default defineNuxtConfig({
     },
 
     image: {
+        // Netlify 需要特殊处理
+        provider: process.env.NUXT_IMAGE_PROVIDER,
         domains: blogConfig.imageDomains,
         format: ['avif', 'webp'],
     },

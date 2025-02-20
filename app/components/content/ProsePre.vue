@@ -30,30 +30,29 @@ const meta = computed(() => {
 
 const appConfig = useAppConfig()
 
-const rows = computed(() => props.code.split('\n').length)
-const collapsible = computed(() => rows.value > appConfig.content.codeblockCollapsibleRows)
+const rows = computed(() => props.code.split('\n').length - 1)
+const collapsible = computed(() => !meta.value.expand && rows.value > appConfig.content.codeblockCollapsibleRows)
 const [isCollapsed, toggleCollapsed] = useToggle(collapsible.value)
 
 const icon = computed(() => meta.value.icon || getFileIcon(props.filename) || getLangIcon(props.language))
 const isWrap = ref(meta.value.wrap)
 
 const codeblock = useTemplateRef('codeblock')
-const copyBtn = useTemplateRef('copy-btn')
 
-useCopy(copyBtn, codeblock)
+const { copy, copied } = useCopy(codeblock)
 </script>
 
 <template>
     <figure
         class="z-codeblock"
-        :class="{ collapsed: isCollapsed, collapsible }"
+        :class="{ collapsed: collapsible && isCollapsed, collapsible }"
         :style="{ '--collapsible-height': `${appConfig.content.codeblockCollapsibleRows}em` }"
     >
         <figcaption>
             <span v-if="filename" class="filename">
                 <ClientOnly>
                     <!-- 颜色偏好存储于客户端，可能水合不匹配 -->
-                    <Icon :class="{ 'icon-revert': !meta.icon && $colorMode.value === 'light' }" :name="icon" />
+                    <Icon :class="{ 'icon-revert': icon.startsWith('catppuccin:') && $colorMode.value === 'light' }" :name="icon" />
                 </ClientOnly>
                 {{ filename }}
             </span>
@@ -63,8 +62,8 @@ useCopy(copyBtn, codeblock)
                 <button @click="isWrap = !isWrap">
                     {{ isWrap ? '横向滚动' : '自动换行' }}
                 </button>
-                <button ref="copy-btn">
-                    复制
+                <button @click="copy()">
+                    {{ copied ? '已复制' : '复制' }}
                 </button>
             </div>
         </figcaption>
@@ -77,7 +76,6 @@ useCopy(copyBtn, codeblock)
         ><slot /></pre>
         <button
             v-if="collapsible"
-            type="button"
             class="toggle-btn"
             :aria-label="isCollapsed ? '展开代码块' : '折叠代码块'"
             @click="toggleCollapsed()"
@@ -179,7 +177,6 @@ pre {
 
     overflow: auto;
     padding: 1rem;
-    background-color: transparent;
 
     &.wrap {
         white-space: pre-wrap;

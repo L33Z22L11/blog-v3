@@ -9,7 +9,7 @@ useSeoMeta({
 const birthYear = appConfig.stats.birthYear
 
 const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog_stats', 'blog_log'])
+layoutStore.setAside(['blog-stats', 'blog-log'])
 
 const { data: listRaw } = await useAsyncData(
     'posts_index',
@@ -59,7 +59,7 @@ const yearlyWordCount = computed(() => {
                     {{ year }}
                 </h2>
                 <div class="archive-age">
-                    <span>{{ Number(year) - birthYear + 1 }}</span>
+                    <span>{{ Number(year) - birthYear }}</span>
                     <span class="age-label">岁</span>
                 </div>
                 <div class="archive-info">

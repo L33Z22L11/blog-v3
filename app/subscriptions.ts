@@ -1,7 +1,7 @@
 import type { FeedGroup } from '~/types/feed'
 import { getGhAvatar } from './utils/img'
 
-export default <FeedGroup[]>[{
+export default [{
     name: '漫游',
     desc: '网上冲浪时发现的精彩内容与常读订阅，与君共享。',
     entries: [{
@@ -40,7 +40,7 @@ export default <FeedGroup[]>[{
         link: 'https://myth.cx/',
         feed: 'https://myth.cx/index.xml',
         icon: 'https://myth.cx/favicon.ico',
-        avatar: 'https://myth.cx/img/avatar_hu4881e27882f65e048194c2e8319e9874_294915_300x0_resize_box_3.png',
+        avatar: 'https://myth.cx/img/avatar_hu_a008ef868a8cf25a.png',
         archs: ['Hugo', 'Cloudflare'],
         date: '2024-04-11',
     }, {
@@ -103,4 +103,4 @@ export default <FeedGroup[]>[{
         archs: ['WordPress', '虚拟主机'],
         date: '2024-10-29',
     }],
-}]
+}] satisfies FeedGroup[]

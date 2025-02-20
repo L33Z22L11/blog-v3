@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type ArticleProps from '~/types/article'
 
-const props = defineProps< { useUpdated?: boolean } & ArticleProps>()
+const props = defineProps<{ useUpdated?: boolean } & ArticleProps>()
 
 const appConfig = useAppConfig()
 
@@ -24,7 +24,7 @@ const categoryInfo = categoryLabel && Reflect.get(appConfig.article.categories, 
             <div class="article-info" data-allow-mismatch>
                 <time
                     v-if="showAllDate || !useUpdated"
-                    :datetime="date"
+                    :datetime="getIsoDatetime(date)"
                     :title="getLocaleDatetime(date)"
                 >
                     <Icon name="ph:calendar-dots-bold" />
@@ -33,7 +33,7 @@ const categoryInfo = categoryLabel && Reflect.get(appConfig.article.categories, 
                 <time
                     v-if="showAllDate || useUpdated"
                     :class="{ 'use-updated': useUpdated }"
-                    :datetime="updated"
+                    :datetime="getIsoDatetime(updated)"
                     :title="getLocaleDatetime(updated)"
                 >
                     <Icon name="ph:calendar-plus-bold" />

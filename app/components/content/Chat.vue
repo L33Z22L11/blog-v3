@@ -60,6 +60,7 @@ function render() {
     }
 
     .chat-system {
+        margin-bottom: 1em;
         text-align: center;
     }
 

@@ -137,41 +137,6 @@ mark {
     }
 }
 
-// Iconify 图标复用了此类
-:where(.iconify) {
-    display: inline-block;
-    flex-shrink: 0;
-    font-size: 1.2em;
-    vertical-align: sub;
-}
-
-// 图片加载失败 fallback
-img {
-    display: inline-block;
-    overflow: hidden;    // Chrome 90- 😡
-    overflow: clip;      // 🔥🦊😡
-    transform: scale(1); // position: fixed 的定位祖先
-
-    &::before {
-        position: absolute;
-        inset: 0;
-    }
-
-    &::before {
-        content: attr(alt);
-        display: grid;
-        place-content: center;
-        overflow: visible;
-        padding: 0.5em;
-        background-color: var(--c-border);
-        font: bold 1.5rem/1.2 var(--font-serif);
-        word-break: normal;
-        text-align: center;
-        text-shadow: none;
-        color: var(--c-bg-soft);
-    }
-}
-
 .mobile-only {
     display: none;
 
@@ -186,5 +151,33 @@ img {
 
     @media (min-width: $breakpoint-widescreen) {
         display: revert;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-story {
+    font-family: serif;
+    font-family: var(--font-serif);
+}
+
+.text-repeat {
+    text-shadow: 0.1em 0 var(--c-bg-soft), 0.2em 0 var(--c-bg-soft), 0.3em 0 var(--c-bg-soft), 0.4em 0 var(--c-bg-soft), 0.5em 0 var(--c-bg-soft);
+}
+
+.text-zoom {
+    display: inline-block;
+    transform-origin: left bottom;
+
+    @supports (animation-timeline: view()) {
+        animation: zoom 1s both;
+        animation-timeline: view();
+    }
+
+    @keyframes zoom {
+        from { transform: scale(0.8); }
+        to { transform: scale(1.25); }
     }
 }
