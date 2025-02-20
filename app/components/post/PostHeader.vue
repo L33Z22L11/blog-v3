@@ -37,7 +37,7 @@ const { copy, copied } = useCopy(shareText)
                 </time>
                 <time
                     v-if="isTimeDiffSignificant(date, updated, .999)"
-                    :tip="`修改于 ${getLocaleDatetime(props.updated)}`"
+                    v-tip="`修改于 ${getLocaleDatetime(props.updated)}`"
                     :datetime="getIsoDatetime(updated)"
                 >
                     <Icon name="ph:calendar-plus-bold" /> {{ updatedLabel }}
