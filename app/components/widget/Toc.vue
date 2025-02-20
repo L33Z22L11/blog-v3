@@ -32,7 +32,7 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
                     'active': entry.id === activeTocItem,
                 }"
             >
-                <ZRawLink :href="`#${entry?.id}`" :title="entry.text">
+                <ZRawLink :to="`#${entry?.id}`" :title="entry.text">
                     {{ entry.text }}
                 </ZRawLink>
                 <ReuseTemplate v-if="entry.children" :toc-item="entry.children" />
@@ -43,10 +43,10 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
     <h3 class="widget-title">
         <span class="title">文章目录</span>
         <!-- use <a> for anchor -->
-        <ZRawLink href="#main-content" aria-label="返回开头">
+        <ZRawLink to="#main-content" aria-label="返回开头">
             <Icon name="ph:arrow-circle-up-bold" />
         </ZRawLink>
-        <ZRawLink href="#twikoo" aria-label="评论区">
+        <ZRawLink to="#twikoo" aria-label="评论区">
             <Icon name="ph:chat-circle-text-bold" />
         </ZRawLink>
     </h3>

@@ -84,11 +84,11 @@ export default defineNuxtConfig({
     },
 
     modules: [
+        '@nuxtjs/seo', // before @nuxt/content
         '@nuxt/content',
         '@nuxt/icon',
         '@nuxt/image',
         '@nuxtjs/color-mode',
-        // '@nuxtjs/seo',
         '@pinia/nuxt',
         '@vueuse/nuxt',
         '@zinkawaii/nuxt-shiki',

@@ -57,7 +57,7 @@ const copyFields = {
         <template #tab1>
             <div class="link-tab">
                 <FeedCard v-bind="myFeed" />
-                <Copy v-for="(prompt, code) in copyFields" :key="prompt" :prompt :code />
+                <Copy v-for="(code, prompt) in copyFields" :key="prompt" :prompt :code />
             </div>
         </template>
         <template #tab2>

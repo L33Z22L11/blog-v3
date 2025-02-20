@@ -3,7 +3,7 @@
   "type": "module",
   "version": "3.2.0",
   "private": true,
-  "packageManager": "pnpm@9.15.5",
+  "packageManager": "pnpm@10.4.0",
   "scripts": {
     "prepare": "nuxt prepare",
     "dev": "nuxt dev --no-qr",
@@ -20,15 +20,15 @@
     "embla-carousel-autoplay": "^8.5.2",
     "embla-carousel-vue": "^8.5.2",
     "embla-carousel-wheel-gestures": "^8.0.1",
-    "fast-xml-parser": "^5.0.1",
+    "fast-xml-parser": "^5.0.2",
     "parse-domain": "^8.2.2",
     "plain-shiki": "^0.1.1",
     "radash": "^12.1.0",
     "vue-tippy": "^6.6.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.14.0",
-    "@nuxt/content": "^3.0.0",
+    "@antfu/eslint-config": "^4.3.0",
+    "@nuxt/content": "^3.1.1",
     "@nuxt/icon": "^1.10.3",
     "@nuxt/image": "^1.9.0",
     "@nuxtjs/color-mode": "^3.5.2",
@@ -44,7 +44,7 @@
     "nuxt": "~3.13.2",
     "remark-reading-time": "^2.0.1",
     "sass": "^1.85.0",
-    "shiki": "^2.5.0",
+    "shiki": "^3.0.0",
     "stylelint": "^16.14.1",
     "terser": "^5.39.0",
     "typescript": "^5.7.3",
@@ -55,6 +55,9 @@
     "patchedDependencies": {
       "@vue/shared": "patches/@vue__shared.patch",
       "vue-tippy": "patches/vue-tippy.patch"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "better-sqlite3"
+    ]
   }
 }
