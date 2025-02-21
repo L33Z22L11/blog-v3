@@ -433,7 +433,7 @@ export default [{
         link: 'https://blog.mletter.cn/',
         icon: 'https://blog.mletter.cn/wechat.svg',
         avatar: 'https://img13.360buyimg.com/ddimg/jfs/t1/239095/17/9691/19853/664d82dfF34a0990c/c4198876146be2d4.jpg',
-        archs: ['Hexo', 'Netlify'],
+        archs: ['Hugo', 'Netlify'],
         date: '2024-07-11',
         comment: '在读运维开发工程师，记录技术和生活日常。',
     }, {
