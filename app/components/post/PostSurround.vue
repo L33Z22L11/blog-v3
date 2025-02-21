@@ -4,9 +4,8 @@ import type ArticleProps from '~/types/article'
 const route = useRoute()
 
 const { data: surrounds } = await useAsyncData(`surround-${route.path}`, () =>
-    queryCollectionItemSurroundings('content', route.path, {
-        // fields: ['meta', 'title'],
-    }).order('date', 'DESC'))
+    queryCollectionItemSurroundings('content', route.path, { fields: ['date', 'title'] })
+        .order('date', 'ASC'))
 
 const [prev = null, next = null] = surrounds.value ?? []
 

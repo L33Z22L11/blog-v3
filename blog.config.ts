@@ -1,6 +1,8 @@
+import type { FileAfterParseHook } from '@nuxt/content'
 import type { NitroConfig } from 'nitropack'
 import type { BundledLanguage, BundledTheme } from 'shiki'
 import type { FeedEntry } from '~/types/feed'
+import { getTimezoneOffset } from 'date-fns-tz'
 import redirectList from './redirects.json'
 
 export { zhCN as dateLocale } from 'date-fns/locale/zh-CN'
@@ -28,6 +30,8 @@ const blogConfig = {
     timeEstablished: '2019-07-19',
     timezone: 'Asia/Shanghai',
     url: 'https://blog.zhilu.cyou/',
+
+    defaultCategory: ['未分类'],
 
     feed: {
         limit: 50,
@@ -98,6 +102,41 @@ export const routeRules = <NitroConfig['routeRules']>{
     '/api/stats': { prerender: true, headers: { 'Content-Type': 'application/json' } },
     '/atom.xml': { prerender: true, headers: { 'Content-Type': 'application/xml' } },
     '/zhilu.opml': { prerender: true, headers: { 'Content-Type': 'application/xml' } },
+}
+
+const timezoneOffset = getTimezoneOffset(blogConfig.timezone) + new Date().getTimezoneOffset() * 60 * 1000
+
+function fixDate(date?: string | Date) {
+    if (!date)
+        return date
+
+    if (typeof date === 'string')
+        date = new Date(date)
+
+    return new Date(date.getTime() - timezoneOffset)
+}
+
+export function postprecessContent(ctx: FileAfterParseHook) {
+    console.log(ctx.content)
+
+    // 修复时区偏移
+    ctx.content.date = fixDate(ctx.content.date)
+    ctx.content.updated = fixDate(ctx.content.updated)
+    ctx.content.published = fixDate(ctx.content.published)
+
+    // 在 URL 中隐藏指定目录的路径
+    for (const prefix of blogConfig.hideContentPrefixes) {
+        if (ctx.content.path?.startsWith(prefix)) {
+            ctx.content.original_dir = prefix
+            ctx.content.path = ctx.content.path.replace(prefix, '')
+        }
+    }
+
+    // 修复文章分类
+    if (!ctx.content.categories) {
+        ctx.content.categories = blogConfig.defaultCategorie
+    }
+    console.log(ctx.content)
 }
 
 export default blogConfig

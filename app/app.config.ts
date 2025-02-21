@@ -22,8 +22,6 @@ export default defineAppConfig({
             updated: '更新日期',
             // title: '标题',
         },
-        // 需要同时修改上方分类图标对应的键名
-        uncategorizedLabel: '未分类',
     },
 
     content: {

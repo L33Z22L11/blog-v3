@@ -14,7 +14,7 @@ if (!blogTitle) {
 
 // 获取当前年份
 const year = new Date().getFullYear()
-const directory = path.join(process.cwd(), 'content', 'posts', year.toString())
+const directory = path.join(process.cwd(), 'content', 'content', year.toString())
 
 // 确保目录存在
 if (!fs.existsSync(directory)) {

@@ -116,6 +116,18 @@ export default defineNuxtConfig({
         },
     },
 
+    hooks: {
+        'content:file:afterParse': (ctx) => {
+        // 在 URL 中隐藏指定目录的路径
+            for (const prefix of blogConfig.hideContentPrefixes) {
+                if (ctx.content.path?.startsWith(prefix)) {
+                    ctx.content.original_dir = prefix
+                    ctx.content.path = ctx.content.path.replace(prefix, '')
+                }
+            }
+        },
+    },
+
     icon: {
         customCollections: [
             { prefix: 'zi', dir: './assets/icons' },
