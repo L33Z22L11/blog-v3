@@ -44,7 +44,7 @@ tags: [大学, 睡眠]
 Luyoung 觉得听课效率实在太低，便动手配置起自己的云服务器。为了感谢我先前帮他配置的一些东西，他给我分了一个服务器的账户，我觉得挺好，还在上面简单折腾了一下。
 
 ::folding{title="刮开涂层获取服务器密码"}
-这样，你访问[Gist](https://gist.github.com/L33Z22L11/fdac255fe90aa9677bf530e7792db703)，里面有一个`authotized_keys`，你把它放在你的`~/.ssh/authotized_keys` 里，权限设置为`644`，然后把服务器 IP 告诉我，就能拿到密码了。
+这样，你访问[Gist](https://gist.github.com/L33Z22L11/fdac255fe90aa9677bf530e7792db703)，里面有一个`authorized_keys`，你把它放在你的`~/.ssh/authorized_keys` 里，权限设置为`644`，然后把服务器 IP 告诉我，就能拿到密码了。
 ::
 
 ### “睡眠日”

@@ -6,6 +6,7 @@ import redirectList from './redirects.json'
 export { zhCN as dateLocale } from 'date-fns/locale/zh-CN'
 
 // 存储 nuxt.config 和 app.config 共用的配置
+// 此处为启动时需要的配置，启动后可变配置位于 app/app.config.ts
 const blogConfig = {
     title: '纸鹿摸鱼处',
     subtitle: '纸鹿至麓不知路，支炉制露不止漉',

@@ -48,9 +48,11 @@
 │   ├── stores # Pinia 状态管理
 │   ├── types # 类型定义
 │   ├── utils # 工具函数
-│   ├── app.config.ts # 前端响应式配置
+│   ├── app.config.ts # 前端响应式配置★
 │   ├── app.vue # 基本布局
-│   └── error.vue # 意外错误页
+│   ├── error.vue # 意外错误页
+│   ├── friends.ts # 友链★
+│   └── subscriptions.ts # 单向订阅/推荐网站★
 ├── content # 文章
 │   ├── posts # 文章
 │   ├── previews # 预览文章，可被站内搜索
@@ -67,7 +69,7 @@
 │   │   └── fix-post.ts # 修复文章时区/链接
 │   └── routes # 路由
 │       └── atom.xml.get.ts # Atom 订阅源
-├── blog.config.ts # 博客静态公共配置
+├── blog.config.ts # 博客静态公共配置★
 ├── headers.ts # 静态路径响应头配置
 ├── nuxt.config.ts # Nuxt 配置
 └── redirects.ts # 旧站点重定向配置
@@ -124,5 +126,5 @@ pnpm preview
 
 - 项目本体：[MIT](LICENSE)
 - 博客文章：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans)
-- 不得以“纸鹿”或我的相关名义发布网站。
+- 请完成必要的配置与修改后再部署项目，**不得以“纸鹿”或任何与我相关的名义发布“镜像”网站**，否则我将设法与你联系。
 - 希望你在页脚保留此项目链接，助力开源传播。

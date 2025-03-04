@@ -1,6 +1,7 @@
 import process from 'node:process'
 import blogConfig, { routeRules } from './blog.config'
 
+// 此处配置无需修改
 export default defineNuxtConfig({
     app: {
         head: {
@@ -22,7 +23,8 @@ export default defineNuxtConfig({
             ],
             meta: [
                 { name: 'author', content: `${blogConfig.author.name} <${blogConfig.author.email}>` },
-                { 'name': 'generator', 'data-github-repo': 'https://github.com/L33Z22L11/blog-v3' },
+                // 此处为元数据的生成器标识，不建议修改
+                { 'name': 'generator', 'content': 'blog-v3', 'data-github-repo': 'https://github.com/L33Z22L11/blog-v3' },
             ],
             templateParams: {
                 separator: '|',
