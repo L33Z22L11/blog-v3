@@ -17,6 +17,7 @@
 - [月空人 @Whbbit1999](https://whbbit.cn/) · [迁移评价](https://whbbit.cn/2025/why-migrate-to-nuxt)
 - [地球驿站 @mugzx](https://blog.mugzx.top/) · [迁移记录](https://blog.mugzx.top/)
 - [克喵Kemeow @Kemeow815](https://blog.kemiaofx.top/)
+- [梦爱吃鱼](https://blog.ruom.top/)
 
 ## 特性
 

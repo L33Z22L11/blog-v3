@@ -15,12 +15,11 @@ const builder = new XMLBuilder({
 function mapEntry(item: FeedEntry) {
     return {
         $text: item.title || item.sitenick || item.author,
+        $type: 'rss',
+        $xmlUrl: item.feed,
+        $created: new Date(item.date).toISOString(),
         $description: item.desc,
         $htmlUrl: item.link || item.feed,
-        $created: new Date(item.date).toISOString(),
-        $type: 'rss',
-        $title: item.title || item.sitenick || item.author,
-        $xmlUrl: item.feed,
     }
 }
 

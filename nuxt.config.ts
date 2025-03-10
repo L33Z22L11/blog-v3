@@ -51,9 +51,6 @@ export default defineNuxtConfig({
         '@/assets/css/reusable.scss',
     ],
 
-    // BUG: 3.14+ Windows 平台内存泄漏
-    devtools: { enabled: false },
-
     features: {
         inlineStyles: false,
     },
@@ -149,5 +146,9 @@ export default defineNuxtConfig({
     site: {
         name: blogConfig.title,
         url: blogConfig.url,
+    },
+
+    unhead: {
+        legacy: true,
     },
 })
