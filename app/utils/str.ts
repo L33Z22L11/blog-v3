@@ -1,6 +1,7 @@
+// @keep-sorted
 const promptLanguageMap: Record<string, string> = {
-    '$': 'sh',
     '#': 'sh',
+    '$': 'sh',
     'CMD': 'bat',
     'PS': 'sh', // powershell 语言高亮有问题
 }

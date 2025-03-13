@@ -90,9 +90,14 @@ pnpm i
 pnpm dev
 ```
 
-### 删除原有文章
+### 初始配置
 
-`content/` 目录下仅保留 `link.md`，在 `app.config.ts` 中将 `footer.nav[2].items[1].url` 由 `/theme` 改为 `https://blog.zhilu.cyou/theme` 即可。
+为避免误会，应当更改一些配置信息以和我的博客网站区分：
+
+- 删除原有文章：`content/` 目录下仅保留 `link.md`，`app.config.ts` 中将 `footer.nav[2].items[1].url` 由 `/theme` 改为 `https://blog.zhilu.cyou/theme`（确保通过链接检测）。
+- 更换服务配置：`blog.config.ts` 中的 Umami 站点统计、Cloudflare Insights 统计、Twikoo 评论服务源需要注释或更换。
+- 个人信息：`blog.config.ts` 中的站点信息、`app.config.ts` 中的页脚导航、出生年份等。
+- 其他应当被善意认为有必要修改的文件和配置字段（参阅“目录结构”一节）。
 
 ### 创建文章
 
@@ -109,11 +114,15 @@ pnpm preview
 
 ### 部署指南
 
-推荐使用 Vercel 进行部署，同时也支持 Netlify、Cloudflare Pages 等平台。建议采用静态（SSG）部署方式，也可直接使用“Nuxt 预设”部署。我的部署配置如下：
+推荐使用 Vercel 进行部署，同时也支持 Netlify、Cloudflare Pages 等平台。建议采用静态（SSG）部署方式，我的部署配置如下：
 
-- 构建命令: `pnpm generate`
-- 输出目录: `dist`
-- 安装命令: `pnpm i`
+- 构建命令: `pnpm generate`/`nuxt generate`
+- 输出目录: `dist`（与Nuxt预设相同）
+- 安装命令: `pnpm i`（一般会自动检测）
+
+Vercel 先前创建的项目需要 [手动指定 pnpm 10](https://vercel.com/docs/builds/configure-a-build#corepack)。
+
+如果直接使用平台提供的“Nuxt”预设部署，那么会变成 SSR 模式，需要调整部署命令，请参阅 Nuxt 官方文档的 [部署](https://nuxt.com/docs/getting-started/deployment) 部分。
 
 ## 贡献
 

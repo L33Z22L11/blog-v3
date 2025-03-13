@@ -52,7 +52,7 @@ export default [{
         comment: '初中生，OIer，折腾博客。',
     }, {
         author: '唤青',
-        sitenick: 'Evereen',
+        sitenick: 'Abloom',
         title: '唤青映记',
         desc: '我崇拜流浪、变化和幻想',
         link: 'https://eees.blog/',
@@ -698,5 +698,16 @@ export default [{
         archs: ['WordPress', '国内 CDN'],
         date: '2025-02-12',
         comment: '日常、前端、福瑞。',
+    }, {
+        author: '阿呆',
+        title: '阿呆的博客',
+        desc: '分享，学习有趣的知识',
+        link: 'https://adai.fun/',
+        feed: 'https://adai.fun/atom.xml',
+        icon: 'https://adai.fun/favicon.ico',
+        avatar: 'https://www.adai.fun/img/adai.png',
+        archs: ['Hexo', 'Vercel'],
+        date: '2025-03-11',
+        comment: '技术分享与生活。',
     }],
 }] satisfies FeedGroup[]

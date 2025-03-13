@@ -1,3 +1,4 @@
+// @keep-sorted
 const archIcons = {
     '服务器': 'ph:hard-drives-fill',
     '国内 CDN': 'ph:cloud-check-fill',
@@ -31,6 +32,7 @@ export function getArchIcon(arch: Arch) {
 }
 
 /** 主域名图标映射 */
+// @keep-sorted
 export const mainDomainIcons: Record<string, string> = {
     'bilibili.com': 'ri:bilibili-fill',
     'creativecommons.org': 'ri:creative-commons-line',
@@ -47,6 +49,7 @@ export const mainDomainIcons: Record<string, string> = {
 }
 
 /** 专门域名图标映射，优先级高于主域名图标 */
+// @keep-sorted
 export const domainIcons: Record<string, string> = {
     'developer.mozilla.org': 'simple-icons:mdnwebdocs',
     'mp.weixin.qq.com': 'ri:wechat-fill',
@@ -61,9 +64,10 @@ export function getDomainIcon(url: string) {
 }
 
 /** 文件名后缀图标映射，优先级高于代码块语言图标映射 */
+// @keep-sorted
 const file2icon: Record<string, string> = {
-    '.babelrc': 'catppuccin:babel',
     '.babelrc.js': 'catppuccin:babel',
+    '.babelrc': 'catppuccin:babel',
     '.crt': 'catppuccin:certificate',
     '.editorconfig': 'catppuccin:editorconfig',
     '.env': 'catppuccin:env',
@@ -124,6 +128,7 @@ export function getFileIcon(filename?: string) {
  * 将 blogConfig.shiki.langs 的部分后缀名简写
  * 转换为代码块语言对应的 Iconify Catppuccin图标
  */
+// @keep-sorted
 const ext2lang: Record<string, string> = {
     'bat': 'batch',
     'c++': 'cpp',
