@@ -71,9 +71,8 @@
 │   └── routes # 路由
 │       └── atom.xml.get.ts # Atom 订阅源
 ├── blog.config.ts # 博客静态公共配置★
-├── headers.ts # 静态路径响应头配置
 ├── nuxt.config.ts # Nuxt 配置
-└── redirects.ts # 旧站点重定向配置
+└── redirects.json # 旧站点重定向配置
 ```
 
 ## 快速开始

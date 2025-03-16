@@ -117,9 +117,8 @@ export default defineNuxtConfig({
 
     icon: {
         customCollections: [
-            { prefix: 'zi', dir: './assets/icons' },
+            { prefix: 'zi', dir: './app/assets/icons' },
         ],
-        // BUG: 首次加载有概率无图标
     },
 
     image: {
@@ -146,9 +145,5 @@ export default defineNuxtConfig({
     site: {
         name: blogConfig.title,
         url: blogConfig.url,
-    },
-
-    unhead: {
-        legacy: true,
     },
 })

@@ -24,7 +24,7 @@ const blogConfig = {
         url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
     },
     favicon: 'https://www.zhilu.cyou/api/icon.png',
-    language: 'zh',
+    language: 'zh-Hans',
     qqGroup: '169994096',
     timeEstablished: '2019-07-19',
     timezone: 'Asia/Shanghai',
