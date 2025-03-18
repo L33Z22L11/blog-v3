@@ -119,9 +119,12 @@ pnpm preview
 - 输出目录: `dist`（与Nuxt预设相同）
 - 安装命令: `pnpm i`（一般会自动检测）
 
-Vercel 先前创建的项目需要 [手动指定 pnpm 10](https://vercel.com/docs/builds/configure-a-build#corepack)。
-
 如果直接使用平台提供的“Nuxt”预设部署，那么会变成 SSR 模式，需要调整部署命令，请参阅 Nuxt 官方文档的 [部署](https://nuxt.com/docs/getting-started/deployment) 部分。
+
+#### 疑难解答
+
+- Vercel 先前创建的项目需要 [手动指定 pnpm 10](https://vercel.com/docs/builds/configure-a-build#corepack)。
+- Cloudflare Pages 部署项目需要配置 `NODE_VERSION` 环境变量为较新的版本，如 `22.14.0`。
 
 ## 贡献
 

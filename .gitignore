@@ -23,8 +23,6 @@ logs
 .env.*
 !.env.example
 
-# Vercel output
-.vercel/output
-
-# Testing
-content/test.md
+# Custom
+.vercel
+content/posts/test.md
