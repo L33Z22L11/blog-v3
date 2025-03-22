@@ -2,6 +2,7 @@ import type { FileAfterParseHook } from '@nuxt/content'
 import process from 'node:process'
 import blogConfig, { routeRules } from './blog.config'
 
+// 此处配置无需修改
 export default defineNuxtConfig({
     app: {
         head: {
@@ -23,7 +24,8 @@ export default defineNuxtConfig({
             ],
             meta: [
                 { name: 'author', content: `${blogConfig.author.name} <${blogConfig.author.email}>` },
-                { 'name': 'generator', 'data-github-repo': 'https://github.com/L33Z22L11/blog-v3' },
+                // 此处为元数据的生成器标识，不建议修改
+                { 'name': 'generator', 'content': 'blog-v3', 'data-github-repo': 'https://github.com/L33Z22L11/blog-v3' },
             ],
             templateParams: {
                 separator: '|',
@@ -49,9 +51,6 @@ export default defineNuxtConfig({
         '@/assets/css/main.scss',
         '@/assets/css/reusable.scss',
     ],
-
-    // BUG: 3.14+ Windows 平台内存泄漏
-    devtools: { enabled: false },
 
     features: {
         inlineStyles: false,
@@ -130,9 +129,8 @@ export default defineNuxtConfig({
 
     icon: {
         customCollections: [
-            { prefix: 'zi', dir: './assets/icons' },
+            { prefix: 'zi', dir: './app/assets/icons' },
         ],
-        // BUG: 首次加载有概率无图标
     },
 
     image: {

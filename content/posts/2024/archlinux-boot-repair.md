@@ -2,10 +2,14 @@
 title: Arch Linux 启动引导修复
 description: 可以修复绝大多数 Arch Linux 无法启动的问题。
 date: 2024-04-01 23:14:39
-updated: 2024-05-29 00:27:53
+updated: 2025-03-04 22:30:59
 image: https://7.isyangs.cn/24/66640097e0cbb-24.jpg
 categories: [经验分享]
 tags: [教程, 系统, archlinux]
+
+references:
+  - title: systemd-boot - Arch Linux 中文维基
+    link: https://wiki.archlinuxcn.org/wiki/Systemd-boot
 ---
 
 ## 制作启动盘、进入并联网
@@ -15,7 +19,7 @@ tags: [教程, 系统, archlinux]
 ## 挂载分区、进入系统
 
 - 如果不了解你的硬盘分区，可以执行以下命令：
-  :copy{prompt="#" code="lsblk -o+LABEL,FSTYPE"}
+  :copy{prompt="#" code="lsblk -f"}
 - 先挂载根目录所在的分区：
   - 非 BtrFS 分区
     :copy{prompt="#" code="mount /dev/[根分区] /mnt"}
@@ -65,6 +69,28 @@ tags: [教程, 系统, archlinux]
   :copy{prompt="#" code="grub-install"}
   - 备用命令，也可以自行在网上搜索
   :copy{prompt="#" code="grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub"}
+
+## 为 systemd-boot 添加引导项
+
+如果 `bootctl list` 显示没有 Arch Linux，那么需要写入以下文件：
+
+```sh [/boot/loader/entries/arch.conf]
+title   Arch Linux (linux)
+linux   /vmlinuz-linux
+initrd  /intel-ucode.img
+initrd  /initramfs-linux.img
+options root=PARTUUID=692afe0d-e1d7-4e0f-970f-1ed04e0c07e9 zswap.enabled=0 rootflags=subvol=@ rw rootfstype=btrfs
+```
+
+请注意：
+
+1. PARTUUID 和 UUID 不同，`lsblk -f`{lang="sh"} 命令显示的是 UUID，你可以通过 `lsblk -o+UUID,PARTUUID`{lang="sh"} 发现两者的区别。
+   - 查看 PARTUUID 并追加到文件中
+     :copy{prompt="#" code="blkid -s PARTUUID -o value /dev/[根分区] >> /boot/loader/entries/arch.conf"}
+   - 查看 UUID 并追加到文件中，需要 `option`{lang="sh"} 中使用 `root=UUID=`{lang="sh"}
+     :copy{prompt="#" code="blkid -s UUID -o value /dev/[根分区] >> /boot/loader/entries/arch.conf"}
+2. `initrd`{lang="sh"} 中需要添加对应 CPU 的微码，没有的话可以跳过。
+3. `options`{lang="sh"} 中设置合适的 `rootfstype`{lang="sh"} 和 `rootflags`{lang="sh"}，有子卷时需要设置 `rootflags=subvol=[子卷名]`{lang="sh"}。
 
 ## 重启
 

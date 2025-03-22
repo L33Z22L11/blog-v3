@@ -79,6 +79,7 @@ export default defineConfig({
         lastUpdated: { text: '更新于' },
         docFooter: { prev: '上一篇', next: '下一篇' },
     },
+    vite: { server: { allowedHosts: true } },
 })
 
 // 将导航和侧边栏逻辑提取到外部，便于根据文档结构进行维护

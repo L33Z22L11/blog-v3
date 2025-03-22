@@ -81,7 +81,7 @@ mirror: true
 
 ::pic
 ---
-src: https://bu.dusays.com/2021/12/19/8a1d489af0279.jpg
+src: https://ooo.0x0.ooo/2022/04/04/kByKC.jpg
 width: 540
 caption: 书桌@齐天
 ---

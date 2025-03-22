@@ -24,7 +24,7 @@ recommend: true
 ```json [%APPDATA%/Code/User/settings.json]
 {
   // 编辑器字体
-  "editor.fontFamily": "Sarasa Mono SC, Fira Code, JetBrains Mono, Menlo, Monaco, Consolas, 'monospace', system-ui, monospace, Symbols Nerd Font, FiraCode Nerd Font, JetBrainsMono Nerd Font, CaskaydiaCove Nerd Font, Hack Nerd Font",
+  "editor.fontFamily": "Sarasa Mono SC, Fira Code, JetBrains Mono, Menlo, Monaco, Consolas, 'monospace', system-ui, monospace, Symbols Nerd Font, FiraCode Nerd Font, JetBrainsMono Nerd Font, Hack Nerd Font",
   // 编辑器字体连字特性
   "editor.fontLigatures": true,
   // 编辑器字体大小
@@ -181,6 +181,14 @@ recommend: true
     "ms-vscode.cpptools",
     "llvm-vs-code-extensions.vscode-clangd",
   ],
+  // Error Lens 插件错误提示字号
+  "errorLens.fontSize": ".8em",
+  // 错误提示的背景不覆盖整行
+  "errorLens.messageBackgroundMode": "message",
+  // 错误提示的字数限制
+  "errorLens.messageMaxChars": 50,
+  // 错误提示携带图标
+  "errorLens.messageTemplate": "$severity $message",
 }
 ```
 

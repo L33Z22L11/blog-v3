@@ -39,14 +39,17 @@ watch(activeIndex, (newVal, oldVal) => {
     if (newVal < 0 || newVal >= result.value?.length) {
         activeIndex.value = oldVal
     }
-    (listResult.value?.children[activeIndex.value] as HTMLLIElement).scrollIntoView({
+})
+
+function scrollToActiveItem() {
+    (listResult.value?.children[activeIndex.value] as Element).scrollIntoView({
         behavior: 'smooth',
         block: 'nearest',
     })
-})
+}
 
 function openActiveItem() {
-    const item = listResult.value?.children[activeIndex.value] as HTMLLIElement
+    const item = listResult.value?.children[activeIndex.value] as Element
     // 触发 vue-router 点击事件
     item.dispatchEvent(new Event('click'))
 }
@@ -85,7 +88,7 @@ function openActiveItem() {
                         ref="list-result"
                         class="scrollcheck-y search-result"
                     >
-                        <TransitionGroup name="expand">
+                        <TransitionGroup name="list">
                             <ZSearchItem
                                 v-for="(item, itemIndex) in result"
                                 :key="item.id"
@@ -97,9 +100,9 @@ function openActiveItem() {
                         </TransitionGroup>
                     </ol>
                     <div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
-                        <Key code="arrowup" @press="activeIndex--">
+                        <Key code="arrowup" @press="activeIndex--, scrollToActiveItem()">
                             ↑
-                        </Key> <Key code="arrowdown" @press="activeIndex++">
+                        </Key> <Key code="arrowdown" @press="activeIndex++, scrollToActiveItem()">
                             ↓
                         </Key> 切换&emsp;
                         <Key code="enter" @press="openActiveItem">
@@ -218,12 +221,7 @@ function openActiveItem() {
 }
 
 .search-item {
-    transition: all 0.5s, background-color 0.1s, opacity 0.2s;
-
-    &.expand-enter-to,
-    &.expand-leave-from {
-        max-height: 10em;
-    }
+    transition: background-color 0.1s, opacity 0.2s;
 }
 
 .tip {
@@ -235,12 +233,26 @@ function openActiveItem() {
     transition: all 0.5s;
 }
 
-// 注意 CSS 优先级
+.expand-enter-active,
+.expand-leave-active,
+.list-move,
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.5s;
+}
+
 .expand-enter-from,
 .expand-leave-to {
     opacity: 0;
     max-height: 0;
-    margin-block: 0;
-    padding-block: 0;
+}
+
+.list-enter-from,
+.list-leave-to {
+    opacity: 0;
+}
+
+.list-leave-active {
+    position: absolute;
 }
 </style>

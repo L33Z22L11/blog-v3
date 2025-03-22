@@ -10,7 +10,7 @@ const appConfig = useAppConfig()
         class="widget-card seasonal"
         :style="{
             '--seasonal-bg': `url(${appConfig.seasonal.widgetBackground})`,
-            '--seasonal-emoji': `'${appConfig.seasonal.emoji}'`,
+            '--seasonal-emoji': appConfig.seasonal.emoji,
         }"
     >
         <!-- TODO: 优化技术架构展示 -->

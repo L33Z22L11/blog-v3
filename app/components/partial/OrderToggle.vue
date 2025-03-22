@@ -36,12 +36,12 @@ function toggleDirection() {
                 <Icon :name="getCategoryIcon(category)" />
                 <span class="order-text">{{ category ?? '全部分类' }}</span>
             </button>
-            <template #content>
-                <button @click="category = undefined">
+            <template #content="{ hide }">
+                <button @click="hide(), category = undefined">
                     <Icon :name="getCategoryIcon()" />
                     <span>全部分类</span>
                 </button>
-                <button v-for="item in categories" :key="item" @click="category = item">
+                <button v-for="item in categories" :key="item" @click="hide(), category = item">
                     <Icon :name="getCategoryIcon(item)" />
                     <span>{{ item }}</span>
                 </button>

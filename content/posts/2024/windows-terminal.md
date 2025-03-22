@@ -84,7 +84,7 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
     ```
 - 安装字体
   - 访问 [Nerd Fonts 网站](https://www.nerdfonts.com/font-downloads) 或者 [Release 页面](https://github.com/ryanoasis/nerd-fonts/releases)
-  - 按 `Ctrl+F` 搜索你常使用的字体，并下载
+  - 按 `Ctrl+F` 搜索你常使用的字体，并下载（下载 `Symbols Only`/`NerdFontsSymbolsOnly.zip` 即可）
   - 解压后选中字体，右键安装
   - 在 Windows Terminal 中，按 `Ctrl+,` 打开设置
   - 配置文件 - 默认值 - 外观 - 字体 - 选择你下载的字体 - 保存
@@ -115,10 +115,10 @@ link: /2023/ssh-key-login
 
 - 文本
   - 配色方案：One Half Dark
-  - 字体：CaskaydiaCove Nerd Font 或通过 Scoop 的 `Cascadia-Code` 包提供的 Cascadia Code NF
+  - 字体：`Cascadia Code, Symbols Nerd Font`
   - 自动调整无法区分的文本的亮度：仅适用于配色方案中的颜色
 - 透明度
-  - 背景不透明度：50%
+  - 背景不透明度：75%
   - 启用亚克力材料：开
 
 ## 搜索历史命令

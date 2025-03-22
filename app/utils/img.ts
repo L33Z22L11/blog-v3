@@ -1,3 +1,4 @@
+// @keep-sorted
 const services = {
     baidu: 'https://image.baidu.com/search/down?url=',
     weserv: 'https://wsrv.nl/?url=',
