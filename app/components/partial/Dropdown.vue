@@ -1,3 +1,6 @@
+<!-- https://vue-tippy.netlify.app/props/ -->
+<!-- 如果要点击触发，请使用 trigger="fucusin" 而非 "click" -->
+
 <template>
     <Tooltip
         class="dropdown"

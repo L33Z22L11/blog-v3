@@ -42,15 +42,16 @@ const tip = computed(() => {
 </template>
 
 <style lang="scss" scoped>
+// 对齐到基线，同时保持图片垂直居中
 .badge {
     display: inline-flex;
-    align-items: center;
+    align-items: baseline;
+    height: 1.6em;
     border: 1px solid var(--c-border);
     border-radius: 4px;
     background-color: var(--c-bg-2);
     font-size: 0.875em;
-    line-height: normal;
-    vertical-align: text-bottom;
+    line-height: 1.6;
     text-indent: 0;
     transition: color 0.2s;
 
@@ -75,18 +76,18 @@ const tip = computed(() => {
 
 .badge-img {
     .badge-icon {
-        height: 1.6em;
-        max-width: 2em;
+        align-self: center;
+        height: 100%;
         border-radius: 3.5px;
     }
 
     .badge-text {
-        margin-left: 0.3em;
+        margin-left: -0.1em;
     }
 }
 
 .badge-text {
-    margin: 0.1em 0.4em;
+    padding: 0 0.4em;
 
     &:empty {
         display: none;

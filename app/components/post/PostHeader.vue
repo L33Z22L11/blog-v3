@@ -9,7 +9,7 @@ const publishedLabel = getPostDate(props.date)
 const updatedLabel = getPostDate(props.updated)
 
 const categoryLabel = props.categories?.[0]
-const categoryIcon = getCategoryIcon(props.categories?.[0])
+const categoryIcon = getCategoryIcon(categoryLabel)
 
 const shareText = `【${appConfig.title}】${props.title}\n\n${
     props.description ? `${props.description}\n\n` : ''}${

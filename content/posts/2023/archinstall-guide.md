@@ -1,8 +1,8 @@
 ---
 title: 使用 ArchInstall 安装 Arch Linux
-description: 在2024年5月版的 Arch Linux 安装镜像的基础上，使用 ArchInstall 安装系统全过程。
+description: 在2025年3月版的 Arch Linux 安装镜像的基础上，使用 ArchInstall 安装系统全过程。
 date: 2023-05-23 20:37:07
-updated: 2024-12-19 08:22:57
+updated: 2025-03-21 22:04:14
 image: https://7.isyangs.cn/24/66640095c770c-24.jpg
 categories: [经验分享]
 tags: [教程, archlinux, 系统]
@@ -124,20 +124,20 @@ Ventoy 需要加载自定义证书文件才能在启用“安全启动”特性�
   - 如果等待时间过长，可以按 Ctrl+C 中断，然后重新执行命令。
   - 如果多次尝试都不能进入安装界面，那么建议更换网络环境再试。
 
+### 选择本地语言
+
+进入 `Locales` 选项：
+
+- 移动到 `Locale language` 项敲回车，键入`/cn`搜索，选择 `zh_CN`。
+- 其他选项保持默认值，即可 `← Back`。
+
 ### 选择镜像下载地区
 
 > 如果你使用过 Reflector 更新源，那么**不应该**进行此项设置。
 >
 > 你可以通过在 Mirrors 选项内按 Ctrl+C 重置设置。
 
-移动到`Mirrors`项敲回车，键入`/ch`搜索，选择`China`。
-
-### 选择本地语言
-
-进入 `Locales` 选项：
-
-- `Locale language` 选择 `zh_CN`。
-- 其他选项保持默认值，即可 `← Back`。
+`Mirrors` 项敲回车，键入`/ch`搜索，选择`China`。
 
 ### 选择硬盘分区
 
@@ -171,19 +171,23 @@ Ventoy 需要加载自定义证书文件才能在启用“安全启动”特性�
 
 ### 添加用户
 
-`User account` 选择中，选择 `Add a user`，输入用户名、两遍密码，并且确认作为 `Superuser`（超级用户，即具有 sudo 权限），然后选择 `Confirm and exit`。
+`User account` 选择中，选择 `Add a user`，输入用户名（不含大写字母）、两遍密码，并且确认作为 `Superuser`（超级用户，即具有 sudo 权限），然后选择 `Confirm and exit`。
 
 ### 选择用户环境
 
 在 `Profile` 选项中：
 
-- `Type` 选择桌面环境（`Desktop`），桌面环境推荐 `KDE`。
+- `Type` 选择桌面环境（`Desktop`），桌面环境推荐 `KDE Plasma`。
 - `Graphics driver`：如果是双显卡笔记本，可以先装 CPU 对应的开源核显驱动（AMD 或者 Intel），系统安装完成后再安装独显驱动。
 - 其他选项默认即可，选择 `← Back`。
 
 ### 选择音频驱动
 
 `Audio` 选项中，默认的 `Pipewire` 即可，`PulseAudio` 比较老旧，建议仅在 Pipewire 失效时选择。
+
+### 设置网络
+
+`Network configuration` 选项选择 `Use NetworkManager` 即可。
 
 ### 可选包
 
@@ -192,13 +196,9 @@ Ventoy 需要加载自定义证书文件才能在启用“安全启动”特性�
 - `nvidia`：Nvidia 专有的显卡驱动。
 - `ttf-sarasa-gothic`：更纱黑体，体积较大但显示效果更好，以防重启之后中文显示为方框。
 
-### 设置网络
-
-`Network configuration` 选项选择 `Use NetworkManager` 即可。
-
 ### 选择时区
 
-`Timezone` 选项中，键入 `/shang` 可以搜索，选择 `Asia/Shanghai`。
+`Timezone` 选项中，键入 `/chon` 可以搜索，选择 `Asia/Chongqing`。
 
 ## 安装
 

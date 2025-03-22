@@ -88,16 +88,14 @@ function openActiveItem() {
                         ref="list-result"
                         class="scrollcheck-y search-result"
                     >
-                        <TransitionGroup name="list">
-                            <ZSearchItem
-                                v-for="(item, itemIndex) in result"
-                                :key="item.id"
-                                v-bind="item"
-                                :class="{ active: activeIndex === itemIndex }"
-                                @click="layoutStore.toggle('search')"
-                                @mouseover="activeIndex = itemIndex"
-                            />
-                        </TransitionGroup>
+                        <ZSearchItem
+                            v-for="(item, itemIndex) in result"
+                            :key="item.id"
+                            v-bind="item"
+                            :class="{ active: activeIndex === itemIndex }"
+                            @click="layoutStore.toggle('search')"
+                            @mouseover="activeIndex = itemIndex"
+                        />
                     </ol>
                     <div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
                         <Key code="arrowup" @press="activeIndex--, scrollToActiveItem()">
@@ -135,7 +133,6 @@ function openActiveItem() {
 }
 
 #z-search {
-    position: fixed;
     overflow: hidden;
     width: 95%;
     max-width: $breakpoint-mobile;
@@ -234,10 +231,7 @@ function openActiveItem() {
 }
 
 .expand-enter-active,
-.expand-leave-active,
-.list-move,
-.list-enter-active,
-.list-leave-active {
+.expand-leave-active {
     transition: all 0.5s;
 }
 
@@ -245,14 +239,5 @@ function openActiveItem() {
 .expand-leave-to {
     opacity: 0;
     max-height: 0;
-}
-
-.list-enter-from,
-.list-leave-to {
-    opacity: 0;
-}
-
-.list-leave-active {
-    position: absolute;
 }
 </style>

@@ -200,9 +200,7 @@ class: gradient-card active
 
 :::render-with-raw
 ```mdc
-:badge[普通带链接]{link="#badge"} :badge[纯文本指定圆形]{round} :badge[纯文本指定方形]{square}
-
-可以 :badge[带个图]{img="https://picsum.photos/100/100"} 也可以只有图 :badge{img="https://picsum.photos/100/100" round}，也能指定方形 :badge{img="https://picsum.photos/100/100" square}
+:badge[普通带链接]{link="#badge"} :badge[纯文本指定圆形]{round} :badge[纯文本指定方形]{square} :badge[带个图]{img="https://picsum.photos/100/100"}
 
 外部域名自动获取站点图标 :badge[纸鹿]{link="https://zhilu.cyou"}，
 :badge[古怪杂记本]{link="https://gug.thisis.host/" square}，
@@ -552,7 +550,13 @@ id: BV1Yr421p7rW
 ```
 ::
 
-鼠标悬浮时的动画 Emoji `📄🦌🙌🐟🏖️` 对应“纸鹿摸鱼处”的汉字，在 `app.config.ts` 中配置，字体由 `阿里妈妈方圆体` 分割而来。
+鼠标悬浮时的动画 Emoji `📄🦌🙌🐟🏖️` 对应“纸鹿摸鱼处”的汉字，在 `app.config.ts` 中配置，字体由 [阿里妈妈方圆体](https://www.iconfont.cn/fonts/detail?cnid=pOvFIr086ADR) 分割而来。
+
+```sh
+# iconfont 网页版生成的字体子集在 Chrome 124 的版本无法解析，需要借助 fonttools 工具手动生成子集
+pip install fonttools brotli
+pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
+```
 
 ## 组件使用方法
 

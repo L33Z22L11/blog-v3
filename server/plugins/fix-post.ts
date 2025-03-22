@@ -17,6 +17,9 @@ export default defineNitroPlugin((nitroApp) => {
     const appConfig = useAppConfig()
 
     nitroApp.hooks.hook('content:file:afterParse', (file) => {
+        // YAML Front Matter 会自动解析类型，但标题应当是字符串
+        file.title = file.title?.toString()
+
         // 修复时区偏移
         file.date = fixDate(file.date)
         file.updated = fixDate(file.updated)

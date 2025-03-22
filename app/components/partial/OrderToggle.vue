@@ -31,7 +31,7 @@ function toggleDirection() {
 
 <template>
     <div class="order-toggle">
-        <ZDropdown trigger="click">
+        <ZDropdown trigger="focusin">
             <button :disabled="!categories">
                 <Icon :name="getCategoryIcon(category)" />
                 <span class="order-text">{{ category ?? '全部分类' }}</span>
