@@ -44,7 +44,7 @@ const categoryInfo = categoryLabel && Reflect.get(appConfig.article.categories, 
                     class="article-category"
                     :style="{ '--cg-color': categoryInfo?.color }"
                 >
-                    <Icon :name="categoryInfo?.icon" />
+                    <!-- <Icon :name="categoryInfo?.icon" /> -->
                     {{ categoryLabel }}
                 </span>
                 <span v-if="readingTime?.words" class="article-words">
