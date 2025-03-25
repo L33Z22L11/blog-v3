@@ -11,7 +11,7 @@ const src = computed(() => getImgUrl(props.icon, props.mirror))
 </script>
 
 <template>
-    <ZRawLink :to="link" class="link-card card">
+    <ZRawLink :to="link" class="link-card card" :title="`${title}\n${description || ''}\n${link}`">
         <div class="link-card-info">
             <div class="link-card-title">
                 {{ title }}

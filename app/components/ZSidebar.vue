@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
 const layoutStore = useLayoutStore()
-const _searchStore = useSearchStore()
 
 const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' : 'Ctrl+K')
 </script>
@@ -29,7 +28,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
                         <ZRawLink :to="item.url" class="sidebar-nav-item" @click="layoutStore.toggle('sidebar')">
                             <Icon :name="item.icon" />
                             <span class="nav-text">{{ item.text }}</span>
-                            <Icon v-if="item?.external" class="external-tip" name="ph:arrow-up-right" />
+                            <Icon v-if="isExtLink(item.url)" class="external-tip" name="ph:arrow-up-right" />
                         </ZRawLink>
                     </li>
                 </menu>
