@@ -21,7 +21,8 @@ export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
 
     const tocOffsets = computedWithControl(
         () => toValue(toc),
-        () => flattenToc(toValue(toc)),
+        // 此处不需担心 reverse 改变原数组
+        () => flattenToc(toValue(toc)).reverse(),
     )
 
     const updateActiveToc = () => {
@@ -29,10 +30,8 @@ export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
 
         const scrollPosition = window.scrollY + (scrollMargin || 64)
 
-        // 使用副本而不是直接 reverse
-        const currentItem = [...tocOffsets.value]
-            .reverse()
-            .find(item => item.offsetTop <= scrollPosition)
+        // 为兼容性不使用 findLast
+        const currentItem = tocOffsets.value.find(item => item.offsetTop <= scrollPosition)
 
         activeTocItem.value = currentItem?.id || null
 
@@ -40,10 +39,10 @@ export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
         const scrollContainer = document.querySelector('#z-aside')
         const activeElement = document.querySelector(`#z-aside a[href="#${activeTocItem.value}"]`) as HTMLElement | null
         // scrollIntoView 触发目录滚动时导致文章持续缓慢滚动并打断正常滚动
-        scrollContainer?.scroll({ top: activeElement?.offsetTop })
+        scrollContainer?.scroll({ top: activeElement?.offsetTop || 0 })
     }
 
-    useEventListener('scroll', autoThrottle(() => updateActiveToc()), { passive: true })
+    useEventListener('scroll', autoThrottleAndDebounce(() => updateActiveToc()), { passive: true })
 
     const { height: bodyHeight } = useElementSize(document?.body)
     debouncedWatch(bodyHeight, tocOffsets.trigger)
