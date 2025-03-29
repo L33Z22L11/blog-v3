@@ -565,10 +565,10 @@ export default [{
         author: 'LineXic',
         desc: '念念不忘，必有回响',
         link: 'https://linexic.top/',
-        feed: 'https://linexic.top/atom.xml',
+        feed: 'https://linexic.top/rss.xml',
         icon: 'https://linexic.top/logo.png',
         avatar: 'https://linexic.top/avatar.webp',
-        archs: ['Hexo', 'Vercel'],
+        archs: ['Astro', 'Vercel'],
         date: '2024-10-02',
         comment: '前端学习，高中生活。',
     }, {
@@ -603,7 +603,7 @@ export default [{
         archs: ['VitePress', '国内 CDN'],
         date: '2024-10-23',
         comment: '前端学习笔记。',
-        error: '2024年12月起无法访问 (504)',
+        // error: '2024年12月起无法访问 (504)',
     }, {
         author: 'Redish101',
         title: 'Redish101 Blog',
@@ -709,5 +709,16 @@ export default [{
         archs: ['Hexo', 'Vercel'],
         date: '2025-03-11',
         comment: '技术分享与生活。',
+    }, {
+        author: '葱苓',
+        sitenick: '语畔',
+        desc: 'Don\'t worry, be happy.',
+        link: 'https://blog.ciraos.top/',
+        feed: 'https://blog.ciraos.top/feed.xml',
+        icon: 'https://blog.ciraos.top/avatar.avif',
+        avatar: 'https://blog.ciraos.top/avatar.avif',
+        archs: ['Next.js', '国内 CDN'],
+        date: '2025-03-28',
+        comment: '前端学习。',
     }],
 }] satisfies FeedGroup[]
