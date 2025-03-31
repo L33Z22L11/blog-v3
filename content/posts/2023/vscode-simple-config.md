@@ -35,8 +35,6 @@ recommend: true
   "editor.renderWhitespace": "boundary",
   // 编辑器自动换行，也可通过 Alt+Z 切换
   "editor.wordWrap": "on",
-  // 终端字体连字特性
-  "terminal.integrated.fontLigatures": true,
   // 终端字体大小
   "terminal.integrated.fontSize": 15,
   // Ctrl+滚轮 缩放终端字体大小

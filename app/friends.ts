@@ -712,6 +712,7 @@ export default [{
     }, {
         author: '葱苓',
         sitenick: '语畔',
+        title: '葱苓语畔',
         desc: 'Don\'t worry, be happy.',
         link: 'https://blog.ciraos.top/',
         feed: 'https://blog.ciraos.top/feed.xml',

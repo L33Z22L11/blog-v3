@@ -14,10 +14,10 @@ VitePress 是一个非常优秀的静态站点生成器，它使用 Vite 作为�
 
 ### 来用 pnpm 吧
 
-使用 pnpm 可以提高安装速度并减少磁盘占用。按照提示操作即可。
+使用 pnpm 可以提高安装速度并减少磁盘占用。按照终端提示操作即可。
 
 - 通过 npm 安装 pnpm
-  :copy{code="npm install -g pnpm"}
+  :copy{code="npm i -g pnpm"}
 - 更改 PowerShell 脚本 [执行策略](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies)
   :copy{code="Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"}
   - 也可通过管理员权限更改系统策略
@@ -25,10 +25,6 @@ VitePress 是一个非常优秀的静态站点生成器，它使用 Vite 作为�
 - 初始化 pnpm
   :copy{code="pnpm setup"}
   - 初始化后，由于环境变量变化，需要启动一个新的 PowerShell 会话
-- 通过 pnpm 重新安装 pnpm
-  :copy{code="pnpm install -g pnpm"}
-- 卸载通过 npm 安装的 pnpm
-  :copy{code="npm uninstall -g pnpm"}
 
 ### 会的话看看文档，不会了就多看文档
 

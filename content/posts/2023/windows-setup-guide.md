@@ -2,7 +2,7 @@
 title: Windows 安装指南
 description: 使用 Ventoy、微 PE、Dism++ 安装系统，绕过账户限制并激活 Office 与 Windows，合理分区布局使数据安全有序。
 date: 2023-09-24 12:00:00
-updated: 2024-02-26 20:35:32
+updated: 2025-03-30 15:02:31
 image: https://7.isyangs.cn/24/65b66289c9a2e-24.jpg
 categories: [经验分享]
 tags: [教程, 系统, Windows]
@@ -115,6 +115,10 @@ recommend: true
 - 在Windows的安装界面中，按下`Shift + F10`键，打开命令提示符
 - 输入`oobe\BypassNRO.cmd`{lang="cmd"}并按下回车，电脑会重启
 - 在联网界面中，点击“我没有Internet连接”和“继续执行受限设置”
+
+> 微软似乎已禁用BypassNRO，需要通过注册表设置键值绕过联网
+>
+> :copy{prompt code="reg add &quot;HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE&quot; /v bypassnro /t REG_DWORD /d 1 /f"}
 
 ## 设置非中文用户名和空密码
 
