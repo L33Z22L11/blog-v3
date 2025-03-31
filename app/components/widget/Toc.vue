@@ -50,7 +50,7 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
         </a>
     </h3>
     <div class="widget-body">
-        <ReuseTemplate v-if="toc?.links" :toc-item="toc.links" />
+        <ReuseTemplate v-if="toc?.links.length" :toc-item="toc.links" />
         <p v-else class="no-toc">
             暂无目录信息
         </p>
