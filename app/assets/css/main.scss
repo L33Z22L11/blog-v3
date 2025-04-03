@@ -55,6 +55,7 @@ a {
 code, pre {
     font-family: "Cascadia Code", "Noto Sans Mono", Consolas, monospace;
     font-family: var(--font-monospace);
+    text-autospace: no-autospace;
 }
 
 menu, ol, ul {
@@ -73,10 +74,6 @@ button, input, textarea {
     background: none;
     font: inherit;
     color: currentcolor;
-
-    &:disabled {
-        cursor: not-allowed;
-    }
 }
 
 // Iconify 图标复用了此类
