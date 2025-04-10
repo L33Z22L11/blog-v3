@@ -6,7 +6,8 @@ const scroll = ref(true)
     <div class="md-table">
         <div class="table-header">
             <ZButton @click="scroll = !scroll">
-                {{ scroll ? '自动换行' : '横向滚动' }}
+                <Icon :name="scroll ? 'ph:arrow-u-down-left-bold' : 'ph:arrows-out-line-horizontal-bold'" />
+                <span class="tooltip">{{ scroll ? '自动换行' : '横向滚动' }}</span>
             </ZButton>
         </div>
         <table class="scrollcheck-x" :class="{ scroll }">
@@ -41,11 +42,15 @@ const scroll = ref(true)
     transition: opacity 0.2s;
     z-index: 1;
 
-    :hover > & {
-        opacity: 0.4;
+    .tooltip {
+        display: none;
+    }
 
-        &:hover {
-            opacity: 1;
+    :hover > & {
+        opacity: 1;
+
+        &:hover .tooltip {
+            display: revert;
         }
     }
 }

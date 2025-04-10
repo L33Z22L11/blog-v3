@@ -32,7 +32,7 @@ export function useArticleSort(list: MaybeRefOrGetter<ArticleProps[]>) {
     const isAscending = ref<boolean>()
     const listSorted = computed(() => alphabetical(
         toValue(list),
-        item => Reflect.get(item, sortOrder.value) || '',
+        item => item[sortOrder.value] || '',
         isAscending.value ? 'asc' : 'desc',
     ))
     return {
@@ -44,5 +44,5 @@ export function useArticleSort(list: MaybeRefOrGetter<ArticleProps[]>) {
 
 export function getCategoryIcon(category?: string) {
     const appConfig = useAppConfig()
-    return Reflect.get(appConfig.article.categories, category!)?.icon ?? 'ph:folder-bold'
+    return appConfig.article.categories[category!]?.icon ?? 'ph:folder-bold'
 }
