@@ -64,10 +64,6 @@ function render() {
         width: fit-content;
         margin-bottom: 1em;
         padding: 0 1em;
-
-        p {
-            text-indent: 0;
-        }
     }
 }
 </style>

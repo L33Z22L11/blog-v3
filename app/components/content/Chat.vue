@@ -53,10 +53,6 @@ function render() {
         padding: 0 1em;
         border-radius: 0.2em 1em 1em;
         background-color: var(--c-bg-2);
-
-        p {
-            text-indent: 0;
-        }
     }
 
     .chat-system {

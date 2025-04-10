@@ -26,7 +26,6 @@ const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
 
     :deep(p) {
         margin: 0;
-        text-indent: 0;
     }
 }
 

@@ -35,7 +35,6 @@ defineProps<{
 
     :deep(p) {
         margin-block: 0.5em;
-        text-indent: 0;
     }
 }
 </style>

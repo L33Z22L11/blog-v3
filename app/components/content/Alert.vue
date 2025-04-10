@@ -81,7 +81,6 @@ const title = computed(() => props.title || defaultProps.value.title)
 
         :deep(p) {
             margin: 0;
-            text-indent: 0;
         }
     }
 }

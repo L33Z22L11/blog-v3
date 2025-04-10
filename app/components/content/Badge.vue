@@ -52,7 +52,6 @@ const tip = computed(() => {
     background-color: var(--c-bg-2);
     font-size: 0.875em;
     line-height: 1.6;
-    text-indent: 0;
     transition: color 0.2s;
 
     @supports (color: color-mix(in srgb, transparent, transparent)) {
