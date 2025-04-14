@@ -104,7 +104,7 @@ const { copy, copied } = useCopy(codeblock)
         pre {
             overflow: hidden;
             max-height: var(--collapsible-height);
-            mask: linear-gradient(to bottom, #fff 80%, transparent);
+            mask: linear-gradient(to top, transparent 2rem, #fff 4rem);
             animation: none;
         }
 

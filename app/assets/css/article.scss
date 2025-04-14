@@ -126,7 +126,7 @@
             background-color: var(--c-primary-soft);
         }
 
-        > p, :not([class]) p {
+        > p, :not([class]) > p {
             text-indent: 2em;
         }
     }

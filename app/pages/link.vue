@@ -38,7 +38,7 @@ const { data: postLink } = await useAsyncData('/link', () => queryContent('/link
                 <!-- eslint-disable-next-line vue/singleline-html-element-content-newline -->
                 <ProseA href="/zhilu.opml">友链源 OPML 聚合</ProseA>，可导入阅读器或
                 <!-- eslint-disable-next-line vue/singleline-html-element-content-newline -->
-                <ProseA href="https://app.follow.is/share/lists/72840182614552576">订阅 Follow List</ProseA>。
+                <ProseA href="https://app.follow.is/share/lists/72840182614552576">订阅 Folo List</ProseA>。
             </p>
         </div>
         <div class="operations">
@@ -46,7 +46,7 @@ const { data: postLink } = await useAsyncData('/link', () => queryContent('/link
                 订阅源
             </ProseA>
             <ProseA href="https://app.follow.is/share/feeds/62533754566736896" icon="ph:list-plus-bold">
-                在 Follow 上订阅
+                在 Folo 上订阅
             </ProseA>
         </div>
     </header>

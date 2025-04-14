@@ -38,6 +38,8 @@ export const mainDomainIcons: Record<string, string> = {
     'creativecommons.org': 'ri:creative-commons-line',
     'github.com': 'ri:github-fill',
     'github.io': 'ri:github-fill',
+    'google.cn': 'ri:google-fill',
+    'google.com': 'ri:google-fill',
     'microsoft.com': 'ri:microsoft-fill',
     'netlify.app': 'simple-icons:netlify',
     'pages.dev': 'simple-icons:cloudflare',

@@ -27,7 +27,7 @@ fs.writeFileSync(filePath, `---
 title: 
 description: 
 date: ${new Date().toLocaleDateString('en-CA')} ${new Date().toLocaleTimeString()}
-updated:  ${new Date().toLocaleDateString('en-CA')} ${new Date().toLocaleTimeString()}
+updated: ${new Date().toLocaleDateString('en-CA')} ${new Date().toLocaleTimeString()}
 # image: 
 # type: story
 categories: [分类]
