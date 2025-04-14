@@ -5,7 +5,10 @@ const props = defineProps<{
 }>()
 
 const icon = computed(() => props.icon || getDomainIcon(props.href))
-const tip = computed(() => (isExtLink(props.href) && getDomain(props.href)) || decodeURIComponent(props.href))
+const tip = computed(() => ({
+    content: isExtLink(props.href) ? getDomain(props.href) : decodeURIComponent(props.href),
+    inlinePositioning: true,
+}))
 </script>
 
 <template>

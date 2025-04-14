@@ -46,17 +46,23 @@ const codeHighlighted = await useShikiHighlighted(() => props.code, {
     gap: 2rem;
     min-height: calc(100vh - 16rem);
 
-    .error-icon {
+    > .error-icon {
         font-size: 5rem;
         color: var(--c-text-3);
     }
 
-    .error-title {
+    > .error-title {
         font-size: 1.5rem;
+        word-break: break-all;
         color: var(--c-text-3);
+
+        > :deep(pre) {
+            font-size: 1rem;
+            white-space: pre-wrap;
+        }
     }
 
-    .z-codeblock {
+    > .z-codeblock {
         max-width: 100%;
 
         :deep(.shiki) {
