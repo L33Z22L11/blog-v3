@@ -12,13 +12,18 @@ export default defineNuxtConfig({
                 { rel: 'icon', href: blogConfig.favicon },
                 { rel: 'alternate', type: 'application/atom+xml', href: '/atom.xml' },
                 { rel: 'preconnect', href: blogConfig.twikoo.preload },
+
                 { rel: 'preconnect', href: 'https://cdn-font.hyperos.mi.com' },
                 // 浏览器渲染中文 VF 字重有问题
                 { rel: 'stylesheet', href: 'https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap', media: 'none', onload: 'this.media="all"' },
                 // https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap
+
                 { rel: 'preconnect', href: 'https://fonts.googleapis.cn' },
-                { rel: 'preconnect', href: 'https://fonts.gstatic.cn' },
-                { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap', media: 'none', onload: 'this.media="all"' },
+                { rel: 'preconnect', href: 'https://fonts.gstatic.cn', crossorigin: '' },
+                { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap', media: 'none', onload: 'this.media="all"' },
+                // Fira Code 没有斜体
+                // { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap', media: 'none', onload: 'this.media="all"' },
+
                 // { rel: 'stylesheet', href: 'https://gcore.jsdelivr.net/npm/nerdfonts-web/nf.min.css' },
             ],
             meta: [

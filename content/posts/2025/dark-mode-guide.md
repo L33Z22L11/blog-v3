@@ -1,8 +1,8 @@
 ---
 title: 深色模式开发的最佳实践
-description: 实现深色模式，不要只会 `prefers-color-scheme` 了，还有一堆问题等你来修。
+description: 前端深色模式不止于 prefers-color-scheme，完整解析自动检测、手动切换的实现方案，解决闪屏、样式冲突、变量管理等常见痛点，提供稳健的深色模式最佳实践。
 date: 2025-04-14 10:07:16
-updated: 2025-04-14 11:57:43
+updated: 2025-04-14 18:45:28
 categories: [经验分享]
 tags: [代码, 问题]
 ---
@@ -15,10 +15,10 @@ tags: [代码, 问题]
 
 ```css
 @media (prefers-color-scheme: dark) {
-  body {
-    background: black;
-    color: white;
-  }
+    body {
+        background: black;
+        color: white;
+    }
 }
 ```
 
@@ -40,15 +40,15 @@ tags: [代码, 问题]
 
 ```css
 body {
-  background: white;
-  color: black;
+    background: white;
+    color: black;
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    background: black;
-    color: white;
-  }
+    body {
+        background: black;
+        color: white;
+    }
 }
 ```
 
@@ -68,7 +68,7 @@ body {
     --line: rgba(127, 127, 191, .2);
     --ac1: #37f;
     --ac2: rgba(0, 127, 255, .5);
-    --ac3: hsla(210, 100.00%, 50.00%, 0.20);
+    --ac3: rgba(0, 127, 255, .2);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -91,7 +91,7 @@ body {
 
 又有同学在想了：我们做出的自动深色模式只是设备支持下的自动切换小彩蛋，如何显式展示技术力，比如放个深色模式按钮呢？
 
-假设我们已经通过 `localStorage` 存储了用户主题并在加载时给 `<html>` 添加了 `data-theme` 属性，看起来完美实现了颜色模式切换，其实还会遇到几个降低用户体验的问题。
+假设我们已经通过 `localStorage` 存储了用户主题并在加载时给 `<html>`{lang="html"} 添加了 `data-theme` 属性，看起来完美实现了颜色模式切换，其实还会遇到几个降低用户体验的问题。
 
 ### 浏览器生成的自动深色模式
 
@@ -103,7 +103,7 @@ body {
 - [CSS 颜色调整规范定义的标准元数据名称 - HTML（超文本标记语言） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/meta/name#%E5%85%B6%E4%BB%96%E8%A7%84%E8%8C%83%E4%B8%AD%E5%AE%9A%E4%B9%89%E7%9A%84%E6%A0%87%E5%87%86%E5%85%83%E6%95%B0%E6%8D%AE%E5%90%8D%E7%A7%B0)
 ::
 
-怎会如此！Chrome 的贴心设计优化了不支持深色模式的网页显示，但成为了开发者在深色模式下展示浅色网页的心智负担。
+怎会如此！？Chrome 的贴心设计优化了不支持深色模式的网页显示，但成为了开发者在深色模式下展示浅色网页的心智负担。
 
 我们需要通过 `color-scheme` 告诉浏览器网页支持深色和浅色模式，不要让浏览器扳倒我们自己的适配。两种方法二选一即可：
 
@@ -118,63 +118,69 @@ body {
 
 我曾使用 Pinia 管理用户主题，但 Pinia 的挂载需要时间，产生了页面闪白问题。我留意到一些网站是没有的，比如 VitePress，我研究了其代码实现（[vitepress/src/node/config.ts#L263](https://github.com/vuejs/vitepress/blob/main/src/node/config.ts#L263)）。它在 `<head>`{lang="html"} 中添加了同步的 `<script>`{lang="html"}，通过 IIFE 立即执行函数，在 DOM 构建完成前就完成了主题切换，避免了页面闪白。
 
-```html [https://cooo.site/asset/index.html]
+```html
 <head>
     <script>
-        if (localStorage.getItem('theme') === 'dark') {
+        if (localStorage.getItem('theme') === 'dark')
             document.documentElement.setAttribute('data-theme', 'dark')
-        }
     </script>
 </head>
 ```
 
 ### 一致性和 CSS 代码冗余
 
-代码冗余会轻松地创建不一致，而不一致带来潜在的破环力是惊人的：
+代码冗余会轻松地创建不一致，而不一致带来潜在的破坏力是惊人的：
 
 ```css
 :root {
-  --c-bg: white;
-  --c-text: black;
+    --c-bg: white;
+    --c-text: black;
 }
 
 @media (prefers-color-scheme: dark) {
     /* 原本是 :root[data-theme="auto"]
      * 但下一个选择器应该有相同或更高的优先级 */
     :root {
-      --c-bg: #111;
-      --c-text: #eee;
+        --c-bg: #111;
+        --c-text: #eee;
     }
 }
 
 [data-theme="dark"] {
-  --c-bg: black;
-  --c-text: white;
-  color-scheme: dark;
+    --c-bg: black;
+    --c-text: white;
+    color-scheme: dark;
 }
 ```
 
 这样，你的深色模式定义了两次，你需要小心地维护这些代码。也许可以用 `@mixin`{lang="css"} 来减少冗余？但终归不是完美的解决方案。
 
-这时，抛弃掉 `[data-theme="auto"]`{lang="css"} 就显得有用了——通过在 JS 中提前让「自动」的状态「塌缩」为确定的「浅色」或「深色」，这样 CSS 中只需要维护两种模式下选择器对应的样式即可。
+这时，抛弃掉 `[data-theme="auto"]`{lang="css"} 就显得有用了——通过在 JS 中提前让「自动」的状态「塌缩」为确定的「浅色」或「深色」，CSS 中只需维护两种模式下的对应样式即可。
 
 不要忘记监听 `prefers-color-scheme` 的变化：
 
 ```ts
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e =>
-  setTheme(e.matches ? 'dark' : 'light')
-)
+const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
-function setTheme(theme: 'light' | 'dark') {
-  localStorage.setItem('theme', theme)
-  document.documentElement.setAttribute('data-theme', theme)
-  // 如果使用类名实现，则
-  // document.body.classList.toggle('dark', theme === 'dark')
+function setTheme(theme?: 'light' | 'dark' | 'auto') {
+    if (theme)
+        localStorage.setItem('theme', theme)
+
+    const targetTheme = theme || localStorage.getItem('theme') || 'auto'
+    const isDark = targetTheme === 'dark' || (targetTheme === 'auto' && colorSchemeQuery.matches)
+
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light')
+    // 如果使用类名实现，则
+    // document.body.classList.toggle('dark', isDark ? 'dark' : 'light')
 }
+
+colorSchemeQuery.addEventListener('change', () => setTheme());
+
+setTheme()
 ```
 
-什么，竟然有人操作 `document.getElementByTagName('html')[0].className`{lang="ts"}？回家吧孩子。
+这里的代码只是给出实现思路，具体实现一个完美的深色模式还要多费些心思。什么，竟然有人操作 `document.getElementsByTagName('html')[0].className`{lang="ts"}？回家吧孩子。
 
 ::quote
-Take care of your user, and code well. ☝️
+Take care of users, and code well. ☝️
 ::
