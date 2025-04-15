@@ -13,15 +13,23 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
     Autoplay({ stopOnInteraction: false, stopOnMouseEnter: true }),
     WheelGesturesPlugin(),
 ])
+
+// 鼠标横向滚动 / Shift + 纵向滚轮事件
+useEventListener(emblaRef, 'wheel', (e) => {
+    const delta = e.deltaX + (e.shiftKey ? e.deltaY : 0)
+    if (Math.abs(delta) < 80)
+        return
+    delta > 0 ? emblaApi.value?.scrollNext() : emblaApi.value?.scrollPrev()
+})
 </script>
 
 <template>
     <div class="z-slide">
         <div class="z-slide-title">
             <span class="title">精选文章</span>
-            <div class="tip">
-                <Icon name="ph:hand-grabbing-bold" />
-                拖拽查看
+            <div class="at-slide-hover">
+                <Icon name="ph:mouse-simple-bold" />
+                按住 Shift 横向滚动
             </div>
         </div>
         <div ref="emblaRef" class="embla">
@@ -43,13 +51,13 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
                 </ZRawLink>
             </div>
             <ZButton
-                class="embla-button prev"
+                class="embla-button prev at-slide-hover"
                 aria-label="上一页"
                 icon="ph:caret-left-bold"
                 @click="emblaApi?.scrollPrev()"
             />
             <ZButton
-                class="embla-button next"
+                class="embla-button next at-slide-hover"
                 aria-label="下一页"
                 icon="ph:caret-right-bold"
                 @click="emblaApi?.scrollNext()"
@@ -61,6 +69,15 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
 <style lang="scss" scoped>
 .z-slide {
     margin: 1rem;
+
+    &:hover .at-slide-hover {
+        opacity: 1;
+    }
+}
+
+.at-slide-hover {
+    opacity: 0;
+    transition: opacity 0.2s;
 }
 
 .z-slide-title {
@@ -96,16 +113,11 @@ const [emblaRef, emblaApi] = emblaCarouselVue({
 
 .embla-button {
     position: absolute;
-    opacity: 0;
     padding: 0.5em 0.2em;
     font-size: 1.5em;
     transition: all 0.2s;
     &.prev { left: 1rem; }
     &.next { right: 1rem; }
-
-    :hover > & {
-        opacity: 1;
-    }
 }
 
 .slide-list {

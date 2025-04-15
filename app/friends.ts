@@ -721,5 +721,15 @@ export default [{
         archs: ['Next.js', '国内 CDN'],
         date: '2025-03-28',
         comment: '前端学习。',
+    }, {
+        author: '南蛮子懋和',
+        desc: '李懋和，俗名李栋梁。书法、国画爱好者，互联网安全与前端建设者。',
+        link: 'https://www.dao.js.cn/',
+        feed: 'https://www.dao.js.cn/feed.php',
+        icon: 'https://img.dao.js.cn/zb_users/upload/2021/10/202110151634246697912592.png-webp',
+        avatar: 'https://img.dao.js.cn/zb_users/upload/2021/10/202110151634246697912592.png-webp',
+        archs: ['ZBlog', '国内 CDN'],
+        date: '2025-04-14',
+        comment: '懋和道人，聚焦网站建设与技术，弘扬传统文化。',
     }],
 }] satisfies FeedGroup[]

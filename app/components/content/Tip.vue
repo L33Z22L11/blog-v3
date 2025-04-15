@@ -6,7 +6,10 @@ const props = defineProps<{
     copy?: boolean
 }>()
 
-const tip = computed(() => props.tip || (props.copy ? '点击复制' : ''))
+const tip = computed(() => ({
+    content: props.tip || (props.copy ? '点击复制' : ''),
+    inlinePositioning: true,
+}))
 const tipSource = useTemplateRef('tip-text')
 
 const { copy, copied } = useCopy(tipSource)

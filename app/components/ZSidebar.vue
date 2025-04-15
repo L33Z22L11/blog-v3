@@ -53,6 +53,10 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
     flex-direction: column;
     color: var(--c-text-2);
 
+    &:hover {
+        color: currentcolor;
+    }
+
     @media (max-width: $breakpoint-mobile) {
         position: fixed;
         left: 0;
