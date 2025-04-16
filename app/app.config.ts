@@ -68,9 +68,9 @@ export default defineAppConfig({
             {
                 title: '信息',
                 items: [
-                    { icon: 'simple-icons:nuxtdotjs', text: 'Nuxt博客已开源', url: 'https://github.com/L33Z22L11/blog-v3' },
-                    { icon: 'ph:swatches-bold', text: '主题灵感源自Stellar', url: '/theme' },
-                    { icon: 'ph:certificate-bold', text: '萌ICP备20246888号', url: 'https://icp.gov.moe/?keyword=20246888' },
+                    { icon: 'simple-icons:nuxtdotjs', text: 'Nuxt开源博客主题', url: 'https://github.com/L33Z22L11/blog-v3' },
+                    { icon: 'ph:swatches-bold', text: '主题和组件文档', url: '/theme' },
+                    { icon: 'ph:certificate-bold', text: '萌备20246888号', url: 'https://icp.gov.moe/?keyword=20246888' },
                 ],
             },
         ] satisfies Nav,

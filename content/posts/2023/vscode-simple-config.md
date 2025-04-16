@@ -24,7 +24,7 @@ recommend: true
 ```json [%APPDATA%/Code/User/settings.json]
 {
   // 编辑器字体
-  "editor.fontFamily": "Sarasa Mono SC, Fira Code, JetBrains Mono, Menlo, Monaco, Consolas, 'monospace', system-ui, monospace, Symbols Nerd Font, FiraCode Nerd Font, JetBrainsMono Nerd Font, Hack Nerd Font",
+  "editor.fontFamily": "Sarasa Mono SC, JetBrains Mono, Fira Code, Menlo, Monaco, Consolas, 'monospace', system-ui, monospace, Symbols Nerd Font, FiraCode Nerd Font, JetBrainsMono Nerd Font, Hack Nerd Font",
   // 编辑器字体连字特性
   "editor.fontLigatures": true,
   // 编辑器字体大小

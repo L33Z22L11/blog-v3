@@ -23,7 +23,7 @@ tags: [代码, 问题]
 ```
 
 ::alert{title="参阅文档"}
-[`prefers-color-scheme` 媒体特性 - CSS：层叠样式表 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media/prefers-color-scheme)
+[`prefers-color-scheme` 媒体特性 - CSS | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media/prefers-color-scheme)
 ::
 
 ### 渐进增强而非并列查询
@@ -99,8 +99,8 @@ body {
 
 ::alert{title="参阅文档"}
 - [自动深色主题 | Blog | Chrome for Developers](https://developer.chrome.google.cn/blog/auto-dark-theme)
-- [`color-scheme` - CSS：层叠样式表 | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color-scheme)
-- [CSS 颜色调整规范定义的标准元数据名称 - HTML（超文本标记语言） | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/meta/name#%E5%85%B6%E4%BB%96%E8%A7%84%E8%8C%83%E4%B8%AD%E5%AE%9A%E4%B9%89%E7%9A%84%E6%A0%87%E5%87%86%E5%85%83%E6%95%B0%E6%8D%AE%E5%90%8D%E7%A7%B0)
+- [`color-scheme` - CSS | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color-scheme)
+- [CSS 颜色调整规范定义的标准元数据名称 - HTML | MDN](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/meta/name#%E5%85%B6%E4%BB%96%E8%A7%84%E8%8C%83%E4%B8%AD%E5%AE%9A%E4%B9%89%E7%9A%84%E6%A0%87%E5%87%86%E5%85%83%E6%95%B0%E6%8D%AE%E5%90%8D%E7%A7%B0)
 ::
 
 怎会如此！？Chrome 的贴心设计优化了不支持深色模式的网页显示，但成为了开发者在深色模式下展示浅色网页的心智负担。
@@ -110,7 +110,7 @@ body {
 - 在 HTML 头部通过元数据声明 `<meta name="color-scheme" content="light dark">`{lang="html"}
 - 在 CSS 中声明 `:root { color-scheme: light dark; }`{lang="css"}
 
-记得在手动深色模式（类名而非媒体查询的实现）下设置 `:root[data-theme="dark"] { color-scheme: dark; }`{lang="css"}。不然想一想 `color-scheme: light dark` 会怎么表现？滚动条、按钮等元素在 [用户代理样式表](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade#css_%E5%A3%B0%E6%98%8E%E7%9A%84%E6%BA%90) 给出的是浅色的样式！这和手动深色模式的预期不一致。
+记得在手动深色模式（类名而非媒体查询的实现）下设置 `[data-theme="dark"] { color-scheme: dark; }`{lang="css"}。不然想一想 `color-scheme: light dark`{lang="css"} 会怎么表现？滚动条、按钮等元素在 [用户代理样式表](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade#css_%E5%A3%B0%E6%98%8E%E7%9A%84%E6%BA%90) 给出的是浅色的样式！这和手动深色模式的预期不一致。
 
 ### 页面初载时的闪烁
 

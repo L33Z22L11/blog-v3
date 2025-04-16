@@ -731,5 +731,14 @@ export default [{
         archs: ['ZBlog', '国内 CDN'],
         date: '2025-04-14',
         comment: '懋和道人，聚焦网站建设与技术，弘扬传统文化。',
+    }, {
+        author: 'iFluxArt',
+        desc: '斐启智境 · 流韵新生',
+        link: 'https://iflux.art/',
+        icon: 'https://iflux.art/favicon.ico',
+        avatar: 'https://iflux.art/favicon.ico',
+        archs: ['Next.js', 'Vercel'],
+        date: '2025-04-16',
+        comment: '文档型知识库，含AIGC、开发、设计、运营、传媒、工具等内容。',
     }],
 }] satisfies FeedGroup[]
