@@ -1,11 +1,11 @@
 ---
 title: 前端字体二三事
-description: 本文聚焦前端字体相关问题。浏览器字体合成在粗体和斜体表现上存在局限，影响中文字体及等宽字体显示。排版优化需关注深色模式字重、基线、字距、行高等细节，避免换行与对齐不当。字体选择时，正文不宜用艺术字体，应注意思源黑体版本差异及 system-ui 的使用。此外，还介绍了自动空格、对抗文本溢出算法、可变字体等进阶知识，为前端字体运用提供全面指导。
+description: 前端字体排版有许多细节需要注意，文章从我的实际开发经验出发，介绍合成字形、对齐技巧、排版优化，以及自己的一些踩坑心得。
 date: 2025-04-16 08:49:50
-updated: 2025-04-16 21:15:22
-# image:
+updated: 2025-04-17 10:40:04
+image: https://7.isyangs.cn/24/680072e8c376c-24.webp
 categories: [经验分享]
-tags: [前端, 字体]
+tags: [代码, 前端, 字体]
 ---
 
 ## 这个世界是一个巨大的合成
@@ -31,7 +31,8 @@ tags: [前端, 字体]
 ### 浏览器合成的斜体
 
 ::alert{title="参阅文档"}
-[font-style - CSS | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style)
+- [`font-synthesis` - CSS | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-synthesis)
+- [`font-style` - CSS | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style)
 ::
 
 中文语境下，具有良好美学素养的设计师不会轻易调用斜体。因为中文字体一般没有专门为斜体设计的字形，而排版软件只会粗暴地倾斜字形，导致字体不协调。
@@ -42,7 +43,7 @@ tags: [前端, 字体]
 
 即使 Fira Code 具有良好的连字 (ligature) 特性，但不提供斜体字形是难以容忍的（参阅 [Issue #134](https://github.com/tonsky/FiraCode/issues/134)）。我对于 JetBrains Mono 和 Fira Code 多年里的纠结便轻易地到此为止（[commit #0df1410](https://github.com/L33Z22L11/blog-v3/commit/0df1410150db09943dd520c39dfdab065cd7d386)）了。
 
-如果你要干掉合成斜体，可能得设置 `font-synthesis: none`{lang="css"} 了，但我没有*对抗合成斜体*的勇气😿。
+如果你要干掉合成斜体，可能得设置 `font-synthesis: none` 了，但我没有*对抗合成斜体*的勇气😿。
 
 ## 排版优化
 
@@ -50,13 +51,13 @@ tags: [前端, 字体]
 
 在游玩「绝区零」时，我难以辨认游戏内风格字体显示的文本，阅读深色背景下的白色粗体「[印品鸿蒙体](https://www.inpin.cn/inpin/detail_new.html?fontId=inpinHongMengTi-a049701dbe5f451d82e7c5b78a88d6d4)」格外吃力。你一定听过这种说法：黑色是「收缩色」，白色是「扩张色」。因此黑底白字超粗体说是视觉灾难也毫不过分。
 
-在我玩了半年这游戏后，我偶然得知竟然能在「游戏设置」的一个犄角旮旯里调整字体粗细！？Bro，不在默认情况下给出最佳设置，反而让用户手动调整，我真的在视觉上过于敏感吗？！在选择了「全局细体」后，我的视觉舒适了。
+在我玩了半年这游戏后，我偶然得知竟然能在「游戏设置」的一个犄角旮旯里调整字体粗细！？Bro，不在默认情况下给出最佳设置，反而让用户手动调整，我真的在视觉上过于敏感吗？！在选择了「全局细体」后，终于能轻松阅读界面文本了。
 
 ### 基线、字距和行高
 
 #### 行文中元素的垂直居中
 
-也许你背过所谓「元素垂直居中的 N 种方式」，但应该根据具体情况选择更合适的方式。
+也许你听说过所谓「元素垂直居中的 N 种方式」，但应该根据具体情况选择更合适的方式。比如这里有几种通过「不居中」实现的「居中」：
 
 如果你有一个高度略大的图标混合在行文中，比如 :icon{name="ri:github-fill"}，它想要在视觉上垂直居中，可以通过 `vertical-align: sub` 把图标的基线对齐到父元素的下标基线；如果你有一个更大的图标，可以通过 `vertical-align: text-bottom` 把图标的基线对齐到父元素的字体底部。
 
@@ -71,6 +72,7 @@ tags: [前端, 字体]
 }
 
 .badge-icon {
+    /* `center` 为的不是居中而是拉齐😈 */
     align-self: center;
     height: 100%;
 }
@@ -108,7 +110,7 @@ body {
 }
 ```
 
-你可能注意到刚刚微信公众号的 CSS 考虑到了这些。如果不这样写，长单词会直接撑开元素或者整个网页。那么微信公众号的 CSS 赢了吗？赢了一部分，比如下文还会继续提到 `text-size-adjust: 100%` 的妙用，但 `hyphens: auto` 在中文语言下没有发挥作用，只有网页设置 `<html lang="en">`{lang="html"} 才会生效；另外，字体选择似乎也可以优化下。
+你可能注意到刚刚微信公众号的 CSS 考虑到了这些。如果不这样写，长单词会直接撑开元素或者整个网页。那么微信公众号的 CSS 赢了吗？赢了一部分，比如下文还会继续提到 `text-size-adjust: 100%` 的妙用，但 `hyphens: auto` 在中文语言下没有发挥作用，只有网页设置 `<html lang="en">`{lang="html"} 等西文时才会生效；另外，字体选择似乎也能优化？
 
 ### 平衡换行与两端对齐
 
@@ -116,13 +118,14 @@ body {
 
 ```css
 .text-center {
+    text-align: center;
     text-wrap: balance;
 }
 ```
 
 这样做便可以使换行的字符尽量均匀分布在几行之间，避免突兀的换行。
 
-如果文本更长些或者不居中呢，左对齐时平整的段落右侧会出现参差的负形，这时就可以使用两端对齐：
+如果文本更长些或者不居中呢？左对齐时平整的段落右侧会出现参差的负形，这时就可以使用两端对齐：
 
 ```css
 p {
@@ -149,11 +152,11 @@ p {
 
 其次，便是不同的语言和字形变体：Google Fonts 里常用 `Noto Sans SC`，Adobe Fonts 里有 SC（语言特定）和 CN（地区子集）版本，具体区别可以查阅 [思源黑体版本指南](https://zhuanlan.zhihu.com/p/526734630)。
 
-不管使用何种字体的何种版本，都应在 HTML 标签中注明 lang attribute `<html lang="zh-CN">`{lang="html"}（`zh-Hans` 也可用，但不推荐)，否则 OpenType 字体的 locl 特性会自动选择用户语言对应的字形。许多中文网站都没有做好这一点，比如 DeepSeek 甚至标注了 `<html lang="en">`{lang="html"}。
+不管使用何种字体的何种版本，都应**在 HTML 标签中注明 lang attribute** `<html lang="zh-CN">`{lang="html"}（`zh-Hans` 也可用，但不推荐)，否则 OpenType 字体的 locl 特性会自动选择用户语言对应的字形。许多中文网站都没有做好这一点，比如 DeepSeek 甚至标注了 `<html lang="en">`{lang="html"}。
 
-也许是我对于字形过于敏感了？我向不少使用 Linux 的朋友指出「你浏览器里的字并非简体中文字形」时，他们常常会愣一下，然后注意到字形的细微差异。（要配置 `fontconfig` 呀）
+也许是我对于字形过于敏感了？我向不少使用 Linux 的朋友指出「你浏览器里的字并非简体中文字形」时（要配置 `fontconfig` 呀），他们常常会愣一下，然后才可能注意到字形的细微差异。
 
-### system-ui 与具体字体之争
+### `system-ui` 与具体字体之争
 
 当我们理解字体家族的 fallback 之后，我们可能写出样的代码：
 
@@ -181,7 +184,7 @@ p {
 
 中英文间到底要不要加空格？要不要手动加空格？
 
-我的见解是，中英文之间应当有适当的空白，但空白最好交由排版引擎实现而非手动添加。比如 Word，比如微信聊天界面。
+我的见解是，中英文之间应当有适当的空白，但空白最好**交由排版引擎实现**而非手动添加。比如 Word，比如微信聊天界面。
 
 Chrome 120 实现了 [CSS 文本模块级别 4 中的脚本间距](https://developer.chrome.google.cn/blog/css-i18n-features?hl=zh-cn#inter-script_spacing_text-autospace)，启用 `chrome://flags/#enable-experimental-web-platform-features` 便可在不同脚本（中英文）间自动添加空白。
 
@@ -193,7 +196,7 @@ code, pre {
 }
 ```
 
-Look into my eyes，回答我！！
+Look into my eyes，回答我，Chrome！！
 
 ### 对抗文本溢出算法
 
@@ -201,7 +204,7 @@ Look into my eyes，回答我！！
 >
 > —— [`text-size-adjust` - CSS | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-size-adjust)
 
-我的网站自豪地认为自己响应式布局良好，但移动端浏览器依然会放大文本（平板读博客时字体巨大），甚至会导致预期外的换行（未限制 `width` 的按钮中的文本的最后一个字换到下一行），当时研究出了 `white-space: no-wrap` 能避免，后来才发现是此实验特性在「捣鬼」。上篇文章也提到了类似现象——
+我的网站自豪地认为响应式布局良好，但移动端浏览器依然会放大文本（平板读博客时字体巨大），甚至会导致预期外的换行（未限制 `width` 的按钮中的最后一个字换到下一行），当时研究出了 `white-space: no-wrap` 能避免，后来才发现是此实验特性在「搞鬼」。上篇文章也提到了类似哲学——
 
 ::quote
 #icon
@@ -212,9 +215,7 @@ Look into my eyes，回答我！！
 
 ### 可变字体的轮廓
 
-你也许看过文字描边，低版本是用多个阴影叠加出来的，高版本可以用 `-webkit-text-stroke` 实现。
-
-但它和可变字体，会碰撞出神奇的火花。
+你也许了解文字描边，低版本是用多个阴影叠加出来的，高版本可以用 `-webkit-text-stroke` 实现。但它和可变字体，会碰撞出神奇的火花：
 
 ::div
 ---
@@ -222,18 +223,18 @@ style:
   - font-size: 3em
   - line-height: 1
   - color: transparent
-  - "-webkit-text-stroke": 1px var(--c-text)
+  - -webkit-text-stroke: 1px var(--c-text)
 ---
 中文123
 ::
 
-数字2拐角处独特的轮廓是「[开放角](https://mp.weixin.qq.com/s/bYh3ai4SIYbsLgPzTq9wbA)」，用于在字体参数变化时实现更好的视觉连续性。但这种特性会污染简洁的轮廓，因此需要字体轮廓时不建议使用可变字体，尤其注意安卓手机可能默认使用可变字体。
+数字 2 拐角处独特的轮廓是「[开放角](https://mp.weixin.qq.com/s/bYh3ai4SIYbsLgPzTq9wbA)」，用于在字体参数变化时实现更好的视觉连续性。但这种特性会污染简洁的轮廓，因此需要字体轮廓时不建议使用可变字体，尤其注意一些安卓手机的默认字体可能就是 VF。
 
 ### 字体高级特性
 
-你可能还想问 !== 如何显示为 `!===`、<= 如何显示为 `<=`，这是连字 (ligature) 特性，Iosevka、Fira Code、JetBrains Mono 等编程字体都支持。
+你可能还想问 !== 如何显示为 `!==`、<= 如何显示为 `<=`，这是连字 (ligature) 特性，Iosevka、Fira Code、JetBrains Mono 等编程字体都支持，VS Code 手动启用 `"editor.fontLigatures": true` 后即可看到效果。
 
-或者博客左上角鼠标放上去时，字体粗细和方圆动画如何实现？我使用了阿里妈妈方圆体这款可变字体 (VF, Variable Font)，它除了支持 `wght` (粗细) 轴上的操作外，还支持 `BEVL` (圆角) 轴上的调节。
+再比如，我博客左上角鼠标放在 Logo 上时，字体粗细和方圆变化动画如何实现？我使用了阿里妈妈方圆体这款可变字体 (VF, Variable Font)，它除了支持 `wght` (粗细) 轴上的操作外，还支持 `BEVL` (圆角) 轴上的调节。
 
 ```css wrap
 .header-title {
@@ -261,8 +262,7 @@ style:
 }
 
 .zhilu-header:hover > .splitted-char {
-        animation-play-state: running;
-    }
+    animation-play-state: running;
 }
 ```
 

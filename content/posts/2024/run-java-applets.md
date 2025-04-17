@@ -3,7 +3,7 @@ title: 配置并差点运行不了 Java Applet
 description: 为了完成大学《Java 语言程序设计》课程的实验报告，尝试配置旧版 Java 环境并成功运行 Java Applet，最终认为实际应用价值有限。
 date: 2024-09-26 09:12:42
 updated: 2024-09-27 00:34:28
-image: https://7.isyangs.cn/24/67211d6477610-24.webp
+image: https://7.isyangs.cn/24/680072e950ccf-24.webp
 categories: [经验分享]
 tags: [大学, Java, 问题, 兼容]
 references:
@@ -20,7 +20,7 @@ references:
   - 学校编写的教材使用了大量的非标准写法 `void main()`{lang="c"}，此写法在 2000 年代初逐渐废弃
 - 2024 年春《面向对象与 C++ 程序设计》
   - 课程使用谭浩强的《C++ 程序设计（第4版）》
-  <!-- - 上机实验时老师曾疑惑学生编写的函数中为何使用 `&` 引用传递字符串参数 -->
+<!-- - 上机实验时老师曾疑惑学生编写的函数中为何使用 `&` 引用传递字符串参数 -->
 - 2024 年秋《Java 语言程序设计》
   - 课件中讲述配置2004年发布的 Java 5 SDK 1.5.0 环境
   - 课件介绍2000年代中期被逐渐取代的 Java Applet
@@ -111,30 +111,30 @@ link: https://mirrors.tuna.tsinghua.edu.cn/Adoptium/8/jdk/x64/windows/
 ### 编译 Java Applet
 
 - 编写 Java Applet 代码
-  ```java [FirstApplet.java]
-  import java.applet.*;
-  import java.awt.*;
+```java [FirstApplet.java]
+import java.applet.*;
+import java.awt.*;
 
-  public class FirstApplet extends Applet {
-      public void paint(Graphics g) {
-          g.setColor(Color.blue);
-          // 【代码1】在 Java Applet 中绘制一行文字：“这是一个 Java Applet 程序”
-          g.drawString("这是一个 Java Applet 程序", 50, 50);
-          g.setColor(Color.red);
-          g.setFont(new Font("宋体", Font.BOLD, 36));
-          // 【代码2】在 Java Applet 中绘制一行文字：“我改变了字体”
-          g.drawString("我改变了字体", 50, 100);
-      }
-  }
-  ```
+public class FirstApplet extends Applet {
+    public void paint(Graphics g) {
+        g.setColor(Color.blue);
+        // 【代码1】在 Java Applet 中绘制一行文字：“这是一个 Java Applet 程序”
+        g.drawString("这是一个 Java Applet 程序", 50, 50);
+        g.setColor(Color.red);
+        g.setFont(new Font("宋体", Font.BOLD, 36));
+        // 【代码2】在 Java Applet 中绘制一行文字：“我改变了字体”
+        g.drawString("我改变了字体", 50, 100);
+    }
+}
+```
 - 确认编译环境为 Java 8（`1.8.0_xxx`）
-  :copy{prompt="PS>" code="javac -version"}
+:copy{prompt="PS>" code="javac -version"}
 - 编译为 `.class` 文件
-  :copy{prompt="PS>" code="javac -encoding UTF-8 FirstApplet.java"}
+:copy{prompt="PS>" code="javac -encoding UTF-8 FirstApplet.java"}
 - 编写 HTML 代码
-  ```html [fitst-applet.html]
-  <applet code="FirstApplet.class" width="300" height="300"></applet>
-  ```
+```html [fitst-applet.html]
+<applet code="FirstApplet.class" width="300" height="300"></applet>
+```
 
 ### 运行
 
