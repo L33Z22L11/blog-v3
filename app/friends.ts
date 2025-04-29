@@ -740,5 +740,16 @@ export default [{
         archs: ['Next.js', 'Vercel'],
         date: '2025-04-16',
         comment: '文档型知识库，含AIGC、开发、设计、运营、传媒、工具等内容。',
+    }, {
+        author: 'ZL Asica',
+        title: 'ZLA 小站',
+        desc: '月亮不抱你，星星会落在你怀里✨🌙',
+        link: 'https://zla.pub/',
+        feed: 'https://zla.pub/feed.xml',
+        icon: getGhAvatar('ZL-Asica', { preset: 'icon' }),
+        avatar: getGhAvatar('ZL-Asica'),
+        archs: ['Next.js', 'Vercel'],
+        date: '2025-04-29',
+        comment: '机器学习、前端开发、旅游经历。',
     }],
 }] satisfies FeedGroup[]

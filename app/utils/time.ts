@@ -3,7 +3,7 @@ import { dateLocale } from '~~/blog.config'
 
 export function getIsoDatetime(date?: string | Date) {
     if (!date)
-        return date
+        return date || undefined
 
     if (typeof date === 'string')
         date = new Date(date)

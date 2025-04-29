@@ -79,6 +79,7 @@ export default defineEventHandler(async (e) => {
 
     return builder.build({
         '?xml': { $version: '1.0', $encoding: 'UTF-8' },
+        '?xml-stylesheet': { $type: 'text/xsl', $href: '/assets/atom.xsl' },
         feed,
     })
 })
