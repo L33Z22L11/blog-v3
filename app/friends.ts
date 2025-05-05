@@ -346,6 +346,7 @@ export default [{
         archs: ['Hexo', 'Vercel'],
         date: '2024-02-18',
         comment: '折腾博客。',
+        error: '域名被劫持',
     }, {
         author: '晓空',
         sitenick: '空域',
@@ -751,5 +752,16 @@ export default [{
         archs: ['Next.js', 'Vercel'],
         date: '2025-04-29',
         comment: '机器学习、前端开发、旅游经历。',
+    }, {
+        author: '竹林里有冰',
+        title: '竹林里有冰的博客',
+        desc: '仍然在划水的菜鸡',
+        link: 'https://zhul.in/',
+        feed: 'https://zhul.in/rss.xml',
+        icon: 'https://zhul.in/favicon.ico',
+        avatar: 'https://static.031130.xyz/avatar.webp',
+        archs: ['Hexo', '服务器'],
+        date: '2025-05-03',
+        comment: '前端开发、网络配置、服务器运维及开源工具实战经验。',
     }],
 }] satisfies FeedGroup[]

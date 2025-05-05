@@ -30,7 +30,6 @@ const src = computed(() => {
 
 <template>
     <div :class="videoClass" :style="videoStyle">
-        <!-- BUG: B 站视频区域无法使用滚轮或滑动 -->
         <iframe
             v-if="type"
             :src

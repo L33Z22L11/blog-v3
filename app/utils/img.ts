@@ -6,19 +6,20 @@ const services = {
 
 export type ImgService = keyof typeof services | boolean
 
-export function getGhAvatar(name?: string, options?: Record<string, any>) {
+export function getGhAvatar(name = '', options: Record<string, any> = { size: 92 }) {
     if (!name)
         return ''
-    if (!options)
-        options = { size: 92 }
     if (options.preset === 'icon')
-        Object.assign(options, { size: 32, mask: 'circle' })
-    let url = `https://wsrv.nl/?url=github.com/${name}.png`
+        options = { ...options, size: 32, mask: 'circle' }
+
+    const params = new URLSearchParams()
+    params.set('url', `github.com/${name}.png`)
     if (options.size)
-        url += `%3fsize=${options.size}`
+        params.set('url', `${params.get('url')}?size=${options.size}`)
     if (options.mask)
-        url += `&mask=${options.mask}`
-    return url
+        params.set('mask', options.mask)
+
+    return `https://wsrv.nl/?${params.toString()}`
 }
 
 export function getImgUrl(src?: string, service?: ImgService) {
