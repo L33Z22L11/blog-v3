@@ -763,5 +763,15 @@ export default [{
         archs: ['Hexo', '服务器'],
         date: '2025-05-03',
         comment: '前端开发、网络配置、服务器运维及开源工具实战经验。',
+    }, {
+        author: 'BiuXin’s Blog',
+        desc: '人生的每一天，都在学习当中',
+        link: 'https://zhilu.biuxin.com/',
+        feed: 'https://zhilu.biuxin.com/atom.xml',
+        icon: 'https://serv.200038.xyz/2024/09/19/040857.webp',
+        avatar: 'https://serv.200038.xyz/2024/09/19/040857.webp',
+        archs: ['Nuxt', '国内 CDN'],
+        date: '2025-05-09',
+        comment: '软件工具资源，博客部署美化。',
     }],
 }] satisfies FeedGroup[]

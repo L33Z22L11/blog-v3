@@ -62,6 +62,8 @@ recommend: true
   "editor.minimap.showSlider": "always",
   // 缩略图自适应宽度
   "editor.minimap.size": "fit",
+  // 最后一空行淡化行号
+  "editor.renderFinalNewline": "dimmed",
   // 编辑器平滑滚动动画
   "editor.smoothScrolling": true,
   // 终端平滑滚动动画
