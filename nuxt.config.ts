@@ -8,6 +8,13 @@ export default defineNuxtConfig({
             htmlAttrs: {
                 lang: blogConfig.language,
             },
+            meta: [
+                { name: 'author', content: [blogConfig.author.name, blogConfig.author.email].filter(Boolean).join(', ') },
+                // 此处为元数据的生成器标识，不建议修改
+                { 'name': 'generator', 'content': 'blog-v3', 'data-github-repo': 'https://github.com/L33Z22L11/blog-v3' },
+                { name: 'mobile-web-app-capable', content: 'yes' },
+                { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
+            ],
             link: [
                 { rel: 'icon', href: blogConfig.favicon },
                 { rel: 'alternate', type: 'application/atom+xml', href: '/atom.xml' },
@@ -25,11 +32,6 @@ export default defineNuxtConfig({
                 // { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap', media: 'none', onload: 'this.media="all"' },
 
                 // { rel: 'stylesheet', href: 'https://gcore.jsdelivr.net/npm/nerdfonts-web/nf.min.css' },
-            ],
-            meta: [
-                { name: 'author', content: `${blogConfig.author.name} <${blogConfig.author.email}>` },
-                // 此处为元数据的生成器标识，不建议修改
-                { 'name': 'generator', 'content': 'blog-v3', 'data-github-repo': 'https://github.com/L33Z22L11/blog-v3' },
             ],
             templateParams: {
                 separator: '|',
