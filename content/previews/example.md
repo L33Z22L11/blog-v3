@@ -60,11 +60,11 @@ class: gradient-card active
 还会根据域名展示图标，例如 [微软文档](https://learn.microsoft.com/zh-cn/)、[GitHub](https://github.com/)、[Bilibili](https://www.bilibili.com/)、[QQ 官网](https://im.qq.com/)、[微信公众号](https://mp.weixin.qq.com/) 等。
 
 :::alert{title="自定义图标"}
-::render-with-raw
-```mdc wrap
-你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="ph:swatches-duotone"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
-```
-::
+  ::render-with-raw
+  ```mdc wrap
+  你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="ph:swatches-duotone"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
+  ```
+  ::
 :::
 
 ##### 为更多站点匹配图标
@@ -541,6 +541,20 @@ id: BV1Yr421p7rW
 ::
 ```
 :::
+
+:::render-with-raw
+```mdc
+::video-embed
+---
+type: raw
+id: https://sf16-sg.tiktokcdn.com/obj/eden-sg/ha_lm_lswvlw/ljhwZthlaukjlkulzlp/portal/reunion/61872647867123yhdajskf.mp4
+poster: https://lf-package-cn.feishucdn.com/obj/atsx-throne/hire-fe-prod/portal/i18n/static/image/video-poster.d9fdf4be.jpeg
+---
+::
+```
+:::
+
+
 
 #### ZhiluHeader
 
