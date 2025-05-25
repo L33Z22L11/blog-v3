@@ -46,3 +46,11 @@ export function getCategoryIcon(category?: string) {
     const appConfig = useAppConfig()
     return appConfig.article.categories[category!]?.icon ?? 'ph:folder-bold'
 }
+
+export function getPostTypeClassName(type?: string, options?: { prefix?: string, extraClass?: string }) {
+    const {
+        prefix = 'text',
+        extraClass = '',
+    } = options ?? {}
+    return `${prefix}-${type} ${extraClass}`
+}

@@ -50,7 +50,7 @@ const { copy, copied } = useCopy(shareText)
                 </span>
             </div>
         </div>
-        <h1 class="post-title" :class="{ 'text-story text-center': type === 'story' }">
+        <h1 class="post-title" :class="getPostTypeClassName(type, { extraClass: 'text-center' })">
             {{ title }}
         </h1>
     </div>

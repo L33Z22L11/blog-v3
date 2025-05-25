@@ -16,7 +16,7 @@ const categoryIcon = getCategoryIcon(categoryLabel)
     <ZRawLink class="article-card card">
         <NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" />
         <article>
-            <h2 class="article-title" :class="{ 'text-story': type === 'story' }">
+            <h2 class="article-title" :class="getPostTypeClassName(type)">
                 {{ title }}
             </h2>
             <p v-if="description" class="article-descrption">

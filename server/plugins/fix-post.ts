@@ -10,7 +10,8 @@ function fixDate(date?: string | Date) {
     if (typeof date === 'string')
         date = new Date(date)
 
-    return new Date(date.getTime() - timezoneOffset)
+    // YAML Front Matter 中的日期为空时，MDC 插件会自动为下一行格式化出缩进，导致日期变为其他对象
+    return new Date(date.getTime?.() - timezoneOffset)
 }
 
 export default defineNitroPlugin((nitroApp) => {

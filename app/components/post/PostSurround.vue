@@ -12,20 +12,22 @@ const { data: surrounds } = await useAsyncData(`surround-${route.path}`, () => q
 const [prev = null, next = null] = surrounds.value ?? []
 
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
-    // TODO: defineOptions({ inheritAttrs: false })
     post: ArticleProps | null
     icon: string
     fallbackIcon: string
     fallbackText: string
-}>()
+    alignRight?: boolean
+}>({
+    inheritAttrs: false,
+})
 </script>
 
 <template>
-    <DefineTemplate v-slot="{ post, icon, fallbackIcon, fallbackText }">
-        <ZRawLink :to="post?._path" class="surround-link">
+    <DefineTemplate v-slot="{ post, icon, fallbackIcon, fallbackText, alignRight }">
+        <ZRawLink :to="post?._path" class="surround-link" :align-right>
             <Icon :name="post ? icon : fallbackIcon" />
-            <div>
-                <strong class="title" :class="{ 'text-story': post?.type === 'story' }">
+            <div class="surround-text">
+                <strong class="title" :class="getPostTypeClassName(post?.type)">
                     {{ post?.title || fallbackText }}
                 </strong>
                 <time v-if="post" :datetime="getIsoDatetime(post.date)">{{ getPostDate(post.date) }}</time>
@@ -41,6 +43,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
         <ReuseTemplate
             :post="prev" class="align-right" icon="solar:rewind-forward-bold-duotone"
             fallback-icon="solar:reel-bold-duotone" fallback-text="已抵达博客尽头"
+            align-right
         />
     </div>
 </template>
@@ -57,37 +60,43 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
     display: flex;
     align-items: center;
     gap: 0.5em;
-    transition: all 0.2s;
+    transition: color 0.2s;
 
     &:not([href]) {
-        color: var(--c-text-3);
+        opacity: 0.4;
         user-select: none;
+    }
 
-        > .iconify {
-            opacity: 0.8;
+    &[align-right] {
+        direction: rtl;
+    }
+
+    > .surround-text {
+        transition: transform 0.2s;
+
+        >time {
+            display: block;
+            opacity: 0.6;
+            font-size: 0.8rem;
         }
-    }
-
-    time {
-        display: block;
-        opacity: 0.6;
-        font-size: 0.8rem;
-    }
-
-    &.align-right {
-        flex-direction: row-reverse;
-        text-align: right;
     }
 
     > .iconify {
         opacity: 0.5;
         font-size: 2rem;
-        transition: all 0.2s;
+        transition: transform 0.2s;
     }
 
     &[href]:hover {
-        gap: 0;
         color: var(--c-primary);
+
+        > .surround-text {
+            transform: translateX(-1em);
+        }
+
+        &[align-right] > .surround-text {
+            transform: translateX(1em);
+        }
 
         > .iconify {
             opacity: 0.2;
