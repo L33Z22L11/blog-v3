@@ -50,7 +50,7 @@ const { copy, copied } = useCopy(shareText)
                 </span>
             </div>
         </div>
-        <h1 class="post-title" :class="getPostTypeClassName(type, { extraClass: 'text-center' })">
+        <h1 class="post-title" :class="getPostTypeClassName(type)">
             {{ title }}
         </h1>
     </div>
@@ -92,6 +92,10 @@ const { copy, copied } = useCopy(shareText)
 
         .post-title {
             background-image: linear-gradient(transparent, #0003, #0005);
+
+            &.text-story {
+                text-align: center;
+            }
         }
 
         &.text-revert {
