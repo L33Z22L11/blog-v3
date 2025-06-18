@@ -14,7 +14,7 @@
 - [纸鹿摸鱼处 @L33Z22L11](https://blog.zhilu.cyou/) · [开发经历](https://blog.zhilu.cyou/2024/blog-using-nuxt)
 - [希乐博客 @Xlenco](https://blog.xlenco.top/)
 - [SteinsNote @Labmem-00](https://blog.labmem.chat/) · [迁移经历](https://blog.labmem.chat/2024/beforeeverything)
-- [月空人 @Whbbit1999](https://whbbit.cn/) · [迁移评价](https://whbbit.cn/2025/why-migrate-to-nuxt)
+- [月空人 @Whbbit1999](https://whbbit.cn/) · [迁移评价](https://whbbit.cn/posts/2025/why-migrate-to-nuxt)
 - [地球驿站 @mugzx](https://blog.mugzx.top/) · [迁移记录](https://blog.mugzx.top/)
 - [喵落阁 @Kemeow815](https://blog-v3.kemeow.top/)
 - [梦爱吃鱼 @JLinmr](https://blog.ruom.top/)
