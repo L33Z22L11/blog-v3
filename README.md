@@ -9,6 +9,9 @@
 
 我的第三代个人博客，于 2024 年 8 月 11 日上线。
 
+> [!TIP]
+> 使用需要具备一定的前端**项目基础**。如果你不确定代码是否有问题，可以加入 QQ 群 `169994096` 讨论（也欢迎闲聊），我很乐意在空闲时解答问题。
+
 ## 使用本主题的博客
 
 - [纸鹿摸鱼处 @L33Z22L11](https://blog.zhilu.cyou/) · [开发经历](https://blog.zhilu.cyou/2024/blog-using-nuxt)
@@ -19,7 +22,9 @@
 - [喵落阁 @Kemeow815](https://blog-v3.kemeow.top/)
 - [梦爱吃鱼 @JLinmr](https://blog.ruom.top/)
 - [Mikuの极光星 @PaloMiku](https://blog.sotkg.com/)
-- [BiuXin-s Blog](https://zhilu.biuxin.com/)
+- [BiuXin-s Blog @damizai](https://zhilu.biuxin.com/)
+<!-- - [液泡部落格 @VacuolePaoo](https://blog.vacuole.top/) -->
+- [ChinyuanTai @Kindle-deep](https://blog.knlde.top/)
 
 ## 特性
 
@@ -131,10 +136,6 @@ pnpm preview
 ## 贡献
 
 欢迎参与项目：如果有具体问题或功能建议，可以发起 Issue；如果愿意在已确定的方向上增加功能或修复问题，可以提交 Pull Request。
-
-### 使用答疑
-
-使用需要具备一定的前端**项目基础**。如果你不确定代码是否有问题，可以加入 QQ 群 `169994096` 讨论（也欢迎闲聊），我很乐意在空闲时解答问题。
 
 ## 许可证
 
