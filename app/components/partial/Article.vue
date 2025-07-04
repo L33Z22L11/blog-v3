@@ -43,14 +43,14 @@ const categoryIcon = getCategoryIcon(categoryLabel)
                 <span
                     v-if="categoryLabel"
                     class="article-category"
-                    :style="{ '--cg-color': categoryColor }"
+                    :style="{ '--cg-color': categoryInfo?.color }"
                 >
-                    <Icon :name="categoryIcon" />
+                    <!-- <Icon :name="categoryInfo?.icon" /> -->
                     {{ categoryLabel }}
                 </span>
                 <span v-if="readingTime?.words" class="article-words">
                     <Icon name="ph:paragraph-bold" />
-                    {{ formatNumber(readingTime.words) }}字
+                    {{ formatNumber(readingTime?.words) }}字
                 </span>
             </div>
         </article>

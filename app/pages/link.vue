@@ -7,8 +7,9 @@ const appConfig = useAppConfig()
 const layoutStore = useLayoutStore()
 layoutStore.setAside([])
 
-useSeoMeta({
-    title: '友链',
+const { data: postLink } = await useAsyncData('/link', () => queryCollection('content').path('/link').first())
+postLink.value && useSeoMeta({
+    title: postLink.value.title,
     ogType: 'profile',
     description: `${appConfig.title}的友链页面，收集了添加他为友链的网站和他订阅的网站列表。`,
 })
@@ -20,8 +21,6 @@ const copyFields = {
     网址: myFeed.link,
     头像: myFeed.avatar,
 }
-
-const { data: postLink } = await useAsyncData('/link', () => queryContent('/link').findOne())
 </script>
 
 <template>
@@ -62,7 +61,7 @@ const { data: postLink } = await useAsyncData('/link', () => queryContent('/link
             </div>
         </template>
         <template #tab2>
-            <ContentRendererMarkdown
+            <ContentRenderer
                 v-if="postLink"
                 :value="postLink"
                 class="article"

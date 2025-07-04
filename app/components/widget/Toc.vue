@@ -8,7 +8,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 // 若 watch route.path，SSG 下文章间路由时新文章数据会写入老文章键中
 const { data: post } = await useAsyncData(
     route.path,
-    () => queryContent(route.path).findOne(),
+    () => queryCollection('content').path(route.path).first(),
 )
 
 const toc = computed(() => post.value?.body?.toc)
@@ -32,8 +32,9 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
                     'active': entry.id === activeTocItem,
                 }"
             >
-                <!-- 使用 <a> 确保键盘焦点切换 -->
-                <a :href="`#${entry?.id}`" :title="entry.text">{{ entry.text }}</a>
+                <ZRawLink :to="`#${entry?.id}`" :title="entry.text">
+                    {{ entry.text }}
+                </ZRawLink>
                 <ReuseTemplate v-if="entry.children" :toc-item="entry.children" />
             </li>
         </ol>
@@ -42,12 +43,12 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
     <h3 class="widget-title">
         <span class="title">文章目录</span>
         <!-- use <a> for anchor -->
-        <a href="#main-content" aria-label="返回开头">
+        <ZRawLink to="#main-content" aria-label="返回开头">
             <Icon name="ph:arrow-circle-up-bold" />
-        </a>
-        <a href="#twikoo" aria-label="评论区">
+        </ZRawLink>
+        <ZRawLink to="#twikoo" aria-label="评论区">
             <Icon name="ph:chat-circle-text-bold" />
-        </a>
+        </ZRawLink>
     </h3>
     <div class="widget-body">
         <ReuseTemplate v-if="toc?.links.length" :toc-item="toc.links" />

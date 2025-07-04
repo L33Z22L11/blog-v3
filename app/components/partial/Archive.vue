@@ -7,7 +7,7 @@ const props = defineProps<{
     useUpdated?: boolean
 } & ArticleProps>()
 
-const mainDate = computed(() => (props.useUpdated ? props.updated : props.date))
+const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 const dateLabel = computed(() => mainDate.value
     ? format(new Date(mainDate.value), 'MM-dd')
     : '')

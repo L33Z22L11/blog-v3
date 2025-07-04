@@ -9,9 +9,10 @@ layoutStore.setAside(['blog-log'])
 
 const { data: listRaw } = await useAsyncData(
     'preview_list',
-    () => queryContent('previews')
-        .only(['_path', 'categories', 'image', 'date', 'description', 'readingTime', 'title', 'updated'])
-        .find(),
+    () => queryCollection('content')
+        .where('stem', 'LIKE', 'previews/%')
+        .select('categories', 'date', 'description', 'image', 'path', 'readingTime', 'title', 'updated')
+        .all(),
     { default: () => [] },
 )
 
@@ -39,9 +40,9 @@ const { category, categories, listCategorized } = useCategory(listSorted)
         <menu>
             <ZArticle
                 v-for="article in listCategorized"
-                :key="article._path"
+                :key="article.path"
                 v-bind="article"
-                :to="article._path"
+                :to="article.path"
                 :use-updated="sortOrder === 'updated'"
             />
         </menu>

@@ -1,3 +1,4 @@
+import type { FileAfterParseHook } from '@nuxt/content'
 import process from 'node:process'
 import blogConfig, { routeRules } from './blog.config'
 
@@ -95,11 +96,11 @@ export default defineNuxtConfig({
     },
 
     modules: [
+        '@nuxtjs/seo', // before @nuxt/content
         '@nuxt/content',
         '@nuxt/icon',
         '@nuxt/image',
         '@nuxtjs/color-mode',
-        '@nuxtjs/seo',
         '@pinia/nuxt',
         '@vueuse/nuxt',
         '@zinkawaii/nuxt-shiki',
@@ -112,19 +113,30 @@ export default defineNuxtConfig({
     },
 
     content: {
-        experimental: {
-            search: {},
-        },
-        highlight: {
-            langs: blogConfig.shiki.langs,
-            theme: {
-                default: blogConfig.shiki.defaultTheme,
-                dark: blogConfig.shiki.darkTheme,
+        build: {
+            markdown: {
+                highlight: {
+                    langs: blogConfig.shiki.langs,
+                    theme: {
+                        default: blogConfig.shiki.defaultTheme,
+                        dark: blogConfig.shiki.darkTheme,
+                    },
+                },
+                remarkPlugins: { 'remark-reading-time': {} },
+                toc: { depth: 4, searchDepth: 4 },
             },
         },
-        markdown: {
-            remarkPlugins: ['remark-reading-time'],
-            toc: { depth: 4, searchDepth: 4 },
+    },
+
+    hooks: {
+        'content:file:afterParse': (ctx) => {
+            // 在 URL 中隐藏指定目录的路径
+            for (const prefix of blogConfig.hideContentPrefixes) {
+                if (ctx.content.path?.startsWith?.(prefix)) {
+                    ctx.content.original_dir = prefix
+                    ctx.content.path = ctx.content.path.replace?.(prefix, '')
+                }
+            }
         },
     },
 
@@ -142,6 +154,7 @@ export default defineNuxtConfig({
     },
 
     robots: {
+        disableNuxtContentIntegration: true,
         disallow: blogConfig.robotsNotIndex,
     },
 

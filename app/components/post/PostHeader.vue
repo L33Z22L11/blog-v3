@@ -13,7 +13,7 @@ const categoryIcon = getCategoryIcon(categoryLabel)
 
 const shareText = `【${appConfig.title}】${props.title}\n\n${
     props.description ? `${props.description}\n\n` : ''}${
-    new URL(props._path!, appConfig.url).href}`
+    new URL(props.path!, appConfig.url).href}`
 
 const { copy, copied } = useCopy(shareText)
 </script>

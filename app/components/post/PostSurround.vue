@@ -3,11 +3,9 @@ import type ArticleProps from '~/types/article'
 
 const route = useRoute()
 
-const { data: surrounds } = await useAsyncData(`surround-${route.path}`, () => queryContent()
-    .only(['_path', 'date', 'title', 'type'])
-    .sort({ date: 1 })
-    .where({ _original_dir: { $eq: '/posts' } })
-    .findSurround(route.path))
+const { data: surrounds } = await useAsyncData(`surround-${route.path}`, () =>
+    queryCollectionItemSurroundings('content', route.path, { fields: ['date', 'title'] })
+        .order('date', 'ASC'))
 
 const [prev = null, next = null] = surrounds.value ?? []
 
@@ -24,7 +22,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 
 <template>
     <DefineTemplate v-slot="{ post, icon, fallbackIcon, fallbackText, alignRight }">
-        <ZRawLink :to="post?._path" class="surround-link" :align-right>
+        <ZRawLink :to="post?.path" class="surround-link" :align-right>
             <Icon :name="post ? icon : fallbackIcon" />
             <div class="surround-text">
                 <strong class="title" :class="getPostTypeClassName(post?.type)">
@@ -35,7 +33,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
         </ZRawLink>
     </DefineTemplate>
 
-    <div v-if="prev || next" class="surround-post">
+    <div v-if="prev || next || true" class="surround-post">
         <ReuseTemplate
             :post="next" icon="solar:rewind-back-bold-duotone"
             fallback-icon="solar:document-add-bold-duotone" fallback-text="新故事即将发生"

@@ -1,5 +1,3 @@
-import { serverQueryContent } from '#content/server'
-
 interface StatsEntry {
     posts: number
     words: number
@@ -19,7 +17,7 @@ export default defineEventHandler(async (event) => {
         tags: <string[]>[],
     }
 
-    const posts = await serverQueryContent(event).find()
+    const posts = await queryCollection(event, 'content').all()
 
     const findOrCreateCategory = (
         name: string,
@@ -35,7 +33,7 @@ export default defineEventHandler(async (event) => {
 
     for (const post of posts) {
         stats.total.posts++
-        stats.total.words += post.readingTime.words
+        stats.total.words += post.readingTime?.words || 0
 
         if (!post.date)
             continue
@@ -46,7 +44,7 @@ export default defineEventHandler(async (event) => {
         }
 
         stats.annual[year].posts++
-        stats.annual[year].words += post.readingTime.words
+        stats.annual[year].words += post.readingTime?.words
 
         const categories = post.categories || []
         let currentLevel = stats.categories

@@ -21,9 +21,9 @@ definePageMeta({
     <TransitionGroup name="float-in">
         <ZArticle
             v-for="article, index in list"
-            :key="article._path"
+            :key="article.path"
             v-bind="article"
-            :to="article._path"
+            :to="article.path"
             :use-updated="sortOrder === 'updated'"
             :style="{ '--delay': `${index * 0.05}s` }"
         />

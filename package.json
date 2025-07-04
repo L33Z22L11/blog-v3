@@ -27,8 +27,9 @@
     "vue-tippy": "^6.7.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.11.0",
-    "@nuxt/content": "^2.13.4",
+    "@antfu/eslint-config": "^4.10.2",
+    "@iconify-json/ph": "^1.2.2",
+    "@nuxt/content": "^3.4.0",
     "@nuxt/icon": "^1.11.0",
     "@nuxt/image": "^1.10.0",
     "@nuxtjs/color-mode": "^3.5.2",
@@ -41,7 +42,7 @@
     "@zinkawaii/stylelint-config": "^0.3.0",
     "cross-env": "^7.0.3",
     "eslint": "^9.23.0",
-    "nuxt": "~3.13.2",
+    "nuxt": "^3.16.1",
     "remark-reading-time": "^2.0.1",
     "sass": "^1.86.0",
     "shiki": "^2.5.0",
@@ -57,11 +58,7 @@
       "vue-tippy": "patches/vue-tippy.patch"
     },
     "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "better-sqlite3",
-      "esbuild",
-      "sharp",
-      "vue-demi"
+      "better-sqlite3"
     ]
   }
 }

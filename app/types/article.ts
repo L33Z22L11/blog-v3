@@ -5,7 +5,9 @@ const _appConfig = useAppConfig()
 export type ArticleOrderType = keyof typeof _appConfig.article.order
 
 export default interface ArticleProps extends Partial<{
-    _path: string
+    path: string
+    readingTime: ReadTimeResults
+
     title: string
     description: string
     link: string
@@ -18,7 +20,6 @@ export default interface ArticleProps extends Partial<{
     image: string
     cover_revert: boolean
     hideInfo: boolean
-    recommend: number | boolean
+    recommend: number
     references: { title: string, link: string }[]
-    readingTime: ReadTimeResults
 }> { }
