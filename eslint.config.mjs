@@ -4,6 +4,7 @@ export default antfu({
     stylistic: {
         indent: 4,
     },
+    pnpm: true,
     rules: {
         'jsonc/indent': ['error', 2],
         'vue/block-lang': ['warn', {

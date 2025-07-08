@@ -1,0 +1,47 @@
+shamefullyHoist: true
+
+catalog:
+  "@antfu/eslint-config": ^4.16.2
+  "@iconify-json/ph": ^1.2.2
+  "@nuxt/content": ^3.6.3
+  "@nuxt/icon": ^1.15.0
+  "@nuxt/image": ^1.10.0
+  "@nuxtjs/color-mode": ^3.5.2
+  "@nuxtjs/seo": ^3.1.0
+  "@pinia/nuxt": ~0.11.1
+  "@vueuse/core": ^13.5.0
+  "@vueuse/nuxt": ^13.5.0
+  "@vueuse/router": ^13.5.0
+  "@zinkawaii/nuxt-shiki": ^0.9.0
+  "@zinkawaii/stylelint-config": ^0.3.2
+  cross-env: ^7.0.3
+  date-fns: ^4.1.0
+  date-fns-tz: ^3.2.0
+  embla-carousel-autoplay: ^8.6.0
+  embla-carousel-vue: ^8.6.0
+  embla-carousel-wheel-gestures: ^8.0.2
+  eslint: ^9.30.1
+  fast-xml-parser: ^5.2.5
+  nuxt: ^3.17.6
+  parse-domain: ^8.2.2
+  plain-shiki: ^0.3.0
+  radash: ^12.1.1
+  remark-reading-time: ^2.0.2
+  sass: ^1.89.2
+  shiki: ^3.7.0
+  stylelint: ^16.21.1
+  terser: ^5.43.1
+  typescript: ^5.8.3
+  vue: ^3.5.17
+  vue-router: ^4.5.1
+  vue-tippy: ^6.7.1
+
+overrides:
+  debug: 4.4.0
+
+onlyBuiltDependencies:
+  - better-sqlite3
+
+patchedDependencies:
+  "@vue/shared": patches/@vue__shared.patch
+  vue-tippy: patches/vue-tippy.patch

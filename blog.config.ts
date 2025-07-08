@@ -138,7 +138,7 @@ export function postprecessContent(ctx: FileAfterParseHook) {
 
     // 修复文章分类
     if (!ctx.content.categories) {
-        ctx.content.categories = blogConfig.defaultCategorie
+        ctx.content.categories = blogConfig.defaultCategory
     }
     console.log(ctx.content)
 }

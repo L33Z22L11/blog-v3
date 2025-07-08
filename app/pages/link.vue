@@ -79,9 +79,9 @@ const copyFields = {
 <style lang="scss" scoped>
 .link-reminder {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
     gap: 0.8rem 2rem;
     margin: 1rem;
     padding: 0.8rem 1rem;
@@ -101,9 +101,9 @@ const copyFields = {
         display: flex;
         flex-basis: 10em;
         flex-grow: 1;
+        flex-wrap: wrap;
         justify-content: end;
         gap: 0.2em 1rem;
-        flex-wrap: wrap;
     }
 }
 

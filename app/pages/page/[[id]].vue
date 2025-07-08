@@ -9,7 +9,7 @@ defineProps<{
 
 definePageMeta({
     // 放在 page.vue 中会出问题
-    alias: ['/'],
+    alias: '/',
 })
 
 // 使用 VueUse 的 useRouteParams 时，会直接跳转到顶部

@@ -146,9 +146,9 @@ const { copy, copied } = useCopy(shareText)
 
     .post-info {
         display: flex;
+        flex-wrap: wrap;
         gap: 0.5em 1.2em;
         column-gap: clamp(1em, 3%, 1.5em);
-        flex-wrap: wrap;
     }
 }
 </style>

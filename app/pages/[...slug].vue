@@ -11,6 +11,8 @@ const { data: post } = await useAsyncData(
 
 const excerpt = computed(() => post.value?.description || '')
 
+console.log(post.value)
+
 if (post.value) {
     useSeoMeta({
         title: post.value.title,

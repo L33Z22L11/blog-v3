@@ -43,9 +43,9 @@ const categoryIcon = getCategoryIcon(categoryLabel)
                 <span
                     v-if="categoryLabel"
                     class="article-category"
-                    :style="{ '--cg-color': categoryInfo?.color }"
+                    :style="{ '--cg-color': categoryColor }"
                 >
-                    <!-- <Icon :name="categoryInfo?.icon" /> -->
+                    <Icon :name="categoryIcon" />
                     {{ categoryLabel }}
                 </span>
                 <span v-if="readingTime?.words" class="article-words">
@@ -75,9 +75,9 @@ const categoryIcon = getCategoryIcon(categoryLabel)
 
 .article-info {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5em clamp(1em, 5%, 1.5em);
     font-size: 0.8em;
-    flex-wrap: wrap;
     color: var(--c-text-2);
 
     &:empty {

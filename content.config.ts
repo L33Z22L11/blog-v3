@@ -14,7 +14,12 @@ export const collections = {
             type: z.enum(['tech', 'story']).optional(),
             image: z.string().optional(),
             recommend: z.number().optional(),
-            readingTime: z.any().optional(),
+            readingTime: z.object({
+                text: z.string(),
+                minutes: z.number(),
+                time: z.number(),
+                words: z.number(),
+            }).optional(),
         }),
     }),
 }

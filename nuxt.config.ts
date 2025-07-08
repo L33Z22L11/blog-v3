@@ -60,7 +60,6 @@ export default defineNuxtConfig({
     ],
 
     // https://github.com/nuxt/devtools/issues/761
-    // 修了多久了，还整天内存泄漏
     devtools: {
         enabled: false,
     },
