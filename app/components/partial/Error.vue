@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { BundledLanguage } from 'shiki'
 
-const props = withDefaults(defineProps<{
+withDefaults(defineProps<{
     icon?: string
     title?: string
     message?: string
@@ -10,11 +10,6 @@ const props = withDefaults(defineProps<{
 }>(), {
     icon: 'solar:siren-rounded-bold-duotone',
     language: 'log',
-})
-
-const codeHighlighted = await useShikiHighlighted(() => props.code, {
-    lang: props.language,
-    unwrap: true,
 })
 </script>
 
@@ -27,11 +22,10 @@ const codeHighlighted = await useShikiHighlighted(() => props.code, {
         <ProsePre
             v-if="code"
             :filename="message"
-            :language="language"
+            :language
+            :code
             meta="wrap"
-        >
-            <span v-html="codeHighlighted" />
-        </ProsePre>
+        />
 
         <slot />
     </div>

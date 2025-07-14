@@ -57,16 +57,6 @@ const blogConfig = {
         { 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
     ],
 
-    // 用于 Shiki、Plain Shiki 引入代码高亮
-    // 同时用于显示代码块语言对应的 Iconify Catppuccin 图标
-    shiki: {
-        bundledLangs: <BundledLanguage[]>['bat', 'log', 'sh', 'powershell'],
-        langs: <BundledLanguage[]>['bat', 'c', 'cpp', 'css', 'diff', 'html', 'ini', 'java', 'js', 'json', 'log', 'makefile', 'matlab', 'md', 'mdc', 'powershell', 'python', 'sh', 'sql', 'ssh-config', 'toml', 'ts', 'tsx', 'vb', 'vue', 'xml', 'yaml'],
-        themes: <BundledTheme[]>['catppuccin-latte', 'one-dark-pro'],
-        defaultTheme: <BundledTheme>'catppuccin-latte',
-        darkTheme: <BundledTheme>'one-dark-pro',
-    },
-
     // 用于 Twikoo 评论系统
     twikoo: {
         js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.40/dist/twikoo.all.min.js',

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import MiniSearch from 'minisearch'
+
 const props = defineProps<{
     isOpening?: boolean
 }>()
@@ -14,24 +16,23 @@ watch(() => props.isOpening, async (isOpen) => {
 })
 
 // TODO: 随机展示热门搜索词
-const { word, result } = storeToRefs(searchStore)
+const { word } = storeToRefs(searchStore)
 const activeIndex = ref(0)
 const listResult = useTemplateRef('list-result')
 
-const { data, execute: execSearch, status } = useLazyAsyncData(
-    word.value,
-    () => searchContent(word.value),
-    { immediate: false, transform: data => data.value },
-)
+const { data, status } = await useAsyncData('search', () => queryCollectionSearchSections('content'))
 
-watchDebounced(word, () => {
-    activeIndex.value = 0
-    word.value && execSearch()
-}, { debounce: 300 })
-
-watch(() => data.value, (newData) => {
-    result.value = newData as any
+const miniSearch = new MiniSearch({
+    fields: ['title', 'content'],
+    storeFields: ['title', 'content'],
+    searchOptions: {
+        prefix: true,
+        fuzzy: 0.2,
+    },
 })
+
+miniSearch.addAll(toValue(data.value))
+const result = computed(() => miniSearch.search(toValue(word)))
 
 watch(activeIndex, (newVal, oldVal) => {
     if (!result.value?.length)

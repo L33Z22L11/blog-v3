@@ -8,6 +8,7 @@ const props = withDefaults(defineProps<{
     class?: string
 }>(), {
     code: '',
+    language: 'plaintext',
     highlights: () => [],
 })
 
@@ -38,8 +39,19 @@ const icon = computed(() => meta.value.icon || getFileIcon(props.filename) || ge
 const isWrap = ref(meta.value.wrap)
 
 const codeblock = useTemplateRef('codeblock')
-
 const { copy, copied } = useCopy(codeblock)
+
+const shikiStore = useShikiStore()
+const highlightedHtml = ref(escapeHtml(props.code))
+
+onMounted(async () => {
+    const shiki = await shikiStore.load()
+    await shikiStore.loadLang(props.language)
+    highlightedHtml.value = shiki.codeToHtml(props.code.trimEnd(), {
+        ...shikiStore.options,
+        lang: props.language,
+    })
+})
 </script>
 
 <template>
@@ -71,9 +83,11 @@ const { copy, copied } = useCopy(codeblock)
         <!-- 嘿嘿，不要换行 -->
         <pre
             ref="codeblock"
-            class="scrollcheck-x"
+            class="shiki scrollcheck-x"
             :class="[props.class, { wrap: isWrap }]"
-        ><slot /></pre>
+            v-html="highlightedHtml"
+        />
+
         <button
             v-if="collapsible"
             class="toggle-btn"
@@ -196,7 +210,7 @@ pre {
 
 :deep(.line) {
     &::before {
-        content: attr(line);
+        content: attr(data-line);
         position: absolute;
         left: 0;
         width: var(--left-offset);

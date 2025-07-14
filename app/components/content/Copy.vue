@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { MountPlainShikiOptions } from 'plain-shiki'
+import type { BundledLanguage } from 'shiki'
 import { createPlainShiki } from 'plain-shiki'
 
 const props = withDefaults(defineProps<{
-    /* noprompt?: boolean */
     prompt?: string | boolean
     code?: string
     lang?: string
@@ -12,11 +12,12 @@ const props = withDefaults(defineProps<{
 })
 
 // prompt 传入空字符串会变成 true
-const showPrompt = computed(() => /* !props.noprompt && */ props.prompt as unknown !== true)
+const showPrompt = computed(() => props.prompt as unknown !== true)
 const language = computed(() => props.lang ?? getPromptLanguage(props.prompt))
 
 const showUndo = ref(false)
 const codeInput = useTemplateRef('code-input')
+const shikiStore = useShikiStore()
 
 const { copy, copied } = useCopy(codeInput)
 
@@ -41,9 +42,13 @@ function onInput(event: InputEvent) {
 }
 
 onMounted(async () => {
-    const shiki = await getShikiHighlighter()
-    const shikiOptions = await resolveShikiOptions({ lang: language.value })
-    createPlainShiki(shiki).mount(codeInput.value!, shikiOptions as MountPlainShikiOptions)
+    const shiki = await shikiStore.load()
+
+    await shikiStore.loadLang(language.value)
+    createPlainShiki(shiki).mount(codeInput.value!, {
+        ...shikiStore.options,
+        lang: language.value as BundledLanguage,
+    })
 })
 </script>
 

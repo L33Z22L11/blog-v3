@@ -1,11 +1,9 @@
-import type { SearchResult } from 'minisearch'
 import { LazyPopoverSearch } from '#components'
 
 export const useSearchStore = defineStore('search', () => {
     const layoutStore = useLayoutStore()
     const popoverStore = usePopoverStore()
     const word = ref('')
-    const result = ref<SearchResult[]>([])
 
     useEventListener('keydown', (event: KeyboardEvent) => {
         if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
@@ -22,6 +20,5 @@ export const useSearchStore = defineStore('search', () => {
 
     return {
         word,
-        result,
     }
 })

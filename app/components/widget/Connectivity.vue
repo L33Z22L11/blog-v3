@@ -1,5 +1,10 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
+const seasonalBg = computed(
+    () => appConfig.seasonal.widgetBackground
+        ? `url(${appConfig.seasonal.widgetBackground})`
+        : undefined,
+)
 </script>
 
 <template>
@@ -9,7 +14,7 @@ const appConfig = useAppConfig()
     <div
         class="widget-card seasonal"
         :style="{
-            '--seasonal-bg': `url(${appConfig.seasonal.widgetBackground})`,
+            '--seasonal-bg': seasonalBg,
             '--seasonal-emoji': appConfig.seasonal.emoji,
         }"
     >
@@ -36,7 +41,7 @@ const appConfig = useAppConfig()
         opacity: 0.2;
         inset: 0;
         background: center / cover;
-        background-image: var(--seasonal-bg, "https://wsrv.nl/?url=i0.hdslb.com/bfs/archive/abf1bb4412360550a18e5f2e71b1227e7d949735.png@320w");
+        background-image: var(--seasonal-bg);
         z-index: -1;
     }
 }

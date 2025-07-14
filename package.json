@@ -21,10 +21,12 @@
     "embla-carousel-vue": "catalog:",
     "embla-carousel-wheel-gestures": "catalog:",
     "fast-xml-parser": "catalog:",
+    "minisearch": "catalog:",
     "parse-domain": "catalog:",
     "plain-shiki": "catalog:",
     "radash": "catalog:",
-    "vue-tippy": "catalog:"
+    "vue-tippy": "catalog:",
+    "vue-virtual-scroller": "catalog:"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:",
@@ -38,7 +40,6 @@
     "@vueuse/core": "catalog:",
     "@vueuse/nuxt": "catalog:",
     "@vueuse/router": "catalog:",
-    "@zinkawaii/nuxt-shiki": "catalog:",
     "@zinkawaii/stylelint-config": "catalog:",
     "cross-env": "catalog:",
     "eslint": "catalog:",

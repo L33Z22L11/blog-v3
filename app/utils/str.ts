@@ -31,9 +31,20 @@ export function getPromptLanguage(prompt: string | boolean) {
     return 'plaintext'
 }
 
+export function escapeHtml(text: string) {
+    const map: Record<string, string> = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        '\'': '&#039;',
+    }
+    return text.replace(/[&<>"']/g, match => map[match] || match)
+}
+
 export function highlightHtml(text: string, word: string, className: string = 'highlight') {
     const pattern = new RegExp(word, 'gi')
-    const highlightedText = text
+    const highlightedText = escapeHtml(text)
         .replace(pattern, matched => `<span class="${className}">${matched}</span>`)
         .replace(/\n+/g, '<br>')
     return highlightedText

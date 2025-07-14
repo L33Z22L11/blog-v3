@@ -85,7 +85,6 @@ export default defineNuxtConfig({
             preprocessorOptions: {
                 scss: {
                     additionalData: '@use "@/assets/css/_variable.scss" as *;',
-                    api: 'modern-compiler',
                 },
             },
         },
@@ -102,7 +101,6 @@ export default defineNuxtConfig({
         '@nuxtjs/color-mode',
         '@pinia/nuxt',
         '@vueuse/nuxt',
-        '@zinkawaii/nuxt-shiki',
     ],
 
     colorMode: {
@@ -114,17 +112,12 @@ export default defineNuxtConfig({
     content: {
         build: {
             markdown: {
-                highlight: {
-                    langs: blogConfig.shiki.langs,
-                    theme: {
-                        default: blogConfig.shiki.defaultTheme,
-                        dark: blogConfig.shiki.darkTheme,
-                    },
-                },
+                highlight: false,
                 remarkPlugins: { 'remark-reading-time': {} },
                 toc: { depth: 4, searchDepth: 4 },
             },
         },
+        experimental: { nativeSqlite: true },
     },
 
     hooks: {
@@ -155,16 +148,6 @@ export default defineNuxtConfig({
     robots: {
         disableNuxtContentIntegration: true,
         disallow: blogConfig.robotsNotIndex,
-    },
-
-    shiki: {
-        bundledLangs: blogConfig.shiki.bundledLangs,
-        bundledThemes: blogConfig.shiki.themes,
-        defaultLang: 'log',
-        defaultTheme: {
-            light: blogConfig.shiki.defaultTheme,
-            dark: blogConfig.shiki.darkTheme,
-        },
     },
 
     site: {
