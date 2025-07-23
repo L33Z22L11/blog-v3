@@ -1,9 +1,9 @@
 {
   "name": "zhilu-blog",
   "type": "module",
-  "version": "3.2.2",
+  "version": "3.3.0",
   "private": true,
-  "packageManager": "pnpm@10.12.4",
+  "packageManager": "pnpm@10.13.1",
   "scripts": {
     "prepare": "nuxt prepare",
     "dev": "nuxt dev --no-qr",

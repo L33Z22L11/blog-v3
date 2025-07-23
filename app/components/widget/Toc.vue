@@ -7,7 +7,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 // 如果此处出问题，还会影响到文章获取
 // 若 watch route.path，SSG 下文章间路由时新文章数据会写入老文章键中
 const { data: post } = await useAsyncData(
-    route.path,
+    () => `toc-${route.path}`,
     () => queryCollection('content').path(route.path).first(),
 )
 
@@ -40,26 +40,27 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
         </ol>
     </DefineTemplate>
 
-    <h3 class="widget-title">
-        <span class="title">文章目录</span>
-        <!-- use <a> for anchor -->
-        <ZRawLink to="#main-content" aria-label="返回开头">
-            <Icon name="ph:arrow-circle-up-bold" />
-        </ZRawLink>
-        <ZRawLink to="#twikoo" aria-label="评论区">
-            <Icon name="ph:chat-circle-text-bold" />
-        </ZRawLink>
-    </h3>
-    <div class="widget-body">
+    <ZWidget content-class="widget-body">
+        <template #title>
+            <span class="title">文章目录</span>
+            <!-- use <a> for anchor -->
+            <ZRawLink to="#main-content" aria-label="返回开头">
+                <Icon name="ph:arrow-circle-up-bold" />
+            </ZRawLink>
+            <ZRawLink to="#twikoo" aria-label="评论区">
+                <Icon name="ph:chat-circle-text-bold" />
+            </ZRawLink>
+        </template>
+
         <ReuseTemplate v-if="toc?.links.length" :toc-item="toc.links" />
         <p v-else class="no-toc">
             暂无目录信息
         </p>
-    </div>
+    </ZWidget>
 </template>
 
 <style lang="scss" scoped>
-.widget-body {
+:deep(.widget-body) {
     position: relative;
 
     &::before {
@@ -111,6 +112,10 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
             }
         }
     }
+}
+
+.title {
+    flex-grow: 1;
 }
 
 .no-toc {

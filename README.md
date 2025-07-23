@@ -7,6 +7,9 @@
 ![代码风格](https://img.shields.io/badge/代码风格-ESLint-4B32C3?logo=ESLint)
 ![代码风格](https://img.shields.io/badge/代码风格-Stylelint-263238?logo=Stylelint)
 
+> [!WARNING]
+> 2025 年 7-8 月，项目正在迁移至 Nuxt 4 和 Nuxt Content 3，可能存在功能问题且代码变更频繁，请谨慎合并更新。
+
 我的第三代个人博客，于 2024 年 8 月 11 日上线。
 
 > [!TIP]

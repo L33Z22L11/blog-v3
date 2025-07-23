@@ -10,15 +10,7 @@ useSeoMeta({
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-stats', 'connectivity'])
 
-const { data: listRaw } = await useAsyncData(
-    'posts_index',
-    () => queryCollection('content')
-        .where('stem', 'LIKE', 'posts/%')
-        .select('categories', 'date', 'description', 'image', 'path', 'readingTime', 'recommend', 'title', 'updated')
-        .all(),
-    { default: () => [] },
-)
-
+const { data: listRaw } = await usePostsIndex()
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted, { bindQuery: 'category' })
 const { page, totalPages, listPaged } = usePagination(listCategorized, { bindParam: 'id' })
@@ -41,7 +33,7 @@ const listRecommended = computed(() => sort(
         <!-- 若不包裹，display: none 在 JS 加载后才有足够优先级 -->
         <ZhiluHeader to="/" />
     </div>
-    <PostSlide v-if="listRecommended?.length && page === 1 && !category" :list="listRecommended" />
+    <PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
     <div class="post-list">
         <div class="toolbar">
             <div>

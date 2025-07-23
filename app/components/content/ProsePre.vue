@@ -8,7 +8,6 @@ const props = withDefaults(defineProps<{
     class?: string
 }>(), {
     code: '',
-    language: 'plaintext',
     highlights: () => [],
 })
 
@@ -46,10 +45,10 @@ const highlightedHtml = ref(escapeHtml(props.code))
 
 onMounted(async () => {
     const shiki = await shikiStore.load()
-    await shikiStore.loadLang(props.language)
+    await shikiStore.loadLang(props.language || 'text')
     highlightedHtml.value = shiki.codeToHtml(props.code.trimEnd(), {
         ...shikiStore.options,
-        lang: props.language,
+        lang: props.language || 'text',
     })
 })
 </script>
@@ -82,9 +81,10 @@ onMounted(async () => {
 
         <!-- 嘿嘿，不要换行 -->
         <pre
+            v-if="language"
             ref="codeblock"
-            class="shiki scrollcheck-x"
-            :class="[props.class, { wrap: isWrap }]"
+            class="scrollcheck-x"
+            :class="[props.class, { wrap: isWrap, shiki: language }]"
             v-html="highlightedHtml"
         />
 
@@ -118,7 +118,7 @@ onMounted(async () => {
         pre {
             overflow: hidden;
             max-height: var(--collapsible-height);
-            mask: linear-gradient(to top, transparent 2rem, #fff 4rem);
+            mask: linear-gradient(to top, transparent 2rem, #FFF 4rem);
             animation: none;
         }
 
@@ -194,10 +194,6 @@ pre {
 
     &.wrap {
         white-space: pre-wrap;
-
-        :deep(.line) {
-            display: block;
-        }
     }
 
     // 指定语言
@@ -227,6 +223,15 @@ pre {
 
         outline: 0.2em solid var(--ld-bg-active);
         background-color: var(--ld-bg-active);
+    }
+
+    > .space:is(:first-child, :last-child),
+    > :not(.space) + .space:has(+ .space),
+    > .space + .space {
+        background-image: radial-gradient(var(--c-bg-soft) 50%, transparent 50%);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 0.3em 0.3em;
     }
 }
 

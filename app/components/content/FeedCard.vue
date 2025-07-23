@@ -25,7 +25,9 @@ const domainIcon = computed(() => getDomainIcon(props.link))
             <div class="site-content">
                 <NuxtImg class="site-icon" :src="icon" :alt="title ?? sitenick ?? author" />
                 <div class="site-info">
-                    <h3>{{ title ?? sitenick ?? author }}</h3>
+                    <h3 class="text-creative">
+                        {{ title ?? sitenick ?? author }}
+                    </h3>
                     <code class="domain" :title="getDomainType(mainDomain)">
                         <span>{{ getDomain(link) }}</span>
                         <Icon v-if="domainIcon" class="domain-mark" :name="domainIcon" />
@@ -57,7 +59,7 @@ const domainIcon = computed(() => getDomainIcon(props.link))
     width: fit-content;
     margin: 1rem auto;
     padding: 0.5rem;
-    line-height: initial;
+    line-height: normal;
     animation: float-in 0.2s var(--delay) backwards;
 
     &:hover {

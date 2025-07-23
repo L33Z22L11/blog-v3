@@ -6,6 +6,17 @@ interface UseCategoryOptions {
     bindQuery?: string | false
 }
 
+export function usePostsIndex() {
+    return useAsyncData(
+        'posts_index',
+        () => queryCollection('content')
+            .where('stem', 'LIKE', 'posts/%')
+            .select('categories', 'date', 'description', 'image', 'path', 'readingTime', 'recommend', 'title', 'type', 'updated')
+            .all(),
+        { default: () => [] },
+    )
+}
+
 export function useCategory(list: MaybeRefOrGetter<ArticleProps[]>, options?: UseCategoryOptions) {
     // BUG: 首次访问时无法绑定分类到查询参数
     const { bindQuery } = options ?? {}
@@ -47,13 +58,13 @@ export function getCategoryIcon(category?: string) {
     return appConfig.article.categories[category!]?.icon ?? 'ph:folder-bold'
 }
 
-export function getPostTypeClassName(type?: string, options?: { prefix?: string }) {
+export function getPostTypeClassName(type?: string, options = {
+    prefix: 'text',
+}) {
     if (!type)
         type = 'tech'
 
-    const {
-        prefix = 'text',
-    } = options ?? {}
+    const { prefix } = options
 
     return `${prefix}-${type}`
 }

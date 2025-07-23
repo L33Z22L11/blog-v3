@@ -29,7 +29,7 @@ details {
 
     &[open] {
         summary {
-            font-weight: var(--font-weight-bold);
+            font-weight: bold;
             color: currentcolor;
 
             &::before {

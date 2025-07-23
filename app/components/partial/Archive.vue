@@ -20,7 +20,7 @@ const auxDateLabel = computed(() => props.date
     <li class="article-item">
         <time :datetime="getLocaleDatetime(mainDate)" :title="getLocaleDatetime(mainDate)">{{ dateLabel }}</time>
         <ZRawLink class="article-link gradient-card" :to :title="description">
-            <span class="article-title" :class="getPostTypeClassName(type)">
+            <span class="article-title">
                 {{ title }}
             </span>
             <time v-if="useUpdated && isTimeDiffSignificant(date, updated)" class="aux-date" :datetime="getLocaleDatetime(date)" :title="getLocaleDatetime(date)">

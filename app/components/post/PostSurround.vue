@@ -5,7 +5,7 @@ const route = useRoute()
 
 const { data: surrounds } = await useAsyncData(
     `surround-${route.path}`,
-    () => queryCollectionItemSurroundings('content', route.path, { fields: ['date', 'title'] })
+    () => queryCollectionItemSurroundings('content', route.path, { fields: ['date', 'title', 'type'] })
         .order('date', 'ASC')
         .where('stem', 'LIKE', `posts/%`),
 )
@@ -36,13 +36,13 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
         </ZRawLink>
     </DefineTemplate>
 
-    <div v-if="prev || next || true" class="surround-post">
+    <div v-if="prev || next" class="surround-post">
         <ReuseTemplate
             :post="next" icon="solar:rewind-back-bold-duotone"
             fallback-icon="solar:document-add-bold-duotone" fallback-text="新故事即将发生"
         />
         <ReuseTemplate
-            :post="prev" class="align-right" icon="solar:rewind-forward-bold-duotone"
+            :post="prev" icon="solar:rewind-forward-bold-duotone"
             fallback-icon="solar:reel-bold-duotone" fallback-text="已抵达博客尽头"
             align-right
         />

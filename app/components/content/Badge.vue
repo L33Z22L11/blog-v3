@@ -46,16 +46,16 @@ const tip = computed(() => {
 .badge {
     display: inline-flex;
     align-items: baseline;
-    height: 1.6em;
-    border: 1px solid var(--c-border);
+    height: 1.5em;
     border-radius: 4px;
+    outline: 1px solid var(--c-border);
     background-color: var(--c-bg-2);
     font-size: 0.875em;
-    line-height: 1.6;
+    line-height: 1.5;
     transition: color 0.2s;
 
     @supports (color: color-mix(in srgb, transparent, transparent)) {
-        border-color: color-mix(in srgb, currentcolor 10%, transparent);
+        outline-color: color-mix(in srgb, currentcolor 15%, transparent);
         background-color: color-mix(in srgb, currentcolor 5%, transparent);
         color: color-mix(in srgb, currentcolor 80%, transparent);
     }

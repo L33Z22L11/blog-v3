@@ -11,8 +11,6 @@ const { data: post } = await useAsyncData(
 
 const excerpt = computed(() => post.value?.description || '')
 
-console.log(post.value)
-
 if (post.value) {
     useSeoMeta({
         title: post.value.title,
@@ -20,7 +18,7 @@ if (post.value) {
         ogImage: post.value.image,
         description: post.value.description,
     })
-    layoutStore.setAside(post.value.meta?.aside as string[])
+    layoutStore.setAside(post.value.meta?.aside as WidgetName[])
 }
 else {
     // // BUG: 部分文章在 Vercel 上以 404 状态码呈现，在 Linux SSG 模式下展示异常
@@ -36,7 +34,6 @@ else {
         <PostHeader v-bind="post" />
         <PostExcerpt v-if="excerpt" :excerpt />
         <ContentRenderer
-            v-if="post"
             class="article"
             :class="getPostTypeClassName(post?.type, { prefix: 'md' })"
             :value="post"
@@ -47,6 +44,7 @@ else {
         <PostSurround />
         <PostComment :key="route.path" />
     </template>
+
     <ZError
         v-else
         icon="solar:confounded-square-bold-duotone"

@@ -43,7 +43,7 @@ const appConfig = useAppConfig()
     gap: 0.5em;
     position: relative;
     margin: clamp(1rem, 2rem, 5vh) 1rem min(1rem, 5vh);
-    line-height: initial;
+    line-height: normal;
     color: var(--c-text);
     user-select: none;
 }

@@ -106,6 +106,7 @@ blockquote {
 
 .entry-title {
     font-size: 1.2em;
+    color: initial;
 }
 
 .entry-meta {

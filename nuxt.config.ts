@@ -1,4 +1,3 @@
-import type { FileAfterParseHook } from '@nuxt/content'
 import process from 'node:process'
 import blogConfig, { routeRules } from './blog.config'
 
@@ -7,7 +6,8 @@ export default defineNuxtConfig({
     app: {
         head: {
             htmlAttrs: {
-                lang: blogConfig.language,
+                'lang': blogConfig.language,
+                'data-lang': blogConfig.language,
             },
             meta: [
                 { name: 'author', content: [blogConfig.author.name, blogConfig.author.email].filter(Boolean).join(', ') },
@@ -20,19 +20,9 @@ export default defineNuxtConfig({
                 { rel: 'icon', href: blogConfig.favicon },
                 { rel: 'alternate', type: 'application/atom+xml', href: '/atom.xml' },
                 { rel: 'preconnect', href: blogConfig.twikoo.preload },
-
-                { rel: 'preconnect', href: 'https://cdn-font.hyperos.mi.com' },
-                // 浏览器渲染中文 VF 字重有问题
-                { rel: 'stylesheet', href: 'https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap', media: 'none', onload: 'this.media="all"' },
-                // https://cdn-font.hyperos.mi.com/font/css?family=MiSans:100,200,300,400,450,500,600,650,700,900:Chinese_Simplify,Latin&display=swap
-
-                { rel: 'preconnect', href: 'https://fonts.googleapis.cn' },
+                // 思源黑体 "Noto Sans SC", 思源宋体 "Noto Serif SC", "JetBrains Mono"
                 { rel: 'preconnect', href: 'https://fonts.gstatic.cn', crossorigin: '' },
-                { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap', media: 'none', onload: 'this.media="all"' },
-                // Fira Code 没有斜体
-                // { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=Fira+Code:wght@300..700&family=Noto+Serif+SC:wght@200..900&display=swap', media: 'none', onload: 'this.media="all"' },
-
-                // { rel: 'stylesheet', href: 'https://gcore.jsdelivr.net/npm/nerdfonts-web/nf.min.css' },
+                { rel: 'stylesheet', href: 'https://fonts.googleapis.cn/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Sans+SC:wght@100..900&family=Noto+Serif+SC:wght@200..900&display=swap' },
             ],
             templateParams: {
                 separator: '|',
@@ -68,10 +58,6 @@ export default defineNuxtConfig({
         inlineStyles: false,
     },
 
-    future: {
-        compatibilityVersion: 4,
-    },
-
     routeRules,
 
     runtimeConfig: {
@@ -93,12 +79,13 @@ export default defineNuxtConfig({
         },
     },
 
+    // @keep-sorted
     modules: [
-        '@nuxtjs/seo', // before @nuxt/content
         '@nuxt/content',
         '@nuxt/icon',
         '@nuxt/image',
         '@nuxtjs/color-mode',
+        '@nuxtjs/seo',
         '@pinia/nuxt',
         '@vueuse/nuxt',
     ],

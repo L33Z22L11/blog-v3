@@ -12,16 +12,13 @@ const blogLog = [
 </script>
 
 <template>
-    <h3 class="widget-title">
-        更新日志
-    </h3>
-    <!-- TODO: 优化时间线样式 -->
-    <div class="widget-card">
+    <ZWidget card title="更新日志">
+        <!-- TODO: 优化时间线样式 -->
         <ul>
             <li v-for="(item, index) in blogLog" :key="index">
                 <small>{{ item.date }}</small><br>
                 {{ item.content }}
             </li>
         </ul>
-    </div>
+    </ZWidget>
 </template>

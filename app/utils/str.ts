@@ -23,12 +23,12 @@ export function formatNumber(num?: number) {
 
 export function getPromptLanguage(prompt: string | boolean) {
     if (typeof prompt === 'boolean')
-        return 'plaintext'
+        return 'text'
     for (const promptPrefix in promptLanguageMap) {
         if (prompt.startsWith(promptPrefix))
-            return promptLanguageMap[promptPrefix] ?? 'plaintext'
+            return promptLanguageMap[promptPrefix] ?? 'text'
     }
-    return 'plaintext'
+    return 'text'
 }
 
 export function escapeHtml(text: string) {

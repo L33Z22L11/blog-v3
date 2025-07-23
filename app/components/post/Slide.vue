@@ -25,8 +25,8 @@ useEventListener(emblaRef, 'wheel', (e) => {
 
 <template>
     <div class="z-slide">
-        <div class="z-slide-title">
-            <span class="title">精选文章</span>
+        <div class="z-slide-header">
+            <span class="title text-creative">精选文章</span>
             <div class="at-slide-hover">
                 <Icon name="ph:mouse-simple-bold" />
                 按住 Shift 横向滚动
@@ -43,7 +43,9 @@ useEventListener(emblaRef, 'wheel', (e) => {
                 >
                     <NuxtImg class="cover" :src="article.image" :alt="article.title" />
                     <div class="info">
-                        <div>{{ article.title }}</div>
+                        <div class="title text-creative">
+                            {{ article.title }}
+                        </div>
                         <div class="desc">
                             {{ getPostDate(article.date) }}
                         </div>
@@ -80,21 +82,21 @@ useEventListener(emblaRef, 'wheel', (e) => {
     transition: opacity 0.2s;
 }
 
-.z-slide-title {
+.z-slide-header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
     overflow: hidden;
     height: 3rem;
     margin-bottom: -0.2rem;
-    mask: linear-gradient(#fff, transparent);
+    mask: linear-gradient(#FFF, transparent);
     color: var(--c-text-3);
-    flex-wrap: wrap;
 
-    .title {
+    >.title {
         font-size: 3rem;
-        font-weight: var(--font-weight-bold);
+        font-weight: bold;
         line-height: 1;
     }
 }
@@ -106,7 +108,7 @@ useEventListener(emblaRef, 'wheel', (e) => {
     align-items: center;
     position: relative;
     overflow: hidden;
-    mask: linear-gradient(to right, transparent, #fff var(--fadeout-width), #fff calc(100% - var(--fadeout-width)), transparent);
+    mask: linear-gradient(to right, transparent, #FFF var(--fadeout-width), #FFF calc(100% - var(--fadeout-width)), transparent);
     cursor: grab;
     user-select: none;
 }
@@ -116,6 +118,7 @@ useEventListener(emblaRef, 'wheel', (e) => {
     padding: 0.5em 0.2em;
     font-size: 1.5em;
     transition: all 0.2s;
+
     &.prev { left: 1rem; }
     &.next { right: 1rem; }
 }
@@ -124,7 +127,7 @@ useEventListener(emblaRef, 'wheel', (e) => {
     display: flex;
     scroll-snap-type: x mandatory;
 
-    .slide-item {
+    > .slide-item {
         flex-shrink: 0;
         position: relative;
         overflow: hidden;
@@ -136,14 +139,14 @@ useEventListener(emblaRef, 'wheel', (e) => {
         scroll-snap-align: center;
         scroll-snap-stop: always;
 
-        .cover {
+        > .cover {
             display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .info {
+        > .info {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -157,7 +160,11 @@ useEventListener(emblaRef, 'wheel', (e) => {
             color: white;
             transition: opacity 0.2s;
 
-            .desc {
+            > .title {
+                text-wrap: balance;
+            }
+
+            > .desc {
                 opacity: 0.5;
                 font-size: 0.8em;
             }

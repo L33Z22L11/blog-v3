@@ -10,7 +10,7 @@ const appConfig = useAppConfig()
 <template>
     <div class="post-footer">
         <section v-if="references" class="reference">
-            <div id="references" class="title">
+            <div id="references" class="title text-creative">
                 参考链接
             </div>
             <div class="content">
@@ -27,7 +27,7 @@ const appConfig = useAppConfig()
             </div>
         </section>
         <section class="license">
-            <div class="title">
+            <div class="title text-creative">
                 许可协议
             </div>
             <div class="content">
@@ -59,7 +59,7 @@ section {
 }
 
 .title {
-    font-weight: var(--font-weight-medium);
+    font-weight: bold;
     color: var(--c-text);
 }
 

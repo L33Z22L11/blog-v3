@@ -33,16 +33,14 @@ onMounted(async () => {
 </script>
 
 <template>
-    <h3 class="widget-title">
-        博客统计
-    </h3>
-
-    <ul class="widget-card">
-        <li v-for="(item, index) in blogStats" :key="index" :title="item.tip">
-            <small>{{ item.label }}</small><br>
-            <span data-allow-mismatch>{{ item.content }}</span>
-        </li>
-    </ul>
+    <ZWidget card title="博客统计">
+        <ul>
+            <li v-for="(item, index) in blogStats" :key="index" :title="item.tip">
+                <small>{{ item.label }}</small><br>
+                <span data-allow-mismatch>{{ item.content }}</span>
+            </li>
+        </ul>
+    </ZWidget>
 </template>
 
 <style lang="scss" scoped>

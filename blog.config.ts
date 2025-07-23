@@ -1,6 +1,5 @@
 import type { FileAfterParseHook } from '@nuxt/content'
 import type { NitroConfig } from 'nitropack'
-import type { BundledLanguage, BundledTheme } from 'shiki'
 import type { FeedEntry } from '~/types/feed'
 import { getTimezoneOffset } from 'date-fns-tz'
 import redirectList from './redirects.json'
@@ -26,7 +25,7 @@ const blogConfig = {
         url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
     },
     favicon: 'https://www.zhilu.cyou/api/icon.png',
-    language: 'zh-Hans',
+    language: 'zh-CN',
     qqGroup: '169994096',
     timeEstablished: '2019-07-19',
     timezone: 'Asia/Shanghai',

@@ -8,11 +8,11 @@ defineProps<{
 </script>
 
 <template>
-    <h2 class="feed-label">
+    <h2 class="feed-label text-creative">
         {{ label }}
     </h2>
     <section v-for="group in feeds" :key="group.name" class="feed-group">
-        <h3 class="feed-title">
+        <h3 class="feed-title text-creative">
             {{ group.name }}
         </h3>
         <p class="feed-desc">
@@ -48,7 +48,8 @@ defineProps<{
     top: 0;
     margin-bottom: -0.3em;
     mask: linear-gradient(#fff 50%, transparent);
-    font: 800 5rem/1 var(--font-stroke-free);
+    font-size: 5em;
+    line-height: 1;
     text-align: center;
     color: transparent;
     transition: color 0.2s;

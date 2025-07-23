@@ -45,7 +45,7 @@
 // PURE CSS MAGIC!
 .scrollcheck-x, .scrollcheck-y {
     scrollbar-width: thin;
-    
+
     &::-webkit-scrollbar {
         width: 6px;
         height: 6px;
@@ -73,20 +73,20 @@
 @keyframes scrollcheck-x {
     0% {
         mask:
-            linear-gradient(to right, #fff calc(100% - var(--fadeout-width)), transparent),
-            linear-gradient(to top, #fff var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
+            linear-gradient(to right, #FFF calc(100% - var(--fadeout-width)), transparent),
+            linear-gradient(to top, #FFF var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
     }
 
     0.01%, 99.99% {
         mask:
-            linear-gradient(to right, #fff var(--left-offset), transparent var(--left-offset), #fff calc(var(--left-offset) + var(--fadeout-width)), #fff calc(100% - var(--fadeout-width)), transparent),
-            linear-gradient(to top, #fff var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
+            linear-gradient(to right, #FFF var(--left-offset), transparent var(--left-offset), #FFF calc(var(--left-offset) + var(--fadeout-width)), #FFF calc(100% - var(--fadeout-width)), transparent),
+            linear-gradient(to top, #FFF var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
     }
 
     100% {
         mask:
-            linear-gradient(to right, #fff var(--left-offset), transparent var(--left-offset), #fff calc(var(--left-offset) + var(--fadeout-width))),
-            linear-gradient(to top, #fff var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
+            linear-gradient(to right, #FFF var(--left-offset), transparent var(--left-offset), #FFF calc(var(--left-offset) + var(--fadeout-width))),
+            linear-gradient(to top, #FFF var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
     }
 }
 
@@ -104,20 +104,20 @@
 @keyframes scrollcheck-y {
     0% {
         mask:
-            linear-gradient(to bottom, #fff calc(100% - var(--fadeout-height)), transparent),
-            linear-gradient(to left, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+            linear-gradient(to bottom, #FFF calc(100% - var(--fadeout-height)), transparent),
+            linear-gradient(to left, #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
     }
 
     0.01%, 99.99% {
         mask:
-            linear-gradient(to bottom, #fff var(--top-offset), transparent var(--top-offset), #fff calc(var(--top-offset) + var(--fadeout-height)), #fff calc(100% - var(--fadeout-height)), transparent),
-            linear-gradient(to left, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+            linear-gradient(to bottom, #FFF var(--top-offset), transparent var(--top-offset), #FFF calc(var(--top-offset) + var(--fadeout-height)), #FFF calc(100% - var(--fadeout-height)), transparent),
+            linear-gradient(to left, #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
     }
 
     100% {
         mask:
-            linear-gradient(to bottom, #fff var(--top-offset), transparent var(--top-offset), #fff calc(var(--top-offset) + var(--fadeout-height))),
-            linear-gradient(to left, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+            linear-gradient(to bottom, #FFF var(--top-offset), transparent var(--top-offset), #FFF calc(var(--top-offset) + var(--fadeout-height))),
+            linear-gradient(to left, #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
     }
 }
 
@@ -158,8 +158,12 @@ mark {
     text-align: center;
 }
 
+.text-creative, .text-tech {
+    font-family: var(--font-creative);
+    font-weight: 550;
+}
+
 .text-story {
-    font-family: serif;
     font-family: var(--font-serif);
 }
 

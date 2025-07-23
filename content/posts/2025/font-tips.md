@@ -215,20 +215,20 @@ Look into my eyes，回答我，Chrome！！
 
 ### 可变字体的轮廓
 
-你也许了解文字描边，低版本是用多个阴影叠加出来的，高版本可以用 `-webkit-text-stroke` 实现。但它和可变字体，会碰撞出神奇的火花：
+你也许了解文字描边，低版本是用多个阴影叠加出来的，高版本可以用 `-webkit-text-stroke` 实现。但它和可变字体，会碰撞出神奇的火花，比如字体连接处的轮廓——
 
 ::div
 ---
 style:
-  - font-size: 3em
-  - line-height: 1
-  - color: transparent
-  - -webkit-text-stroke: 1px var(--c-text)
+    - font-size: 3em
+    - line-height: 1
+    - color: transparent
+    - -webkit-text-stroke: 1px var(--c-text)
 ---
-中文123
+中文1234
 ::
 
-数字 2 拐角处独特的轮廓是「[开放角](https://mp.weixin.qq.com/s/bYh3ai4SIYbsLgPzTq9wbA)」，用于在字体参数变化时实现更好的视觉连续性。但这种特性会污染简洁的轮廓，因此需要字体轮廓时不建议使用可变字体，尤其注意一些安卓手机的默认字体可能就是 VF。
+字体拐角处独特的轮廓是「[开放角](https://mp.weixin.qq.com/s/bYh3ai4SIYbsLgPzTq9wbA)」，用于在字体参数变化时实现更好的视觉连续性。但这种特性会污染简洁的轮廓，因此需要字体轮廓时不建议使用可变字体，尤其注意一些安卓手机的默认字体可能就是 VF。
 
 ### 字体高级特性
 

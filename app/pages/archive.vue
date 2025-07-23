@@ -11,15 +11,7 @@ const birthYear = appConfig.stats.birthYear
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-stats', 'blog-log'])
 
-const { data: listRaw } = await useAsyncData(
-    'posts_index',
-    () => queryCollection('content')
-        .where('stem', 'LIKE', 'posts/%')
-        .select('categories', 'date', 'description', 'image', 'path', 'readingTime', 'recommend', 'title', 'updated')
-        .all(),
-    { default: () => [] },
-)
-
+const { data: listRaw } = await usePostsIndex()
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted)
 
@@ -54,7 +46,7 @@ const yearlyWordCount = computed(() => {
             :key="year"
             class="archive-group"
         >
-            <div class="archive-title">
+            <div class="archive-title text-creative">
                 <h2 class="archive-year">
                     {{ year }}
                 </h2>
@@ -117,7 +109,9 @@ const yearlyWordCount = computed(() => {
     > .archive-year, .archive-age {
         margin-bottom: -0.3em;
         mask: linear-gradient(#fff 50%, transparent);
-        font: 800 3em/1 var(--font-stroke-free);
+        font-size: 3em;
+        font-weight: 800;
+        line-height: 1;
         z-index: -1;
         -webkit-text-stroke: 1px var(--c-text-3);
     }

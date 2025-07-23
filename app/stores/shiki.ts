@@ -1,19 +1,18 @@
 import type { BundledLanguage, CodeToHastOptions, HighlighterCore } from 'shiki'
-import { transformerRemoveLineBreak, transformerRenderWhitespace } from '@shikijs/transformers'
+import { transformerRenderWhitespace } from '@shikijs/transformers'
 
 let promise: Promise<HighlighterCore>
 let shiki: HighlighterCore
 
 export const useShikiStore = defineStore('shiki', () => {
     const options: CodeToHastOptions<BundledLanguage, any> = {
-        lang: 'plaintext',
+        lang: 'text',
         themes: {
             light: 'catppuccin-latte',
             dark: 'one-dark-pro',
         },
         transformers: [
             transformerRenderWhitespace(),
-            // transformerRemoveLineBreak(),
             {
                 root: hast => ({
                     type: 'root',

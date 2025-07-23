@@ -32,9 +32,9 @@ const appConfig = useAppConfig()
 
     .footer-nav {
         display: flex;
+        flex-wrap: wrap;
         gap: 5vw clamp(2rem, 5%, 5vw);
         padding-block: 3rem;
-        flex-wrap: wrap;
 
         h3 {
             margin: 0.5em;

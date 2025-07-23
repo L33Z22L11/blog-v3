@@ -1,22 +1,20 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
-const seasonalBg = computed(
-    () => appConfig.seasonal.widgetBackground
+
+const contentStyle = computed(() => ({
+    '--seasonal-bg': appConfig.seasonal.widgetBackground
         ? `url(${appConfig.seasonal.widgetBackground})`
         : undefined,
-)
+    '--seasonal-emoji': appConfig.seasonal.emoji,
+}))
 </script>
 
 <template>
-    <h3 class="widget-title">
-        可访问性
-    </h3>
-    <div
-        class="widget-card seasonal"
-        :style="{
-            '--seasonal-bg': seasonalBg,
-            '--seasonal-emoji': appConfig.seasonal.emoji,
-        }"
+    <ZWidget
+        card
+        title="可访问性"
+        content-class="seasonal"
+        :style="contentStyle"
     >
         <!-- TODO: 优化技术架构展示 -->
         <p>域名启用 DNSSEC 和 HSTS，续费至2030年8月，托管于 Vercel；博客由 Nuxt Content 驱动，使用去图图床。</p>
@@ -26,7 +24,7 @@ const seasonalBg = computed(
             重庆:<span class="seasonal-emoji">DNS污染</span><br>
             移动:<span class="seasonal-emoji">多省阻断解析</span>
         </p>
-    </div>
+    </ZWidget>
 </template>
 
 <style lang="scss" scoped>

@@ -69,7 +69,7 @@ const scroll = ref(true)
 
     th {
         background-color: var(--c-bg-2);
-        font-weight: var(--font-weight-bold);
+        font-weight: bold;
         text-align: center;
     }
 

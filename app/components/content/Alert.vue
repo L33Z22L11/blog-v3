@@ -76,7 +76,7 @@ const title = computed(() => props.title || defaultProps.value.title)
         gap: 0.5em;
         margin: 0.5em 0;
         font-size: 1em;
-        font-weight: var(--font-weight-medium);
+        font-weight: bold;
         color: var(--c-primary);
 
         :deep(p) {
