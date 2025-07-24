@@ -5,6 +5,15 @@ const searchStore = useSearchStore()
 
 const { word } = storeToRefs(searchStore)
 const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' : 'Ctrl+K')
+
+const displayWarning = ref(false)
+function hideWarning() {
+	displayWarning.value = false
+	localStorage?.setItem('hide_20250725', 'true')
+}
+onMounted(() => {
+	displayWarning.value = localStorage.getItem('hide_20250725') !== 'true'
+})
 </script>
 
 <template>
@@ -22,6 +31,19 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 			<span class="nav-text">{{ word || '搜索' }}</span>
 			<span class="keycut widescreen-only">{{ keycut }}</span>
 		</div>
+
+		<!-- TODO 谨慎升级 预计2025-10-25下线 -->
+		<Alert v-if="displayWarning" type="warning">
+			<template #title>
+				<span style="flex-grow: 1;">主题用户谨慎合并上游</span>
+				<Icon name="ph:x-bold" style="cursor: pointer;" @click="hideWarning" />
+			</template>
+			<p style="margin: 0.5em 0;">
+				已升级 Nuxt 4 / Nuxt Content 3，具有大量破坏性更改且功能实现尚不完善，建议非必要不合并上游。
+				<!-- eslint-disable-next-line vue/singleline-html-element-content-newline -->
+				<ProseA href="https://github.com/L33Z22L11/blog-v3/pull/20" target="_blank">PR</ProseA>
+			</p>
+		</Alert>
 
 		<template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">
 			<h3 v-if="group.title">

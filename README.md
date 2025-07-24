@@ -108,6 +108,8 @@ pnpm dev
 - 个人信息：`blog.config.ts` 中的站点信息、`app.config.ts` 中的页脚导航、出生年份等。
 - 其他应当被善意认为有必要修改的文件和配置字段（参阅“目录结构”一节）。
 
+为保证开发体验，需要安装 ESLint、Stylelint 等 VS Code 扩展。如果你不喜欢此项目的格式化风格，可以在 `./eslint.config.mjs` 和 `./.vscode/settings.json` 中调整或者不安装 VS Code 扩展。
+
 ### 创建文章
 
 ```sh
@@ -134,7 +136,7 @@ pnpm preview
 #### 疑难解答
 
 - Vercel 先前创建的项目需要 [手动指定 pnpm 10](https://vercel.com/docs/builds/configure-a-build#corepack)。
-- Cloudflare Pages 部署项目需要配置 `NODE_VERSION` 环境变量为较新的版本，如 `22.14.0`。
+- 部署项目时 Node.js 版本最好高于 `22.15.0`。
 
 ## 贡献
 

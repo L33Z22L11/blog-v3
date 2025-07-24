@@ -2,14 +2,17 @@
 const appConfig = useAppConfig()
 
 function initTwikoo() {
-	(window as any).twikoo?.init?.({
-		envId: appConfig.twikoo.envId,
+	// @ts-expect-error windows上有twikoo实例
+	window.twikoo?.init?.({
+	// @ts-expect-error twikoo相关
+		envId: appConfig.twikoo?.envId,
 		el: '#twikoo',
 	})
 }
 
+// @ts-expect-error twikoo相关
 // 从其他页面路由至文章页面时，通过 onload 事件初始化，onMounted 钩子不起作用
-useScriptTag(appConfig.twikoo.js, () => initTwikoo(), { defer: true })
+useScriptTag(appConfig.twikoo?.js, () => initTwikoo(), { defer: true })
 // 在文章页面之间路由时不会触发 onload 事件，需要手动初始化
 onMounted(() => initTwikoo())
 </script>

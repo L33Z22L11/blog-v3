@@ -77,7 +77,7 @@ export default [{
 		desc: '风暴前夕',
 		link: 'https://xaoxuu.com/',
 		feed: 'https://xaoxuu.com/atom.xml',
-		icon: 'https://xaoxuu.com/assets/xaoxuu/favicon/favicon-32x32.png',
+		icon: getGhAvatar('xaoxuu', { preset: 'icon' }),
 		avatar: getGhAvatar('xaoxuu'),
 		archs: ['Hexo', '服务器'],
 		date: '2024-10-26',
