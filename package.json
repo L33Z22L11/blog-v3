@@ -10,11 +10,12 @@
     "build": "cross-env NODE_OPTIONS='--no-deprecation' nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
+    "lint": "stylelint '**/*.{vue,scss}'",
+    "lint:fix": "eslint --fix && stylelint '**/*.{vue,scss}' --fix",
     "new": "node scripts/new-blog.js"
   },
   "dependencies": {
+    "better-sqlite3": "catalog:",
     "date-fns": "catalog:",
     "date-fns-tz": "catalog:",
     "embla-carousel-autoplay": "catalog:",
@@ -45,7 +46,7 @@
     "eslint": "catalog:",
     "nuxt": "catalog:",
     "remark-reading-time": "catalog:",
-    "sass": "catalog:",
+    "sass-embedded": "catalog:",
     "shiki": "catalog:",
     "stylelint": "catalog:",
     "terser": "catalog:",

@@ -11,6 +11,7 @@ catalog:
   '@vueuse/nuxt': ^13.5.0
   '@vueuse/router': ^13.5.0
   '@zinkawaii/stylelint-config': ^0.3.3
+  better-sqlite3: ^12.2.0
   cross-env: ^7.0.3
   date-fns: ^4.1.0
   date-fns-tz: ^3.2.0
@@ -25,7 +26,7 @@ catalog:
   plain-shiki: ^0.3.0
   radash: ^12.1.1
   remark-reading-time: ^2.0.2
-  sass: ^1.89.2
+  sass-embedded: ^1.89.2
   shiki: ^3.8.1
   stylelint: ^16.22.0
   terser: ^5.43.1

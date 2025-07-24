@@ -1,135 +1,135 @@
 .article {
-    margin: 1rem;
-    line-height: 1.8;
+	margin: 1rem;
+	line-height: 1.8;
 
-    > * {
-        margin: 1rem 0;
+	> * {
+		margin: 1rem 0;
 
-        p {
-            margin: 0.5em 0;
-        }
-    }
+		p {
+			margin: 0.5em 0;
+		}
+	}
 
-    :target {
-        border-radius: 0.2rem;
-        animation: highlight 3s;
+	:target {
+		border-radius: 0.2rem;
+		animation: highlight 3s;
 
-        @keyframes highlight {
-            50% { background-color: var(--c-primary-soft); }
-        }
-    }
+		@keyframes highlight {
+			50% { background-color: var(--c-primary-soft); }
+		}
+	}
 
-    >:where(h1, h2, h3, h4, h5, h6) {
-        margin: 1.6em 0 0.8em;
-        font-family: var(--font-creative);
-        font-weight: 550;
-        color: var(--c-text);
-    }
+	>:where(h1, h2, h3, h4, h5, h6) {
+		margin: 1.6em 0 0.8em;
+		font-family: var(--font-creative);
+		font-weight: 550;
+		color: var(--c-text);
+	}
 
-    :where(menu, ol, ul):not([class]) {
-        margin-block: 0.5em;
-        padding: 0 0 0 1.5em;
-        font-size: 0.9rem;
-        list-style: revert;
+	:where(menu, ol, ul):not([class]) {
+		margin-block: 0.5em;
+		padding: 0 0 0 1.5em;
+		font-size: 0.9rem;
+		list-style: revert;
 
-        &::marker {
-            color: var(--c-text-2);
-        }
+		&::marker {
+			color: var(--c-text-2);
+		}
 
-        > li {
-            margin: 0.2em 0;
+		> li {
+			margin: 0.2em 0;
 
-            &::marker {
-                font-size: 0.8em;
-            }
-        }
-    }
+			&::marker {
+				font-size: 0.8em;
+			}
+		}
+	}
 
-    blockquote {
-        padding: 0.2rem 0.8rem;
-        border-left: 4px solid var(--c-border);
-        border-radius: 4px;
-        background-color: var(--c-bg-2);
-        font-size: 0.9rem;
+	blockquote {
+		padding: 0.2rem 0.8rem;
+		border-left: 4px solid var(--c-border);
+		border-radius: 4px;
+		background-color: var(--c-bg-2);
+		font-size: 0.9rem;
 
-        > .z-codeblock {
-            margin: 0 -0.8rem;
-        }
-    }
+		> .z-codeblock {
+			margin: 0 -0.8rem;
+		}
+	}
 
-    img {
-        max-width: 100%;
+	img {
+		max-width: 100%;
 
-        &.icon {
-            height: 1.4em;
-            vertical-align: middle;
-            transform: translateY(-0.1em);
-        }
+		&.icon {
+			height: 1.4em;
+			vertical-align: middle;
+			transform: translateY(-0.1em);
+		}
 
-        &:not([class]), &.image {
-            display: block;
-            margin: 1rem auto;
-            border-radius: 0.5rem;
-        }
-    }
+		&:not([class]), &.image {
+			display: block;
+			margin: 1rem auto;
+			border-radius: 0.5rem;
+		}
+	}
 
-    hr {
-        margin: 3em 0;
-        border-top: 0.4em dashed var(--c-border);
-    }
+	hr {
+		margin: 3em 0;
+		border-top: 0.4em dashed var(--c-border);
+	}
 
-    strong {
-        background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 30%;
-    }
+	strong {
+		background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 30%;
+	}
 
-    del {
-        opacity: 0.5;
-    }
+	del {
+		opacity: 0.5;
+	}
 
-    &.md-tech > h2 > a::before {
-        content: "#";
-        color: white;
-    }
+	&.md-tech > h2 > a::before {
+		content: "#";
+		color: white;
+	}
 
-    &.md-tech > :where(h2, h3, h4, h5, h6) > a::before {
-        content: "";
-        margin-right: 8px;
-        padding: 0 2px;
-        border-radius: 0.2rem;
-        background-color: var(--c-primary);
-    }
+	&.md-tech > :where(h2, h3, h4, h5, h6) > a::before {
+		content: "";
+		margin-right: 8px;
+		padding: 0 2px;
+		border-radius: 0.2rem;
+		background-color: var(--c-primary);
+	}
 
-    &.md-story {
-        h1, h2, h3, h4, h5, h6, .title-like {
-            position: relative;
-            font-family: var(--font-serif);
-            font-weight: bolder;
-            text-align: center;
-            text-wrap: balance;
-        }
+	&.md-story {
+		h1, h2, h3, h4, h5, h6, .title-like {
+			position: relative;
+			font-family: var(--font-serif);
+			font-weight: bolder;
+			text-align: center;
+			text-wrap: balance;
+		}
 
-        > h2::before {
-            content: "";
-            position: absolute;
-            width: 2.5em;
-            height: 2.5em;
-            margin: -0.4em 0 0 -0.7em;
-            border-radius: 2.5em;
-            background-image: linear-gradient(var(--c-primary-soft), transparent);
-            z-index: -1;
-        }
+		> h2::before {
+			content: "";
+			position: absolute;
+			width: 2.5em;
+			height: 2.5em;
+			margin: -0.4em 0 0 -0.7em;
+			border-radius: 2.5em;
+			background-image: linear-gradient(var(--c-primary-soft), transparent);
+			z-index: -1;
+		}
 
-        > h3::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            width: 0.4em;
-            height: 0.7em;
-            background-color: var(--c-primary-soft);
-        }
+		> h3::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			width: 0.4em;
+			height: 0.7em;
+			background-color: var(--c-primary-soft);
+		}
 
-        > p, :not([class]) > p {
-            text-indent: 2em;
-        }
-    }
+		> p, :not([class]) > p {
+			text-indent: 2em;
+		}
+	}
 }
