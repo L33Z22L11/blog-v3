@@ -3,17 +3,17 @@ const appConfig = useAppConfig()
 </script>
 
 <template>
-    <NuxtImg
-        alt=""
-        class="icon"
-        :src="appConfig.favicon"
-    />
+<NuxtImg
+	alt=""
+	class="icon"
+	:src="appConfig.favicon"
+/>
 </template>
 
 <!-- eslint-disable-next-line vue/block-lang -->
 <style scoped>
 .avatar {
-    width: 1.2em;
-    vertical-align: text-bottom;
+	width: 1.2em;
+	vertical-align: text-bottom;
 }
 </style>

@@ -1,28 +1,28 @@
 @keyframes float-in {
-    0% {
-        opacity: 0;
-        transform: translateY(var(--float-distance, 10%));
-    }
+	0% {
+		opacity: 0;
+		transform: translateY(var(--float-distance, 10%));
+	}
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .float-in-enter-active,
 .float-in-leave-active {
-    transition: all 0.2s;
+	transition: all 0.2s;
 }
 
 .float-in-leave-active {
-    /* stylelint-disable-next-line declaration-no-important */
-    position: absolute !important;
+	/* stylelint-disable-next-line declaration-no-important */
+	position: absolute !important;
 }
 
 .float-in-enter-from,
 .float-in-leave-to {
-    opacity: 0;
-    transform: translateY(var(--float-distance, 10%));
+	opacity: 0;
+	transform: translateY(var(--float-distance, 10%));
 }
 

@@ -1,58 +1,64 @@
 @mixin dark-theme {
-    --c-text: hsl(var(--hue-theme) 0% 100%);
-    --c-text-1: hsl(var(--hue-theme) 0% 90%);
-    --c-text-2: hsl(var(--hue-theme) 0% 70%);
-    --c-text-3: hsl(var(--hue-theme) 0% 50%);
-    --c-bg: hsl(var(--hue-theme) 0% 7%);
-    --c-bg-1: hsl(var(--hue-theme) 10% 10%);
-    --c-bg-2: hsl(var(--hue-theme) 10% 14%);
-    --c-bg-3: hsl(var(--hue-theme) 10% 18%);
-    --c-bg-soft: hsl(var(--hue-theme) 100% 95% / 15%);
-    --c-border: hsl(var(--hue-theme) 10% 20%);
-    --c-bg-a50: hsl(var(--hue-theme) 10% 10% / 50%);
-    --c-bg-a80: hsl(var(--hue-theme) 10% 10% / 80%);
-    --c-primary: hsl(var(--hue-theme) 100% 70%);
-    --c-primary-soft: hsl(var(--hue-theme) 100% 60% / 20%);
-    --ld-bg-blur: var(--c-bg-a80);
-    --ld-bg-card: var(--c-bg-3);
-    --ld-bg-active: var(--c-primary-soft);
-    --ld-shadow: var(--c-bg-a50);
+	--c-text: hsl(var(--hue-theme) 0% 100%);
+	--c-text-1: hsl(var(--hue-theme) 0% 90%);
+	--c-text-2: hsl(var(--hue-theme) 0% 70%);
+	--c-text-3: hsl(var(--hue-theme) 0% 50%);
+	--c-bg: hsl(var(--hue-theme) 0% 7%);
+	--c-bg-1: hsl(var(--hue-theme) 10% 10%);
+	--c-bg-2: hsl(var(--hue-theme) 10% 14%);
+	--c-bg-3: hsl(var(--hue-theme) 10% 18%);
+	--c-bg-soft: hsl(var(--hue-theme) 100% 95% / 15%);
+	--c-border: hsl(var(--hue-theme) 10% 20%);
+	--c-bg-a50: hsl(var(--hue-theme) 10% 10% / 50%);
+	--c-bg-a80: hsl(var(--hue-theme) 10% 10% / 80%);
+	--c-primary: hsl(var(--hue-theme) 100% 70%);
+	--c-primary-soft: hsl(var(--hue-theme) 100% 60% / 20%);
+	--ld-bg-blur: var(--c-bg-a80);
+	--ld-bg-card: var(--c-bg-3);
+	--ld-bg-active: var(--c-primary-soft);
+	--ld-shadow: var(--c-bg-a50);
 }
 
 :root,
 .light {
-    --hue-theme: 220deg;
-    --c-text: hsl(var(--hue-theme) 0% 0%);
-    --c-text-1: hsl(var(--hue-theme) 0% 20%);
-    --c-text-2: hsl(var(--hue-theme) 0% 40%);
-    --c-text-3: hsl(var(--hue-theme) 0% 70%);
-    --c-bg: hsl(var(--hue-theme) 0% 100%);
-    --c-bg-1: hsl(var(--hue-theme) 20% 98%);
-    --c-bg-2: hsl(var(--hue-theme) 10% 95%);
-    --c-bg-3: hsl(var(--hue-theme) 10% 92%);
-    --c-bg-soft: hsl(var(--hue-theme) 20% 20% / 10%);
-    --c-border: hsl(var(--hue-theme) 10% 91%);
-    --c-bg-a50: hsl(var(--hue-theme) 20% 98% / 50%);
-    --c-bg-a80: hsl(var(--hue-theme) 20% 98% / 80%);
-    --c-primary: hsl(var(--hue-theme) 100% 55%);
-    --c-primary-soft: hsl(var(--hue-theme) 100% 60% / 15%);
-    --c-accent: hsl(180deg 70% 60%);
-    --ld-bg-blur: var(--c-bg-1);
-    --ld-bg-card: var(--c-bg);
-    --ld-bg-active: var(--c-bg);
-    --ld-shadow: var(--c-bg-soft);
+	--hue-theme: 220deg;
+	--c-text: hsl(var(--hue-theme) 0% 0%);
+	--c-text-1: hsl(var(--hue-theme) 0% 20%);
+	--c-text-2: hsl(var(--hue-theme) 0% 40%);
+	--c-text-3: hsl(var(--hue-theme) 0% 70%);
+	--c-bg: hsl(var(--hue-theme) 0% 100%);
+	--c-bg-1: hsl(var(--hue-theme) 20% 98%);
+	--c-bg-2: hsl(var(--hue-theme) 10% 95%);
+	--c-bg-3: hsl(var(--hue-theme) 10% 92%);
+	--c-bg-soft: hsl(var(--hue-theme) 20% 20% / 10%);
+	--c-border: hsl(var(--hue-theme) 10% 91%);
+	--c-bg-a50: hsl(var(--hue-theme) 20% 98% / 50%);
+	--c-bg-a80: hsl(var(--hue-theme) 20% 98% / 80%);
+	--c-primary: hsl(var(--hue-theme) 100% 55%);
+	--c-primary-soft: hsl(var(--hue-theme) 100% 60% / 15%);
+	--c-accent: hsl(180deg 70% 60%);
+	--ld-bg-blur: var(--c-bg-1);
+	--ld-bg-card: var(--c-bg);
+	--ld-bg-active: var(--c-bg);
+	--ld-shadow: var(--c-bg-soft);
 
-    color-scheme: light dark;
+	color-scheme: light dark;
+
+	.shiki span {
+		background-color: var(--shiki-light-bg) !important; /* stylelint-disable-line declaration-no-important */
+		font-style: var(--shiki-light-font-style) !important; /* stylelint-disable-line declaration-no-important */
+	}
 }
 
 .dark {
-    @include dark-theme;
+	@include dark-theme;
 
-    color-scheme: dark;
+	color-scheme: dark;
 
-    .shiki span {
-        // background-color: var(--shiki-dark-bg) !important; /* stylelint-disable-line declaration-no-important */
-        color: var(--shiki-dark) !important; /* stylelint-disable-line declaration-no-important */
-    }
+	.shiki span {
+		background-color: var(--shiki-dark-bg) !important; /* stylelint-disable-line declaration-no-important */
+		font-style: var(--shiki-dark-font-style) !important; /* stylelint-disable-line declaration-no-important */
+		color: var(--shiki-dark) !important; /* stylelint-disable-line declaration-no-important */
+	}
 }
 

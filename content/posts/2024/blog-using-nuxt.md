@@ -347,7 +347,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <code ref="code" :style="{ '--color': color }"><slot /></code>
+<code ref="code" :style="{ '--color': color }"><slot /></code>
 </template>
 
 <style scoped lang="scss">
@@ -364,7 +364,7 @@ code {
 #tab2
 ```vue [ProseCodeInline.vue]
 <template>
-    <code><slot /></code>
+<code><slot /></code>
 </template>
 
 <style scoped lang="scss">

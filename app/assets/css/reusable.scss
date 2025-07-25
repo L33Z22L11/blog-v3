@@ -1,183 +1,188 @@
 // 一部分具有卡片样式的组件复用了此类
 .card {
-    display: block;
-    overflow: hidden;
-    border-radius: 0.5em;
-    box-shadow: 0 0.1em 0.2em var(--ld-shadow);
-    background-color: var(--ld-bg-card);
-    transition: all 0.2s;
+	display: block;
+	overflow: hidden;
+	overflow: clip;
+	border-radius: 0.5em;
+	box-shadow: 0 0.1em 0.2em var(--ld-shadow);
+	background-color: var(--ld-bg-card);
+	transition: all 0.2s;
 
-    &:hover {
-        box-shadow: 0 0.5em 1em var(--ld-shadow);
-        transform: translateY(-2px);
-    }
+	&:hover {
+		box-shadow: 0 0.5em 1em var(--ld-shadow);
+		transform: translateY(-2px);
+	}
 }
 
 .gradient-card {
-    position: relative;
-    border-radius: 0.5rem;
-    background: no-repeat 100% / 400%;
-    background-image: linear-gradient(45deg, var(--c-accent), var(--c-primary-soft) 40%, transparent 50%);
-    transition: all 0.5s;
-    z-index: 0;
+	position: relative;
+	border-radius: 0.5rem;
+	background: no-repeat 100% / 400%;
+	background-image: linear-gradient(45deg, var(--c-accent), var(--c-primary-soft) 40%, transparent 50%);
+	transition: all 0.5s;
+	z-index: 0;
 
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 2px;
-        border-radius: calc(0.5rem - 2px);
-        transition: all 1s;
-        z-index: -1;
-    }
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 2px;
+		border-radius: calc(0.5rem - 2px);
+		transition: all 1s;
+		z-index: -1;
+	}
 
-    &:hover, &.active {
-        background-position: 0;
-        color: var(--c-text-1);
+	&:hover, &.active {
+		background-position: 0;
+		color: var(--c-text-1);
 
-        &::before {
-            background-color: var(--c-bg-a80);
-            transition: all 0.2s;
-        }
-    }
+		&::before {
+			background-color: var(--c-bg-a80);
+			transition: all 0.2s;
+		}
+	}
 }
 
 // 横向滚动遮罩
 // PURE CSS MAGIC!
 .scrollcheck-x, .scrollcheck-y {
-    scrollbar-width: thin;
-    
-    &::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
-        background-color: var(--c-bg-3);
-        cursor: default;
-    }
+	scrollbar-width: thin;
 
-    &::-webkit-scrollbar-thumb {
-        border-radius: 4px;
-        box-shadow: inset 0 0 0 1px var(--c-bg-3);
-        background-color: var(--c-text-3);
-    }
+	&::-webkit-scrollbar {
+		width: 6px;
+		height: 6px;
+		background-color: var(--c-bg-3);
+		cursor: default;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: 4px;
+		box-shadow: inset 0 0 0 1px var(--c-bg-3);
+		background-color: var(--c-text-3);
+	}
 }
 
 .scrollcheck-x {
-    --left-offset: 0px; // 如果填写 0 会在 calc() 时出错
-    --guessed-scrollbar-height: 0.5rem;
-    --fadeout-width: 2rem;
+	--left-offset: 0px; // 如果填写 0 会在 calc() 时出错
+	--guessed-scrollbar-height: 0.5rem;
+	--fadeout-width: 2rem;
 
-    overflow-x: auto;
-    animation: scrollcheck-x;
-    animation-timeline: scroll(x self);
+	overflow-x: auto;
+	animation: scrollcheck-x;
+	animation-timeline: scroll(x self);
 }
 
 @keyframes scrollcheck-x {
-    0% {
-        mask:
-            linear-gradient(to right, #fff calc(100% - var(--fadeout-width)), transparent),
-            linear-gradient(to top, #fff var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
-    }
+	0% {
+		mask:
+			linear-gradient(to right, #FFF calc(100% - var(--fadeout-width)), transparent),
+			linear-gradient(to top, #FFF var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
+	}
 
-    0.01%, 99.99% {
-        mask:
-            linear-gradient(to right, #fff var(--left-offset), transparent var(--left-offset), #fff calc(var(--left-offset) + var(--fadeout-width)), #fff calc(100% - var(--fadeout-width)), transparent),
-            linear-gradient(to top, #fff var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
-    }
+	0.01%, 99.99% {
+		mask:
+			linear-gradient(to right, #FFF var(--left-offset), transparent var(--left-offset), #FFF calc(var(--left-offset) + var(--fadeout-width)), #FFF calc(100% - var(--fadeout-width)), transparent),
+			linear-gradient(to top, #FFF var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
+	}
 
-    100% {
-        mask:
-            linear-gradient(to right, #fff var(--left-offset), transparent var(--left-offset), #fff calc(var(--left-offset) + var(--fadeout-width))),
-            linear-gradient(to top, #fff var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
-    }
+	100% {
+		mask:
+			linear-gradient(to right, #FFF var(--left-offset), transparent var(--left-offset), #FFF calc(var(--left-offset) + var(--fadeout-width))),
+			linear-gradient(to top, #FFF var(--guessed-scrollbar-height), transparent var(--guessed-scrollbar-height));
+	}
 }
 
 .scrollcheck-y {
-    // 如果填写 0 会在 calc() 时出错
-    --top-offset: 0px;
-    --guessed-scrollbar-width: 0.5rem;
-    --fadeout-height: 2rem;
+	// 如果填写 0 会在 calc() 时出错
+	--top-offset: 0px;
+	--guessed-scrollbar-width: 0.5rem;
+	--fadeout-height: 2rem;
 
-    overflow-y: auto;
-    animation: scrollcheck-y;
-    animation-timeline: scroll(y self);
+	overflow-y: auto;
+	animation: scrollcheck-y;
+	animation-timeline: scroll(y self);
 }
 
 @keyframes scrollcheck-y {
-    0% {
-        mask:
-            linear-gradient(to bottom, #fff calc(100% - var(--fadeout-height)), transparent),
-            linear-gradient(to left, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
-    }
+	0% {
+		mask:
+			linear-gradient(to bottom, #FFF calc(100% - var(--fadeout-height)), transparent),
+			linear-gradient(to left, #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+	}
 
-    0.01%, 99.99% {
-        mask:
-            linear-gradient(to bottom, #fff var(--top-offset), transparent var(--top-offset), #fff calc(var(--top-offset) + var(--fadeout-height)), #fff calc(100% - var(--fadeout-height)), transparent),
-            linear-gradient(to left, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
-    }
+	0.01%, 99.99% {
+		mask:
+			linear-gradient(to bottom, #FFF var(--top-offset), transparent var(--top-offset), #FFF calc(var(--top-offset) + var(--fadeout-height)), #FFF calc(100% - var(--fadeout-height)), transparent),
+			linear-gradient(to left, #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+	}
 
-    100% {
-        mask:
-            linear-gradient(to bottom, #fff var(--top-offset), transparent var(--top-offset), #fff calc(var(--top-offset) + var(--fadeout-height))),
-            linear-gradient(to left, #fff var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
-    }
+	100% {
+		mask:
+			linear-gradient(to bottom, #FFF var(--top-offset), transparent var(--top-offset), #FFF calc(var(--top-offset) + var(--fadeout-height))),
+			linear-gradient(to left, #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+	}
 }
 
 mark {
-    background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat left bottom / 100% 0.4em;
-    text-decoration: none;
-    color: var(--c-primary);
-    transition: 0.2s;
-    animation: line-spread 0.5s;
+	background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat left bottom / 100% 0.4em;
+	text-decoration: none;
+	color: var(--c-primary);
+	transition: 0.2s;
+	animation: line-spread 0.5s;
 
-    @keyframes line-spread {
-        from { background-size: 0 0.3em; }
-    }
+	@keyframes line-spread {
+		from { background-size: 0 0.3em; }
+	}
 
-    &:hover {
-        background-size: 100% 50%;
-    }
+	&:hover {
+		background-size: 100% 50%;
+	}
 }
 
 .mobile-only {
-    display: none;
+	display: none;
 
-    @media (max-width: $breakpoint-mobile) {
-        display: revert;
-        overflow: hidden;
-    }
+	@media (max-width: $breakpoint-mobile) {
+		display: revert;
+		overflow: hidden;
+	}
 }
 
 .widescreen-only {
-    display: none;
+	display: none;
 
-    @media (min-width: $breakpoint-widescreen) {
-        display: revert;
-    }
+	@media (min-width: $breakpoint-widescreen) {
+		display: revert;
+	}
 }
 
 .text-center {
-    text-align: center;
+	text-align: center;
+}
+
+.text-creative, .text-tech {
+	font-family: var(--font-creative);
+	font-weight: 550;
 }
 
 .text-story {
-    font-family: serif;
-    font-family: var(--font-serif);
+	font-family: var(--font-serif);
 }
 
 .text-repeat {
-    text-shadow: 0.1em 0 var(--c-bg-soft), 0.2em 0 var(--c-bg-soft), 0.3em 0 var(--c-bg-soft), 0.4em 0 var(--c-bg-soft), 0.5em 0 var(--c-bg-soft);
+	text-shadow: 0.1em 0 var(--c-bg-soft), 0.2em 0 var(--c-bg-soft), 0.3em 0 var(--c-bg-soft), 0.4em 0 var(--c-bg-soft), 0.5em 0 var(--c-bg-soft);
 }
 
 .text-zoom {
-    display: inline-block;
-    transform-origin: left bottom;
+	display: inline-block;
+	transform-origin: left bottom;
 
-    @supports (animation-timeline: view()) {
-        animation: zoom 1s both;
-        animation-timeline: view();
-    }
+	@supports (animation-timeline: view()) {
+		animation: zoom 1s both;
+		animation-timeline: view();
+	}
 
-    @keyframes zoom {
-        from { transform: scale(0.8); }
-        to { transform: scale(1.25); }
-    }
+	@keyframes zoom {
+		from { transform: scale(0.8); }
+		to { transform: scale(1.25); }
+	}
 }

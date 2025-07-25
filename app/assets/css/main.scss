@@ -1,131 +1,142 @@
 :root {
-    --font-family: "MiSans VF", "MiSans", "PingFang SC", system-ui, sans-serif;
-    --font-serif: "Noto Serif SC", "华文中宋", "Times New Roman", serif;
-    --font-monospace: "SFMono-Regular", "Cascadia Code", "JetBrains Mono", "Fira Code", "Menlo", "Monaco", "Consolas", "Noto Sans Mono", "monospace", "MiSans VF", "MiSans", "PingFang SC", system-ui, monospace;
+	--font-family: "Inter-Local", "Inter", "Noto Sans SC-Local", "Noto Sans SC", sans-serif;
+	--font-serif: "Noto Serif SC-Local", "Noto Serif SC", "华文中宋", "Times New Roman", serif;
+	--font-creative: "Inter-Local", "Inter", "Noto Sans SC-Local", "Noto Sans SC", sans-serif;
+	--font-monospace: "JetBrains Mono-Local", "JetBrains Mono", "Monospace-Local", sans-serif, monospace;
 
-    // --font-stroke-free: "Helvetica";
-    --font-stroke-free: "Inter", "Helvetica", "Arial", system-ui, sans-serif;
-    --font-weight-normal: 400;
-    --font-weight-medium: 450;
-    --font-weight-bold: 500;
+	// 兼容了一点 IE
+	background-color: hsl(220deg 20% 98%);
+	background-color: var(--c-bg-1);
+	font: normal 1rem/1.4 sans-serif;
+	font-family: var(--font-family);
+	font-synthesis: style;
+	word-wrap: break-word;
+	text-size-adjust: none;
+	color: var(--c-text-1);
+	transition: color 0.1s, background-color 0.2s;
+	scroll-behavior: smooth;
+	scroll-padding: 2rem;
+	scrollbar-color: var(--c-text-3) transparent;
+	-webkit-tap-highlight-color: var(--c-primary-soft);
+}
 
-    // 兼容了一点 IE
-    background-color: hsl(220deg 20% 98%);
-    background-color: var(--c-bg-1);
-    font: normal 1rem/1.4 sans-serif;
-    font-family: var(--font-family);
-    font-synthesis: style;
-    font-weight: var(--font-weight-normal);
-    text-size-adjust: none;
-    word-wrap: break-word;
-    color: var(--c-text-1);
-    transition: color 0.1s, background-color 0.2s;
-    scroll-behavior: smooth;
-    scroll-padding: 2rem;
-    scrollbar-color: var(--c-text-3) transparent;
-    -webkit-tap-highlight-color: var(--c-primary-soft);
+// 有本地字体时不加载网络字体
+@font-face {
+	font-family: Inter-Local;
+	src: local("Inter"); // 这个好像有问题，调不到
+}
+
+@font-face {
+	font-family: "JetBrains Mono-Local";
+	src: local("JetBrains Mono");
+}
+
+@font-face {
+	font-family: "Noto Sans SC-Local";
+	src: local("Noto Sans SC");
+}
+
+@font-face {
+	font-family: "Noto Serif SC-Local";
+	src: local("Noto Serif SC");
+}
+
+@font-face {
+	font-family: Monospace-Local;
+	src: local("SFMono-Regular"), local("Cascadia Code"), local("Fira Code"), local("Menlo"), local("Monaco"), local("Consolas"), local("Noto Sans Mono"), local("monospace");
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    border: none;
+	margin: 0;
+	padding: 0;
+	border: none;
 }
 
 *, ::before, ::after {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 ::selection {
-    background-color: var(--c-primary-soft);
-}
-
-h1, h2, h3, h4, h5, h6, strong {
-    font-weight: var(--font-weight-bold);
-
-    &.text-story {
-        font-weight: bolder;
-    }
+	background-color: var(--c-primary-soft);
 }
 
 a {
-    text-decoration: none;
-    color: currentcolor;
+	text-decoration: none;
+	color: currentcolor;
 }
 
 code, pre {
-    font-family: "Cascadia Code", "Noto Sans Mono", Consolas, monospace;
-    font-family: var(--font-monospace);
-    text-autospace: no-autospace;
+	font-family: var(--font-monospace);
+	text-autospace: no-autospace;
 }
 
 menu, ol, ul {
-    list-style: none;
+	list-style: none;
 }
 
 button {
-    cursor: pointer;
+	cursor: pointer;
 
-    .iconify:only-child {
-        display: block;
-    }
+	.iconify:only-child {
+		display: block;
+	}
 }
 
 button, input, textarea {
-    background: none;
-    font: inherit;
-    color: currentcolor;
+	background: none;
+	font: inherit;
+	color: currentcolor;
 }
 
 // Iconify 图标复用了此类
 :where(.iconify) {
-    display: inline-block;
-    flex-shrink: 0;
-    font-size: 1.2em;
-    vertical-align: sub;
+	display: inline-block;
+	flex-shrink: 0;
+	font-size: 1.2em;
+	vertical-align: sub;
 }
 
 // 图片加载失败 fallback
 img {
-    display: inline-block;
-    overflow: hidden;    // Chrome 90- 😡
-    overflow: clip;      // 🔥🦊😡
-    transform: scale(1); // position: fixed 的定位祖先
+	display: inline-block;
+	overflow: hidden;    // Chrome 90- 😡
+	overflow: clip;      // 🔥🦊😡
+	transform: scale(1); // position: fixed 的定位祖先
 
-    &::before {
-        position: absolute;
-        inset: 0;
-    }
+	&::before {
+		position: absolute;
+		inset: 0;
+	}
 
-    &::before {
-        content: attr(alt);
-        display: grid;
-        place-content: center;
-        overflow: visible;
-        padding: 0.5em;
-        background-color: var(--c-border);
-        font: bold 1.5rem/1.2 var(--font-serif);
-        word-break: normal;
-        text-align: center;
-        text-shadow: none;
-        color: var(--c-bg-soft);
-    }
+	&::before {
+		content: attr(alt);
+		display: grid;
+		place-content: center;
+		overflow: visible;
+		padding: 0.5em;
+		background-color: var(--c-border);
+		font: bold 1.5rem/1.2 var(--font-serif);
+		word-break: normal;
+		text-align: center;
+		text-shadow: none;
+		color: var(--c-bg-soft);
+	}
 }
 
 .tippy-box {
-    padding: 0.3em 0.6em;
-    border-radius: 0.5em;
-    box-shadow: 0 0 1rem var(--ld-shadow);
-    background-color: var(--ld-bg-card);
-    font-size: 0.8em;
-    color: var(--c-text-2);
-    animation: float-in 0.2s;
+	padding: 0.3em 0.6em;
+	border-radius: 0.5em;
+	box-shadow: 0 0 1rem var(--ld-shadow);
+	background-color: var(--ld-bg-card);
+	font-size: 0.8em;
+	color: var(--c-text-2);
+	animation: float-in 0.2s;
 
-    &[data-state="hidden"] {
-        opacity: 0;
-    }
+	&[data-state="hidden"] {
+		opacity: 0;
+	}
 
-    > .tippy-svg-arrow {
-        fill: var(--ld-bg-card);
-    }
+	> .tippy-svg-arrow {
+		fill: var(--ld-bg-card);
+	}
 }

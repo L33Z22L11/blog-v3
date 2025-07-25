@@ -3,57 +3,68 @@ import type { ArticleOrderType } from '~/types/article'
 import { alphabetical } from 'radash'
 
 interface UseCategoryOptions {
-    bindQuery?: string | false
+	bindQuery?: string | false
+}
+
+export function usePostsIndex() {
+	return useAsyncData(
+		'posts_index',
+		() => queryCollection('content')
+			.where('stem', 'LIKE', 'posts/%')
+			.select('categories', 'date', 'description', 'image', 'path', 'readingTime', 'recommend', 'title', 'type', 'updated')
+			.all(),
+		{ default: () => [] },
+	)
 }
 
 export function useCategory(list: MaybeRefOrGetter<ArticleProps[]>, options?: UseCategoryOptions) {
-    // BUG: 首次访问时无法绑定分类到查询参数
-    const { bindQuery } = options ?? {}
-    const category = bindQuery
-        ? useRouteQuery(bindQuery, undefined, { transform: (value?: string) => value })
-        : ref<string | undefined>()
-    const categories = computed(() => [...new Set(toValue(list).map(item => item.categories?.[0]))])
-    const listCategorized = computed(
-        () => toValue(list).filter(
-            item => !category.value || item.categories?.[0] === category.value,
-        ),
-    )
+	// BUG: 首次访问时无法绑定分类到查询参数
+	const { bindQuery } = options ?? {}
+	const category = bindQuery
+		? useRouteQuery(bindQuery, undefined, { transform: (value?: string) => value })
+		: ref<string | undefined>()
+	const categories = computed(() => [...new Set(toValue(list).map(item => item.categories?.[0]))])
+	const listCategorized = computed(
+		() => toValue(list).filter(
+			item => !category.value || item.categories?.[0] === category.value,
+		),
+	)
 
-    return {
-        category,
-        categories,
-        listCategorized,
-    }
+	return {
+		category,
+		categories,
+		listCategorized,
+	}
 }
 
 export function useArticleSort(list: MaybeRefOrGetter<ArticleProps[]>) {
-    const appConfig = useAppConfig()
-    const sortOrder = ref<ArticleOrderType>(appConfig.pagination.sortOrder || 'date')
-    const isAscending = ref<boolean>()
-    const listSorted = computed(() => alphabetical(
-        toValue(list),
-        item => item[sortOrder.value] || '',
-        isAscending.value ? 'asc' : 'desc',
-    ))
-    return {
-        sortOrder,
-        isAscending,
-        listSorted,
-    }
+	const appConfig = useAppConfig()
+	const sortOrder = ref<ArticleOrderType>(appConfig.pagination.sortOrder || 'date')
+	const isAscending = ref<boolean>()
+	const listSorted = computed(() => alphabetical(
+		toValue(list),
+		item => item[sortOrder.value] || '',
+		isAscending.value ? 'asc' : 'desc',
+	))
+	return {
+		sortOrder,
+		isAscending,
+		listSorted,
+	}
 }
 
 export function getCategoryIcon(category?: string) {
-    const appConfig = useAppConfig()
-    return appConfig.article.categories[category!]?.icon ?? 'ph:folder-bold'
+	const appConfig = useAppConfig()
+	return appConfig.article.categories[category!]?.icon ?? 'ph:folder-bold'
 }
 
-export function getPostTypeClassName(type?: string, options?: { prefix?: string }) {
-    if (!type)
-        type = 'tech'
+export function getPostTypeClassName(type?: string, options = {
+	prefix: 'text',
+}) {
+	if (!type)
+		type = 'tech'
 
-    const {
-        prefix = 'text',
-    } = options ?? {}
+	const { prefix } = options
 
-    return `${prefix}-${type}`
+	return `${prefix}-${type}`
 }

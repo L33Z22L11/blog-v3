@@ -439,20 +439,6 @@ footer: 可选的落款
 ```
 :::
 
-#### RenderWithRaw
-
-> 这是一个元组件，用于同时渲染 MDC 和原始 MDC 代码，使用时请清楚自己在做什么。
-
-::::render-with-raw
-````mdc wrap
-:::render-with-raw
-```mdc wrap
-:tip[Tip我啊，被包了又包]{tip="怎么包，都有面"}
-```
-:::
-````
-::::
-
 #### Tab
 
 :::render-with-raw
@@ -553,8 +539,6 @@ poster: https://lf-package-cn.feishucdn.com/obj/atsx-throne/hire-fe-prod/portal/
 ::
 ```
 :::
-
-
 
 #### ZhiluHeader
 

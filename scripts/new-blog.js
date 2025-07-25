@@ -8,8 +8,8 @@ const args = process.argv.slice(2)
 const blogTitle = args[0]
 
 if (!blogTitle) {
-    console.error('请提供博客标题，如：pnpm new blog-title')
-    process.exit(1)
+	console.error('请提供博客标题，如：pnpm new blog-title')
+	process.exit(1)
 }
 
 // 获取当前年份
@@ -18,7 +18,7 @@ const directory = path.join(process.cwd(), 'content', 'posts', year.toString())
 
 // 确保目录存在
 if (!fs.existsSync(directory)) {
-    fs.mkdirSync(directory, { recursive: true })
+	fs.mkdirSync(directory, { recursive: true })
 }
 
 // 创建 Markdown 文件
@@ -39,10 +39,10 @@ draft: true # 文章完成后，请删除此行
 
 // 使用 VS Code 打开文件
 exec(`code "${filePath}"`, (error) => {
-    if (error) {
-        console.error(`无法打开文件: ${error.message}`)
-    }
-    else {
-        console.log(`已创建并打开 ${filePath}`)
-    }
+	if (error) {
+		console.error(`无法打开文件: ${error.message}`)
+	}
+	else {
+		console.log(`已创建并打开 ${filePath}`)
+	}
 })

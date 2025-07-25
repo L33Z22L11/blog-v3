@@ -1,40 +1,40 @@
 interface UsePaginationOptions {
-    initialPage?: number
-    perPage?: number
-    bindParam?: string | false
+	initialPage?: number
+	perPage?: number
+	bindParam?: string | false
 }
 
 export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: UsePaginationOptions) {
-    const appConfig = useAppConfig()
-    const {
-        initialPage = 1,
-        perPage = appConfig.pagination.perPage || 10,
-        bindParam = false,
-    } = options ?? {}
+	const appConfig = useAppConfig()
+	const {
+		initialPage = 1,
+		perPage = appConfig.pagination.perPage || 10,
+		bindParam = false,
+	} = options ?? {}
 
-    const totalPages = computed(() => Math.ceil(toValue(list).length / perPage) || initialPage)
+	const totalPages = computed(() => Math.ceil(toValue(list).length / perPage) || initialPage)
 
-    function transformPage(val: string) {
-        const page = Number(val)
-        return page >= 1 && page <= totalPages.value ? page : initialPage
-    }
+	function transformPage(val: string) {
+		const page = Number(val)
+		return page >= 1 && page <= totalPages.value ? page : initialPage
+	}
 
-    const page = bindParam
-        ? useRouteParams(bindParam, initialPage.toString(), { transform: transformPage })
-        : ref(initialPage)
+	const page = bindParam
+		? useRouteParams(bindParam, initialPage.toString(), { transform: transformPage })
+		: ref(initialPage)
 
-    const listPaged = computed(() => {
-        const start = (page.value - 1) * perPage
-        return toValue(list).slice(start, start + perPage)
-    })
+	const listPaged = computed(() => {
+		const start = (page.value - 1) * perPage
+		return toValue(list).slice(start, start + perPage)
+	})
 
-    // 不应在此处 watch list
+	// 不应在此处 watch list
 
-    return {
-        totalPages,
-        page,
-        listPaged,
-    }
+	return {
+		totalPages,
+		page,
+		listPaged,
+	}
 }
 
 /**
@@ -51,12 +51,12 @@ export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: 
  *
  */
 export function genPageArr(current: number, total: number, expand: number = 1) {
-    const start = Math.max(2, Math.min(current - expand, total - 2 * expand))
-    const end = Math.min(total, start + 2 * expand)
-    const pageArr = Array.from({ length: end - start + 1 }, (_, i) => start + i)
-    start > 2 && pageArr.unshift(Number.NEGATIVE_INFINITY)
-    start > 1 && pageArr.unshift(1)
-    end < total - 1 && pageArr.push(Number.POSITIVE_INFINITY)
-    end < total && pageArr.push(total)
-    return pageArr
+	const start = Math.max(2, Math.min(current - expand, total - 2 * expand))
+	const end = Math.min(total, start + 2 * expand)
+	const pageArr = Array.from({ length: end - start + 1 }, (_, i) => start + i)
+	start > 2 && pageArr.unshift(Number.NEGATIVE_INFINITY)
+	start > 1 && pageArr.unshift(1)
+	end < total - 1 && pageArr.push(Number.POSITIVE_INFINITY)
+	end < total && pageArr.push(total)
+	return pageArr
 }
