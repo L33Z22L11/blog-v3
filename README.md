@@ -1,11 +1,11 @@
 # 纸鹿摸鱼处
 
-![框架](https://img.shields.io/badge/框架-Nuxt-00DC82?logo=Nuxt.js)
-![CMS](https://img.shields.io/badge/CMS-Nuxt%20Content-00DC82?logo=Nuxt.js)
-![部署平台](https://img.shields.io/badge/部署平台-Vercel-000000?logo=Vercel)
-![访问统计](https://img.shields.io/badge/访问统计-Umami-000000?logo=Umami)
-![代码风格](https://img.shields.io/badge/代码风格-ESLint-4B32C3?logo=ESLint)
-![代码风格](https://img.shields.io/badge/代码风格-Stylelint-263238?logo=Stylelint)
+[![框架](https://img.shields.io/badge/框架-Nuxt-00DC82?logo=Nuxt.js)](https://nuxt.com/)
+[![CMS](https://img.shields.io/badge/CMS-Nuxt%20Content-00DC82?logo=Nuxt.js)](https://content.nuxt.com/)
+[![部署平台](https://img.shields.io/badge/部署平台-Vercel-000000?logo=Vercel)](https://vercel.com/)
+[![访问统计](https://img.shields.io/badge/访问统计-Umami-000000?logo=Umami)](https://github.com/umami-software/umami)
+[![代码风格](https://img.shields.io/badge/代码风格-ESLint-4B32C3?logo=ESLint)](https://eslint.org/)
+[![代码风格](https://img.shields.io/badge/代码风格-Stylelint-263238?logo=Stylelint)](https://stylelint.io/)
 
 > [!WARNING]
 > 2025 年 7-8 月，项目正在迁移至 Nuxt 4 和 Nuxt Content 3，可能存在功能问题且代码变更频繁，请谨慎合并更新。

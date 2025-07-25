@@ -69,6 +69,7 @@ function openActiveItem() {
 		<div v-if="isOpening" id="z-search">
 			<form class="input" :class="{ searching: status === 'pending' }" @submit.prevent>
 				<Icon name="ph:magnifying-glass-bold" />
+
 				<input
 					ref="searchInput"
 					v-model="word"
@@ -77,13 +78,16 @@ function openActiveItem() {
 					@keydown.up.prevent
 					@keydown.down.prevent
 				>
+
 				<!-- 方向键切换搜索结果不应只在搜索框内触发 -->
 				<Icon v-if="word" class="close" name="ph:x-bold" @click="word = ''" />
 			</form>
+
 			<TransitionGroup name="expand">
 				<div v-if="word && status === 'success' && !result?.length" class="no-result">
 					无结果
 				</div>
+
 				<ol
 					v-if="word && result?.length"
 					ref="list-result"
@@ -98,15 +102,12 @@ function openActiveItem() {
 						@mouseover="activeIndex = itemIndex"
 					/>
 				</ol>
+
 				<div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
-					<Key code="arrowup" @press="activeIndex--, scrollToActiveItem()">
-						↑
-					</Key> <Key code="arrowdown" @press="activeIndex++, scrollToActiveItem()">
-						↓
-					</Key> 切换&emsp;
-					<Key code="enter" @press="openActiveItem">
-						Enter
-					</Key> 选择&emsp;
+					<Key code="arrowup" text="↑" @press="activeIndex--, scrollToActiveItem()" />
+					<Key code="arrowdown" text="↓" @press="activeIndex++, scrollToActiveItem()" />
+					切换&emsp;
+					<Key code="Enter" @press="openActiveItem" /> 选择&emsp;
 					<Key code="escape" @press="layoutStore.toggle('search')">
 						Esc
 					</Key> 关闭

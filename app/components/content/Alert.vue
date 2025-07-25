@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<{
 const typeMap = {
 	tip: {
 		icon: 'ph:notepad-bold',
-		color: '#3a7',
+		color: '#3A7',
 		title: '提醒',
 	},
 	info: {
@@ -23,26 +23,24 @@ const typeMap = {
 	},
 	question: {
 		icon: 'ph:question-bold',
-		color: '#3af',
+		color: '#3AF',
 		title: '问题',
 	},
 	warning: {
 		icon: 'ph:warning-bold',
-		color: '#f80',
+		color: '#F80',
 		title: '警告',
 	},
 	error: {
 		icon: 'ph:x-circle-bold',
-		color: '#f33',
+		color: '#F33',
 		title: '错误',
 	},
 }
 
-const defaultProps = computed(() => typeMap[props.type] || typeMap.tip)
-
-const icon = computed(() => props.icon || defaultProps.value.icon)
-const color = computed(() => props.color || defaultProps.value.color)
-const title = computed(() => props.title || defaultProps.value.title)
+const icon = computed(() => props.icon || typeMap[props.type].icon)
+const color = computed(() => props.color || typeMap[props.type].color)
+const title = computed(() => props.title || typeMap[props.type].title)
 </script>
 
 <template>
@@ -75,7 +73,6 @@ const title = computed(() => props.title || defaultProps.value.title)
 		align-items: center;
 		gap: 0.5em;
 		margin: 0.5em 0;
-		font-size: 1em;
 		font-weight: bold;
 		color: var(--c-primary);
 

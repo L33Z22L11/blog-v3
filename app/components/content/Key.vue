@@ -2,6 +2,7 @@
 const props = defineProps<{
 	/** Key 名称应当转为小写 */
 	code?: string
+	text?: string
 	ctrl?: boolean
 	shift?: boolean
 	alt?: boolean
@@ -22,26 +23,29 @@ function checkModifiers(e: KeyboardEvent) {
 }
 
 useEventListener('keydown', (e) => {
-	if (e.key?.toLowerCase() === props.code && checkModifiers(e)) {
+	if (e.key?.toLowerCase() === props.code?.toLowerCase() && checkModifiers(e)) {
 		emit('press')
 		active.value = true
 	}
 })
 
 useEventListener('keyup', (e) => {
-	if (e.key?.toLowerCase() === props.code && checkModifiers(e)) {
+	if (e.key?.toLowerCase() === props.code?.toLowerCase() && checkModifiers(e)) {
 		active.value = false
 	}
 })
 </script>
 
 <template>
-<kbd :class="{ active }" @click="emit('press')"><slot /></kbd>
+<kbd :class="{ active }" @click="emit('press')">
+	<slot>{{ text || code }}</slot>
+</kbd>
 </template>
 
 <style lang="scss" scoped>
 kbd {
 	display: inline-block;
+	margin: 0.1em;
 	padding: 0.1em 0.2em;
 	border-radius: 0.2em;
 	box-shadow: inset 0 -0.15em 0 var(--c-bg-soft);
