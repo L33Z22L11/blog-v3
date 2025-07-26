@@ -7,7 +7,7 @@ image: https://7.isyangs.cn/24/6664009e81625-24.jpg
 categories: [经验分享]
 tags: [软件, 问题]
 references:
-  - 这些内容不值得参考。
+  - title: 这些内容不值得参考。
 ---
 
 ## tl;dr

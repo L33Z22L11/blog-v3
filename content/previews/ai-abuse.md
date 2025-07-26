@@ -6,8 +6,6 @@ updated: 2025-06-10 21:52:43
 type: story
 categories: [生活]
 tags: [思考]
-
-draft: true
 ---
 
 - AIGC低质内容投入内容生态领域难以辨别

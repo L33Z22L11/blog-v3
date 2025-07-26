@@ -11,7 +11,7 @@ const birthYear = appConfig.stats.birthYear
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-stats', 'blog-log'])
 
-const { data: listRaw } = await usePostsIndex()
+const { data: listRaw } = await useArticleIndex()
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted)
 

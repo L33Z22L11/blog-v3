@@ -62,11 +62,6 @@ const scroll = ref(true)
 	margin: auto;
 	border-collapse: collapse;
 
-	> thead {
-		position: sticky;
-		top: 0;
-	}
-
 	th {
 		background-color: var(--c-bg-2);
 		font-weight: bold;

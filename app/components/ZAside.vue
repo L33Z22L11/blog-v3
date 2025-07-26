@@ -11,13 +11,11 @@ const { widgets } = useWidgets(() => layoutStore.asideWidgets)
 <!-- 此处不能使用 Transition，因为宽屏状态始终显示 -->
 <!-- 如果为空数组则隐藏 -->
 <Transition>
-	<aside v-if="layoutStore.asideWidgets?.length" id="z-aside" class="scrollcheck-y" :class="{ show: layoutStore.isOpen('aside') }">
-		<div class="container">
-			<TransitionGroup name="float-in">
-				<!-- 更换页面时相同 key 的组件不会更新 -->
-				<component :is="widget.comp" v-for="widget in widgets" :key="widget.name" />
-			</TransitionGroup>
-		</div>
+	<aside v-if="layoutStore.asideWidgets?.length" id="z-aside" :class="{ show: layoutStore.isOpen('aside') }">
+		<TransitionGroup name="float-in">
+			<!-- 更换页面时相同 key 的组件不会更新 -->
+			<component :is="widget.comp" v-for="widget in widgets" :key="widget.name" />
+		</TransitionGroup>
 	</aside>
 </Transition>
 </template>
@@ -39,7 +37,7 @@ const { widgets } = useWidgets(() => layoutStore.asideWidgets)
 		transition: transform 0.2s;
 		z-index: 100;
 
-		.container {
+		:deep(.widget) {
 			padding: 0.5rem;
 			border-radius: 1rem;
 			box-shadow: 0 0 1rem var(--ld-shadow);

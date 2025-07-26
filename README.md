@@ -17,7 +17,7 @@
 
 ## 使用本主题的博客
 
-- [纸鹿摸鱼处 @L33Z22L11](https://blog.zhilu.cyou/) · [开发经历](https://blog.zhilu.cyou/2024/blog-using-nuxt)
+- [纸鹿摸鱼处 @L33Z22L11](https://blog.zhilu.site/) · [开发经历](https://blog.zhilu.site/2024/blog-using-nuxt)
 - [希乐博客 @Xlenco](https://blog.xlenco.top/)
 - [SteinsNote @Labmem-00](https://blog.labmem.chat/) · [迁移经历](https://blog.labmem.chat/2024/beforeeverything)
 - [月空人 @Whbbit1999](https://whbbit.cn/) · [迁移评价](https://whbbit.cn/posts/2025/why-migrate-to-nuxt)
@@ -31,7 +31,7 @@
 
 ## 特性
 
-[主题特性](https://blog.zhilu.cyou/theme) · [组件示例](https://blog.zhilu.cyou/previews/example)
+[主题特性](https://blog.zhilu.site/theme) · [组件示例](https://blog.zhilu.site/previews/example)
 
 ## 目录结构
 
@@ -103,7 +103,7 @@ pnpm dev
 
 为避免误会，应当更改一些配置信息以和我的博客网站区分：
 
-- 删除原有文章：`content/` 目录下仅保留 `link.md`，`app.config.ts` 中将 `footer.nav[2].items[1].url` 由 `/theme` 改为 `https://blog.zhilu.cyou/theme`（确保通过链接检测）。
+- 删除原有文章：`content/` 目录下仅保留 `link.md`，`app.config.ts` 中将 `footer.nav[2].items[1].url` 由 `/theme` 改为 `https://blog.zhilu.site/theme`（确保通过链接检测）。
 - 更换服务配置：`blog.config.ts` 中的 Umami 站点统计、Cloudflare Insights 统计、Twikoo 评论服务源需要注释或更换。
 - 个人信息：`blog.config.ts` 中的站点信息、`app.config.ts` 中的页脚导航、出生年份等。
 - 其他应当被善意认为有必要修改的文件和配置字段（参阅“目录结构”一节）。

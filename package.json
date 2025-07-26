@@ -4,6 +4,7 @@
   "version": "3.3.0",
   "private": true,
   "packageManager": "pnpm@10.13.1",
+  "homepage": "https://github.com/L33Z22L11/blog-v3",
   "scripts": {
     "prepare": "nuxt prepare",
     "dev": "nuxt dev --no-qr",

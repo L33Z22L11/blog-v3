@@ -73,7 +73,7 @@ export default defineAppConfig({
 			},
 		] satisfies Nav,
 		/** 页脚版权信息底部的其他信息 */
-		message: '',
+		message: '<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow" data-v-e2b95aa8="">陕ICP备2025072742号-3</a>',
 	},
 
 	/** 左侧栏顶部 Logo */

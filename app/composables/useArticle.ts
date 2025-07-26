@@ -2,19 +2,19 @@ import type ArticleProps from '~/types/article'
 import type { ArticleOrderType } from '~/types/article'
 import { alphabetical } from 'radash'
 
-interface UseCategoryOptions {
-	bindQuery?: string | false
-}
-
-export function usePostsIndex() {
+export function useArticleIndex(path = 'posts/%') {
 	return useAsyncData(
-		'posts_index',
+		`index_${path}`,
 		() => queryCollection('content')
-			.where('stem', 'LIKE', 'posts/%')
+			.where('stem', 'LIKE', path)
 			.select('categories', 'date', 'description', 'image', 'path', 'readingTime', 'recommend', 'title', 'type', 'updated')
 			.all(),
-		{ default: () => [] },
+		{ default: () => [] }, // 不返回 undefined
 	)
+}
+
+interface UseCategoryOptions {
+	bindQuery?: string | false
 }
 
 export function useCategory(list: MaybeRefOrGetter<ArticleProps[]>, options?: UseCategoryOptions) {

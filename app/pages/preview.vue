@@ -7,15 +7,7 @@ useSeoMeta({
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-log'])
 
-const { data: listRaw } = await useAsyncData(
-	'preview_list',
-	() => queryCollection('content')
-		.where('stem', 'LIKE', 'previews/%')
-		.select('categories', 'date', 'description', 'image', 'path', 'readingTime', 'title', 'updated')
-		.all(),
-	{ default: () => [] },
-)
-
+const { data: listRaw } = useArticleIndex('previews/%')
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted)
 </script>

@@ -61,7 +61,7 @@ tags: [代码, 前端, 字体]
 
 如果你有一个高度略大的图标混合在行文中，比如 :icon{name="ri:github-fill"}，它想要在视觉上垂直居中，可以通过 `vertical-align: sub` 把图标的基线对齐到父元素的下标基线；如果你有一个更大的图标，可以通过 `vertical-align: text-bottom` 把图标的基线对齐到父元素的字体底部。
 
-如果有一个高度略大的 flexbox 混合在行文中，比如 :badge[纸鹿摸鱼处]{link="https://blog.zhilu.cyou/"}，flexbox 的底部会对齐到行文的基线，它内部的文本就偏高了。何解，是使用 `vertical-align: text-bottom`，然后当一个调参大侠吗？其实 flexbox 内的文本基线应该对齐到行文的基线，然后单独调整图片的对齐方式即可。
+如果有一个高度略大的 flexbox 混合在行文中，比如 :badge[纸鹿摸鱼处]{link="https://blog.zhilu.site/"}，flexbox 的底部会对齐到行文的基线，它内部的文本就偏高了。何解，是使用 `vertical-align: text-bottom`，然后当一个调参大侠吗？其实 flexbox 内的文本基线应该对齐到行文的基线，然后单独调整图片的对齐方式即可。
 
 ```css
 .badge {

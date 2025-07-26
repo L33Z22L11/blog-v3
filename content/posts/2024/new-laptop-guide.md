@@ -7,7 +7,7 @@ image: https://7.isyangs.cn/24/67211d63f4203-24.webp
 categories: [经验分享]
 tags: [电脑, Windows, 新手]
 references:
-  - 文档太多，时间跨度也大，罄竹难书。
+  - title: 文档太多，时间跨度也大，罄竹难书。
 ---
 
 ::alert{type="warning" title="声明"}

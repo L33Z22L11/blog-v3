@@ -22,23 +22,6 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 </script>
 
 <template>
-<DefineTemplate v-slot="{ tocItem }">
-	<ol>
-		<li
-			v-for="(entry, index) in tocItem as TocLink[]"
-			:key="index"
-			:class="{
-				'has-active': hasActiveChild(entry, activeTocItem),
-				'active': entry.id === activeTocItem,
-			}"
-		>
-			<!-- 使用 <a> 确保键盘焦点切换 -->
-			<a :href="`#${entry?.id}`" :title="entry.text">{{ entry.text }}</a>
-			<ReuseTemplate v-if="entry.children" :toc-item="entry.children" />
-		</li>
-	</ol>
-</DefineTemplate>
-
 <ZWidget content-class="widget-body">
 	<template #title>
 		<span class="title">文章目录</span>
@@ -50,6 +33,24 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 			<Icon name="ph:chat-circle-text-bold" />
 		</a>
 	</template>
+
+	<!-- 放在顶层会导致 Transition 失效 -->
+	<DefineTemplate v-slot="{ tocItem }">
+		<ol>
+			<li
+				v-for="(entry, index) in tocItem as TocLink[]"
+				:key="index"
+				:class="{
+					'has-active': hasActiveChild(entry, activeTocItem),
+					'active': entry.id === activeTocItem,
+				}"
+			>
+				<!-- 使用 <a> 确保键盘焦点切换 -->
+				<a :href="`#${entry?.id}`" :title="entry.text">{{ entry.text }}</a>
+				<ReuseTemplate v-if="entry.children" :toc-item="entry.children" />
+			</li>
+		</ol>
+	</DefineTemplate>
 
 	<ReuseTemplate v-if="toc?.links.length" :toc-item="toc.links" />
 	<p v-else class="no-toc">
