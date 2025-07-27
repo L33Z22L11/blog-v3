@@ -7,9 +7,9 @@ const appConfig = useAppConfig()
 
 const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 
-const categoryLabel = props.categories?.[0]
-const categoryColor = appConfig.article.categories[categoryLabel!]?.color
-const categoryIcon = getCategoryIcon(categoryLabel)
+const categoryLabel = computed(() => props.categories?.[0])
+const categoryColor = computed(() => appConfig.article.categories[categoryLabel.value!]?.color)
+const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 </script>
 
 <template>
@@ -19,9 +19,11 @@ const categoryIcon = getCategoryIcon(categoryLabel)
 		<h2 class="article-title text-creative">
 			{{ title }}
 		</h2>
+
 		<p v-if="description" class="article-descrption">
 			{{ description }}
 		</p>
+
 		<div class="article-info" data-allow-mismatch>
 			<time
 				v-if="showAllDate || !useUpdated"
@@ -31,6 +33,7 @@ const categoryIcon = getCategoryIcon(categoryLabel)
 				<Icon name="ph:calendar-dots-bold" />
 				{{ getPostDate(date) }}
 			</time>
+
 			<time
 				v-if="showAllDate || useUpdated"
 				:class="{ 'use-updated': useUpdated }"
@@ -40,14 +43,19 @@ const categoryIcon = getCategoryIcon(categoryLabel)
 				<Icon name="ph:calendar-plus-bold" />
 				{{ getPostDate(props.updated) }}
 			</time>
-			<span
-				v-if="categoryLabel"
-				class="article-category"
-				:style="{ '--cg-color': categoryColor }"
-			>
-				<Icon :name="categoryIcon" />
-				{{ categoryLabel }}
-			</span>
+
+			<!-- 带查询参数时会水合错误 -->
+			<ClientOnly>
+				<span
+					v-if="categoryLabel"
+					class="article-category"
+					:style="{ '--cg-color': categoryColor }"
+				>
+					<Icon :name="categoryIcon" />
+					{{ categoryLabel }}
+				</span>
+			</ClientOnly>
+
 			<span v-if="readingTime?.words" class="article-words">
 				<Icon name="ph:paragraph-bold" />
 				{{ formatNumber(readingTime?.words) }}字

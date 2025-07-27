@@ -1,5 +1,5 @@
 import type { NitroConfig } from 'nitropack'
-import type { FeedEntry } from '~/types/feed'
+import type { FeedEntry } from './app/types/feed'
 import redirectList from './redirects.json'
 
 export { zhCN as dateLocale } from 'date-fns/locale/zh-CN'
@@ -51,12 +51,12 @@ const blogConfig = {
 		{ 'src': 'https://zhi.zhilu.cyou/zhi.js', 'data-website-id': 'a1997c81-a42b-46f6-8d1d-8fbd67a8ef41', 'defer': true },
 		// 自己网站的 Cloudflare Insights 统计服务
 		{ 'src': 'https://static.cloudflareinsights.com/beacon.min.js', 'data-cf-beacon': '{"token": "97a4fe32ed8240ac8284e9bffaf03962"}', 'defer': true },
+		// Twikoo 评论系统
+		{ src: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.44/dist/twikoo.all.min.js', defer: true },
 	],
 
-	// 用于 Twikoo 评论系统
+	// 自己部署的 Twikoo 服务
 	twikoo: {
-		js: 'https://gcore.jsdelivr.net/npm/twikoo@1.6.40/dist/twikoo.all.min.js',
-		// 自己部署的 Twikoo 服务
 		envId: 'https://twikoo.zhilu.cyou/',
 		preload: 'https://twikoo.zhilu.cyou/',
 	},

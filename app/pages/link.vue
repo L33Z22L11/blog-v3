@@ -73,7 +73,7 @@ const copyFields = {
 	</template>
 </Tab>
 
-<PostComment key="/link" />
+<PostComment />
 </template>
 
 <style lang="scss" scoped>

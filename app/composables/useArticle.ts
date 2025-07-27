@@ -18,7 +18,6 @@ interface UseCategoryOptions {
 }
 
 export function useCategory(list: MaybeRefOrGetter<ArticleProps[]>, options?: UseCategoryOptions) {
-	// BUG: 首次访问时无法绑定分类到查询参数
 	const { bindQuery } = options ?? {}
 	const category = bindQuery
 		? useRouteQuery(bindQuery, undefined, { transform: (value?: string) => value })

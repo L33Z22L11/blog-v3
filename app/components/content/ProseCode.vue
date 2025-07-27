@@ -1,5 +1,31 @@
+<script setup lang="ts">
+const props = defineProps<{
+	language?: string
+}>()
+
+const slots = defineSlots<{
+	default: () => VNode[]
+}>()
+
+const shikiStore = useShikiStore()
+const highlightedHtml = ref(slots.default()[0]?.children?.toString() || '')
+
+onMounted(async () => {
+	if (!props.language)
+		return
+
+	const shiki = await shikiStore.load()
+	await shikiStore.loadLang(props.language)
+	highlightedHtml.value = shiki.codeToHtml(highlightedHtml.value, {
+		...shikiStore.options,
+		lang: props.language,
+	})
+})
+</script>
+
 <template>
-<code><slot /></code>
+<code v-if="language" class="shiki" v-html="highlightedHtml" />
+<code v-else><slot /></code>
 </template>
 
 <style lang="scss" scoped>

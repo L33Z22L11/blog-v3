@@ -10,10 +10,12 @@ useSeoMeta({
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-stats', 'connectivity'])
 
-const { data: listRaw } = await useArticleIndex()
+// BUG 若其他页面和 index.vue 共用同一数据源，其 payload 会被置空
+// 此处数据源不采用默认参数，以防归档页面刷新空白
+const { data: listRaw } = await useArticleIndex('posts%')
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted, { bindQuery: 'category' })
-const { page, totalPages, listPaged } = usePagination(listCategorized, { bindParam: 'id' })
+const { page, totalPages, listPaged } = usePagination(listCategorized, { bindQuery: 'page' })
 
 watch(category, () => {
 	page.value = 1
@@ -76,7 +78,16 @@ onMounted(() => {
 		/>
 	</div>
 
-	<NuxtPage :list="listPaged" :sort-order />
+	<TransitionGroup name="float-in">
+		<ZArticle
+			v-for="article, index in listPaged"
+			:key="article.path"
+			v-bind="article"
+			:to="article.path"
+			:use-updated="sortOrder === 'updated'"
+			:style="{ '--delay': `${index * 0.05}s` }"
+		/>
+	</TransitionGroup>
 
 	<ZPagination v-model="page" :total-pages />
 </div>

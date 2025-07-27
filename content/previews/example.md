@@ -102,9 +102,9 @@ class: gradient-card active
 
 你可以在 `app/utils/icon.ts` 分别为主域名或专门域名（优先级高）添加匹配规则来为更多站点匹配图标。
 
-### 代码 `ProseInlineCode`
+### 代码 `ProseCode`
 
-`行内代码` 和 [在超链接中的 `行内代码`](#代码-proseinlinecode)。
+`行内代码` 和 [在超链接中的 `行内代码`](#代码-prosecode)。
 
 还可以通过在反引号后加 `{lang="js"}` 等语言实现高亮，例如 `const a = 1`{lang="js"} 。
 

@@ -5,7 +5,7 @@ const layoutStore = useLayoutStore()
 layoutStore.setAside(['toc'])
 
 const { data: post } = await useAsyncData(
-	route.path,
+	() => route.path,
 	() => queryCollection('content').path(route.path).first(),
 )
 
@@ -42,7 +42,7 @@ else {
 
 	<PostFooter v-bind="post" />
 	<PostSurround />
-	<PostComment :key="route.path" />
+	<PostComment />
 </template>
 
 <ZError

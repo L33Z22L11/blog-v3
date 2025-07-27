@@ -1,5 +1,6 @@
 import process from 'node:process'
 import blogConfig, { routeRules } from './blog.config'
+import packageJson from './package.json'
 
 // 此处配置无需修改
 export default defineNuxtConfig({
@@ -12,7 +13,7 @@ export default defineNuxtConfig({
 			meta: [
 				{ name: 'author', content: [blogConfig.author.name, blogConfig.author.email].filter(Boolean).join(', ') },
 				// 此处为元数据的生成器标识，不建议修改
-				{ 'name': 'generator', 'content': 'blog-v3', 'data-github-repo': 'https://github.com/L33Z22L11/blog-v3' },
+				{ 'name': 'generator', 'content': packageJson.name, 'data-github-repo': packageJson.homepage, 'data-version': packageJson.version },
 				{ name: 'mobile-web-app-capable', content: 'yes' },
 				{ name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
 			],
@@ -53,7 +54,7 @@ export default defineNuxtConfig({
 
 	// https://github.com/nuxt/devtools/issues/761
 	devtools: {
-		enabled: false,
+		// enabled: false,
 	},
 
 	features: {
