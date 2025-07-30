@@ -7,10 +7,10 @@
 [![代码风格](https://img.shields.io/badge/代码风格-ESLint-4B32C3?logo=ESLint)](https://eslint.org/)
 [![代码风格](https://img.shields.io/badge/代码风格-Stylelint-263238?logo=Stylelint)](https://stylelint.io/)
 
-> [!WARNING]
-> 2025 年 7-8 月，项目正在迁移至 Nuxt 4 和 Nuxt Content 3，可能存在功能问题且代码变更频繁，请谨慎合并更新。
-
 我的第三代个人博客，于 2024 年 8 月 11 日上线。
+
+> [!WARNING]
+> 项目已于 2025-07-26 迁移至 Nuxt 4 和 Nuxt Content 3，如果你在使用之前的版本，请确保有 merge huge diff 的能力再更新。
 
 > [!TIP]
 > 使用需要具备一定的前端**项目基础**。如果你不确定代码是否有问题，可以加入 QQ 群 `169994096` 讨论（也欢迎闲聊），我很乐意在空闲时解答问题。
@@ -26,7 +26,7 @@
 - [梦爱吃鱼 @JLinmr](https://blog.ruom.top/)
 - [Mikuの极光星 @PaloMiku](https://blog.sotkg.com/)
 - [BiuXin-s Blog @damizai](https://zhilu.biuxin.com/)
-<!-- - [液泡部落格 @VacuolePaoo](https://blog.vacuole.top/) -->
+- [液泡部落格 @VacuolePaoo](https://blog.vacu.top/)
 - [ChinyuanTai @Kindle-deep](https://blog.knlde.top/)
 
 ## 特性

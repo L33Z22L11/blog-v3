@@ -39,6 +39,8 @@
     "@nuxtjs/color-mode": "catalog:",
     "@nuxtjs/seo": "catalog:",
     "@pinia/nuxt": "catalog:",
+    "@shikijs/colorized-brackets": "catalog:",
+    "@shikijs/transformers": "catalog:",
     "@vueuse/core": "catalog:",
     "@vueuse/nuxt": "catalog:",
     "@vueuse/router": "catalog:",

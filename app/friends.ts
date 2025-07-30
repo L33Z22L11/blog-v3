@@ -808,5 +808,15 @@ export default [{
 		archs: ['VitePress', '服务器'],
 		date: '2025-07-14',
 		comment: 'Python、Django 等编程知识、开发工具使用及算法题解等内容。',
+	}, {
+		author: '月空人',
+		desc: '偶尔写些博客，发发牢骚',
+		link: 'https://whbbit.cn/',
+		feed: 'https://whbbit.cn/atom.xml',
+		icon: 'https://7.isyangs.cn/78/6795a3b5015e1-78.webp',
+		avatar: 'https://7.isyangs.cn/78/6795a3b5015e1-78.webp',
+		archs: ['Nuxt', '服务器'],
+		date: '2025-07-28',
+		comment: '',
 	}],
 }] satisfies FeedGroup[]

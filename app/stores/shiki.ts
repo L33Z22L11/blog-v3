@@ -1,29 +1,45 @@
 import type { BundledLanguage, CodeToHastOptions, HighlighterCore } from 'shiki'
-import { transformerRenderWhitespace } from '@shikijs/transformers'
+import { transformerColorizedBrackets } from '@shikijs/colorized-brackets'
+import { transformerMetaHighlight, transformerMetaWordHighlight, transformerNotationDiff, transformerNotationErrorLevel, transformerNotationFocus, transformerNotationHighlight, transformerNotationWordHighlight, transformerRenderWhitespace } from '@shikijs/transformers'
 
 let promise: Promise<HighlighterCore>
 let shiki: HighlighterCore
 
+type CustomTransformerOptions = Array<
+	| 'ignoreRenderWhitespace'
+	| 'ignoreColorizedBrackets'
+>
+
 export const useShikiStore = defineStore('shiki', () => {
-	const options: CodeToHastOptions<BundledLanguage, any> = {
-		lang: 'text',
+	const getOptions = (lang: string, transformerOptions?: CustomTransformerOptions): CodeToHastOptions<BundledLanguage, string> => ({
+		lang,
 		themes: {
 			light: 'catppuccin-latte',
 			dark: 'one-dark-pro',
 		},
 		transformers: [
-			transformerRenderWhitespace(),
+			transformerNotationDiff(),
+			transformerNotationHighlight(),
+			transformerNotationWordHighlight(),
+			transformerNotationFocus(),
+			transformerNotationErrorLevel(),
+			transformerOptions?.includes('ignoreRenderWhitespace') || ['ansi', 'log', 'text'].includes(lang)
+				? {}
+				: transformerRenderWhitespace(),
+			transformerMetaHighlight(),
+			transformerMetaWordHighlight(),
+			transformerOptions?.includes('ignoreColorizedBrackets')
+				? {}
+				: transformerColorizedBrackets(),
 			{
 				root: hast => ({
 					type: 'root',
-					children: (hast.children[0] as any).children,
+					children: (hast.children[0] as any).children[0].children,
 				}),
-				line(node, line) {
-					node.properties['data-line'] = line
-				},
+				line(node, line) { node.properties['data-line'] = line },
 			},
 		],
-	}
+	})
 
 	async function load() {
 		promise ??= loadShiki()
@@ -58,7 +74,7 @@ export const useShikiStore = defineStore('shiki', () => {
 	}
 
 	return {
-		options,
+		getOptions,
 		load,
 		loadLang,
 	}

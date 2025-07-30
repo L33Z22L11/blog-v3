@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BundledLanguage } from 'shiki'
+import type { MountPlainShikiOptions } from 'plain-shiki'
 import { createPlainShiki } from 'plain-shiki'
 
 const props = withDefaults(defineProps<{
@@ -44,10 +44,10 @@ onMounted(async () => {
 	const shiki = await shikiStore.load()
 
 	await shikiStore.loadLang(language.value)
-	createPlainShiki(shiki).mount(codeInput.value!, {
-		...shikiStore.options,
-		lang: language.value as BundledLanguage,
-	})
+	createPlainShiki(shiki).mount(
+		codeInput.value!,
+		shikiStore.getOptions(language.value) as MountPlainShikiOptions,
+	)
 })
 </script>
 

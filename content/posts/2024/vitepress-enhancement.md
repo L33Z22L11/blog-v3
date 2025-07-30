@@ -117,13 +117,17 @@ docs/** linguist-documentation=false
 Staticfile CDN、BootCDN（bootcss）、51LA 统计等公共服务已被发现存在安全问题，使用这些服务可能会导致网站加载恶意内容或被用户的安全策略阻止访问，从而影响网站的正常功能。建议在引入外部脚本时启用子资源完整性（Subresource Integrity，SRI）功能，以提高安全性。
 ::
 
-- ![](https://fontawesome.com/images/favicon/icon.svg){.icon title="其实我不是 CDN 引入的，我也不是 Iconify，我是图片"} Font Awesome（6.5.1）[图标搜索](https://fontawesome.com/search?m=free)
-  - :copy{prompt="75CDN" code="https://lib.baomitu.com/font-awesome/6.5.1/css/all.min.css"}
-  - :copy{prompt="未闻花名" code="https://cdnjs.snrat.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"}
-- ![](https://api.iconify.design/devicon:bootstrap.svg){.icon title="我是通过 Iconify API 引入的，但我是图片"} Bootstrap Icons（1.11.3）[图标搜索](https://icons.getbootstrap.com/)
-  - :copy{prompt="南方科技大学" code="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"}
-  - :copy{prompt="loli.net" code="https://cdnjs.loli.net/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"}
-  - :copy{prompt="ZStatic" code="https://s4.zstatic.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"}
+- ![](https://fontawesome.com/images/favicon/icon.svg){.icon title="其实我不是 CDN 引入的，我也不是 Iconify，我是图片"} Font Awesome [图标搜索](ntawesome.com/search?ic=free)
+  - :copy{prompt="75CDN" code="https://lib.baomitu.com/font-awesome/7.0.0/css/all.min.css"}
+  - :copy{prompt="未闻花名" code="https://cdnjs.snrat.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"}
+  - :copy{prompt="7ED" code="https://use.sevencdn.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"}
+  - :copy{prompt="WebMirror" code="https://cdnjs.webstatic.cn/ajax/libs/font-awesome/7.0.0/css/all.min.css"}
+- ![](https://api.iconify.design/devicon:bootstrap.svg){.icon title="我是通过 Iconify API 引入的，但我是图片"} Bootstrap Icons [图标搜索](https://icons.getbootstrap.com/)
+  - :copy{prompt="南科大" code="https://mirrors.sustech.edu.cn/cdnjs/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"}
+  - :copy{prompt="loli.net" code="https://cdnjs.loli.net/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"}
+  - :copy{prompt="ZStatic" code="https://s4.zstatic.net/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"}
+  - :copy{prompt="ZStatic-unpkg" code="https://s4.zstatic.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"}
+
 
 至于在 VitePress 站点的 `<head>`{lang="html"} 标签中引入 CSS？[看文档](https://vitepress.dev/zh/reference/site-config#head) 吧。当然，引入后不要忘了设置“固定宽度”和“垂直居中”样式。
 

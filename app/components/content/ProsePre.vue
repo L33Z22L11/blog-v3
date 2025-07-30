@@ -42,15 +42,15 @@ const codeblock = useTemplateRef('codeblock')
 const { copy, copied } = useCopy(codeblock)
 
 const shikiStore = useShikiStore()
-const highlightedHtml = ref(escapeHtml(props.code))
+const rawHtml = ref(escapeHtml(props.code))
 
 onMounted(async () => {
 	const shiki = await shikiStore.load()
 	await shikiStore.loadLang(props.language)
-	highlightedHtml.value = shiki.codeToHtml(props.code.trimEnd(), {
-		...shikiStore.options,
-		lang: props.language,
-	})
+	rawHtml.value = shiki.codeToHtml(
+		props.code.trimEnd(),
+		shikiStore.getOptions(props.language),
+	)
 })
 </script>
 
@@ -86,7 +86,7 @@ onMounted(async () => {
 		ref="codeblock"
 		class="shiki scrollcheck-x"
 		:class="[props.class, { wrap: isWrap }]"
-		v-html="highlightedHtml"
+		v-html="rawHtml"
 	/>
 
 	<button
@@ -217,15 +217,6 @@ pre {
 
 		outline: 0.2em solid var(--ld-bg-active);
 		background-color: var(--ld-bg-active);
-	}
-
-	> .space:is(:first-child, :last-child),
-	> :not(.space) + .space:has(+ .space),
-	> .space + .space {
-		background-image: radial-gradient(var(--c-bg-soft) 50%, transparent 50%);
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: 0.3em 0.3em;
 	}
 }
 

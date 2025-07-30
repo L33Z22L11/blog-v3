@@ -52,11 +52,6 @@ export default defineNuxtConfig({
 		'@/assets/css/reusable.scss',
 	],
 
-	// https://github.com/nuxt/devtools/issues/761
-	devtools: {
-		// enabled: false,
-	},
-
 	features: {
 		inlineStyles: false,
 	},

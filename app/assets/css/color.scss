@@ -43,22 +43,10 @@
 	--ld-shadow: var(--c-bg-soft);
 
 	color-scheme: light dark;
-
-	.shiki span {
-		background-color: var(--shiki-light-bg) !important; /* stylelint-disable-line declaration-no-important */
-		font-style: var(--shiki-light-font-style) !important; /* stylelint-disable-line declaration-no-important */
-	}
 }
 
 .dark {
 	@include dark-theme;
 
 	color-scheme: dark;
-
-	.shiki span {
-		background-color: var(--shiki-dark-bg) !important; /* stylelint-disable-line declaration-no-important */
-		font-style: var(--shiki-dark-font-style) !important; /* stylelint-disable-line declaration-no-important */
-		color: var(--shiki-dark) !important; /* stylelint-disable-line declaration-no-important */
-	}
 }
-

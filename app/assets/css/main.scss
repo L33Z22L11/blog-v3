@@ -140,3 +140,32 @@ img {
 		fill: var(--ld-bg-card);
 	}
 }
+
+.shiki > .line {
+	> span {
+		font-style: var(--shiki-light-font-style);
+
+		.dark & {
+			background-color: var(--shiki-dark-bg) !important; /* stylelint-disable-line declaration-no-important */
+			font-style: var(--shiki-dark-font-style);
+			color: var(--shiki-dark) !important; /* stylelint-disable-line declaration-no-important */
+		}
+	}
+
+	> .space::before,
+	>.tab::before {
+		position: absolute;
+		opacity: 0.3;
+		pointer-events: none;
+	}
+
+	> .space:is(:first-child, :last-child)::before,
+	> :not(.space) + .space:has(+ .space)::before,
+	> .space + .space::before {
+		content: "·";
+	}
+
+	>.tab::before {
+		content: "⇥";
+	}
+}

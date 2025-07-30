@@ -30,6 +30,12 @@ catalogs:
     '@pinia/nuxt':
       specifier: ^0.11.2
       version: 0.11.2
+    '@shikijs/colorized-brackets':
+      specifier: ^3.8.1
+      version: 3.8.1
+    '@shikijs/transformers':
+      specifier: ^3.8.1
+      version: 3.8.1
     '@vueuse/core':
       specifier: ^13.5.0
       version: 13.5.0
@@ -191,6 +197,12 @@ importers:
       '@pinia/nuxt':
         specifier: 'catalog:'
         version: 0.11.2(magicast@0.3.5)(pinia@3.0.3(typescript@5.8.3)(vue@3.5.18(typescript@5.8.3)))
+      '@shikijs/colorized-brackets':
+        specifier: 'catalog:'
+        version: 3.8.1
+      '@shikijs/transformers':
+        specifier: 'catalog:'
+        version: 3.8.1
       '@vueuse/core':
         specifier: 'catalog:'
         version: 13.5.0(vue@3.5.18(typescript@5.8.3))
@@ -1742,6 +1754,9 @@ packages:
 
   '@sec-ant/readable-stream@0.4.1':
     resolution: {integrity: sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg==}
+
+  '@shikijs/colorized-brackets@3.8.1':
+    resolution: {integrity: sha512-S0VnyKjE/opScjNEsZsAtymkiURYC5J0wBHyOas/akuFLgL7YELM2fhsiM5oeGMKqPmAqf4ZLi3DcOSetMuGag==}
 
   '@shikijs/core@3.8.1':
     resolution: {integrity: sha512-uTSXzUBQ/IgFcUa6gmGShCHr4tMdR3pxUiiWKDm8pd42UKJdYhkAYsAmHX5mTwybQ5VyGDgTjW4qKSsRvGSang==}
@@ -8131,6 +8146,10 @@ snapshots:
     optional: true
 
   '@sec-ant/readable-stream@0.4.1': {}
+
+  '@shikijs/colorized-brackets@3.8.1':
+    dependencies:
+      shiki: 3.8.1
 
   '@shikijs/core@3.8.1':
     dependencies:
