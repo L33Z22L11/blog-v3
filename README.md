@@ -28,6 +28,7 @@
 - [BiuXin-s Blog @damizai](https://zhilu.biuxin.com/)
 - [液泡部落格 @VacuolePaoo](https://blog.vacu.top/)
 - [ChinyuanTai @Kindle-deep](https://blog.knlde.top/)
+- [莫言小栈 @661111](https://www.myxz.top/)
 
 ## 特性
 
@@ -35,7 +36,7 @@
 
 ## 目录结构
 
-项目使用 Nuxt 4 项目目录结构，可以参照 [Nuxt 3 目录结构（左侧栏有导航）](https://nuxt.com/docs/guide/directory-structure/app)。
+项目使用 [Nuxt 4 项目目录结构](https://nuxt.com/docs/4.x/guide/directory-structure/app/app)。
 
 ```sh
 .
@@ -50,10 +51,9 @@
 │   ├── composables # Vue 组合式函数
 │   ├── pages # 页面
 │   │   ├── [...slug].vue # 正文、404页面
-│   │   ├── page.vue # 首页
-│   │   ├── page/[[id]].vue # 首页动态路由
 │   │   ├── archive.vue # 归档
 │   │   ├── link.vue # 友链
+│   │   ├── index.vue # 首页
 │   │   └── preview.vue # 预览的文章
 │   ├── plugins # Nuxt / Vue 插件
 │   ├── stores # Pinia 状态管理
@@ -76,10 +76,10 @@
 │   ├── api # 接口
 │   │   └── stats.get.ts # 博客静态统计
 │   ├── plugins # Nitro 插件
-│   │   ├── anti-mirror.ts # 恶意反代跳转
-│   │   └── fix-post.ts # 修复文章时区/链接
+│   │   └── anti-mirror.ts # 恶意反代跳转
 │   └── routes # 路由
-│       └── atom.xml.get.ts # Atom 订阅源
+│       ├── atom.xml.get.ts # Atom 订阅源
+│       └── zhilu.opml.get.ts # OPML 订阅源聚合
 ├── blog.config.ts # 博客静态公共配置★
 ├── nuxt.config.ts # Nuxt 配置
 └── redirects.json # 旧站点重定向配置
@@ -105,7 +105,7 @@ pnpm dev
 
 - 删除原有文章：`content/` 目录下仅保留 `link.md`，`app.config.ts` 中将 `footer.nav[2].items[1].url` 由 `/theme` 改为 `https://blog.zhilu.site/theme`（确保通过链接检测）。
 - 更换服务配置：`blog.config.ts` 中的 Umami 站点统计、Cloudflare Insights 统计、Twikoo 评论服务源需要注释或更换。
-- 个人信息：`blog.config.ts` 中的站点信息、`app.config.ts` 中的页脚导航、出生年份等。
+- 个人信息：`blog.config.ts` 中的站点名称、头像，`app.config.ts` 中的页脚导航、出生年份等。
 - 其他应当被善意认为有必要修改的文件和配置字段（参阅“目录结构”一节）。
 
 为保证开发体验，需要安装 ESLint、Stylelint 等 VS Code 扩展。如果你不喜欢此项目的格式化风格，可以在 `./eslint.config.mjs` 和 `./.vscode/settings.json` 中调整或者不安装 VS Code 扩展。
@@ -146,5 +146,5 @@ pnpm preview
 
 - 项目本体：[MIT](LICENSE)
 - 博客文章：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans)
-- 请完成必要的配置与修改后再部署项目，**不得以“纸鹿”或任何与我相关的名义发布“镜像”网站**，否则我将设法与你联系。
+- 请完成必要的配置与修改后再部署项目，**不得使用“纸鹿”相关名称、Logo建立“镜像”网站或照搬文章内容而不标注来源**，否则我将设法与你联系。
 - 希望你在页脚保留此项目链接，助力开源传播。

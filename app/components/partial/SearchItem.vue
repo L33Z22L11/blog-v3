@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import type { SearchResult } from 'minisearch'
 
-interface SIProps extends SearchResult {
+interface SearchItem extends SearchResult {
 	title: string
 	content: string
 	titles: string[]
+	level: number
 }
 
-const props = defineProps<Partial<SIProps>>()
+const props = defineProps<Partial<SearchItem>>()
 
 const title = computed(() => [...props.titles ?? [], props.title].join(' > '))
-const isPara = computed(() => props.titles?.length)
 const word = computed(() => props.queryTerms?.[0] ?? '')
 
 const highlightTitle = computed(() => highlightHtml(title.value, word.value))
@@ -19,12 +19,12 @@ const highlightContent = computed(() => highlightHtml(props.content ?? '', word.
 
 <template>
 <ZRawLink :to="id" class="search-item">
-	<h2>
-		<Badge v-if="!isPara" round>
-			文章
+	<div class="title text-creative">
+		<Badge round :class="{ primary: level === 1 }">
+			{{ level === 1 ? '文章' : `H${level}` }}
 		</Badge>
 		<span v-html="highlightTitle" />
-	</h2>
+	</div>
 	<p class="content" v-html="highlightContent" />
 </ZRawLink>
 </template>
@@ -41,13 +41,16 @@ const highlightContent = computed(() => highlightHtml(props.content ?? '', word.
 		background-color: var(--c-bg-soft);
 	}
 
-	h2 {
+	> .title {
 		font-size: 1em;
 
-		.badge {
+		> .badge {
 			margin-right: 0.5em;
 			font-size: 0.8em;
-			color: var(--c-primary);
+
+			&.primary {
+				color: var(--c-primary);
+			}
 		}
 
 		& + .content {
@@ -55,7 +58,7 @@ const highlightContent = computed(() => highlightHtml(props.content ?? '', word.
 		}
 	}
 
-	.content {
+	> .content {
 		font-size: 0.8em;
 		white-space: pre-wrap;
 		color: var(--c-text-2);

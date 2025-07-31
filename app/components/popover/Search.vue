@@ -20,19 +20,25 @@ const { word } = storeToRefs(searchStore)
 const activeIndex = ref(0)
 const listResult = useTemplateRef('list-result')
 
-const { data, status } = await useAsyncData('search', () => queryCollectionSearchSections('content'))
+const { data, status } = await useAsyncData('search', () => queryCollectionSearchSections('content', {
+	ignoredTags: ['code'],
+}))
 
 const miniSearch = new MiniSearch({
 	fields: ['title', 'content'],
-	storeFields: ['title', 'content'],
+	storeFields: ['title', 'titles', 'content', 'level'],
 	searchOptions: {
 		prefix: true,
 		fuzzy: 0.2,
 	},
 })
 
-miniSearch.addAll(toValue(data.value))
+miniSearch.addAll(toValue(data.value || []))
 const result = computed(() => miniSearch.search(toValue(word)))
+
+watch(word, () => {
+	activeIndex.value = 0
+})
 
 watch(activeIndex, (newVal, oldVal) => {
 	if (!result.value?.length)
@@ -43,16 +49,16 @@ watch(activeIndex, (newVal, oldVal) => {
 })
 
 function scrollToActiveItem() {
-	(listResult.value?.children[activeIndex.value] as Element).scrollIntoView({
+	listResult.value?.children[activeIndex.value]?.scrollIntoView({
 		behavior: 'smooth',
 		block: 'nearest',
 	})
 }
 
 function openActiveItem() {
-	const item = listResult.value?.children[activeIndex.value] as Element
+	const item = listResult.value?.children[activeIndex.value]
 	// 触发 vue-router 点击事件
-	item.dispatchEvent(new Event('click'))
+	item?.dispatchEvent(new Event('click'))
 }
 </script>
 
