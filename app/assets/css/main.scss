@@ -113,7 +113,8 @@ img {
 	border-radius: 0.5em;
 	box-shadow: 0 0 1rem var(--ld-shadow);
 	background-color: var(--ld-bg-card);
-	font-size: 0.8em;
+	font-size: 0.8rem;
+	line-height: 1.4;
 	color: var(--c-text-2);
 	animation: float-in 0.2s;
 
@@ -139,8 +140,9 @@ img {
 
 	> .space::before,
 	>.tab::before {
-		position: absolute;
+		display: inline-block;
 		opacity: 0.3;
+		width: 0;
 		pointer-events: none;
 	}
 

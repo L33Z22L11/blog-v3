@@ -208,6 +208,7 @@ pre {
 		background-color: var(--c-bg-2);
 		text-align: right;
 		color: var(--c-text-3);
+		z-index: 1;
 	}
 
 	&.highlight {

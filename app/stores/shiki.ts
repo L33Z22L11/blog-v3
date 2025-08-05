@@ -36,7 +36,9 @@ export const useShikiStore = defineStore('shiki', () => {
 					type: 'root',
 					children: (hast.children[0] as any).children[0].children,
 				}),
-				line(node, line) { node.properties['data-line'] = line },
+				line(node, line) {
+					node.properties['data-line'] = line
+				},
 			},
 		],
 	})

@@ -6,10 +6,6 @@ import packageJson from './package.json'
 export default defineNuxtConfig({
 	app: {
 		head: {
-			htmlAttrs: {
-				'lang': blogConfig.language,
-				'data-lang': blogConfig.language,
-			},
 			meta: [
 				{ name: 'author', content: [blogConfig.author.name, blogConfig.author.email].filter(Boolean).join(', ') },
 				// 此处为元数据的生成器标识，不建议修改
@@ -138,5 +134,6 @@ export default defineNuxtConfig({
 	site: {
 		name: blogConfig.title,
 		url: blogConfig.url,
+		defaultLocale: blogConfig.language,
 	},
 })

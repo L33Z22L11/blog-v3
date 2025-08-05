@@ -1,38 +1,38 @@
 catalog:
-  '@antfu/eslint-config': ^4.18.0
+  '@antfu/eslint-config': ^5.1.0
   '@iconify-json/ph': ^1.2.2
   '@nuxt/content': ^3.6.3
   '@nuxt/icon': ^1.15.0
-  '@nuxt/image': ^1.10.0
+  '@nuxt/image': ^1.11.0
   '@nuxtjs/color-mode': ^3.5.2
   '@nuxtjs/seo': ^3.1.0
   '@pinia/nuxt': ^0.11.2
-  '@shikijs/colorized-brackets': ^3.8.1
-  '@shikijs/transformers': ^3.8.1
-  '@vueuse/core': ^13.5.0
-  '@vueuse/nuxt': ^13.5.0
-  '@vueuse/router': ^13.5.0
+  '@shikijs/colorized-brackets': ^3.9.2
+  '@shikijs/transformers': ^3.9.2
+  '@vueuse/core': ^13.6.0
+  '@vueuse/nuxt': ^13.6.0
+  '@vueuse/router': ^13.6.0
   '@zinkawaii/stylelint-config': ^0.3.3
   better-sqlite3: ^12.2.0
-  cross-env: ^7.0.3
+  cross-env: ^10.0.0
   date-fns: ^4.1.0
   date-fns-tz: ^3.2.0
   embla-carousel-autoplay: ^8.6.0
   embla-carousel-vue: ^8.6.0
   embla-carousel-wheel-gestures: ^8.0.2
-  eslint: ^9.31.0
+  eslint: ^9.32.0
   fast-xml-parser: ^5.2.5
   minisearch: ^7.1.2
-  nuxt: ^4.0.1
+  nuxt: ^4.0.3
   parse-domain: ^8.2.2
   plain-shiki: ^0.3.0
   radash: ^12.1.1
   remark-reading-time: ^2.0.2
   sass-embedded: ^1.89.2
-  shiki: ^3.8.1
-  stylelint: ^16.22.0
+  shiki: ^3.9.2
+  stylelint: ^16.23.0
   terser: ^5.43.1
-  typescript: ^5.8.3
+  typescript: ^5.9.2
   vue: ^3.5.18
   vue-router: ^4.5.1
   vue-tippy: ^6.7.1
