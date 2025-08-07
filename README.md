@@ -1,4 +1,4 @@
-# 纸鹿摸鱼处
+# 地球驿站
 
 [![框架](https://img.shields.io/badge/框架-Nuxt-00DC82?logo=Nuxt.js)](https://nuxt.com/)
 [![CMS](https://img.shields.io/badge/CMS-Nuxt%20Content-00DC82?logo=Nuxt.js)](https://content.nuxt.com/)
@@ -7,7 +7,7 @@
 [![代码风格](https://img.shields.io/badge/代码风格-ESLint-4B32C3?logo=ESLint)](https://eslint.org/)
 [![代码风格](https://img.shields.io/badge/代码风格-Stylelint-263238?logo=Stylelint)](https://stylelint.io/)
 
-我的第三代个人博客，于 2024 年 8 月 11 日上线。
+地球驿站于 2025 年 1 月 24 日重新上线。
 
 > [!WARNING]
 > 项目已于 2025-07-26 迁移至 Nuxt 4 和 Nuxt Content 3，如果你在使用之前的版本，请确保有 merge huge diff 的能力再更新。
@@ -108,7 +108,15 @@ pnpm dev
 - 个人信息：`blog.config.ts` 中的站点名称、头像，`app.config.ts` 中的页脚导航、出生年份等。
 - 其他应当被善意认为有必要修改的文件和配置字段（参阅“目录结构”一节）。
 
-为保证开发体验，需要安装 ESLint、Stylelint 等 VS Code 扩展。如果你不喜欢此项目的格式化风格，可以在 `./eslint.config.mjs` 和 `./.vscode/settings.json` 中调整或者不安装 VS Code 扩展。
+为保证开发体验，需要安装
+
+ - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+ - [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
+ - [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+ - [Iconify IntelliSense](https://marketplace.visualstudio.com/items?itemName=antfu.iconify)
+
+ 等 VS Code 扩展。
+如果你不喜欢此项目的格式化风格，可以在 `./eslint.config.mjs` 和 `./.vscode/settings.json` 中调整或者不安装 VS Code 扩展。
 
 ### 创建文章
 

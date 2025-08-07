@@ -19,7 +19,7 @@ export function getGhAvatar(name = '', options: Record<string, any> = { size: 92
 	if (options.mask)
 		params.set('mask', options.mask)
 
-	return `https://wsrv.nl/?${params.toString()}`
+	return `https://wsrv.nl/?${params.toString()}&output=webp&maxage=7d` // 头像更新不及时😡
 }
 
 export function getImgUrl(src?: string, service?: ImgService) {

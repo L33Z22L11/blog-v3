@@ -10,9 +10,9 @@ export default defineAppConfig({
 
 	article: {
 		categories: <{ [category: string]: { icon: string, color?: string } }>{
-			经验分享: { icon: 'ph:mouse-bold', color: '#3af' },
-			生活: { icon: 'ph:shooting-star-bold', color: '#3ba' },
-			代码: { icon: 'ph:code-bold', color: '#77f' },
+			分享: { icon: 'ph:mouse-bold', color: '#33aaff' },
+			随笔: { icon: 'ph:shooting-star-bold', color: '#6969ff' },
+			编程: { icon: 'ph:code-bold', color: '#77f' },
 			未分类: { icon: 'ph:folder-dotted-bold' },
 		},
 		defaultCategoryIcon: 'ph:folder-bold',
@@ -40,10 +40,10 @@ export default defineAppConfig({
 		/** 侧边栏底部图标导航 */
 		iconNav: [
 			{ icon: 'ph:house-bold', text: '个人主页', url: blogConfig.author.homepage },
-			{ icon: 'ri:qq-line', text: '交流群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
-			{ icon: 'ph:github-logo-bold', text: 'GitHub: L33Z22L11', url: 'https://github.com/L33Z22L11' },
+			{ icon: 'ri:qq-line', text: 'MC交流电台', url: 'https://qm.qq.com/q/lZxfLjrbxu' },
+			{ icon: 'ph:github-logo-bold', text: 'GitHub: Mugzx', url: 'https://github.com/mugzx' },
 			{ icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
-			{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/go-by-clouds.html' },
+			{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/plain.html' },
 		] satisfies NavItem[],
 		/** 页脚站点地图 */
 		nav: [
@@ -51,38 +51,38 @@ export default defineAppConfig({
 				title: '探索',
 				items: [
 					{ icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
-					{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/' },
+					{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/plain.html' },
 					{ icon: 'ph:flying-saucer-bold', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
 				],
 			},
 			{
 				title: '社交',
 				items: [
-					{ icon: 'ph:github-logo-bold', text: 'L33Z22L11', url: 'https://github.com/L33Z22L11' },
-					{ icon: 'ri:qq-line', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
+					{ icon: 'ri:bilibili-fill', text: 'BiliBili: Mugzx', url: 'https://space.bilibili.com/487110375' },
+					{ icon: 'ri:qq-line', text: 'MC交流电台', url: 'https://qm.qq.com/q/lZxfLjrbxu' },
 					{ icon: 'ph:envelope-simple-bold', text: blogConfig.author.email, url: `mailto:${blogConfig.author.email}` },
 				],
 			},
 			{
 				title: '信息',
 				items: [
-					{ icon: 'simple-icons:nuxtdotjs', text: 'Nuxt开源博客主题', url: 'https://github.com/L33Z22L11/blog-v3' },
-					{ icon: 'ph:swatches-bold', text: '主题和组件文档', url: '/theme' },
-					{ icon: 'ph:certificate-bold', text: '萌备20246888号', url: 'https://icp.gov.moe/?keyword=20246888' },
+					{ icon: 'simple-icons:nuxtdotjs', text: 'L33Z22L11/blog-v3', url: 'https://github.com/L33Z22L11/blog-v3' },
+					{ icon: 'heroicons-outline:status-online', text: 'Mugzx-站点监测', url: 'https://s.mugzx.top' },
+					{ icon: 'ph:certificate-bold', text: '萌备20259900号', url: 'https://icp.gov.moe/?keyword=20259900' },
 				],
 			},
 		] satisfies Nav,
 		/** 页脚版权信息底部的其他信息 */
-		message: '<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow" data-v-e2b95aa8="">陕ICP备2025072742号-3</a>',
+		message: '',
 	},
 
 	/** 左侧栏顶部 Logo */
 	header: {
-		logo: 'https://weavatar.com/avatar/47c0f2e82b76d9b10eb3023df9e02e4e3fdbeaf5b74b842063f207971e7fbe7b?s=160',
+		logo: 'https://weavatar.com/avatar/7e3dc62d2db6965f993ee5e0bc6dea56a8d401fcf5271b3029582ed25232ad0d?d=blank&s=160',
 		/** 展示标题文本，否则展示纯 Logo */
 		showTitle: true,
 		subtitle: blogConfig.subtitle,
-		emojiTail: ['📄', '🦌', '🙌', '🐟', '🏖️'],
+		emojiTail: ['🌙', '💡', '📝', '👇', '🌏'],
 	},
 
 	pagination: {
@@ -90,7 +90,7 @@ export default defineAppConfig({
 		/** 默认排序方式，需要是 this.article.order 中的键名 */
 		sortOrder: 'date' as const,
 		/** 允许（普通/预览/归档）文章列表正序，开启后排序方式左侧图标可切换顺序 */
-		allowAscending: false,
+		allowAscending: true,
 	},
 
 	/** 左侧栏导航 */
@@ -98,9 +98,10 @@ export default defineAppConfig({
 		{
 			title: '',
 			items: [
-				{ icon: 'ph:files-bold', text: '文章', url: '/' },
-				{ icon: 'ph:link-bold', text: '友链', url: '/link' },
-				{ icon: 'ph:archive-bold', text: '归档', url: '/archive' },
+				{ icon: 'ph:files-bold', text: '驻站笔记', url: '/' },
+				{ icon: 'ph:link-bold', text: '站友电台', url: '/link' },
+				{ icon: 'ph:archive-bold', text: '驿站仓库', url: '/archive' },
+				{ icon: 'ph:info-bold', text: '我与驿站', url: '/about' },
 			],
 		},
 	] satisfies Nav,
@@ -113,7 +114,7 @@ export default defineAppConfig({
 
 	stats: {
 		/** 归档页面每年标题对应的年龄 */
-		birthYear: 2003,
+		birthYear: 2009,
 		/** blog-stats widget 的预置文本 */
 		wordCount: '约10万',
 	},

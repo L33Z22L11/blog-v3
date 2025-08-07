@@ -4,10 +4,10 @@ import blogConfig from '~~/blog.config'
 /** 通过 Google Search Console 检索到的恶意反代域名 */
 const encodedBlacklist = [
 	'dgjlx.com', // blog.revincx.icu
-	'dgvhqt.com', // blog.zhilu.cyou
+	'dgvhqt.com', // blog.zhilu.site
 	'hcmsla.com', // thyuu.com
 	'wmlop.com', // xaoxuu.com
-	'yswjxs.com', // blog.zhilu.cyou
+	'yswjxs.com', // blog.zhilu.site
 ].map(btoa)
 
 const encodedOfficial = btoa(new URL(blogConfig.url).host)

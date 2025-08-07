@@ -75,7 +75,7 @@ const auxDateLabel = computed(() => props.date
 	opacity: 0.8;
 	top: 0;
 	right: 0;
-	width: min(50%, 180px);
+	width: min(30%, 140px);
 	height: 100%;
 	margin: 0;
 	mask: linear-gradient(to right, transparent, #FFF7);
@@ -85,8 +85,8 @@ const auxDateLabel = computed(() => props.date
 
 	:hover > & {
 		opacity: 1;
-		width: 50%;
-		object-position: center 43.5%;
+		width: 30%;
+		object-position: center 41.5%;
 	}
 }
 </style>

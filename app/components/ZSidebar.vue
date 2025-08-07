@@ -5,6 +5,15 @@ const searchStore = useSearchStore()
 
 const { word } = storeToRefs(searchStore)
 const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' : 'Ctrl+K')
+
+const displayWarning = ref(false)
+function hideWarning() {
+	displayWarning.value = false
+	localStorage?.setItem('hide_20250725', 'true')
+}
+onMounted(() => {
+	displayWarning.value = localStorage.getItem('hide_20250725') !== 'true'
+})
 </script>
 
 <template>

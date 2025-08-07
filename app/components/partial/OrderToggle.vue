@@ -34,12 +34,12 @@ function toggleDirection() {
 	<ZDropdown trigger="focusin">
 		<button :disabled="!categories">
 			<Icon :name="getCategoryIcon(category)" />
-			<span class="order-text">{{ category ?? '全部分类' }}</span>
+			<span class="order-text">{{ category ?? '全部' }}</span>
 		</button>
 		<template #content="{ hide }">
 			<button @click="hide(), category = undefined">
 				<Icon :name="getCategoryIcon()" />
-				<span>全部分类</span>
+				<span>全部</span>
 			</button>
 			<button v-for="item in categories" :key="item" @click="hide(), category = item">
 				<Icon :name="getCategoryIcon(item)" />

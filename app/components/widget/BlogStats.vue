@@ -33,7 +33,7 @@ onMounted(async () => {
 </script>
 
 <template>
-<ZWidget card title="博客统计">
+<ZWidget card title="驿站统计">
 	<ul>
 		<li v-for="(item, index) in blogStats" :key="index" :title="item.tip">
 			<small>{{ item.label }}</small><br>

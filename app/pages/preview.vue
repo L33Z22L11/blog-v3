@@ -18,7 +18,7 @@ const { category, categories, listCategorized } = useCategory(listSorted)
 		<h1>
 			<ZRawLink class="mobile-only" to="/">
 				<Icon name="ph:caret-left-bold" />
-			</ZRawLink>预览
+			</ZRawLink>暂存
 		</h1>
 		<ZOrderToggle
 			v-model:is-ascending="isAscending"
@@ -27,7 +27,7 @@ const { category, categories, listCategorized } = useCategory(listSorted)
 			:categories
 		/>
 	</div>
-	<p>勇敢的人探索世界。这里是一些还未发布的文章。</p>
+	<p>这里是一些因为不太满意因而还未发布的文章笔记。</p>
 
 	<menu>
 		<ZArticle
