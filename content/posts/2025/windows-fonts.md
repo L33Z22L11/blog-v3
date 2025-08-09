@@ -3,7 +3,7 @@ title: 将微软雅黑替换为新版样式
 description: 电脑上的旧微软雅黑在小字体验上并不友好，我参考了b站UP的教程视频，将字体替换。
 date: 2025-07-23 00:15:25
 updated: 2025-07-23 18:51:08
-image: https://mu-s4.s3.bitiful.net/2025/07/23.avif!style=1
+image: https://r2.mugzx.top/2025/07/23.avif
 categories: [分享]
 tags: [字体]
 recommend: true

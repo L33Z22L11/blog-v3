@@ -55,7 +55,21 @@ tags: [存储]
 
 见之大[喜]{.text-zoom}！一试，真能开通。
 
-由于我比较在意国内网络的访问，大多数图片还是选择放在在我的 Bitiful S4 里面，R2 存储桶暂时也没有什么规划的想法，就先放一下我的 owo.json 吧。
+## 媒体处理
+
+~~由于我比较在意国内网络的访问，大多数图片还是选择放在在我的 Bitiful S4 里面，R2 存储桶暂时也没有什么规划的想法，就先放一下我的 owo.json 吧~~。我将封面图片迁往 Cloudflare R2，但需要颜色管理以及更快加载的图片依旧是 Bitiful S4。
+
+使用 Cloudflare Images 可以转换图像。
+
+```
+https://<ZONE>/cdn-cgi/image/<OPTIONS>/<SOURCE-IMAGE>
+```
+
+根据 [Cloudflare 官方文档](https://developers.cloudflare.com/images/transform-images/transform-via-url/#options)，将`<ZONE>`修改为你的域名，`<OPTIONS>`修改为处理参数，`<SOURCE-IMAGE>`修改为图片的路径即可启用 Cloudflare Images。
+
+```
+https://r2.mugzx.top/cdn-cgi/image/f=avif/259e8d4196fea827025c2927a6fcd6e98d030057371238a77ae4cddebce86477.png
+```
 
 ## 访问配置
 

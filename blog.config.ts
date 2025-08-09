@@ -41,6 +41,7 @@ const blogConfig = {
 		// 自动启用本域名的 Nuxt Image
 		// 'www.mugzx.top',
 		// 'mu-s4.s3.bitiful.net',
+		// 'r2.mugzx.top',
 	],
 
 	// 禁止搜索引擎收录的路径

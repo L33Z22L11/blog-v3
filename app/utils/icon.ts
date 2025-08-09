@@ -36,6 +36,7 @@ export function getArchIcon(arch: Arch) {
 // @keep-sorted
 export const mainDomainIcons: Record<string, string> = {
 	'bilibili.com': 'ri:bilibili-fill',
+	'cloudflare.com': 'simple-icons:cloudflare',
 	'creativecommons.org': 'ri:creative-commons-line',
 	'github.com': 'ri:github-fill',
 	'github.io': 'ri:github-fill',

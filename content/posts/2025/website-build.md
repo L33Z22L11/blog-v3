@@ -3,7 +3,7 @@ title: 网站搭建选择指南
 description: 博客重建前曾写过几篇文章，此文是我根据往昔记忆重新构建的版本，后续进行多次修改。
 date: 2025-05-05 19:11:40
 updated: 2025-07-23 18:51:08
-image: https://mu-s4.s3.bitiful.net/2025/05/05.avif!style=1
+image: https://r2.mugzx.top/2025/05/05.avif
 categories: [分享]
 tags: [网站, 搭建]
 recommend: true

@@ -3,7 +3,7 @@ title: 修改博客，字体裁剪
 description: 字体子集化处理，节省不必要的加载时间（↓1145秒），提升访问体验，十分甚至九分的有效。
 date: 2025-02-06 22:13:42
 updated: 2025-07-23 19:04:02
-image: https://mu-s4.s3.bitiful.net/2025/02/06.avif!style=1
+image: https://r2.mugzx.top/2025/02/06.avif
 categories: [分享]
 tags: [字体, 博客]
 recommend: true
