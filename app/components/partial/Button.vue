@@ -31,7 +31,7 @@ defineProps<ButtonProps>()
 	border-radius: 0.5em;
 	box-shadow: 0 2px 0.5em var(--ld-shadow);
 	background-color: var(--ld-bg-card);
-	line-height: normal;
+	line-height: 1.2;
 	vertical-align: middle;
 	transition: color 0.1s, background-color 0.2s;
 	cursor: pointer;

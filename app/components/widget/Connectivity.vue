@@ -19,7 +19,7 @@ const contentStyle = computed<CSSProperties>(() => ({
 	:style="contentStyle"
 >
 	<!-- TODO: 优化技术架构展示 -->
-	<p>站点由 Nuxt Content 进行驱动，部署于 Vercel；通过 MasterGo 设计封面，图床为 Bitiful S4 与 Cloudflare R2。</p>
+	<p>站点由 Nuxt Content v3 进行驱动，部署于 Vercel；通过 MasterGo 设计封面，图床为 Bitiful S4 与 Cloudflare R2。</p>
 	<p>更多信息：按<Key code="F12" />。</p>
 </ZWidget>
 </template>

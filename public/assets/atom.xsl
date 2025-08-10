@@ -14,15 +14,18 @@
 		</head>
 
 		<body>
-			<header>
-				<div class="logo-header">
-					<img class="logo" src="{atom:feed/atom:logo}" alt="" />
+			<header class="logo-header">
+				<img class="logo" src="{atom:feed/atom:logo}" alt="" />
+				<div>
 					<h1 class="title"><xsl:value-of select="atom:feed/atom:title" /></h1>
 					<div class="subtitle"><xsl:value-of select="atom:feed/atom:subtitle" /></div>
 				</div>
-				<!-- <div class="description"><xsl:value-of select="atom:feed/atom:description" /></div> -->
-				<blockquote>本页面是 Atom 订阅源，可直接被订阅。</blockquote>
 			</header>
+
+			<blockquote>
+				<p>本页面是 Atom 订阅源，可直接被订阅。</p>
+				<p class="description"><xsl:value-of select="atom:feed/atom:description" /></p>
+			</blockquote>
 
 			<main>
 				<xsl:apply-templates select="atom:feed/atom:entry" />
@@ -39,7 +42,7 @@
 	</xsl:template>
 
 	<xsl:template match="atom:entry">
-		<a href="{atom:link/@href}" class="entry">
+		<a href="#{atom:id}" class="entry">
 			<xsl:variable name="img-src"
 				select="substring-before(substring-after(substring-after(atom:content, '&lt;img'), 'src=&quot;'), '&quot;')" />
 			<xsl:if test="$img-src">
@@ -62,12 +65,12 @@
 					发布于 <xsl:value-of select="$published-date" />
 
 					<xsl:if test="atom:updated and atom:updated != atom:published">
-						<xsl:text> • 更新于 </xsl:text>
+						• 更新于
 						<xsl:value-of select="substring(atom:updated, 1, 10)" />
 					</xsl:if>
 
 					<xsl:if test="atom:category">
-						<xsl:text> • </xsl:text>
+						•
 						<xsl:for-each select="atom:category">
 							<xsl:value-of select="@term" />
 						</xsl:for-each>
@@ -76,6 +79,17 @@
 			</article>
 		</a>
 
+		<xsl:if test="atom:content">
+			<section class="entry-content-container" id="{atom:id}">
+				<a class="entry-content-close" href="#">×</a>
+				<figure class="entry-content">
+					<figcaption>
+						<xsl:value-of select="atom:title" />
+					</figcaption>
+					<xsl:value-of select="atom:content" disable-output-escaping="yes" />
+				</figure>
+			</section>
+		</xsl:if>
 	</xsl:template>
 
 </xsl:stylesheet>

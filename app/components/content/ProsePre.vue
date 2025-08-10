@@ -152,7 +152,7 @@ figcaption {
 	> .language {
 		opacity: 0.4;
 		height: 0;
-		line-height: 1.8em;
+		padding: 0.2em 0;
 	}
 
 	> .operations {
@@ -160,10 +160,9 @@ figcaption {
 		opacity: 0;
 		top: 0;
 		right: 0;
-		padding: 0 1em;
-		border-radius: 0 0.5em 0.5em;
+		padding: 0 0.6em;
+		border-bottom-left-radius: 0.5em;
 		background-color: var(--c-bg-2);
-		line-height: 1.8em;
 		transition: opacity 0.2s;
 
 		:hover > & {
@@ -172,14 +171,11 @@ figcaption {
 
 		> button {
 			opacity: 0.4;
+			padding: 0.2em 0.4em;
 			transition: opacity 0.2s;
 
 			&:hover {
 				opacity: 1;
-			}
-
-			& + button {
-				margin-left: 0.8em;
 			}
 		}
 	}

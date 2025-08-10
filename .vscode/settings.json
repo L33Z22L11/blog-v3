@@ -1,5 +1,4 @@
 {
-  "editor.tabSize": 3,
   "vue.format.template.initialIndent": false,
   "yaml.format.singleQuote": true
 }
