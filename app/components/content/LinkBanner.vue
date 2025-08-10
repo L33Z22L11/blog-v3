@@ -32,7 +32,7 @@ const src = computed(() => getImgUrl(props.banner, props.mirror))
 	justify-content: space-between;
 	max-width: $breakpoint-phone;
 	margin: 2rem auto;
-	line-height: normal;
+	line-height: 1.4;
 
 	.link-banner-bg {
 		aspect-ratio: 2.4;

@@ -36,7 +36,7 @@ const src = computed(() => getImgUrl(props.icon, props.mirror))
 	margin: 2rem auto;
 	padding: 0.5em 0.8em;
 	font-size: 0.9em;
-	line-height: normal;
+	line-height: 1.4;
 
 	// 溢出显示省略号
 	.link-card-info {

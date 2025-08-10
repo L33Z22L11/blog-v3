@@ -44,22 +44,27 @@ export const useShikiStore = defineStore('shiki', () => {
 	})
 
 	async function load() {
-		promise ??= loadShiki()
+		if (!promise) {
+			const [
+				{ createHighlighterCore },
+				{ createJavaScriptRegexEngine },
+				catppuccinLatte,
+				oneDarkPro,
+			] = await Promise.all([
+				import('shiki/core'),
+				import('shiki/engine-javascript.mjs'),
+				import('shiki/themes/catppuccin-latte.mjs'),
+				import('shiki/themes/one-dark-pro.mjs'),
+			])
+
+			promise = createHighlighterCore({
+				themes: [catppuccinLatte, oneDarkPro],
+				engine: createJavaScriptRegexEngine(),
+			})
+		}
+
 		shiki ??= await promise
 		return shiki
-	}
-
-	async function loadShiki() {
-		const { createHighlighterCore } = await import('shiki/core')
-		const { createJavaScriptRegexEngine } = await import('shiki/engine-javascript.mjs')
-
-		return createHighlighterCore({
-			themes: [
-				await import('shiki/themes/catppuccin-latte.mjs'),
-				await import('shiki/themes/one-dark-pro.mjs'),
-			],
-			engine: createJavaScriptRegexEngine(),
-		})
 	}
 
 	async function loadLang(...langs: string[]) {

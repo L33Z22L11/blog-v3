@@ -59,7 +59,7 @@ const domainIcon = computed(() => getDomainIcon(props.link))
 	width: fit-content;
 	margin: 1rem auto;
 	padding: 0.5rem;
-	line-height: normal;
+	line-height: 1.4;
 	animation: float-in 0.2s var(--delay) backwards;
 
 	&:hover {

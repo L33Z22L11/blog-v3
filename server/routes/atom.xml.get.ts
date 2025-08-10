@@ -22,7 +22,7 @@ function renderContent(post: ContentCollectionItem) {
 	return [
 		post.image && `<img src="${post.image}" />`,
 		post.description && `<p>${post.description}</p>`,
-		`<a href="${getUrl(post.path)}">点击查看全文</a>`,
+		`<a class="view-full" href="${getUrl(post.path)}" target="_blank">点击查看全文</a>`,
 	].join(' ')
 }
 

@@ -43,7 +43,7 @@ const appConfig = useAppConfig()
 	gap: 0.5em;
 	position: relative;
 	margin: clamp(1rem, 2rem, 5vh) 1rem min(1rem, 5vh);
-	line-height: normal;
+	line-height: 1.4;
 	color: var(--c-text);
 	user-select: none;
 }
@@ -64,7 +64,7 @@ const appConfig = useAppConfig()
 }
 
 .header-title {
-	font-family: AlimamaFangYuanTi;
+	font-family: AlimamaFangYuanTi, "Noto Sans SC", sans-serif;
 	font-size: 1.5em;
 	font-synthesis: none;
 	font-variation-settings: "wght" 600, "BEVL" 100;

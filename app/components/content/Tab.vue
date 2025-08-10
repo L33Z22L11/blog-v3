@@ -51,7 +51,7 @@ const activeTab = ref(Number(props.active) || 1)
 	margin: 0 auto;
 	padding: 0.5em 0;
 	font-size: 0.9em;
-	line-height: normal;
+	line-height: 1.4;
 
 	&::before {
 		content: "";

@@ -11,7 +11,7 @@ const props = withDefaults(defineProps<{
 })
 
 // prompt 传入空字符串会变成 true
-const showPrompt = computed(() => props.prompt as unknown !== true)
+const showPrompt = computed(() => props.prompt !== true)
 const language = computed(() => props.lang ?? getPromptLanguage(props.prompt))
 
 const showUndo = ref(false)
