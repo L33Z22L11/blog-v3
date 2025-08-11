@@ -152,7 +152,7 @@ figcaption {
 	> .language {
 		opacity: 0.4;
 		height: 0;
-		padding: 0.2em 0;
+		transform: translateY(0.2em);
 	}
 
 	> .operations {

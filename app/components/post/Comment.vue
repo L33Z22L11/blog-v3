@@ -73,27 +73,17 @@ onMounted(() => {
 		margin: 0.2em 0;
 	}
 
-	// 段间距
-	br {
-		content: "";
-		display: block;
-		height: 0.2em;
-	}
-
 	menu, ol, ul {
-		margin-block: 0.5em;
+		margin: 0.5em 0;
 		padding: 0 0 0 1.5em;
 		list-style: revert;
-
-		&::marker {
-			color: var(--c-text-2);
-		}
 
 		> li {
 			margin: 0.2em 0;
 
 			&::marker {
 				font-size: 0.8em;
+				color: var(--c-primary);
 			}
 		}
 	}
