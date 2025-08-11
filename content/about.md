@@ -1,9 +1,8 @@
 ---
 title: 关于
 date: 2025-04-17 22:12:32
-updated: 2025-07-04 20:53:13
+updated: 2025-08-11 13:28:54
 type: story
-categories: [生活随笔]
 ---
 
 ### Mugzx

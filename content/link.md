@@ -13,18 +13,18 @@
 #default
 ```ts
 export default {
-    author: "博主称呼",
-    sitenick: "站点标签",
-    title: "博客名称",
-    desc: "博客介绍",
-    link: "博客地址",
-    feed: "订阅源地址",
-    icon: "站点图标",
-    avatar: "博主头像",
-    archs: ["框架", "部署方式"],
-    date: "申请日期",
-    comment: "评论",
-    error: "错误信息",
+  author: "博主称呼",
+  sitenick: "站点标签",
+  title: "博客名称",
+  desc: "博客介绍",
+  link: "博客地址",
+  feed: "订阅源地址",
+  icon: "站点图标",
+  avatar: "博主头像",
+  archs: ["框架", "部署方式"],
+  date: "申请日期",
+  comment: "评论",
+  error: "错误信息",
 } satisfies Friend
 ```
 ::
