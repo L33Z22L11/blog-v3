@@ -2,12 +2,12 @@
 	margin: 1rem;
 	line-height: 1.8;
 
-	> * {
-		margin: 1rem 0;
+	p {
+		margin: 0.5em 0;
+	}
 
-		p {
-			margin: 0.5em 0;
-		}
+	> *, > p {
+		margin: 1rem 0;
 	}
 
 	:target {
@@ -27,13 +27,13 @@
 	}
 
 	:where(menu, ol, ul):not([class]) {
-		margin-block: 0.5em;
+		margin: 0.5em 0;
 		padding: 0 0 0 1.5em;
 		font-size: 0.9rem;
 		list-style: revert;
 
-		&::marker {
-			color: var(--c-text-2);
+		:where(ol, ul) {
+			margin-top: 0;
 		}
 
 		> li {
@@ -41,6 +41,7 @@
 
 			&::marker {
 				font-size: 0.8em;
+				color: var(--c-primary);
 			}
 		}
 	}
