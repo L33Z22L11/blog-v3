@@ -13,6 +13,7 @@ const appConfig = useAppConfig()
 		<div id="references" class="title text-creative">
 			参考链接
 		</div>
+
 		<div class="content">
 			<ul>
 				<li v-for="(link, index) in references" :key="index">
@@ -23,10 +24,12 @@ const appConfig = useAppConfig()
 			</ul>
 		</div>
 	</section>
+
 	<section class="license">
 		<div class="title text-creative">
 			许可协议
 		</div>
+
 		<div class="content">
 			<p>
 				本文采用 <ProseA :href="appConfig.copyright.url">
