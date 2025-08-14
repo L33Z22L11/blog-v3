@@ -12,7 +12,7 @@ export default defineAppConfig({
 		categories: <{ [category: string]: { icon: string, color?: string } }>{
 			分享: { icon: 'ph:mouse-bold', color: '#33aaff' },
 			随笔: { icon: 'ph:shooting-star-bold', color: '#6969ff' },
-			编程: { icon: 'ph:code-bold', color: '#77f' },
+			编程: { icon: 'ph:code-bold', color: '#3366ff' },
 			未分类: { icon: 'ph:folder-dotted-bold' },
 		},
 		defaultCategoryIcon: 'ph:folder-bold',

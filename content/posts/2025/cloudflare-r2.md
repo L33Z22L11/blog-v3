@@ -65,7 +65,7 @@ tags: [存储]
 https://<ZONE>/cdn-cgi/image/<OPTIONS>/<SOURCE-IMAGE>
 ```
 
-根据 [Cloudflare 官方文档](https://developers.cloudflare.com/images/transform-images/transform-via-url/#options)，将`<ZONE>`修改为你的域名，`<OPTIONS>`修改为处理参数，`<SOURCE-IMAGE>`修改为图片的路径即可启用 Cloudflare Images。
+根据[官方文档](https://developers.cloudflare.com/images/transform-images/transform-via-url/#options)的内容，将`<ZONE>`修改为你的域名，`<OPTIONS>`修改为处理参数，`<SOURCE-IMAGE>`修改为图片的路径即可启用 Cloudflare Images。
 
 ```
 https://r2.mugzx.top/cdn-cgi/image/f=avif/259e8d4196fea827025c2927a6fcd6e98d030057371238a77ae4cddebce86477.png
