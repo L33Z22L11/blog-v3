@@ -10,7 +10,6 @@
 	font: normal 1rem/1.4 sans-serif;
 	font-family: var(--font-family);
 	font-synthesis: style;
-	line-height: 1.4;
 	word-wrap: break-word;
 	text-size-adjust: none;
 	color: var(--c-text-1);
@@ -80,6 +79,11 @@ button, input, textarea {
 	flex-shrink: 0;
 	font-size: 1.2em;
 	vertical-align: sub;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.i-simple-icons\:mdnwebdocs {
+	transform: scale(0.8);
 }
 
 // 图片加载失败 fallback
