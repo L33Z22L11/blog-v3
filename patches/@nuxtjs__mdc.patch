@@ -1,0 +1,13 @@
+diff --git a/dist/runtime/parser/handlers/inlineCode.js b/dist/runtime/parser/handlers/inlineCode.js
+index a79488ac2d4b997ee1dcc244db1ea6103a223639..f2847359799aad0d47b8d57396fec97c05dc237b 100644
+--- a/dist/runtime/parser/handlers/inlineCode.js
++++ b/dist/runtime/parser/handlers/inlineCode.js
+@@ -5,7 +5,7 @@ export default function inlineCode(state, node) {
+   const result = {
+     type: "element",
+     tagName: "code",
+-    properties: node.attributes || {},
++    properties: { ...node.attributes, code: text.value },
+     children: [text]
+   };
+   const classes = (result.properties.class || "").split(" ");

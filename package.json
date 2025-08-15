@@ -6,7 +6,7 @@
   "packageManager": "pnpm@10.13.1",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "scripts": {
-    "prepare": "nuxt prepare",
+    "prepare": "pnpx rimraf .data node_modules/.cache && nuxt prepare",
     "dev": "nuxt dev --no-qr",
     "build": "cross-env NODE_OPTIONS='--no-deprecation' nuxt build",
     "generate": "nuxt generate",
