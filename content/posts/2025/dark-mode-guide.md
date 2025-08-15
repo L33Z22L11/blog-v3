@@ -17,7 +17,7 @@ tags: [代码, 前端, 问题]
 ```css
 @media (prefers-color-scheme: dark) {
     body {
-        background: black;
+        background-color: black;
         color: white;
     }
 }
@@ -41,13 +41,13 @@ tags: [代码, 前端, 问题]
 
 ```css
 body {
-    background: white;
+    background-color: white;
     color: black;
 }
 
 @media (prefers-color-scheme: dark) {
     body {
-        background: black;
+        background-color: black;
         color: white;
     }
 }

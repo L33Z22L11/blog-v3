@@ -111,8 +111,8 @@ onMounted(async () => {
 		padding: 0 1em;
 		outline: none;
 		white-space: nowrap;
-		scrollbar-color: initial;
-		scrollbar-width: initial;
+		scrollbar-color: revert;
+		scrollbar-width: revert;
 
 		&::-webkit-scrollbar {
 			height: 4px;

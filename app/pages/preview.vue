@@ -52,7 +52,7 @@ const { category, categories, listCategorized } = useCategory(listSorted)
 	justify-content: space-between;
 
 	h1 {
-		mask: linear-gradient(#FFF, transparent);
+		mask-image: linear-gradient(#FFF, transparent);
 	}
 }
 </style>

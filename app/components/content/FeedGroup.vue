@@ -47,7 +47,7 @@ defineProps<{
 	opacity: 0.5;
 	top: 0;
 	margin-bottom: -0.3em;
-	mask: linear-gradient(#FFF 50%, transparent);
+	mask-image: linear-gradient(#FFF 50%, transparent);
 	font-size: 5em;
 	font-weight: 800;
 	line-height: 1;

@@ -20,7 +20,7 @@ export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: 
 	}
 
 	const page = bindQuery
-		? useRouteQuery(bindQuery, initialPage.toString(), { transform: transformPage })
+		? useRouteQuery(bindQuery, initialPage.toString(), { transform: transformPage, mode: 'push' })
 		: ref(initialPage)
 
 	const listPaged = computed(() => {

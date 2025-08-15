@@ -113,7 +113,7 @@ onMounted(() => {
 	}
 
 	.tk-replies:not(.tk-replies-expand) {
-		mask: linear-gradient(#FFF 50%, transparent);
+		mask-image: linear-gradient(#FFF 50%, transparent);
 	}
 
 	.tk-expand {

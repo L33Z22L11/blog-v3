@@ -20,7 +20,7 @@ interface UseCategoryOptions {
 export function useCategory(list: MaybeRefOrGetter<ArticleProps[]>, options?: UseCategoryOptions) {
 	const { bindQuery } = options ?? {}
 	const category = bindQuery
-		? useRouteQuery(bindQuery, undefined, { transform: (value?: string) => value })
+		? useRouteQuery(bindQuery, undefined, { transform: (value?: string) => value, mode: 'push' })
 		: ref<string | undefined>()
 	const categories = computed(() => [...new Set(toValue(list).map(item => item.categories?.[0]))])
 	const listCategorized = computed(

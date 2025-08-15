@@ -90,7 +90,6 @@ const { copy, copied } = useCopy(shareText)
 		overflow: hidden;
 		min-height: 256px;
 		max-height: 320px;
-		text-shadow: 0 1px 1px #0003, 0 1px 2px #0003;
 		color: white;
 		transition: font-size 0.2s;
 		z-index: 0;
@@ -99,8 +98,13 @@ const { copy, copied } = useCopy(shareText)
 			font-size: 0.8em;
 		}
 
+		.post-info {
+			filter: drop-shadow(0 1px 2px #000);
+		}
+
 		.post-title {
 			background-image: linear-gradient(transparent, #0003, #0005);
+			text-shadow: 0 1px 1px #0003, 0 1px 2px #0003;
 
 			&.text-story {
 				text-align: center;

@@ -41,7 +41,7 @@
 		cursor: pointer;
 
 		&:hover {
-			background-color: var(--c-bg-soft);
+			background-color: var(--c-primary-soft);
 		}
 	}
 }

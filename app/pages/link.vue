@@ -86,7 +86,7 @@ const copyFields = {
 	margin: 1rem;
 	padding: 0.8rem 1rem;
 	border-radius: 1rem;
-	background: var(--c-primary-soft);
+	background-color: var(--c-primary-soft);
 
 	.content {
 		flex-basis: 20em;

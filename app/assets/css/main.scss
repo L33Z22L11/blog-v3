@@ -1,13 +1,11 @@
 :root {
-	--font-family: "Inter-Local", "Inter", "Noto Sans SC-Local", "Noto Sans SC", sans-serif;
+	--font-family: "Inter", "Noto Sans SC-Local", "Noto Sans SC", system-ui, sans-serif;
 	--font-serif: "Noto Serif SC-Local", "Noto Serif SC", "华文中宋", "Times New Roman", serif;
-	--font-creative: "Inter-Local", "Inter", "Noto Sans SC-Local", "Noto Sans SC", sans-serif;
-	--font-monospace: "JetBrains Mono-Local", "JetBrains Mono", "SFMono-Regular", "Cascadia Code", "Fira Code", "Menlo", "Monaco", "Consolas", "Noto Sans Mono", "monospace", sans-serif, monospace;
+	--font-creative: "Inter", "Noto Sans SC-Local", "Noto Sans SC", system-ui, sans-serif;
+	--font-monospace: "JetBrains Mono-Local", "JetBrains Mono", "SFMono-Regular", "Cascadia Code", "Fira Code", "Menlo", "Monaco", "Consolas", "Noto Sans Mono", "monospace", var(--font-family), monospace;
 
-	// 兼容了一点 IE
-	background-color: hsl(220deg 20% 98%);
 	background-color: var(--c-bg-1);
-	font: normal 1rem/1.4 sans-serif;
+	font: 1rem/1.4 sans-serif;
 	font-family: var(--font-family);
 	font-synthesis: style;
 	word-wrap: break-word;
@@ -18,6 +16,10 @@
 	scroll-padding: 2rem;
 	scrollbar-color: var(--c-text-3) transparent;
 	-webkit-tap-highlight-color: var(--c-primary-soft);
+
+	@media (max-resolution: 1.4dppx) {
+		--font-family: system-ui, sans-serif;
+	}
 }
 
 // 有本地字体时不加载网络字体

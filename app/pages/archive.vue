@@ -78,7 +78,7 @@ const yearlyWordCount = computed(() => {
 <style lang="scss" scoped>
 .archive {
 	margin: 1rem;
-	mask: linear-gradient(#FFF 50%, #FFF5);
+	mask-image: linear-gradient(#FFF 50%, #FFF5);
 }
 
 .archive-group {
@@ -108,7 +108,7 @@ const yearlyWordCount = computed(() => {
 
 	> .archive-year, .archive-age {
 		margin-bottom: -0.3em;
-		mask: linear-gradient(#FFF 50%, transparent);
+		mask-image: linear-gradient(#FFF 50%, transparent);
 		font-size: 3em;
 		font-weight: 800;
 		line-height: 1;

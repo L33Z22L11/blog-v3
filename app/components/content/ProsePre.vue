@@ -119,7 +119,7 @@ onMounted(async () => {
 		pre {
 			overflow: hidden;
 			max-height: var(--collapsible-height);
-			mask: linear-gradient(to top, transparent 2rem, #FFF 4rem);
+			mask-image: linear-gradient(to top, transparent 2rem, #FFF 4rem);
 			animation: none;
 		}
 

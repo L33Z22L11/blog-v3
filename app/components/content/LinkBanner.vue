@@ -37,7 +37,7 @@ const src = computed(() => getImgUrl(props.banner, props.mirror))
 	.link-banner-bg {
 		aspect-ratio: 2.4;
 		margin-bottom: -5%;
-		mask: linear-gradient(#FFF 50%, transparent);
+		mask-image: linear-gradient(#FFF 50%, transparent);
 		object-fit: cover;
 	}
 
