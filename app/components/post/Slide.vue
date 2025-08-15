@@ -91,7 +91,7 @@ useEventListener(emblaRef, 'wheel', (e) => {
 	overflow: hidden;
 	height: 3rem;
 	margin-bottom: -0.2rem;
-	mask: linear-gradient(#FFF, transparent);
+	mask-image: linear-gradient(#FFF, transparent);
 	color: var(--c-text-3);
 
 	>.title {
@@ -108,7 +108,7 @@ useEventListener(emblaRef, 'wheel', (e) => {
 	align-items: center;
 	position: relative;
 	overflow: hidden;
-	mask: linear-gradient(to right, transparent, #FFF var(--fadeout-width), #FFF calc(100% - var(--fadeout-width)), transparent);
+	mask-image: linear-gradient(to right, transparent, #FFF var(--fadeout-width), #FFF calc(100% - var(--fadeout-width)), transparent);
 	cursor: grab;
 	user-select: none;
 }

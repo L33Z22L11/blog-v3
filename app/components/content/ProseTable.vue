@@ -20,7 +20,7 @@ const scroll = ref(true)
 .md-table {
 	position: relative;
 	margin: 1rem 0;
-	font-feature-settings: "tnum";
+	font-variant-numeric: tabular-nums;
 	font-size: 0.9em;
 	line-height: 1.4;
 	word-break: break-all;

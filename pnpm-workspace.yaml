@@ -1,8 +1,8 @@
 catalog:
-  '@antfu/eslint-config': ^5.1.0
+  '@antfu/eslint-config': ^5.2.1
   '@iconify-json/ph': ^1.2.2
   '@nuxt/content': ^3.6.3
-  '@nuxt/icon': ^1.15.0
+  '@nuxt/icon': ^2.0.0
   '@nuxt/image': ^1.11.0
   '@nuxtjs/color-mode': ^3.5.2
   '@nuxtjs/seo': ^3.1.0
@@ -19,8 +19,8 @@ catalog:
   date-fns-tz: ^3.2.0
   embla-carousel-autoplay: ^8.6.0
   embla-carousel-vue: ^8.6.0
-  embla-carousel-wheel-gestures: ^8.0.2
-  eslint: ^9.32.0
+  embla-carousel-wheel-gestures: ^8.1.0
+  eslint: ^9.33.0
   fast-xml-parser: ^5.2.5
   minisearch: ^7.1.2
   nuxt: ^4.0.3
@@ -28,9 +28,9 @@ catalog:
   plain-shiki: ^0.3.0
   radash: ^12.1.1
   remark-reading-time: ^2.0.2
-  sass-embedded: ^1.89.2
+  sass-embedded: ^1.90.0
   shiki: ^3.9.2
-  stylelint: ^16.23.0
+  stylelint: ^16.23.1
   terser: ^5.43.1
   typescript: ^5.9.2
   vue: ^3.5.18
@@ -45,6 +45,7 @@ onlyBuiltDependencies:
   - sharp
 
 patchedDependencies:
+  '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch
   '@vue/shared': patches/@vue__shared.patch
   vue-tippy: patches/vue-tippy.patch
 

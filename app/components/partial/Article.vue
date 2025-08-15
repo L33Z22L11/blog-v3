@@ -119,7 +119,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	width: min(320px, 50%);
 	height: 100%;
 	margin: 0;
-	mask: linear-gradient(to right, transparent, #FFF 50%);
+	mask-image: linear-gradient(to right, transparent, #FFF 50%);
 	transition: all 0.2s;
 	object-fit: cover;
 
@@ -134,14 +134,14 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	}
 
 	@mixin cover-narrow {
-		position: initial;
+		position: revert;
 		width: 100%;
 		height: auto;
 		max-width: none;
 		max-height: 256px;
 		aspect-ratio: 2.4;
 		margin-bottom: -10%;
-		mask: linear-gradient(#FFF 50%, transparent);
+		mask-image: linear-gradient(#FFF 50%, transparent);
 
 		& + article {
 			width: auto;

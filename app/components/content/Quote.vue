@@ -33,7 +33,7 @@ const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
 	opacity: 0.5;
 	min-height: 0.5em;
 	margin-bottom: -0.5em;
-	mask: linear-gradient(#FFF, transparent);
+	mask-image: linear-gradient(#FFF, transparent);
 	font-size: 4rem;
 	transition: all 0.2s;
 	z-index: -1;

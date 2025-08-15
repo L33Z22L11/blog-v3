@@ -78,7 +78,7 @@ const auxDateLabel = computed(() => props.date
 	width: min(30%, 140px);
 	height: 100%;
 	margin: 0;
-	mask: linear-gradient(to right, transparent, #FFF7);
+	mask-image: linear-gradient(to right, transparent, #FFF7);
 	transition: all 0.2s;
 	object-fit: cover;
 	z-index: -1;

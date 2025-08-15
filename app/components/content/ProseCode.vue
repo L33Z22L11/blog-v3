@@ -1,15 +1,11 @@
 <script setup lang="ts">
 const props = defineProps<{
 	language?: string
-}>()
-
-const slots = defineSlots<{
-	default: () => VNode[]
+	code: string
 }>()
 
 const shikiStore = useShikiStore()
-const code = computed(() => slots.default()[0]?.children?.toString() || '')
-const rawHtml = ref(escapeHtml(code.value))
+const rawHtml = ref(escapeHtml(props.code))
 
 onMounted(async () => {
 	if (!props.language)
@@ -17,7 +13,7 @@ onMounted(async () => {
 	const shiki = await shikiStore.load()
 	await shikiStore.loadLang(props.language)
 	rawHtml.value = shiki.codeToHtml(
-		code.value,
+		props.code,
 		shikiStore.getOptions(props.language, ['ignoreColorizedBrackets']),
 	)
 })
@@ -30,15 +26,16 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 code {
+	margin: 0.1em;
 	padding: 0.1rem 0.3em;
+	border: 1px solid var(--c-border);
 	border-radius: 4px;
-	outline: 1px solid var(--c-bg-soft);
 	background-color: var(--c-bg-2);
 	font-size: 0.8125em;
 	white-space: break-spaces;
 
 	@supports (color: color-mix(in srgb, transparent, transparent)) {
-		outline-color: color-mix(in srgb, currentcolor 15%, transparent);
+		border-color: color-mix(in srgb, currentcolor 10%, transparent);
 		background-color: color-mix(in srgb, currentcolor 5%, transparent);
 	}
 }

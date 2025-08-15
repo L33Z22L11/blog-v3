@@ -80,7 +80,7 @@
 	}
 
 	strong {
-		background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 30%;
+		background-image: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 30%;
 	}
 
 	del {
@@ -98,6 +98,7 @@
 		padding: 0 2px;
 		border-radius: 0.2rem;
 		background-color: var(--c-primary);
+		text-autospace: no-autospace;
 	}
 
 	&.md-story {
