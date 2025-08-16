@@ -77,7 +77,6 @@ const copyFields = {
 			v-if="descLink"
 			:value="descLink"
 			class="article"
-			tag="article"
 		/>
 		<p v-else class="text-center">
 			可于 desc.md 配置友链补充说明。

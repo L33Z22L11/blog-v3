@@ -15,7 +15,7 @@ export default [{
 		avatar: getGhAvatar('linexic'),
 		archs: ['Astro', 'Netlify'],
 		date: '2025-01-24',
-		comment: '技术分享，高中生活，赛博神医。',
+		comment: '技术分享，高中生活。',
 	}],
 }, {
 	name: '站友同好',

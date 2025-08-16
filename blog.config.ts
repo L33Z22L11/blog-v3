@@ -10,7 +10,7 @@ const blogConfig = {
 	title: '地球驿站',
 	subtitle: '向上革命，向下实践。',
 	// 长 description 利好于 SEO
-	description: '这里是 Mugzx 的个人博客，名为地球驿站，平时会记录我对日常生活的一些观点看法，偶尔也会回归正业写一点技术型文章，欢迎大家多多前来访问!',
+	description: '这里是 Mugzx 的个人博客，名为地球驿站，平时会记录我对日常生活的一些观点看法，偶尔也会回归正业写一点技术型文章，欢迎大家多多前来访问！',
 	author: {
 		name: 'Mugzx',
 		avatar: 'https://www.mugzx.top/api/avatar.png',
