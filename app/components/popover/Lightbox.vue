@@ -195,7 +195,6 @@ useEventListener('keydown', (e) => {
 	inset: 0;
 	background-color: #0007;
 	transition: all var(--delay, 0.2s);
-	z-index: 0;
 
 	&.v-enter-from,
 	&.v-leave-to {

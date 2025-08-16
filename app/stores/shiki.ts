@@ -79,9 +79,7 @@ export const useShikiStore = defineStore('shiki', () => {
 			.filter(unjudged => !loadedLangs.includes(unjudged) && unjudged in bundledLanguages)
 			.map(unloaded => bundledLanguages[unloaded as BundledLanguage])
 			.map(dynamicLang => dynamicLang().then(grammar => shiki.loadLanguage(grammar))),
-		).catch((err) => {
-			console.error('load lang error', err)
-		})
+		)
 	}
 
 	return {

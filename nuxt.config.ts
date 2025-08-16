@@ -11,7 +11,6 @@ export default defineNuxtConfig({
 				// 此处为元数据的生成器标识，不建议修改
 				{ 'name': 'generator', 'content': packageJson.name, 'data-github-repo': packageJson.homepage, 'data-version': packageJson.version },
 				{ name: 'mobile-web-app-capable', content: 'yes' },
-				{ name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
 			],
 			link: [
 				{ rel: 'icon', href: blogConfig.favicon },

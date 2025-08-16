@@ -62,7 +62,6 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 		left: 0;
 		width: 320px;
 		max-width: 100%;
-		box-shadow: 0 0 1rem var(--ld-shadow);
 		background-color: var(--ld-bg-blur);
 		backdrop-filter: blur(0.5rem);
 		color: currentcolor;
@@ -71,6 +70,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 		z-index: 100;
 
 		&.show {
+			box-shadow: 0 0 1rem var(--ld-shadow);
 			transform: none;
 		}
 	}
