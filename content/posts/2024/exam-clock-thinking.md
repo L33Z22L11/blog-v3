@@ -5,7 +5,7 @@ date: 2024-10-18 16:50:35
 updated: 2024-10-22 22:55:43
 image: https://7.isyangs.cn/24/67211d63f41fd-24.webp
 type: story
-categories: [生活]
+categories: [杂谈]
 tags: [产品, 校园, 设计]
 ---
 

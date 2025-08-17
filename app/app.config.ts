@@ -11,7 +11,8 @@ export default defineAppConfig({
 	article: {
 		categories: <{ [category: string]: { icon: string, color?: string } }>{
 			经验分享: { icon: 'ph:mouse-bold', color: '#3af' },
-			生活: { icon: 'ph:shooting-star-bold', color: '#3ba' },
+			杂谈: { icon: 'ph:chat-bold', color: '#3ba' },
+			生活: { icon: 'ph:shooting-star-bold', color: '#f77' },
 			代码: { icon: 'ph:code-bold', color: '#77f' },
 			未分类: { icon: 'ph:folder-dotted-bold' },
 		},

@@ -15,8 +15,7 @@ const tipSource = useTemplateRef('tip-text')
 const { copy, copied } = useCopy(tipSource)
 const icon = computed(() => props.icon
 	|| (copied.value && 'ph:check-bold')
-	|| (props.copy && 'ph:copy-bold')
-	|| 'ph:question-bold',
+	|| (props.copy && 'ph:copy-bold'),
 )
 </script>
 

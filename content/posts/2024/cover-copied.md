@@ -5,7 +5,7 @@ date: 2024-06-18 13:23:05
 updated: 2024-06-18 17:23:24
 image: https://7.isyangs.cn/24/66714b1f0bc35-24.jpg
 type: story
-categories: [生活]
+categories: [杂谈]
 tags: [qq, 问题, 软件]
 references:
   - title: Linux QQ 官网

@@ -5,7 +5,7 @@ date: 2024-07-07 19:52:56
 updated: 2024-07-13 11:46:43
 image: https://7.isyangs.cn/24/6691f614da807-24.jpg
 type: story
-categories: [生活]
+categories: [杂谈]
 tags: [华为, 问题, 扣费]
 references:
   - title: 云空间套餐如何申请退款 | 华为官网

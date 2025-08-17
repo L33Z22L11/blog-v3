@@ -5,7 +5,7 @@ date: 2024-03-21 23:45:08
 updated: 2024-03-31 22:39:27
 image: https://7.isyangs.cn/24/66006f656a35d-24.jpg
 type: story
-categories: [生活]
+categories: [杂谈]
 tags: [大学, 睡眠]
 ---
 

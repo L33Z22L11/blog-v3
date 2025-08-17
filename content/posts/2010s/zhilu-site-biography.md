@@ -4,7 +4,7 @@ description: 建成个人网站之后撰写的一段文言文。
 date: 2019-08-08 22:01:00
 updated: 2019-12-27 22:17:00
 type: story
-categories: [生活]
+categories: [杂谈]
 tags: [网站, 文言文]
 ---
 

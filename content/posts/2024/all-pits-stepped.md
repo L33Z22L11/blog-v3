@@ -5,7 +5,7 @@ date: 2024-07-24 21:20:57
 updated: 2024-08-03 10:23:46
 image: https://7.isyangs.cn/24/67211d6517aa3-24.webp
 type: story
-categories: [生活]
+categories: [杂谈]
 tags: [博客, 问题]
 ---
 

@@ -4,7 +4,7 @@ description: 明明只是遵照教程配置硬件开发环境，Vivado 添加许
 date: 2024-12-03 08:00:41
 updated: 2024-12-03 21:37:53
 type: story
-categories: [经验分享]
+categories: [杂谈]
 tags: [Windows, 硬件开发, Vivado, Modelsim, 踩坑]
 ---
 

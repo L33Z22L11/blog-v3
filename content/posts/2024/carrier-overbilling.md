@@ -5,7 +5,7 @@ date: 2024-02-23 18:32:25
 updated: 2024-03-01 23:55:19
 image: https://7.isyangs.cn/24/6664009994d5d-24.jpg
 type: story
-categories: [生活]
+categories: [杂谈]
 tags: [大学, 问题]
 ---
 

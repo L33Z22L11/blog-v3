@@ -5,7 +5,7 @@ date: 2023-08-08 10:34:00
 updated: 2024-01-29 21:26:26
 image: https://7.isyangs.cn/24/65b6628ac8181-24.jpg
 type: story
-categories: [生活]
+categories: [杂谈]
 tags: [设备, 说说, 远程]
 ---
 
