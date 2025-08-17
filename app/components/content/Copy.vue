@@ -54,19 +54,21 @@ onMounted(async () => {
 <template>
 <code class="copy">
 	<span v-if="showPrompt" class="prompt">{{ prompt }}</span>
+
 	<div
 		ref="code-input"
 		contenteditable="plaintext-only"
-		class="code"
+		class="code scrollcheck-x"
 		spellcheck="false"
 		@beforeinput="beforeInput($event as InputEvent)"
 		@input="onInput($event as InputEvent)"
 		v-text="code"
 	/>
-	<div class="mask" />
+
 	<button v-if="showUndo" class="operation" aria-label="恢复原始内容" @click="undo">
 		<Icon name="ph:arrow-u-up-left-bold" />
 	</button>
+
 	<button class="operation" aria-label="复制" @click="copy()">
 		<Icon :name="copied ? 'ph:check-bold' : 'ph:copy-bold'" />
 	</button>
@@ -86,6 +88,7 @@ onMounted(async () => {
 
 	&:focus-within {
 		border-color: var(--c-primary);
+		outline: 0.2em solid var(--c-primary-soft);
 
 		.prompt {
 			border-right-color: var(--c-primary);
@@ -105,46 +108,31 @@ onMounted(async () => {
 	}
 
 	.code {
+		--fadeout-width: 3ch;
+		--scrollbar-height: 4px;
+
 		flex-grow: 1;
 		position: relative;
 		overflow-x: auto;
 		padding: 0 1em;
 		outline: none;
 		white-space: nowrap;
-		scrollbar-color: revert;
-		scrollbar-width: revert;
+		scrollbar-color: auto;
+		scrollbar-width: auto;
 
 		&::-webkit-scrollbar {
 			height: 4px;
-			cursor: default;
+			background-color: transparent;
 		}
-
-		&::-webkit-scrollbar-thumb {
-			background-color: var(--c-bg-soft);
-			cursor: pointer;
-		}
-	}
-
-	.mask {
-		flex-shrink: 0;
-		width: 1em;
-		height: 2.5em;
-		margin-left: -1em;
-		border-radius: 2px;
-		background-image: linear-gradient(to right, transparent, var(--ld-bg-card));
-		pointer-events: none;
-		z-index: 0;
 	}
 
 	.operation {
 		flex-shrink: 0;
-		position: relative;
 		height: 2.5em;
 		margin-left: -0.5em;
 		padding: 0.5em;
 		color: var(--c-text-2);
 		transition: color, 0.2s;
-		z-index: 0;
 
 		&:hover {
 			color: var(--c-primary);

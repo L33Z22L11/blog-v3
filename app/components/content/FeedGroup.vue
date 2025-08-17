@@ -57,7 +57,7 @@ defineProps<{
 	z-index: -1;
 	-webkit-text-stroke: 1px var(--c-text-3);
 
-	:hover > & {
+	&::selection, :hover > & {
 		color: var(--c-text-3);
 	}
 }
