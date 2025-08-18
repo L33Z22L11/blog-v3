@@ -109,7 +109,6 @@ onMounted(async () => {
 .z-codeblock {
 	position: relative;
 	overflow: clip;
-	margin-block: 1em;
 	border-radius: 0.5em;
 	background-color: var(--c-bg-2);
 	font-size: 0.8125rem;

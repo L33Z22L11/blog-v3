@@ -34,7 +34,8 @@ defineProps<{
 	}
 
 	:deep(p) {
-		margin-block: 0.5em;
+		width: fit-content;
+		margin: 0.5em auto;
 	}
 }
 </style>

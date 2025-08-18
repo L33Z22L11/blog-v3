@@ -59,6 +59,8 @@ references:
 
 这个软件安装第一幕就是License Agreement，我直接点了同意，结果后面才发现是 RAV Endpoint Protection（捆绑安装的杀毒程序）安装许可，还是Chrome告诉我有自动添加的扩展程序，我才发现电脑被装了不需要的软件。
 
+GitHub亦有讨论，我评价「So it is called a CHEAT engine.」
+
 ## 格式工厂
 
 格式工厂是一款老牌软件，但新版会捆绑代理平台引导用户提供代理服务。说人话，别人可以用你家的网访问网站、爬取内容、评论刷量，而不受到网络平台对IP请求的限制。
