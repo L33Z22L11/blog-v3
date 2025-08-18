@@ -47,6 +47,7 @@ export const mainDomainIcons: Record<string, string> = {
 	'pages.dev': 'simple-icons:cloudflare',
 	'qq.com': 'ri:qq-fill',
 	'thisis.host': 'ph:star-four-fill',
+	'v2ex.com': 'simple-icons:v2ex',
 	'vercel.app': 'simple-icons:vercel',
 	'zabaur.app': 'tabler:square-letter-z-filled',
 	'zhihu.com': 'ri:zhihu-line',

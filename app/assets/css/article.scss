@@ -40,7 +40,6 @@
 			margin: 0.2em 0;
 
 			&::marker {
-				font-size: 0.8em;
 				color: var(--c-primary);
 			}
 		}
@@ -80,7 +79,7 @@
 	}
 
 	strong {
-		background-image: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 30%;
+		background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 30%;
 	}
 
 	del {
