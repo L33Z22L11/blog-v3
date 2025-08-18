@@ -367,7 +367,7 @@ export default [{
 		feed: 'https://kegongteng.cn/atom',
 		icon: 'https://kegongteng.cn/favicon.ico',
 		avatar: 'https://bu.dusays.com/2023/12/23/65867c3357bb6.jpg',
-		archs: ['Gridea', 'Vercel'],
+		archs: ['Next.js', 'Netlify'],
 		date: '2024-02-25',
 		comment: '有不错想法的中学生。',
 	}, {
