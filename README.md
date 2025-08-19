@@ -28,7 +28,9 @@
 - [BiuXin-s Blog @damizai](https://zhilu.biuxin.com/)
 - [液泡部落格 @VacuolePaoo](https://blog.vacu.top/)
 - [ChinyuanTai @Kindle-deep](https://blog.knlde.top/)
+- [shenley的存档点 @shenley](https://blog.ykrazy.top/)
 - [莫言小栈 @661111](https://www.myxz.top/)
+- [落憾 @LuoH-AN](https://blog.enltlh.me/)
 
 ## 特性
 

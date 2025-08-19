@@ -154,7 +154,7 @@ onMounted(() => {
 }
 
 .search-btn {
-	margin-block: 1rem;
+	margin: 1rem 0;
 	outline: 1px solid var(--c-border);
 	outline-offset: -1px;
 	cursor: text;

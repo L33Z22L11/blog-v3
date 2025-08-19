@@ -21,8 +21,14 @@ if (!fs.existsSync(directory)) {
 	fs.mkdirSync(directory, { recursive: true })
 }
 
-// 创建 Markdown 文件
 const filePath = path.join(directory, `${blogTitle}.md`)
+
+if (fs.existsSync(filePath)) {
+	console.error('文件已存在')
+	process.exit(1)
+}
+
+// 创建 Markdown 文件
 fs.writeFileSync(filePath, `---
 title: ${blogTitle}
 description: ${blogTitle}
