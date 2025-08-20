@@ -33,7 +33,7 @@ const tip = computed(() => {
 </script>
 
 <template>
-<ZRawLink v-tip="tip" class="badge" :class="{ 'badge-img': img, 'badge-round': round }" :to="link">
+<ZRawLink v-tip="tip" class="badge" :class="{ round }" :to="link">
 	<NuxtImg v-if="img" class="badge-icon" :src="img" :alt="img" />
 	<span class="badge-text">
 		<slot>{{ text }}</slot>
@@ -46,14 +46,12 @@ const tip = computed(() => {
 .badge {
 	display: inline-flex;
 	align-items: baseline;
-	height: 1.5em;
 	margin: 0.1em;
 	border: 1px solid var(--c-border);
 	border-radius: 4px;
 	box-sizing: content-box;
 	background-color: var(--c-bg-2);
 	font-size: 0.875em;
-	line-height: 1.5;
 	transition: color 0.2s;
 
 	@supports (color: color-mix(in srgb, transparent, transparent)) {
@@ -66,29 +64,24 @@ const tip = computed(() => {
 		color: var(--c-text);
 	}
 
-	&.badge-round {
-		border-radius: 1em;
-
-		.badge-icon {
-			border-radius: 1em;
-		}
+	&.round, &.round > .badge-icon {
+		border-radius: 0.8em;
 	}
 }
 
-.badge-img {
-	.badge-icon {
-		align-self: center;
-		height: 100%;
-		border-radius: 3.5px;
-	}
+.badge-icon {
+	align-self: normal;
+	height: 1.6em;
+	border-radius: 3.5px;
 
-	.badge-text {
+	+ .badge-text {
 		margin-left: -0.1em;
 	}
 }
 
 .badge-text {
-	padding: 0 0.4em;
+	padding: 0.2em 0.4em;
+	line-height: 1.2;
 
 	&:empty {
 		display: none;

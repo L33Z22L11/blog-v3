@@ -1,13 +1,14 @@
 {
   "name": "zhilu-blog",
   "type": "module",
-  "version": "3.3.3",
+  "version": "3.3.4",
   "private": true,
   "packageManager": "pnpm@10.13.1",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "scripts": {
     "prepare": "pnpx rimraf .data node_modules/.cache && nuxt prepare",
     "dev": "nuxt dev --no-qr",
+    "dev:host": "nuxt dev --host",
     "build": "cross-env NODE_OPTIONS='--no-deprecation' nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -27,6 +28,8 @@
     "parse-domain": "catalog:",
     "plain-shiki": "catalog:",
     "radash": "catalog:",
+    "rehype-katex": "catalog:default",
+    "remark-math": "catalog:default",
     "vue-tippy": "catalog:",
     "vue-virtual-scroller": "catalog:"
   },
