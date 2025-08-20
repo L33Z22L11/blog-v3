@@ -27,8 +27,6 @@ const scroll = ref(true)
 
 	table.scroll {
 		display: block;
-		overflow: auto;
-		max-width: fit-content;
 		white-space: nowrap;
 		word-break: normal;
 	}
@@ -61,6 +59,11 @@ const scroll = ref(true)
 	max-height: 80dvh;
 	margin: auto;
 	border-collapse: collapse;
+
+	> thead {
+		position: sticky;
+		top: 0;
+	}
 
 	th {
 		background-color: var(--c-bg-2);

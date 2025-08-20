@@ -7,11 +7,11 @@ catalog:
   '@nuxtjs/color-mode': ^3.5.2
   '@nuxtjs/seo': ^3.1.0
   '@pinia/nuxt': ^0.11.2
-  '@shikijs/colorized-brackets': ^3.9.2
-  '@shikijs/transformers': ^3.9.2
-  '@vueuse/core': ^13.6.0
-  '@vueuse/nuxt': ^13.6.0
-  '@vueuse/router': ^13.6.0
+  '@shikijs/colorized-brackets': ^3.11.0
+  '@shikijs/transformers': ^3.11.0
+  '@vueuse/core': ^13.7.0
+  '@vueuse/nuxt': ^13.7.0
+  '@vueuse/router': ^13.7.0
   '@zinkawaii/stylelint-config': ^0.3.3
   better-sqlite3: ^12.2.0
   cross-env: ^10.0.0
@@ -27,9 +27,11 @@ catalog:
   parse-domain: ^8.2.2
   plain-shiki: ^0.3.0
   radash: ^12.1.1
+  rehype-katex: ^7.0.1
+  remark-math: ^6.0.0
   remark-reading-time: ^2.0.2
   sass-embedded: ^1.90.0
-  shiki: ^3.9.2
+  shiki: ^3.11.0
   stylelint: ^16.23.1
   terser: ^5.43.1
   typescript: ^5.9.2
