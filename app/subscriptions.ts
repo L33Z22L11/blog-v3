@@ -33,7 +33,7 @@ export default [{
 		author: 'HDAlex_John',
 		link: 'https://space.bilibili.com/337242418',
 		icon: 'https://www.bilibili.com/favicon.ico',
-		avatar: 'https://p3-pc.douyinpic.com/aweme/100x100/aweme-avatar/tos-cn-i-0813c001_o0Akv9dDzIAuMHF9AwfANnez7Ct5zAAEhAghAA.jpeg',
+		avatar: 'https://wsrv.nl/?url=i0.hdslb.com/bfs/face/5dff9c67c35d62ef1d839cd3136264c787dcfb92.jpg@100w_100h.webp',
 		date: '2025-07-26',
 		comment: '路线参考',
 	}, {

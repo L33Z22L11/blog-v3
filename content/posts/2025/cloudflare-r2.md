@@ -2,7 +2,7 @@
 title: Cloudflare R2 对象存储
 description: 关于 Cloudflare R2 的开通，以及需要进行的一些配置和说明，谨记切勿过分滥用，用作违法之行径。
 date: 2025-08-04 13:05:10
-updated: 2025-08-06 06:59:19
+updated: 2025-08-21 14:08:21
 categories: [分享]
 tags: [存储]
 ---
@@ -97,14 +97,14 @@ https://r2.mugzx.top/cdn-cgi/image/f=avif/259e8d4196fea827025c2927a6fcd6e98d0300
 只有从 `blog.mugzx.top` 发起的请求才能访问 `r2.mugzx.top` 的资源（允许空Referer），其他域名的请求则会被拒绝。
 
 ```
-(http.host eq "r2.mugzx.top" and http.referer eq "blog.mugzx.top")
+(http.host eq "r2.mugzx.top" and not http.referer contains "blog.mugzx.top" and http.referer ne "")
 ```
 
 - 然后采取措施：阻止
 
-在[自定义规则](https://dash.cloudflare.com/security/security-rules/custom-rules)中创建。
+在**你的域名**→**安全性**→**安全规则**→**自定义规则**中创建。
 
-### R2速率限制
+### 速率限制
 
 ```
 (http.request.uri.path contains "/")
@@ -115,19 +115,19 @@ https://r2.mugzx.top/cdn-cgi/image/f=avif/259e8d4196fea827025c2927a6fcd6e98d0300
 - 然后采取措施：阻止
 - 持续时间：10秒
 
-在[速率限制规则](https://dash.cloudflare.com/security/security-rules/rate-limiting-rules)中创建。
+在**你的域名**→**安全性**→**安全规则**→**速率限制规则**中创建。
 
 ### 图片缓存
 
-还有[缓存配置](https://dash.cloudflare.com/rules/page-rules/form)，这里我是参考了[我爱水煮鱼](https://blog.wpjam.com/article/cloudflare-r2)的配置。
+缓存配置在**你的域名**→**规则**→**页面规则**中进行创建。
 
 - URL：`https://blog.mugzx.top/*`​， 必须使用https协议，根据使用情况后接`*`通配符。
-- 浏览器缓存 TTL：1天
-- 边缘缓存TTL：1个月（经常更换图片可以适当降低）
+- 浏览器缓存 TTL：1年
+- 边缘缓存 TTL：1个月
 - 缓存级别：缓存所有内容
 - 源服务器缓存控制：添加但不开启
 
-同样是根据实际情况按需修改，缓存配置会影响文件更新，当桶内资源发生变化但链接内容**没有变化**时，可以手动清除缓存。
+经常更换图片可以设置为7至14天内，不经常更换可以设置为1年，缓存配置会影响文件更新，当桶内资源发生变化但链接内容**没有变化**时，可以手动清除缓存。
 
 ## 感谢 Cloudflare
 

@@ -27,7 +27,7 @@ export default [{
 		feed: 'https://blog.feng1026.top/rss.xml',
 		icon: 'https://blog.feng1026.top/favicon/favicon.png',
 		avatar: getGhAvatar('Qiufengluoyes'),
-		archs: ['Astro', 'Vercel'],
+		archs: ['Astro', 'Cloudflare'],
 		date: '2025-01-24',
 		// comment: '生活随笔。',
 	}, {
@@ -38,7 +38,7 @@ export default [{
 		feed: 'https://blog.mcneko.com/feed',
 		icon: 'https://blog.mcneko.com/wp-content/uploads/2024/07/cropped-openaiassets_676d2e034bcb92cbea60e4faf5fd7985_2579861715703792700-1-32x32.png',
 		avatar: getGhAvatar('nkqa'),
-		archs: ['WordPress', 'Cloudflare'],
+		archs: ['WordPress', '服务器'],
 		date: '2025-01-24',
 		comment: '分享内容与琐事。',
 	}, {
@@ -84,7 +84,7 @@ export default [{
 		feed: 'https://blog.adproqwq.top/atom.xml',
 		icon: 'https://blog.adproqwq.top/avatar.jpg',
 		avatar: getGhAvatar('adproqwq'),
-		archs: ['Vue', 'GitHub Pages'], // 并不准确
+		archs: ['Vue', 'Vercel'], // 并不准确
 		date: '2025-07-25',
 	}],
 }] satisfies FeedGroup[]
