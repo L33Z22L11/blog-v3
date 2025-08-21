@@ -42,6 +42,7 @@ const blogConfig = {
 		// 'www.mugzx.top',
 		// 'mu-s4.s3.bitiful.net',
 		// 'r2.mugzx.top',
+		'wsrv.nl',
 	],
 
 	// 禁止搜索引擎收录的路径
@@ -49,7 +50,7 @@ const blogConfig = {
 
 	scripts: [
 		// 自己部署的 Umami 统计服务
-		{ 'src': 'https://u.mugzx.top/script.js', 'data-website-id': '67b04aa0-edac-456d-bbe1-7ddd2bff9008', 'integrity': 'sha384-gW+82edTiLqRoEvPbT3xKDCYZ5M02YXbW4tA3gbojZWiiMYNJZb4YneJrS4ri3Rn', 'crossorigin': 'anonymous', 'defer': true },
+		{ 'src': 'https://u.mugzx.top/script.js', 'data-website-id': '67b04aa0-edac-456d-bbe1-7ddd2bff9008', 'defer': true },
 		// Twikoo 评论系统
 		{ src: 'https://s4.zstatic.net/npm/twikoo@1.6.44/dist/twikoo.min.js', integrity: 'sha384-dZ/hSVfTPHuzXyECOYCetAvMd0cgqWxN5Fh+mwo86PV4GdU9xgQ/MNzh/YM/lotR', crossorigin: 'anonymous', defer: true },
 	],
