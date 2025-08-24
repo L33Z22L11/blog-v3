@@ -10,26 +10,30 @@
 我的第三代个人博客，于 2024 年 8 月 11 日上线。
 
 > [!WARNING]
-> 项目已于 2025-07-26 迁移至 Nuxt 4 和 Nuxt Content 3，如果你在使用之前的版本，请确保有 merge huge diff 的能力再更新。
-
-> [!TIP]
-> 使用需要具备一定的前端**项目基础**。如果你不确定代码是否有问题，可以加入 QQ 群 `169994096` 讨论（也欢迎闲聊），我很乐意在空闲时解答问题。
+>
+> 修改本项目需要具备**前端开发**和**项目部署**能力。由于这是个人博客，代码经过深度定制，且可能会进行较大幅度的更新，建议您 Fork 后安心使用自己分支的版本；若需引入上游（本仓库）的新功能，建议重新 Fork 最新代码，以避免同步冲突。
+>
+> 如果需要协助或有问题咨询，欢迎加入 QQ 群 169994096 讨论/闲聊，我会在空闲时尽力解答。
 
 ## 使用本主题的博客
 
-- [纸鹿摸鱼处 @L33Z22L11](https://blog.zhilu.site/) · [开发经历](https://blog.zhilu.site/2024/blog-using-nuxt)
-- [希乐博客 @Xlenco](https://blog.xlenco.top/)
-- [SteinsNote @Labmem-00](https://blog.labmem.chat/) · [迁移经历](https://blog.labmem.chat/2024/beforeeverything)
-- [月空人 @Whbbit1999](https://whbbit.cn/) · [迁移评价](https://whbbit.cn/posts/2025/why-migrate-to-nuxt)
-- [地球驿站 @mugzx](https://blog.mugzx.top/) · [迁移记录](https://blog.mugzx.top/)
-- [喵落阁 @Kemeow815](https://blog-v3.kemeow.top/)
-- [梦爱吃鱼 @JLinmr](https://blog.ruom.top/)
-- [Mikuの极光星 @PaloMiku](https://blog.sotkg.com/)
-- [BiuXin-s Blog @damizai](https://zhilu.biuxin.com/)
-- [液泡部落格 @VacuolePaoo](https://blog.vacu.top/)
-- [ChinyuanTai @Kindle-deep](https://blog.knlde.top/)
-- [莫言小栈 @661111](https://www.myxz.top/)
-- [落憾 @LuoH-AN](https://blog.enltlh.me/)
+> v3.3 (不含) 之前使用 Nuxt 3 + Nuxt Content 2，更新依赖/删除 lcok 文件可能导致项目无法启动。
+
+| 博客名称                                    | 作者          | 对应上游版本    | 下游特色功能                   |
+| ------------------------------------------- | ------------- | --------------- | ------------------------------ |
+| **[纸鹿摸鱼处](https://blog.zhilu.site/)**  | **L33Z22L11** | **v3.4-250825** | (我是上游)                     |
+| [希乐博客](https://blog.xlenco.top/)        | Xlenco        | v3.3-250812     | 最新评论                       |
+| [SteinsNote](https://blog.labmem.chat/)     | Labmem-00     | ~~v3.1-241112~~ | 专栏                           |
+| [月空人](https://whbbit.cn/)                | Whbbit1999    | v3.3-250825     | 项目/博客/Snippets页           |
+| [地球驿站](https://blog.mugzx.top/)         | mugzx         | v3.3-final      | 设计风格统一                   |
+| [喵落阁](https://blog-v3.kemeow.top/)       | Kemeow815     | ~~v3.2-250521~~ | 即刻+友圈+最新评论+游戏/番剧页 |
+| [梦爱吃鱼](https://blog.ruom.top/)          | JLinmr        | v3.2-250304     | 即刻+友圈+最新评论             |
+| [Mikuの极光星](https://blog.sotkg.com/)     | PaloMiku      | v3.3-final      | 设计风格统一                   |
+| [Shenley的存档点](https://blog.ykrazy.top/) | shenlye       | ~~v3.2-250521~~ | 游戏/番剧页                    |
+| [BiuXin-s Blog](https://zhilu.biuxin.com/)  | damizai       | ~~v3.2-250304~~ | 即刻+友圈+最新评论             |
+| [液泡部落格](https://blog.vacu.top/)        | VacuolePaoo   | ~~v3.2-250521~~ | 一言                           |
+| [莫言小栈](https://www.myxz.top/)           | 661111        | v3.3-250814     | 即刻+友圈+Heo友链轮播/Profile  |
+| [落憾](https://blog.enltlh.me/)             | LuoH-AN       | v3.3-final      | 即刻+标签tags                  |
 
 ## 特性
 
@@ -104,12 +108,14 @@ pnpm dev
 
 为避免误会，应当更改一些配置信息以和我的博客网站区分：
 
-- 删除原有文章：`content/` 目录下仅保留 `link.md`，`app.config.ts` 中将 `footer.nav[2].items[1].url` 由 `/theme` 改为 `https://blog.zhilu.site/theme`（确保通过链接检测）。
+- 删除原有文章：`content/` 目录下仅保留 `link.md`，`app.config.ts` 中删去 `footer.nav[2].items[1]`（主题组件文档）或将 `/theme` 改为 `https://blog.zhilu.site/theme`（确保通过链接检测）。
 - 更换服务配置：`blog.config.ts` 中的 Umami 站点统计、Cloudflare Insights 统计、Twikoo 评论服务源需要注释或更换。
 - 个人信息：`blog.config.ts` 中的站点名称、头像，`app.config.ts` 中的页脚导航、出生年份等。
 - 其他应当被善意认为有必要修改的文件和配置字段（参阅“目录结构”一节）。
 
 为保证开发体验，需要安装 ESLint、Stylelint 等 VS Code 扩展。如果你不喜欢此项目的格式化风格，可以在 `./eslint.config.mjs` 和 `./.vscode/settings.json` 中调整或者不安装 VS Code 扩展。
+
+如果文章 URL 和先前的不相同，可以通过编辑 `redirects.json` 来添加重定向。
 
 ### 创建文章
 

@@ -6,27 +6,34 @@ const services = {
 
 export type ImgService = keyof typeof services | boolean
 
+// https://wsrv.nl/docs/quick-reference.html
 export function getGhAvatar(name = '', options: Record<string, any> = { size: 92 }) {
-	if (!name)
-		return ''
-	if (options.preset === 'icon')
-		options = { ...options, size: 32, mask: 'circle' }
+	const srcUrl = `github.com/${name}.png?size=${options.size}`
+	delete options.size
 
-	const params = new URLSearchParams()
-	params.set('url', `github.com/${name}.png`)
-	if (options.size)
-		params.set('url', `${params.get('url')}?size=${options.size}`)
-	if (options.mask)
-		params.set('mask', options.mask)
-
-	return `https://wsrv.nl/?${params.toString()}`
+	const params = new URLSearchParams(srcUrl)
+	Object.entries(options).forEach(([key, value]) => params.set(key, value))
+	return services.weserv + params.toString()
 }
 
-export function getImgUrl(src?: string, service?: ImgService) {
-	if (!src || !service)
+export const getGhIcon = (name = '') => getGhAvatar(name, { size: 32, mask: 'circle' })
+
+// https://github.com/microlinkhq/unavatar
+// https://docs.webp.se/public-services/unavatar/
+export function getFavicon(domain: string, options: Record<string, any> = {
+	provider: 'google',
+	size: 32,
+}) {
+	return `https://unavatar.webp.se/${options.provider}/${domain}?s=${options.size}`
+}
+
+export function getImgUrl(src: string, service?: ImgService) {
+	if (!service)
 		return src
-	if (service === true)
-		return Object.values(services)[0] + src
+	if (service === true) {
+		const autoService = getMainDomain(src) === 'github.com' ? 'weserv' : 'baidu'
+		return services[autoService] + src
+	}
 	if (service in services)
 		return services[service] + src
 	return src

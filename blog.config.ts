@@ -85,6 +85,7 @@ const redirectRouteRules = Object.entries(redirectList)
 	}, {})
 
 // https://nitro.build/config#routerules
+// 使用 EdgeOne 部署时，需要同步更新 edgeone.json
 // @keep-sorted
 export const routeRules = <NitroConfig['routeRules']>{
 	...redirectRouteRules,

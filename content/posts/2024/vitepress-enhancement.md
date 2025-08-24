@@ -128,7 +128,6 @@ Staticfile CDN、BootCDN（bootcss）、51LA 统计等公共服务已被发现�
   - :copy{prompt="ZStatic" code="https://s4.zstatic.net/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"}
   - :copy{prompt="ZStatic-unpkg" code="https://s4.zstatic.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"}
 
-
 至于在 VitePress 站点的 `<head>`{lang="html"} 标签中引入 CSS？[看文档](https://vitepress.dev/zh/reference/site-config#head) 吧。当然，引入后不要忘了设置“固定宽度”和“垂直居中”样式。
 
 ### Google Fonts

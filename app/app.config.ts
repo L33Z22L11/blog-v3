@@ -4,6 +4,7 @@ import blogConfig from '~~/blog.config'
 // 图标查询：https://yesicon.app/ph
 // 图标插件：https://marketplace.visualstudio.com/items?itemName=antfu.iconify
 
+// @keep-sorted
 export default defineAppConfig({
 	// 将 blog.config 中的配置项复制到 appConfig，方便调用
 	...blogConfig,
@@ -35,8 +36,9 @@ export default defineAppConfig({
 		},
 	},
 
+	// @keep-sorted
 	footer: {
-		/** 页脚版权信息 */
+		/** 页脚版权信息，支持 <br> 换行等 HTML 标签 */
 		copyright: `© ${new Date().getFullYear()} ${blogConfig.author.name}`,
 		/** 侧边栏底部图标导航 */
 		iconNav: [
@@ -69,12 +71,10 @@ export default defineAppConfig({
 				items: [
 					{ icon: 'simple-icons:nuxtdotjs', text: 'Nuxt开源博客主题', url: 'https://github.com/L33Z22L11/blog-v3' },
 					{ icon: 'ph:swatches-bold', text: '主题和组件文档', url: '/theme' },
-					{ icon: 'ph:certificate-bold', text: '萌备20246888号', url: 'https://icp.gov.moe/?keyword=20246888' },
+					{ icon: 'ph:certificate-bold', text: '陕ICP备2025072742号-3', url: 'https://beian.miit.gov.cn/' },
 				],
 			},
 		] satisfies Nav,
-		/** 页脚版权信息底部的其他信息 */
-		message: '<a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener nofollow" data-v-e2b95aa8="">陕ICP备2025072742号-3</a>',
 	},
 
 	/** 左侧栏顶部 Logo */
@@ -84,14 +84,6 @@ export default defineAppConfig({
 		showTitle: true,
 		subtitle: blogConfig.subtitle,
 		emojiTail: ['📄', '🦌', '🙌', '🐟', '🏖️'],
-	},
-
-	pagination: {
-		perPage: 10,
-		/** 默认排序方式，需要是 this.article.order 中的键名 */
-		sortOrder: 'date' as const,
-		/** 允许（普通/预览/归档）文章列表正序，开启后排序方式左侧图标可切换顺序 */
-		allowAscending: false,
 	},
 
 	/** 左侧栏导航 */
@@ -106,10 +98,12 @@ export default defineAppConfig({
 		},
 	] satisfies Nav,
 
-	/** 风格化 blog-stats widget */
-	seasonal: {
-		// widgetBackground: 'https://wsrv.nl/?url=i2.hdslb.com/bfs/archive/46165212e09842103752c453d7987a470059760b.jpg@320w',
-		// emoji: '🧧',
+	pagination: {
+		perPage: 10,
+		/** 默认排序方式，需要是 this.article.order 中的键名 */
+		sortOrder: 'date' as const,
+		/** 允许（普通/预览/归档）文章列表正序，开启后排序方式左侧图标可切换顺序 */
+		allowAscending: false,
 	},
 
 	stats: {

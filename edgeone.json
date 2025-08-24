@@ -1,0 +1,29 @@
+{
+  "headers": [
+    {
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "source": "/api/*"
+    },
+    {
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/xml"
+        }
+      ],
+      "source": "/zhilu.opml"
+    }
+  ],
+  "redirects": [
+    {
+      "destination": "https://www.zhilu.site/api/icon",
+      "source": "/favicon.ico",
+      "status": 308
+    }
+  ]
+}

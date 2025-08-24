@@ -5,7 +5,7 @@ hide-info: true
 aside: [toc, github-card]
 github:
   name: L33Z22L11/blog-v3
-  description: 基于 Nuxt Content 的博客主题，使用 Nuxt 3 构建。
+  description: 基于 Nuxt Content v3 的博客主题，使用 Nuxt 4 构建。
   url: https://github.com/L33Z22L11/blog-v3
 ---
 
@@ -78,10 +78,10 @@ link: /2024/blog-using-nuxt
 
 ::card-list
 - 主要框架与语言
-  - **前端框架**：Nuxt 3
+  - **前端框架**：Nuxt 4
   - **开发语言**：TypeScript + Vue 3 + Scss
 - 内容与服务
-  - **内容管理**：Nuxt Content V2
+  - **内容管理**：Nuxt Content v3
   - **部署平台**：Vercel
   - **评论系统**：Twikoo
   - **评论数据库**：MongoDB

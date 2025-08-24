@@ -13,16 +13,16 @@ function render() {
 		const textContent: string = (node.children as any)?.default?.()[0].children || ''
 		const match = textContent?.match?.(/^\{(?<caption>.*)\}$/)
 		return match?.groups
-			? <div class="timeline-caption">{match.groups.caption}</div>
-			: <div class="timeline-body card">{node}</div>
+			? <dt class="timeline-caption">{match.groups.caption}</dt>
+			: <dd class="timeline-body card">{node}</dd>
 	})
 }
 </script>
 
 <template>
-<div class="timeline">
+<dl class="timeline">
 	<render />
-</div>
+</dl>
 </template>
 
 <style lang="scss" scoped>

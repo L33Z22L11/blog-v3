@@ -109,7 +109,7 @@ width: 360px
 
 9月份，考试时钟终于支持添加临时科目了。这当然只是在尝试与学习技术而已。
 
-```js
+```js wrap
 function setTemp(sh, sm, eh, em) {
     sh = prompt("考试开始时间所在的小时", 17);
     sm = prompt("考试开始时间所在的分钟", 0);
@@ -118,8 +118,7 @@ function setTemp(sh, sm, eh, em) {
     $(prompt("考试科目名称", "临时"),
         today + "T" + fixDigit(sh) + ":" + fixDigit(sm),
         today + "T" + fixDigit(eh) + ":" + fixDigit(em));
-    alert("考试科目：" + subject + "\n起止时间："
-        + getClock(start) + "~" + getClock(end));
+    alert("考试科目：" + subject + "\n起止时间：" + getClock(start) + "~" + getClock(end));
 }
 ```
 
@@ -176,7 +175,7 @@ mirror: true
 
 只是为了测试考试时间轮换是否正常而写出来的功能。
 
-```js
+```js wrap
 if (String(location).indexOf("debug") == -1) {
     updateTime = function () {
         now = new Date();
@@ -197,8 +196,7 @@ else {
         // 调试模式跳过夜晚
         if (now.getHours() == 19) {
             now.setHours(31);
-            today = fixDigit(now.getMonth() + 1)
-                + "-" + fixDigit(now.getDate());
+            today = fixDigit(now.getMonth() + 1) + "-" + fixDigit(now.getDate());
         }
         // 调试模式速度设置
         // now.setMinutes(now.getMinutes() + 1);

@@ -1,16 +1,26 @@
 <script setup lang="ts">
-import type { FeedGroup } from '~/types/feed'
+import type { FeedEntry, FeedGroup } from '~/types/feed'
 
 defineProps<{
-	label: string
+	label?: string
 	feeds: FeedGroup[]
 }>()
+
+// 友链浮现随机延迟
+function getCardDelay(feed: FeedEntry) {
+	let hash = 0
+	for (const char of feed.link) {
+		hash = hash * 31 + char.charCodeAt(0)
+	}
+	return (hash % 1000) / 1000
+}
 </script>
 
 <template>
-<h2 class="feed-label text-creative">
+<h2 v-if="label" class="feed-label text-creative">
 	{{ label }}
 </h2>
+
 <section v-for="group in feeds" :key="group.name" class="feed-group">
 	<h3 class="feed-title text-creative">
 		{{ group.name }}
@@ -22,8 +32,7 @@ defineProps<{
 		<li
 			v-for="entry in group.entries"
 			:key="entry.link"
-			:style="`--delay: ${(Math.random() * .8).toFixed(2)}s;`"
-			data-allow-mismatch="style"
+			:style="`--delay: ${getCardDelay(entry)}s;`"
 		>
 			<FeedCard v-bind="entry" />
 		</li>

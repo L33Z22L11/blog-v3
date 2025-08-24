@@ -98,9 +98,10 @@ Shawn 看到了我的上一篇文章，写了一篇在 Windows 上使用 clangd 
 
 ::link-card
 ---
-icon: https://wsrv.nl/?url=github.com/ShawnJeffersonWang.png
+icon: https://github.com/ShawnJeffersonWang.png
 title: Windows 下配置 Clang 和 clangd
 link: https://shawn.thisis.host/2024/clang-config/
+mirror: true
 ---
 ::
 

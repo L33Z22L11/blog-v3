@@ -22,7 +22,7 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 </script>
 
 <template>
-<ZWidget content-class="widget-body">
+<ZWidget>
 	<template #title>
 		<span class="title">文章目录</span>
 		<!-- use <a> for anchor -->

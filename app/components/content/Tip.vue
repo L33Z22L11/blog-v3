@@ -1,14 +1,18 @@
 <script setup lang="ts">
+import type { TippyOptions } from 'vue-tippy'
+
 const props = defineProps<{
 	text?: string
 	tip?: string
 	icon?: string | boolean
 	copy?: boolean
+	tipOptions?: TippyOptions
 }>()
 
 const tip = computed(() => ({
 	content: props.tip || (props.copy ? '点击复制' : ''),
 	inlinePositioning: true,
+	...props.tipOptions,
 }))
 const tipSource = useTemplateRef('tip-text')
 

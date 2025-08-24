@@ -57,6 +57,9 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			buildTime: new Date().toISOString(),
+			nodeVersion: process.version,
+			platform: process.platform,
+			arch: process.arch,
 		},
 	},
 
@@ -82,6 +85,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/seo',
 		'@pinia/nuxt',
 		'@vueuse/nuxt',
+		'unplugin-yaml/nuxt',
 	],
 
 	colorMode: {

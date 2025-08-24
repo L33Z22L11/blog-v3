@@ -31,6 +31,10 @@ export function getPromptLanguage(prompt: string | boolean) {
 	return 'text'
 }
 
+export function joinWith(strings: (string | undefined)[], separator = '\n') {
+	return strings.filter(Boolean).join(separator)
+}
+
 export function escapeHtml(text: string) {
 	const map: Record<string, string> = {
 		'&': '&amp;',

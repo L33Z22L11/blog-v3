@@ -20,7 +20,6 @@ const appConfig = useAppConfig()
 		</div>
 	</nav>
 	<p v-html="appConfig.footer.copyright" />
-	<p v-html="appConfig.footer.message" />
 </footer>
 </template>
 
