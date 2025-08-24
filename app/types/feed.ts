@@ -13,7 +13,7 @@ export interface FeedEntry {
 	feed?: string
 	/** 站点小图标 */
 	icon: string
-	/** 个人头像，为空则使用站点图标 */
+	/** 个人头像 */
 	avatar: string
 	/** 博客技术架构 */
 	archs?: Arch[]

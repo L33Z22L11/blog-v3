@@ -13,7 +13,6 @@ const props = withDefaults(defineProps<{
 	zoom: true,
 })
 
-const src = computed(() => getImgUrl(props.src, props.mirror))
 const pic = ref()
 const picEl = useCurrentElement<HTMLImageElement>(pic)
 
@@ -26,13 +25,13 @@ const { open } = popoverStore.use(() => h(LazyPopoverLightbox, {
 </script>
 
 <template>
-<!-- <ProseImg> 被 <p> 包裹，若内含块级元素会自动关闭，导致水合不匹配 -->
+<!-- <ProseImg> 被 <p> 包裹，服务端渲染时若内含块级元素会自动关闭，导致水合不匹配 -->
 <figure class="image">
-	<NuxtImg
+	<ZRawImg
 		ref="pic"
 		class="image"
 		:style="{ cursor: zoom && 'zoom-in' }"
-		:src :alt="caption" :width :height
+		:src :alt="caption" :width :height :mirror
 		@click="zoom && open()"
 	/>
 	<figcaption v-if="caption" aria-hidden v-text="caption" />

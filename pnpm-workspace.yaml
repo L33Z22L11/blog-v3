@@ -1,44 +1,50 @@
-catalog:
-  '@antfu/eslint-config': ^5.2.1
-  '@iconify-json/ph': ^1.2.2
-  '@nuxt/content': ^3.6.3
-  '@nuxt/icon': ^2.0.0
-  '@nuxt/image': ^1.11.0
-  '@nuxtjs/color-mode': ^3.5.2
-  '@nuxtjs/seo': ^3.1.0
-  '@pinia/nuxt': ^0.11.2
-  '@shikijs/colorized-brackets': ^3.11.0
-  '@shikijs/transformers': ^3.11.0
-  '@vueuse/core': ^13.7.0
-  '@vueuse/nuxt': ^13.7.0
-  '@vueuse/router': ^13.7.0
-  '@zinkawaii/stylelint-config': ^0.3.3
-  better-sqlite3: ^12.2.0
-  cross-env: ^10.0.0
-  date-fns: ^4.1.0
-  date-fns-tz: ^3.2.0
-  embla-carousel-autoplay: ^8.6.0
-  embla-carousel-vue: ^8.6.0
-  embla-carousel-wheel-gestures: ^8.1.0
-  eslint: ^9.33.0
-  fast-xml-parser: ^5.2.5
-  minisearch: ^7.1.2
-  nuxt: ^4.0.3
-  parse-domain: ^8.2.2
-  plain-shiki: ^0.3.0
-  radash: ^12.1.1
-  rehype-katex: ^7.0.1
-  remark-math: ^6.0.0
-  remark-reading-time: ^2.0.2
-  sass-embedded: ^1.90.0
-  shiki: ^3.11.0
-  stylelint: ^16.23.1
-  terser: ^5.43.1
-  typescript: ^5.9.2
-  vue: ^3.5.18
-  vue-router: ^4.5.1
-  vue-tippy: ^6.7.1
-  vue-virtual-scroller: 2.0.0-beta.8
+catalogs:
+  content:
+    '@nuxt/content': ^3.6.3
+    '@nuxtjs/seo': ^3.1.0
+    '@shikijs/colorized-brackets': ^3.11.0
+    '@shikijs/transformers': ^3.11.0
+    better-sqlite3: ^12.2.0
+    plain-shiki: ^0.3.0
+    rehype-katex: ^7.0.1
+    remark-math: ^6.0.0
+    remark-reading-time: ^2.0.2
+    shiki: ^3.11.0
+  framework:
+    cross-env: ^10.0.0
+    nuxt: ^4.0.3
+    sass-embedded: ^1.90.0
+    terser: ^5.43.1
+    typescript: ^5.9.2
+    unplugin-yaml: ^3.0.4
+    vue: ^3.5.19
+    vue-router: ^4.5.1
+  quality:
+    '@antfu/eslint-config': ^5.2.1
+    '@zinkawaii/stylelint-config': ^0.3.3
+    eslint: ^9.34.0
+    stylelint: ^16.23.1
+  ui:
+    '@iconify-json/ph': ^1.2.2
+    '@nuxt/icon': ^2.0.0
+    '@nuxt/image': ^1.11.0
+    '@nuxtjs/color-mode': ^3.5.2
+    embla-carousel-autoplay: ^8.6.0
+    embla-carousel-vue: ^8.6.0
+    embla-carousel-wheel-gestures: ^8.1.0
+    vue-tippy: ^6.7.1
+    vue-virtual-scroller: 2.0.0-beta.8
+  util:
+    '@pinia/nuxt': ^0.11.2
+    '@vueuse/core': ^13.7.0
+    '@vueuse/nuxt': ^13.7.0
+    '@vueuse/router': ^13.7.0
+    date-fns: ^4.1.0
+    date-fns-tz: ^3.2.0
+    fast-xml-parser: ^5.2.5
+    minisearch: ^7.1.2
+    parse-domain: ^8.2.2
+    radash: ^12.1.1
 
 onlyBuiltDependencies:
   - '@parcel/watcher'

@@ -11,16 +11,16 @@ const yearlyTip = ref('')
 
 const blogStats = computed(() => [{
 	label: '运营时长',
-	content: timeElapse(appConfig.timeEstablished),
+	value: timeElapse(appConfig.timeEstablished),
 	tip: `博客于${appConfig.timeEstablished}上线`,
 }, {
 	label: '上次更新',
-	content: timeElapse(buildTime),
+	value: timeElapse(buildTime),
 	tip: `构建于${getLocaleDatetime(buildTime)}`,
 }, {
 	label: '总字数',
-	content: totalWords,
-	tip: yearlyTip.value,
+	value: totalWords,
+	tip: yearlyTip,
 }])
 
 onMounted(async () => {
@@ -34,25 +34,6 @@ onMounted(async () => {
 
 <template>
 <ZWidget card title="驿站统计">
-	<ul>
-		<li v-for="(item, index) in blogStats" :key="index" :title="item.tip">
-			<small>{{ item.label }}</small><br>
-			<span data-allow-mismatch>{{ item.content }}</span>
-		</li>
-	</ul>
+	<ZDlGroup :items="blogStats" size="small" data-allow-mismatch />
 </ZWidget>
 </template>
-
-<style lang="scss" scoped>
-ul {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 1em;
-	text-align: center;
-
-	>li {
-		flex: 1;
-		white-space: nowrap;
-	}
-}
-</style>

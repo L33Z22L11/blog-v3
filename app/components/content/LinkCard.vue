@@ -1,17 +1,15 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
 	link: string
 	title: string
 	description?: string
 	icon?: string
 	mirror?: ImgService
 }>()
-
-const src = computed(() => getImgUrl(props.icon, props.mirror))
 </script>
 
 <template>
-<ZRawLink :to="link" class="link-card card" :title="`${title}\n${description || ''}\n${link}`">
+<ZRawLink :to="link" class="link-card card" :title="joinWith([title, description, link])">
 	<div class="link-card-info">
 		<div class="link-card-title">
 			{{ title }}
@@ -21,7 +19,7 @@ const src = computed(() => getImgUrl(props.icon, props.mirror))
 		</div>
 	</div>
 	<slot name="icon" class="link-card-icon-slot">
-		<NuxtImg v-if="src" class="link-card-icon" :src :alt="title" />
+		<ZRawImg v-if="icon" class="link-card-icon" :src="icon" :mirror />
 	</slot>
 </ZRawLink>
 </template>

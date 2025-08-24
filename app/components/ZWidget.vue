@@ -2,19 +2,22 @@
 defineProps<{
 	title?: string
 	card?: boolean
-	contentClass?: string
+	dim?: boolean
+	bgImg?: string
+	bgRight?: boolean
 }>()
 </script>
 
 <template>
-<section class="widget">
+<section class="widget" :class="{ dim }">
 	<header class="widget-title text-creative">
 		<slot name="title">
 			{{ title }}
 		</slot>
 	</header>
 
-	<main :class="[contentClass, { 'widget-card': card }]">
+	<main class="widget-body" :class="{ 'widget-card': card, 'with-bg': bgImg }">
+		<NuxtImg v-if="bgImg" class="bg-img" :class="{ 'bg-right': bgRight }" :src="bgImg" alt="" />
 		<slot />
 	</main>
 </section>
@@ -45,13 +48,46 @@ defineProps<{
 		}
 	}
 
+	&.dim {
+		opacity: 0.3;
+		transition: opacity 0.2s;
+
+		#z-aside:hover & {
+			opacity: 1;
+		}
+	}
+
+	> .widget-body {
+		position: relative;
+		overflow: hidden;
+		overflow: clip;
+		z-index: 0;
+
+		> .bg-img {
+			position: absolute;
+			opacity: 0.2;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			pointer-events: none;
+			z-index: -1;
+
+			&.bg-right {
+				left: 50%;
+				width: 50%;
+				mask-image: linear-gradient(to right, transparent, #FFF 50%);
+			}
+		}
+	}
+
 	> .widget-card {
-		padding: 0.2rem 0.8rem;
+		padding: 0.5rem 0.8rem;
 		border-radius: 0.8rem;
 		background-color: var(--c-bg-2);
 
-		:deep(:where(p, li)) {
-			margin: 0.5em 0;
+		:deep(p) {
+			padding: 0.2em 0;
 		}
 	}
 }

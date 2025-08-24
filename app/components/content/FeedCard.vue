@@ -1,10 +1,37 @@
 <script setup lang="ts">
+import type { CSSProperties } from 'vue'
 import type { FeedEntry } from '~/types/feed'
 import { ZRawLink } from '#components'
 
-const props = defineProps<FeedEntry>()
-const mainDomain = computed(() => getMainDomain(props.link, true))
+const props = defineProps<FeedEntry & { inspect?: boolean }>()
+
+const title = computed(() => props.title ?? props.sitenick ?? props.author)
+const domainTip = computed(() => getDomainType(getMainDomain(props.link, true)))
 const domainIcon = computed(() => getDomainIcon(props.link))
+
+const inspect = ref(false)
+function getInspectStyle(src: string): CSSProperties {
+	src = getMainDomain(src)
+	let color = 'red'
+
+	if (src === getMainDomain(props.link))
+		color = 'transparent' // 来自源站
+	else if (src === 'webp.se')
+		color = 'yellow' // 来自API获取
+	else if (src === 'qlogo.cn')
+		color = 'lightblue' // 来自QQ头像
+	else if (src === ('wsrv.nl'))
+		color = 'lightgreen' // 来自GitHub头像
+
+	return {
+		border: `2px solid ${color}`,
+		boxSizing: 'content-box',
+	}
+}
+
+onMounted(() => {
+	inspect.value = import.meta.env.DEV && location.search.includes('inspect')
+})
 </script>
 
 <template>
@@ -15,24 +42,35 @@ const domainIcon = computed(() => getDomainIcon(props.link))
 		:data-error="error"
 	>
 		<div class="avatar">
-			<NuxtImg :src="avatar ?? icon" :alt="author" loading="lazy" :title="feed ? undefined : '无订阅源'" />
+			<ClientOnly v-if="inspect">
+				<NuxtImg :src="icon" :title="icon" :style="getInspectStyle(icon)" />
+				<NuxtImg :src="avatar" :title="avatar" :style="getInspectStyle(avatar)" />
+			</ClientOnly>
+
+			<NuxtImg v-else :src="avatar" :alt="author" loading="lazy" :title="feed ? undefined : '无订阅源'" />
 			<Icon v-if="!feed" class="no-feed" name="ph:bell-simple-slash-bold" />
 		</div>
-		<span class="name">{{ author }}</span>
+
+		<span>{{ author }}</span>
 		<span class="title">{{ sitenick }}</span>
+		<span v-if="inspect" style="position: absolute; top: 0;">{{ title }}</span>
 	</ZRawLink>
+
 	<template #content>
 		<div class="site-content">
-			<NuxtImg class="site-icon" :src="icon" :alt="title ?? sitenick ?? author" />
+			<NuxtImg class="site-icon" :src="icon" :alt="title" />
+
 			<div class="site-info">
 				<h3 class="text-creative">
-					{{ title ?? sitenick ?? author }}
+					{{ title }}
 				</h3>
-				<code class="domain" :title="getDomainType(mainDomain)">
+
+				<code class="domain" :title="domainTip">
 					<span>{{ getDomain(link) }}</span>
 					<Icon v-if="domainIcon" class="domain-mark" :name="domainIcon" />
 				</code>
 			</div>
+
 			<Icon
 				v-for="arch in archs" :key="arch"
 				class="arch" :name="getArchIcon(arch)" :title="arch"
@@ -42,7 +80,9 @@ const domainIcon = computed(() => getDomainIcon(props.link))
 			<div class="date">
 				{{ date }}
 			</div>
+
 			<p>{{ error ?? desc }}</p>
+
 			<p v-if="comment">
 				<Icon name="ph:chat-centered-dots-bold" /> {{ comment }}
 			</p>

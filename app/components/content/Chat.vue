@@ -11,7 +11,7 @@ function render() {
 	return slotContent.map((node: VNode) => {
 		// WARN: 此处使用了非标准的 v-slot:default
 		const textContent = (node.children as any)?.default?.()[0].children
-		const body = <div class="chat-body">{node}</div>
+		const body = <dd class="chat-body">{node}</dd>
 		if (typeof textContent !== 'string')
 			return body
 
@@ -21,15 +21,15 @@ function render() {
 
 		const { caption, control } = match?.groups || {}
 		const controlClass = control === '.' ? 'chat-myself' : control === ':' ? 'chat-system' : ''
-		return <div class={`chat-caption ${controlClass}`}>{caption}</div>
+		return <dt class={`chat-caption ${controlClass}`}>{caption}</dt>
 	})
 }
 </script>
 
 <template>
-<div class="chat">
+<dl class="chat">
 	<render />
-</div>
+</dl>
 </template>
 
 <style lang="scss" scoped>

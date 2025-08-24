@@ -39,10 +39,10 @@ const blogConfig = {
 
 	imageDomains: [
 		// 自动启用本域名的 Nuxt Image
-		// 'www.mugzx.top',
-		// 'mu-s4.s3.bitiful.net',
+		// 's4.mugzx.top',
 		// 'r2.mugzx.top',
 		'wsrv.nl',
+		'unavatar.webp.se',
 	],
 
 	// 禁止搜索引擎收录的路径
@@ -85,6 +85,7 @@ const redirectRouteRules = Object.entries(redirectList)
 	}, {})
 
 // https://nitro.build/config#routerules
+// 使用 EdgeOne 部署时，需要同步更新 edgeone.json
 // @keep-sorted
 export const routeRules = <NitroConfig['routeRules']>{
 	...redirectRouteRules,

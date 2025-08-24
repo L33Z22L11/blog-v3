@@ -47,6 +47,16 @@ const rawHtml = ref(escapeHtml(props.code))
 onMounted(async () => {
 	const shiki = await shikiStore.load()
 	await shikiStore.loadLang(props.language)
+	// 处理 Markdown 高亮内代码块中的语言
+	// 加载 TeX 语言有概率导致 LaTeX 语言高亮炸掉
+	if (props.language === 'markdown' || props.language.startsWith('md')) {
+		const mdLangRegex = /^\s*`{3,}(\S+)/gm
+		const langs = Array
+			.from(props.code.matchAll(mdLangRegex))
+			.map(match => match[1])
+			.filter(lang => lang !== undefined)
+		await shikiStore.loadLang(...langs)
+	}
 	rawHtml.value = shiki.codeToHtml(
 		props.code.trimEnd(),
 		shikiStore.getOptions(props.language),

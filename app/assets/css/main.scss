@@ -20,6 +20,11 @@
 	@media (max-resolution: 1.4dppx) {
 		--font-family: system-ui, sans-serif;
 	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+		scroll-behavior: auto;
+	}
 }
 
 // 有本地字体时不加载网络字体

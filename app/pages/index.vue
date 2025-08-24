@@ -8,7 +8,7 @@ useSeoMeta({
 })
 
 const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog-stats', 'connectivity'])
+layoutStore.setAside(['blog-stats', 'blog-tech', 'comm-group'])
 
 // BUG 若其他页面和 index.vue 共用同一数据源，其 payload 会被置空
 // 此处数据源不采用默认参数，以防归档页面刷新空白
@@ -28,15 +28,6 @@ const listRecommended = computed(() => sort(
 	post => post.recommend || 0,
 	true,
 ))
-
-const displayWarning = ref(false)
-function hideWarning() {
-	displayWarning.value = false
-	localStorage?.setItem('hide_20250725', 'true')
-}
-onMounted(() => {
-	displayWarning.value = localStorage.getItem('hide_20250725') !== 'true'
-})
 </script>
 
 <template>
@@ -44,19 +35,6 @@ onMounted(() => {
 	<!-- 若不包裹，display: none 在 JS 加载后才有足够优先级 -->
 	<ZhiluHeader to="/" />
 </div>
-
-<!-- TODO 谨慎升级 预计2025-10-25下线 -->
-<Alert v-if="displayWarning" type="warning" style="margin: 1em;">
-	<template #title>
-		<span style="flex-grow: 1;">站点仓库正在合并上游</span>
-		<Icon name="ph:x-bold" style="cursor: pointer;" @click="hideWarning" />
-	</template>
-	<p style="margin: 0.5em 0;">
-		站点已升级 Nuxt 4 / Nuxt Content 3，具有大量破坏性更改且功能实现尚不完善，站点样式异常等问题，将同步上游更新持续解决。
-		<!-- eslint-disable-next-line vue/singleline-html-element-content-newline -->
-		<ProseA href="https://github.com/L33Z22L11/blog-v3/pull/20" target="_blank">PR</ProseA>
-	</p>
-</Alert>
 
 <PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
 

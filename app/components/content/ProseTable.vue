@@ -4,7 +4,7 @@ const scroll = ref(true)
 
 <template>
 <div class="md-table">
-	<div class="table-header">
+	<div class="operations">
 		<ZButton @click="scroll = !scroll">
 			<Icon :name="scroll ? 'ph:arrow-u-down-left-bold' : 'ph:arrows-out-line-horizontal-bold'" />
 			<span class="tooltip">{{ scroll ? '自动换行' : '横向滚动' }}</span>
@@ -32,7 +32,7 @@ const scroll = ref(true)
 	}
 }
 
-.table-header {
+.operations {
 	position: sticky;
 	opacity: 0;
 	top: 0;
