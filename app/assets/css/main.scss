@@ -88,6 +88,10 @@ button, input, textarea {
 	vertical-align: sub;
 }
 
+.light [class^="iconify i-catppuccin:"] {
+	filter: invert(0.7) hue-rotate(180deg) saturate(4);
+}
+
 /* stylelint-disable-next-line selector-class-pattern */
 .i-simple-icons\:mdnwebdocs {
 	transform: scale(0.8);

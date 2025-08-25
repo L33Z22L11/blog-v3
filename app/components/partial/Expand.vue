@@ -8,14 +8,12 @@ const expand = defineModel<boolean>()
 </script>
 
 <template>
-<div class="z-expand" :class="inPlace ? 'reverse' : ''">
-	<div v-if="expand" class="content">
-		<slot />
-	</div>
+<div class="z-expand">
+	<slot v-if="expand" />
 
-	<button class="toggle-btn" @click="expand = !expand">
+	<button class="toggle-btn" :class="{ 'in-place': inPlace }" @click="expand = !expand">
 		<Icon class="toggle-icon" :class="{ expand }" name="ph:caret-double-down-bold" />
-		<span>{{ expand ? '收起' : '展开' }}{{ name }}</span>
+		<span>{{ `${expand ? '收起' : '展开'}${name}` }}</span>
 	</button>
 </div>
 </template>
@@ -24,10 +22,6 @@ const expand = defineModel<boolean>()
 .z-expand {
 	display: flex;
 	flex-direction: column;
-
-	&.reverse {
-		flex-direction: column-reverse;
-	}
 }
 
 .toggle-btn {
@@ -37,6 +31,10 @@ const expand = defineModel<boolean>()
 	padding: 0.3em;
 	font-size: 0.9em;
 	color: var(--c-text-2);
+
+	&.in-place {
+		order: -1;
+	}
 }
 
 .toggle-icon {

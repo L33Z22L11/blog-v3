@@ -11,6 +11,7 @@ catalogs:
     remark-reading-time: ^2.0.2
     shiki: ^3.11.0
   framework:
+    ci-info: ^4.3.0
     cross-env: ^10.0.0
     nuxt: ^4.0.3
     sass-embedded: ^1.90.0
@@ -25,6 +26,7 @@ catalogs:
     eslint: ^9.34.0
     stylelint: ^16.23.1
   ui:
+    '@iconify-json/catppuccin': ^1.2.16
     '@iconify-json/ph': ^1.2.2
     '@nuxt/icon': ^2.0.0
     '@nuxt/image': ^1.11.0

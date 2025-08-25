@@ -1,5 +1,5 @@
 import type { FeedGroup } from '~/types/feed'
-import { getFavicon, getGhAvatar, getGhIcon } from './utils/img'
+import { getFavicon, getGhAvatar, getGhIcon, getQqAvatar, QqAvatarSize } from './utils/img'
 
 export default [
 	{
@@ -170,8 +170,8 @@ export default [
 			// 	desc: '正在学习嵌入式',
 			// 	link: 'https://www.kayle7.top/',
 			// 	feed: 'https://www.kayle7.top/atom.xml',
-			// 	icon: 'https://q1.qlogo.cn/g?b=qq&nk=1239625475&s=3',
-			// 	avatar: 'https://q1.qlogo.cn/g?b=qq&nk=1239625475&s=4',
+			// 	icon: getQqAvatar('1239625475', QqAvatarSize.Size100),
+			// 	avatar: getQqAvatar('1239625475'),
 			// 	archs: ['Hexo', 'Cloudflare'],
 			// 	date: '2024-06-27',
 			// 	comment: '大学同级，嵌入式学习中。',
@@ -196,8 +196,8 @@ export default [
 				desc: '我知我喜乐，纵情跋涉。',
 				link: 'https://magic.thisis.host/',
 				feed: 'https://magic.thisis.host/atom.xml',
-				icon: 'https://q1.qlogo.cn/g?b=qq&nk=1623728267&s=3',
-				avatar: 'https://q1.qlogo.cn/g?b=qq&nk=1623728267&s=4',
+				icon: getQqAvatar('1623728267', QqAvatarSize.Size100),
+				avatar: getQqAvatar('1623728267'),
 				archs: ['Hexo', 'Cloudflare'],
 				date: '2024-07-22',
 				comment: '大学学妹，前端学习中。',
@@ -233,7 +233,7 @@ export default [
 				link: 'https://yunjianworld.fun/',
 				feed: 'https://yunjianworld.fun/atom.xml',
 				icon: 'https://yunjianworld.fun/img/fluid.png',
-				avatar: 'https://q1.qlogo.cn/g?b=qq&nk=2098600899&s=4',
+				avatar: getQqAvatar('2098600899'),
 				archs: ['Hexo', 'Zebaur'],
 				date: '2024-11-14',
 				comment: '大学学妹，操作系统学习中。',
@@ -335,7 +335,7 @@ export default [
 				link: 'https://blog.chyk.ink/',
 				feed: 'https://blog.chyk.ink/atom.xml',
 				icon: getGhIcon('chiyuki0325'),
-				avatar: 'https://q1.qlogo.cn/g?b=qq&nk=3526514925&s=4',
+				avatar: getQqAvatar('3526514925'),
 				archs: ['Hexo', 'Vercel'],
 				date: '2024-03-03',
 				comment: 'Archlinux，折腾，大学生。',
@@ -382,7 +382,7 @@ export default [
 				link: 'https://www.iczrx.cn/',
 				feed: 'https://www.iczrx.cn/feed/',
 				icon: 'https://www.iczrx.cn/favicon.ico',
-				avatar: 'https://q1.qlogo.cn/g?b=qq&nk=1463656527&s=4',
+				avatar: getQqAvatar('1463656527'),
 				archs: ['Typecho', '服务器'],
 				date: '2024-07-11',
 				comment: '分享折腾与生活的高中生。',
@@ -455,7 +455,7 @@ export default [
 				link: 'https://blog.xlenco.top/',
 				feed: 'https://blog.xlenco.top/atom.xml',
 				icon: 'https://weavatar.com/avatar/67254b346498965226e5c91ebff66a69570b97f224d2d061e504b4eade1f00fa',
-				avatar: 'https://q1.qlogo.cn/g?b=qq&nk=1043865083&s=4',
+				avatar: getQqAvatar('1043865083'),
 				archs: ['Nuxt', 'Vercel'],
 				date: '2024-07-28',
 				comment: '学生，经验分享。',
@@ -679,7 +679,7 @@ export default [
 				link: 'https://www.dao.js.cn/',
 				feed: 'https://www.dao.js.cn/feed.php',
 				icon: 'https://www.dao.js.cn/zb_users/upload/2024/09/202409191726720024363275.png',
-				avatar: 'https://q1.qlogo.cn/g?b=qq&nk=466660026&s=4',
+				avatar: getQqAvatar('466660026'),
 				archs: ['ZBlog', '国内 CDN'],
 				date: '2025-04-14',
 				comment: '懋和道人，聚焦网站建设与技术，弘扬传统文化。',
@@ -827,11 +827,25 @@ export default [
 				date: '2025-08-20',
 				comment: '网站攻击处理曝光，博客配置魔改等技术教程与资源分享。',
 			},
+			{
+				author: 'Snowykami',
+				sitenick: '空间站',
+				title: '粒子空间站',
+				desc: '轻思若水，雪化生香',
+				link: 'https://blog.sfkm.me/',
+				feed: 'https://blog.sfkm.me/feed.xml',
+				icon: getQqAvatar('2751454815', QqAvatarSize.Size100),
+				avatar: getQqAvatar('2751454815'),
+				archs: ['Hexo', '国内 CDN'],
+				date: '2025-08-25',
+				comment: '云原生、HomeLab 搭建、网络安全、容器化、静态网站托管等领域的技术实践。',
+			},
 		],
 	},
+	/* ========从此处新增友链======== */
 	{
-		name: '慢请求',
-		desc: '监听频率降低',
+		name: '现实之域',
+		desc: '博主们或许正忙着追随生活的烟火气。',
 		// @keep-sorted { "keys": ["date"] }
 		entries: [
 			{
