@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
-	type?: 'bilibili' | 'youtube' | 'raw'
+	type?: 'bilibili' | 'youtube' | 'raw' | 'douyin' | 'tiktok'// 使用 douyin 或 tiktok 时请为 id 添加双引号
 	id: string
 	autoplay?: boolean
 	/** 视频长宽比，如 `16 / 9` `1.6` */
@@ -19,7 +19,11 @@ const src = computed(() => {
 		case 'bilibili':
 			return `https://player.bilibili.com/player.html?bvid=${props.id}&autoplay=${props.autoplay}`
 		case 'youtube':
-			return `https://www.youtube.com/embed/${props.id}?rel=0&disablekb=1&playsinline=1&autoplay=${props.autoplay}"`
+			return `https://www.youtube.com/embed/${props.id}?rel=0&disablekb=1&playsinline=1&autoplay=${props.autoplay}`
+		case 'douyin':
+			return `https://open.douyin.com/player/video?vid=${props.id}`
+		case 'tiktok':
+			return `https://www.tiktok.com/embed/v3/${props.id}`
 		default:
 			return props.id
 	}
@@ -28,7 +32,8 @@ const src = computed(() => {
 
 <template>
 <div
-	class="video" :style="{
+	:class="['video', { 'dy-video': type === 'douyin' }]"
+	:style="{
 		aspectRatio: ratio,
 		maxWidth: width,
 	}"
@@ -56,6 +61,16 @@ const src = computed(() => {
 	margin: 2rem auto;
 	border-radius: 0.8rem;
 	box-shadow: 0 2px 0.5rem var(--ld-shadow);
+}
+
+.dy-video {
+	@extend .video;
+	width: 100%;
+	height: 452.75px;
+	@media (max-width: 1367px) {
+	width: 324px;
+	height: 672px;
+	}
 }
 
 iframe, video {
