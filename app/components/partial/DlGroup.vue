@@ -34,6 +34,7 @@ withDefaults(defineProps<{
 
 		> dt {
 			font-size: 0.9em;
+			color: var(--c-text-2);
 		}
 	}
 }
@@ -62,9 +63,5 @@ withDefaults(defineProps<{
 			text-align: right;
 		}
 	}
-}
-
-:deep(img) {
-	vertical-align: middle;
 }
 </style>

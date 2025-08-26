@@ -1,16 +1,32 @@
 <script setup lang="ts">
+import { Icon } from '#components'
 import { packageManager, version } from '~~/package.json'
 import pnpmWorkspace from '~~/pnpm-workspace.yaml'
 
 const appConfig = useAppConfig()
-const { public: { nodeVersion, platform, arch } } = useRuntimeConfig()
+const { public: { arch, ci, nodeVersion, platform } } = useRuntimeConfig()
+
+// FIXME 客户端动态渲染 Nuxt Icon 会水合不匹配
+const ciPlatform = computed(() => {
+	// const iconName = ciIcons[ci]
+	// if (!iconName)
+	// 	return ''
+
+	// const iconNode = iconName.startsWith('http')
+	// 	? h('img', { src: iconName, alt: '' })
+	// 	: h(Icon, { name: iconName })
+
+	// return [iconNode, ` ${ci.split(' ')[0]}`]
+	return ci
+})
+
 const packages = Object.assign({}, ...Object.values(pnpmWorkspace.catalogs as any)) as Record<string, string>
 const [pm, pmVersion] = packageManager.split('@') as [string, string]
 
 const service = computed(() => ([
-	{ label: '托管平台', value: 'Vercel' },
-	{ label: '图片存储', value: () => [h('img', { src: 'https://console.bitiful.com/favicon.ico', alt: 'Bitiful S4', width: 16 }), 'Bitiful S4'] },
-	{ value: () => [h('img', { src: 'https://www.cloudflare-cn.com/favicon.ico', alt: 'Cloudflare R2', width: 16 }), 'Cloudflare R2'] },
+	...ci ? [{ label: '构建平台', value: ciPlatform }] : [],
+	{ label: '图片存储', value: () => [h('img', { src: 'https://console.bitiful.com/favicon.ico', alt: '' }), ' Bitiful S4'] },
+	{ value: () => [h('img', { src: 'https://www.cloudflare-cn.com/favicon.ico', alt: '' }), ' Cloudflare R2'] },
 	{ label: '软件协议', value: 'MIT' },
 	{ label: '文章许可', value: appConfig.copyright.abbr },
 	{ label: '规范域名', value: getDomain(appConfig.url) },
@@ -42,5 +58,10 @@ const expand = ref(false)
 <style lang="scss" scoped>
 .z-expand {
 	margin-top: 0.2em;
+}
+
+.dl-group :deep(img) {
+	height: 1.2em;
+	vertical-align: sub;
 }
 </style>

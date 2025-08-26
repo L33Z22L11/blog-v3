@@ -18,6 +18,23 @@ export function getGhAvatar(name = '', options: Record<string, any> = { size: 92
 
 export const getGhIcon = (name = '') => getGhAvatar(name, { size: 32, mask: 'circle' })
 
+export enum QqAvatarSize {
+	Size1080,
+	Size40,
+	Size40a,
+	Size100,
+	Size140,
+	Size640,
+	Size40b = 40,
+	Size100a = 100,
+	Size640a = 640,
+}
+
+// https://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=
+export function getQqAvatar(qq = '', size = QqAvatarSize.Size140) {
+	return `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=${size}`
+}
+
 // https://github.com/microlinkhq/unavatar
 // https://docs.webp.se/public-services/unavatar/
 export function getFavicon(domain: string, options: Record<string, any> = {

@@ -72,11 +72,7 @@ onMounted(async () => {
 >
 	<figcaption>
 		<span v-if="filename" class="filename">
-			<ClientOnly>
-				<!-- 颜色偏好存储于客户端，可能水合不匹配 -->
-				<Icon :class="{ 'icon-revert': icon.startsWith('catppuccin:') && $colorMode.value === 'light' }" :name="icon" />
-			</ClientOnly>
-			{{ filename }}
+			<Icon :name="icon" /> {{ filename }}
 		</span>
 		<span v-else />
 		<!-- 语言不采用绝对定位，因为和文件名占据互斥空间 -->
@@ -258,9 +254,5 @@ pre {
 	:hover > & {
 		opacity: 1;
 	}
-}
-
-.icon-revert {
-	filter: invert(0.7) hue-rotate(180deg) saturate(4);
 }
 </style>

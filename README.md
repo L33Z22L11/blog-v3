@@ -21,11 +21,11 @@
 
 | 博客名称                                    | 作者          | 对应上游版本    | 下游特色功能                   |
 | ------------------------------------------- | ------------- | --------------- | ------------------------------ |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**  | **L33Z22L11** | **v3.4-250825** | (我是上游)                     |
+| **[纸鹿摸鱼处](https://blog.zhilu.site/)**  | **L33Z22L11** | **v3.4-250826** | (我是上游)                     |
 | [希乐博客](https://blog.xlenco.top/)        | Xlenco        | v3.3-250812     | 最新评论                       |
 | [SteinsNote](https://blog.labmem.chat/)     | Labmem-00     | ~~v3.1-241112~~ | 专栏                           |
-| [月空人](https://whbbit.cn/)                | Whbbit1999    | v3.3-250825     | 项目/博客/Snippets页           |
-| [地球驿站](https://blog.mugzx.top/)         | mugzx         | v3.3-final      | 设计风格统一                   |
+| [月空人](https://whbbit.cn/)                | Whbbit1999    | v3.3-250521     | 项目/博客/Snippets页           |
+| [地球驿站](https://blog.mugzx.top/)         | mugzx         | v3.4-250825     | 设计风格统一                   |
 | [喵落阁](https://blog-v3.kemeow.top/)       | Kemeow815     | ~~v3.2-250521~~ | 即刻+友圈+最新评论+游戏/番剧页 |
 | [梦爱吃鱼](https://blog.ruom.top/)          | JLinmr        | v3.2-250304     | 即刻+友圈+最新评论             |
 | [Mikuの极光星](https://blog.sotkg.com/)     | PaloMiku      | v3.3-final      | 设计风格统一                   |
@@ -97,6 +97,8 @@
 ```sh
 pnpm i
 ```
+
+如果需要安装其他包，推荐使用 `@antfu/nip` 提供的 `nip` 命令。
 
 ### 运行开发环境
 

@@ -3,10 +3,10 @@
   "type": "module",
   "version": "3.4.0",
   "private": true,
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.15.0",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "scripts": {
-    "prepare": "pnpx rimraf .data node_modules/.cache && nuxt prepare",
+    "prepare": "pnpx rimraf .data node_modules/.cache",
     "dev": "nuxt dev --no-qr",
     "dev:host": "nuxt dev --host",
     "build": "cross-env NODE_OPTIONS='--no-deprecation' nuxt build",
@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "better-sqlite3": "catalog:content",
+    "ci-info": "catalog:framework",
     "date-fns": "catalog:util",
     "date-fns-tz": "catalog:util",
     "embla-carousel-autoplay": "catalog:ui",
@@ -36,6 +37,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:quality",
+    "@iconify-json/catppuccin": "catalog:ui",
     "@iconify-json/ph": "catalog:ui",
     "@nuxt/content": "catalog:content",
     "@nuxt/icon": "catalog:ui",

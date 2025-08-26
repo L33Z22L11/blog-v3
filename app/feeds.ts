@@ -1,5 +1,5 @@
 import type { FeedGroup } from '~/types/feed'
-import { getFavicon, getGhAvatar, getGhIcon } from './utils/img'
+import { getFavicon, getGhAvatar, getGhIcon, getQqAvatar, QqAvatarSize } from './utils/img'
 
 export default [
 	{

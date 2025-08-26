@@ -52,7 +52,7 @@ defineProps<{
 		opacity: 0.3;
 		transition: opacity 0.2s;
 
-		#z-aside:hover & {
+		#z-aside:hover &, #z-aside.show & {
 			opacity: 1;
 		}
 	}
