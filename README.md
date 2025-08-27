@@ -34,6 +34,7 @@
 | [液泡部落格](https://blog.vacu.top/)        | VacuolePaoo   | ~~v3.2-250521~~ | 一言                           |
 | [莫言小栈](https://www.myxz.top/)           | 661111        | v3.3-250814     | 即刻+友圈+Heo友链轮播/Profile  |
 | [落憾](https://blog.enltlh.me/)             | LuoH-AN       | v3.3-final      | 即刻+标签tags                  |
+| [落尘up](https://www.luochen.chat/)         | luochenup     | v3.3-250821     | 侧栏时间轴                     |
 
 ## 特性
 

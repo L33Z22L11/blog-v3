@@ -33,6 +33,7 @@ else {
 <template v-if="post">
 	<PostHeader v-bind="post" />
 	<PostExcerpt v-if="excerpt" :excerpt />
+	<!-- 使用 float-in 动画会导致搜索跳转不准确 -->
 	<ContentRenderer
 		class="article"
 		:class="getPostTypeClassName(post?.type, { prefix: 'md' })"
@@ -51,9 +52,3 @@ else {
 	title="内容为空或页面不存在"
 />
 </template>
-
-<style lang="scss" scoped>
-.article {
-	animation: float-in 0.2s backwards;
-}
-</style>
