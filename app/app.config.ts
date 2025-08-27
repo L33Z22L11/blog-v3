@@ -55,7 +55,6 @@ export default defineAppConfig({
 				items: [
 					{ icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
 					{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/' },
-					{ icon: 'ph:flying-saucer-bold', text: '异次元旅行', url: 'https://travel.moe/go.html?travel=on' },
 				],
 			},
 			{
