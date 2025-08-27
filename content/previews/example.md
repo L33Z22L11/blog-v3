@@ -850,6 +850,14 @@ active: 2 # 默认显示第二个选项卡，可选
 #tab1
 ::video-embed
 ---
+type: raw
+id: https://sf16-sg.tiktokcdn.com/obj/eden-sg/ha_lm_lswvlw/ljhwZthlaukjlkulzlp/portal/reunion/61872647867123yhdajskf.mp4
+poster: https://lf-package-cn.feishucdn.com/obj/atsx-throne/hire-fe-prod/portal/i18n/static/image/video-poster.d9fdf4be.jpeg
+---
+::
+
+::video-embed
+---
 type: bilibili
 id: BV1Yr421p7rW
 ---
@@ -857,9 +865,15 @@ id: BV1Yr421p7rW
 
 ::video-embed
 ---
-type: raw
-id: https://sf16-sg.tiktokcdn.com/obj/eden-sg/ha_lm_lswvlw/ljhwZthlaukjlkulzlp/portal/reunion/61872647867123yhdajskf.mp4
-poster: https://lf-package-cn.feishucdn.com/obj/atsx-throne/hire-fe-prod/portal/i18n/static/image/video-poster.d9fdf4be.jpeg
+type: douyin-wide
+id: '7339041157571169546'
+---
+::
+
+::video-embed
+---
+type: douyin
+id: '7222222794333998392'
 ---
 ::
 
@@ -867,6 +881,14 @@ poster: https://lf-package-cn.feishucdn.com/obj/atsx-throne/hire-fe-prod/portal/
 ```mdc
 ::video-embed
 ---
+type: raw
+id: https://sf16-sg.tiktokcdn.com/obj/eden-sg/ha_lm_lswvlw/ljhwZthlaukjlkulzlp/portal/reunion/61872647867123yhdajskf.mp4
+poster: https://lf-package-cn.feishucdn.com/obj/atsx-throne/hire-fe-prod/portal/i18n/static/image/video-poster.d9fdf4be.jpeg
+---
+::
+
+::video-embed
+---
 type: bilibili
 id: BV1Yr421p7rW
 ---
@@ -874,9 +896,15 @@ id: BV1Yr421p7rW
 
 ::video-embed
 ---
-type: raw
-id: https://sf16-sg.tiktokcdn.com/obj/eden-sg/ha_lm_lswvlw/ljhwZthlaukjlkulzlp/portal/reunion/61872647867123yhdajskf.mp4
-poster: https://lf-package-cn.feishucdn.com/obj/atsx-throne/hire-fe-prod/portal/i18n/static/image/video-poster.d9fdf4be.jpeg
+type: douyin-wide
+id: '7339041157571169546'
+---
+::
+
+::video-embed
+---
+type: douyin
+id: '7222222794333998392'
 ---
 ::
 ```
