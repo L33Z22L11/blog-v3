@@ -840,6 +840,18 @@ export default [
 				date: '2025-08-25',
 				comment: '云原生、HomeLab 搭建、网络安全、容器化、静态网站托管等领域的技术实践。',
 			},
+			{
+				author: 'Restent Ou',
+				title: 'Restent\'s Notebook',
+				desc: 'Secret with Silent.',
+				link: 'https://blog.gxres.net/',
+				feed: 'https://blog.gxres.net/atom.xml',
+				icon: 'https://library.gxres.net/images/icons/favicon.webp',
+				avatar: 'https://library.gxres.net/images/avatars/gxres042.webp',
+				archs: ['Nuxt', 'Cloudflare'],
+				date: '2025-08-28',
+				comment: '前端/网络技术实践与个人记录',
+			},
 		],
 	},
 	/* ========从此处新增友链======== */

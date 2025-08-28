@@ -64,16 +64,16 @@ const zoomFactorForFixed = {
 }
 
 onMounted(() => {
-	needBlock.value && useIntersectionObserver(videoPlayer, ([entry]) => {
-		needBlock.value = !entry?.isIntersecting
+	needBlock.value && useIntersectionObserver(videoPlayer, () => {
+		needBlock.value = false
 	})
 
-	const needZoom = props.type === 'douyin' || props.type === 'douyin-wide'
+	const needZoom = props.type in zoomFactorForFixed
 	needZoom && useResizeObserver(videoPlayer, ([entry]) => {
 		if (!entry)
 			return
 		const { width } = entry.contentRect
-		const zoomFactor = Reflect.get(zoomFactorForFixed, props.type)
+		const zoomFactor = zoomFactorForFixed[props.type as keyof typeof zoomFactorForFixed]
 		zoom.value = width * zoomFactor
 	})
 })

@@ -47,7 +47,7 @@ const yearlyWordCount = computed(() => {
 		:key="year"
 		class="archive-group"
 	>
-		<div class="archive-title text-creative">
+		<div class="archive-title">
 			<h2 class="archive-year">
 				{{ year }}
 			</h2>
@@ -113,9 +113,7 @@ const yearlyWordCount = computed(() => {
 	> .archive-year, .archive-age {
 		margin-bottom: -0.3em;
 		mask-image: linear-gradient(#FFF 50%, transparent);
-		font-size: 3em;
-		font-weight: 800;
-		line-height: 1;
+		font: 800 3em / 1 var(--font-stroke-free);
 		z-index: -1;
 		-webkit-text-stroke: 1px var(--c-text-3);
 	}

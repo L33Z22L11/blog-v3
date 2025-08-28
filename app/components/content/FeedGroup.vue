@@ -22,7 +22,7 @@ function getCardDelay(feed: FeedEntry) {
 </h2>
 
 <section v-for="group in feeds" :key="group.name" class="feed-group">
-	<h3 class="feed-title text-creative">
+	<h3 class="feed-title">
 		{{ group.name }}
 	</h3>
 	<p class="feed-desc">
@@ -57,9 +57,7 @@ function getCardDelay(feed: FeedEntry) {
 	top: 0;
 	margin-bottom: -0.3em;
 	mask-image: linear-gradient(#FFF 50%, transparent);
-	font-size: 5em;
-	font-weight: 800;
-	line-height: 1;
+	font: 800 5em / 1 var(--font-stroke-free);
 	text-align: center;
 	color: transparent;
 	transition: color 0.2s;
