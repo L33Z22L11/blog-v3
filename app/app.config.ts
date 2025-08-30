@@ -15,7 +15,7 @@ export default defineAppConfig({
 			杂谈: { icon: 'ph:chat-bold', color: '#3ba' },
 			生活: { icon: 'ph:shooting-star-bold', color: '#f77' },
 			代码: { icon: 'ph:code-bold', color: '#77f' },
-			未分类: { icon: 'ph:folder-dotted-bold' },
+			[blogConfig.content.defaultCategory]: { icon: 'ph:folder-dotted-bold' },
 		},
 		defaultCategoryIcon: 'ph:folder-bold',
 		/** 分类排序方式，键为排序字段，值为显示名称 */

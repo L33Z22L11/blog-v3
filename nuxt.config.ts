@@ -1,7 +1,9 @@
+import type { NitroConfig } from 'nitropack'
 import process from 'node:process'
 import ci from 'ci-info'
-import blogConfig, { routeRules } from './blog.config'
+import blogConfig from './blog.config'
 import packageJson from './package.json'
+import redirectList from './redirects.json'
 
 // 此处配置无需修改
 export default defineNuxtConfig({
@@ -55,7 +57,18 @@ export default defineNuxtConfig({
 		inlineStyles: false,
 	},
 
-	routeRules,
+	// @keep-sorted
+	routeRules: {
+		...Object.entries(redirectList)
+			.reduce<NitroConfig['routeRules']>((acc, [from, to]) => {
+				acc![from] = { redirect: { to, statusCode: 308 } }
+				return acc
+			}, {}),
+		'/api/stats': { prerender: true, headers: { 'Content-Type': 'application/json' } },
+		'/atom.xml': { prerender: true, headers: { 'Content-Type': 'application/xml' } },
+		'/favicon.ico': { redirect: { to: blogConfig.favicon } },
+		'/zhilu.opml': { prerender: true, headers: { 'Content-Type': 'application/xml' } },
+	},
 
 	runtimeConfig: {
 		public: {
@@ -125,13 +138,15 @@ ${packageJson.homepage}
 `)
 		},
 		'content:file:afterParse': (ctx) => {
-			// 在 URL 中隐藏指定目录前缀的路径
-			for (const prefix of blogConfig.hideContentPrefixes) {
+			const permalink = ctx.content.permalink as string
+			if (permalink) {
+				ctx.content.path = permalink
+				return
+			}
+			// 在 URL 中隐藏文件路由自动生成的 /posts 路径前缀
+			if (blogConfig.content.hidePostPrefix) {
 				const realPath = ctx.content.path as string
-				if (realPath.startsWith(prefix)) {
-					ctx.content.original_dir = prefix
-					ctx.content.path = realPath.replace(prefix, '')
-				}
+				ctx.content.path = realPath.replace(/^\/posts/, '')
 			}
 		},
 	},
@@ -145,13 +160,21 @@ ${packageJson.homepage}
 	image: {
 		// Netlify 需要特殊处理
 		provider: process.env.NUXT_IMAGE_PROVIDER,
-		domains: blogConfig.imageDomains,
 		format: ['avif', 'webp'],
+	},
+
+	linkChecker: {
+		// @keep-sorted
+		skipInspections: [
+			'no-baseless',
+			'no-non-ascii-chars',
+			'no-uppercase-chars',
+		],
 	},
 
 	robots: {
 		disableNuxtContentIntegration: true,
-		disallow: blogConfig.robotsNotIndex,
+		disallow: blogConfig.content.robotsNotIndex,
 	},
 
 	site: {

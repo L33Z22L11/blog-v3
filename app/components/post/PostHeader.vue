@@ -18,7 +18,7 @@ const { copy, copied } = useCopy(shareText)
 
 <template>
 <!-- 💩夸克浏览器，桌面端只有IE不支持 :has() 了 -->
-<div class="post-header" :class="{ 'has-cover': image, 'text-revert': cover_revert }">
+<div class="post-header" :class="{ 'has-cover': image, 'text-revert': meta?.coverRevert }">
 	<NuxtImg v-if="image" class="post-cover" :src="image" :alt="title" />
 	<div class="post-nav">
 		<div class="operations">
@@ -30,7 +30,7 @@ const { copy, copied } = useCopy(shareText)
 			</ZButton>
 		</div>
 
-		<div v-if="!hideInfo" class="post-info">
+		<div v-if="!meta?.hideInfo" class="post-info">
 			<time
 				v-if="date"
 				v-tip="`创建于 ${getLocaleDatetime(props.date)}`"

@@ -4,7 +4,7 @@ description: 2021年5月，高中校园发生假文件夹病毒事件，通过U�
 date: 2021-05-08 23:08:30
 updated: 2021-10-01 21:30:00
 image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26SuYFj0v7jz4Wpao1JAzlibcKia6mPLktFvKabXAcWOsZbxIB01DdGnCQ/640
-cover_revert: true
+coverRevert: true
 categories: [经验分享]
 tags: [高中, Windows, 系统, 病毒]
 ---

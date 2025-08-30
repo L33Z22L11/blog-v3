@@ -72,7 +72,8 @@ export const useShikiStore = defineStore('shiki', () => {
 	}
 
 	async function loadLang(...langs: string[]) {
-		const { bundledLanguages } = await import('shiki/langs')
+		// @ts-expect-error CDN 动态引入的包无类型
+		const { bundledLanguages } = await import('https://esm.sh/shiki/langs') as typeof import('shiki/langs')
 		const loadedLangs = shiki.getLoadedLanguages()
 
 		await Promise.all(langs

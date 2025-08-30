@@ -1,6 +1,6 @@
 ---
 title: 主题
-hide-info: true
+hideInfo: true
 
 aside: [toc, github-card]
 github:

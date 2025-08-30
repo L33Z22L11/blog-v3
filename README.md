@@ -21,7 +21,7 @@
 
 | 博客名称                                    | 作者          | 对应上游版本 | 下游特色功能                   |
 | ------------------------------------------- | ------------- | ------------ | ------------------------------ |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**  | **L33Z22L11** | **v3.4.1**   | (我是上游)                     |
+| **[纸鹿摸鱼处](https://blog.zhilu.site/)**  | **L33Z22L11** | **v3.4.2**   | (我是上游)                     |
 | [希乐博客](https://blog.xlenco.top/)        | Xlenco        | v3.4.0       | 最新评论                       |
 | [SteinsNote](https://blog.labmem.chat/)     | Labmem-00     | v3.1-241112  | 专栏                           |
 | [月空人](https://whbbit.cn/)                | Whbbit1999    | v3.3-250521  | 项目/博客/Snippets页           |
@@ -34,7 +34,7 @@
 | [液泡部落格](https://blog.vacu.top/)        | VacuolePaoo   | v3.4.0       | 一言                           |
 | [莫言小栈](https://www.myxz.top/)           | 661111        | v3.4.0       | 即刻+友圈+Heo友链轮播/Profile  |
 | [落憾](https://blog.enltlh.me/)             | LuoH-AN       | v3.4.0       | 即刻+标签tags                  |
-| [落尘up](https://www.luochen.chat/)         | luochenup     | v3.3.4       | 侧栏时间轴                     |
+| [落尘up](https://www.luochen.chat/)         | luochenup     | v3.3.4       | 随机友链                       |
 
 ## 特性
 
@@ -68,8 +68,7 @@
 │   ├── app.config.ts # 前端响应式配置★
 │   ├── app.vue # 基本布局
 │   ├── error.vue # 意外错误页
-│   ├── friends.ts # 友链★
-│   └── subscriptions.ts # 单向订阅/推荐网站★
+│   └── feeds.ts # 友链★
 ├── content # 文章
 │   ├── posts # 文章
 │   ├── previews # 预览文章，可被站内搜索
@@ -122,8 +121,10 @@ pnpm dev
 
 ### 创建文章
 
+启用 `blog.config.ts` 中的 `contentPath.randomPathAtNew`，即可在创建文章时随机生成 URL。
+
 ```sh
-pnpm new my-post-title
+pnpm new 你好，世界！
 ```
 
 ### 构建生产环境
@@ -135,7 +136,7 @@ pnpm preview
 
 ### 部署指南
 
-推荐使用 Vercel 进行部署，同时也支持 Netlify、Cloudflare Pages 等平台。建议采用静态（SSG）部署方式，我的部署配置如下：
+推荐使用 Vercel 进行部署，同时也支持 Netlify、Cloudflare Pages、EdgeOne 等平台。建议采用静态（SSG）部署方式，我的部署配置如下：
 
 - 构建命令: `pnpm generate`/`nuxt generate`
 - 输出目录: `dist`（与Nuxt预设相同）
@@ -146,6 +147,7 @@ pnpm preview
 #### 疑难解答
 
 - Vercel 先前创建的项目需要 [手动指定 pnpm 10](https://vercel.com/docs/builds/configure-a-build#corepack)。
+- 如果修改了 API 路径，使用 EdgeOne 部署需要同步修改 `edgeone.json`。
 - 部署项目时 Node.js 版本最好高于 `22.15.0`。
 
 ## 贡献

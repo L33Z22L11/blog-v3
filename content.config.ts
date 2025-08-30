@@ -1,33 +1,36 @@
 import { defineCollection, z } from '@nuxt/content'
 import blogConfig from './blog.config'
 
+const articleSchema = z.object({
+	title: z.string(),
+	description: z.string().optional(),
+	date: z.string().optional(),
+	updated: z.string().optional(),
+	categories: z.array(z.string()).default([blogConfig.content.defaultCategory]),
+	tags: z.array(z.string()).default([]),
+	type: z.enum(['tech', 'story']).optional(),
+
+	image: z.string().optional(),
+	recommend: z.number().optional(),
+	references: z.array(z.object({
+		title: z.string().optional(),
+		link: z.string().optional(),
+	})).optional(),
+	draft: z.boolean().default(false),
+	url: z.string().optional(),
+
+	readingTime: z.object({
+		text: z.string(),
+		minutes: z.number(),
+		time: z.number(),
+		words: z.number(),
+	}),
+})
+
 export const collections = {
 	content: defineCollection({
 		source: '**',
 		type: 'page',
-		schema: z.object({
-			title: z.string(),
-			description: z.string().optional(),
-			date: z.string().optional(),
-			updated: z.string().optional(),
-			categories: z.array(z.string()).default(blogConfig.defaultCategory),
-			tags: z.array(z.string()),
-			type: z.enum(['tech', 'story']).optional(),
-
-			image: z.string().optional(),
-			recommend: z.number().optional(),
-			references: z.array(z.object({
-				title: z.string().optional(),
-				link: z.string().optional(),
-			})).optional(),
-			draft: z.boolean().default(false),
-
-			readingTime: z.object({
-				text: z.string(),
-				minutes: z.number(),
-				time: z.number(),
-				words: z.number(),
-			}).optional(),
-		}),
+		schema: articleSchema,
 	}),
 }

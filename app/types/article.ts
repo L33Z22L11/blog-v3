@@ -1,5 +1,6 @@
 import type { ReadTimeResults } from 'reading-time'
 
+// TODO 使用content类型，干掉这个文件
 const _appConfig = useAppConfig()
 
 export type ArticleOrderType = keyof typeof _appConfig.article.order
@@ -18,8 +19,11 @@ export default interface ArticleProps extends Partial<{
 	tags: string[]
 	type: 'tech' | 'story'
 	image: string
-	cover_revert: boolean
-	hideInfo: boolean
 	recommend: number
 	references: { title?: string, link?: string }[]
+
+	meta: {
+		coverRevert: boolean
+		hideInfo?: boolean
+	}
 }> { }

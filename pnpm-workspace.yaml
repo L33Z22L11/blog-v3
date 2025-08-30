@@ -2,23 +2,22 @@ catalogs:
   content:
     '@nuxt/content': ^3.6.3
     '@nuxtjs/seo': ^3.1.0
-    '@shikijs/colorized-brackets': ^3.11.0
-    '@shikijs/transformers': ^3.11.0
+    '@shikijs/colorized-brackets': ^3.12.0
+    '@shikijs/transformers': ^3.12.0
     better-sqlite3: ^12.2.0
     plain-shiki: ^0.3.0
     rehype-katex: ^7.0.1
     remark-math: ^6.0.0
     remark-reading-time: ^2.0.2
-    shiki: ^3.11.0
+    shiki: ^3.12.0
   framework:
     ci-info: ^4.3.0
     cross-env: ^10.0.0
     nuxt: ^4.0.3
-    sass-embedded: ^1.90.0
-    terser: ^5.43.1
+    sass-embedded: ^1.91.0
     typescript: ^5.9.2
-    unplugin-yaml: ^3.0.4
-    vue: ^3.5.19
+    unplugin-yaml: ^3.0.5
+    vue: ^3.5.20
     vue-router: ^4.5.1
   quality:
     '@antfu/eslint-config': ^5.2.1
@@ -38,15 +37,17 @@ catalogs:
     vue-virtual-scroller: 2.0.0-beta.8
   util:
     '@pinia/nuxt': ^0.11.2
-    '@vueuse/core': ^13.7.0
-    '@vueuse/nuxt': ^13.7.0
-    '@vueuse/router': ^13.7.0
+    '@vueuse/core': ^13.8.0
+    '@vueuse/nuxt': ^13.8.0
+    '@vueuse/router': ^13.8.0
     date-fns: ^4.1.0
     date-fns-tz: ^3.2.0
     fast-xml-parser: ^5.2.5
     minisearch: ^7.1.2
+    nanoid: ^5.1.5
     parse-domain: ^8.2.2
     radash: ^12.1.1
+    terser: ^5.43.1
 
 onlyBuiltDependencies:
   - '@parcel/watcher'

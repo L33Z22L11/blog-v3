@@ -1,7 +1,7 @@
 {
   "name": "zhilu-blog",
   "type": "module",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "private": true,
   "packageManager": "pnpm@10.15.0",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
@@ -14,7 +14,7 @@
     "preview": "nuxt preview",
     "lint": "stylelint '**/*.{vue,scss}'",
     "lint:fix": "eslint --fix && stylelint '**/*.{vue,scss}' --fix",
-    "new": "node scripts/new-blog.js"
+    "new": "node scripts/new-blog.ts"
   },
   "dependencies": {
     "better-sqlite3": "catalog:content",
@@ -26,6 +26,7 @@
     "embla-carousel-wheel-gestures": "catalog:ui",
     "fast-xml-parser": "catalog:util",
     "minisearch": "catalog:util",
+    "nanoid": "catalog:util",
     "parse-domain": "catalog:util",
     "plain-shiki": "catalog:content",
     "radash": "catalog:util",
@@ -58,7 +59,7 @@
     "sass-embedded": "catalog:framework",
     "shiki": "catalog:content",
     "stylelint": "catalog:quality",
-    "terser": "catalog:framework",
+    "terser": "catalog:util",
     "typescript": "catalog:framework",
     "vue": "catalog:framework",
     "vue-router": "catalog:framework"

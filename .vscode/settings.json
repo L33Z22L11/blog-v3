@@ -1,4 +1,30 @@
 {
+  "[css]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  },
+  "[yaml]": {
+    "editor.formatOnSave": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always",
+    "source.fixAll.stylelint": "always"
+  },
+  "errorLens.fontSize": ".8em",
+  "errorLens.messageBackgroundMode": "message",
+  "errorLens.messageMaxChars": 50,
+  "errorLens.messageTemplate": "$severity $message",
+  "iconify.inplace": false,
+  "stylelint.validate": [
+    "css",
+    "postcss",
+    "scss",
+    "vue"
+  ],
+  "vue.autoInsert.dotValue": true,
   "vue.format.template.initialIndent": false,
+  "vue.inlayHints.destructuredProps": true,
+  "vue.inlayHints.inlineHandlerLeading": true,
+  "vue.inlayHints.missingProps": true,
+  "vue.inlayHints.vBindShorthand": true,
   "yaml.format.singleQuote": true
 }

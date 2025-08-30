@@ -16,7 +16,7 @@ const { category, categories, listCategorized } = useCategory(listSorted)
 <div class="preview">
 	<div class="preview-header">
 		<h1>
-			<ZRawLink class="mobile-only" to="/">
+			<ZRawLink class="mobile-only" to="/" title="返回首页">
 				<Icon name="ph:caret-left-bold" />
 			</ZRawLink>预览
 		</h1>
