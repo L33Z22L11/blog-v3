@@ -7,6 +7,7 @@ image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9
 type: story
 categories: [生活]
 tags: [大学, 校园, 拍照]
+url: c324
 ---
 
 [查看原文](https://mp.weixin.qq.com/s/Wg1VtwYT24YijxEUYePJqQ)

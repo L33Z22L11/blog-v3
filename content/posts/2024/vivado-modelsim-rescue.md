@@ -6,6 +6,7 @@ updated: 2024-12-03 21:37:53
 type: story
 categories: [杂谈]
 tags: [Windows, 硬件开发, Vivado, Modelsim, 踩坑]
+url: 1ae3
 ---
 
 ## 给你发个安装包

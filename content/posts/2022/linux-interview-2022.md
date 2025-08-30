@@ -1,11 +1,12 @@
 ---
 title: 西邮Linux兴趣小组2022纳新面试题题解
-description: ''
+description: 
 date: 2022-11-19 22:32:46
 updated: 2023-07-30 11:45:33
 image: https://7.isyangs.cn/24/65a8dcfb2a43b-24.jpg
 categories: [代码]
 tags: [实验室, Lab, C语言]
+url: 3925
 ---
 
 > - 本题目只作为 `Xiyou Linux 兴趣小组` 2022 纳新面试的有限参考。

@@ -7,6 +7,7 @@ image: https://7.isyangs.cn/24/65b6628ac8181-24.jpg
 type: story
 categories: [杂谈]
 tags: [设备, 说说, 远程]
+url: 95bf
 ---
 
 ## 买游戏本，当然要配个好支架

@@ -7,9 +7,10 @@ image: https://7.isyangs.cn/24/6691f614da807-24.jpg
 type: story
 categories: [杂谈]
 tags: [华为, 问题, 扣费]
-references:
-  - title: 云空间套餐如何申请退款 | 华为官网
-    link: https://consumer.huawei.com/cn/support/content/zh-cn00838483/
+references: 
+- title: 云空间套餐如何申请退款 | 华为官网
+link: https://consumer.huawei.com/cn/support/content/zh-cn00838483/
+url: 6d2d
 ---
 
 ## 诱导自动扣款已成常态

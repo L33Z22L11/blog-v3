@@ -7,6 +7,7 @@ image: https://7.isyangs.cn/24/6664009cce512-24.jpg
 categories: [经验分享]
 tags: [教程, tailscale, 软件, 远程]
 recommend: true
+url: 0b00
 ---
 
 ## 介绍

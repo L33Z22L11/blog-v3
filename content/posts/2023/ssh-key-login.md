@@ -7,6 +7,7 @@ image: https://7.isyangs.cn/24/6664009c87ec5-24.jpg
 categories: [经验分享]
 tags: [教程, ssh, 远程]
 recommend: true
+url: 9559
 ---
 
 在终端中使用 SSH 之前，可以先美化终端以提升用户体验。

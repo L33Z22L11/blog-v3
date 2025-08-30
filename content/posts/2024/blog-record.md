@@ -6,15 +6,10 @@ updated: 2025-03-22 23:22:08
 type: story
 categories: [杂谈]
 tags: [博客]
-references:
-  - title: 2750 words - 如何写好博客？（或如何写好文章？）
-    link: https://pathos.page/blog/how-to-write-blog
-  - title: 阮一峰 - 科技爱好者周刊（第 327 期）：没有链接的互联网
-    link: https://www.ruanyifeng.com/blog/2024/11/weekly-issue-327.html
-  - title: Ryoma - 个人博客存在的意义（文章已删除，快照版本）
-    link: https://web.archive.org/web/20241116095958/https://ryooma.com/blog/why-start-personal-blogging/
-  - title: atpX - 我的博客写作流程
-    link: https://atpx.com/blog/my-blog-writing-process/
+references: 
+- title: atpX - 我的博客写作流程
+link: https://atpx.com/blog/my-blog-writing-process/
+url: af7a
 ---
 
 > 一年前我写了不少技术教程，而前一段时间的文字则更加贴近生活。最近不知该写一些什么，于是写一篇杂谈，记录一下我的博客历程，也算是建站这么久以来的一个总结。前两个标题写于 2024-11-19，后两个标题写于 2025-03-22。

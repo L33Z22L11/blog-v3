@@ -7,6 +7,7 @@ image: https://7.isyangs.cn/24/65a8dcff71bdf-24.jpg
 categories: [经验分享]
 tags: [教程, vscode, 软件]
 recommend: true
+url: 4f5c
 ---
 
 ## 主题和图标

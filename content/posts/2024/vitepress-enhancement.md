@@ -6,6 +6,7 @@ updated: 2024-11-05 13:19:56
 image: https://7.isyangs.cn/24/67290b1bd1b29-24.webp
 categories: [经验分享]
 tags: [VitePress, 前端]
+url: 833c
 ---
 
 VitePress 是一个非常优秀的静态站点生成器，它使用 Vite 作为构建工具，并内置了 Vue 的支持。它上手简单，页面美观，许多开源项目的文档都使用 VitePress 生成。官方文档非常详细，这里补充一些周边和扩充用法。

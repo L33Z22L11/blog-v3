@@ -6,6 +6,7 @@ updated: 2022-12-04 22:18:50
 image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWSpuCJ6wj9ejjZz9Dp9l0NoRjRqXjZIibsKORpAk3WFEE4k5r02cdtXQ/640
 categories: [代码]
 tags: [大学, CTF]
+url: 71a8
 ---
 
 > 前面废话比较多，[点此跳过](#writeup)。

@@ -7,6 +7,7 @@ image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9
 type: story
 categories: [生活]
 tags: [高中, 说说, 班级, 校园]
+url: b5ce
 ---
 
 [查看原文](https://mp.weixin.qq.com/s/mDj_Ug08Tb3xtgR7kOyfUw)

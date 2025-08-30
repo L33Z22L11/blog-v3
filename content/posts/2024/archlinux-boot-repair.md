@@ -6,10 +6,10 @@ updated: 2025-03-04 22:30:59
 image: https://7.isyangs.cn/24/66640097e0cbb-24.jpg
 categories: [经验分享]
 tags: [教程, 系统, archlinux]
-
-references:
-  - title: systemd-boot - Arch Linux 中文维基
-    link: https://wiki.archlinuxcn.org/wiki/Systemd-boot
+references: 
+- title: systemd-boot - Arch Linux 中文维基
+link: https://wiki.archlinuxcn.org/wiki/Systemd-boot
+url: 6ea6
 ---
 
 ## 制作启动盘、进入并联网

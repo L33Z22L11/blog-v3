@@ -7,6 +7,7 @@ image: https://7.isyangs.cn/24/6664009d45024-24.jpg
 categories: [经验分享]
 tags: [教程, termux, 软件]
 recommend: true
+url: b5f7
 ---
 
 ## 安装 Termux

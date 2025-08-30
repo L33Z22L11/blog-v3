@@ -7,6 +7,7 @@ image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9
 type: story
 categories: [生活]
 tags: [高中, 说说, 校园]
+url: e16a
 ---
 
 > 2020年6月8日晚上，同桌翻出了日记本，于是也心血来潮，开始记起日记来。两个人加入了DSBLL计划。啊，你要问是什么吗？某缩写鬼才会告诉你这是“L和L之间的日记分享”。每天写完日记后还会互相评论一下，挺不错的。

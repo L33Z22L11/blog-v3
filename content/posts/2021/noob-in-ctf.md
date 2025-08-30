@@ -7,6 +7,7 @@ image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9
 type: story
 categories: [生活]
 tags: [高中, CTF, 电教]
+url: 8691
 ---
 
 [查看原文](https://mp.weixin.qq.com/s/mauK9IC5R_FTshOKH39NvQ)

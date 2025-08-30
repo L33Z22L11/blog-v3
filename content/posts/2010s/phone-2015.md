@@ -6,6 +6,7 @@ updated: 2015-05-21
 type: story
 categories: [生活]
 tags: [小学, 设备, 问题, 说说]
+url: d103
 ---
 
 > 小学四年级发表的空间说说，有纪念意义，遂摘之。

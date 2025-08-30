@@ -7,9 +7,10 @@ image: https://7.isyangs.cn/24/66714b1f0bc35-24.jpg
 type: story
 categories: [杂谈]
 tags: [qq, 问题, 软件]
-references:
-  - title: Linux QQ 官网
-    link: https://im.qq.com/linuxqq/index.shtml
+references: 
+- title: Linux QQ 官网
+link: https://im.qq.com/linuxqq/index.shtml
+url: 32e8
 ---
 
 ## 发现相似封面

@@ -6,9 +6,10 @@ updated: 2024-09-27 00:34:28
 image: https://7.isyangs.cn/24/680072e950ccf-24.webp
 categories: [经验分享]
 tags: [大学, Java, 问题, 兼容]
-references:
-  - title: Java / OpenJDK 国内镜像站指路 & 发行版简介
-    link: https://magma.ink/posts/java/
+references: 
+- title: Java / OpenJDK 国内镜像站指路 & 发行版简介
+link: https://magma.ink/posts/java/
+url: f75d
 ---
 
 ## PPT：勾起疑惑

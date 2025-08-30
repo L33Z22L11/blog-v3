@@ -6,9 +6,10 @@ updated: 2023-08-09 17:20:11
 image: https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
 categories: [经验分享]
 tags: [qq, 问题, 软件]
-references:
-  - title: AUR 中 linuxqq 的评论
-    link: https://aur.archlinux.org/packages/linuxqq
+references: 
+- title: AUR 中 linuxqq 的评论
+link: https://aur.archlinux.org/packages/linuxqq
+url: e884
 ---
 
 ## 临时解决办法

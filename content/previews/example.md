@@ -2,8 +2,7 @@
 title: 组件样式示例
 date: 2024-09-21 23:18:18
 updated: 2025-02-12 11:18:33
-
-# type: story
+url: b1c2
 ---
 
 ## 在 Markdown 中使用组件

@@ -7,6 +7,7 @@ image: https://7.isyangs.cn/24/66346bbe07c33-24.jpg
 type: story
 categories: [生活]
 tags: [大学, 问题]
+url: 3650
 ---
 
 ## 近况

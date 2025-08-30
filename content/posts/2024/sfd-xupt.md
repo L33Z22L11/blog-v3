@@ -6,6 +6,7 @@ updated: 2024-09-21 14:47:02
 image: https://7.isyangs.cn/24/67211d656e0ac-24.webp
 categories: [经验分享]
 tags: [开源, 软件自由日, 大学, 分享]
+url: fc3d
 ---
 
 ::alert{type="tip"}

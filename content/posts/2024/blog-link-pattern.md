@@ -5,11 +5,10 @@ date: 2024-04-29 11:10:18
 updated: 2024-09-27 08:37:52
 categories: [经验分享]
 tags: [网站, 博客]
-references:
-  - title: 使用子文件夹管理 Hexo 文章且不改变文章永久链接
-    link: https://prinsss.github.io/hexo-posts-in-subfolder/
-  - title: 更改Hugo博客的永久URL链接，并用Netlify实现旧博文跳转
-    link: https://thirdshire.com/simplify-permalinks/
+references: 
+- title: 更改Hugo博客的永久URL链接，并用Netlify实现旧博文跳转
+link: https://thirdshire.com/simplify-permalinks/
+url: 5135
 ---
 
 > 我的博客很少写关于折腾博客的内容，因为我不想让博客变成博客的博客。这次的行为仅服务于博客的后期维护。

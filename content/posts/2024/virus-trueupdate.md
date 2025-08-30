@@ -7,9 +7,10 @@ image: https://7.isyangs.cn/24/6664009db743b-24.jpg
 indent: true
 categories: [经验分享]
 tags: [病毒, Windows, 系统, 问题]
-references:
-  - title: TrueUpdate白加黑木马分析保姆级教程
-    link: https://www.cnblogs.com/VxerLee/p/17736138.html
+references: 
+- title: TrueUpdate白加黑木马分析保姆级教程
+link: https://www.cnblogs.com/VxerLee/p/17736138.html
+url: 3ff8
 ---
 
 ## 随机进程名大量占用CPU

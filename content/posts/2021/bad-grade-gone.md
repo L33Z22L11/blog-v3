@@ -7,6 +7,7 @@ image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9
 type: story
 categories: [生活]
 tags: [高中, 说说, 校园]
+url: 35e1
 ---
 
 考试过后，名次并不理想，遂将自己最差的几个年级名次写在自己桌子上。

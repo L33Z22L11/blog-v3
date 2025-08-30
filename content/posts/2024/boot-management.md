@@ -6,6 +6,7 @@ updated: 2024-03-01 15:17:30
 image: https://7.isyangs.cn/24/6664009916cea-24.jpg
 categories: [经验分享]
 tags: [教程, 系统, archlinux, Windows]
+url: fb7a
 ---
 
 ## 前置知识

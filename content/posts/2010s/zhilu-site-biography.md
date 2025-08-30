@@ -6,6 +6,7 @@ updated: 2019-12-27 22:17:00
 type: story
 categories: [杂谈]
 tags: [网站, 文言文]
+url: fca3
 ---
 
 关中有纸鹿君者，癸未年生者也。~~善摸鱼咕甚~~。

@@ -6,6 +6,7 @@ updated: 2024-12-19 08:54:18
 image: https://7.isyangs.cn/24/666400971559b-24.jpg
 categories: [经验分享]
 tags: [教程, archlinux, 系统]
+url: 04fe
 ---
 
 ## KDE 系统设置

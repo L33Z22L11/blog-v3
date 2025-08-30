@@ -7,6 +7,7 @@ image: https://7.isyangs.cn/24/65b66289c9a2e-24.jpg
 categories: [经验分享]
 tags: [教程, 系统, Windows]
 recommend: true
+url: caa9
 ---
 
 ::alert{title="提示"}

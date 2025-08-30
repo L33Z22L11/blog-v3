@@ -7,6 +7,7 @@ image: https://7.isyangs.cn/24/67211d63f41fd-24.webp
 type: story
 categories: [杂谈]
 tags: [产品, 校园, 设计]
+url: be4e
 ---
 
 ## 《高新大道 29 号回忆录》

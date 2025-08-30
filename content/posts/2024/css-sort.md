@@ -6,8 +6,9 @@ updated: 2024-05-25 15:56:33
 image: https://7.isyangs.cn/24/6664009e81625-24.jpg
 categories: [经验分享]
 tags: [软件, 问题]
-references:
-  - title: 这些内容不值得参考。
+references: 
+- title: 这些内容不值得参考。
+url: fdec
 ---
 
 ## tl;dr

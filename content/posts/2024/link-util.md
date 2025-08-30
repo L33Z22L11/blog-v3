@@ -6,6 +6,7 @@ updated: 2024-11-28 11:08:41
 image: https://7.isyangs.cn/24/6664009b04dea-24.jpg
 categories: [经验分享]
 tags: [教程, Windows, 安卓, 互联, 互传, 网络, 系统, 远程]
+url: 4820
 ---
 
 以下内容假定你的设备在同一局域网下，如果不在，你可以参考 [Tailscale 不完全使用指南](/2023/tailscale-incomplete-guide)。

@@ -7,6 +7,7 @@ image: https://7.isyangs.cn/24/66640095c770c-24.jpg
 categories: [经验分享]
 tags: [教程, archlinux, 系统]
 recommend: 20
+url: 9af0
 ---
 
 ## 安装前准备

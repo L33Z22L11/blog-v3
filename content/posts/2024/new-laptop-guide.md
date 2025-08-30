@@ -6,8 +6,9 @@ updated: 2024-11-02 16:41:56
 image: https://7.isyangs.cn/24/67211d63f4203-24.webp
 categories: [杂谈]
 tags: [电脑, Windows, 新手]
-references:
-  - title: 文档太多，时间跨度也大，罄竹难书。
+references: 
+- title: 文档太多，时间跨度也大，罄竹难书。
+url: a778
 ---
 
 ::alert{type="warning" title="声明"}
