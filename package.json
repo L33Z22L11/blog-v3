@@ -1,7 +1,7 @@
 {
   "name": "zhilu-blog",
   "type": "module",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "private": true,
   "packageManager": "pnpm@10.15.0",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
