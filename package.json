@@ -14,7 +14,8 @@
     "preview": "nuxt preview",
     "lint": "stylelint '**/*.{vue,scss}'",
     "lint:fix": "eslint --fix && stylelint '**/*.{vue,scss}' --fix",
-    "new": "node scripts/new-blog.js"
+    "new": "node scripts/new-blog.js",
+    "url": "node scripts/generate-redirects.js&& node scripts/rename-by-title.js"
   },
   "dependencies": {
     "better-sqlite3": "catalog:content",

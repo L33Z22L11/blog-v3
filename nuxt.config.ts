@@ -124,15 +124,9 @@ ${packageJson.homepage}
 ================================
 `)
 		},
-		'content:file:afterParse': (ctx) => {
-			// 在 URL 中隐藏指定目录前缀的路径
-			for (const prefix of blogConfig.hideContentPrefixes) {
-				const realPath = ctx.content.path as string
-				if (realPath.startsWith(prefix)) {
-					ctx.content.original_dir = prefix
-					ctx.content.path = realPath.replace(prefix, '')
-				}
-			}
+		'content:file:afterParse': async (ctx) => {
+			const { processContentUrl } = await import('./app/utils/url')
+			processContentUrl(ctx, blogConfig.hideContentPrefixes)
 		},
 	},
 
