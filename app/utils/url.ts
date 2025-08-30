@@ -1,4 +1,5 @@
 import { readFileSync, writeFileSync } from 'node:fs'
+import { parse as parseYaml, stringify as stringifyYaml } from 'yaml'
 
 /**
  * URL 相关工具函数
@@ -45,7 +46,7 @@ export function generateHashFromDate(dateStr: string): string {
 
 /**
  * 解析YAML front matter
- * 使用更成熟的解析方式，正确处理注释和复杂数据类型
+ * 使用unplugin-yaml库进行YAML解析，确保兼容性和准确性
  * @param content 文件内容
  * @returns 解析结果
  */
@@ -59,167 +60,58 @@ export function parseFrontMatter(content: string) {
 
     const yamlContent = match[1]!
     const markdownContent = match[2]!
-    const data: Record<string, any> = {}
 
-    // 使用更成熟的逐行解析方式，能够正确处理各种 YAML 格式
-    const lines = yamlContent.split('\n')
-    let currentKey: string | null = null
-    let currentValue: any = null
-    let isMultilineValue = false
-
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i]!
-        const trimmed = line.trim()
-
-        // 跳过空行
-        if (!trimmed) {
-            continue
+    try {
+        const data = parseYaml(yamlContent) || {}
+        return {
+            data,
+            content: markdownContent,
+            hasFrontMatter: true
         }
-
-        // 处理注释行：识别注释形式的字段
-        if (trimmed.startsWith('#')) {
-            const commentMatch = trimmed.match(/^#\s*([^:]+):\s*(.*)$/)
-            if (commentMatch) {
-                const key = commentMatch[1]!.trim()
-                const value = commentMatch[2]!.trim()
-                // 保存注释字段，用特殊前缀标记
-                data[`_comment_${key}`] = value
-            }
-            continue
-        }
-
-        // 处理常规键值对
-        const colonIndex = trimmed.indexOf(':')
-        if (colonIndex === -1) {
-            // 可能是多行值的继续行
-            if (isMultilineValue && currentKey) {
-                if (Array.isArray(currentValue)) {
-                    // 数组的多行元素
-                    if (trimmed.startsWith('-')) {
-                        currentValue.push(trimmed.substring(1).trim())
-                    }
-                } else {
-                    // 字符串的多行值
-                    currentValue += ' ' + trimmed
-                }
-            }
-            continue
-        }
-
-        // 完成上一个键值对的处理
-        if (currentKey && currentValue !== null) {
-            data[currentKey] = currentValue
-        }
-
-        // 解析新的键值对
-        const key = trimmed.substring(0, colonIndex).trim()
-        let valueStr = trimmed.substring(colonIndex + 1).trim()
-
-        currentKey = key
-        isMultilineValue = false
-
-        // 解析值的类型
-        if (!valueStr) {
-            // 空值，可能是多行值的开始
-            currentValue = ''
-            isMultilineValue = true
-        } else if (valueStr.startsWith('[') && valueStr.endsWith(']')) {
-            // 数组格式：[item1, item2, item3]
-            const arrayContent = valueStr.slice(1, -1).trim()
-            if (arrayContent) {
-                currentValue = arrayContent.split(',').map(item => {
-                    const trimmedItem = item.trim()
-                    // 移除引号
-                    if ((trimmedItem.startsWith('"') && trimmedItem.endsWith('"')) ||
-                        (trimmedItem.startsWith("'") && trimmedItem.endsWith("'"))) {
-                        return trimmedItem.slice(1, -1)
-                    }
-                    return trimmedItem
-                })
-            } else {
-                currentValue = []
-            }
-        } else if (valueStr.startsWith('[')) {
-            // 多行数组的开始
-            currentValue = []
-            isMultilineValue = true
-            // 处理同行的第一个元素
-            const firstItem = valueStr.substring(1).trim()
-            if (firstItem && !firstItem.startsWith(']')) {
-                if (firstItem.endsWith(',')) {
-                    currentValue.push(firstItem.slice(0, -1).trim())
-                } else if (firstItem.endsWith(']')) {
-                    currentValue.push(firstItem.slice(0, -1).trim())
-                    isMultilineValue = false
-                } else {
-                    currentValue.push(firstItem)
-                }
-            }
-        } else if (valueStr.startsWith('"') && valueStr.endsWith('"')) {
-            // 双引号字符串
-            currentValue = valueStr.slice(1, -1)
-        } else if (valueStr.startsWith("'") && valueStr.endsWith("'")) {
-            // 单引号字符串
-            currentValue = valueStr.slice(1, -1)
-        } else if (valueStr === 'true') {
-            currentValue = true
-        } else if (valueStr === 'false') {
-            currentValue = false
-        } else if (valueStr === 'null' || valueStr === '~') {
-            currentValue = null
-        } else if (/^-?\d+$/.test(valueStr)) {
-            // 整数
-            currentValue = parseInt(valueStr, 10)
-        } else if (/^-?\d*\.\d+$/.test(valueStr)) {
-            // 浮点数
-            currentValue = parseFloat(valueStr)
-        } else if (valueStr.includes('\n') || (i + 1 < lines.length && !lines[i + 1]!.includes(':'))) {
-            // 多行字符串
-            currentValue = valueStr
-            isMultilineValue = true
-        } else {
-            // 普通字符串
-            currentValue = valueStr
+    } catch (error) {
+        console.warn(`YAML 解析错误: ${(error as Error).message}`)
+        return {
+            data: {},
+            content: markdownContent,
+            hasFrontMatter: true,
+            parseError: (error as Error).message
         }
     }
-
-    // 处理最后一个键值对
-    if (currentKey && currentValue !== null) {
-        data[currentKey] = currentValue
-    }
-
-    return { data, content: markdownContent, hasFrontMatter: true }
 }
 
 /**
  * 序列化YAML front matter
- * 正确处理注释字段，保持原有格式
+ * 使用unplugin-yaml库进行YAML序列化，保持简洁的数组格式
  * @param data front matter数据对象
  * @param content markdown内容
  * @returns 完整的文件内容
  */
 export function stringifyFrontMatter(data: Record<string, any>, content: string): string {
-    let yamlContent = ''
-
-    for (const [key, value] of Object.entries(data)) {
-        // 处理注释字段
-        if (key.startsWith('_comment_')) {
-            const realKey = key.replace('_comment_', '')
-            yamlContent += `# ${realKey}: ${value}\n`
-            continue
-        }
-
-        // 处理普通字段
-        if (Array.isArray(value)) {
-            yamlContent += `${key}: [${value.join(', ')}]\n`
-        } else if (typeof value === 'string') {
-            yamlContent += `${key}: ${value}\n`
-        } else {
-            yamlContent += `${key}: ${value}\n`
-        }
+    if (!data || Object.keys(data).length === 0) {
+        return content
     }
 
-    return `---\n${yamlContent}---\n\n${content}`
+    try {
+        // 使用默认配置进行序列化
+        let yamlContent = stringifyYaml(data)
+
+        // 后处理：将简单的多行数组转回内联格式
+        yamlContent = yamlContent.replace(
+            /^(\w+):\n  - (.+)$/gm,
+            (match, key, value) => {
+                // 只对简单字符串值的单项数组进行转换
+                if (!value.includes(':') && !value.includes('\n') && value.trim()) {
+                    return `${key}: [${value}]`
+                }
+                return match
+            }
+        )
+
+        return `---\n${yamlContent}---\n\n${content}`
+    } catch (error) {
+        console.warn(`YAML 序列化错误: ${(error as Error).message}`)
+        return content
+    }
 }
 
 /**
@@ -233,7 +125,7 @@ export function writeUrlToFile(filePath: string, url: string, shouldUpdate: bool
         const content = readFileSync(filePath, 'utf8')
         const parsed = parseFrontMatter(content)
 
-        // 如果已经有URL字段且不需要更新，不覆盖
+        // 如果已经有URL字段且不需要更新，静默跳过
         if (parsed.data.url && !shouldUpdate) {
             return
         }
@@ -278,7 +170,7 @@ export function processContentUrl(ctx: any, hideContentPrefixes: string[]): void
         ctx.content.path = `${pathPrefix}/${hashUrl}`
         console.log(`[Auto Hash URL] Generated: ${ctx.file.path} -> ${hashUrl} (${isPreview ? 'preview' : 'post'})`)
 
-        // 将URL写入文件
+        // 将URL写入文件（只在新生成时写入）
         setTimeout(() => {
             writeUrlToFile(ctx.file.path, hashUrl)
         }, 100)
