@@ -1,7 +1,124 @@
 import process from 'node:process'
+import { readFileSync, writeFileSync } from 'node:fs'
 import ci from 'ci-info'
 import blogConfig, { routeRules } from './blog.config'
 import packageJson from './package.json'
+
+// CRC16算法实现
+function calculateCRC16(data: string): number {
+	const bytes = Buffer.from(data, 'utf8')
+	let crc = 0xFFFF
+
+	for (let i = 0; i < bytes.length; i++) {
+		crc ^= bytes[i]
+		for (let j = 0; j < 8; j++) {
+			if (crc & 1) {
+				crc = (crc >> 1) ^ 0xA001
+			} else {
+				crc = crc >> 1
+			}
+		}
+	}
+
+	return crc & 0xFFFF
+}
+
+// 根据日期生成6位CRC16哈希值短链
+function generateHashFromDate(dateStr: string): string {
+	if (!dateStr) {
+		dateStr = new Date().toISOString()
+	}
+	const normalizedDate = new Date(dateStr).toISOString()
+	const crc16 = calculateCRC16(normalizedDate)
+	const hexHash = crc16.toString(16).padStart(4, '0')
+	return hexHash
+}
+
+// 解析YAML front matter
+function parseFrontMatter(content: string) {
+	const frontMatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/
+	const match = content.match(frontMatterRegex)
+
+	if (!match) {
+		return { data: {}, content, hasFrontMatter: false }
+	}
+
+	const yamlContent = match[1]
+	const markdownContent = match[2]
+	const data: Record<string, any> = {}
+	const lines = yamlContent.split('\n')
+
+	for (const line of lines) {
+		const trimmed = line.trim()
+		if (!trimmed || trimmed.startsWith('#')) continue
+
+		const colonIndex = trimmed.indexOf(':')
+		if (colonIndex === -1) continue
+
+		const key = trimmed.substring(0, colonIndex).trim()
+		let value = trimmed.substring(colonIndex + 1).trim()
+
+		if (value.startsWith('[') && value.endsWith(']')) {
+			value = value.slice(1, -1).split(',').map((item: string) => item.trim())
+		} else if (value.startsWith('"') && value.endsWith('"')) {
+			value = value.slice(1, -1)
+		} else if (value.startsWith("'") && value.endsWith("'")) {
+			value = value.slice(1, -1)
+		} else if (value === 'true' || value === 'false') {
+			value = value === 'true'
+		} else if (!isNaN(Number(value)) && value !== '') {
+			value = Number(value)
+		}
+
+		data[key] = value
+	}
+
+	return { data, content: markdownContent, hasFrontMatter: true }
+}
+
+// 序列化YAML front matter
+function stringifyFrontMatter(data: Record<string, any>, content: string): string {
+	let yamlContent = ''
+
+	for (const [key, value] of Object.entries(data)) {
+		if (Array.isArray(value)) {
+			yamlContent += `${key}: [${value.join(', ')}]\n`
+		} else if (typeof value === 'string') {
+			yamlContent += `${key}: ${value}\n`
+		} else {
+			yamlContent += `${key}: ${value}\n`
+		}
+	}
+
+	return `---\n${yamlContent}---\n\n${content}`
+}
+
+// 写入URL到文件
+function writeUrlToFile(filePath: string, url: string, shouldUpdate: boolean = false): void {
+	try {
+		const content = readFileSync(filePath, 'utf8')
+		const parsed = parseFrontMatter(content)
+
+		// 如果已经有URL字段且不需要更新，不覆盖
+		if (parsed.data.url && !shouldUpdate) {
+			return
+		}
+
+		// 添加或更新URL字段
+		parsed.data.url = url
+
+		// 重新组装文件内容
+		const newContent = parsed.hasFrontMatter
+			? stringifyFrontMatter(parsed.data, parsed.content)
+			: stringifyFrontMatter({ url }, content)
+
+		// 写回文件
+		writeFileSync(filePath, newContent, 'utf8')
+		console.log(`[Auto Hash URL] 已写入文件: ${filePath} -> ${url}`)
+	} catch (error) {
+		console.error(`[Auto Hash URL] 写入文件失败 ${filePath}:`, error)
+	}
+}
 
 // 此处配置无需修改
 export default defineNuxtConfig({
@@ -125,6 +242,40 @@ ${packageJson.homepage}
 `)
 		},
 		'content:file:afterParse': (ctx) => {
+			// 如果有date字段，生成哈希短链
+			if (ctx.content.date) {
+				// 根据文件路径确定是 posts 还是 previews
+				const isPreview = ctx.file.path.includes('/previews/') || ctx.file.path.includes('\\previews\\')
+				const pathPrefix = isPreview ? '/previews' : '/posts'
+
+				// 如果已有URL字段，优先使用用户自定义的URL，不再重新生成
+				if (ctx.content.url) {
+					ctx.content.path = `${pathPrefix}/${ctx.content.url}`
+					return
+				}
+
+				// 没有URL字段，生成新的哈希短链
+				const hashUrl = generateHashFromDate(ctx.content.date)
+				ctx.content.url = hashUrl
+				ctx.content.path = `${pathPrefix}/${hashUrl}`
+				console.log(`[Auto Hash URL] Generated: ${ctx.file.path} -> ${hashUrl} (${isPreview ? 'preview' : 'post'})`)
+
+				// 将URL写入文件
+				setTimeout(() => {
+					writeUrlToFile(ctx.file.path, hashUrl)
+				}, 100)
+				return
+			}
+
+			// 如果有URL字段但没有date字段，使用现有URL
+			if (ctx.content.url) {
+				// 根据文件路径确定是 posts 还是 previews
+				const isPreview = ctx.file.path.includes('/previews/') || ctx.file.path.includes('\\previews\\')
+				const pathPrefix = isPreview ? '/previews' : '/posts'
+				ctx.content.path = `${pathPrefix}/${ctx.content.url}`
+				return
+			}
+
 			// 在 URL 中隐藏指定目录前缀的路径
 			for (const prefix of blogConfig.hideContentPrefixes) {
 				const realPath = ctx.content.path as string
