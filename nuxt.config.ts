@@ -144,7 +144,7 @@ ${packageJson.homepage}
 				return
 			}
 			// 在 URL 中隐藏文件路由自动生成的 /posts 路径前缀
-			if (blogConfig.content.hidePostPrefix) {
+			if (blogConfig.article.hidePostPrefix) {
 				const realPath = ctx.content.path as string
 				ctx.content.path = realPath.replace(/^\/posts/, '')
 			}
@@ -174,7 +174,7 @@ ${packageJson.homepage}
 
 	robots: {
 		disableNuxtContentIntegration: true,
-		disallow: blogConfig.content.robotsNotIndex,
+		disallow: blogConfig.article.robotsNotIndex,
 	},
 
 	site: {

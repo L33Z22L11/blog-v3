@@ -6,7 +6,7 @@ const runtimeConfig = useRuntimeConfig()
 // 将服务器时区转换为博客指定时区
 const buildTime = toZonedTime(runtimeConfig.public.buildTime, appConfig.timezone)
 
-const totalWords = ref(appConfig.stats.wordCount)
+const totalWords = ref(appConfig.component.stats.wordCount)
 const yearlyTip = ref('')
 
 const blogStats = computed(() => [{

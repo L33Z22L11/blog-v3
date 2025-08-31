@@ -32,7 +32,7 @@ const meta = computed(() => {
 const appConfig = useAppConfig()
 
 const rows = computed(() => props.code.split('\n').length - 1)
-const collapsible = computed(() => !meta.value.expand && rows.value > appConfig.content.codeblockCollapsibleRows)
+const collapsible = computed(() => !meta.value.expand && rows.value > appConfig.component.codeblock.triggerRows)
 const [isCollapsed, toggleCollapsed] = useToggle(collapsible.value)
 
 const icon = computed(() => meta.value.icon || getFileIcon(props.filename) || getLangIcon(props.language))
@@ -68,7 +68,7 @@ onMounted(async () => {
 <figure
 	class="z-codeblock"
 	:class="{ collapsed: collapsible && isCollapsed, collapsible }"
-	:style="{ '--collapsible-height': `${appConfig.content.codeblockCollapsibleRows}em` }"
+	:style="{ '--collapsed-rows': appConfig.component.codeblock.collapsedRows }"
 >
 	<figcaption>
 		<span v-if="filename" class="filename">
@@ -113,17 +113,19 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .z-codeblock {
+	--line-height: 1.4em;
+
 	position: relative;
 	overflow: clip;
 	border-radius: 0.5em;
 	background-color: var(--c-bg-2);
 	font-size: 0.8125rem;
-	line-height: 1.4;
+	line-height: var(--line-height);
 
 	&.collapsed {
 		pre {
 			overflow: hidden;
-			max-height: var(--collapsible-height);
+			max-height: calc(var(--line-height) * var(--collapsed-rows) + 3rem);
 			mask-image: linear-gradient(to top, transparent 2rem, #FFF 4rem);
 			animation: none;
 		}

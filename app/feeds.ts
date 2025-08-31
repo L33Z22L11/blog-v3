@@ -852,6 +852,18 @@ export default [
 				date: '2025-08-28',
 				comment: '前端/网络技术实践与个人记录',
 			},
+			{
+				author: 'kzhik',
+				title: 'kzhik\'s website',
+				desc: '前端/网络技术实践与个人记录',
+				link: 'https://www.kzhik.cn/',
+				feed: 'https://www.kzhik.cn/resources/rss.xml',
+				icon: 'https://www.kzhik.cn/favicon.ico',
+				avatar: 'https://www.kzhik.cn/avatar.webp',
+				archs: ['Nuxt', '服务器'],
+				date: '2025-08-31',
+				comment: '前端/网络技术实践与个人记录',
+			},
 		],
 	},
 	/* ========从此处新增友链======== */

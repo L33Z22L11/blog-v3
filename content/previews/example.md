@@ -129,21 +129,51 @@ class: gradient-card active
 ```md [CHANGELOG.md]
 # 更新日志
 - 特殊文件名自动匹配图标
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
-- 超出 `appConfig.content.codeblockCollapsibleRows` 行的代码自动折叠
+- 若行数超出
+  `appConfig.component.codeblock.triggerRows`
+  （默认32）
+  - 则自动折叠到
+  `appConfig.component.codeblock.collapsedRows`
+  （默认16）
+- 如果设置了 expand，则不会自动折叠
+- 如果设置了 wrap，则会自动换行
+- 如果设置了文件名，则会在代码块标题前展示图标
+  - 图标只在有文件名时展示
+  - 默认图标是语言图标
+  - 特殊文件名也会自动识别出图标
+  - 文件名可以是任意字符串，例如 `CHANGELOG.md`、`README.md` 等
+  - 文件名也可以是路径，例如 `src/components/ProsePre.vue` 等
+  - 还可以通过 `icon=图标` 自定义图标
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
 ```
 
 ````md [更多功能] icon=ph:files-duotone wrap expand
@@ -156,7 +186,8 @@ class: gradient-card active
 
 ```语言简写 [文件名] icon=图标 wrap expand
 - 上面这几项都是可选的。
-- 如果有语言简写，必须位于反引号后的第一项。
+- 如果有语言简写，必须位于反引号后的第一项，且需要是小写字母。
+  - https://shiki.style/languages
 - 方括号包裹的是文件名。
 - icon=图标、wrap、expand 都是 meta 标记。
 - 如果要在代码块中嵌套代码块语法，外层可以用四个反引号包裹。

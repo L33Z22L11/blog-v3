@@ -2,9 +2,7 @@ import type { FeedEntry } from './app/types/feed'
 
 export { zhCN as dateLocale } from 'date-fns/locale/zh-CN'
 
-// 存储 nuxt.config 和 app.config 共用的配置
-// 此处为启动时需要的配置，启动后可变配置位于 app/app.config.ts
-const blogConfig = {
+const basicConfig = {
 	title: '纸鹿摸鱼处',
 	subtitle: '纸鹿至麓不知路，支炉制露不止漉',
 	// 长 description 利好于 SEO
@@ -25,11 +23,32 @@ const blogConfig = {
 	timeEstablished: '2019-07-19',
 	timezone: 'Asia/Shanghai',
 	url: 'https://blog.zhilu.site/',
+	defaultCategory: '未分类',
+}
 
-	content: {
-		defaultCategory: '未分类',
+// 存储 nuxt.config 和 app.config 共用的配置
+// 此处为启动时需要的配置，启动后可变配置位于 app/app.config.ts
+// @keep-sorted
+const blogConfig = {
+	...basicConfig,
+
+	article: {
+		categories: {
+			[basicConfig.defaultCategory]: { icon: 'ph:folder-dotted-bold' },
+			经验分享: { icon: 'ph:mouse-bold', color: '#3af' },
+			杂谈: { icon: 'ph:chat-bold', color: '#3ba' },
+			生活: { icon: 'ph:shooting-star-bold', color: '#f77' },
+			代码: { icon: 'ph:code-bold', color: '#77f' },
+		},
+		defaultCategoryIcon: 'ph:folder-bold',
+		/** 分类排序方式，键为排序字段，值为显示名称 */
+		order: {
+			date: '创建日期',
+			updated: '更新日期',
+			// title: '标题',
+		},
 		/** 使用 pnpm new 新建文章时自动生成自定义链接（permalink/abbrlink） */
-		randomPathAtNew: false,
+		useRandomPremalink: false,
 		/** 隐藏基于文件路由（不是自定义链接）的 URL /post 路径前缀 */
 		hidePostPrefix: true,
 		/** 禁止搜索引擎收录的路径 */
