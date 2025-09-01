@@ -14,7 +14,9 @@
     "preview": "nuxt preview",
     "lint": "stylelint '**/*.{vue,scss}'",
     "lint:fix": "eslint --fix && stylelint '**/*.{vue,scss}' --fix",
-    "new": "node scripts/new-blog.ts"
+    "new": "node scripts/new-blog.ts",
+    "gff": "pnpx tsx scripts/get-feed-framework.ts",
+    "caff": "pnpx tsx scripts/check-all-feeds-framework.ts"
   },
   "dependencies": {
     "@nuxt/content": "catalog:content",
@@ -56,10 +58,12 @@
     "eslint": "catalog:quality",
     "fast-xml-parser": "catalog:util",
     "nanoid": "catalog:util",
+    "p-limit": "catalog:util",
     "rehype-katex": "catalog:content",
     "remark-math": "catalog:content",
     "remark-reading-time": "catalog:content",
     "sass-embedded": "catalog:framework",
+    "strip-ansi": "catalog:util",
     "stylelint": "catalog:quality",
     "terser": "catalog:util",
     "typescript": "catalog:framework",

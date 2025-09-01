@@ -1,4 +1,4 @@
-import type { FeedGroup } from '~/types/feed'
+import type { FeedEntry, FeedGroup } from '~/types/feed'
 import { getFavicon, getGhAvatar, getGhIcon, getQqAvatar, QqAvatarSize } from './utils/img'
 
 export default [
@@ -853,6 +853,18 @@ export default [
 				comment: '前端/网络技术实践与个人记录',
 			},
 			{
+				author: '酥米',
+				title: '酥米的小站',
+				desc: '终有一日，寻梦中人',
+				link: 'https://www.sumi233.top/',
+				feed: 'https://www.sumi233.top/atom.xml',
+				icon: 'https://www.sumi233.top/favicon.ico',
+				avatar: 'https://cdn.sumi233.top/gh/huang233893/blog-image-bed/top/huang233893/imgs/blog/userfb6a1018b84ce485.jpg',
+				archs: ['Hexo', '国内 CDN'],
+				date: '2025-08-29',
+				comment: '计算机网络知识，设备折腾。',
+			},
+			{
 				author: 'kzhik',
 				title: 'kzhik\'s website',
 				desc: '前端/网络技术实践与个人记录',
@@ -1116,3 +1128,7 @@ export default [
 		],
 	},
 ] satisfies FeedGroup[]
+
+export function flattenFeedGroups(groups: FeedGroup[]): FeedEntry[] {
+	return groups.flatMap(g => g.entries)
+}

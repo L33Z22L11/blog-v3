@@ -46,8 +46,10 @@ catalogs:
     fast-xml-parser: ^5.2.5
     minisearch: ^7.1.2
     nanoid: ^5.1.5
+    p-limit: ^7.1.1
     parse-domain: ^8.2.2
     radash: ^12.1.1
+    strip-ansi: ^7.1.0
     terser: ^5.43.1
 
 onlyBuiltDependencies:
