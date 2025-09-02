@@ -15,8 +15,8 @@
     "lint": "stylelint '**/*.{vue,scss}'",
     "lint:fix": "eslint --fix && stylelint '**/*.{vue,scss}' --fix",
     "new": "node scripts/new-blog.ts",
-    "gff": "pnpx tsx scripts/get-feed-framework.ts",
-    "caff": "pnpx tsx scripts/check-all-feeds-framework.ts"
+    "check:feed": "pnpx tsx scripts/framework/get-feed.ts",
+    "check:feed/all": "pnpx tsx scripts/framework/check-all-feeds.ts"
   },
   "dependencies": {
     "@nuxt/content": "catalog:content",
