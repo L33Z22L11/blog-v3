@@ -78,16 +78,20 @@
 │   └── theme.md # 主题介绍
 ├── patches # npm 包补丁
 ├── public # 静态资源，生成在站点根目录
+│   ├── assets # 订阅源 XSL 模板
 │   └── fonts # 字体
+├── scripts # npm 脚本
 ├── server # 服务端
 │   ├── api # 接口
 │   │   └── stats.get.ts # 博客静态统计
 │   ├── plugins # Nitro 插件
 │   │   └── anti-mirror.ts # 恶意反代跳转
-│   └── routes # 路由
+│   └── routes # 根路由
 │       ├── atom.xml.get.ts # Atom 订阅源
 │       └── zhilu.opml.get.ts # OPML 订阅源聚合
 ├── blog.config.ts # 博客静态公共配置★
+├── content.config.ts # Nuxt Content 配置
+├── edgeone.json # EdgeOne 配置
 ├── nuxt.config.ts # Nuxt 配置
 └── redirects.json # 旧站点重定向配置
 ```
