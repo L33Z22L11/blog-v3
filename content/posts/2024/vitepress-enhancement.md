@@ -117,7 +117,7 @@ docs/** linguist-documentation=false
 Staticfile CDN、BootCDN（bootcss）、51LA 统计等公共服务已被发现存在安全问题，使用这些服务可能会导致网站加载恶意内容或被用户的安全策略阻止访问，从而影响网站的正常功能。建议在引入外部脚本时启用子资源完整性（Subresource Integrity，SRI）功能，以提高安全性。
 ::
 
-- ![](https://fontawesome.com/images/favicon/icon.svg){.icon title="其实我不是 CDN 引入的，我也不是 Iconify，我是图片"} Font Awesome [图标搜索](ntawesome.com/search?ic=free)
+- ![](https://fontawesome.com/images/favicon/icon.svg){.icon title="其实我不是 CDN 引入的，我也不是 Iconify，我是图片"} Font Awesome [图标搜索](https://fontawesome.com/search?ic=free)
   - :copy{prompt="75CDN" code="https://lib.baomitu.com/font-awesome/7.0.0/css/all.min.css"}
   - :copy{prompt="未闻花名" code="https://cdnjs.snrat.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"}
   - :copy{prompt="7ED" code="https://use.sevencdn.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"}

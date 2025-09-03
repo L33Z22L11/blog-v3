@@ -1,7 +1,10 @@
 import type { FeedEntry, FeedGroup } from '../../app/types/feed'
+import { Console } from 'node:console'
 import http from 'node:http'
 import https from 'node:https'
+import { Writable } from 'node:stream'
 import tls from 'node:tls'
+import { log } from '@clack/prompts'
 import stripAnsi from 'strip-ansi'
 import feeds from '../../app/feeds'
 
@@ -58,29 +61,29 @@ export async function getLinkInfo(e: FeedEntry): Promise<ServerResp> {
 	})
 }
 
+// @keep-sorted
+const IGNORED_TLS_ERROR_CODES = [
+	'ERR_SSL_SSLV3_ALERT_HANDSHAKE_FAILURE',
+	'ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR',
+]
+
 export async function getCertDomains(options: tls.ConnectionOptions): Promise<string[]> {
+	options = { port: 443, timeout: 5000, ...options }
 	return new Promise((resolve) => {
-		const socket = tls.connect(
-			{ port: 443, ...options },
-			() => {
-				try {
-					const cert = socket.getPeerCertificate(true)
-					const san: string[] = cert.subjectaltname
-						?.split(', ')
-						.map(s => s.replace(/^DNS:/, '')) ?? []
-					const domains = san.length ? san : [cert.subject.CN]
-					resolve(domains)
-				}
-				catch (err) {
-					console.error(`获取 ${options.host} 的证书域名失败: ${err}`)
-					resolve([])
-				}
-				finally {
-					socket.end()
-				}
-			},
-		)
-		socket.on('error', () => resolve([]))
+		const socket = tls.connect(options, () => {
+			const cert = socket.getPeerCertificate(true)
+			const san: string[] = cert.subjectaltname
+				?.split(', ')
+				.map(s => s.replace(/^DNS:/, '')) ?? []
+			const domains = san.length ? san : [cert.subject.CN]
+			resolve(domains)
+			socket.end()
+		})
+		socket.on('error', (e) => {
+			if (!IGNORED_TLS_ERROR_CODES.includes(e.code))
+				log.warn(`获取 ${options.host} 的证书域名失败: ${JSON.stringify(e)}`)
+			resolve([])
+		})
 	})
 }
 
@@ -98,12 +101,13 @@ export function toCsv(data: any[], columns: string[]) {
 }
 
 export function tableToString(data: any[], columns?: string[]) {
-	const oldLog = console.log
 	let output = ''
-	console.log = (...args: any[]) => {
-		output += `${args.join(' ')}\n`
-	}
-	console.table(data, columns)
-	console.log = oldLog
+	const writable = new Writable({
+		write(chunk, encoding, callback) {
+			output += chunk.toString()
+			callback()
+		},
+	})
+	new Console(writable).table(data, columns)
 	return stripAnsi(output)
 }

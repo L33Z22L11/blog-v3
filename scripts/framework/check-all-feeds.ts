@@ -8,7 +8,7 @@ import { intro, outro, spinner } from '@clack/prompts'
 import pLimit from 'p-limit'
 import { entries, getLinkInfo, tableToString, toCsv } from './utils'
 
-intro('🌐 批量检测友链 Server + IP + 证书域名')
+intro('🌐 批量检测友链 Server + 域名/IP 证书')
 
 const limit = pLimit(20)
 
