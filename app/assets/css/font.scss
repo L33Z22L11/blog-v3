@@ -1,0 +1,40 @@
+:root {
+	--font-basic: "InterVariable", "Inter", "Noto Sans SC-Local", "Noto Sans SC", system-ui, sans-serif;
+	--font-serif: "Noto Serif SC-Local", "Noto Serif SC", "华文中宋", "Times New Roman", serif;
+	--font-creative: "InterVariable", "InterDisplay", "Noto Sans SC-Local", "Noto Sans SC", "MiSans", system-ui, sans-serif;
+	--font-stroke-free: "Inter", "Microsoft YaHei", "MiSans", system-ui, sans-serif;
+	--font-monospace: "JetBrains Mono-Local", "JetBrains Mono", "SFMono-Regular", "Cascadia Code", "Fira Code", "Menlo", "Monaco", "Consolas", "Noto Sans Mono", "monospace", var(--font-basic), monospace;
+
+	@media (max-resolution: 1.4dppx) {
+		--font-basic: system-ui, sans-serif;
+	}
+}
+
+@mixin inter-styleset($font-family) {
+	@font-feature-values $font-family {
+		@styleset {
+			open-digits: 1;
+			disambiguation: 2;
+			round-quotes-commas: 3;
+			disambiguation-wo0: 4;
+			circled: 5;
+			squared: 6;
+			square-punctuation: 7;
+			square-quotes: 8;
+		}
+	}
+}
+
+@include inter-styleset("Inter");
+@include inter-styleset("InterVariable");
+
+// 有本地字体时不加载网络字体
+@font-face {
+	font-family: "Noto Sans SC-Local";
+	src: local("Noto Sans SC");
+}
+
+@font-face {
+	font-family: "Noto Serif SC-Local";
+	src: local("Noto Serif SC");
+}

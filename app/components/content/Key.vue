@@ -46,14 +46,14 @@ useEventListener('keyup', (e) => {
 kbd {
 	display: inline-block;
 	margin: 0.1em;
-	padding: 0.1em 0.2em;
+	padding: 0 0.2em 0.1em;
 	border-radius: 0.2em;
 	box-shadow: inset 0 -0.15em 0 var(--c-bg-soft);
 	background-color: var(--c-bg-soft);
 	font-family: var(--font-monospace);
 	font-size: 0.9em;
 	letter-spacing: -0.05em;
-	line-height: 1;
+	line-height: 1.4;
 	color: var(--c-text-2);
 	transition: all 0.1s;
 	user-select: none;

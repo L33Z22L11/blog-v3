@@ -1,14 +1,9 @@
 :root {
-	--font-basic: "Inter", "Noto Sans SC-Local", "Noto Sans SC", system-ui, sans-serif;
-	--font-serif: "Noto Serif SC-Local", "Noto Serif SC", "华文中宋", "Times New Roman", serif;
-	--font-creative: "Inter", "Noto Sans SC-Local", "Noto Sans SC", "MiSans", system-ui, sans-serif;
-	--font-stroke-free: "MiSans", system-ui, sans-serif;
-	--font-monospace: "JetBrains Mono-Local", "JetBrains Mono", "SFMono-Regular", "Cascadia Code", "Fira Code", "Menlo", "Monaco", "Consolas", "Noto Sans Mono", "monospace", var(--font-basic), monospace;
-
 	background-color: var(--c-bg-1);
 	font: 1rem / 1.4 sans-serif;
 	font-family: var(--font-basic);
 	font-synthesis: style;
+	font-variant-alternates: styleset(open-digits, disambiguation, square-punctuation, square-quotes);
 	word-wrap: break-word;
 	text-size-adjust: none;
 	color: var(--c-text-1);
@@ -18,25 +13,10 @@
 	scrollbar-color: var(--c-text-3) transparent;
 	-webkit-tap-highlight-color: var(--c-primary-soft);
 
-	@media (max-resolution: 1.4dppx) {
-		--font-basic: system-ui, sans-serif;
-	}
-
 	@media (prefers-reduced-motion: reduce) {
 		transition: none;
 		scroll-behavior: auto;
 	}
-}
-
-// 有本地字体时不加载网络字体
-@font-face {
-	font-family: "Noto Sans SC-Local";
-	src: local("Noto Sans SC");
-}
-
-@font-face {
-	font-family: "Noto Serif SC-Local";
-	src: local("Noto Serif SC");
 }
 
 * {
