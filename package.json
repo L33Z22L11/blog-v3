@@ -1,7 +1,7 @@
 {
   "name": "zhilu-blog",
   "type": "module",
-  "version": "3.4.3",
+  "version": "3.4.4",
   "private": true,
   "packageManager": "pnpm@10.15.0",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
@@ -58,6 +58,7 @@
     "eslint": "catalog:quality",
     "fast-xml-parser": "catalog:util",
     "nanoid": "catalog:util",
+    "oxc-minify": "catalog:util",
     "p-limit": "catalog:util",
     "rehype-katex": "catalog:content",
     "remark-math": "catalog:content",
@@ -65,7 +66,6 @@
     "sass-embedded": "catalog:framework",
     "strip-ansi": "catalog:util",
     "stylelint": "catalog:quality",
-    "terser": "catalog:util",
     "typescript": "catalog:framework",
     "unplugin-yaml": "catalog:framework"
   }

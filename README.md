@@ -23,7 +23,7 @@
 
 | 博客名称                                    | 作者          | 对应上游版本 | 下游特色功能                   |
 | ------------------------------------------- | ------------- | ------------ | ------------------------------ |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**  | **L33Z22L11** | **v3.4.3**   | (我是上游)                     |
+| **[纸鹿摸鱼处](https://blog.zhilu.site/)**  | **L33Z22L11** | **v3.4.4**   | (我是上游)                     |
 | [希乐博客](https://blog.xlenco.top/)        | Xlenco        | v3.4.0       | 最新评论                       |
 | [SteinsNote](https://blog.labmem.chat/)     | Labmem-00     | v3.1-241112  | 专栏                           |
 | [月空人](https://whbbit.cn/)                | Whbbit1999    | v3.3-250521  | 项目/博客/Snippets页           |
@@ -37,6 +37,7 @@
 | [柒渊阁](https://www.myxz.top/)             | 661111        | v3.4.0       | 即刻+友圈+Heo友链轮播/Profile  |
 | [落憾](https://blog.enltlh.me/)             | LuoH-AN       | v3.4.0       | 即刻+一言+卡片Profile          |
 | [落尘up](https://www.luochen.chat/)         | luochenup     | v3.3.4       | 侧栏时间轴                     |
+| [硅基漫游指南](https://blog.helong.online/) | HeLongaa      | v3.4.0       | 即刻+友圈                      |
 
 ## 特性
 
