@@ -23,6 +23,10 @@ const copyFields = {
 </script>
 
 <template>
+<div class="mobile-only">
+	<ZhiluHeader to="/" suffix="友链" />
+</div>
+
 <FeedGroup :feeds />
 
 <Tab :tabs="['我的博客信息', '申请友链']" center>

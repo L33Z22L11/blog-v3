@@ -15,7 +15,7 @@ Nuxt Content 使用 Markdown 语法和约定来提供丰富的文本编辑体验
 ::link-card
 ---
 title: MDC 基本语法（必读）
-icon: https://v2.content.nuxt.com/favicon.ico
+icon: https://content.nuxt.com/favicon.ico
 link: https://content.nuxt.com/docs/files/markdown#mdc-syntax
 class: gradient-card active
 ---
@@ -255,29 +255,23 @@ $$ \text{学分绩点} = \text{课程学分} \times \text{课程绩点} $$
   ::
 
   ::alert{type="question"}
+  默认插槽的 [超链接](#alert) **粗体** `Inline code`
+  ::
+
+  ::alert{type="info" title="自定义标题"}
+  默认插槽的 [超链接](#alert) **粗体** `Inline code`
+  ::
+
+  ::alert{type="warning" card}
   #title
-  标题插槽的 [超链接](#alert) **粗体** `Inline code`
+  卡片风格 标题插槽的 [超链接](#alert) **粗体** `Inline code`
   #default
   默认插槽的 [超链接](#alert) **粗体** `Inline code`
   ::
 
-  ::alert{type="info"}
+  ::alert{type="error" flat}
   #title
-  标题插槽的 [超链接](#alert) **粗体** `Inline code`
-  #default
-  默认插槽的 [超链接](#alert) **粗体** `Inline code`
-  ::
-
-  ::alert{type="warning"}
-  #title
-  标题插槽的 [超链接](#alert) **粗体** `Inline code`
-  #default
-  默认插槽的 [超链接](#alert) **粗体** `Inline code`
-  ::
-
-  ::alert{type="error"}
-  #title
-  标题插槽的 [超链接](#alert) **粗体** `Inline code`
+  扁平风格 标题插槽的 [超链接](#alert) **粗体** `Inline code`
   #default
   默认插槽的 [超链接](#alert) **粗体** `Inline code`
   ::
@@ -291,29 +285,23 @@ $$ \text{学分绩点} = \text{课程学分} \times \text{课程绩点} $$
 ::
 
 ::alert{type="question"}
+默认插槽的 [超链接](#alert) **粗体** `Inline code`
+::
+
+::alert{type="info" title="自定义标题"}
+默认插槽的 [超链接](#alert) **粗体** `Inline code`
+::
+
+::alert{type="warning" card}
 #title
-标题插槽的 [超链接](#alert) **粗体** `Inline code`
+卡片风格 标题插槽的 [超链接](#alert) **粗体** `Inline code`
 #default
 默认插槽的 [超链接](#alert) **粗体** `Inline code`
 ::
 
-::alert{type="info"}
+::alert{type="error" flat}
 #title
-标题插槽的 [超链接](#alert) **粗体** `Inline code`
-#default
-默认插槽的 [超链接](#alert) **粗体** `Inline code`
-::
-
-::alert{type="warning"}
-#title
-标题插槽的 [超链接](#alert) **粗体** `Inline code`
-#default
-默认插槽的 [超链接](#alert) **粗体** `Inline code`
-::
-
-::alert{type="error"}
-#title
-标题插槽的 [超链接](#alert) **粗体** `Inline code`
+扁平风格 标题插槽的 [超链接](#alert) **粗体** `Inline code`
 #default
 默认插槽的 [超链接](#alert) **粗体** `Inline code`
 ::

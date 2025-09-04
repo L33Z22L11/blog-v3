@@ -42,7 +42,7 @@ const pageArr = computed(() => genPageArr(page.value, props.totalPages))
 	align-items: center;
 	justify-content: space-between;
 	margin: 1rem 0;
-	font-family: var(--font-monospace);
+	font-variant-numeric: tabular-nums;
 
 	.pagination-ellipsis {
 		opacity: 0.5;

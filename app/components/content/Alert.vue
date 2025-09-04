@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
 	type?: keyof typeof typeMap
+	card?: boolean
+	flat?: boolean
 	icon?: string
 	color?: string
 	title?: string
@@ -8,6 +10,9 @@ const props = withDefaults(defineProps<{
 }>(), {
 	type: 'tip',
 })
+
+const appConfig = useAppConfig()
+const card = computed(() => appConfig.component.alert.defaultStyle === 'flat' ? props.card : !props.flat)
 
 const typeMap = {
 	tip: {
@@ -44,7 +49,7 @@ const title = computed(() => props.title || typeMap[props.type].title)
 </script>
 
 <template>
-<div class="alert card" :style="{ '--c-primary': color }">
+<div class="alert" :class="{ card }" :style="{ '--c-primary': color }">
 	<div class="alert-title">
 		<Icon :name="icon" />
 		<slot name="title">
@@ -59,13 +64,20 @@ const title = computed(() => props.title || typeMap[props.type].title)
 .alert {
 	margin: 1em 0;
 	padding: 0.2em 0.8em;
-	background-image:
-		radial-gradient(circle at 4em -25em, var(--c-primary), transparent 30em),
-		linear-gradient(var(--c-primary) -2000%, transparent);
+	border-radius: 0.5em;
+	background-color: var(--c-bg-2);
 	font-size: 0.9em;
 
 	@supports (color: color-mix(in srgb, transparent, transparent)) {
 		--c-primary-soft: color-mix(in srgb, var(--c-primary) 15%, transparent);
+		--c-bg-2: color-mix(in srgb, var(--c-primary) 8%, transparent);
+	}
+
+	&.card {
+		background-color: var(--ld-bg-card);
+		background-image:
+			radial-gradient(circle at 4em -25em, var(--c-primary), transparent 30em),
+			linear-gradient(var(--c-primary) -2000%, transparent);
 	}
 
 	.alert-title {
