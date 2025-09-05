@@ -20,7 +20,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 			{{ title }}
 		</h2>
 
-		<p v-if="description" class="article-descrption">
+		<p v-if="description" class="article-description">
 			{{ description }}
 		</p>
 
@@ -102,7 +102,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	color: var(--c-text);
 }
 
-.article-descrption {
+.article-description {
 	font-size: 0.9em;
 	color: var(--c-text-2);
 }

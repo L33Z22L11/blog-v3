@@ -120,6 +120,8 @@ recommend: true
   "git.enableSmartCommit": true,
   // 集成终端中 Git 触发编辑器时使用 VS Code
   "git.terminalGitEditor": true,
+  // 增大集成终端最大记录行数
+  "terminal.integrated.scrollback": 10000,
 }
 ```
 
@@ -138,7 +140,7 @@ recommend: true
     "source.fixAll.stylelint": "always",
   },
   // 链接式编辑（HTML标签自动重命名）
-  "editor.linkedEditing": true,
+  // "editor.linkedEditing": true,
   // Iconify IntelliSense 显示图标时不隐藏图标名
   "iconify.inplace": false,
   // Stylelint 启用的语言

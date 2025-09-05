@@ -37,7 +37,6 @@ export default antfu({
 		'prefer-arrow-callback': 'off',
 		'prefer-template': 'off',
 		'style/indent': 'off',
-		'style/no-seqences': 'off',
 		'style/quotes': 'off',
 		'style/semi': 'off',
 		'unicorn/prefer-includes': 'off',

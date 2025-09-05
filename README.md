@@ -143,13 +143,13 @@ pnpm preview
 
 ### 部署指南
 
-推荐使用 Vercel 进行部署，同时也支持 Netlify、Cloudflare Pages、EdgeOne 等平台。建议采用静态（SSG）部署方式，我的部署配置如下：
+支持 Vercel、Netlify、Cloudflare Pages、EdgeOne 等平台部署。建议采用静态（SSG）部署方式：
 
-- 构建命令: `pnpm generate`/`nuxt generate`
-- 输出目录: `dist`（与Nuxt预设相同）
-- 安装命令: `pnpm i`（一般会自动检测）
+- 构建命令: `pnpm generate`
+- 输出目录: `dist`
+- 安装命令: `pnpm i`
 
-如果直接使用平台提供的“Nuxt”预设部署，那么会变成 SSR 模式（已知导致 `sitemap.xml` 变空），需要调整部署命令。请参阅 [Nuxt 文档](https://nuxt.com/docs/getting-started/deployment) 和 [Nuxt Content 文档](https://content.nuxt.com/docs/deploy/static) 的“部署”一节。
+如果直接使用平台提供的“Nuxt”预设部署，则会变成 SSR 模式，此模式每次访问都会等待服务端重新渲染。请参阅 [Nuxt 文档](https://nuxt.com/docs/getting-started/deployment) 和 [Nuxt Content 文档](https://content.nuxt.com/docs/deploy/static) 的“部署”一节。
 
 #### 疑难解答
 

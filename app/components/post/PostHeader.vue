@@ -49,12 +49,12 @@ const { copy, copied } = useCopy(shareText)
 				{{ getPostDate(props.updated) }}
 			</time>
 
-			<span v-if="categoryLabel" class="article-category">
+			<span v-if="categoryLabel">
 				<Icon :name="categoryIcon" />
 				{{ categoryLabel }}
 			</span>
 
-			<span class="wordcount">
+			<span>
 				<Icon name="ph:paragraph-bold" />
 				{{ formatNumber(readingTime?.words) }} 字
 			</span>
