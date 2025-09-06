@@ -27,7 +27,7 @@ $font-weights: (
 	@font-face {
 		font-family: Inter-Local;
 		font-style: normal;
-		font-weight: #{$weight};
+		font-weight: $weight;
 		font-display: swap;
 		src: local("Inter #{$name}");
 	}
@@ -35,7 +35,7 @@ $font-weights: (
 	@font-face {
 		font-family: Inter-Local;
 		font-style: italic;
-		font-weight: #{$weight};
+		font-weight: $weight;
 		font-display: swap;
 		src: local("Inter #{$name} Italic");
 	}
@@ -43,7 +43,7 @@ $font-weights: (
 	@font-face {
 		font-family: "Noto Sans SC-Local";
 		font-style: normal;
-		font-weight: #{$weight};
+		font-weight: $weight;
 		font-display: swap;
 		src: local("Noto Sans SC-#{$name}");
 	}
@@ -51,14 +51,16 @@ $font-weights: (
 	@font-face {
 		font-family: "Noto Serif SC-Local";
 		font-style: normal;
-		font-weight: #{$weight};
+		font-weight: $weight;
 		font-display: swap;
 		src: local("Noto Serif SC-#{$name}");
 	}
 }
 
 @mixin inter-styleset($font-family) {
-	@font-feature-values "#{$font-family}" {
+	// rolldown-vite 在开发/生产环境行为不一致，导致首页轮播图无法点击
+	// 其只能识别 "#{$font-family}"，通过此处阻止构建
+	@font-feature-values $font-family {
 		@styleset {
 			open-digits: 1;
 			disambiguation: 2;

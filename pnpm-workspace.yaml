@@ -13,16 +13,16 @@ catalogs:
   framework:
     ci-info: ^4.3.0
     cross-env: ^10.0.0
-    nuxt: ^4.1.0
-    sass-embedded: ^1.92.0
+    nuxt: ^4.1.1
+    sass-embedded: ^1.92.1
     typescript: ^5.9.2
     unplugin-yaml: ^3.0.5
     vue: ^3.5.21
     vue-router: ^4.5.1
   quality:
-    '@antfu/eslint-config': ^5.2.1
+    '@antfu/eslint-config': ^5.2.2
     '@zinkawaii/stylelint-config': ^0.3.3
-    eslint: ^9.34.0
+    eslint: ^9.35.0
     stylelint: ^16.23.1
   ui:
     '@iconify-json/catppuccin': ^1.2.16
@@ -60,9 +60,6 @@ onlyBuiltDependencies:
   - rolldown
   - sharp
   - unrs-resolver
-
-overrides:
-  vite: npm:rolldown-vite@latest
 
 patchedDependencies:
   '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch
