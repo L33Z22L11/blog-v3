@@ -58,9 +58,7 @@ $font-weights: (
 }
 
 @mixin inter-styleset($font-family) {
-	// rolldown-vite 在开发/生产环境行为不一致，导致首页轮播图无法点击
-	// 其只能识别 "#{$font-family}"，通过此处阻止构建
-	@font-feature-values $font-family {
+	@font-feature-values "#{$font-family}" {
 		@styleset {
 			open-digits: 1;
 			disambiguation: 2;
