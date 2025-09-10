@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
 	/** 视频类型，数字过长时需通过双引号传入字符串 */
-	type?: 'raw' | 'bilibili' | 'youtube' | 'douyin' | 'douyin-wide' | 'tiktok'
+	type?: 'raw' | 'bilibili' | 'bilibili-nano' | 'youtube' | 'douyin' | 'douyin-wide' | 'tiktok'
 	id: string
 	autoplay?: boolean
 	/** 视频宽高比，如 `16 / 9` `1.6` */
@@ -39,6 +39,8 @@ const src = computed(() => {
 	switch (props.type) {
 		case 'bilibili':
 			return `https://player.bilibili.com/player.html?bvid=${props.id}&autoplay=${props.autoplay}`
+		case 'bilibili-nano':
+			return `https://www.bilibili.com/blackboard/newplayer.html?bvid=${props.id}&autoplay=${props.autoplay}`
 		case 'youtube':
 			return `https://www.youtube.com/embed/${props.id}?rel=0&disablekb=1&playsinline=1&autoplay=${props.autoplay}`
 		case 'douyin':

@@ -27,7 +27,7 @@ defineProps<{
 .widget {
 	font-size: 0.9em;
 
-	& + .widget {
+	.widget + & {
 		margin-top: 1rem;
 	}
 

@@ -2,6 +2,7 @@ import type ArticleProps from '~/types/article'
 import type { ArticleOrderType } from '~/types/article'
 import { alphabetical } from 'radash'
 
+// TODO 支持分页/分类筛选
 export function useArticleIndex(path = 'posts/%') {
 	return useAsyncData(
 		`index_${path}`,

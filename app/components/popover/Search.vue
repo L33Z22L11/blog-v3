@@ -20,6 +20,7 @@ const { word } = storeToRefs(searchStore)
 const activeIndex = ref(0)
 const listResult = useTemplateRef('list-result')
 
+// TODO 优化搜索框展示速度
 const { data, status } = await useAsyncData('search', () => queryCollectionSearchSections('content', {
 	ignoredTags: ['code'],
 }))

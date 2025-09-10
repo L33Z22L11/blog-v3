@@ -875,6 +875,18 @@ export default [
 				date: '2025-08-31',
 				comment: '前端/网络技术实践与个人记录',
 			},
+			{
+				author: 'ATao',
+				title: 'ATao-Blog',
+				desc: '做自己喜欢的事',
+				link: 'https://blog.atao.cyou',
+				feed: 'https://blog.atao.cyou/atom.xml',
+				icon: 'https://cdn.atao.cyou/Web/Avatar.png',
+				avatar: 'https://cdn.atao.cyou/Web/Avatar.png',
+				archs: ['Nuxt', '服务器'],
+				date: '2025-09-09',
+				comment: '技术实践与问题解决方案',
+			},
 		],
 	},
 	/* ========从此处新增友链======== */
