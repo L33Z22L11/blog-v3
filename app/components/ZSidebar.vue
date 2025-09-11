@@ -20,7 +20,9 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 		<div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
 			<Icon name="ph:magnifying-glass-bold" />
 			<span class="nav-text">{{ word || '搜索' }}</span>
-			<span class="keycut widescreen-only">{{ keycut }}</span>
+			<ClientOnly>
+				<span class="keycut widescreen-only">{{ keycut }}</span>
+			</ClientOnly>
 		</div>
 
 		<template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">
