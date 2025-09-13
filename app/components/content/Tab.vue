@@ -69,9 +69,8 @@ button {
 	&::before, &::after {
 		display: block;
 		position: absolute;
-		right: 0.8em;
 		bottom: -0.5em;
-		left: 0.8em;
+		inset-inline: 0.8em;
 		height: 2px;
 		border-radius: 1em;
 		pointer-events: none;
@@ -79,8 +78,7 @@ button {
 
 	&::after {
 		content: "";
-		right: -0.8em;
-		left: -0.8em;
+		inset-inline: -0.8em;
 		background-color: var(--c-border);
 	}
 

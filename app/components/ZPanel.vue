@@ -35,7 +35,7 @@ useEventListener('keydown', (event) => {
 #z-panel {
 	position: fixed;
 	overflow: hidden;
-	right: min(2rem, 5%);
+	inset-inline-end: min(2rem, 5%);
 	bottom: min(2rem, 5%);
 	border-radius: 0.5rem;
 	background-color: var(--c-bg-a50);

@@ -78,6 +78,7 @@ onMounted(async () => {
 <style lang="scss" scoped>
 .copy {
 	display: flex;
+	overflow: clip;
 	margin: 0.5rem 0;
 	border: 1px solid var(--c-border);
 	border-radius: 4px;
@@ -91,7 +92,7 @@ onMounted(async () => {
 		outline: 0.2em solid var(--c-primary-soft);
 
 		.prompt {
-			border-right-color: var(--c-primary);
+			border-inline-end-color: var(--c-primary);
 			background-color: var(--c-primary-soft);
 			color: var(--c-primary);
 		}
@@ -100,8 +101,7 @@ onMounted(async () => {
 	.prompt {
 		flex-shrink: 0;
 		padding: 0 1em;
-		border-right: 1px solid var(--c-border);
-		border-radius: 3px 0 0 3px;
+		border-inline-end: 1px solid var(--c-border);
 		background-color: var(--c-bg-2);
 		color: var(--c-text-2);
 		transition: all 0.2s;
@@ -129,7 +129,7 @@ onMounted(async () => {
 	.operation {
 		flex-shrink: 0;
 		height: 2.5em;
-		margin-left: -0.5em;
+		margin-inline-start: -0.5em;
 		padding: 0.5em;
 		color: var(--c-text-2);
 		transition: color, 0.2s;

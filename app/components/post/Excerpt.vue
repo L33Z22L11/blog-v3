@@ -50,7 +50,7 @@ if (import.meta.dev) {
 	// animation: fadein 3s;
 
 	.iconify {
-		margin-right: 0.3em;
+		margin-inline-end: 0.3em;
 	}
 
 	&:hover {

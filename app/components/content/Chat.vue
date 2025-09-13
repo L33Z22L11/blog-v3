@@ -51,7 +51,8 @@ function render() {
 		max-width: 90%;
 		margin-bottom: 1em;
 		padding: 0 1em;
-		border-radius: 0.2em 1em 1em;
+		border-radius: 1em;
+		border-start-start-radius: 0.2em;
 		background-color: var(--c-bg-2);
 	}
 
@@ -61,12 +62,13 @@ function render() {
 	}
 
 	.chat-myself {
-		text-align: right;
+		text-align: end;
 
 		& + .chat-body {
 			width: fit-content;
-			margin-left: auto;
-			border-radius: 1em 0.2em 1em 1em;
+			margin-inline-start: auto;
+			border-radius: 1em;
+			border-start-end-radius: 0.2em;
 			background-color: var(--c-primary-soft);
 		}
 	}

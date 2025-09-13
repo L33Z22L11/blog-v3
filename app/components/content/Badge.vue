@@ -75,7 +75,7 @@ const tip = computed(() => {
 	border-radius: 3.5px;
 
 	+ .badge-text {
-		margin-left: -0.1em;
+		margin-inline-start: -0.1em;
 	}
 }
 

@@ -119,8 +119,8 @@ useEventListener(emblaRef, 'wheel', (e) => {
 	font-size: 1.5em;
 	transition: all 0.2s;
 
-	&.prev { left: 1rem; }
-	&.next { right: 1rem; }
+	&.prev { inset-inline-start: 1rem; }
+	&.next { inset-inline-end: 1rem; }
 }
 
 .slide-list {

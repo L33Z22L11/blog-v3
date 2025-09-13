@@ -61,7 +61,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 
 	@media (max-width: $breakpoint-mobile) {
 		position: fixed;
-		left: 0;
+		inset-inline-start: 0;
 		width: 320px;
 		max-width: 100%;
 		background-color: var(--ld-bg-blur);

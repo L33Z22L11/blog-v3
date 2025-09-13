@@ -57,7 +57,7 @@ defineProps<ButtonProps>()
 	}
 
 	& + .button {
-		margin-left: 0.8em;
+		margin-inline-start: 0.8em;
 	}
 }
 

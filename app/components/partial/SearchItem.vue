@@ -45,7 +45,7 @@ const highlightContent = computed(() => highlightHtml(props.content ?? '', word.
 		font-size: 1em;
 
 		> .badge {
-			margin-right: 0.5em;
+			margin-inline-end: 0.5em;
 			font-size: 0.8em;
 
 			&.primary {

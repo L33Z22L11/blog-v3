@@ -57,7 +57,7 @@ p {
 blockquote {
 	margin: 1em 0;
 	padding: 0 0.8em;
-	border-left: 0.2em solid var(--text-3);
+	border-inline-start: 0.2em solid var(--text-3);
 }
 
 .logo-header {

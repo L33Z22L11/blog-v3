@@ -281,7 +281,7 @@ svg:where(.iconify) {
 .VPFeature .icon {
     position: absolute;
     opacity: 0.15;
-    right: 10%;
+    inset-inline-end: 10%;
     background-color: transparent;
     font-size: 8em;
     z-index: -1;
@@ -299,7 +299,7 @@ svg:where(.iconify) {
 .vp-doc h2::before {
     content: counter(section-counter);
     position: absolute;
-    left: -2rem;
+    inset-inline-start: -2rem;
     font-size: 3rem;
     font-weight: bold;
     color: var(--vp-c-divider);

@@ -29,15 +29,14 @@ function render() {
 // TODO: 优化时间线样式
 .timeline {
 	position: relative;
-	padding-left: 1.5em;
+	padding-inline-start: 1.5em;
 	font-size: 0.9em;
 
 	&::before {
 		content: "";
 		position: absolute;
-		top: 0.5em;
-		bottom: 0;
-		left: 0.5em;
+		inset: 0.5em auto 0;
+		inset-inline-start: 0.5em;
 		width: 0.3em;
 		background-color: var(--c-bg-soft);
 	}
@@ -51,7 +50,7 @@ function render() {
 		&::before {
 			content: "";
 			position: absolute;
-			left: 0.3em;
+			inset-inline-start: 0.3em;
 			width: 0.8em;
 			height: 0.8em;
 			margin-top: 0.5em;

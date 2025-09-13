@@ -165,10 +165,9 @@ figcaption {
 	> .operations {
 		position: absolute;
 		opacity: 0;
-		top: 0;
-		right: 0;
+		inset-inline-end: 0;
 		padding: 0 0.6em;
-		border-bottom-left-radius: 0.5em;
+		border-end-start-radius: 0.5em;
 		background-color: var(--c-bg-2);
 		transition: opacity 0.2s;
 
@@ -207,9 +206,9 @@ pre {
 		position: absolute;
 		left: 0;
 		width: var(--left-offset);
-		padding-right: 1em;
+		padding-inline-end: 1em;
 		background-color: var(--c-bg-2);
-		text-align: right;
+		text-align: end;
 		color: var(--c-text-3);
 		z-index: 1;
 	}

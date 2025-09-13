@@ -37,7 +37,7 @@ const scroll = ref(true)
 	opacity: 0;
 	top: 0;
 	height: 0;
-	text-align: right;
+	text-align: end;
 	transition: opacity 0.2s;
 	z-index: 1;
 

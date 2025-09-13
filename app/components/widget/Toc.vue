@@ -74,7 +74,7 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 
 	li {
 		opacity: 0.6;
-		margin-left: 0.8rem;
+		margin-inline-start: 0.8rem;
 		font-size: 0.94em;
 		color: var(--c-text);
 		transition: opacity 0.2s;
@@ -91,7 +91,7 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 		&.active::before {
 			content: "";
 			position: absolute;
-			left: 0.3rem;
+			inset-inline-start: 0.3rem;
 			margin: 0.2rem 0;
 			padding: 0.6rem 1.5px;
 			border-radius: 1rem;

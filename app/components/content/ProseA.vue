@@ -32,7 +32,7 @@ const tip = computed(() => ({
 	}
 
 	.domain-icon {
-		margin-right: 0.1em;
+		margin-inline-end: 0.1em;
 	}
 }
 </style>

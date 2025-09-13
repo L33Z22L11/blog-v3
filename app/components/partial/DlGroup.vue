@@ -60,7 +60,7 @@ withDefaults(defineProps<{
 
 		>dt {
 			font-size: inherit;
-			text-align: right;
+			text-align: end;
 		}
 	}
 }

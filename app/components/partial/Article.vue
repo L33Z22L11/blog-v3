@@ -115,7 +115,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	position: absolute;
 	opacity: 0.8;
 	top: 0;
-	right: 0;
+	inset-inline-end: 0;
 	width: min(320px, 50%);
 	height: 100%;
 	margin: 0;

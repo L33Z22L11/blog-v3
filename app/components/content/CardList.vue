@@ -8,7 +8,7 @@
 :deep() {
 	:where(ol, ul):not([class]) {
 		margin: 0;
-		padding-left: 0;
+		padding-inline-start: 0;
 		list-style: none;
 
 		>li {

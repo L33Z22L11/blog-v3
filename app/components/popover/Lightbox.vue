@@ -239,7 +239,7 @@ useEventListener('keydown', (e) => {
 	}
 
 	.caption {
-		margin-right: -0.5em;
+		margin-inline-end: -0.5em;
 		padding: 0.5em 1em;
 	}
 

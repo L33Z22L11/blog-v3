@@ -76,7 +76,7 @@ defineProps<{
 			z-index: -1;
 
 			&.bg-right {
-				left: 50%;
+				inset-inline-start: 50%;
 				width: 50%;
 				mask-image: linear-gradient(to right, transparent, #FFF 50%);
 			}

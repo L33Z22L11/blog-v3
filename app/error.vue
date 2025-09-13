@@ -46,7 +46,7 @@ const handleError = () => clearError({ redirect: '/' })
 	margin: 1rem;
 
 	pre {
-		text-align: left;
+		text-align: start;
 	}
 
 	.error-stack {

@@ -51,8 +51,9 @@ details {
 		&::before {
 			content: "展开";
 			float: right;
+			float: inline-end;
 			opacity: 0.5;
-			margin-left: 0.5em;
+			margin-inline-start: 0.5em;
 			font-weight: normal;
 			transition: color 0.2s;
 		}

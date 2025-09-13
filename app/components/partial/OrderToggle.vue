@@ -78,7 +78,7 @@ function toggleDirection() {
 
 	.toggle-direction {
 		display: inline-block;
-		margin-right: 0.1em;
+		margin-inline-end: 0.1em;
 		transition: transform 0.2s;
 
 		&.ascending {
@@ -88,6 +88,6 @@ function toggleDirection() {
 }
 
 .iconify + span {
-	margin-left: 0.1em;
+	margin-inline-start: 0.1em;
 }
 </style>

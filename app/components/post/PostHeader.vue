@@ -127,7 +127,7 @@ const { copy, copied } = useCopy(shareText)
 .operations {
 	position: absolute;
 	opacity: 0;
-	right: 1em;
+	inset-inline-end: 1em;
 	color: var(--c-text-1);
 	transition: opacity 0.2s;
 	z-index: 1;

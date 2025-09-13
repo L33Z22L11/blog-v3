@@ -180,7 +180,7 @@ function openActiveItem() {
 		left: -100%;
 		width: 100%;
 		height: 100%;
-		border-right: 1px solid var(--c-primary);
+		border-inline-end: 1px solid var(--c-primary);
 		background: linear-gradient(to right, transparent 50%, var(--c-primary-soft)) no-repeat;
 		z-index: -1;
 	}
