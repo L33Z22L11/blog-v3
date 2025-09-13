@@ -4,7 +4,6 @@ const layoutStore = useLayoutStore()
 const searchStore = useSearchStore()
 
 const { word } = storeToRefs(searchStore)
-const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' : 'Ctrl+K')
 </script>
 
 <template>
@@ -20,9 +19,7 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 		<div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
 			<Icon name="ph:magnifying-glass-bold" />
 			<span class="nav-text">{{ word || '搜索' }}</span>
-			<ClientOnly>
-				<span class="keycut widescreen-only">{{ keycut }}</span>
-			</ClientOnly>
+			<Key class="keycut" code="K" ctrl />
 		</div>
 
 		<template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">
@@ -132,41 +129,31 @@ const keycut = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘K' :
 		color: var(--c-text-3);
 	}
 
-	.iconify {
+	> .iconify {
 		font-size: 1.5em;
 	}
 
-	.nav-text {
+	> .nav-text {
 		flex-grow: 1;
 	}
 
-	.external-tip {
+	> .external-tip {
 		opacity: 0.5;
 		font-size: 1em;
 	}
 }
 
 .search-btn {
+	opacity: 0.5;
 	margin: 1rem 0;
-	outline: 1px solid var(--c-border);
-	outline-offset: -1px;
+	outline: 2px solid var(--c-border);
+	outline-offset: -2px;
 	cursor: text;
 
 	&:hover {
+		opacity: 1;
 		outline-color: transparent;
 		background-color: transparent;
-	}
-
-	.nav-text {
-		opacity: 0.5;
-	}
-
-	.keycut {
-		opacity: 0.5;
-		padding: 0 0.2em;
-		border-radius: 0.2em;
-		background-color: var(--c-bg-soft);
-		font-size: 0.8em;
 	}
 }
 

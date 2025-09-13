@@ -65,12 +65,12 @@
 					发布于 <xsl:value-of select="$published-date" />
 
 					<xsl:if test="atom:updated and atom:updated != atom:published">
-						• 更新于
+						· 更新于
 						<xsl:value-of select="substring(atom:updated, 1, 10)" />
 					</xsl:if>
 
 					<xsl:if test="atom:category">
-						•
+						·
 						<xsl:for-each select="atom:category">
 							<xsl:value-of select="@term" />
 						</xsl:for-each>

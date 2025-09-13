@@ -22,7 +22,7 @@ const listResult = useTemplateRef('list-result')
 
 // TODO 优化搜索框展示速度
 const { data, status } = await useAsyncData('search', () => queryCollectionSearchSections('content', {
-	ignoredTags: ['code'],
+	ignoredTags: ['pre'],
 }))
 
 const miniSearch = new MiniSearch({
@@ -57,9 +57,9 @@ function scrollToActiveItem() {
 }
 
 function openActiveItem() {
-	const item = listResult.value?.children[activeIndex.value]
+	const item = listResult.value?.children[activeIndex.value] as HTMLElement | undefined
 	// 触发 vue-router 点击事件
-	item?.dispatchEvent(new Event('click'))
+	item?.click()
 }
 </script>
 
