@@ -1,9 +1,9 @@
 {
   "name": "zhilu-blog",
   "type": "module",
-  "version": "3.4.5",
+  "version": "3.4.6",
   "private": true,
-  "packageManager": "pnpm@10.15.0",
+  "packageManager": "pnpm@10.16.0",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "scripts": {
     "prepare": "pnpx rimraf .data node_modules/.cache",
