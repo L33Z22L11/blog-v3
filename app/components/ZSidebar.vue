@@ -64,7 +64,7 @@ const { word } = storeToRefs(searchStore)
 		background-color: var(--ld-bg-blur);
 		backdrop-filter: blur(0.5rem);
 		color: currentcolor;
-		transform: translateX(-100%);
+		transform: var(--transform-start-far);
 		transition: transform 0.2s;
 		z-index: 100;
 

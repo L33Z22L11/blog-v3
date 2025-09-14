@@ -28,7 +28,7 @@
 
 	:where(menu, ol, ul):not([class]) {
 		margin: 0.5em 0;
-		padding: 0 0 0 1.5em;
+		padding-inline-start: 1.5em;
 		font-size: 0.9rem;
 		list-style: revert;
 

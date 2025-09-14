@@ -1,4 +1,9 @@
 :root {
+	--start: left;
+	--end: right;
+	--transform-start-far: translateX(-100%);
+	--transform-end-far: translateX(100%);
+
 	background-color: var(--c-bg-1);
 	font: 1rem / 1.4 sans-serif;
 	font-family: var(--font-basic);
@@ -12,6 +17,13 @@
 	scroll-padding: 2rem;
 	scrollbar-color: var(--c-text-3) transparent;
 	-webkit-tap-highlight-color: var(--c-primary-soft);
+
+	&:dir(rtl) {
+		--start: right;
+		--end: left;
+		--transform-start-far: translateX(100%);
+		--transform-end-far: translateX(-100%);
+	}
 
 	@media (prefers-reduced-motion: reduce) {
 		transition: none;
@@ -67,6 +79,10 @@ button, input, textarea {
 	flex-shrink: 0;
 	font-size: 1.2em;
 	vertical-align: sub;
+}
+
+.iconify.rtl-flip:dir(rtl) {
+	transform: scaleX(-1);
 }
 
 .light [class^="iconify i-catppuccin:"] {

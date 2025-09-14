@@ -33,7 +33,7 @@ const { widgets } = useWidgets(() => layoutStore.asideWidgets)
 		height: auto;
 		max-width: 100%;
 		max-height: 100%;
-		transform: translateX(100%);
+		transform: var(--transform-end-far);
 		transition: transform 0.2s;
 		z-index: 100;
 

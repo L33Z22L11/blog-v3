@@ -24,7 +24,7 @@ useEventListener(emblaRef, 'wheel', (e) => {
 </script>
 
 <template>
-<div class="z-slide">
+<div class="z-slide" dir="ltr">
 	<div class="z-slide-header">
 		<span class="title text-creative">精选文章</span>
 		<div class="at-slide-hover">
@@ -108,7 +108,7 @@ useEventListener(emblaRef, 'wheel', (e) => {
 	align-items: center;
 	position: relative;
 	overflow: hidden;
-	mask-image: linear-gradient(to right, transparent, #FFF var(--fadeout-width), #FFF calc(100% - var(--fadeout-width)), transparent);
+	mask-image: linear-gradient(to var(--end), transparent, #FFF var(--fadeout-width), #FFF calc(100% - var(--fadeout-width)), transparent);
 	cursor: grab;
 	user-select: none;
 }

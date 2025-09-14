@@ -78,7 +78,7 @@ defineProps<{
 			&.bg-right {
 				inset-inline-start: 50%;
 				width: 50%;
-				mask-image: linear-gradient(to right, transparent, #FFF 50%);
+				mask-image: linear-gradient(to var(--end), transparent, #FFF 50%);
 			}
 		}
 	}

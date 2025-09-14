@@ -181,7 +181,7 @@ function openActiveItem() {
 		width: 100%;
 		height: 100%;
 		border-inline-end: 1px solid var(--c-primary);
-		background: linear-gradient(to right, transparent 50%, var(--c-primary-soft)) no-repeat;
+		background: linear-gradient(to var(--end), transparent 50%, var(--c-primary-soft)) no-repeat;
 		z-index: -1;
 	}
 

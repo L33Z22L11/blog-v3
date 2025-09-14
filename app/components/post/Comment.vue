@@ -74,7 +74,7 @@ onMounted(() => {
 
 	menu, ol, ul {
 		margin: 0.5em 0;
-		padding: 0 0 0 1.5em;
+		padding-inline-start: 1.5em;
 		list-style: revert;
 
 		> li {

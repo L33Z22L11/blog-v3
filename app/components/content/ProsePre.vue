@@ -189,11 +189,11 @@ figcaption {
 
 pre {
 	// 如果填写 0 会在 calc() 时出错
-	--left-offset: 4em;
+	--start-offset: 4em;
 
 	overflow: auto;
 	padding: 1rem;
-	padding-left: var(--left-offset);
+	padding-inline-start: var(--start-offset);
 
 	&.wrap {
 		white-space: pre-wrap;
@@ -204,8 +204,8 @@ pre {
 	&::before {
 		content: attr(data-line);
 		position: absolute;
-		left: 0;
-		width: var(--left-offset);
+		inset-inline-start: 0;
+		width: var(--start-offset);
 		padding-inline-end: 1em;
 		background-color: var(--c-bg-2);
 		text-align: end;

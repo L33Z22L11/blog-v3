@@ -17,7 +17,7 @@ useEventListener('keydown', (event) => {
 		aria-label="切换菜单"
 		@click="layoutStore.toggle('sidebar')"
 	>
-		<Icon name="ph:sidebar-duotone" />
+		<Icon class="rtl-flip" name="ph:sidebar-duotone" />
 	</button>
 	<button
 		v-if="hasAside"
@@ -26,7 +26,7 @@ useEventListener('keydown', (event) => {
 		aria-label="切换侧边栏"
 		@click="layoutStore.toggle('aside')"
 	>
-		<Icon name="ph:align-right-duotone" />
+		<Icon class="rtl-flip" name="ph:align-right-duotone" />
 	</button>
 </div>
 </template>
