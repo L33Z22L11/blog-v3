@@ -557,11 +557,11 @@ GitHub链接能自动识别头像 :badge[KazariEX]{link="https://github.com/Kaza
 #tab1
 - 纯 Code
 
-  :key{code="Escape"} :key{code="F2"} :key{code="Control"} :key{code="A"} :key{code=" "} :key{code="Tab" no-prevent} :key{code="Enter"}
+  :key{code="Escape"} :key{code="F2"} :key{code="Control"} :key{code="A"} :key{code=" "} :key{code="Tab"} :key{code="Enter"}
 
 - 指定修饰符、图标、文本（macOS 自动使用图标）
 
-  :key{code="Control" icon} :key{alt icon} :key{shift icon no-prevent} :key{code=" " text="空格"} :key{code="Tab" icon no-prevent} :key{code="Enter" icon}
+  :key{code="Control" icon} :key{alt icon} :key{shift icon} :key{code=" " text="空格"} :key{code="Tab" icon} :key{code="Enter" icon}
 
 - 组合键
 

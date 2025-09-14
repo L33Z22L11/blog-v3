@@ -62,11 +62,11 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
   :copy{code="nvidia-smi"}
 - 如果显示 `couldn't communicate with the NVIDIA driver` 提示，可能是显卡驱动没有安装成功
   - 可以先卸载 Nvidia 相关软件包
-  :copy{code="sudo pacman -Rs nvidia nvidia-utils"}
+    :copy{code="sudo pacman -Rs nvidia nvidia-utils"}
   - 强制更新 Pacman 软件包列表
-  :copy{code="sudo pacman -Syyuu"}
+    :copy{code="sudo pacman -Syyuu"}
   - 重新安装 Nvidia 驱动
-  :copy{code="sudo pacman -S nvidia"}
+    :copy{code="sudo pacman -S nvidia"}
   - 重启
 
 之后在桌面右键菜单第二项“配置显示设置…”，将显示器缩放调整为一个合适的倍数。
@@ -202,13 +202,11 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 
 ## 输入法
 
-> 如果你使用 Wayland，操作可能不同，可以参照 [Fcitx5 - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/Fcitx5)。你也可以将`fcitx5-chinese-addons`替换为中州韵和 Rime。
-
 - 安装 Fcitx5 和中文输入插件
   :copy{code="yay -S fcitx5-im fcitx5-chinese-addons"}
 - 配置环境变量
   :copy{code="sudo vim /etc/environment"}
-- 向环境变量添加以下内容
+- 如果使用 X11，向环境变量添加以下内容
   ```ini [/etc/environment]
   # Fcitx5
   GTK_IM_MODULE=fcitx
@@ -218,6 +216,8 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
   INPUT_METHOD=fcitx
   GLFW_IM_MODULE=ibus
   ```
+- 如果使用 Wayland，请参考 [Fcitx5 - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/Fcitx5)。
+- 还可以将 `fcitx5-chinese-addons` 替换为中州韵和 Rime。
 
 ## 继续优化其他体验
 

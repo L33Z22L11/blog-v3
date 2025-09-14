@@ -259,10 +259,10 @@ int main(int argc, char *argv[]) {
 >         printf("Waiting for y%du!\n", a);
 >     }
 >     if(add(&b, 1) && a++) {
->     printf("XiyouLinuxGroup%d\n", b);
->     printf("Waiting for y%du!\n", a);
-> }
->   return 0;
+>         printf("XiyouLinuxGroup%d\n", b);
+>         printf("Waiting for y%du!\n", a);
+>     }
+>     return 0;
 > }
 > ```
 
@@ -284,10 +284,10 @@ int main(int argc, char *argv[]) {
     // add(&b, 1) returns true, while a++ executed with ruturning 0,
     // so this conditional statement will not be executed
     if(add(&b, 1) && a++) {
-    printf("XiyouLinuxGroup%d\n", b);
-    printf("Waiting for y%du!\n", a);
-}
-  return 0;
+        printf("XiyouLinuxGroup%d\n", b);
+        printf("Waiting for y%du!\n", a);
+    }
+    return 0;
 }
 ```
 
