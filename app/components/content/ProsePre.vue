@@ -117,6 +117,7 @@ onMounted(async () => {
 
 	position: relative;
 	overflow: clip;
+	margin: 0.5em 0;
 	border-radius: 0.5em;
 	background-color: var(--c-bg-2);
 	font-size: 0.8125rem;

@@ -16,19 +16,29 @@ function matches(q: string, e: FeedEntry): boolean {
 
 intro('🔎 获取友链的托管服务')
 
-const q = await text({
-	message: '输入关键字（回车查看全部）：',
-	placeholder: '例如: vue / react / 某个作者名 / 域名片段',
+const query = await text({
+	message: '输入关键字或任意链接：',
+	placeholder: '例如: nuxt / vercel / 站点名 / 域名片段 / 任意完整域名',
 	initialValue: process.argv[2],
 })
-if (isCancel(q)) {
+if (isCancel(query)) {
 	cancel('已取消')
 	process.exit(0)
 }
 
-const filtered = q?.trim()
-	? entries.filter(e => matches(String(q), e))
-	: entries.slice()
+const filtered = query?.trim()
+	? entries.filter(e => matches(String(query), e))
+	: entries
+
+if (query?.startsWith('http')) {
+	filtered.push({
+		author: query,
+		link: query,
+		icon: query,
+		avatar: query,
+		date: new Date().toLocaleString('en-CA'),
+	})
+}
 
 if (!filtered.length) {
 	cancel('未找到匹配的友链。')

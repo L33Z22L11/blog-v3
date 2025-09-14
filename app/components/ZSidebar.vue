@@ -19,7 +19,7 @@ const { word } = storeToRefs(searchStore)
 		<div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
 			<Icon name="ph:magnifying-glass-bold" />
 			<span class="nav-text">{{ word || '搜索' }}</span>
-			<Key class="keycut" code="K" ctrl />
+			<Key class="keycut" code="K" cmd prevent @press="searchStore.toggle()" />
 		</div>
 
 		<template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">

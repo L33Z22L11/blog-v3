@@ -6,11 +6,11 @@
 	bg-img="https://p.qlogo.cn/gh/169994096/169994096/100/"
 	bg-right
 >
-	<div class="title">
+	<div class="title text-creative">
 		纸网接入点
 	</div>
 
-	<Tip copy icon="oui:empty" :tip-options="{ placement: 'left' }">
+	<Tip copy :icon="false" :tip-options="{ placement: 'left' }">
 		<Icon name="ri:qq-fill" />169994096
 	</Tip>
 </ZWidget>
@@ -34,8 +34,8 @@
 }
 
 .tip {
-	margin: 0.2em 0;
 	font-size: 0.9em;
+	line-height: 2;
 }
 
 :deep(.bg-img).bg-img.bg-img {

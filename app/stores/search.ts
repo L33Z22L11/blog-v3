@@ -9,13 +9,6 @@ export const useSearchStore = defineStore('search', () => {
 		layoutStore.toggle('search')
 	}
 
-	useEventListener('keydown', (event: KeyboardEvent) => {
-		if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
-			event.preventDefault()
-			toggle()
-		}
-	})
-
 	const { open, close } = popoverStore.use(() => h(LazyPopoverSearch))
 
 	watch(() => layoutStore.isOpen('search'), (searchOpen) => {

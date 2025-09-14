@@ -5,8 +5,12 @@
 	--font-stroke-free: "Inter-Local", "Inter", "Microsoft YaHei", "MiSans", system-ui, sans-serif;
 	--font-monospace: "JetBrains Mono", "SFMono-Regular", "Cascadia Code", "Fira Code", "Menlo", "Monaco", "Consolas", "Noto Sans Mono", "monospace", var(--font-basic), monospace;
 
-	@media (max-resolution: 1.4dppx) {
+	@media (max-resolution: 1.2dppx) {
 		--font-basic: system-ui, sans-serif;
+	}
+
+	@media (max-resolution: 1.4dppx) {
+		--font-creative: "Inter-Local", "InterVariable", system-ui, sans-serif;
 	}
 }
 

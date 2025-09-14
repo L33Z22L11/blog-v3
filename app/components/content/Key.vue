@@ -11,18 +11,17 @@ const props = defineProps<{
 	shift?: boolean
 	alt?: boolean
 	meta?: boolean
-	noPrevent?: boolean
+	/** 智能适配：Windows用Ctrl，macOS用Cmd */
+	cmd?: boolean
+	prevent?: boolean
 }>()
 
 const emit = defineEmits<{
 	press: []
 }>()
 
-const useSymbol = computed(() => {
-	const isMac = /mac ?os/i.test(navigator?.userAgent)
-	return props.icon || isMac
-})
-
+const isMac = computed(() => /mac ?os/i.test(navigator?.userAgent))
+const useSymbol = computed(() => props.icon || isMac.value)
 const keyJoiner = computed(() => useSymbol.value ? '' : '+')
 
 // @keep-sorted
@@ -35,7 +34,7 @@ const displayMap = {
 	'Control': 'Ctrl',
 	'Delete': 'Del',
 	'Escape': 'Esc',
-	'Meta': 'Win',
+	'Meta': isMac.value ? 'Cmd' : 'Win',
 }
 
 // @keep-sorted
@@ -47,7 +46,7 @@ const symbolMap = {
 	'Delete': '⌦',
 	'Enter': '↵',
 	'Escape': '⎋',
-	'Meta': '⌘',
+	'Meta': isMac.value ? '⌘' : '田',
 	'Shift': '⇧',
 	'Tab': '⇥',
 }
@@ -67,13 +66,16 @@ const codeDisplay = computed(() => {
 		return props.text
 
 	const parts: string[] = []
-	if (props.ctrl)
+
+	if (props.cmd)
+		parts.push(normalizeCodeDisplay(isMac.value ? 'Meta' : 'Control'))
+	if (props.ctrl && !props.cmd)
 		parts.push(normalizeCodeDisplay('Control'))
 	if (props.shift)
 		parts.push(normalizeCodeDisplay('Shift'))
 	if (props.alt)
 		parts.push(normalizeCodeDisplay('Alt'))
-	if (props.meta)
+	if (props.meta && !props.cmd)
 		parts.push(normalizeCodeDisplay('Meta'))
 	if (props.code)
 		parts.push(normalizeCodeDisplay(props.code))
@@ -108,10 +110,15 @@ function updateModifierState(e: KeyboardEvent, isDown: boolean) {
  * 检查当前修饰键状态是否匹配 props
  */
 function modifiersMatch() {
-	return (!props.ctrl || modifierState.value.ctrl)
+	const cmdMatch = props.cmd
+		? (isMac.value ? modifierState.value.meta : modifierState.value.ctrl)
+		: true
+
+	return cmdMatch
+		&& (!props.ctrl || (!props.cmd && modifierState.value.ctrl))
 		&& (!props.shift || modifierState.value.shift)
 		&& (!props.alt || modifierState.value.alt)
-		&& (!props.meta || modifierState.value.meta)
+		&& (!props.meta || (!props.cmd && modifierState.value.meta))
 }
 
 function matchKeyEvent(e: KeyboardEvent, expectedCode?: string) {
@@ -125,7 +132,7 @@ useEventListener('keydown', (e) => {
 	if (matchKeyEvent(e, props.code)) {
 		emit('press')
 		active.value = true
-		props.noPrevent || e.preventDefault()
+		props.prevent && e.preventDefault()
 	}
 })
 
@@ -143,7 +150,7 @@ useEventListener('blur', () => {
 
 <template>
 <ClientOnly>
-	<kbd :class="{ active }" data-allow-mismatch @click="emit('press')">
+	<kbd :class="{ active }" @click.stop="emit('press')">
 		<slot>{{ codeDisplay }}</slot>
 	</kbd>
 </ClientOnly>
