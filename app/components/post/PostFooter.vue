@@ -16,9 +16,9 @@ const appConfig = useAppConfig()
 
 		<div class="content">
 			<ul>
-				<li v-for="(link, index) in references" :key="index">
-					<ProseA :href="link.link || ''">
-						{{ link.title ?? link.link }}
+				<li v-for="{ title, link }, i in references" :key="i">
+					<ProseA :href="link || ''">
+						{{ title ?? link }}
 					</ProseA>
 				</li>
 			</ul>

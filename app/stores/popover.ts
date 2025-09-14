@@ -3,7 +3,7 @@ import type { Raw, VNode } from 'vue'
 interface PopoverState {
 	vnode: VNode
 	duration: number
-	isOpening: Ref<boolean>
+	show: Ref<boolean>
 	zIndex: number
 }
 
@@ -15,14 +15,14 @@ export const usePopoverStore = defineStore('popover', () => {
 	const pops = ref<Raw<PopoverState>[]>([])
 	const use = (render: () => VNode, options?: PopoverOptions) => {
 		let state: PopoverState
-		const isOpening = ref(false)
+		const show = ref(false)
 		const zIndex = pops.value.length + 100
 
 		async function open() {
 			const vnode = render()
 			state = {
 				vnode,
-				isOpening,
+				show,
 				duration: options?.duration ?? 200,
 				zIndex,
 			}
@@ -30,7 +30,7 @@ export const usePopoverStore = defineStore('popover', () => {
 			Object.assign(vnode.props ??= {}, {
 				style: { '--delay': `${state.duration}ms` },
 				onClose: vnode.props?.onClose ?? close,
-				onVnodeMounted: () => (isOpening.value = true),
+				onVnodeMounted: () => (show.value = true),
 			})
 		}
 
@@ -38,7 +38,7 @@ export const usePopoverStore = defineStore('popover', () => {
 			const index = pops.value.indexOf(state)
 			if (index === -1)
 				return
-			isOpening.value = false
+			show.value = false
 
 			await delay(state.duration)
 			pops.value.splice(index, 1)

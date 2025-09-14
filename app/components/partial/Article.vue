@@ -24,7 +24,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 			{{ description }}
 		</p>
 
-		<div class="article-info" data-allow-mismatch>
+		<div class="article-info">
 			<time
 				v-if="showAllDate || !useUpdated"
 				:datetime="getIsoDatetime(date)"

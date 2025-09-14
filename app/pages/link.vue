@@ -6,7 +6,11 @@ const appConfig = useAppConfig()
 const layoutStore = useLayoutStore()
 layoutStore.setAside([])
 
-const { data: postLink } = await useAsyncData('/link', () => queryCollection('content').path('/link').first())
+const { data: postLink } = await useAsyncData(
+	'/link',
+	() => queryCollection('content').path('/link').first(),
+)
+
 useSeoMeta({
 	title: '友链',
 	ogType: 'profile',

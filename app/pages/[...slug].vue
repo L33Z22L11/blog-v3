@@ -9,6 +9,11 @@ const { data: post } = await useAsyncData(
 	() => queryCollection('content').path(route.path).first(),
 )
 
+const contentStore = useContentStore()
+const { toc, meta } = storeToRefs(contentStore)
+toc.value = post.value?.body.toc
+meta.value = post.value?.meta
+
 const excerpt = computed(() => post.value?.description || '')
 
 if (post.value) {

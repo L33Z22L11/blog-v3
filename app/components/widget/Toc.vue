@@ -1,17 +1,10 @@
 <script setup lang="ts">
 import type { TocLink } from '@nuxt/content'
 
-const route = useRoute()
 const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
 
-// 如果此处出问题，还会影响到文章获取
-// 若 watch route.path，SSG 下文章间路由时新文章数据会写入老文章键中
-const { data: post } = await useAsyncData(
-	() => `toc-${route.path}`,
-	() => queryCollection('content').path(route.path).first(),
-)
-
-const toc = computed(() => post.value?.body?.toc)
+const contentStore = useContentStore()
+const { toc } = storeToRefs(contentStore)
 const { activeTocItem } = useTocAutoHighlight(() => toc.value?.links ?? [])
 
 function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
@@ -29,6 +22,7 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 		<a href="#main-content" aria-label="返回开头">
 			<Icon name="ph:arrow-circle-up-bold" />
 		</a>
+
 		<a href="#twikoo" aria-label="评论区">
 			<Icon name="ph:chat-circle-text-bold" />
 		</a>
@@ -52,10 +46,12 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 		</ol>
 	</DefineTemplate>
 
-	<ReuseTemplate v-if="toc?.links.length" :toc-item="toc.links" />
-	<p v-else class="no-toc">
-		暂无目录信息
-	</p>
+	<ClientOnly>
+		<ReuseTemplate v-if="toc?.links.length" :toc-item="toc.links" />
+		<p v-else class="no-toc">
+			暂无目录信息
+		</p>
+	</ClientOnly>
 </ZWidget>
 </template>
 

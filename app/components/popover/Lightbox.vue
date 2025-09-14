@@ -2,7 +2,7 @@
 const props = defineProps<{
 	el: HTMLImageElement
 	caption?: string
-	isOpening?: boolean
+	show?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -151,14 +151,14 @@ useEventListener('keydown', (e) => {
 <div class="z-lightbox">
 	<Transition>
 		<div
-			v-if="isOpening"
+			v-if="show"
 			id="z-lightbox-bgmask"
 			@click="emit('close')"
 		/>
 	</Transition>
 	<Transition @enter="onEnter" @leave="onLeave">
 		<NuxtImg
-			v-if="isOpening"
+			v-if="show"
 			ref="lightbox"
 			class="image"
 			:alt="el.alt"
@@ -170,7 +170,7 @@ useEventListener('keydown', (e) => {
 		/>
 	</Transition>
 	<Transition>
-		<div v-if="isOpening" class="tooltip">
+		<div v-if="show" class="tooltip">
 			<span v-if="caption" class="caption">{{ caption }}</span>
 			<button
 				class="close"

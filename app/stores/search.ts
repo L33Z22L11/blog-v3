@@ -5,10 +5,14 @@ export const useSearchStore = defineStore('search', () => {
 	const popoverStore = usePopoverStore()
 	const word = ref('')
 
+	function toggle() {
+		layoutStore.toggle('search')
+	}
+
 	useEventListener('keydown', (event: KeyboardEvent) => {
 		if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
 			event.preventDefault()
-			layoutStore.toggle('search')
+			toggle()
 		}
 	})
 
@@ -20,5 +24,6 @@ export const useSearchStore = defineStore('search', () => {
 
 	return {
 		word,
+		toggle,
 	}
 })

@@ -19,7 +19,7 @@ const tip = computed(() => ({
 </template>
 
 <style lang="scss" scoped>
-.z-link {
+.z-link[href] {
 	margin: -0.1em -0.2em;
 	padding: 0.1em 0.2em;
 	background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 0.1em;

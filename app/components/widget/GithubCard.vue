@@ -4,9 +4,10 @@ interface Repo {
 	description: string
 	url: string
 }
-const route = useRoute()
-const { data: post } = await useAsyncData(() => `githubcard-${route.path}`, () => queryCollection('content').path(route.path).first())
-const repo = computed(() => post.value?.meta?.github as Repo | undefined)
+
+const contentStore = useContentStore()
+const { meta } = storeToRefs(contentStore)
+const repo = computed(() => meta.value?.github as Repo | undefined)
 </script>
 
 <template>
