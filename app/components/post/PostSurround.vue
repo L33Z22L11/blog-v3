@@ -26,7 +26,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 <template>
 <DefineTemplate v-slot="{ post, icon, fallbackIcon, fallbackText, alignRight }">
 	<ZRawLink :to="post?.path" class="surround-link" :align-right>
-		<Icon :name="post ? icon : fallbackIcon" />
+		<Icon :class="{ 'rtl-filp': post }" :name="post ? icon : fallbackIcon" />
 		<div class="surround-text">
 			<strong class="title" :class="getPostTypeClassName(post?.type)">
 				{{ post?.title || fallbackText }}

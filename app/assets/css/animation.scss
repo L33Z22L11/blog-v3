@@ -26,3 +26,21 @@
 	transform: translateY(var(--float-distance, 10%));
 }
 
+.collapse-enter-active,
+.collapse-leave-active {
+	overflow: hidden;
+	overflow: clip;
+	transition: max-height 0.1s;
+}
+
+.collapse-enter-from,
+.collapse-leave-to {
+	max-height: 0;
+	transition-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+}
+
+.collapse-enter-to,
+.collapse-leave-from {
+	max-height: 50vh;
+	transition-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+}

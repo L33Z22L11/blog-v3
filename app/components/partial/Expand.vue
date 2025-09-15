@@ -9,7 +9,10 @@ const expand = defineModel<boolean>()
 
 <template>
 <div class="z-expand">
-	<slot v-if="expand" />
+	<!-- 折叠动画基于 @LuoH-AN 的实现改进 -->
+	<Transition name="collapse">
+		<slot v-if="expand" />
+	</Transition>
 
 	<button class="toggle-btn" :class="{ 'in-place': inPlace }" @click="expand = !expand">
 		<Icon class="toggle-icon" :class="{ expand }" name="ph:caret-double-down-bold" />

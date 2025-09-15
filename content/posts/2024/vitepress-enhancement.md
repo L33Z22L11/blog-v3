@@ -2,7 +2,7 @@
 title: VitePress 不完全优化指南
 description: VitePress 的基本使用与定制技巧，涵盖项目初始化、汉化配置、图标引入、自定义主题等内容，旨在利用 VitePress 构建美观、高效的静态站点。
 date: 2024-11-03 17:54:50
-updated: 2024-11-05 13:19:56
+updated: 2025-09-15 23:19:18
 image: https://7.isyangs.cn/24/67290b1bd1b29-24.webp
 categories: [经验分享]
 tags: [VitePress, 前端]
@@ -232,8 +232,32 @@ svg:where(.iconify) {
 其他常用样式也一并列出，当然，在使用前最好知道这些代码意味着什么：
 
 ```css [theme-enhanced.css]
+/* stylelint-disable selector-class-pattern */
+:root {
+    --font-monospace: "JetBrains Mono", "SFMono-Regular", "Cascadia Code", "Fira Code", "Menlo", "Monaco", "Consolas", "Noto Sans Mono", "monospace", "Noto Sans SC", system-ui, monospace;
+}
+
 .VPMenuGroup > .title {
     font-size: 0.7em;
+}
+
+.VPSwitch > .check {
+    bottom: 1px;
+    width: auto;
+    height: auto;
+    aspect-ratio: 1;
+}
+
+.vp-doc > div > :where(h4, h5, h6) {
+    margin: 1.4em 0 0.5em;
+}
+
+.vp-doc blockquote > p {
+    margin: 1em 0;
+}
+
+.vp-doc table {
+    font-variant-numeric: tabular-nums;
 }
 
 .vp-doc a {
@@ -253,6 +277,30 @@ svg:where(.iconify) {
 
 .vp-doc s {
     opacity: 0.6;
+}
+
+.vp-doc ::marker {
+    color: var(--vp-c-brand-1);
+}
+
+.vp-doc ol:not([class]), .vp-doc ol:not([class]) ol ol ol {
+    list-style-type: revert;
+}
+
+.vp-doc ol:not([class]) ol, .vp-doc ol:not([class]) ol ol ol ol {
+    list-style-type: lower-alpha;
+}
+
+.vp-doc ol:not([class]) ol ol, .vp-doc ol:not([class]) ol ol ol ol ol {
+    list-style-type: lower-roman;
+}
+
+.VPBadge {
+    margin: 0 0.1em;
+    padding: 0.2em 0.5em;
+    font-size: 0.8em;
+    line-height: 1.2;
+    transform: translateY(-0.1em);
 }
 ```
 
