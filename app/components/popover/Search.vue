@@ -13,6 +13,7 @@ const { data, status } = useAsyncData(
 	}),
 )
 
+// TODO: 优化中文分词逻辑
 const miniSearch = new MiniSearch({
 	fields: ['title', 'content'],
 	storeFields: ['title', 'titles', 'content', 'level'],
@@ -25,21 +26,19 @@ const miniSearch = new MiniSearch({
 const searchStore = useSearchStore()
 const searchInput = ref<HTMLInputElement>()
 
-watch(() => props.show, async (isOpen) => {
-	await nextTick()
-	isOpen && searchInput.value?.select()
-})
-
-// TODO: 随机展示热门搜索词
 const { word } = storeToRefs(searchStore)
 const result = computed(() => {
 	void data.value
 	return miniSearch.search(word.value)
 })
 
-const activeIndex = ref(0)
 const isKeyboardMode = ref(false)
 const listResult = useTemplateRef('list-result')
+
+const activeIndex = ref(0)
+const activeItem = computed(() => listResult.value?.children[activeIndex.value] as HTMLElement | undefined)
+
+watch(() => props.show, focusInput)
 
 watch(status, (newStatus) => {
 	if (newStatus === 'success' && data.value) {
@@ -51,30 +50,28 @@ watch(word, () => {
 	activeIndex.value = 0
 })
 
-watch(activeIndex, (newVal, oldVal) => {
-	if (!result.value?.length)
-		return
-	if (newVal < 0 || newVal >= result.value?.length) {
-		activeIndex.value = oldVal
-	}
-})
-
 useEventListener('mousemove', () => isKeyboardMode.value = false)
 useEventListener('keydown', () => isKeyboardMode.value = true)
 
-const activeItem = computed(() => listResult.value?.children[activeIndex.value] as HTMLElement | undefined)
+async function focusInput() {
+	await nextTick()
+	searchInput.value?.focus()
+}
 
-watch(activeItem, (item) => {
-	if (item && isKeyboardMode.value) {
-		item.scrollIntoView({
+function updateActiveIndex(index: number, isKeyboard = false) {
+	focusInput()
+
+	if (index < 0 || index >= result.value?.length)
+		return
+	activeIndex.value = index
+
+	if (isKeyboard)
+		isKeyboardMode.value = true
+
+	if (activeItem.value && isKeyboardMode.value) {
+		activeItem.value.scrollIntoView({
 			block: 'nearest',
 		})
-	}
-})
-
-function updateActiveIndex(index: number) {
-	if (!isKeyboardMode.value) {
-		activeIndex.value = index
 	}
 }
 
@@ -127,13 +124,13 @@ function openActiveItem() {
 						v-bind="item"
 						:class="{ active: activeIndex === itemIndex }"
 						@click="searchStore.toggle()"
-						@mouseenter="updateActiveIndex(itemIndex)"
+						@mousemove="updateActiveIndex(itemIndex)"
 					/>
 				</ol>
 
 				<div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
-					<Key code="arrowup" text="↑" @press="activeIndex--" />
-					<Key code="arrowdown" text="↓" @press="activeIndex++" />
+					<Key code="arrowup" text="↑" prevent @press="updateActiveIndex(activeIndex - 1, true)" />
+					<Key code="arrowdown" text="↓" prevent @press="updateActiveIndex(activeIndex + 1, true)" />
 					切换&emsp;
 					<Key code="Enter" @press="openActiveItem" />
 					选择&emsp;
