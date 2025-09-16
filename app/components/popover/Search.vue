@@ -129,12 +129,12 @@ function openActiveItem() {
 				</ol>
 
 				<div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
-					<Key code="arrowup" text="↑" prevent @press="updateActiveIndex(activeIndex - 1, true)" />
-					<Key code="arrowdown" text="↓" prevent @press="updateActiveIndex(activeIndex + 1, true)" />
+					<Key code="ArrowUp" text="↑" prevent @press="updateActiveIndex(activeIndex - 1, true)" />
+					<Key code="ArrowDown" text="↓" prevent @press="updateActiveIndex(activeIndex + 1, true)" />
 					切换&emsp;
 					<Key code="Enter" @press="openActiveItem" />
 					选择&emsp;
-					<Key code="escape" @press="searchStore.toggle()">
+					<Key code="Escape" @press="searchStore.toggle()">
 						Esc
 					</Key>
 					关闭
