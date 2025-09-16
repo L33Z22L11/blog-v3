@@ -78,7 +78,7 @@ class: gradient-card active
 
 ## Markdown 语法组件
 
-可以通过 Mardown 原生语法、HTML 语法和 MDC 语法使用的组件。
+可以通过 Markdown 原生语法、HTML 语法和 MDC 语法使用的组件。
 
 ### 链接 `ProseA`
 

@@ -312,7 +312,7 @@ npm 配置的前缀竟然是 `/usr`！
   - 如果忘了自己的用户名，可以执行这个命令：
   :copy{prompt="#" code="cat /etc/passwd | grep &quot;:1000&quot;"}
 - 安装权限修复工具
-  :copy{code="yay -S pacman-fix-permissons"}
+  :copy{code="yay -S pacman-fix-permissions"}
 - 修复权限
   :copy{code="sudo pacman-fix-permissions"}
 

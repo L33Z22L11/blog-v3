@@ -24,7 +24,7 @@ useEventListener(emblaRef, 'wheel', (e) => {
 </script>
 
 <template>
-<div class="z-slide" dir="ltr">
+<div class="z-slide">
 	<div class="z-slide-header">
 		<span class="title text-creative">精选文章</span>
 		<div class="at-slide-hover">
@@ -32,7 +32,7 @@ useEventListener(emblaRef, 'wheel', (e) => {
 			按住 Shift 横向滚动
 		</div>
 	</div>
-	<div ref="emblaRef" class="embla">
+	<div ref="emblaRef" class="embla" dir="ltr">
 		<div class="slide-list">
 			<ZRawLink
 				v-for="(article, index) in list"

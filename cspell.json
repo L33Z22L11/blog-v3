@@ -1,0 +1,6 @@
+{
+  "unknownWords": "report-common-typos",
+  "ignorePaths": [
+    "pnpm-lock.yaml"
+  ]
+}

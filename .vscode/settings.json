@@ -2,6 +2,9 @@
   "[css]": {
     "editor.defaultFormatter": "stylelint.vscode-stylelint"
   },
+  "[mdc]": {
+    "files.autoGuessEncoding": false
+  },
   "[yaml]": {
     "editor.formatOnSave": false
   },

@@ -55,6 +55,7 @@
     "@zinkawaii/stylelint-config": "catalog:quality",
     "better-sqlite3": "catalog:content",
     "cross-env": "catalog:framework",
+    "cspell": "catalog:quality",
     "eslint": "catalog:quality",
     "fast-xml-parser": "catalog:util",
     "nanoid": "catalog:util",

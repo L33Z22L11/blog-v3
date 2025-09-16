@@ -11,6 +11,7 @@ const pageArr = computed(() => genPageArr(page.value, props.totalPages))
 <nav class="pagination" :aria-label="`第${page}页，共${totalPages}页`">
 	<ZButton
 		:disabled="page <= 1"
+		class="rtl-flip"
 		icon="ph:arrow-fat-left-duotone"
 		aria-label="上一页"
 		@click="page--"
@@ -29,6 +30,7 @@ const pageArr = computed(() => genPageArr(page.value, props.totalPages))
 	</template>
 	<ZButton
 		:disabled="page >= totalPages"
+		class="rtl-flip"
 		icon="ph:arrow-fat-right-duotone"
 		aria-label="下一页"
 		@click="page++"

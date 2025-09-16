@@ -346,7 +346,7 @@ void func() {
 ```c
 #include <stdio.h>
 int main() {
-    // It outputs a anoymous int array as a char array
+    // It outputs a anonymous int array as a char array
     // using little-endian storing methods
     puts((char *)(int const[]){
         // o y i X     n i L u     r G x u

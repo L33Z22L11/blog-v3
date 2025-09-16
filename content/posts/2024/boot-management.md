@@ -134,6 +134,6 @@ Boot2001* EFI USB Device        RC
        source: /sys/firmware/efi/efivars/LoaderEntries-4a67b082-0a4c-41cf-b6c7-440b29bb8c4f
 ```
 
-使用此命令可以修改 Linux Boot Manager 的下一次启动项，若想修改默认启动项，请使用 `set-dafault` 选项。
+使用此命令可以修改 Linux Boot Manager 的下一次启动项，若想修改默认启动项，请使用 `set-default` 选项。
 
 :copy{code="sudo bootctl set-oneshot [ID]"}

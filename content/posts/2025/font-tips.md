@@ -280,7 +280,7 @@ style:
     font-synthesis: none;
     font-variation-settings: "wght" 600, "BEVL" 100;
 
-    > .splitted-char {
+    > .split-char {
         animation: 3.14s infinite alternate vf-weight, 2.72s infinite alternate vf-bevel;
         animation-delay: var(--delay);
         animation-play-state: paused;
@@ -298,7 +298,7 @@ style:
     to { font-variation-settings: "BEVL" 1; }
 }
 
-.zhilu-header:hover > .splitted-char {
+.zhilu-header:hover > .split-char {
     animation-play-state: running;
 }
 ```
