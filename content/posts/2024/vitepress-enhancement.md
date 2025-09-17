@@ -234,7 +234,7 @@ svg:where(.iconify) {
 ```css [theme-enhanced.css]
 /* stylelint-disable selector-class-pattern */
 :root {
-    --font-monospace: "JetBrains Mono", "SFMono-Regular", "Cascadia Code", "Fira Code", "Menlo", "Monaco", "Consolas", "Noto Sans Mono", "monospace", "Noto Sans SC", system-ui, monospace;
+    --font-monospace: "JetBrains Mono", "SFMono-Regular", "Cascadia Code", "Fira Code", "Monaco", "Consolas", "Noto Sans Mono", "monospace", "Noto Sans SC", system-ui, monospace;
 }
 
 .VPMenuGroup > .title {

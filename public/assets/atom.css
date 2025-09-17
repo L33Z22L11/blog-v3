@@ -10,6 +10,7 @@
 	background-color: var(--bg-1);
 	font-family: Inter, sans-serif;
 	line-height: 1.6;
+	text-autospace: normal;
 	color: var(--text-1);
 	color-scheme: light dark;
 	transition: background-color 0.3s, color 0.1s;
@@ -58,6 +59,10 @@ blockquote {
 	margin: 1em 0;
 	padding: 0 0.8em;
 	border-inline-start: 0.2em solid var(--text-3);
+}
+
+code, pre {
+	text-autospace: none;
 }
 
 .logo-header {

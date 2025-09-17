@@ -75,13 +75,13 @@ onMounted(() => {
 	menu, ol, ul {
 		margin: 0.5em 0;
 		padding-inline-start: 1.5em;
+		font-size: 0.9rem;
 		list-style: revert;
 
 		> li {
 			margin: 0.2em 0;
 
 			&::marker {
-				font-size: 0.8em;
 				color: var(--c-primary);
 			}
 		}
@@ -94,10 +94,6 @@ onMounted(() => {
 		border-radius: 4px;
 		background-color: var(--c-bg-2);
 		font-size: 0.9rem;
-
-		> .z-codeblock {
-			margin: 0 -0.8rem;
-		}
 	}
 
 	.tk-owo-emotion {

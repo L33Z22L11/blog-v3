@@ -8,14 +8,15 @@
 	font: 1rem / 1.4 sans-serif;
 	font-family: var(--font-basic);
 	font-synthesis: style;
-	font-variant-alternates: styleset(open-digits, disambiguation, round-quotes-and-commas);
 	word-wrap: break-word;
+	text-autospace: normal;
 	text-size-adjust: none;
 	color: var(--c-text-1);
 	transition: color 0.1s, background-color 0.2s;
 	scroll-behavior: smooth;
 	scroll-padding: 2rem;
 	scrollbar-color: var(--c-text-3) transparent;
+	font-variant-alternates: styleset(open-digits, disambiguation, round-quotes-and-commas);
 	-webkit-tap-highlight-color: var(--c-primary-soft);
 
 	&:dir(rtl) {

@@ -2,7 +2,7 @@
 title: 前端字体二三事
 description: 前端字体排版有许多细节需要注意，文章从我的实际开发经验出发，介绍合成字形、对齐技巧、排版优化，以及自己的一些踩坑心得。
 date: 2025-04-16 08:49:50
-updated: 2025-08-14 01:25:31
+updated: 2025-09-17 22:42:53
 image: https://7.isyangs.cn/24/680072e8c376c-24.webp
 categories: [经验分享]
 tags: [代码, 前端, 字体]
@@ -215,7 +215,13 @@ link: https://hsu.cy/2024/04/nopingfang/
 
 我的见解是，中英文之间应当有适当的空白，但空白最好**交由排版引擎实现**而非手动添加。比如 Word，比如微信聊天界面。
 
-Chrome 120 实现了 [CSS 文本模块级别 4 中的脚本间距](https://developer.chrome.google.cn/blog/css-i18n-features?hl=zh-cn#inter-script_spacing_text-autospace)，启用 `chrome://flags/#enable-experimental-web-platform-features` 便可在不同脚本（中英文）间自动添加空白。
+Chrome 120 实现了 [CSS 文本模块级别 4 中的脚本间距](https://developer.chrome.google.cn/blog/css-i18n-features?hl=zh-cn#inter-script_spacing_text-autospace)，~~启用 `chrome://flags/#enable-experimental-web-platform-features` 便可在不同脚本（中英文）间自动添加空白~~。Chrome 140 已经支持 `text-autospace: normal` 特性，在 CSS 中设置即可使用：
+
+```css
+:root {
+    text-autospace: normal;
+}
+```
 
 但用户代理（浏览器）样式表中似乎缺少了这个：
 
@@ -225,7 +231,7 @@ code, pre {
 }
 ```
 
-Look into my eyes，回答我，Chrome！！
+~~Look into my eyes，回答我，Chrome！！~~现在需要用户手动处理，因为加空格不是默认行为了。
 
 ### 对抗文本溢出算法
 
