@@ -18,7 +18,6 @@ $font-weights: (
 	100: "Thin",
 	200: "ExtraLight",
 	300: "Light",
-	350: "DemiLight",
 	400: "Regular",
 	500: "Medium",
 	600: "SemiBold",
@@ -30,9 +29,7 @@ $font-weights: (
 @each $weight, $name in $font-weights {
 	@font-face {
 		font-family: Inter-Local;
-		font-style: normal;
 		font-weight: $weight;
-		font-display: swap;
 		src: local("Inter #{$name}");
 	}
 
@@ -40,24 +37,7 @@ $font-weights: (
 		font-family: Inter-Local;
 		font-style: italic;
 		font-weight: $weight;
-		font-display: swap;
-		src: local("Inter #{$name} Italic");
-	}
-
-	@font-face {
-		font-family: "Noto Sans SC-Local";
-		font-style: normal;
-		font-weight: $weight;
-		font-display: swap;
-		src: local("Noto Sans SC-#{$name}");
-	}
-
-	@font-face {
-		font-family: "Noto Serif SC-Local";
-		font-style: normal;
-		font-weight: $weight;
-		font-display: swap;
-		src: local("Noto Serif SC-#{$name}");
+		src: local("Inter #{if($weight == 400, 'Italic', '#{$name} Italic')}");
 	}
 }
 
@@ -78,15 +58,17 @@ $font-weights: (
 
 @include inter-styleset(Inter-Local);
 
+// 仅在 Chrome 111+ 启用本地可变字体
 @supports (font-variant-alternates: normal) {
 	@font-face {
 		font-family: "Noto Sans SC-Local";
+		font-weight: 100 900; // 不指定则为 400
 		src: local("Noto Sans SC");
 	}
 
 	@font-face {
 		font-family: "Noto Serif SC-Local";
+		font-weight: 100 900;
 		src: local("Noto Serif SC");
 	}
 }
-

@@ -111,6 +111,11 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	color: var(--cg-color);
 }
 
+// CSR 前空 category 产生 double gap，同时需避免误伤 iconify
+span:not([class]):empty {
+	display: none;
+}
+
 .article-cover {
 	position: absolute;
 	opacity: 0.8;
