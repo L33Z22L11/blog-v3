@@ -2,7 +2,7 @@
 import { useEventListener } from '@vueuse/core'
 import { computed, ref } from 'vue'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
 	text?: string
 	/** https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent/key */
 	code?: string
@@ -14,14 +14,16 @@ const props = defineProps<{
 	/** 智能适配：Windows用Ctrl，macOS用Cmd */
 	cmd?: boolean
 	prevent?: boolean
-}>()
+}>(), {
+	icon: undefined,
+})
 
 const emit = defineEmits<{
 	press: []
 }>()
 
 const isMac = computed(() => /mac ?os/i.test(navigator?.userAgent))
-const useSymbol = computed(() => props.icon || isMac.value)
+const useSymbol = computed(() => isMac.value ? props.icon !== false : props.icon)
 const keyJoiner = computed(() => useSymbol.value ? '' : '+')
 
 // @keep-sorted
@@ -122,7 +124,7 @@ function modifiersMatch() {
 }
 
 function matchKeyEvent(e: KeyboardEvent, expectedCode?: string) {
-	if (expectedCode && e.key.toLowerCase() !== expectedCode.toLowerCase())
+	if (expectedCode && e.key?.toLowerCase() !== expectedCode.toLowerCase())
 		return false
 	return modifiersMatch()
 }
