@@ -17,27 +17,25 @@
 .gradient-card {
 	position: relative;
 	border-radius: 0.5rem;
-	background: no-repeat 100% / 400%;
-	background-image: linear-gradient(45deg, var(--c-accent), var(--c-primary-soft) 40%, transparent 50%);
-	transition: all 0.5s;
 	z-index: 0;
 
 	&::before {
 		content: "";
 		position: absolute;
-		inset: 2px;
-		border-radius: calc(0.5rem - 2px);
-		transition: all 1s;
+		opacity: 0;
+		inset: 0;
+		border: 2px solid transparent;
+		border-radius: inherit;
+		background: linear-gradient(var(--c-bg-a80), var(--c-bg-a80)) padding-box, linear-gradient(45deg, var(--c-accent), var(--c-primary-soft)) border-box;
+		transition: opacity 0.2s;
 		z-index: -1;
 	}
 
 	&:hover, &.active {
-		background-position: 0;
 		color: var(--c-text-1);
 
 		&::before {
-			background-color: var(--c-bg-a80);
-			transition: all 0.2s;
+			opacity: 1;
 		}
 	}
 }

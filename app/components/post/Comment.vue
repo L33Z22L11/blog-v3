@@ -53,16 +53,34 @@ onMounted(() => {
 
 	.tk-content {
 		margin-top: 0.1rem;
-
-		img {
-			border-radius: 0.5em;
-		}
 	}
 
 	.tk-comments-title, .tk-nick > strong {
 		font-family: var(--font-creative);
 	}
 
+	.tk-owo-emotion {
+		width: auto;
+		height: 1.4em;
+		vertical-align: text-bottom;
+	}
+
+	.tk-extras, .tk-footer {
+		font-size: 0.7rem;
+		color: var(--c-text-3);
+	}
+
+	.tk-replies:not(.tk-replies-expand) {
+		mask-image: linear-gradient(#FFF 50%, transparent);
+	}
+
+	.tk-expand {
+		border-radius: 0.5rem;
+		transition: background-color 0.1s;
+	}
+}
+
+:deep(:where(.tk-preview-container,.tk-content)) {
 	pre {
 		border-radius: 0.5rem;
 		font-size: 0.8125rem;
@@ -70,6 +88,10 @@ onMounted(() => {
 
 	p {
 		margin: 0.2em 0;
+	}
+
+	img {
+		border-radius: 0.5em;
 	}
 
 	menu, ol, ul {
@@ -94,26 +116,6 @@ onMounted(() => {
 		border-radius: 4px;
 		background-color: var(--c-bg-2);
 		font-size: 0.9rem;
-	}
-
-	.tk-owo-emotion {
-		width: auto;
-		height: 1.4em;
-		vertical-align: text-bottom;
-	}
-
-	.tk-extras, .tk-footer {
-		font-size: 0.7rem;
-		color: var(--c-text-3);
-	}
-
-	.tk-replies:not(.tk-replies-expand) {
-		mask-image: linear-gradient(#FFF 50%, transparent);
-	}
-
-	.tk-expand {
-		border-radius: 0.5rem;
-		transition: background-color 0.1s;
 	}
 }
 </style>
