@@ -63,9 +63,9 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 - 快速切换到管理员终端（需要配置 OpenSSH 服务）
   :copy{prompt="PS>" code="ssh localhost"}
 - 在配置文件中添加此行，快速进入 Git Bash
-  :copy{prompt="$PROFILE" lang="sh" code="Set-Alias bash $env:ProgramFiles\Git\bin\bash"}
+  :copy{prompt="$PROFILE" lang="powershell" code="Set-Alias bash $env:ProgramFiles\Git\bin\bash"}
 - 在配置文件中添加此行，按 `Ctrl+D` 退出 PowerShell
-  :copy{prompt="$PROFILE" lang="sh" code="Set-PSReadlineKeyHandler -Chord Ctrl+d -Function DeleteCharOrExit"}
+  :copy{prompt="$PROFILE" lang="powershell" code="Set-PSReadlineKeyHandler -Chord Ctrl+d -Function DeleteCharOrExit"}
 
 ### Oh My Posh
 

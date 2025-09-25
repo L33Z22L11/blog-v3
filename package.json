@@ -3,7 +3,7 @@
   "type": "module",
   "version": "3.4.7",
   "private": true,
-  "packageManager": "pnpm@10.16.0",
+  "packageManager": "pnpm@10.17.1",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "scripts": {
     "prepare": "pnpx rimraf .data node_modules/.cache",
@@ -50,6 +50,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:quality",
     "@clack/prompts": "catalog:util",
+    "@dxup/nuxt": "catalog:framework",
     "@iconify-json/catppuccin": "catalog:ui",
     "@iconify-json/ph": "catalog:ui",
     "@zinkawaii/stylelint-config": "catalog:quality",
@@ -63,6 +64,7 @@
     "rehype-katex": "catalog:content",
     "remark-math": "catalog:content",
     "remark-reading-time": "catalog:content",
+    "rimraf": "catalog:util",
     "sass-embedded": "catalog:framework",
     "strip-ansi": "catalog:util",
     "stylelint": "catalog:quality",

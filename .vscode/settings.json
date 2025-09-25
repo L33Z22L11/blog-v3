@@ -23,6 +23,7 @@
     "scss",
     "vue"
   ],
+  "typescript.tsdk": "node_modules\\typescript\\lib",
   "vue.autoInsert.dotValue": true,
   "vue.format.template.initialIndent": false,
   "vue.inlayHints.destructuredProps": true,

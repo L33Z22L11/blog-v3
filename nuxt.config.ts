@@ -1,6 +1,6 @@
 import type { NitroConfig } from 'nitropack'
 import process from 'node:process'
-import ci from 'ci-info'
+import ci, { name } from 'ci-info'
 import blogConfig from './blog.config'
 import packageJson from './package.json'
 import redirectList from './redirects.json'
@@ -104,6 +104,7 @@ export default defineNuxtConfig({
 
 	// @keep-sorted
 	modules: [
+		'@dxup/nuxt',
 		'@nuxt/content',
 		'@nuxt/icon',
 		'@nuxt/image',
