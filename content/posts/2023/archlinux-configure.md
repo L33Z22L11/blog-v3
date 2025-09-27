@@ -123,18 +123,18 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 
   :copy{code="yay -S visual-studio-code-bin"}
 
-## V2$(echo r)aya
+## V2\$(echo r)aya
 
 需要先安装浏览器，或者局域网下其他设备访问本设备的 2017 端口的 Web 控制台。
 
-- 安装 V2$(echo r)aya-bin
+- 安装 V2\$(echo r)aya-bin
   :copy{code="yay -S v2$(echo r)aya-bin"}
-- 启动 V2$(echo r)aya 服务并设置开机启动
+- 启动 V2\$(echo r)aya 服务并设置开机启动
   :copy{code="sudo systemctl enable --now v2$(echo r)aya"}
 
 如果遇到问题，可以手动安装。
 
-- 切换到 yay/v2$(echo r)aya 目录
+- 切换到 yay/v2\$(echo r)aya 目录
   :copy{code="cd ~/.cache/yay/v2$(echo r)aya-bin"}
 - 编辑 PKGBUILD 文件
   :copy{code="vim PKGBUILD"}
@@ -144,7 +144,7 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
   ```
 - 编译安装
   :copy{code="GOPROXY=http://goproxy.cn makepkg -si"}
-- 启动 V2$(echo r)aya 服务并设置开机启动
+- 启动 V2\$(echo r)aya 服务并设置开机启动
 
 随后点击图标会自动访问 `http://127.0.0.1:2017`，配置即可。
 
@@ -153,7 +153,7 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 - 透明Proxy/系统Proxy实现方式：`tproxy`
 - 规则端口的分流模式：`Mainland 白名单模式`
 - 点击“保存并应用”
-- 在左上角启停 V2$(echo r)aya
+- 在左上角启停 V2\$(echo r)aya
 
 ## Zsh
 

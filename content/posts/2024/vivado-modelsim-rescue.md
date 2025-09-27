@@ -123,7 +123,7 @@ AI 分析的原因没有问题，Skymaster 也确实给我发来了 VS Code 打�
 
 那就在微软商店安装……😵卡住了，网络不好。
 
-Cl$(echo a)sh for Windows 或 v2$(echo r)ayaN 提供了 Fiddler EnableLoopback Utility 插件，能够解除 UWP 应用代理回环限制，从而在 UWP 应用上使用代理。解除代理限制后，这个 2 MB 的小记事本几秒就下载好了。
+Cl\$(echo a)sh for Windows 或 v2\$(echo r)ayaN 提供了 Fiddler EnableLoopback Utility 插件，能够解除 UWP 应用代理回环限制，从而在 UWP 应用上使用代理。解除代理限制后，这个 2 MB 的小记事本几秒就下载好了。
 
 ### 重新激活 Modelsim
 
