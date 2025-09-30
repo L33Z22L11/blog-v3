@@ -54,9 +54,11 @@ export function genPageArr(current: number, total: number, expand: number = 1) {
 	const start = Math.max(2, Math.min(current - expand, total - 2 * expand))
 	const end = Math.min(total, start + 2 * expand)
 	const pageArr = Array.from({ length: end - start + 1 }, (_, i) => start + i)
-	start > 2 && pageArr.unshift(Number.NEGATIVE_INFINITY)
+	start > 3 && pageArr.unshift(Number.NEGATIVE_INFINITY)
+	start === 3 && pageArr.unshift(2)
 	start > 1 && pageArr.unshift(1)
-	end < total - 1 && pageArr.push(Number.POSITIVE_INFINITY)
+	end < total - 2 && pageArr.push(Number.POSITIVE_INFINITY)
+	end === total - 2 && pageArr.push(total - 1)
 	end < total && pageArr.push(total)
 	return pageArr
 }

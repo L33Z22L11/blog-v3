@@ -949,6 +949,18 @@ export default [
 				date: '2025-09-22',
 				comment: 'RefactX 主题相关介绍、个人思考。',
 			},
+			{
+				author: 'Elykia',
+				title: '致以无暇之人',
+				desc: '爱莉希雅永远爱你～',
+				link: 'https://blog.elykia.cn/',
+				feed: 'https://blog.elykia.cn/atom.xml',
+				icon: 'https://blog.elykia.cn/favicon.ico',
+				avatar: getGhAvatar('elykia-cn'),
+				archs: ['Hexo', '国内 CDN'],
+				date: '2025-09-26',
+				comment: 'Hexo 安知鱼主题美化。',
+			},
 		],
 	},
 	/* ========从此处新增友链======== */

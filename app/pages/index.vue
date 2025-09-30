@@ -67,7 +67,7 @@ const listRecommended = computed(() => sort(
 		/>
 	</TransitionGroup>
 
-	<ZPagination v-model="page" :total-pages />
+	<ZPagination v-model="page" class="pagination" sticky :total-pages="totalPages" />
 </div>
 </template>
 

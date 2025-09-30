@@ -1,6 +1,11 @@
 <script setup lang="ts">
 const layoutStore = useLayoutStore()
 const hasAside = computed(() => layoutStore.asideWidgets?.length)
+const { translate } = storeToRefs(layoutStore)
+
+const panelTranslateStyle = computed(() => ({
+	transform: Object.values(translate.value).map(v => v ? `translate(${v})` : '').join(' '),
+}))
 
 useEventListener('keydown', (event) => {
 	if (event.key === 'Escape') {
@@ -10,7 +15,7 @@ useEventListener('keydown', (event) => {
 </script>
 
 <template>
-<div id="z-panel" :class="{ 'has-active': layoutStore.isAnyOpen }">
+<div id="z-panel" :class="{ 'has-active': layoutStore.isAnyOpen }" :style="panelTranslateStyle">
 	<button
 		id="toggle-sidebar"
 		:class="{ active: layoutStore.isOpen('sidebar') }"
@@ -35,13 +40,14 @@ useEventListener('keydown', (event) => {
 #z-panel {
 	position: fixed;
 	overflow: hidden;
-	inset-inline-end: min(2rem, 5%);
 	bottom: min(2rem, 5%);
 	border-radius: 0.5rem;
 	background-color: var(--c-bg-a50);
 	backdrop-filter: blur(0.5rem);
 	font-size: 1.4rem;
+	transition: transform 0.1s;
 	z-index: 100;
+	inset-inline-end: min(1rem, 5%);
 
 	@media (max-height: $breakpoint-phone) {
 		display: flex;

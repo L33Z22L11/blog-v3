@@ -63,8 +63,12 @@ menu, ol, ul {
 button {
 	cursor: pointer;
 
-	.iconify:only-child {
+	> .iconify:only-child {
 		display: block;
+	}
+
+	&:disabled {
+		cursor: auto;
 	}
 }
 

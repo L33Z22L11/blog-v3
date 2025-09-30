@@ -147,9 +147,8 @@ onUnmounted(() => {
 
 		input.abcjs-midi-tempo {
 			position: relative;
-			width: 4em;
+			width: 3em;
 			text-align: end;
-			margin-inline-end: -1em;
 		}
 
 		.abcjs-loading .abcjs-loading-svg {

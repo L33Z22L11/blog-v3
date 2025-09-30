@@ -104,8 +104,6 @@ recommend: true
   "editor.formatOnSave": true,
   // 编写代码时自动格式化
   "editor.formatOnType": true,
-  // 行内代码提示只在按下 Ctrl+Alt 时显示
-  "editor.inlayHints.enabled": "offUnlessPressed",
   // 自动检测文件编码
   "files.autoGuessEncoding": true,
   // Git 定时拉取
@@ -122,6 +120,8 @@ recommend: true
   "git.terminalGitEditor": true,
   // 增大集成终端最大记录行数
   "terminal.integrated.scrollback": 10000,
+  // 默认在新窗口中打开文件夹
+  "window.openFoldersInNewWindow": "on",
 }
 ```
 
