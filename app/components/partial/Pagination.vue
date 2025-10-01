@@ -87,8 +87,7 @@ onUnmounted(() => {
 	}
 
 	> .pagination-button {
-		margin: -1px;
-		border-width: 0 1px;
+		border: none;
 		border-radius: 0;
 		box-shadow: none;
 	}

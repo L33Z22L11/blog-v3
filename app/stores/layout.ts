@@ -25,8 +25,9 @@ export const useLayoutStore = defineStore('layout', () => {
 		open.value[key] = !isActive
 	}
 
-	const setAside = (widgets: WidgetName[]) => {
-		asideWidgets.value = widgets
+	const setAside = (widgets?: WidgetName[]) => {
+		if (widgets)
+			asideWidgets.value = widgets
 	}
 
 	const setTranslate = (reason: string, value: string) => {
