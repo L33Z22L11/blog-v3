@@ -18,12 +18,10 @@
 ## 使用本主题的博客
 
 > 主题吸收了 [Stellar](https://github.com/xaoxuu/hexo-theme-stellar) 的设计风格，命名为 **Clarity**，寓意清楚的阅读体验和清晰的观点表达。
->
-> v3.3 (不含) 之前使用 Nuxt 3 + Nuxt Content 2，更新依赖/删除 lcok 文件可能导致项目无法启动。
 
 | 博客名称                                    | 作者          | 对应上游版本 | 下游特色功能                   |
 | ------------------------------------------- | ------------- | ------------ | ------------------------------ |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**  | **L33Z22L11** | **v3.4.7**   | (我是上游)                     |
+| **[纸鹿摸鱼处](https://blog.zhilu.site/)**  | **L33Z22L11** | **v3.4.8**   | (我是上游)                     |
 | [希乐博客](https://blog.xlenco.top/)        | Xlenco        | v3.4.0       | 最新评论                       |
 | [SteinsNote](https://blog.labmem.chat/)     | Labmem-00     | v3.1-241112  | 专栏                           |
 | [月空人](https://whbbit.cn/)                | Whbbit1999    | v3.4.8       | 项目/博客/Snippets页           |
@@ -158,7 +156,7 @@ pnpm preview
 
 - Vercel 先前创建的项目需要 [手动指定 pnpm 10](https://vercel.com/docs/builds/configure-a-build#corepack)。
 - 如果修改了 API 路径，使用 EdgeOne 部署需要同步修改 `edgeone.json`。
-- 部署项目时 Node.js 版本最好高于 `22.15.0`。
+- 运行、部署项目时 Node.js 版本需要高于 `22.15.0`。
 
 ## 贡献
 

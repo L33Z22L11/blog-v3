@@ -7,18 +7,18 @@
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "scripts": {
     "prepare": "pnpm clean && pnpm build:packages",
-    "clean": "pnpx rimraf .data node_modules/.cache",
+    "clean": "rimraf .data node_modules/.cache",
     "build:packages": "pnpm -r --filter ./packages/* build",
     "dev": "nuxt dev --no-qr",
     "dev:host": "nuxt dev --host",
-    "build": "cross-env NODE_OPTIONS='--no-deprecation' nuxt build",
+    "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "lint": "stylelint '**/*.{vue,scss}'",
     "lint:fix": "eslint --fix && stylelint '**/*.{vue,scss}' --fix",
-    "new": "node scripts/new-blog.ts",
-    "check:feed": "pnpx tsx scripts/framework/get-feed.ts",
-    "check:feed/all": "pnpx tsx scripts/framework/check-all-feeds.ts"
+    "new": "tsx scripts/new-blog.ts",
+    "check:feed": "tsx scripts/framework/get-feed.ts",
+    "check:feed/all": "tsx scripts/framework/check-all-feeds.ts"
   },
   "dependencies": {
     "@nuxt/content": "catalog:content",
@@ -57,7 +57,6 @@
     "@iconify-json/catppuccin": "catalog:ui",
     "@iconify-json/ph": "catalog:ui",
     "@zinkawaii/stylelint-config": "catalog:quality",
-    "cross-env": "catalog:framework",
     "cspell": "catalog:quality",
     "eslint": "catalog:quality",
     "fast-xml-parser": "catalog:util",
@@ -72,6 +71,7 @@
     "sass-embedded": "catalog:framework",
     "strip-ansi": "catalog:util",
     "stylelint": "catalog:quality",
+    "tsx": "catalog:framework",
     "typescript": "catalog:framework",
     "unplugin-yaml": "catalog:framework"
   }
