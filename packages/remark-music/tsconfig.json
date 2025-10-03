@@ -1,5 +1,6 @@
 {
-  "compilerOptions": {
-    "moduleResolution": "node"
-  }
+  "extends": "@zinkawaii/tsconfig",
+  "include": [
+    "src/**/*.ts"
+  ]
 }

@@ -1,20 +1,26 @@
 {
   "name": "remark-music",
   "type": "module",
-  "version": "0.1.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "0.2.0",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts"
+    "build": "tsdown --exports"
   },
   "dependencies": {
     "unist-util-visit": "catalog:content"
   },
   "devDependencies": {
-    "tsup": "catalog:framework",
+    "@zinkawaii/tsconfig": "catalog:framework",
+    "tsdown": "catalog:framework",
     "typescript": "catalog:framework"
   }
 }

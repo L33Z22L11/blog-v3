@@ -27,7 +27,7 @@ onUnmounted(() => {
 	class="pagination"
 	:class="{ sticky, expand }"
 	:aria-label="`第${page}页，共${totalPages}页`"
-	:style="{ '--collapsed-width': `${14 + (expandPages ?? 2) * 4}em` }"
+	:style="{ '--collapsed-width': `${pageArr.length * 2.5 + 4}em` }"
 >
 	<ZButton
 		:disabled="page <= 1"
@@ -64,7 +64,6 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 .pagination {
 	display: flex;
-	justify-content: space-between;
 	overflow: hidden;
 	overflow: clip;
 	max-width: calc(100vw);
@@ -90,17 +89,18 @@ onUnmounted(() => {
 		border: none;
 		border-radius: 0;
 		box-shadow: none;
+
+		&:first-child { margin-inline-end: auto; }
+		&:last-child { margin-inline-start: auto; }
 	}
 
 	> .pagination-num {
-		flex-grow: 1;
-		max-width: 3em;
-		padding: 0 0.5em;
+		width: 3em;
 		transition: background-color 0.2s;
 
-		&:hover:not(:disabled) {
-			background-color: var(--c-border);
-		}
+		&:hover { background-color: var(--c-border); }
+
+		&:disabled { pointer-events: none; }
 
 		&.active {
 			background-color: var(--c-primary-soft);

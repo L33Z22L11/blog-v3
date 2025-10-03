@@ -1,3 +1,9 @@
+packages:
+  - packages/*
+
+catalog:
+  '@zinkawaii/eslint-config': ^0.3.0
+
 catalogs:
   content:
     '@nuxt/content': ^3.7.1
@@ -5,21 +11,25 @@ catalogs:
     '@shikijs/colorized-brackets': ^3.13.0
     '@shikijs/transformers': ^3.13.0
     abcjs: ^6.5.2
-    remark-abcjs: ^0.1.6
-    unist-util-visit: ^5.0.0
     plain-shiki: ^0.3.1
     rehype-katex: ^7.0.1
+    remark-abcjs: ^0.1.6
     remark-math: ^6.0.0
     remark-reading-time: ^2.0.2
     shiki: ^3.13.0
+    unist-util-visit: ^5.0.0
   framework:
-    '@dxup/nuxt': ^0.0.1
+    '@dxup/nuxt': ^0.0.3
+    '@zinkawaii/-config': ^0.0.0
+    '@zinkawaii/config': ^0.0.0
+    '@zinkawaii/tconfig': ^0.0.0
+    '@zinkawaii/tsconfig': ^0.0.2
     ci-info: ^4.3.0
     nuxt: ^4.1.2
     sass-embedded: ^1.93.2
+    tsdown: ^0.15.6
     tsx: ^4.20.6
-    typescript: ^5.9.2
-    tsup: ^8.5.0
+    typescript: ^5.9.3
     unplugin-yaml: ^3.0.6
     vue: ^3.5.22
     vue-router: ^4.5.1
@@ -51,7 +61,7 @@ catalogs:
     fast-xml-parser: ^5.2.5
     minisearch: ^7.2.0
     nanoid: ^5.1.6
-    oxc-minify: ^0.92.0
+    oxc-minify: ^0.93.0
     p-limit: ^7.1.1
     parse-domain: ^8.2.2
     radash: ^12.1.1
@@ -69,11 +79,9 @@ onlyBuiltDependencies:
 overrides:
   sharp: 0.33.4
 
-packages:
-  - 'packages/*'
-
 patchedDependencies:
   '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch
   '@vue/shared': patches/@vue__shared.patch
+  playwright-core: patches/playwright-core.patch
 
 shamefullyHoist: true

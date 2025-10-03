@@ -5,7 +5,7 @@ hideInfo: true
 aside: [toc, github-card]
 github:
   name: L33Z22L11/blog-v3
-  description: 基于 Nuxt Content v3 的博客主题，使用 Nuxt 4 构建。
+  description: 使用 Nuxt 4 和 Nuxt Content v3 构建的个人博客，致力于清楚的阅读体验和清晰的观点表达。
   url: https://github.com/L33Z22L11/blog-v3
 ---
 
@@ -91,15 +91,15 @@ link: /2024/blog-using-nuxt
   - **轮播图**：Embla Carousel
   - **订阅源生成**：Fast XML Parser
   - **域名解析**：parse-domain
-  - **动态代码高亮**：Plain Shiki
+  - **代码高亮**：Shiki + Plain Shiki
   - **实用算法片段库**：Radash
   - **悬浮组件库**：Vue Tippy
 - 依赖模块
-  - **图标管理**：Nuxt Icon
+  - **图标管理**：Nuxt Icon（Iconify）
   - **颜色模式**：Nuxt Color Mode
   - **SEO优化**：Nuxt SEO
   - **状态管理**：Pinia
   - **Vue 实用功能库**：VueUse
   - **代码质量**：ESLint + Stylelint
-  - **代码压缩**：Terser
+  - **代码压缩**：oxc-minify
 ::
