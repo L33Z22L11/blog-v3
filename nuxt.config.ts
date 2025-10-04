@@ -112,6 +112,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/seo',
 		'@pinia/nuxt',
 		'@vueuse/nuxt',
+		'nuxt-llms',
 		'unplugin-yaml/nuxt',
 	],
 
@@ -185,6 +186,12 @@ ${packageJson.homepage}
 			'no-non-ascii-chars',
 			'no-uppercase-chars',
 		],
+	},
+
+	llms: {
+		domain: blogConfig.url,
+		title: blogConfig.title,
+		description: blogConfig.description,
 	},
 
 	robots: {

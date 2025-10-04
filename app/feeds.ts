@@ -1104,6 +1104,7 @@ export default [
 				archs: ['Hexo', 'Cloudflare'],
 				date: '2024-11-07',
 				comment: 'Hexo博客折腾，技术分享。',
+				error: '域名2025-09-24过期',
 			},
 		],
 	},

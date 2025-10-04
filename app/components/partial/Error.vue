@@ -38,7 +38,7 @@ withDefaults(defineProps<{
 	align-items: center;
 	justify-content: center;
 	gap: 2rem;
-	min-height: calc(100vh - 16rem);
+	min-height: 70vh;
 
 	> .error-icon {
 		font-size: 5rem;

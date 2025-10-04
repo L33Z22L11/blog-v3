@@ -169,6 +169,7 @@ onMounted(() => {
 
 	.site-info {
 		flex: 1;
+		margin-inline-end: 0.5em;
 
 		.domain {
 			font-size: 0.9em;

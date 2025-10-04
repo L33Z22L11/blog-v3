@@ -63,24 +63,23 @@ const yearlyWordCount = computed(() => {
 			</div>
 		</div>
 
-		<menu class="archive-list">
-			<TransitionGroup appear name="float-in">
-				<ZArchive
-					v-for="article, index in yearGroup"
-					:key="article.path"
-					v-bind="article"
-					:to="article.path"
-					:use-updated="sortOrder === 'updated'"
-					:style="{ '--delay': `${index * 0.03}s` }"
-				/>
-			</TransitionGroup>
-		</menu>
+		<TransitionGroup tag="menu" class="archive-list" name="float-in">
+			<ZArchive
+				v-for="article, index in yearGroup"
+				:key="article.path"
+				v-bind="article"
+				:to="article.path"
+				:use-updated="sortOrder === 'updated'"
+				:style="{ '--delay': `${index * 0.03}s` }"
+			/>
+		</TransitionGroup>
 	</section>
 </div>
 </template>
 
 <style lang="scss" scoped>
 .archive {
+	min-height: 70vh;
 	margin: 1rem;
 	mask-image: linear-gradient(#FFF 50%, #FFF5);
 }
