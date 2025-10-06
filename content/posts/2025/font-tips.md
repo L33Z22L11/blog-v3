@@ -2,7 +2,7 @@
 title: 前端字体二三事
 description: 前端字体排版有许多细节需要注意，文章从我的实际开发经验出发，介绍合成字形、对齐技巧、排版优化，以及自己的一些踩坑心得。
 date: 2025-04-16 08:49:50
-updated: 2025-09-17 22:42:53
+updated: 2025-10-06 23:22:09
 image: https://7.isyangs.cn/24/680072e8c376c-24.webp
 categories: [经验分享]
 tags: [代码, 前端, 字体]
@@ -264,6 +264,8 @@ code, pre {
 ---
 style:
     - font-size: 3em
+    - font-family: "InterVariable"
+    - font-weight: 800
     - line-height: 1
     - color: transparent
     - -webkit-text-stroke: 1px var(--c-text)
@@ -279,37 +281,7 @@ style:
 
 再比如，我博客左上角鼠标放在 Logo 上时，字体粗细和方圆变化动画如何实现？我使用了阿里妈妈方圆体这款可变字体 (VF, Variable Font)，它除了支持 `wght` (粗细) 轴上的操作外，还支持 `BEVL` (圆角) 轴上的调节。
 
-```css wrap
-.header-title {
-    font-family: AlimamaFangYuanTi;
-    font-size: 1.5em;
-    font-synthesis: none;
-    font-variation-settings: "wght" 600, "BEVL" 100;
-
-    > .split-char {
-        animation: 3.14s infinite alternate vf-weight, 2.72s infinite alternate vf-bevel;
-        animation-delay: var(--delay);
-        animation-play-state: paused;
-    }
-}
-
-@keyframes vf-weight {
-    0% { font-weight: 600; }
-    38.2% { font-weight: 300; }
-    100% { font-weight: 900; }
-}
-
-@keyframes vf-bevel {
-    from { font-variation-settings: "BEVL" 100; }
-    to { font-variation-settings: "BEVL" 1; }
-}
-
-.zhilu-header:hover > .split-char {
-    animation-play-state: running;
-}
-```
-
-你也看到了，`wght` 轴参数可以直接通过 `font-weight` 设置。再比如 `font-variant-numeric: tabular-nums` / `font-feature-settings: "tnum"` 可以实现等宽数字，在表格、金额场景下还是很有用的，但字体不一定支持了。
+再比如 `font-variant-numeric: tabular-nums` / `font-feature-settings: "tnum"` 可以实现等宽数字，在表格、金额场景下还是很有用的，但字体不一定支持了。CSS 的 `font-feature-settings` 和 `font` 均不推荐使用，前者对所有字体同时设置而容易产生预期外的效果，后者则会清除所有字体的特征设置而不从父级继承。
 
 ::alert{title="参阅文档"}
 - [可变字体指南 - CSS | MDN](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_fonts/Variable_fonts_guide)
@@ -335,30 +307,65 @@ style:
 
 当然，考虑到 [Windows、Edge 已经引入 Noto Sans](https://zhuanlan.zhihu.com/p/1888247674832139754)，我们也可以帮用户、CDN减负，有本地字体时不加载网络资源：
 
+```html wrap
+<!-- 使用 .cn 域名增强可访问性 -->
+<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.cn/css2?family=Noto+Sans+SC:wght@100..900">
+```
+
 ```css
 :root {
     /* Noto Sans SC 通过 CDN 提供 @font-face，无法更名或插入本地源 */
     font-family: "Inter", "Noto Sans SC-Local", "Noto Sans SC", system-ui, sans-serif;
 }
 
-@font-face {
-	font-family: "Noto Sans SC-Local";
-    /* 本地字体文件名 */
-	src: local("Noto Sans SC");
+/* 仅在 Chrome 111+ 启用本地可变字体，因为低版本会将 VF 显示为细体 */
+@supports (font-variant-alternates: normal) {
+    @font-face {
+        font-family: "Noto Sans SC-Local";
+        font-weight: 100 900; /* 不指定则为 400 */
+        src: local("Noto Sans SC");
+    }
+
+    @font-face {
+        font-family: "Noto Serif SC-Local";
+        font-weight: 100 900;
+        src: local("Noto Serif SC");
+    }
 }
 ```
 
-讲了这么多，大家应该收获颇丰。不过鉴于 Noto Sans SC 的西文字形实在太丑，也为避免麻烦的苹果字体调用，还是引一个 `Inter` 字体吧。
+## 用起来吧
+
+讲了这么多，大家应该收获颇丰。不过鉴于 Noto Sans SC 的西文字形实在太丑，也为避免麻烦的苹果字体调用，我还是想引一个 `Inter` 字体。Google Fonts 的 `Inter` 可变字体其实是砍去许多特性的 `InterVariable`，还是从官方 CDN 源加载吧：
 
 ```html wrap
-<!-- 使用 .cn 域名增强可访问性 -->
-<link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.cn/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap">
+<!-- 防止阻塞 -->
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" media="print" onload="this.media='all'">
 ```
+
+```css wrap
+:root {
+    --font-basic: "Inter-Local", "InterVariable", "Noto Sans SC-Local", "Noto Sans SC", system-ui, sans-serif;
+
+    font-family: var(--font-basic);
+    /* CDN 提供的 CSS 已经预定义字体函数，这是本站使用的变体 */
+    font-variant-alternates: styleset(open-digits, disambiguation, round-quotes-and-commas);
+}
+
+/* 低像素密度设备下，可以使用 Hint 良好的 system-ui 字体 */
+@media (max-resolution: 1.2dppx) {
+    :root {
+        --font-basic: "Inter-Local", "InterVariable", system-ui, sans-serif;
+    }
+}
+```
+
+本地的 Inter 字体不能简单地「通过字体名称调用以实现优先加载本地字形」或者「通过 `font-variant-alternates` 应用 OpenType 变体」，网上也很难找到正确实现，读者可以动手试试。
 
 ::quote
 #icon
 😄
 #default
-这当然是为了一致性，绝不是我想偷懒。
+调用 Inter 网络字体当然是为了一致性，绝不是我想偷懒。
 ::

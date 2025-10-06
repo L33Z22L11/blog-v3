@@ -41,7 +41,7 @@ export function getFavicon(domain: string, options: Record<string, any> = {
 	provider: 'google',
 	size: 32,
 }) {
-	return `https://unavatar.webp.se/${options.provider}/${domain}?s=${options.size}`
+	return `https://unavatar.webp.se/${options.provider}/${domain}?w=${options.size}`
 }
 
 export function getImgUrl(src: string, service?: ImgService) {

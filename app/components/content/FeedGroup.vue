@@ -57,7 +57,10 @@ function getCardDelay(feed: FeedEntry) {
 	top: 0;
 	margin-bottom: -0.3em;
 	mask-image: linear-gradient(#FFF 50%, transparent);
-	font: 800 5em / 1 var(--font-stroke-free);
+	font-family: var(--font-stroke-free);
+	font-size: 5em;
+	font-weight: 800;
+	line-height: 1;
 	text-align: center;
 	color: transparent;
 	transition: color 0.2s;

@@ -5,9 +5,9 @@
 	--transform-end-far: translateX(100%);
 
 	background-color: var(--c-bg-1);
-	font: 1rem / 1.4 sans-serif;
-	font-family: var(--font-basic);
+	font-family: var(--font-basic, sans-serif);
 	font-synthesis: style;
+	line-height: 1.4;
 	word-wrap: break-word;
 	text-autospace: normal;
 	text-size-adjust: none;

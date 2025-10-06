@@ -110,7 +110,11 @@ const yearlyWordCount = computed(() => {
 	> .archive-year, .archive-age {
 		margin-bottom: -0.3em;
 		mask-image: linear-gradient(#FFF 50%, transparent);
-		font: 800 3em / 1 var(--font-stroke-free);
+		font-family: var(--font-stroke-free);
+		font-size: 3em;
+		font-variant-numeric: tabular-nums;
+		font-weight: 800;
+		line-height: 1;
 		z-index: -1;
 		-webkit-text-stroke: 1px var(--c-text-3);
 	}
