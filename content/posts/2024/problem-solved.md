@@ -78,9 +78,9 @@ KazariEX 指出，我给主题提交 PR 之后，虽然使用了相应关键词�
 
 ::link-card
 ---
-icon: https://cdn.libravatar.org/avatar/ecb2ea87c4532f007838d86d02798f89
-title: 个人向 CSS 编码风格汇总
-link: https://bikari.top/book/daily/44dc7f8
+icon: https://archive.bikari.top/favicon.svg
+title: 个人向 CSS 编码风格汇总 - 微光档案
+link: https://archive.bikari.top/book/daily/44dc7f8
 ---
 ::
 
