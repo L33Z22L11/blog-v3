@@ -3,7 +3,11 @@
     "editor.defaultFormatter": "stylelint.vscode-stylelint"
   },
   "[mdc]": {
+    "editor.defaultFormatter": "Nuxt.mdc",
     "files.autoGuessEncoding": false
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[yaml]": {
     "editor.formatOnSave": false

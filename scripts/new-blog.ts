@@ -114,7 +114,7 @@ const tags = tagsInput?.split(/[\s,，]+/).map(t => t.trim()).filter(Boolean)
 
 // 样式类型
 let type = normalize(await select({
-	message: '选择文章类型',
+	message: '选择文章版式',
 	options: [
 		{ value: 'tech', label: '技术 (tech)' },
 		{ value: 'story', label: '故事 (story)' },

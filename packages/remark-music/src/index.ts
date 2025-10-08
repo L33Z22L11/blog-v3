@@ -15,7 +15,7 @@ export default function remarkMusic() {
 	return (tree: Root) => {
 		visit(tree, 'code', (node, index, parent) => {
 			if (node.lang === 'music-abc') {
-				if (!parent || !index)
+				if (!parent || index === undefined)
 					return
 
 				parent.children?.splice(index, 1, {
