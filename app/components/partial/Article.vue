@@ -25,24 +25,17 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 		</p>
 
 		<div class="article-info">
-			<time
-				v-if="showAllDate || !useUpdated"
-				:datetime="getIsoDatetime(date)"
-				:title="getLocaleDatetime(date)"
-			>
-				<Icon name="ph:calendar-dots-bold" />
-				{{ getPostDate(date) }}
-			</time>
+			<ZDate
+				v-if="date && (showAllDate || !useUpdated)"
+				:date="date"
+				icon="ph:calendar-dots-bold"
+			/>
 
-			<time
-				v-if="showAllDate || useUpdated"
-				:class="{ 'use-updated': useUpdated }"
-				:datetime="getIsoDatetime(updated)"
-				:title="getLocaleDatetime(updated)"
-			>
-				<Icon name="ph:calendar-plus-bold" />
-				{{ getPostDate(props.updated) }}
-			</time>
+			<ZDate
+				v-if="updated && (showAllDate || useUpdated)"
+				:date="updated"
+				icon="ph:calendar-plus-bold"
+			/>
 
 			<!-- 带查询参数时会水合错误 -->
 			<ClientOnly>

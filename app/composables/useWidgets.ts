@@ -36,6 +36,7 @@ export default function useWidgets(widgetList: MaybeRefOrGetter<WidgetName[]>) {
 		name: widget,
 		comp: rawWidgets[`LazyWidget${pascal(widget)}` as RawWidgetName],
 	})))
+
 	return {
 		widgets,
 	}

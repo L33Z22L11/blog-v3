@@ -31,23 +31,19 @@ const { copy, copied } = useCopy(shareText)
 		</div>
 
 		<div v-if="!meta?.hideInfo" class="post-info">
-			<time
+			<ZDate
 				v-if="date"
-				v-tip="`创建于 ${getLocaleDatetime(props.date)}`"
-				:datetime="getIsoDatetime(date)"
-			>
-				<Icon name="ph:calendar-dots-bold" />
-				{{ getPostDate(props.date) }}
-			</time>
+				v-tip="`创建于 ${getLocaleDatetime(date)}`"
+				:date="date"
+				icon="ph:calendar-dots-bold"
+			/>
 
-			<time
-				v-if="isTimeDiffSignificant(date, updated, .999)"
-				v-tip="`修改于 ${getLocaleDatetime(props.updated)}`"
-				:datetime="getIsoDatetime(updated)"
-			>
-				<Icon name="ph:calendar-plus-bold" />
-				{{ getPostDate(props.updated) }}
-			</time>
+			<ZDate
+				v-if="updated && isTimeDiffSignificant(date, updated, .999)"
+				v-tip="`修改于 ${getLocaleDatetime(updated)}`"
+				:date="updated"
+				icon="ph:calendar-plus-bold"
+			/>
 
 			<span v-if="categoryLabel">
 				<Icon :name="categoryIcon" />

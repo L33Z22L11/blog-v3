@@ -3,13 +3,13 @@ import { minify } from 'oxc-minify'
 import blogConfig from '../../blog.config'
 import handleMirror from './runtime/client'
 
-const encodedBlacklist = [
+const blacklist = [
 	'dgjlx.com', // blog.revincx.icu
 	'dgvhqt.com', // blog.zhilu.cyou
 	'hcmsla.com', // thyuu.com
 	'wmlop.com', // xaoxuu.com
 	'yswjxs.com', // blog.zhilu.cyou
-].map(btoa)
+]
 
 export default defineNuxtModule({
 	meta: {
@@ -17,7 +17,7 @@ export default defineNuxtModule({
 	},
 	setup(options, nuxt) {
 		(nuxt.options.app.head.script ??= []).push({
-			innerHTML: toIifeString(handleMirror, encodedBlacklist, btoa(blogConfig.url)),
+			innerHTML: toIifeString(handleMirror, blacklist.map(btoa), btoa(blogConfig.url)),
 		})
 	},
 })

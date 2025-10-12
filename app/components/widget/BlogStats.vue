@@ -1,31 +1,29 @@
 <script setup lang="ts">
-import { toZonedTime } from 'date-fns-tz'
+import { NuxtTime } from '#components'
 
 const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()
-// 将服务器时区转换为博客指定时区
-const buildTime = toZonedTime(runtimeConfig.public.buildTime, appConfig.timezone)
 
-const lastUpdateTime = ref('(获取中)')
+const buildTime = ref(runtimeConfig.public.buildTime)
 const totalWords = ref(appConfig.component.stats.wordCount)
 const yearlyTip = ref('')
 
-const blogStats = computed(() => [{
+const blogStats = [{
 	label: '运营时长',
 	value: timeElapse(appConfig.timeEstablished),
 	tip: `博客于${appConfig.timeEstablished}上线`,
 }, {
 	label: '上次更新',
-	value: lastUpdateTime,
-	tip: `构建于${getLocaleDatetime(buildTime)}`,
+	value: () => h(NuxtTime, { datetime: runtimeConfig.public.buildTime, relative: true }),
+	tip: computed(() => `构建于${buildTime.value}`),
 }, {
 	label: '总字数',
 	value: totalWords,
 	tip: yearlyTip,
-}])
+}]
 
 onMounted(async () => {
-	lastUpdateTime.value = timeElapse(buildTime)
+	buildTime.value = getLocaleDatetime(buildTime.value)
 
 	const stats = await $fetch('/api/stats').catch(() => { })
 	if (!stats)

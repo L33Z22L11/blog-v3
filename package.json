@@ -35,7 +35,6 @@
     "abcjs": "catalog:content",
     "ci-info": "catalog:framework",
     "date-fns": "catalog:util",
-    "date-fns-tz": "catalog:util",
     "embla-carousel-autoplay": "catalog:ui",
     "embla-carousel-vue": "catalog:ui",
     "embla-carousel-wheel-gestures": "catalog:ui",

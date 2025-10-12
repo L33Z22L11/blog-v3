@@ -1,8 +1,8 @@
 import type { ContentCollectionItem } from '@nuxt/content'
+import { formatISO } from 'date-fns'
 import { XMLBuilder } from 'fast-xml-parser'
 import blogConfig from '~~/blog.config'
 import { version } from '~~/package.json'
-import { getIsoDatetime } from '~/utils/time'
 
 const runtimeConfig = useRuntimeConfig()
 
@@ -13,6 +13,10 @@ const builder = new XMLBuilder({
 	ignoreAttributes: false,
 	textNodeName: '_',
 })
+
+function formatIsoDate(date?: string) {
+	return date ? formatISO(new Date(date)) : undefined
+}
 
 function getUrl(path: string | undefined) {
 	return new URL(path ?? '', blogConfig.url).toString()
@@ -36,7 +40,7 @@ export default defineEventHandler(async (event) => {
 	const entries = posts.map(post => ({
 		id: getUrl(post.path),
 		title: post.title ?? '',
-		updated: getIsoDatetime(post.updated),
+		updated: formatIsoDate(post.updated),
 		author: { name: post.author || blogConfig.author.name },
 		content: {
 			$type: 'html',
@@ -45,7 +49,7 @@ export default defineEventHandler(async (event) => {
 		link: { $href: getUrl(post.path) },
 		summary: post.description,
 		category: { $term: post.categories?.[0] },
-		published: getIsoDatetime(post.published) ?? getIsoDatetime(post.date),
+		published: formatIsoDate(post.published) ?? formatIsoDate(post.date),
 	}))
 
 	const feed = {

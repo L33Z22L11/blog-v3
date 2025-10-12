@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type ArticleProps from '~/types/article'
-import { format } from 'date-fns'
+import { isSameYear } from 'date-fns'
 
 const props = defineProps<{
 	to?: string
@@ -8,23 +8,34 @@ const props = defineProps<{
 } & ArticleProps>()
 
 const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
-const dateLabel = computed(() => mainDate.value
-	? format(new Date(mainDate.value), 'MM-dd')
-	: '')
-const auxDateLabel = computed(() => props.date
-	? format(new Date(props.date), isSameYear(props.updated, props.date) ? 'MM-dd' : 'yyyy-MM-dd')
-	: '')
 </script>
 
 <template>
 <li class="article-item">
-	<time :datetime="getLocaleDatetime(mainDate)" :title="getLocaleDatetime(mainDate)">{{ dateLabel }}</time>
+	<NuxtTime
+		v-if="mainDate"
+		:datetime="mainDate"
+		:title="getLocaleDatetime(mainDate)"
+		month="2-digit"
+		day="2-digit"
+	/>
+
 	<ZRawLink class="article-link gradient-card" :to :title="description">
 		<span class="article-title">
 			{{ title }}
 		</span>
-		<time v-if="useUpdated && isTimeDiffSignificant(date, updated)" class="aux-date" :datetime="getLocaleDatetime(date)" :title="getLocaleDatetime(date)">
-			&nbsp;{{ auxDateLabel }}</time>
+
+		<template v-if="date && useUpdated && isTimeDiffSignificant(date, updated)">
+				&nbsp;
+			<NuxtTime
+				class="aux-date"
+				:datetime="date"
+				:title="getLocaleDatetime(date)"
+				:year="isSameYear(date, updated ?? 0) ? undefined : 'numeric'"
+				month="2-digit"
+				day="2-digit"
+			/>
+		</template>
 		<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" loading="lazy" />
 	</ZRawLink>
 </li>

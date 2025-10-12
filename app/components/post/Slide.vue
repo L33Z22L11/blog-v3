@@ -46,9 +46,7 @@ useEventListener(emblaRef, 'wheel', (e) => {
 					<div class="title text-creative">
 						{{ article.title }}
 					</div>
-					<div class="desc">
-						{{ getPostDate(article.date) }}
-					</div>
+					<ZDate v-if="article.date" class="desc" :date="article.date" />
 				</div>
 			</ZRawLink>
 		</div>

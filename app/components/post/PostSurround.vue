@@ -31,7 +31,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 			<strong class="title" :class="getPostTypeClassName(post?.type)">
 				{{ post?.title || fallbackText }}
 			</strong>
-			<time v-if="post" :datetime="getIsoDatetime(post.date)">{{ getPostDate(post.date) }}</time>
+			<ZDate v-if="post?.date" class="date" :date="post.date" />
 		</div>
 	</ZRawLink>
 </DefineTemplate>
@@ -77,7 +77,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 	> .surround-text {
 		transition: transform 0.2s;
 
-		>time {
+		> .date {
 			display: block;
 			opacity: 0.6;
 			font-size: 0.8rem;
