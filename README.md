@@ -21,7 +21,7 @@
 
 | 博客名称                                    | 作者          | 对应上游版本 | 下游特色功能                   |
 | ------------------------------------------- | ------------- | ------------ | ------------------------------ |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**  | **L33Z22L11** | **v3.4.8**   | (我是上游)                     |
+| **[纸鹿摸鱼处](https://blog.zhilu.site/)**  | **L33Z22L11** | **v3.4.9**   | (我是上游)                     |
 | [希乐博客](https://blog.xlenco.top/)        | Xlenco        | v3.4.0       | 最新评论                       |
 | [SteinsNote](https://blog.labmem.chat/)     | Labmem-00     | v3.1-241112  | 专栏                           |
 | [月空人](https://whbbit.cn/)                | Whbbit1999    | v3.4.8       | 项目/博客/Snippets页           |
@@ -39,6 +39,7 @@
 | [ATao-Blog](https://blog.atao.cyou/)        | ataoyan       | v3.4.0       | 即刻+装备页                    |
 | [fishcpy的小破站](https://blog.fis.ink/)    | fishcpy       | v3.4.7       | 友圈+Artalk评论                |
 | [六月墨语](https://blog.june.ink/)          | Akuma-real    | v3.4.8       | 友圈+最新评论                  |
+| [Cталин博客](https://blog.jiclub.site/)     | StalinDev54   | v3.4.8       | 侧栏时间轴+关于页              |
 
 ## 特性
 
