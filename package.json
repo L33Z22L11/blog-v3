@@ -5,6 +5,10 @@
   "private": true,
   "packageManager": "pnpm@10.18.2",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
+  "engines": {
+    "node": ">=22.15.0",
+    "pnpm": ">=10.0.0"
+  },
   "scripts": {
     "prepare": "pnpm clean && pnpm build:packages",
     "clean": "rimraf .data node_modules/.cache",

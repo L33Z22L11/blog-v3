@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { AbcVisualParams, SynthObjectController, SynthVisualOptions, TuneObject } from 'abcjs'
-import { renderAbc, synth } from 'abcjs'
 
 const props = defineProps<{
 	abc: string
@@ -36,6 +35,8 @@ async function checkSoundFonts() {
 }
 
 onMounted(async () => {
+	const { renderAbc, synth } = await import('abcjs')
+
 	tuneObj.value = renderAbc(container.value!, props.abc, abcVisualParams)[0]
 
 	if (!synth.supportsAudio() || !(await checkSoundFonts()))
