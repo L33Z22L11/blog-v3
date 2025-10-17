@@ -5,7 +5,9 @@ import { alphabetical } from 'radash'
 // TODO 支持分页/分类筛选
 export function useArticleIndex(path = 'posts/%') {
 	return useAsyncData(
-		`index_${path}`,
+		// https://github.com/nuxt/nuxt/pull/33505
+		// key 不能包含 %，否则会导致多处共用数据时随机产生空 payload
+		`index_${path.replaceAll('%', '__percent__')}`,
 		() => queryCollection('content')
 			.where('stem', 'LIKE', path)
 			.select('categories', 'date', 'description', 'image', 'path', 'readingTime', 'recommend', 'title', 'type', 'updated')
