@@ -4,9 +4,15 @@ import { NuxtTime } from '#components'
 const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()
 
-const buildTime = ref(runtimeConfig.public.buildTime)
-const totalWords = ref(appConfig.component.stats.wordCount)
-const yearlyTip = ref('')
+const { data: stats } = useFetch('/api/stats')
+
+const yearlyTip = computed(() => {
+	if (!stats.value)
+		return ''
+	return Object.entries(stats.value.annual).reverse().map(([year, item]) =>
+		`${year}年：${item.posts}篇，${formatNumber(item.words)}字`,
+	).join('\n')
+})
 
 const blogStats = [{
 	label: '运营时长',
@@ -15,24 +21,12 @@ const blogStats = [{
 }, {
 	label: '上次更新',
 	value: () => h(NuxtTime, { datetime: runtimeConfig.public.buildTime, relative: true }),
-	tip: computed(() => `构建于${buildTime.value}`),
+	tip: computed(() => `构建于${getLocaleDatetime(runtimeConfig.public.buildTime)}`),
 }, {
 	label: '总字数',
-	value: totalWords,
+	value: computed(() => stats.value ? formatNumber(stats.value.total.words) : ''),
 	tip: yearlyTip,
 }]
-
-onMounted(async () => {
-	buildTime.value = getLocaleDatetime(buildTime.value)
-
-	const stats = await $fetch('/api/stats').catch(() => { })
-	if (!stats)
-		return
-	totalWords.value = formatNumber(stats.total.words)
-	yearlyTip.value = Object.entries(stats.annual).reverse().map(([year, item]) =>
-		`${year}年：${item.posts}篇，${formatNumber(item.words)}字`,
-	).join('\n')
-})
 </script>
 
 <template>
