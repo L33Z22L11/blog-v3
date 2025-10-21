@@ -71,19 +71,19 @@
 
 @keyframes scrollcheck-x {
 	0% {
-		mask:
+		mask-image:
 			linear-gradient(to var(--end), #FFF calc(100% - var(--fadeout-width)), transparent),
 			linear-gradient(to top, #FFF var(--scrollbar-height), transparent var(--scrollbar-height));
 	}
 
 	0.01%, 99.99% {
-		mask:
+		mask-image:
 			linear-gradient(to var(--end), #FFF var(--start-offset), transparent var(--start-offset), #FFF calc(var(--start-offset) + var(--fadeout-width)), #FFF calc(100% - var(--fadeout-width)), transparent),
 			linear-gradient(to top, #FFF var(--scrollbar-height), transparent var(--scrollbar-height));
 	}
 
 	100% {
-		mask:
+		mask-image:
 			linear-gradient(to var(--end), #FFF var(--start-offset), transparent var(--start-offset), #FFF calc(var(--start-offset) + var(--fadeout-width))),
 			linear-gradient(to top, #FFF var(--scrollbar-height), transparent var(--scrollbar-height));
 	}
@@ -102,19 +102,19 @@
 
 @keyframes scrollcheck-y {
 	0% {
-		mask:
+		mask-image:
 			linear-gradient(to bottom, #FFF calc(100% - var(--fadeout-height)), transparent),
 			linear-gradient(to var(--start), #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
 	}
 
 	0.01%, 99.99% {
-		mask:
+		mask-image:
 			linear-gradient(to bottom, #FFF var(--top-offset), transparent var(--top-offset), #FFF calc(var(--top-offset) + var(--fadeout-height)), #FFF calc(100% - var(--fadeout-height)), transparent),
 			linear-gradient(to var(--start), #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
 	}
 
 	100% {
-		mask:
+		mask-image:
 			linear-gradient(to bottom, #FFF var(--top-offset), transparent var(--top-offset), #FFF calc(var(--top-offset) + var(--fadeout-height))),
 			linear-gradient(to var(--start), #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
 	}

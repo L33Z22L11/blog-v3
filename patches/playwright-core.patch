@@ -1,5 +1,5 @@
 diff --git a/lib/server/registry/index.js b/lib/server/registry/index.js
-index 53cd7a0ba186b0fc31bbffdebba6071203134ce5..91c372e32db3d662eb7208ec02552ceabe67ee28 100644
+index db598f19493c257070e5889be80c1dafd09c4d75..60b63ebce0f385009294b588f4d36efe2d00cc82 100644
 --- a/lib/server/registry/index.js
 +++ b/lib/server/registry/index.js
 @@ -431,7 +431,7 @@ const registryDirectory = (() => {
@@ -11,12 +11,3 @@ index 53cd7a0ba186b0fc31bbffdebba6071203134ce5..91c372e32db3d662eb7208ec02552cea
        cacheDirectory = process.env.XDG_CACHE_HOME || import_path.default.join(import_os.default.homedir(), ".cache");
      else if (process.platform === "darwin")
        cacheDirectory = import_path.default.join(import_os.default.homedir(), "Library", "Caches");
-@@ -1202,7 +1202,7 @@ ${e.stack}`);
-     for (const browser of browserList) {
-       const { browserName, browserVersion, browserPath } = browser;
-       const shouldHaveMarkerFile = browserName === "chromium" && (browserVersion >= 786218 || browserVersion < 3e5) || browserName === "firefox" && browserVersion >= 1128 || browserName === "webkit" && browserVersion >= 1307 || // All new applications have a marker file right away.
--      browserName !== "firefox" && browserName !== "chromium" && browserName !== "webkit";
-+        browserName !== "firefox" && browserName !== "chromium" && browserName !== "webkit";
-       if (!shouldHaveMarkerFile || await (0, import_fileUtils.existsAsync)(browserDirectoryToMarkerFilePath(browserPath)))
-         usedBrowserPaths.add(browserPath);
-     }
