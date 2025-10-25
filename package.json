@@ -3,7 +3,7 @@
   "type": "module",
   "version": "3.4.9",
   "private": true,
-  "packageManager": "pnpm@10.18.2",
+  "packageManager": "pnpm@10.19.0",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "engines": {
     "node": ">=22.15.0",
@@ -57,7 +57,6 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:quality",
     "@clack/prompts": "catalog:util",
-    "@dxup/nuxt": "catalog:framework",
     "@iconify/json": "catalog:ui",
     "@zinkawaii/stylelint-config": "catalog:quality",
     "cspell": "catalog:quality",

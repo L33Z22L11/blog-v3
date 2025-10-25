@@ -118,7 +118,6 @@ export default defineNuxtConfig({
 
 	// @keep-sorted
 	modules: [
-		'@dxup/nuxt',
 		'@nuxt/content',
 		'@nuxt/icon',
 		'@nuxt/image',

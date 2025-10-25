@@ -36,7 +36,7 @@ const listRecommended = computed(() => sort(
 
 <PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
 
-<div class="post-list">
+<div class="post-list proper-height">
 	<div class="toolbar">
 		<div>
 			<!-- 外层元素用于占位 -->

@@ -27,6 +27,7 @@ const tooltip = computed(() => getLocaleDatetime(props.date))
 		:year="isSameYear(Date.now(), props.date) ? undefined : '2-digit'"
 		month="long"
 		day="numeric"
+		numeric="auto"
 	/>
 </span>
 </template>
