@@ -2,6 +2,8 @@ import { defineCollection, z } from '@nuxt/content'
 import { asSitemapCollection } from '@nuxtjs/sitemap/content'
 import blogConfig from './blog.config'
 
+const articleTypes = Object.keys(blogConfig.article.types)
+
 const articleSchema = z.object({
 	title: z.string(),
 	description: z.string().optional(),
@@ -9,7 +11,7 @@ const articleSchema = z.object({
 	updated: z.string().optional(),
 	categories: z.array(z.string()).default([blogConfig.defaultCategory]),
 	tags: z.array(z.string()).default([]),
-	type: z.enum(['tech', 'story']).optional(),
+	type: z.enum(articleTypes).optional().default(articleTypes[0]),
 
 	image: z.string().optional(),
 	recommend: z.number().optional(),
