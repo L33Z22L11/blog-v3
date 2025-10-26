@@ -14,7 +14,7 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-<div class="error">
+<div class="error proper-height">
 	<div />
 	<Icon class="error-icon" :name="icon" />
 	<div class="error-title" v-html="title" />
@@ -38,7 +38,6 @@ withDefaults(defineProps<{
 	align-items: center;
 	justify-content: center;
 	gap: 2rem;
-	min-height: 70vh;
 
 	> .error-icon {
 		font-size: 5rem;

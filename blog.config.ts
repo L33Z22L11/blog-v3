@@ -41,6 +41,11 @@ const blogConfig = {
 			代码: { icon: 'ph:code-bold', color: '#77f' },
 		},
 		defaultCategoryIcon: 'ph:folder-bold',
+		/** 文章版式，首个为默认版式 */
+		types: {
+			tech: {},
+			story: {},
+		},
 		/** 分类排序方式，键为排序字段，值为显示名称 */
 		order: {
 			date: '创建日期',

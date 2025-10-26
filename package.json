@@ -3,7 +3,7 @@
   "type": "module",
   "version": "3.4.9",
   "private": true,
-  "packageManager": "pnpm@10.18.2",
+  "packageManager": "pnpm@10.19.0",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "engines": {
     "node": ">=22.15.0",
@@ -48,6 +48,7 @@
     "plain-shiki": "catalog:content",
     "radash": "catalog:util",
     "shiki": "catalog:content",
+    "site-config-stack": "catalog:util",
     "vue": "catalog:framework",
     "vue-router": "catalog:framework",
     "vue-tippy": "catalog:ui",
@@ -56,9 +57,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:quality",
     "@clack/prompts": "catalog:util",
-    "@dxup/nuxt": "catalog:framework",
-    "@iconify-json/catppuccin": "catalog:ui",
-    "@iconify-json/ph": "catalog:ui",
+    "@iconify/json": "catalog:ui",
     "@zinkawaii/stylelint-config": "catalog:quality",
     "cspell": "catalog:quality",
     "eslint": "catalog:quality",

@@ -84,6 +84,20 @@ export default defineNuxtConfig({
 	},
 
 	vite: {
+		build: {
+			rollupOptions: {
+				output: {
+					manualChunks(id) {
+						if (id === 'parse-domain') {
+							return 'parse-domain'
+						}
+						if (id.includes('/@nuxtjs/mdc/dist/runtime/components/prose/')) {
+							return 'content-prose'
+						}
+					},
+				},
+			},
+		},
 		css: {
 			preprocessorOptions: {
 				scss: {
@@ -104,7 +118,6 @@ export default defineNuxtConfig({
 
 	// @keep-sorted
 	modules: [
-		'@dxup/nuxt',
 		'@nuxt/content',
 		'@nuxt/icon',
 		'@nuxt/image',
@@ -171,6 +184,11 @@ ${packageJson.homepage}
 		customCollections: [
 			{ prefix: 'zi', dir: './app/assets/icons' },
 		],
+		clientBundle: {
+			scan: {
+				globInclude: ['**\/*.{vue,jsx,tsx,ts,md,mdc,mdx}'],
+			},
+		},
 	},
 
 	image: {

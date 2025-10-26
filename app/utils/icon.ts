@@ -183,7 +183,7 @@ const ext2lang: Record<string, string> = {
 	'shellscript': 'catppuccin:bash',
 	'sql': 'catppuccin:database',
 	'ssh-config': 'catppuccin:properties',
-	'ssh': 'catppuccin:ssh-config',
+	'ssh': 'catppuccin:properties',
 	'toml': 'catppuccin:toml',
 	'ts': 'catppuccin:typescript',
 	'tsx': 'catppuccin:typescript-react',
@@ -192,7 +192,7 @@ const ext2lang: Record<string, string> = {
 	'xml': 'catppuccin:xml',
 	'yaml': 'catppuccin:yaml',
 	'yml': 'catppuccin:yaml',
-	'zsh': 'catppuccin:zsh',
+	'zsh': 'catppuccin:bash',
 }
 
 export function getLangIcon(extension = 'file') {
