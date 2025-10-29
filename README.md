@@ -29,7 +29,7 @@
 | [喵落阁](https://blog-v3.kemeow.top/)        | Kemeow815     | v3.4.7       | 即刻+友圈+最新评论+游戏/番剧页 |
 | [梦爱吃鱼](https://blog.ruom.top/)           | JLinmr        | v3.2-250304  | 即刻+友圈+最新评论             |
 | [Mikuの极光星](https://blog.sotkg.com/)      | PaloMiku      | v3.4.8       | 设计风格统一                   |
-| [Shenley的存档点](https://blog.ykrazy.top/)  | shenlye       | v3.4.4       | 游戏/番剧页，方形卡片          |
+| [Shenley的存档点](https://blog.shenley.cn/)  | shenlye       | v3.4.4       | 游戏/番剧页，方形卡片          |
 | [BiuXin-s Blog](https://zhilu.biuxin.com/)   | damizai       | v3.2-250304  | 即刻+友圈+最新评论             |
 | [液泡部落格](https://blog.vacu.top/)         | VacuolePaoo   | v3.4.4       | 一言+标签tags+页脚随机友链     |
 | [柒渊阁](https://www.myxz.top/)              | 661111        | v3.4.7       | 即刻+友圈+Heo友链轮播/Profile  |
