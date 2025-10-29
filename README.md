@@ -40,7 +40,7 @@
 | [fishcpy的小破站](https://blog.fis.ink/)     | fishcpy       | v3.4.7       | 友圈+Artalk评论                |
 | [六月墨语](https://blog.june.ink/)           | Akuma-real    | v3.4.8       | 友圈+最新评论                  |
 | [Cталин博客](https://blog.jiclub.site/)      | StalinDev54   | v3.4.8       | 侧栏时间轴+关于页              |
-| [逻各斯小屋](https://blog.linux-qitong.top/) | Linux-qitong  | v3.4.9       | 即刻+友圈                      |
+| [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong  | v3.4.9       | 即刻+友圈                      |
 
 ## 特性
 
