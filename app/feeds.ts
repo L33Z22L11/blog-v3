@@ -1008,9 +1008,9 @@ export default [
 				comment: '生活分享、社会思考与技术探索。',
 			},
 			{
-				author: '逻各斯',
-				sitenick: '小屋',
-				title: '逻各斯小屋',
+				author: '栖童',
+				sitenick: 'の小站',
+				title: '栖童の小站',
 				desc: '越努力,越幸运',
 				link: 'https://blog.linux-qitong.top/',
 				feed: 'https://blog.linux-qitong.top/atom.xml',
