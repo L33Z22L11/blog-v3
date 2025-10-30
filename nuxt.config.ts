@@ -56,6 +56,10 @@ export default defineNuxtConfig({
 		'@/assets/css/reusable.scss',
 	],
 
+	experimental: {
+		typescriptPlugin: true,
+	},
+
 	features: {
 		inlineStyles: false,
 	},

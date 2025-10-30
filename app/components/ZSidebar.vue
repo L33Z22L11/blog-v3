@@ -29,7 +29,7 @@ const { word } = storeToRefs(searchStore)
 
 			<menu>
 				<li v-for="(item, itemIndex) in group.items" :key="itemIndex">
-					<ZRawLink :to="item.url" class="sidebar-nav-item" @click="layoutStore.toggle('sidebar')">
+					<ZRawLink :to="item.url" class="sidebar-nav-item">
 						<Icon :name="item.icon" />
 						<span class="nav-text">{{ item.text }}</span>
 						<Icon v-if="isExtLink(item.url)" class="external-tip" name="ph:arrow-up-right" />

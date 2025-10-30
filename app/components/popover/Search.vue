@@ -123,7 +123,6 @@ function openActiveItem() {
 						:key="item.id"
 						v-bind="item"
 						:class="{ active: activeIndex === itemIndex }"
-						@click="searchStore.toggle()"
 						@mousemove="updateActiveIndex(itemIndex)"
 					/>
 				</ol>

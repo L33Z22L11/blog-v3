@@ -1042,6 +1042,18 @@ export default [
 				date: '2025-10-27',
 				comment: '原名胡桃木实验室，具有运维/系统等技术分享。',
 			},
+			{
+				author: '广树',
+				sitenick: '维基萌',
+				desc: '萌即是正义！时不时分享一些ACG活动记录与有趣代码的小站！',
+				link: 'https://www.wikimoe.com/',
+				feed: 'https://www.wikimoe.com/rss/blog',
+				icon: 'https://www.wikimoe.com/upload/siteImg/siteFavicon.png',
+				avatar: 'https://www.wikimoe.com/upload/avatar/65994c0f3af05a21862459e9.webp',
+				archs: ['Nuxt', 'Cloudflare'],
+				date: '2025-10-30',
+				comment: '游戏数据/圣地巡礼/代码笔记。',
+			},
 		],
 	},
 	/* ========从此处新增友链======== */
