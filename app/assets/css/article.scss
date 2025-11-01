@@ -142,6 +142,10 @@
 
 		> p, :not([class]) > p {
 			text-indent: 2em;
+
+			> [class] {
+				text-indent: 0;
+			}
 		}
 	}
 }

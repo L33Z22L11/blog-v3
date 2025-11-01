@@ -18,13 +18,13 @@ const archIcons = {
 	'Netlify': 'simple-icons:netlify',
 	'Next.js': 'simple-icons:nextdotjs',
 	'Nuxt': 'simple-icons:nuxtdotjs',
+	'PHP': 'simple-icons:php',
 	'Python': 'simple-icons:python',
 	'Typecho': 'icon-park-solid:align-text-left-one', // 不准确
 	'Vercel': 'simple-icons:vercel',
 	'VitePress': 'simple-icons:vitepress',
 	'Vue': 'uim:vuejs',
 	'WordPress': 'simple-icons:wordpress',
-	'ZBlog': 'mynaui:letter-z-hexagon-solid', // 不准确
 	'Zebaur': 'tabler:square-letter-z-filled', // 不准确
 }
 
