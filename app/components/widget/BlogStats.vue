@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NuxtTime } from '#components'
+import { ZDate } from '#components'
 
 const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()
@@ -20,8 +20,11 @@ const blogStats = [{
 	tip: `博客于${appConfig.timeEstablished}上线`,
 }, {
 	label: '上次更新',
-	value: () => h(NuxtTime, { datetime: runtimeConfig.public.buildTime, relative: true }),
-	tip: computed(() => `构建于${getLocaleDatetime(runtimeConfig.public.buildTime)}`),
+	value: () => h(ZDate, {
+		date: runtimeConfig.public.buildTime,
+		relative: true,
+		tipPrefix: '构建于',
+	}),
 }, {
 	label: '总字数',
 	value: computed(() => stats.value ? formatNumber(stats.value.total.words) : ''),

@@ -3,38 +3,42 @@ packages:
 
 catalogs:
   content:
-    '@nuxt/content': ^3.7.1
+    '@nuxt/content': ^3.8.0
     '@nuxtjs/seo': ^3.2.2
-    '@shikijs/colorized-brackets': ^3.13.0
-    '@shikijs/transformers': ^3.13.0
+    '@shikijs/colorized-brackets': ^3.14.0
+    '@shikijs/transformers': ^3.14.0
     abcjs: ^6.5.2
     nuxt-llms: ^0.1.3
-    plain-shiki: ^0.3.1
+    plain-shiki: ^0.3.2
     rehype-katex: ^7.0.1
     remark-abcjs: ^0.1.6
     remark-math: ^6.0.0
     remark-reading-time: ^2.0.2
-    shiki: ^3.13.0
+    shiki: ^3.14.0
     unist-util-visit: ^5.0.0
   framework:
     '@zinkawaii/tsconfig': ^0.0.2
     ci-info: ^4.3.1
     nuxt: ^4.2.0
-    sass-embedded: ^1.93.2
-    tsdown: ^0.15.6
+    sass-embedded: ^1.93.3
+    tsdown: ^0.15.12
     tsx: ^4.20.6
     typescript: ^5.9.3
-    unplugin-yaml: ^3.0.6
+    unplugin-yaml: ^3.0.7
     vue: ^3.5.22
     vue-router: ^4.6.3
   quality:
-    '@antfu/eslint-config': ^6.0.0
+    '@antfu/eslint-config': ^6.2.0
     '@zinkawaii/stylelint-config': ^0.3.3
     cspell: ^9.2.2
-    eslint: ^9.38.0
+    eslint: ^9.39.0
     stylelint: ^16.25.0
   ui:
-    '@iconify/json': ^2.2.400
+    '@iconify-json/catppuccin': ^1.2.17
+    '@iconify-json/ph': ^1.2.2
+    '@iconify-json/ri': ^1.2.6
+    '@iconify-json/simple-icons': ^1.2.56
+    '@iconify-json/solar': ^1.2.5
     '@nuxt/icon': ^2.1.0
     '@nuxt/image': ^1.11.0
     '@nuxtjs/color-mode': ^3.5.2
@@ -50,14 +54,15 @@ catalogs:
     '@vueuse/nuxt': ^14.0.0
     '@vueuse/router': ^14.0.0
     date-fns: ^4.1.0
+    date-fns-tz: ^3.2.0
     fast-xml-parser: ^5.3.0
     minisearch: ^7.2.0
     nanoid: ^5.1.6
-    oxc-minify: ^0.95.0
+    oxc-minify: ^0.96.0
     p-limit: ^7.2.0
     parse-domain: ^8.2.2
     radash: ^12.1.1
-    rimraf: ^6.0.1
+    rimraf: ^6.1.0
     site-config-stack: ^3.2.11
     strip-ansi: ^7.1.2
 
@@ -70,11 +75,6 @@ onlyBuiltDependencies:
   - rolldown
   - sharp
   - unrs-resolver
-
-overrides:
-  '@rolldown/pluginutils': 1.0.0-beta.44
-  '@vueuse/core': 13.9.0
-  sharp: 0.33.4
 
 patchedDependencies:
   '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch

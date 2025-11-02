@@ -3,7 +3,7 @@ const props = defineProps<{
 	/** tab 下标从 1 开始 */
 	tabs: string[]
 	center?: boolean
-	active?: number
+	active?: string | number
 }>()
 
 // 使用 v-bind:active 以传递 Number 值
@@ -24,6 +24,7 @@ const activeTab = ref(Number(props.active) || 1)
 	</div>
 	<div class="tab-content">
 		<!-- <Transition> -->
+		<!-- TODO 动画、减少布局闪烁 -->
 		<slot :name="`tab${activeTab}`" />
 		<!-- </Transition> -->
 	</div>

@@ -9,8 +9,8 @@ const expand = defineModel<boolean>()
 
 <template>
 <div class="z-expand">
-	<!-- 折叠动画基于 @LuoH-AN 的实现改进 -->
 	<Transition name="collapse">
+		<!-- TODO v-show -->
 		<slot v-if="expand" />
 	</Transition>
 

@@ -1,19 +1,28 @@
 <script setup lang="ts">
-import { differenceInWeeks, formatISO, isSameYear } from 'date-fns'
+import { differenceInWeeks, isSameYear } from 'date-fns'
+import { toDate } from 'date-fns-tz'
 
 const props = defineProps<{
 	icon?: string
 	date: string
 	absolute?: boolean
+	relative?: boolean
 	nospace?: boolean
+	tipPrefix?: string
 }>()
+
+const appConfig = useAppConfig()
+const datetime = computed(() => toDate(props.date, { timeZone: appConfig.timezone }))
 
 const relative = computed(() => props.absolute
 	? false
-	: Math.abs(differenceInWeeks(Date.now(), props.date)) < 1,
+	: props.relative || Math.abs(differenceInWeeks(Date.now(), datetime.value)) < 1,
 )
 
-const tooltip = computed(() => getLocaleDatetime(props.date))
+const mounted = ref(false)
+const tooltip = computed(() => mounted.value ? `${props.tipPrefix || ''}${getLocaleDatetime(datetime.value)}` : undefined)
+
+onMounted(() => mounted.value = true)
 </script>
 
 <template>
@@ -22,9 +31,9 @@ const tooltip = computed(() => getLocaleDatetime(props.date))
 	<template v-if="!nospace">&nbsp;</template>
 
 	<NuxtTime
-		:datetime="formatISO(props.date)"
+		:datetime
 		:relative
-		:year="isSameYear(Date.now(), props.date) ? undefined : '2-digit'"
+		:year="isSameYear(Date.now(), datetime) ? undefined : '2-digit'"
 		month="long"
 		day="numeric"
 		numeric="auto"

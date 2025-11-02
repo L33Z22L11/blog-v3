@@ -8,6 +8,7 @@ const archIcons = {
 	'Cloudflare': 'simple-icons:cloudflare',
 	'Deno Deploy': 'simple-icons:deno',
 	'GitHub Pages': 'simple-icons:github',
+	'Golang': 'simple-icons:go',
 	'Gridea': 'tabler:square-rounded-letter-g-filled', // 不准确
 	'Halo': 'material-symbols:h-mobiledata-badge', // 不准确
 	'Hexo': 'simple-icons:hexo',

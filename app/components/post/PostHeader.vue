@@ -33,14 +33,16 @@ const { copy, copied } = useCopy(shareText)
 		<div v-if="!meta?.hideInfo" class="post-info">
 			<ZDate
 				v-if="date"
-				v-tip="`创建于 ${getLocaleDatetime(date)}`"
+				v-tip
+				tip-prefix="创建于"
 				:date="date"
 				icon="ph:calendar-dots-bold"
 			/>
 
 			<ZDate
 				v-if="updated && isTimeDiffSignificant(date, updated, .999)"
-				v-tip="`修改于 ${getLocaleDatetime(updated)}`"
+				v-tip
+				tip-prefix="修改于"
 				:date="updated"
 				icon="ph:calendar-plus-bold"
 			/>

@@ -1,7 +1,18 @@
-import { differenceInMilliseconds, format } from 'date-fns'
+import { differenceInMilliseconds } from 'date-fns'
+import { toDate } from 'date-fns-tz'
 
 export function getLocaleDatetime(date: string | Date) {
-	return format(date, 'yyyy年M月d日 E HH:mm:ss')
+	const appConfig = useAppConfig()
+	return toDate(date, { timeZone: appConfig.timezone })
+		.toLocaleString(undefined, {
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit',
+			weekday: 'long',
+			hour: '2-digit',
+			minute: '2-digit',
+			second: '2-digit',
+		})
 }
 
 export function isTimeDiffSignificant(

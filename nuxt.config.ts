@@ -56,7 +56,9 @@ export default defineNuxtConfig({
 		'@/assets/css/reusable.scss',
 	],
 
+	// @keep-sorted
 	experimental: {
+		extractAsyncDataHandlers: true,
 		typescriptPlugin: true,
 	},
 
@@ -86,6 +88,9 @@ export default defineNuxtConfig({
 			ci: process.env.TENCENTCLOUD_RUNENV === 'SCF' ? 'EdgeOne' : ci.name || '',
 		},
 	},
+
+	/** 在生产环境启用 sourcemap */
+	// sourcemap: true,
 
 	vite: {
 		build: {

@@ -3,11 +3,11 @@
   "type": "module",
   "version": "3.4.9",
   "private": true,
-  "packageManager": "pnpm@10.19.0",
+  "packageManager": "pnpm@10.20.0",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "engines": {
-    "node": ">=22.15.0",
-    "pnpm": ">=10.0.0"
+    "node": ">=22.15",
+    "pnpm": ">=10"
   },
   "scripts": {
     "prepare": "pnpm clean && pnpm build:packages",
@@ -39,6 +39,7 @@
     "abcjs": "catalog:content",
     "ci-info": "catalog:framework",
     "date-fns": "catalog:util",
+    "date-fns-tz": "catalog:util",
     "embla-carousel-autoplay": "catalog:ui",
     "embla-carousel-vue": "catalog:ui",
     "embla-carousel-wheel-gestures": "catalog:ui",
@@ -57,7 +58,11 @@
   "devDependencies": {
     "@antfu/eslint-config": "catalog:quality",
     "@clack/prompts": "catalog:util",
-    "@iconify/json": "catalog:ui",
+    "@iconify-json/catppuccin": "catalog:ui",
+    "@iconify-json/ph": "catalog:ui",
+    "@iconify-json/ri": "catalog:ui",
+    "@iconify-json/simple-icons": "catalog:ui",
+    "@iconify-json/solar": "catalog:ui",
     "@zinkawaii/stylelint-config": "catalog:quality",
     "cspell": "catalog:quality",
     "eslint": "catalog:quality",

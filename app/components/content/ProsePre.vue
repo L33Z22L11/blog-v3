@@ -57,6 +57,7 @@ onMounted(async () => {
 			.filter(lang => lang !== undefined)
 		await shikiStore.loadLang(...langs)
 	}
+
 	rawHtml.value = shiki.codeToHtml(
 		props.code.trimEnd(),
 		shikiStore.getOptions(props.language),

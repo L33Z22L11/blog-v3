@@ -1,5 +1,5 @@
 import type { ContentCollectionItem } from '@nuxt/content'
-import { formatISO } from 'date-fns'
+import { toDate } from 'date-fns-tz'
 import { XMLBuilder } from 'fast-xml-parser'
 import blogConfig from '~~/blog.config'
 import { version } from '~~/package.json'
@@ -15,7 +15,7 @@ const builder = new XMLBuilder({
 })
 
 function formatIsoDate(date?: string) {
-	return date ? formatISO(new Date(date)) : undefined
+	return date ? toDate(date, { timeZone: blogConfig.timezone }).toISOString() : undefined
 }
 
 function getUrl(path: string | undefined) {
@@ -49,7 +49,7 @@ export default defineEventHandler(async (event) => {
 		link: { $href: getUrl(post.path) },
 		summary: post.description,
 		category: { $term: post.categories?.[0] },
-		published: formatIsoDate(post.published) ?? formatIsoDate(post.date),
+		published: formatIsoDate(post.published ?? post.date),
 	}))
 
 	const feed = {
