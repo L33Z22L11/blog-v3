@@ -9,16 +9,21 @@ interface PopoverState {
 
 export interface PopoverOptions {
 	duration?: number
+	unique?: boolean
 }
 
 export const usePopoverStore = defineStore('popover', () => {
 	const pops = ref<Raw<PopoverState>[]>([])
-	const use = (render: () => VNode, options?: PopoverOptions) => {
+
+	function use(render: () => VNode, options?: PopoverOptions) {
 		let state: PopoverState
 		const show = ref(false)
 		const zIndex = pops.value.length + 100
 
 		async function open() {
+			if (options?.unique ? pops.value.includes(state) : show.value)
+				return
+
 			const vnode = render()
 			state = {
 				vnode,

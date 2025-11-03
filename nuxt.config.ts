@@ -97,11 +97,12 @@ export default defineNuxtConfig({
 			rollupOptions: {
 				output: {
 					manualChunks(id) {
-						if (id === 'parse-domain') {
-							return 'parse-domain'
-						}
-						if (id.includes('/@nuxtjs/mdc/dist/runtime/components/prose/')) {
-							return 'content-prose'
+						const separateChunkNames = ['parse-domain', 'components/prose']
+						for (const chunkName of separateChunkNames) {
+							if (id.includes(chunkName)) {
+								console.log(id, chunkName)
+								return chunkName
+							}
 						}
 					},
 				},

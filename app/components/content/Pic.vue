@@ -18,10 +18,13 @@ const picEl = useCurrentElement<HTMLImageElement>(pic)
 
 const popoverStore = usePopoverStore()
 
-const { open } = popoverStore.use(() => h(LazyPopoverLightbox, {
-	el: picEl.value,
-	caption: props.caption,
-}))
+const { open } = popoverStore.use(
+	() => h(LazyPopoverLightbox, {
+		el: picEl.value,
+		caption: props.caption,
+	}),
+	{ unique: true },
+)
 </script>
 
 <template>
