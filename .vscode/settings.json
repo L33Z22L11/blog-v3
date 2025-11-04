@@ -16,6 +16,7 @@
     "source.fixAll.eslint": "always",
     "source.fixAll.stylelint": "always"
   },
+  "editor.tabSize": 3,
   "errorLens.fontSize": ".8em",
   "errorLens.messageBackgroundMode": "message",
   "errorLens.messageMaxChars": 50,

@@ -20,9 +20,10 @@
     "preview": "nuxt preview",
     "lint": "stylelint '**/*.{vue,scss}'",
     "lint:fix": "eslint --fix && stylelint '**/*.{vue,scss}' --fix",
-    "new": "tsx scripts/new-blog.ts",
-    "check:feed": "tsx scripts/framework/get-feed.ts",
-    "check:feed/all": "tsx scripts/framework/check-all-feeds.ts"
+    "init-project": "tsx scripts/init-project",
+    "new": "tsx scripts/new-blog",
+    "check:feed": "tsx scripts/framework/get-feed",
+    "check:feed/all": "tsx scripts/framework/check-all-feeds"
   },
   "dependencies": {
     "@nuxt/content": "catalog:content",
