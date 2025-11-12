@@ -156,6 +156,11 @@ img {
 		}
 	}
 
+	> .indent {
+		display: inline-block;
+		background-image: linear-gradient(to right, var(--c-border) 0.1em, transparent 0.1em);
+	}
+
 	> .space::before,
 	>.tab::before {
 		display: inline-block;

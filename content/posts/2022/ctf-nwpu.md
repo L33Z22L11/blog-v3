@@ -197,7 +197,7 @@ console.log(originStr)
 
 下载文件，得到main.py如下。
 
-```python [main.py]
+```python [main.py] indent=3
 flag = 'xxx'
 
 charsets = 'abcdefghijklmnopqrstuvwxyz0123456789_{-},()/!@#$%^&*+=|<>?'

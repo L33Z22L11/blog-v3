@@ -22,7 +22,7 @@ tags: [代码, 前端, 字体]
 
 ```css
 :root {
-    font-synthesis: style;
+	font-synthesis: style;
 }
 ```
 
@@ -65,16 +65,16 @@ tags: [代码, 前端, 字体]
 
 ```css
 .badge {
-    display: inline-flex;
-    align-items: baseline;
-    height: 1.6em;
-    line-height: 1.6;
+	display: inline-flex;
+	align-items: baseline;
+	height: 1.6em;
+	line-height: 1.6;
 }
 
 .badge-icon {
-    /* `center` 为的不是居中而是拉齐😈 */
-    align-self: center;
-    height: 100%;
+	/* `center` 为的不是居中而是拉齐😈 */
+	align-self: center;
+	height: 100%;
 }
 ```
 
@@ -86,16 +86,16 @@ tags: [代码, 前端, 字体]
 
 ```css wrap
 body {
-    font-family: PingFang SC, system-ui, -apple-system, BlinkMacSystemFont, Helvetica Neue, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif;
-    letter-spacing: 0.034em;
-    line-height: 1.6;
-    word-wrap: break-word;
-    text-align: justify;
-    hyphens: auto;
-    text-underline-position: under;
-    text-decoration-skip-ink: none;
-    text-underline-offset: 0.1em;
-    text-size-adjust: 100%;
+	font-family: PingFang SC, system-ui, -apple-system, BlinkMacSystemFont, Helvetica Neue, Hiragino Sans GB, Microsoft YaHei UI, Microsoft YaHei, Arial, sans-serif;
+	letter-spacing: 0.034em;
+	line-height: 1.6;
+	word-wrap: break-word;
+	text-align: justify;
+	hyphens: auto;
+	text-underline-position: under;
+	text-decoration-skip-ink: none;
+	text-underline-offset: 0.1em;
+	text-size-adjust: 100%;
 }
 ```
 
@@ -109,13 +109,13 @@ body {
 
 ```css
 :root {
-    /* 解决文本垂直居中问题😎 */
-    line-height: 1.4;
+	/* 解决文本垂直居中问题😎 */
+	line-height: 1.4;
 }
 
 .foo {
-    /* 输入即可召唤文本垂直居中问题 + 中英文高度不一致 */
-    line-height: normal;
+	/* 输入即可召唤文本垂直居中问题 + 中英文高度不一致 */
+	line-height: normal;
 }
 ```
 
@@ -125,8 +125,8 @@ body {
 
 ```css
 :root {
-    word-wrap: break-word;
-    hyphens: auto;
+	word-wrap: break-word;
+	hyphens: auto;
 }
 ```
 
@@ -138,8 +138,8 @@ body {
 
 ```css
 .text-center {
-    text-align: center;
-    text-wrap: balance;
+	text-align: center;
+	text-wrap: balance;
 }
 ```
 
@@ -149,7 +149,7 @@ body {
 
 ```css
 p {
-    text-align: justify;
+	text-align: justify;
 }
 ```
 
@@ -182,11 +182,11 @@ p {
 
 ```css wrap
 [data-domain="zhihu.com"] {
-    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif;
 }
 
 [data-domain="nowcoder.com"] {
-    font-family: PingFang SC, Source Han Sans CN, Microsoft YaHei, system, -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Segoe UI, wenquanyi micro hei, Hiragino Sans GB, Hiragino Sans GB W3, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, sans-serif;
+	font-family: PingFang SC, Source Han Sans CN, Microsoft YaHei, system, -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Segoe UI, wenquanyi micro hei, Hiragino Sans GB, Hiragino Sans GB W3, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, sans-serif;
 }
 ```
 
@@ -219,7 +219,7 @@ Chrome 120 实现了 [CSS 文本模块级别 4 中的脚本间距](https://devel
 
 ```css
 :root {
-    text-autospace: normal;
+	text-autospace: normal;
 }
 ```
 
@@ -227,7 +227,7 @@ Chrome 120 实现了 [CSS 文本模块级别 4 中的脚本间距](https://devel
 
 ```css
 code, pre {
-    text-autospace: no-autospace;
+	text-autospace: no-autospace;
 }
 ```
 
@@ -263,12 +263,12 @@ code, pre {
 ::div
 ---
 style:
-    - font-size: 3em
-    - font-family: "InterVariable"
-    - font-weight: 800
-    - line-height: 1
-    - color: transparent
-    - -webkit-text-stroke: 1px var(--c-text)
+	- font-size: 3em
+	- font-family: "InterVariable"
+	- font-weight: 800
+	- line-height: 1
+	- color: transparent
+	- -webkit-text-stroke: 1px var(--c-text)
 ---
 中文1234
 ::
@@ -315,23 +315,23 @@ style:
 
 ```css
 :root {
-    /* Noto Sans SC 通过 CDN 提供 @font-face，无法更名或插入本地源 */
-    font-family: "Inter", "Noto Sans SC-Local", "Noto Sans SC", system-ui, sans-serif;
+	/* Noto Sans SC 通过 CDN 提供 @font-face，无法更名或插入本地源 */
+	font-family: "InterVariable", "Noto Sans SC-Local", "Noto Sans SC", system-ui, sans-serif;
 }
 
-/* 仅在 Chrome 111+ 启用本地可变字体，因为低版本会将 VF 显示为细体 */
-@supports (font-variant-alternates: normal) {
-    @font-face {
-        font-family: "Noto Sans SC-Local";
-        font-weight: 100 900; /* 不指定则为 400 */
-        src: local("Noto Sans SC");
-    }
+/* 仅在 Chrome 130+ 启用本地可变字体，因为低版本会将 VF 显示为细体 */
+@supports (box-decoration-break: clone) {
+	@font-face {
+	font-family: "Noto Sans SC-Local";
+	font-weight: 100 900; /* 不指定则为 400 */
+	src: local("Noto Sans SC");
+	}
 
-    @font-face {
-        font-family: "Noto Serif SC-Local";
-        font-weight: 100 900;
-        src: local("Noto Serif SC");
-    }
+	@font-face {
+	font-family: "Noto Serif SC-Local";
+	font-weight: 100 900;
+	src: local("Noto Serif SC");
+	}
 }
 ```
 
@@ -346,18 +346,18 @@ style:
 
 ```css wrap
 :root {
-    --font-basic: "Inter-Local", "InterVariable", "Noto Sans SC-Local", "Noto Sans SC", system-ui, sans-serif;
+	--font-basic: "InterVariable", "Noto Sans SC-Local", ui-sans-serif, "sans-serif", "Noto Sans SC", system-ui, sans-serif;
 
-    font-family: var(--font-basic);
-    /* CDN 提供的 CSS 已经预定义字体函数，这是本站使用的变体 */
-    font-variant-alternates: styleset(open-digits, disambiguation, round-quotes-and-commas);
+	font-family: var(--font-basic);
+	/* CDN 提供的 CSS 已经预定义字体函数，这是本站使用的变体 */
+	font-variant-alternates: styleset(open-digits, disambiguation, round-quotes-and-commas);
 }
 
 /* 低像素密度设备下，可以使用 Hint 良好的 system-ui 字体 */
 @media (max-resolution: 1.2dppx) {
-    :root {
-        --font-basic: "Inter-Local", "InterVariable", system-ui, sans-serif;
-    }
+	:root {
+	--font-basic: "InterVariable", system-ui, sans-serif;
+	}
 }
 ```
 

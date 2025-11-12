@@ -30,9 +30,10 @@ const meta = computed(() => {
 })
 
 const appConfig = useAppConfig()
+const compConf = appConfig.component.codeblock
 
 const rows = computed(() => props.code.split('\n').length - 1)
-const collapsible = computed(() => !meta.value.expand && rows.value > appConfig.component.codeblock.triggerRows)
+const collapsible = computed(() => !meta.value.expand && rows.value > compConf.triggerRows)
 const [isCollapsed, toggleCollapsed] = useToggle(collapsible.value)
 
 const icon = computed(() => meta.value.icon || getFileIcon(props.filename) || getLangIcon(props.language))
@@ -43,6 +44,16 @@ const { copy, copied } = useCopy(codeblock)
 
 const shikiStore = useShikiStore()
 const rawHtml = ref(escapeHtml(props.code))
+
+function getIndent() {
+	if (meta.value.indent)
+		return meta.value.indent
+
+	if (['json', 'jsonc', 'yaml', 'yml'].includes(props.language))
+		return 2
+
+	return compConf.indent
+}
 
 onMounted(async () => {
 	const shiki = await shikiStore.load()
@@ -60,7 +71,11 @@ onMounted(async () => {
 
 	rawHtml.value = shiki.codeToHtml(
 		props.code.trimEnd(),
-		shikiStore.getOptions(props.language),
+		shikiStore.getOptions(
+			props.language,
+			[compConf.enableIndentGuide ? 'ignoreRenderWhitespace' : 'ignoreRenderIndentGuides'],
+			{ meta: { indent: getIndent() } },
+		),
 	)
 })
 </script>
@@ -69,7 +84,10 @@ onMounted(async () => {
 <figure
 	class="z-codeblock"
 	:class="{ collapsed: collapsible && isCollapsed, collapsible }"
-	:style="{ '--collapsed-rows': appConfig.component.codeblock.collapsedRows }"
+	:style="{
+		'--collapsed-rows': compConf.collapsedRows,
+		'--tab-size': meta.indent as string || compConf.tabSize,
+	}"
 >
 	<figcaption>
 		<span v-if="filename" class="filename">
@@ -123,6 +141,7 @@ onMounted(async () => {
 	background-color: var(--c-bg-2);
 	font-size: 0.8125rem;
 	line-height: var(--line-height);
+	tab-size: var(--tab-size, 4);
 
 	&.collapsed {
 		pre {

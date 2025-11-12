@@ -1,17 +1,24 @@
 import type { BundledLanguage, CodeToHastOptions, HighlighterCore, RegexEngine } from 'shiki'
 import { transformerColorizedBrackets } from '@shikijs/colorized-brackets'
-import { transformerMetaHighlight, transformerMetaWordHighlight, transformerNotationDiff, transformerNotationErrorLevel, transformerNotationFocus, transformerNotationHighlight, transformerNotationWordHighlight, transformerRenderWhitespace } from '@shikijs/transformers'
+import { transformerMetaHighlight, transformerMetaWordHighlight, transformerNotationDiff, transformerNotationErrorLevel, transformerNotationFocus, transformerNotationHighlight, transformerNotationWordHighlight, transformerRenderIndentGuides, transformerRenderWhitespace } from '@shikijs/transformers'
 
 let promise: Promise<HighlighterCore>
 let shiki: HighlighterCore
 
 type CustomTransformerOptions = Array<
-	| 'ignoreRenderWhitespace'
 	| 'ignoreColorizedBrackets'
+	| 'ignoreRenderWhitespace'
+	| 'ignoreRenderIndentGuides'
 >
 
+type ShikiOptions = CodeToHastOptions<BundledLanguage, string>
+
 export const useShikiStore = defineStore('shiki', () => {
-	const getOptions = (lang: string, transformerOptions?: CustomTransformerOptions): CodeToHastOptions<BundledLanguage, string> => ({
+	const getOptions = (
+		lang: string,
+		transformerOptions?: CustomTransformerOptions,
+		extraShikiOptions?: Omit<ShikiOptions, 'lang'>,
+	): ShikiOptions => ({
 		lang,
 		themes: {
 			light: 'catppuccin-latte',
@@ -23,6 +30,9 @@ export const useShikiStore = defineStore('shiki', () => {
 			transformerNotationWordHighlight(),
 			transformerNotationFocus(),
 			transformerNotationErrorLevel(),
+			transformerOptions?.includes('ignoreRenderIndentGuides') || ['ansi', 'log', 'text'].includes(lang)
+				? {}
+				: transformerRenderIndentGuides(),
 			transformerOptions?.includes('ignoreRenderWhitespace') || ['ansi', 'log', 'text'].includes(lang)
 				? {}
 				: transformerRenderWhitespace(),
@@ -41,6 +51,7 @@ export const useShikiStore = defineStore('shiki', () => {
 				},
 			},
 		],
+		...extraShikiOptions,
 	})
 
 	async function load() {
@@ -71,7 +82,8 @@ export const useShikiStore = defineStore('shiki', () => {
 		}
 		catch {
 			const { createOnigurumaEngine } = await import('shiki/engine-oniguruma.mjs')
-			engine = await createOnigurumaEngine(import('https://esm.sh/shiki/wasm' as any))
+			// @ts-expect-error CDN 动态引入的包无类型
+			engine = await createOnigurumaEngine(import('https://esm.sh/shiki/wasm'))
 		}
 
 		return createHighlighterCore({ themes: [catppuccinLatte, oneDarkPro], engine })

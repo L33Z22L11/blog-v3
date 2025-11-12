@@ -16,10 +16,10 @@ tags: [代码, 前端, 问题]
 
 ```css
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: black;
-        color: white;
-    }
+	body {
+		background-color: black;
+		color: white;
+	}
 }
 ```
 
@@ -41,15 +41,15 @@ tags: [代码, 前端, 问题]
 
 ```css
 body {
-    background-color: white;
-    color: black;
+	background-color: white;
+	color: black;
 }
 
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: black;
-        color: white;
-    }
+	body {
+		background-color: black;
+		color: white;
+	}
 }
 ```
 
@@ -61,28 +61,28 @@ body {
 
 ```css [https://cooo.site/asset/index.css]
 :root {
-    --bg1: #f7f9ff;
-    --bg2: #fff;
-    --text1: #334;
-    --text2: #556;
-    --text3: #aab;
-    --line: rgba(127, 127, 191, .2);
-    --ac1: #37f;
-    --ac2: rgba(0, 127, 255, .5);
-    --ac3: rgba(0, 127, 255, .2);
+	--bg1: #f7f9ff;
+	--bg2: #fff;
+	--text1: #334;
+	--text2: #556;
+	--text3: #aab;
+	--line: rgba(127, 127, 191, .2);
+	--ac1: #37f;
+	--ac2: rgba(0, 127, 255, .5);
+	--ac3: rgba(0, 127, 255, .2);
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --bg1: #111;
-        --bg2: #222;
-        --text1: #eee;
-        --text2: #ccc;
-        --text3: #777;
-        --ac1: #fc2;
-        --ac2: rgba(255, 191, 0, .5);
-        --ac3: rgba(255, 191, 0, .2);
-    }
+	:root {
+		--bg1: #111;
+		--bg2: #222;
+		--text1: #eee;
+		--text2: #ccc;
+		--text3: #777;
+		--ac1: #fc2;
+		--ac2: rgba(255, 191, 0, .5);
+		--ac3: rgba(255, 191, 0, .2);
+	}
 }
 ```
 
@@ -121,10 +121,10 @@ body {
 
 ```html
 <head>
-    <script>
-        if (localStorage.getItem('theme') === 'dark')
-            document.documentElement.setAttribute('data-theme', 'dark')
-    </script>
+	<script>
+		if (localStorage.getItem('theme') === 'dark')
+			document.documentElement.setAttribute('data-theme', 'dark')
+	</script>
 </head>
 ```
 
@@ -134,23 +134,23 @@ body {
 
 ```css
 :root {
-    --c-bg: white;
-    --c-text: black;
+	--c-bg: white;
+	--c-text: black;
 }
 
 @media (prefers-color-scheme: dark) {
-    /* 原本是 :root[data-theme="auto"]
-     * 但下一个选择器应该有相同或更高的优先级 */
-    :root {
-        --c-bg: #111;
-        --c-text: #eee;
-    }
+	/* 原本是 :root[data-theme="auto"]
+	 * 但下一个选择器应该有相同或更高的优先级 */
+	:root {
+		--c-bg: #111;
+		--c-text: #eee;
+	}
 }
 
 [data-theme="dark"] {
-    --c-bg: black;
-    --c-text: white;
-    color-scheme: dark;
+	--c-bg: black;
+	--c-text: white;
+	color-scheme: dark;
 }
 ```
 
@@ -164,15 +164,15 @@ body {
 const colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)')
 
 function setTheme(theme?: 'light' | 'dark' | 'auto') {
-    if (theme)
-        localStorage.setItem('theme', theme)
+	if (theme)
+		localStorage.setItem('theme', theme)
 
-    const targetTheme = theme || localStorage.getItem('theme') || 'auto'
-    const isDark = targetTheme === 'dark' || (targetTheme === 'auto' && colorSchemeQuery.matches)
+	const targetTheme = theme || localStorage.getItem('theme') || 'auto'
+	const isDark = targetTheme === 'dark' || (targetTheme === 'auto' && colorSchemeQuery.matches)
 
-    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light')
-    // 如果使用类名实现，则
-    // document.body.classList.toggle('dark', isDark ? 'dark' : 'light')
+	document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light')
+	// 如果使用类名实现，则
+	// document.body.classList.toggle('dark', isDark ? 'dark' : 'light')
 }
 
 colorSchemeQuery.addEventListener('change', () => setTheme());

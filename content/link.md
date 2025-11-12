@@ -9,10 +9,10 @@
     ````md
     ```ts
     export default {
-      title: '博客名称',
-      desc: '博客描述',
-      link: '博客地址',
-      avatar: '个人头像',
+    	title: '博客名称',
+    	desc: '博客描述',
+    	link: '博客地址',
+    	avatar: '个人头像',
     } satisfies Friend
     ```
     ````

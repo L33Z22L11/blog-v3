@@ -6,20 +6,22 @@ import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
 
 defineProps<{ list: ArticleProps[] }>()
 
-const [emblaRef, emblaApi] = emblaCarouselVue({
-	skipSnaps: true,
+// @keep-sorted
+const [carouselEl, carouselApi] = emblaCarouselVue({
+	containScroll: false,
 	loop: true,
+	skipSnaps: true,
 }, [
 	Autoplay({ stopOnInteraction: false, stopOnMouseEnter: true }),
 	WheelGesturesPlugin(),
 ])
 
 // 鼠标横向滚动 / Shift + 纵向滚轮事件
-useEventListener(emblaRef, 'wheel', (e) => {
+useEventListener(carouselEl, 'wheel', (e) => {
 	const delta = e.deltaX + (e.shiftKey ? e.deltaY : 0)
 	if (Math.abs(delta) < 80)
 		return
-	delta > 0 ? emblaApi.value?.scrollNext() : emblaApi.value?.scrollPrev()
+	delta > 0 ? carouselApi.value?.scrollNext() : carouselApi.value?.scrollPrev()
 }, { passive: true })
 </script>
 
@@ -32,7 +34,7 @@ useEventListener(emblaRef, 'wheel', (e) => {
 			按住 Shift 横向滚动
 		</div>
 	</div>
-	<div ref="emblaRef" class="embla" dir="ltr">
+	<div ref="carouselEl" class="z-slide-body" dir="ltr">
 		<div class="slide-list">
 			<ZRawLink
 				v-for="(article, index) in list"
@@ -51,16 +53,16 @@ useEventListener(emblaRef, 'wheel', (e) => {
 			</ZRawLink>
 		</div>
 		<ZButton
-			class="embla-button prev at-slide-hover"
+			class="carousel-action prev at-slide-hover"
 			aria-label="上一页"
 			icon="ph:caret-left-bold"
-			@click="emblaApi?.scrollPrev()"
+			@click="carouselApi?.scrollPrev()"
 		/>
 		<ZButton
-			class="embla-button next at-slide-hover"
+			class="carousel-action next at-slide-hover"
 			aria-label="下一页"
 			icon="ph:caret-right-bold"
-			@click="emblaApi?.scrollNext()"
+			@click="carouselApi?.scrollNext()"
 		/>
 	</div>
 </div>
@@ -99,11 +101,9 @@ useEventListener(emblaRef, 'wheel', (e) => {
 	}
 }
 
-.embla {
+.z-slide-body {
 	--fadeout-width: 1.5rem;
 
-	display: flex;
-	align-items: center;
 	position: relative;
 	overflow: hidden;
 	mask-image: linear-gradient(to var(--end), transparent, #FFF var(--fadeout-width), #FFF calc(100% - var(--fadeout-width)), transparent);
@@ -111,10 +111,12 @@ useEventListener(emblaRef, 'wheel', (e) => {
 	user-select: none;
 }
 
-.embla-button {
+.carousel-action {
 	position: absolute;
+	top: 50%;
 	padding: 0.5em 0.2em;
 	font-size: 1.5em;
+	transform: translateY(-50%);
 	transition: all 0.2s;
 
 	&.prev { inset-inline-start: 1rem; }

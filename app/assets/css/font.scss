@@ -1,61 +1,18 @@
 :root {
-	--font-basic: "Inter-Local", "InterVariable", "Noto Sans SC-Local", "Noto Sans SC", system-ui, sans-serif;
-	--font-serif: "Noto Serif SC-Local", "Noto Serif SC", "华文中宋", "Times New Roman", serif;
-	--font-creative: "Inter-Local", "InterVariable", "Noto Sans SC-Local", "Noto Sans SC", "MiSans", system-ui, sans-serif;
-	--font-stroke-free: "Inter-Local", "Inter", "Microsoft YaHei", "MiSans", system-ui, sans-serif;
-	--font-monospace: "JetBrains Mono", "Cascadia Code", "Monaco", "Consolas", "monospace", var(--font-basic), monospace;
+	--font-basic: "InterVariable", "Noto Sans SC-Local", ui-sans-serif, "sans-serif", "Noto Sans SC", system-ui, sans-serif;
+	--font-serif: "Noto Serif SC-Local", "Noto Serif SC", serif;
+	--font-creative: "InterVariable", "Noto Sans SC-Local", ui-sans-serif, "sans-serif", "Noto Sans SC", system-ui, sans-serif;
+	--font-stroke-free: "Inter", "Microsoft YaHei", "MiSans", system-ui, sans-serif;
+	--font-monospace: ui-monospace, "JetBrains Mono", "Cascadia Code", "Consolas", "monospace", var(--font-basic), monospace;
 
 	@media (max-resolution: 1.2dppx) {
-		--font-basic: "Inter-Local", "InterVariable", system-ui, sans-serif;
+		--font-basic: "InterVariable", system-ui, sans-serif;
 	}
 }
 
-$font-weights: (
-	100: "Thin",
-	200: "ExtraLight",
-	300: "Light",
-	400: "Regular",
-	500: "Medium",
-	600: "SemiBold",
-	700: "Bold",
-	800: "ExtraBold",
-	900: "Black"
-);
-
-@each $weight, $name in $font-weights {
-	@font-face {
-		font-family: Inter-Local;
-		font-weight: $weight;
-		src: local("Inter #{$name}");
-	}
-
-	@font-face {
-		font-family: Inter-Local;
-		font-style: italic;
-		font-weight: $weight;
-		src: local("Inter #{if($weight == 400, 'Italic', '#{$name} Italic')}");
-	}
-}
-
-@mixin inter-styleset($font-family) {
-	@font-feature-values "#{$font-family}" {
-		@styleset {
-			open-digits: 1;
-			disambiguation: 2;
-			round-quotes-and-commas: 3;
-			disambiguation-except-zero: 4;
-			circled-characters: 5;
-			squared-characters: 6;
-			square-punctuation: 7;
-			square-quotes: 8;
-		}
-	}
-}
-
-@include inter-styleset(Inter-Local);
-
-// 仅在 Chrome 111+ 启用本地可变字体
-@supports (font-variant-alternates: normal) {
+/* autoprefixer: ignore next */
+// 仅在 Chrome 130+ 启用本地可变字体
+@supports (box-decoration-break: clone) {
 	@font-face {
 		font-family: "Noto Sans SC-Local";
 		font-weight: 100 900; // 不指定则为 400

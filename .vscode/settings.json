@@ -9,6 +9,9 @@
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
+  "[vue]": {
+    "editor.defaultFormatter": null
+  },
   "[yaml]": {
     "editor.formatOnSave": false
   },

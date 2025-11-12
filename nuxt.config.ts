@@ -222,6 +222,10 @@ ${packageJson.homepage}
 		description: blogConfig.description,
 	},
 
+	ogImage: {
+		enabled: false,
+	},
+
 	robots: {
 		disableNuxtContentIntegration: true,
 		disallow: blogConfig.article.robotsNotIndex,

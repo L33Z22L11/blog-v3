@@ -5,8 +5,8 @@ catalogs:
   content:
     '@nuxt/content': ^3.8.0
     '@nuxtjs/seo': ^3.2.2
-    '@shikijs/colorized-brackets': ^3.14.0
-    '@shikijs/transformers': ^3.14.0
+    '@shikijs/colorized-brackets': ^3.15.0
+    '@shikijs/transformers': ^3.15.0
     abcjs: ^6.5.2
     nuxt-llms: ^0.1.3
     plain-shiki: ^0.3.2
@@ -14,30 +14,30 @@ catalogs:
     remark-abcjs: ^0.1.6
     remark-math: ^6.0.0
     remark-reading-time: ^2.0.2
-    shiki: ^3.14.0
+    shiki: ^3.15.0
     unist-util-visit: ^5.0.0
   framework:
     '@zinkawaii/tsconfig': ^0.0.2
     ci-info: ^4.3.1
-    nuxt: ^4.2.0
+    nuxt: ^4.2.1
     sass-embedded: ^1.93.3
     tsdown: ^0.15.12
     tsx: ^4.20.6
     typescript: ^5.9.3
     unplugin-yaml: ^3.0.7
-    vue: ^3.5.22
+    vue: ^3.5.24
     vue-router: ^4.6.3
   quality:
     '@antfu/eslint-config': ^6.2.0
     '@zinkawaii/stylelint-config': ^0.3.3
-    cspell: ^9.2.2
-    eslint: ^9.39.0
+    cspell: ^9.3.0
+    eslint: ^9.39.1
     stylelint: ^16.25.0
   ui:
     '@iconify-json/catppuccin': ^1.2.17
     '@iconify-json/ph': ^1.2.2
     '@iconify-json/ri': ^1.2.6
-    '@iconify-json/simple-icons': ^1.2.56
+    '@iconify-json/simple-icons': ^1.2.58
     '@iconify-json/solar': ^1.2.5
     '@nuxt/icon': ^2.1.0
     '@nuxt/image': ^1.11.0
@@ -49,13 +49,13 @@ catalogs:
     vue-virtual-scroller: 2.0.0-beta.8
   util:
     '@clack/prompts': ^0.11.0
-    '@pinia/nuxt': ^0.11.2
+    '@pinia/nuxt': ^0.11.3
     '@vueuse/core': ^14.0.0
     '@vueuse/nuxt': ^14.0.0
     '@vueuse/router': ^14.0.0
     date-fns: ^4.1.0
     date-fns-tz: ^3.2.0
-    fast-xml-parser: ^5.3.0
+    fast-xml-parser: ^5.3.1
     minisearch: ^7.2.0
     nanoid: ^5.1.6
     oxc-minify: ^0.96.0

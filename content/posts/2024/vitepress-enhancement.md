@@ -21,7 +21,7 @@ VitePress 是一个非常优秀的静态站点生成器，它使用 Vite 作为�
 - 更改 PowerShell 脚本 [执行策略](https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.core/about/about_execution_policies)
   :copy{code="Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser"}
   - 也可通过管理员权限更改系统策略
-    :copy{code="sudo Set-ExecutionPolicy RemoteSigned"}
+	:copy{code="sudo Set-ExecutionPolicy RemoteSigned"}
 - 初始化 pnpm
   :copy{code="pnpm setup"}
   - 初始化后，由于环境变量变化，需要启动一个新的 PowerShell 会话
@@ -57,34 +57,34 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/zh/reference/site-config
 export default defineConfig({
-    lang: 'zh-Hans',
-    themeConfig: {
-        // https://vitepress.dev/zh/reference/default-theme-config
-        nav: nav(),
-        sidebar: sidebar(),
-        externalLinkIcon: true,
-        langMenuLabel: '切换语言',
-        darkModeSwitchLabel: '主题',
-        lightModeSwitchTitle: '切换到浅色模式',
-        darkModeSwitchTitle: '切换到深色模式',
-        sidebarMenuLabel: '菜单',
-        outline: { level: [2, 3], label: '目录' },
-        returnToTopLabel: '返回顶部',
-        // 请将此链接修改为正确的URL，或根据需求删除该配置
-        // editLink: { pattern: 'https://github.com/username/repository-name/blame/main/docs/:path', text: '源代码', },
-        lastUpdated: { text: '更新于' },
-        docFooter: { prev: '上一篇', next: '下一篇' },
-    },
-    vite: { server: { allowedHosts: true } },
+	lang: 'zh-Hans',
+	themeConfig: {
+		// https://vitepress.dev/zh/reference/default-theme-config
+		nav: nav(),
+		sidebar: sidebar(),
+		externalLinkIcon: true,
+		langMenuLabel: '切换语言',
+		darkModeSwitchLabel: '主题',
+		lightModeSwitchTitle: '切换到浅色模式',
+		darkModeSwitchTitle: '切换到深色模式',
+		sidebarMenuLabel: '菜单',
+		outline: { level: [2, 3], label: '目录' },
+		returnToTopLabel: '返回顶部',
+		// 请将此链接修改为正确的URL，或根据需求删除该配置
+		// editLink: { pattern: 'https://github.com/username/repository-name/blame/main/docs/:path', text: '源代码', },
+		lastUpdated: { text: '更新于' },
+		docFooter: { prev: '上一篇', next: '下一篇' },
+	},
+	vite: { server: { allowedHosts: true } },
 })
 
 // 将导航和侧边栏逻辑提取到外部，便于根据文档结构进行维护
 function nav(): DefaultTheme.NavItem[] {
-    return []
+	return []
 }
 
 function sidebar(): DefaultTheme.Sidebar {
-    return { '/': [] }
+	return { '/': [] }
 }
 ```
 
@@ -180,17 +180,17 @@ import './theme-enhanced.css'
 import './style.css'
 
 export default {
-    extends: DefaultTheme,
-    Layout: () => {
-        return h(DefaultTheme.Layout, null, {
-            // https://vitepress.dev/zh/guide/extending-default-theme#layout-slots
-            'doc-bottom': () => h(Footer),
-            'not-found': () => h(NotFound),
-        })
-    },
-    enhanceApp({ app }) {
-        app.component('Icon', Icon)
-    },
+	extends: DefaultTheme,
+	Layout: () => {
+		return h(DefaultTheme.Layout, null, {
+			// https://vitepress.dev/zh/guide/extending-default-theme#layout-slots
+			'doc-bottom': () => h(Footer),
+			'not-found': () => h(NotFound),
+		})
+	},
+	enhanceApp({ app }) {
+		app.component('Icon', Icon)
+	},
 } satisfies Theme
 ```
 
@@ -200,16 +200,16 @@ export default {
 
 ```css [docs/.vitepress/theme/style.css]
 .fa-solid, .fa-regular, .fa-brands {
-    width: 1.2em;
-    vertical-align: middle;
-    text-align: center;
+	width: 1.2em;
+	vertical-align: middle;
+	text-align: center;
 }
 
 svg:where(.iconify) {
-    display: inline-block;
-    flex-shrink: 0;
-    font-size: 1.2em;
-    vertical-align: sub;
+	display: inline-block;
+	flex-shrink: 0;
+	font-size: 1.2em;
+	vertical-align: sub;
 }
 ```
 
@@ -221,11 +221,11 @@ svg:where(.iconify) {
 
 ```css [docs/.vitepress/theme/theme-enhanced.css]
 .vp-doc .custom-block {
-    padding: 8px 16px;
+	padding: 8px 16px;
 }
 
 .vp-doc .custom-block :first-child:first-child {
-    margin: 8px 0;
+	margin: 8px 0;
 }
 ```
 
@@ -234,73 +234,73 @@ svg:where(.iconify) {
 ```css [theme-enhanced.css]
 /* stylelint-disable selector-class-pattern */
 :root {
-    --font-monospace: "JetBrains Mono", "Cascadia Code", "Fira Code", "Monaco", "Consolas", "monospace", "Noto Sans SC", system-ui, monospace;
+	--font-monospace: "JetBrains Mono", "Cascadia Code", "Fira Code", "Monaco", "Consolas", "monospace", "Noto Sans SC", system-ui, monospace;
 }
 
 .VPMenuGroup > .title {
-    font-size: 0.7em;
+	font-size: 0.7em;
 }
 
 .VPSwitch > .check {
-    bottom: 1px;
-    width: auto;
-    height: auto;
-    aspect-ratio: 1;
+	bottom: 1px;
+	width: auto;
+	height: auto;
+	aspect-ratio: 1;
 }
 
 .vp-doc > div > :where(h4, h5, h6) {
-    margin: 1.4em 0 0.5em;
+	margin: 1.4em 0 0.5em;
 }
 
 .vp-doc blockquote > p {
-    margin: 1em 0;
+	margin: 1em 0;
 }
 
 .vp-doc table {
-    font-variant-numeric: tabular-nums;
+	font-variant-numeric: tabular-nums;
 }
 
 .vp-doc a {
-    background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 2px;
-    text-decoration: none;
-    transition: 0.2s;
+	background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 2px;
+	text-decoration: none;
+	transition: 0.2s;
 }
 
 .vp-doc a:hover {
-    border-radius: 0.2em;
-    background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 100%;
+	border-radius: 0.2em;
+	background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 100%;
 }
 
 .vp-doc strong {
-    background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 40%;
+	background: linear-gradient(var(--vp-c-brand-soft), var(--vp-c-brand-soft)) no-repeat center bottom / 100% 40%;
 }
 
 .vp-doc s {
-    opacity: 0.6;
+	opacity: 0.6;
 }
 
 .vp-doc ::marker {
-    color: var(--vp-c-brand-1);
+	color: var(--vp-c-brand-1);
 }
 
 .vp-doc ol:not([class]), .vp-doc ol:not([class]) ol ol ol {
-    list-style-type: revert;
+	list-style-type: revert;
 }
 
 .vp-doc ol:not([class]) ol, .vp-doc ol:not([class]) ol ol ol ol {
-    list-style-type: lower-alpha;
+	list-style-type: lower-alpha;
 }
 
 .vp-doc ol:not([class]) ol ol, .vp-doc ol:not([class]) ol ol ol ol ol {
-    list-style-type: lower-roman;
+	list-style-type: lower-roman;
 }
 
 .VPBadge {
-    margin: 0 0.1em;
-    padding: 0.2em 0.5em;
-    font-size: 0.8em;
-    line-height: 1.2;
-    transform: translateY(-0.1em);
+	margin: 0 0.1em;
+	padding: 0.2em 0.5em;
+	font-size: 0.8em;
+	line-height: 1.2;
+	transform: translateY(-0.1em);
 }
 ```
 
@@ -308,11 +308,11 @@ svg:where(.iconify) {
 
 ```css [some-component.vue]
 .some-comp.some-comp a {
-    background: unset;
+	background: unset;
 }
 
 .some-comp.some-comp a[target]::after {
-    content: unset;
+	content: unset;
 }
 ```
 
@@ -321,37 +321,37 @@ svg:where(.iconify) {
 ```css [docs/.vitepress/theme/style.css]
 /* 首页 Feature 图标样式 */
 .VPFeature {
-    position: relative;
-    overflow: hidden;
-    z-index: 0;
+	position: relative;
+	overflow: hidden;
+	z-index: 0;
 }
 
 .VPFeature .icon {
-    position: absolute;
-    opacity: 0.15;
-    inset-inline-end: 10%;
-    background-color: transparent;
-    font-size: 8em;
-    z-index: -1;
+	position: absolute;
+	opacity: 0.15;
+	inset-inline-end: 10%;
+	background-color: transparent;
+	font-size: 8em;
+	z-index: -1;
 }
 
 /* 文档二级标题编号 */
 .vp-doc {
-    counter-reset: section-counter;
+	counter-reset: section-counter;
 }
 
 .vp-doc h2 {
-    counter-increment: section-counter;
+	counter-increment: section-counter;
 }
 
 .vp-doc h2::before {
-    content: counter(section-counter);
-    position: absolute;
-    inset-inline-start: -2rem;
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--vp-c-divider);
-    z-index: -1;
+	content: counter(section-counter);
+	position: absolute;
+	inset-inline-start: -2rem;
+	font-size: 3rem;
+	font-weight: bold;
+	color: var(--vp-c-divider);
+	z-index: -1;
 }
 ```
 
