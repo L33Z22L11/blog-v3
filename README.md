@@ -25,7 +25,7 @@
 | [希乐博客](https://blog.xlenco.top/)         | Xlenco        | v3.4.8       | 最新评论                       |
 | [SteinsNote](https://blog.labmem.chat/)      | Labmem-00     | v3.1-241112  | 专栏                           |
 | [月空人](https://whbbit.cn/)                 | Whbbit1999    | v3.4.9       | 项目/博客/Snippets页           |
-| [地球驿站](https://blog.mugzx.top/)          | mugzx         | v3.4.9       | 设计风格统一                   |
+| [Mugzx's Blog](https://blog.mugzx.top/)          | Mugzx         | v3.4.9       | 设计风格统一                   |
 | [喵落阁](https://blog-v3.kemeow.top/)        | Kemeow815     | v3.4.7       | 即刻+友圈+最新评论+游戏/番剧页 |
 | [梦爱吃鱼](https://blog.ruom.top/)           | JLinmr        | v3.2-250304  | 即刻+友圈+最新评论             |
 | [Mikuの极光星](https://blog.sotkg.com/)      | PaloMiku      | v3.4.9       | 设计风格统一，设置面板         |
