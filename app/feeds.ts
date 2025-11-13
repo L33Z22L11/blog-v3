@@ -2,6 +2,7 @@ import type { FeedGroup } from '~/types/feed'
 import { getFavicon, getGhAvatar, getGhIcon, getQqAvatar, QqAvatarSize } from './utils/img'
 
 export default [
+	// #region 相谈甚多
 	{
 		name: '相谈甚多',
 		desc: '',
@@ -60,14 +61,14 @@ export default [
 				author: '唤青',
 				sitenick: 'Abloom',
 				title: '唤青映记',
-				desc: '我崇拜流浪、变化和幻想',
+				desc: 'Per aspera ad astra',
 				link: 'https://eees.blog/',
 				feed: 'https://eees.blog/atom.xml',
 				icon: getGhIcon('abloom25'),
 				avatar: getGhAvatar('abloom25'),
-				archs: ['Hexo', 'Vercel'],
+				archs: ['Nuxt', 'Cloudflare'],
 				date: '2024-12-09',
-				comment: '初中生，技术学习中。',
+				comment: '高中生，技术学习中。',
 			},
 		],
 	},
@@ -251,6 +252,7 @@ export default [
 			},
 		],
 	},
+	// #region 网上邻居
 	{
 		name: '网上邻居',
 		desc: '哔——啵——电波通讯中，欢迎常来串门。',
@@ -713,7 +715,7 @@ export default [
 				feed: 'https://zhul.in/rss.xml',
 				icon: 'https://zhul.in/favicon.ico',
 				avatar: 'https://static.031130.xyz/avatar.webp',
-				archs: ['Hexo', '服务器'],
+				archs: ['Nuxt', '服务器'],
 				date: '2025-05-03',
 				comment: '前端开发、网络配置、服务器运维及开源工具实战经验。',
 			},
@@ -1009,7 +1011,6 @@ export default [
 			},
 			{
 				author: '栖童',
-				sitenick: 'の小站',
 				title: '栖童の小站',
 				desc: '越努力,越幸运',
 				link: 'https://blog.linux-qitong.top/',
@@ -1076,9 +1077,20 @@ export default [
 				date: '2025-11-01',
 				comment: '深度学习、大数据与软件工程学习笔记。',
 			},
+			{
+				author: '异想之旅',
+				desc: '异想之旅のBlog',
+				link: 'https://blog.yxzl.dev/',
+				icon: 'https://blog.yxzl.dev/favicon.ico',
+				avatar: 'https://blog.yxzl.dev/favicon.ico',
+				archs: ['VuePress', 'GitHub Pages'],
+				date: '2025-11-13',
+				comment: 'Python、Vue与算法。',
+			},
 		],
 	},
 	/* ========从此处新增友链======== */
+	// #region 现实之域
 	{
 		name: '现实之域',
 		desc: '博主们或许正忙着追随生活的烟火气。',
@@ -1170,6 +1182,7 @@ export default [
 			},
 			{
 				author: '浪海导航',
+				desc: '收录各种类型的博客以及论坛网站',
 				link: 'https://www.langhai.net/',
 				icon: 'https://www.langhai.net/assets/images/langhai-logo.png',
 				avatar: 'https://www.langhai.net/assets/images/langhai-logo.png',
@@ -1210,8 +1223,18 @@ export default [
 				comment: 'Hexo博客折腾，技术分享。',
 				error: '域名2025-09-24过期',
 			},
+			{
+				author: 'AiQiji·工具箱',
+				desc: '为开发者、设计师和效率工具爱好者精心收集的工具导航站点。让工作更高效，让创作更便捷。',
+				link: 'https://tools.aiqji.com/',
+				icon: 'https://tools.aiqji.com/favicon.ico',
+				avatar: 'https://tools.aiqji.com/favicon.ico',
+				archs: ['React', 'Cloudflare'],
+				date: '2024-11-13',
+			},
 		],
 	},
+	// #region 漫游
 	{
 		name: '漫游',
 		desc: '网上冲浪时发现的精彩内容与常读订阅，与君共享。',

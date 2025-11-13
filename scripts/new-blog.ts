@@ -12,19 +12,20 @@ function normalize(val: string | symbol | undefined): string | undefined {
 	return typeof val === 'symbol' ? undefined : val?.trim()
 }
 
-// 参数
+// #region 读参
 let fileName: string | undefined = process.argv[2]
 const usePermalink = blogConfig.article.useRandomPremalink
 const now = new Date()
+const dateStr = now.toLocaleString('zh-CN', { hour12: false }).replaceAll('/', '-')
 
 const dir = path.join('content', 'posts', now.getFullYear().toString())
 
-const absDir = path.join(process.cwd(), dir)
-if (!fs.existsSync(absDir))
-	fs.mkdirSync(absDir, { recursive: true })
+if (!fs.existsSync(dir))
+	fs.mkdirSync(dir, { recursive: true })
 
 intro(usePermalink ? '📝 使用中文名 + 随机 URL 新建文章' : '📝 使用指定文件名 + 年份 URL 新建文章')
 
+// #region 传入文件名
 if (fileName)
 	log.info(`文件名: ${path.join(dir, fileName)}.md`)
 
@@ -32,6 +33,7 @@ const permalink = usePermalink
 	? `/posts/${customAlphabet('1234567890abcdef', 7)()}`
 	: undefined
 
+// #region url为名
 do {
 	if (fileName || usePermalink)
 		break
@@ -44,7 +46,7 @@ do {
 	if (!fileName)
 		process.exit(0)
 
-	if (fs.existsSync(path.join(absDir, `${fileName}.md`))) {
+	if (fs.existsSync(path.join(dir, `${fileName}.md`))) {
 		log.error('❌ 文件已存在')
 		fileName = undefined
 	}
@@ -52,7 +54,7 @@ do {
 
 let title = fileName
 
-// 请求标题
+// #region 标题为名
 do {
 	if (title)
 		break
@@ -66,24 +68,24 @@ do {
 		process.exit(0)
 
 	if (usePermalink) {
-		if (fs.existsSync(path.join(absDir, `${title}.md`))) {
+		if (fs.existsSync(path.join(dir, `${title}.md`))) {
 			log.error('❌ 文件已存在')
 			title = undefined
 		}
 	}
 } while (!title)
 
-const relPath = path.join(dir, `${usePermalink ? title : fileName}.md`)
+// #region 生成路径
+const mdPath = path.join(dir, `${usePermalink ? title : fileName}.md`)
 if (!process.argv[2])
-	log.info(`文件名: ${relPath}`)
+	log.info(`文件名: ${mdPath}`)
 
-const absPath = path.join(process.cwd(), relPath)
-if (fs.existsSync(absPath)) {
+if (fs.existsSync(mdPath)) {
 	log.error('❌ 文件已存在')
 	process.exit(1)
 }
 
-// 分类
+// #region 分类
 let category = normalize(await select({
 	message: '请选择分类',
 	options: [
@@ -94,7 +96,7 @@ let category = normalize(await select({
 if (!category)
 	process.exit(0)
 
-// 自定义分类
+// #region 自定义分类
 if (category === 'custom') {
 	const customCategory = normalize(await text({
 		message: '请输入自定义分类',
@@ -105,14 +107,14 @@ if (category === 'custom') {
 	category = customCategory
 }
 
-// 标签
+// #region 标签
 const tagsInput = normalize(await text({
 	message: '请输入标签（多个用中英文逗号或空格分隔）',
 	placeholder: 'Vue, Vite, TypeScript',
 }))
 const tags = tagsInput?.split(/[\s,，]+/).map(t => t.trim()).filter(Boolean)
 
-// 样式类型
+// #region 样式类型
 let type = normalize(await select({
 	message: '选择文章版式',
 	options: [
@@ -136,12 +138,12 @@ if (type === 'custom') {
 	type = customType
 }
 
-// frontmatter
+// #region frontmatter
 const frontmatter = {
 	title,
-	description: `讲述关于${title}的故事，并根据${tags?.join('、') ?? ''}给出${category}。`,
-	date: `${now.toLocaleDateString('en-CA')} ${now.toLocaleTimeString()}`,
-	updated: `${now.toLocaleDateString('en-CA')} ${now.toLocaleTimeString()}`,
+	description: `讲述关于${title}的故事，并根据${tags?.join('、')}给出${category}。`,
+	date: dateStr,
+	updated: dateStr,
 	image: '# 图片',
 	permalink,
 	type: type === 'tech' ? undefined : type,
@@ -150,8 +152,8 @@ const frontmatter = {
 	// draft: 'true # 撰写完成后，请删除此行',
 }
 
-// 写文件
-fs.writeFileSync(absPath, `---\n${Object.entries(frontmatter)
+// #region 写文件
+fs.writeFileSync(mdPath, `---\n${Object.entries(frontmatter)
 	.filter(([, value]) => value !== undefined)
 	.map(([key, value]) => `${key}: ${value}`)
 	.join('\n')}
@@ -161,14 +163,14 @@ fs.writeFileSync(absPath, `---\n${Object.entries(frontmatter)
 
 `, 'utf8')
 
-log.info(`✅ 已创建: ${absPath}`)
+log.info(`✅ 已创建: ${path.resolve(mdPath)}`)
 if (permalink)
 	log.info(`🔗 文章链接: ${new URL(permalink, blogConfig.url)}`)
 
-// 打开 VS Code
+// #region 打开 VS Code
 const s = spinner()
 s.start('正在打开 VS Code...')
-exec(`code "${absPath}"`, (error) => {
+exec(`code "${mdPath}"`, (error) => {
 	if (!error)
 		return
 	s.stop('⚠️ 无法打开 VS Code，请确认已通过命令面板注册 code 命令到 PATH')
