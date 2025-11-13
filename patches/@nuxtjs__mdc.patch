@@ -1,8 +1,10 @@
 diff --git a/dist/runtime/parser/handlers/code.js b/dist/runtime/parser/handlers/code.js
-index f87404ebde2bd152e393be9c8474e53ad3629cae..438ea0ed525615ef8d887069799af00dd1c4c1a3 100644
+index f87404ebde2bd152e393be9c8474e53ad3629cae..735081241215bf6246946ec7c796c794b02996c1 100644
 --- a/dist/runtime/parser/handlers/code.js
 +++ b/dist/runtime/parser/handlers/code.js
-@@ -3,7 +3,7 @@ import { parseThematicBlock } from "./utils.js";
+@@ -1,9 +1,8 @@
+-import { detab } from "detab";
+ import { parseThematicBlock } from "./utils.js";
  export default (state, node) => {
    const lang = (node.lang || "") + " " + (node.meta || "");
    const { language = "text", highlights, filename, meta } = parseThematicBlock(lang);

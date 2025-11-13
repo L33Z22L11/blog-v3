@@ -36,7 +36,7 @@ const listRecommended = computed(() => sort(
 
 <PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
 
-<div class="post-list proper-height">
+<div class="post-list">
 	<div class="toolbar">
 		<div>
 			<!-- 外层元素用于占位 -->
@@ -54,7 +54,7 @@ const listRecommended = computed(() => sort(
 		/>
 	</div>
 
-	<TransitionGroup name="float-in">
+	<TransitionGroup tag="menu" class="proper-height" name="float-in">
 		<ZArticle
 			v-for="article, index in listPaged"
 			:key="article.path"
@@ -65,7 +65,7 @@ const listRecommended = computed(() => sort(
 		/>
 	</TransitionGroup>
 
-	<ZPagination v-model="page" class="pagination" sticky :total-pages="totalPages" />
+	<ZPagination v-model="page" sticky :total-pages="totalPages" />
 </div>
 </template>
 

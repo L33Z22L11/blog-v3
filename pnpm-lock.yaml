@@ -77,6 +77,9 @@ catalogs:
     '@antfu/eslint-config':
       specifier: ^6.2.0
       version: 6.2.0
+    '@nuxt/hints':
+      specifier: ^1.0.0-alpha.1
+      version: 1.0.0-alpha.1
     '@zinkawaii/stylelint-config':
       specifier: ^0.3.3
       version: 0.3.3
@@ -184,11 +187,14 @@ catalogs:
 
 patchedDependencies:
   '@nuxtjs/mdc':
-    hash: bfebde9ee1460e92cdf83ee9a7018390557d33d7950395741f34a427e9ab8509
+    hash: e0283e75f475e855851a8b791250710895e1946f9f5e93eef1d27db151c44a64
     path: patches/@nuxtjs__mdc.patch
   '@vue/shared':
     hash: 57b0a2fe18a728df30b65bd78dd65d488e6a3ae6742a92de1856300d93307a0c
     path: patches/@vue__shared.patch
+  plain-shiki:
+    hash: 56851d6c1b4dd6fc387d2cd7e584f71d4da7066ca6177e1df1cdae8903dd72be
+    path: patches/plain-shiki.patch
   playwright-core:
     hash: 536916d63e09c7e81a767ed5a92946b4cd7ad6c8e45dd3dd1d96f28d2873f09c
     path: patches/playwright-core.patch
@@ -262,7 +268,7 @@ importers:
         version: 8.2.2
       plain-shiki:
         specifier: catalog:content
-        version: 0.3.2(shiki@3.15.0)
+        version: 0.3.2(patch_hash=56851d6c1b4dd6fc387d2cd7e584f71d4da7066ca6177e1df1cdae8903dd72be)(shiki@3.15.0)
       radash:
         specifier: catalog:util
         version: 12.1.1
@@ -306,6 +312,9 @@ importers:
       '@iconify-json/solar':
         specifier: catalog:ui
         version: 1.2.5
+      '@nuxt/hints':
+        specifier: catalog:quality
+        version: 1.0.0-alpha.1(magicast@0.5.1)(rolldown@1.0.0-beta.45)(vite@7.2.2(@types/node@24.9.2)(jiti@2.6.1)(sass-embedded@1.93.3)(sass@1.93.3)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vue@3.5.24(typescript@5.9.3))
       '@zinkawaii/stylelint-config':
         specifier: catalog:quality
         version: 0.3.3(postcss-html@1.8.0)(postcss@8.5.6)(stylelint@16.25.0(typescript@5.9.3))
@@ -1264,6 +1273,9 @@ packages:
     peerDependenciesMeta:
       '@vitejs/devtools':
         optional: true
+
+  '@nuxt/hints@1.0.0-alpha.1':
+    resolution: {integrity: sha512-qq48ZwATbOWK+a/bpoRM7Q5cMp6sg6csSTVPcNDiN3lKebL7aytQUavCTg2siipAZTajuc8+zxITjOvQkcfHMg==}
 
   '@nuxt/icon@2.1.0':
     resolution: {integrity: sha512-m+XQrgzeK5gQ1HkB7G7u1os6egoD07fiHKijG7NPxqT5yZUGOjKJ7X/Le10l3QWRKyCB+IiU0t+eUqSvh+SULg==}
@@ -6547,6 +6559,9 @@ packages:
   web-namespaces@2.0.1:
     resolution: {integrity: sha512-bKr1DkiNa2krS7qxNtdrtHAmzuYGFQLiQ13TsorsdT6ULTkPLKuu5+GsFpDlg6JFjUTwX2DyhMPG2be8uPrqsQ==}
 
+  web-vitals@5.1.0:
+    resolution: {integrity: sha512-ArI3kx5jI0atlTtmV0fWU3fjpLmq/nD3Zr1iFFlJLaqa5wLBkUSzINwBPySCX/8jRyjlmy1Volw1kz1g9XE4Jg==}
+
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
 
@@ -7586,7 +7601,7 @@ snapshots:
   '@nuxt/content@3.8.0(magicast@0.5.1)':
     dependencies:
       '@nuxt/kit': 4.2.0(magicast@0.5.1)
-      '@nuxtjs/mdc': 0.18.0(patch_hash=bfebde9ee1460e92cdf83ee9a7018390557d33d7950395741f34a427e9ab8509)(magicast@0.5.1)
+      '@nuxtjs/mdc': 0.18.0(patch_hash=e0283e75f475e855851a8b791250710895e1946f9f5e93eef1d27db151c44a64)(magicast@0.5.1)
       '@shikijs/langs': 3.14.0
       '@sqlite.org/sqlite-wasm': 3.50.4-build1
       '@standard-schema/spec': 1.0.0
@@ -7710,6 +7725,52 @@ snapshots:
       - supports-color
       - utf-8-validate
       - vue
+
+  '@nuxt/hints@1.0.0-alpha.1(magicast@0.5.1)(rolldown@1.0.0-beta.45)(vite@7.2.2(@types/node@24.9.2)(jiti@2.6.1)(sass-embedded@1.93.3)(sass@1.93.3)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vue@3.5.24(typescript@5.9.3))':
+    dependencies:
+      '@nuxt/devtools-kit': 3.1.0(magicast@0.5.1)(vite@7.2.2(@types/node@24.9.2)(jiti@2.6.1)(sass-embedded@1.93.3)(sass@1.93.3)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
+      '@nuxt/kit': 4.2.1(magicast@0.5.1)
+      h3: 1.15.4
+      magic-string: 0.30.21
+      nitropack: 2.12.9(rolldown@1.0.0-beta.45)
+      shiki: 3.15.0
+      sirv: 3.0.2
+      unplugin: 2.3.10
+      vite-plugin-vue-tracer: 1.1.3(vite@7.2.2(@types/node@24.9.2)(jiti@2.6.1)(sass-embedded@1.93.3)(sass@1.93.3)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vue@3.5.24(typescript@5.9.3))
+      web-vitals: 5.1.0
+    transitivePeerDependencies:
+      - '@azure/app-configuration'
+      - '@azure/cosmos'
+      - '@azure/data-tables'
+      - '@azure/identity'
+      - '@azure/keyvault-secrets'
+      - '@azure/storage-blob'
+      - '@capacitor/preferences'
+      - '@deno/kv'
+      - '@electric-sql/pglite'
+      - '@libsql/client'
+      - '@netlify/blobs'
+      - '@planetscale/database'
+      - '@upstash/redis'
+      - '@vercel/blob'
+      - '@vercel/functions'
+      - '@vercel/kv'
+      - aws4fetch
+      - bare-abort-controller
+      - better-sqlite3
+      - drizzle-orm
+      - encoding
+      - idb-keyval
+      - magicast
+      - mysql2
+      - react-native-b4a
+      - rolldown
+      - sqlite3
+      - supports-color
+      - uploadthing
+      - vite
+      - vue
+      - xml2js
 
   '@nuxt/icon@2.1.0(magicast@0.5.1)(vite@7.2.2(@types/node@24.9.2)(jiti@2.6.1)(sass-embedded@1.93.3)(sass@1.93.3)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(vue@3.5.24(typescript@5.9.3))':
     dependencies:
@@ -8007,9 +8068,9 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
-  '@nuxtjs/mdc@0.18.0(patch_hash=bfebde9ee1460e92cdf83ee9a7018390557d33d7950395741f34a427e9ab8509)(magicast@0.5.1)':
+  '@nuxtjs/mdc@0.18.0(patch_hash=e0283e75f475e855851a8b791250710895e1946f9f5e93eef1d27db151c44a64)(magicast@0.5.1)':
     dependencies:
-      '@nuxt/kit': 4.2.0(magicast@0.5.1)
+      '@nuxt/kit': 4.2.1(magicast@0.5.1)
       '@shikijs/core': 3.14.0
       '@shikijs/langs': 3.14.0
       '@shikijs/themes': 3.14.0
@@ -12433,7 +12494,7 @@ snapshots:
       exsolve: 1.0.7
       pathe: 2.0.3
 
-  plain-shiki@0.3.2(shiki@3.15.0):
+  plain-shiki@0.3.2(patch_hash=56851d6c1b4dd6fc387d2cd7e584f71d4da7066ca6177e1df1cdae8903dd72be)(shiki@3.15.0):
     dependencies:
       shiki: 3.15.0
 
@@ -14189,6 +14250,8 @@ snapshots:
       typescript: 5.9.3
 
   web-namespaces@2.0.1: {}
+
+  web-vitals@5.1.0: {}
 
   webidl-conversions@3.0.1: {}
 

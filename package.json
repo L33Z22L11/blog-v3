@@ -65,6 +65,7 @@
     "@iconify-json/ri": "catalog:ui",
     "@iconify-json/simple-icons": "catalog:ui",
     "@iconify-json/solar": "catalog:ui",
+    "@nuxt/hints": "catalog:quality",
     "@zinkawaii/stylelint-config": "catalog:quality",
     "cspell": "catalog:quality",
     "eslint": "catalog:quality",

@@ -21,10 +21,12 @@ const archIcons = {
 	'Nuxt': 'simple-icons:nuxtdotjs',
 	'PHP': 'simple-icons:php',
 	'Python': 'simple-icons:python',
+	'React': 'simple-icons:react',
 	'Typecho': 'icon-park-solid:align-text-left-one', // 不准确
 	'Vercel': 'simple-icons:vercel',
 	'VitePress': 'simple-icons:vitepress',
 	'Vue': 'uim:vuejs',
+	'VuePress': 'uim:vuejs',
 	'WordPress': 'simple-icons:wordpress',
 	'Zebaur': 'tabler:square-letter-z-filled', // 不准确
 }

@@ -29,6 +29,7 @@ catalogs:
     vue-router: ^4.6.3
   quality:
     '@antfu/eslint-config': ^6.2.0
+    '@nuxt/hints': ^1.0.0-alpha.1
     '@zinkawaii/stylelint-config': ^0.3.3
     cspell: ^9.3.0
     eslint: ^9.39.1
@@ -79,6 +80,7 @@ onlyBuiltDependencies:
 patchedDependencies:
   '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch
   '@vue/shared': patches/@vue__shared.patch
+  plain-shiki: patches/plain-shiki.patch
   playwright-core: patches/playwright-core.patch
 
 shamefullyHoist: true

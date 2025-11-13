@@ -1,0 +1,13 @@
+diff --git a/dist/index.js b/dist/index.js
+index 75965b893140f9fdba5510772a956caf49be6a69..50eca2fcc3320ccddcd32f3a82fd274de53b5da3 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -117,7 +117,7 @@ function createPlainShiki(shiki) {
+ 				let ranges = colorRanges.get(name);
+ 				if (!ranges) {
+ 					colorRanges.set(name, ranges = /* @__PURE__ */ new Set());
+-					const rule = `${isDefault ? defaultSelector : selector(theme)}::highlight(${name}) { color: ${color}; }`;
++					const rule = `${isDefault ? defaultSelector : selector(theme)} ::highlight(${name}) { color: ${color}; }`;
+ 					stylesheet.insertRule(rule);
+ 				}
+ 				highlight.add(range);

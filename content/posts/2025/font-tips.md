@@ -264,7 +264,7 @@ code, pre {
 ---
 style:
 	- font-size: 3em
-	- font-family: "InterVariable"
+	- font-family: "InterVariable", "Noto Sans SC"
 	- font-weight: 800
 	- line-height: 1
 	- color: transparent

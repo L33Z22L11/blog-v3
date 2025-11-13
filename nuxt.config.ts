@@ -129,6 +129,7 @@ export default defineNuxtConfig({
 	// @keep-sorted
 	modules: [
 		'@nuxt/content',
+		'@nuxt/hints',
 		'@nuxt/icon',
 		'@nuxt/image',
 		'@nuxtjs/color-mode',
