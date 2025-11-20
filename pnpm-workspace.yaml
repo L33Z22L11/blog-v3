@@ -3,7 +3,7 @@ packages:
 
 catalogs:
   content:
-    '@nuxt/content': ^3.8.0
+    '@nuxt/content': ^3.8.2
     '@nuxtjs/seo': ^3.2.2
     '@shikijs/colorized-brackets': ^3.15.0
     '@shikijs/transformers': ^3.15.0
@@ -30,15 +30,15 @@ catalogs:
   quality:
     '@antfu/eslint-config': ^6.2.0
     '@nuxt/hints': ^1.0.0-alpha.1
-    '@zinkawaii/stylelint-config': ^0.3.3
-    cspell: ^9.3.0
+    '@zinkawaii/stylelint-config': ^0.3.4
+    cspell: ^9.3.2
     eslint: ^9.39.1
     stylelint: ^16.25.0
   ui:
     '@iconify-json/catppuccin': ^1.2.17
     '@iconify-json/ph': ^1.2.2
     '@iconify-json/ri': ^1.2.6
-    '@iconify-json/simple-icons': ^1.2.58
+    '@iconify-json/simple-icons': ^1.2.59
     '@iconify-json/solar': ^1.2.5
     '@nuxt/icon': ^2.1.0
     '@nuxt/image': ^1.11.0
@@ -56,14 +56,14 @@ catalogs:
     '@vueuse/router': ^14.0.0
     date-fns: ^4.1.0
     date-fns-tz: ^3.2.0
-    fast-xml-parser: ^5.3.1
+    fast-xml-parser: ^5.3.2
     minisearch: ^7.2.0
     nanoid: ^5.1.6
     oxc-minify: ^0.96.0
     p-limit: ^7.2.0
     parse-domain: ^8.2.2
     radash: ^12.1.1
-    rimraf: ^6.1.0
+    rimraf: ^6.1.2
     site-config-stack: ^3.2.11
     strip-ansi: ^7.1.2
 

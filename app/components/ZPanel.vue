@@ -24,6 +24,7 @@ useEventListener('keydown', (event) => {
 	>
 		<Icon class="rtl-flip" name="ph:sidebar-duotone" />
 	</button>
+
 	<button
 		v-if="hasAside"
 		id="toggle-aside"

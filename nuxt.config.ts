@@ -93,21 +93,6 @@ export default defineNuxtConfig({
 	// sourcemap: true,
 
 	vite: {
-		build: {
-			rollupOptions: {
-				output: {
-					manualChunks(id) {
-						const separateChunkNames = ['parse-domain', 'components/prose']
-						for (const chunkName of separateChunkNames) {
-							if (id.includes(chunkName)) {
-								console.log(id, chunkName)
-								return chunkName
-							}
-						}
-					},
-				},
-			},
-		},
 		css: {
 			preprocessorOptions: {
 				scss: {

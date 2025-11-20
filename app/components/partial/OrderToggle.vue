@@ -31,7 +31,7 @@ function toggleDirection() {
 
 <template>
 <div class="order-toggle">
-	<ZDropdown trigger="focusin">
+	<ZDropdown trigger="focusin" tabindex="0">
 		<button :disabled="!categories">
 			<Icon :name="getCategoryIcon(category)" />
 			<span class="order-text">{{ category ?? '全部分类' }}</span>
@@ -48,7 +48,7 @@ function toggleDirection() {
 		</template>
 	</ZDropdown>
 
-	<div>
+	<span>
 		<button v-if="allowAscending" aria-label="切换排序方向" @click="toggleDirection">
 			<Icon name="ph:sort-ascending-bold" class="toggle-direction" :class="{ ascending: isAscending }" />
 		</button>
@@ -57,7 +57,7 @@ function toggleDirection() {
 			<Icon v-if="!allowAscending" name="ph:sort-ascending-bold" />
 			<span class="order-text">{{ orderMap[sortOrder] }}</span>
 		</button>
-	</div>
+	</span>
 </div>
 </template>
 

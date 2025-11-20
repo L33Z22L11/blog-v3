@@ -4,11 +4,11 @@
 	--transform-start-far: translateX(-100%);
 	--transform-end-far: translateX(100%);
 
+	overflow-wrap: break-word;
 	background-color: var(--c-bg-1);
 	font-family: var(--font-basic, sans-serif);
 	font-synthesis: style;
 	line-height: 1.4;
-	word-wrap: break-word;
 	text-autospace: normal;
 	text-size-adjust: none;
 	color: var(--c-text-1);

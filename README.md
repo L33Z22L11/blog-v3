@@ -27,7 +27,7 @@
 | [月空人](https://whbbit.cn/)                 | Whbbit1999    | v3.4.9       | 项目/博客/Snippets页           |
 | [Mugzx's Blog](https://blog.mugzx.top/)      | Mugzx         | v3.4.9       | 设计风格统一                   |
 | [喵落阁](https://blog-v3.kemeow.top/)        | Kemeow815     | v3.4.7       | 即刻+友圈+最新评论+游戏/番剧页 |
-| [梦爱吃鱼](https://blog.ruom.top/)           | JLinmr        | v3.2-250304  | 即刻+友圈+最新评论             |
+| [梦爱吃鱼](https://blog.bsgun.cn/)           | JLinmr        | v3.2-250304  | 即刻+友圈+最新评论             |
 | [Mikuの极光星](https://blog.sotkg.com/)      | PaloMiku      | v3.4.9       | 设计风格统一，设置面板         |
 | [Shenley的存档点](https://blog.shenley.cn/)  | shenlye       | v3.4.4       | 游戏/番剧页，方形卡片+科技风   |
 | [BiuXin-s Blog](https://zhilu.biuxin.com/)   | damizai       | v3.2-250304  | 即刻+友圈+最新评论             |
@@ -43,6 +43,7 @@
 | [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong  | v3.4.9       | 即刻+友圈                      |
 | [小源151博客](https://blog.xiaoyuan151.com/) | XiaoYuan151   | v3.4.8       |                                |
 | [墨韵云阁](https://luoyuanxiang.top/)        | luoyuanxiang  | v3.4.8       |                                |
+| [KingKangBlog](https://blog.kingkang.xyz/)   | KingStoning   | v3.4.9       |                                |
 
 ## 特性
 
@@ -160,13 +161,12 @@ pnpm preview
 
 如果直接使用平台提供的“Nuxt”预设部署，则会变成 SSR 模式，此模式每次访问都会等待服务端重新渲染。请参阅 [Nuxt 文档](https://nuxt.com/docs/getting-started/deployment) 和 [Nuxt Content 文档](https://content.nuxt.com/docs/deploy/static) 的“部署”一节。
 
-<!--
 #### 疑难解答
 
 - Vercel 先前创建的项目需要 [手动指定 pnpm 10](https://vercel.com/docs/builds/configure-a-build#corepack)。
+- Netlify 需要关闭 Build & deploy settings - Post processing - Pretty URLs，否则会导致 404 错误。
 - 如果修改了 API 路径，使用 EdgeOne 部署需要同步修改 `edgeone.json`。
 - 运行、部署项目时 Node.js 版本需要高于 `22.15.0`。
--->
 
 ## 贡献
 

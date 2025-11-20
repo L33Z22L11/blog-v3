@@ -72,6 +72,8 @@ export default [
 			},
 		],
 	},
+	// #endregion
+	// #region XUPTers
 	{
 		name: 'XUPTers',
 		desc: '西安邮电大学的校友们。',
@@ -252,6 +254,7 @@ export default [
 			},
 		],
 	},
+	// #endregion
 	// #region 网上邻居
 	{
 		name: '网上邻居',
@@ -657,7 +660,7 @@ export default [
 				feed: 'https://adaiblog.github.io/atom.xml',
 				icon: 'https://adaiblog.github.io/favicon.ico', // expected
 				avatar: 'https://adaiblog.github.io/img/adai.png',
-				archs: ['Hexo', 'Vercel'],
+				archs: ['Hexo', 'GitHub Pages'],
 				date: '2025-03-11',
 				comment: '技术分享与生活。',
 			},
@@ -982,7 +985,7 @@ export default [
 				feed: 'https://www.sakun.space/atom.xml',
 				icon: 'https://www.sakun.space/images/favicon-32x32-next.png',
 				avatar: 'https://www.sakun.space/images/avatar.png',
-				archs: ['Hexo', '服务器'],
+				archs: ['Hexo', '国内 CDN'],
 				date: '2025-10-07',
 				comment: '动漫评论。',
 			},
@@ -993,7 +996,7 @@ export default [
 				feed: 'https://blog.xuioo.com/rss.xml',
 				icon: 'https://r2.blog.xuioo.com/GED15E4G5A1F52A1F51A.png',
 				avatar: 'https://blog.xuioo.com/27c69590279fdc3be2cd7c901e3d07ad.jpg',
-				archs: ['Astro', '国内 CDN'],
+				archs: ['Astro', 'Cloudflare'],
 				date: '2025-10-08',
 				comment: '博客折腾。',
 			},
@@ -1090,6 +1093,7 @@ export default [
 		],
 	},
 	/* ========从此处新增友链======== */
+	// #endregion
 	// #region 现实之域
 	{
 		name: '现实之域',
@@ -1121,6 +1125,7 @@ export default [
 				archs: ['Hexo', '国内 CDN'],
 				date: '2024-02-01',
 				comment: '瓜大网安学长。',
+				error: '域名2025-10-28过期',
 			},
 			{
 				author: '桜紺狸',
@@ -1234,6 +1239,7 @@ export default [
 			},
 		],
 	},
+	// #endregion
 	// #region 漫游
 	{
 		name: '漫游',
@@ -1342,4 +1348,5 @@ export default [
 			},
 		],
 	},
+	// #endregion
 ] satisfies FeedGroup[]

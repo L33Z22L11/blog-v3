@@ -24,6 +24,7 @@ if (!fs.existsSync(dir))
 	fs.mkdirSync(dir, { recursive: true })
 
 intro(usePermalink ? '📝 使用中文名 + 随机 URL 新建文章' : '📝 使用指定文件名 + 年份 URL 新建文章')
+// #endregion
 
 // #region 传入文件名
 if (fileName)
@@ -51,10 +52,11 @@ do {
 		fileName = undefined
 	}
 } while (!fileName)
-
-let title = fileName
+// #endregion
 
 // #region 标题为名
+let title = fileName
+
 do {
 	if (title)
 		break
@@ -74,6 +76,7 @@ do {
 		}
 	}
 } while (!title)
+// #endregion
 
 // #region 生成路径
 const mdPath = path.join(dir, `${usePermalink ? title : fileName}.md`)
@@ -95,6 +98,7 @@ let category = normalize(await select({
 }))
 if (!category)
 	process.exit(0)
+// #endregion
 
 // #region 自定义分类
 if (category === 'custom') {
@@ -106,6 +110,7 @@ if (category === 'custom') {
 		process.exit(0)
 	category = customCategory
 }
+// #endregion
 
 // #region 标签
 const tagsInput = normalize(await text({
@@ -113,6 +118,7 @@ const tagsInput = normalize(await text({
 	placeholder: 'Vue, Vite, TypeScript',
 }))
 const tags = tagsInput?.split(/[\s,，]+/).map(t => t.trim()).filter(Boolean)
+// #endregion
 
 // #region 样式类型
 let type = normalize(await select({
@@ -137,6 +143,7 @@ if (type === 'custom') {
 	log.warn('⚠️ 新建分类后，建议在 blog.config.ts 中添加对应配置')
 	type = customType
 }
+// #endregion
 
 // #region frontmatter
 const frontmatter = {
@@ -151,6 +158,7 @@ const frontmatter = {
 	tags: tags ? `[${tags.join(', ')}]` : undefined,
 	// draft: 'true # 撰写完成后，请删除此行',
 }
+// #endregion
 
 // #region 写文件
 fs.writeFileSync(mdPath, `---\n${Object.entries(frontmatter)
@@ -178,4 +186,6 @@ exec(`code "${mdPath}"`, (error) => {
 	process.exit(1)
 })
 s.stop('⌨ 已通过 VS Code 打开文件')
+// #endregion
+
 outro(`🎉 开始书写吧！`)

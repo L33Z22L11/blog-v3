@@ -322,15 +322,15 @@ style:
 /* 仅在 Chrome 130+ 启用本地可变字体，因为低版本会将 VF 显示为细体 */
 @supports (box-decoration-break: clone) {
 	@font-face {
-	font-family: "Noto Sans SC-Local";
-	font-weight: 100 900; /* 不指定则为 400 */
-	src: local("Noto Sans SC");
+		font-family: "Noto Sans SC-Local";
+		font-weight: 100 900; /* 不指定则为 400 */
+		src: local("Noto Sans SC");
 	}
 
 	@font-face {
-	font-family: "Noto Serif SC-Local";
-	font-weight: 100 900;
-	src: local("Noto Serif SC");
+		font-family: "Noto Serif SC-Local";
+		font-weight: 100 900;
+		src: local("Noto Serif SC");
 	}
 }
 ```
@@ -356,7 +356,7 @@ style:
 /* 低像素密度设备下，可以使用 Hint 良好的 system-ui 字体 */
 @media (max-resolution: 1.2dppx) {
 	:root {
-	--font-basic: "InterVariable", system-ui, sans-serif;
+		--font-basic: "InterVariable", system-ui, sans-serif;
 	}
 }
 ```
