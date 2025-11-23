@@ -14,7 +14,6 @@ const expand = useElementVisibility(anchorEl)
 
 onMounted(() => {
 	layoutStore.setTranslate('pagination', '0, -2em')
-	page.value = Number(page.value)
 })
 
 onUnmounted(() => {

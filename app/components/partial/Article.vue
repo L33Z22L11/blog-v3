@@ -38,7 +38,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 			/>
 
 			<!-- 带查询参数时会水合错误 -->
-			<ClientOnly>
+			<ZHydrateSafe>
 				<span
 					v-if="categoryLabel"
 					class="article-category"
@@ -47,7 +47,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 					<Icon :name="categoryIcon" />
 					{{ categoryLabel }}
 				</span>
-			</ClientOnly>
+			</ZHydrateSafe>
 
 			<span v-if="readingTime?.words" class="article-words">
 				<Icon name="ph:paragraph-bold" />

@@ -1,4 +1,5 @@
 import type { FeedGroup } from '~/types/feed'
+// npm 脚本需要显式添加导入
 import { getFavicon, getGhAvatar, getGhIcon, getQqAvatar, QqAvatarSize } from './utils/img'
 
 export default [
@@ -1089,6 +1090,17 @@ export default [
 				archs: ['VuePress', 'GitHub Pages'],
 				date: '2025-11-13',
 				comment: 'Python、Vue与算法。',
+			},
+			{
+				author: '猫猫博客',
+				desc: '𝙄𝙩’𝙨 𝙩𝙝𝙚 𝙤𝙣𝙡𝙮 𝙉𝙀𝙀𝙏 𝙩𝙝𝙞𝙣𝙜 𝙩𝙤 𝙙𝙤…',
+				link: 'https://catcat.blog/',
+				feed: 'https://catcat.blog/rss.xml',
+				icon: 'https://catcat.blog/favicon/avatar-540.avif',
+				avatar: 'https://catcat.blog/favicon/avatar-540.avif',
+				archs: ['Astro', 'Cloudflare'],
+				date: '2025-11-18',
+				comment: '自部署服务教程。',
 			},
 		],
 	},
