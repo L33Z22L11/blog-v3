@@ -46,12 +46,12 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 		</ol>
 	</DefineTemplate>
 
-	<ClientOnly>
+	<ZHydrateSafe>
 		<ReuseTemplate v-if="toc?.links.length" :toc-item="toc.links" />
 		<p v-else class="no-toc">
 			暂无目录信息
 		</p>
-	</ClientOnly>
+	</ZHydrateSafe>
 </ZWidget>
 </template>
 

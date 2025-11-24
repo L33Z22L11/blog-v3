@@ -86,7 +86,7 @@ button, input, textarea {
 	vertical-align: sub;
 }
 
-.iconify.rtl-flip:dir(rtl) {
+.rtl-flip:dir(rtl) {
 	transform: scaleX(-1);
 }
 

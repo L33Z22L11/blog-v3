@@ -165,6 +165,7 @@ pnpm preview
 
 - Vercel 先前创建的项目需要 [手动指定 pnpm 10](https://vercel.com/docs/builds/configure-a-build#corepack)。
 - Netlify 需要关闭 Build & deploy settings - Post processing - Pretty URLs，否则会导致 404 错误。
+- EdgeOne 在 2025年11月20日 开始需要使用 `NITRO_PRESET=static nuxt generate` 构建命令。
 - 如果修改了 API 路径，使用 EdgeOne 部署需要同步修改 `edgeone.json`。
 - 运行、部署项目时 Node.js 版本需要高于 `22.15.0`。
 

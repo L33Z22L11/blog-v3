@@ -151,11 +151,11 @@ useEventListener('blur', () => {
 </script>
 
 <template>
-<ClientOnly>
+<ZHydrateSafe>
 	<kbd :class="{ active }" @click.stop="emit('press')">
 		<slot>{{ codeDisplay }}</slot>
 	</kbd>
-</ClientOnly>
+</ZHydrateSafe>
 </template>
 
 <style lang="scss" scoped>

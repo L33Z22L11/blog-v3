@@ -1,7 +1,7 @@
 interface UsePaginationOptions {
 	initialPage?: number
 	perPage?: number
-	bindQuery?: string | false
+	bindQuery?: string
 }
 
 export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: UsePaginationOptions) {
@@ -9,8 +9,8 @@ export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: 
 	const {
 		initialPage = 1,
 		perPage = appConfig.pagination.perPage || 10,
-		bindQuery = false,
-	} = options ?? {}
+		bindQuery,
+	} = options || {}
 
 	const totalPages = computed(() => Math.ceil(toValue(list).length / perPage) || initialPage)
 
@@ -19,8 +19,14 @@ export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: 
 		return page >= 1 && page <= totalPages.value ? page : initialPage
 	}
 
+	// 仅从无查询参数增加 query 时 push 一次
+	const mode = computed({
+		get: () => bindQuery && useRoute().query[bindQuery] ? 'replace' : 'push',
+		set() { },
+	})
+
 	const page = bindQuery
-		? useRouteQuery(bindQuery, initialPage.toString(), { transform: transformPage, mode: 'push' })
+		? useRouteQuery(bindQuery, initialPage.toString(), { transform: transformPage, mode })
 		: ref(initialPage)
 
 	const listPaged = computed(() => {

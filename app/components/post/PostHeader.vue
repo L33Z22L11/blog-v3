@@ -115,8 +115,13 @@ const { copy, copied } = useCopy(shareText)
 			text-shadow: 0 0 2px #FFF, 0 1px 0.5em #FFF;
 			color: #333;
 
+			.post-info {
+				filter: drop-shadow(0 1px 2px #FFF);
+			}
+
 			.post-title {
 				background-image: linear-gradient(transparent, #FFF3, #FFF5);
+				text-shadow: 0 1px 1px #FFF3, 0 1px 2px #FFF3;
 			}
 		}
 	}

@@ -37,17 +37,14 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 				icon="ph:calendar-plus-bold"
 			/>
 
-			<!-- 带查询参数时会水合错误 -->
-			<ZHydrateSafe>
-				<span
-					v-if="categoryLabel"
-					class="article-category"
-					:style="{ '--cg-color': categoryColor }"
-				>
-					<Icon :name="categoryIcon" />
-					{{ categoryLabel }}
-				</span>
-			</ZHydrateSafe>
+			<span
+				v-if="categoryLabel"
+				class="article-category"
+				:style="{ '--cg-color': categoryColor }"
+			>
+				<Icon :name="categoryIcon" />
+				{{ categoryLabel }}
+			</span>
 
 			<span v-if="readingTime?.words" class="article-words">
 				<Icon name="ph:paragraph-bold" />
