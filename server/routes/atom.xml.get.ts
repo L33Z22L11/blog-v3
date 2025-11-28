@@ -37,6 +37,7 @@ export default defineEventHandler(async (event) => {
 		.limit(blogConfig.feed.limit)
 		.all()
 
+	// @ts-expect-error posts 暂无类型
 	const entries = posts.map(post => ({
 		id: getUrl(post.path),
 		title: post.title ?? '',

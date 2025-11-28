@@ -1102,6 +1102,18 @@ export default [
 				date: '2025-11-18',
 				comment: '自部署服务教程。',
 			},
+			{
+				author: 'iamyukino',
+				sitenick: '雨雪冰屋',
+				desc: '一隅雨雪一炉窝，可能会融化持久堆？',
+				link: 'https://iamyukino.cn/blog/',
+				feed: 'https://iamyukino.cn/atom.xml',
+				icon: 'https://iamyukino.cn/favicon.ico',
+				avatar: 'https://iamyukino.cn/blog/assets/home/home.jpg',
+				archs: ['Astro', '服务器'],
+				date: '2025-11-18',
+				comment: '主页十分可爱的个人小站，记录编程技术学习经历。',
+			},
 		],
 	},
 	/* ========从此处新增友链======== */

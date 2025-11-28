@@ -566,11 +566,11 @@ pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
 
 ::tab{:tabs='["组件","语法"]'}
 #tab1
-:emoji-clock
+:emoji-clock (半小时) :emoji-clock{rotate} (5分钟) :emoji-clock{datetime="2024-11-09 23:39:30"} (指定时间)
 
 #tab2
 ```mdc
-:emoji-clock
+:emoji-clock (半小时) :emoji-clock{rotate} (5分钟) :emoji-clock{datetime="2024-11-09 23:39:30"} (指定时间)
 ```
 ::
 

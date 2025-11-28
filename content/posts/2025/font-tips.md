@@ -346,7 +346,7 @@ style:
 
 ```css wrap
 :root {
-	--font-basic: "InterVariable", "Noto Sans SC-Local", ui-sans-serif, "sans-serif", "Noto Sans SC", system-ui, sans-serif;
+	--font-basic: "InterVariable", "Noto Sans SC-Local", "sans-serif", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
 
 	font-family: var(--font-basic);
 	/* CDN 提供的 CSS 已经预定义字体函数，这是本站使用的变体 */
