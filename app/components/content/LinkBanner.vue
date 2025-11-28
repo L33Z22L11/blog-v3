@@ -9,8 +9,8 @@ defineProps<{
 </script>
 
 <template>
-<ZRawLink :to="link" class="link-banner card" :title="joinWith([title, description, link])">
-	<ZRawImg v-if="banner" class="link-banner-bg" :src="banner" :mirror />
+<UtilLink :to="link" class="link-banner card" :title="joinWith([title, description, link])">
+	<UtilImg v-if="banner" class="link-banner-bg" :src="banner" :mirror />
 	<div class="link-banner-header" />
 	<div class="link-banner-info">
 		<div class="link-banner-title">
@@ -20,7 +20,7 @@ defineProps<{
 			{{ description ?? getDomain(link) }}
 		</div>
 	</div>
-</ZRawLink>
+</UtilLink>
 </template>
 
 <style lang="scss" scoped>

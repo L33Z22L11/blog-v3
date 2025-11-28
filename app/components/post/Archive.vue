@@ -20,7 +20,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 		day="2-digit"
 	/>
 
-	<ZRawLink class="article-link gradient-card" :to :title="description">
+	<UtilLink class="article-link gradient-card" :to :title="description">
 		<span class="article-title">
 			{{ title }}
 		</span>
@@ -37,7 +37,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 			/>
 		</template>
 		<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" loading="lazy" />
-	</ZRawLink>
+	</UtilLink>
 </li>
 </template>
 

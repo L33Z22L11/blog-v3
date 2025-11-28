@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-<section class="widget" :class="{ dim }">
+<section class="blog-widget" :class="{ dim }">
 	<hgroup class="widget-title text-creative">
 		<slot name="title">
 			{{ title }}
@@ -24,10 +24,10 @@ defineProps<{
 </template>
 
 <style lang="scss" scoped>
-.widget {
+.blog-widget {
 	font-size: 0.9em;
 
-	.widget + & {
+	.blog-widget + & {
 		margin-top: 1rem;
 	}
 
@@ -35,7 +35,7 @@ defineProps<{
 		opacity: 0.3;
 		transition: opacity 0.2s;
 
-		#z-aside:hover &, #z-aside.show & {
+		#blog-aside:hover &, #blog-aside.show & {
 			opacity: 1;
 		}
 	}

@@ -31,23 +31,23 @@ const listRecommended = computed(() => sort(
 <template>
 <div class="mobile-only">
 	<!-- 若不包裹，display: none 在 JS 加载后才有足够优先级 -->
-	<ZhiluHeader to="/" />
+	<BlogHeader to="/" tag="h1" />
 </div>
 
-<ZHydrateSafe>
+<UtilHydrateSafe>
 	<PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
 
 	<div class="post-list">
 		<div class="toolbar">
 			<div>
 				<!-- 外层元素用于占位 -->
-				<ZRawLink to="/preview" class="preview-entrance">
+				<UtilLink to="/preview" class="preview-entrance">
 					<Icon name="ph:file-lock-bold" />
 					查看预览文章
-				</ZRawLink>
+				</UtilLink>
 			</div>
 
-			<ZOrderToggle
+			<PostOrderToggle
 				v-model:is-ascending="isAscending"
 				v-model:sort-order="sortOrder"
 				v-model:category="category"
@@ -56,7 +56,7 @@ const listRecommended = computed(() => sort(
 		</div>
 
 		<TransitionGroup tag="menu" class="proper-height" name="float-in">
-			<ZArticle
+			<PostArticle
 				v-for="article, index in listPaged"
 				:key="article.path"
 				v-bind="article"
@@ -68,7 +68,7 @@ const listRecommended = computed(() => sort(
 
 		<ZPagination v-model="page" sticky :total-pages="totalPages" />
 	</div>
-</ZHydrateSafe>
+</UtilHydrateSafe>
 </template>
 
 <style lang="scss" scoped>

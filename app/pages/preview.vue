@@ -16,11 +16,11 @@ const { category, categories, listCategorized } = useCategory(listSorted)
 <div class="preview">
 	<div class="preview-header">
 		<h1>
-			<ZRawLink class="mobile-only" to="/" title="返回首页">
+			<UtilLink class="mobile-only" to="/" title="返回首页">
 				<Icon name="ph:caret-left-bold" />
-			</ZRawLink>预览
+			</UtilLink>预览
 		</h1>
-		<ZOrderToggle
+		<PostOrderToggle
 			v-model:is-ascending="isAscending"
 			v-model:sort-order="sortOrder"
 			v-model:category="category"
@@ -30,7 +30,7 @@ const { category, categories, listCategorized } = useCategory(listSorted)
 	<p>勇敢的人探索世界。这里是一些还未发布的文章。</p>
 
 	<menu class="proper-height">
-		<ZArticle
+		<PostArticle
 			v-for="article in listCategorized"
 			:key="article.path"
 			v-bind="article"

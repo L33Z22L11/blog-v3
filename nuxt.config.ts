@@ -43,7 +43,6 @@ export default defineNuxtConfig({
 
 	components: [
 		{ path: '~/components/partial', prefix: 'Z' },
-		{ path: '~/components/zhilu', prefix: 'Zhilu', global: true },
 		'~/components',
 	],
 

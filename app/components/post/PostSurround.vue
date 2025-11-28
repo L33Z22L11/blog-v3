@@ -25,15 +25,15 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 
 <template>
 <DefineTemplate v-slot="{ post, icon, fallbackIcon, fallbackText, alignEnd }">
-	<ZRawLink :to="post?.path" class="surround-link" :align-end>
+	<UtilLink :to="post?.path" class="surround-link" :align-end>
 		<Icon :class="{ 'rtl-flip': post }" :name="post ? icon : fallbackIcon" />
 		<div class="surround-text">
 			<strong class="title" :class="getPostTypeClassName(post?.type)">
 				{{ post?.title || fallbackText }}
 			</strong>
-			<ZDate v-if="post?.date" class="date" :date="post.date" />
+			<UtilDate v-if="post?.date" class="date" :date="post.date" />
 		</div>
-	</ZRawLink>
+	</UtilLink>
 </DefineTemplate>
 
 <div v-if="prev || next" class="surround-post" dir="ltr">

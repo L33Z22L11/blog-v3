@@ -9,11 +9,11 @@ const { word } = storeToRefs(searchStore)
 <template>
 <Transition>
 	<!-- FIXME: 评估是否能公用 bgmask 减少冗余 -->
-	<div v-if="layoutStore.isOpen('sidebar')" id="z-sidebar-bgmask" @click="layoutStore.toggle('sidebar')" />
+	<div v-if="layoutStore.isOpen('sidebar')" id="blog-sidebar-bgmask" @click="layoutStore.toggle('sidebar')" />
 </Transition>
 <!-- 此处不能使用 Transition，因为半宽屏状态始终显示 -->
-<aside id="z-sidebar" :class="{ show: layoutStore.isOpen('sidebar') }">
-	<ZhiluHeader class="sidebar-header" to="/" />
+<aside id="blog-sidebar" :class="{ show: layoutStore.isOpen('sidebar') }">
+	<BlogHeader class="sidebar-header" to="/" />
 
 	<nav class="sidebar-nav scrollcheck-y">
 		<div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
@@ -29,25 +29,25 @@ const { word } = storeToRefs(searchStore)
 
 			<menu>
 				<li v-for="(item, itemIndex) in group.items" :key="itemIndex">
-					<ZRawLink :to="item.url" class="sidebar-nav-item">
+					<UtilLink :to="item.url" class="sidebar-nav-item">
 						<Icon :name="item.icon" />
 						<span class="nav-text">{{ item.text }}</span>
 						<Icon v-if="isExtLink(item.url)" class="external-tip" name="ph:arrow-up-right" />
-					</ZRawLink>
+					</UtilLink>
 				</li>
 			</menu>
 		</template>
 	</nav>
 
 	<footer class="sidebar-footer">
-		<ThemeToggle />
+		<BlogThemeToggle />
 		<ZIconNavList :list="appConfig.footer.iconNav" />
 	</footer>
 </aside>
 </template>
 
 <style lang="scss" scoped>
-#z-sidebar {
+#blog-sidebar {
 	display: flex;
 	flex-direction: column;
 	color: var(--c-text-2);
@@ -75,7 +75,7 @@ const { word } = storeToRefs(searchStore)
 	}
 }
 
-#z-sidebar-bgmask {
+#blog-sidebar-bgmask {
 	position: fixed;
 	inset: 0;
 	background-color: #0003;

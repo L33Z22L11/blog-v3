@@ -44,12 +44,12 @@ const expand = ref(false)
 </script>
 
 <template>
-<ZWidget card title="技术信息">
+<BlogWidget card title="技术信息">
 	<ZDlGroup :items="service" />
 	<ZExpand v-model="expand" in-place name="构建信息">
 		<ZDlGroup size="small" :items="techstack" />
 	</ZExpand>
-</ZWidget>
+</BlogWidget>
 </template>
 
 <style lang="scss" scoped>

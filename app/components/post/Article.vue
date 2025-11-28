@@ -13,7 +13,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 </script>
 
 <template>
-<ZRawLink class="article-card card">
+<UtilLink class="article-card card">
 	<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" />
 	<article>
 		<h2 class="article-title text-creative">
@@ -25,13 +25,13 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 		</p>
 
 		<div class="article-info">
-			<ZDate
+			<UtilDate
 				v-if="date && (showAllDate || !useUpdated)"
 				:date="date"
 				icon="ph:calendar-dots-bold"
 			/>
 
-			<ZDate
+			<UtilDate
 				v-if="updated && (showAllDate || useUpdated)"
 				:date="updated"
 				icon="ph:calendar-plus-bold"
@@ -52,7 +52,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 			</span>
 		</div>
 	</article>
-</ZRawLink>
+</UtilLink>
 </template>
 
 <style lang="scss" scoped>
@@ -99,11 +99,6 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 
 .article-category {
 	color: var(--cg-color);
-}
-
-// CSR 前空 category 产生 double gap，同时需避免误伤 iconify
-span:not([class]):empty {
-	display: none;
 }
 
 .article-cover {

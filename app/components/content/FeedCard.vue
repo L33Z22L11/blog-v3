@@ -35,7 +35,7 @@ onMounted(() => {
 
 <template>
 <Tooltip :delay="200" interactive hide-on-click="toggle">
-	<ZRawLink
+	<UtilLink
 		class="feed-card gradient-card"
 		:to="error ? undefined : link"
 		:data-error="error"
@@ -53,7 +53,7 @@ onMounted(() => {
 		<span>{{ author }}</span>
 		<span class="title">{{ sitenick }}</span>
 		<span v-if="inspect" style="position: absolute; top: 0;">{{ title }}</span>
-	</ZRawLink>
+	</UtilLink>
 
 	<template #content>
 		<div class="site-content">

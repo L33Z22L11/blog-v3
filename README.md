@@ -58,11 +58,13 @@
 ├── app # 前端
 │   ├── assets # 资源文件
 │   ├── components # 组件
+│   │   ├── blog # 博客布局组件
 │   │   ├── content # MDC组件
 │   │   ├── partial # 微型组件
-│   │   ├── widget # 侧边栏组件
-│   │   ├── zhilu # 个人标识组件
-│   │   └── ... # 布局组件
+│   │   ├── popover # 弹窗组件
+│   │   ├── post # 文章组件
+│   │   ├── util # 功能组件
+│   │   └── widget # 侧栏小组件
 │   ├── composables # Vue 组合式函数
 │   ├── pages # 页面
 │   │   ├── [...slug].vue # 正文、404页面
@@ -95,7 +97,6 @@
 ├── server # 服务端
 │   ├── api # 接口
 │   │   └── stats.get.ts # 博客静态统计
-│   ├── plugins # Nitro 插件
 │   └── routes # 根路由
 │       ├── atom.xml.get.ts # Atom 订阅源
 │       └── zhilu.opml.get.ts # OPML 订阅源聚合

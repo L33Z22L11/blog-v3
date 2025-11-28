@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ZRawLink } from '#components'
+import { UtilLink } from '#components'
 
 export interface ButtonProps {
 	icon?: string
@@ -12,7 +12,7 @@ defineProps<ButtonProps>()
 </script>
 
 <template>
-<component :is="to ? ZRawLink : 'button'" :to class="button" :class="{ primary }">
+<component :is="to ? UtilLink : 'button'" :to class="button" :class="{ primary }">
 	<div class="button-main">
 		<Icon v-if="icon" :name="icon" />
 		<slot>{{ text }}</slot>

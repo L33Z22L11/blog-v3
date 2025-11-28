@@ -1,16 +1,16 @@
 <template>
 <NuxtLoadingIndicator />
-<SkipToContent />
-<ZSidebar />
+<BlogSkipToContent />
+<BlogSidebar />
 <div id="content">
 	<main id="main-content">
 		<NuxtPage />
-		<ZFooter />
+		<BlogFooter />
 	</main>
-	<ZAside />
+	<BlogAside />
 </div>
-<ZPanel />
-<ZPopover />
+<BlogPanel />
+<BlogPopover />
 </template>
 
 <!-- eslint-disable-next-line vue/enforce-style-attribute -->

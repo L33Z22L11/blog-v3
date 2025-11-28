@@ -118,7 +118,7 @@ function openActiveItem() {
 					ref="list-result"
 					class="scrollcheck-y search-result"
 				>
-					<ZSearchItem
+					<PopoverSearchItem
 						v-for="(item, itemIndex) in result"
 						:key="item.id"
 						v-bind="item"

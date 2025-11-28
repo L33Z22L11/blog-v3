@@ -35,7 +35,7 @@ const yearlyWordCount = computed(() => {
 
 <template>
 <div class="archive proper-height">
-	<ZOrderToggle
+	<PostOrderToggle
 		v-model:is-ascending="isAscending"
 		v-model:sort-order="sortOrder"
 		v-model:category="category"
@@ -64,7 +64,7 @@ const yearlyWordCount = computed(() => {
 		</div>
 
 		<TransitionGroup tag="menu" class="archive-list" name="float-in">
-			<ZArchive
+			<PostArchive
 				v-for="article, index in yearGroup"
 				:key="article.path"
 				v-bind="article"

@@ -19,8 +19,8 @@ const handleError = () => clearError({ redirect: '/' })
 
 <template>
 <NuxtLoadingIndicator />
-<SkipToContent />
-<ZSidebar />
+<BlogSkipToContent />
+<BlogSidebar />
 <div id="content">
 	<main>
 		<div class="app-error">
@@ -34,11 +34,11 @@ const handleError = () => clearError({ redirect: '/' })
 				</ZButton>
 			</ZError>
 		</div>
-		<ZFooter />
+		<BlogFooter />
 	</main>
-	<ZAside v-if="!$route.meta.hideAside" />
+	<BlogAside v-if="!$route.meta.hideAside" />
 </div>
-<ZPanel />
+<BlogPanel />
 </template>
 
 <style lang="scss" scoped>

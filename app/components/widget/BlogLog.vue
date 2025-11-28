@@ -12,7 +12,7 @@ const blogLog = [
 </script>
 
 <template>
-<ZWidget card title="更新日志">
+<BlogWidget card title="更新日志">
 	<ZDlGroup size="large" :items="blogLog" />
-</ZWidget>
+</BlogWidget>
 </template>

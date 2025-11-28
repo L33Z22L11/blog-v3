@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ZDate } from '#components'
+import { UtilDate } from '#components'
 
 const appConfig = useAppConfig()
 const runtimeConfig = useRuntimeConfig()
@@ -20,7 +20,7 @@ const blogStats = [{
 	tip: `博客于${appConfig.timeEstablished}上线`,
 }, {
 	label: '上次更新',
-	value: () => h(ZDate, {
+	value: () => h(UtilDate, {
 		date: runtimeConfig.public.buildTime,
 		relative: true,
 		tipPrefix: '构建于',
@@ -33,7 +33,7 @@ const blogStats = [{
 </script>
 
 <template>
-<ZWidget card title="博客统计">
+<BlogWidget card title="博客统计">
 	<ZDlGroup :items="blogStats" size="small" />
-</ZWidget>
+</BlogWidget>
 </template>

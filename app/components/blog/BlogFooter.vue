@@ -3,7 +3,7 @@ const appConfig = useAppConfig()
 </script>
 
 <template>
-<footer class="z-footer">
+<footer class="blog-footer">
 	<nav class="footer-nav">
 		<div v-for="(group, groupIndex) in appConfig.footer.nav" :key="groupIndex" class="footer-nav-group">
 			<h3 v-if="group.title">
@@ -11,10 +11,10 @@ const appConfig = useAppConfig()
 			</h3>
 			<menu>
 				<li v-for="(item, itemIndex) in group.items" :key="itemIndex">
-					<ZRawLink :to="item.url">
+					<UtilLink :to="item.url">
 						<Icon :name="item.icon" />
 						<span class="nav-text">{{ item.text }}</span>
-					</ZRawLink>
+					</UtilLink>
 				</li>
 			</menu>
 		</div>
@@ -24,7 +24,7 @@ const appConfig = useAppConfig()
 </template>
 
 <style lang="scss" scoped>
-.z-footer {
+.blog-footer {
 	margin: 3rem 1rem;
 	font-size: 0.9em;
 	color: var(--c-text-2);

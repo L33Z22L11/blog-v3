@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
 <menu>
-	<ZRawLink
+	<UtilLink
 		v-for="{ text, icon, url } in list"
 		:key="text"
 		v-tip="text"
@@ -16,7 +16,7 @@ defineProps<{
 		:aria-label="text"
 	>
 		<Icon :name="icon" />
-	</ZRawLink>
+	</UtilLink>
 </menu>
 </template>
 

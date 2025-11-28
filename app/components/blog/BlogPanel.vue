@@ -15,7 +15,7 @@ useEventListener('keydown', (event) => {
 </script>
 
 <template>
-<div id="z-panel" :class="{ 'has-active': layoutStore.isAnyOpen }" :style="panelTranslateStyle">
+<div id="blog-panel" :class="{ 'has-active': layoutStore.isAnyOpen }" :style="panelTranslateStyle">
 	<button
 		id="toggle-sidebar"
 		:class="{ active: layoutStore.isOpen('sidebar') }"
@@ -38,7 +38,7 @@ useEventListener('keydown', (event) => {
 </template>
 
 <style lang="scss" scoped>
-#z-panel {
+#blog-panel {
 	position: fixed;
 	overflow: hidden;
 	bottom: min(2rem, 5%);

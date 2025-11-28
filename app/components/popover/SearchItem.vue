@@ -18,7 +18,7 @@ const highlightContent = computed(() => highlightHtml(props.content ?? '', word.
 </script>
 
 <template>
-<ZRawLink :to="id" class="search-item">
+<UtilLink :to="id" class="search-item">
 	<div class="title text-creative">
 		<Badge round :class="{ primary: level === 1 }">
 			{{ level === 1 ? '文章' : `H${level}` }}
@@ -26,7 +26,7 @@ const highlightContent = computed(() => highlightHtml(props.content ?? '', word.
 		<span v-html="highlightTitle" />
 	</div>
 	<p class="content" v-html="highlightContent" />
-</ZRawLink>
+</UtilLink>
 </template>
 
 <style lang="scss" scoped>

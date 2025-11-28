@@ -3,7 +3,7 @@ const appConfig = useAppConfig()
 </script>
 
 <template>
-<ZRawLink class="zhilu-header">
+<UtilLink class="blog-header">
 	<div v-if="appConfig.header.emojiTail" class="emoji-tail">
 		<span
 			v-for="(emoji, emojiIndex) in appConfig.header.emojiTail"
@@ -15,11 +15,11 @@ const appConfig = useAppConfig()
 	</div>
 	<NuxtImg
 		:src="appConfig.header.logo"
-		class="zhilu-logo"
+		class="blog-logo"
 		:class="{ circle: appConfig.header.showTitle }"
 		:alt="appConfig.title"
 	/>
-	<div v-if="appConfig.header.showTitle" class="zhilu-text">
+	<div v-if="appConfig.header.showTitle" class="blog-text">
 		<div class="header-title">
 			<span
 				v-for="(char, charIndex) in appConfig.title"
@@ -33,11 +33,11 @@ const appConfig = useAppConfig()
 			{{ appConfig.header.subtitle }}
 		</div>
 	</div>
-</ZRawLink>
+</UtilLink>
 </template>
 
 <style lang="scss" scoped>
-.zhilu-header {
+.blog-header {
 	display: flex;
 	align-items: center;
 	gap: 0.5em;
@@ -48,7 +48,7 @@ const appConfig = useAppConfig()
 	user-select: none;
 }
 
-.zhilu-logo {
+.blog-logo {
 	height: 3em;
 
 	&.circle {
@@ -113,7 +113,7 @@ const appConfig = useAppConfig()
 	}
 }
 
-.zhilu-header:hover {
+.blog-header:hover {
 	.emoji-tail {
 		opacity: 0.5;
 	}

@@ -412,6 +412,26 @@ GitHub链接能自动识别头像 :badge[KazariEX]{link="https://github.com/Kaza
 ```
 ::
 
+### BlogHeader
+
+::tab{:tabs='["组件","语法"]'}
+#tab1
+:blog-header
+
+#tab2
+```mdc
+:blog-header
+```
+::
+
+鼠标悬浮时的动画 Emoji `📄🦌🙌🐟🏖️` 对应“纸鹿摸鱼处”的汉字，在 `app.config.ts` 中配置，字体由 [阿里妈妈方圆体](https://www.iconfont.cn/fonts/detail?cnid=pOvFIr086ADR) 分割而来。
+
+```sh wrap
+# iconfont 网页版生成的字体子集在 Chrome 124 的版本无法解析，需要借助 fonttools 工具手动生成子集
+pip install fonttools brotli
+pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
+```
+
 ### :blur[Blur]
 
 ::tab{:tabs='["组件","语法"]'}
@@ -1010,26 +1030,6 @@ id: '7222222794333998392'
 ::
 ```
 ::
-
-### ZhiluHeader
-
-::tab{:tabs='["组件","语法"]'}
-#tab1
-:zhilu-header
-
-#tab2
-```mdc
-:zhilu-header
-```
-::
-
-鼠标悬浮时的动画 Emoji `📄🦌🙌🐟🏖️` 对应“纸鹿摸鱼处”的汉字，在 `app.config.ts` 中配置，字体由 [阿里妈妈方圆体](https://www.iconfont.cn/fonts/detail?cnid=pOvFIr086ADR) 分割而来。
-
-```sh wrap
-# iconfont 网页版生成的字体子集在 Chrome 124 的版本无法解析，需要借助 fonttools 工具手动生成子集
-pip install fonttools brotli
-pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
-```
 
 ## 组件使用方法
 

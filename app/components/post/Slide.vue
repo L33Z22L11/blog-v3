@@ -36,7 +36,7 @@ useEventListener(carouselEl, 'wheel', (e) => {
 	</div>
 	<div ref="carouselEl" class="z-slide-body" dir="ltr">
 		<div class="slide-list">
-			<ZRawLink
+			<UtilLink
 				v-for="(article, index) in list"
 				:key="index"
 				class="slide-item"
@@ -48,9 +48,9 @@ useEventListener(carouselEl, 'wheel', (e) => {
 					<div class="title text-creative">
 						{{ article.title }}
 					</div>
-					<ZDate v-if="article.date" class="desc" :date="article.date" />
+					<UtilDate v-if="article.date" class="desc" :date="article.date" />
 				</div>
-			</ZRawLink>
+			</UtilLink>
 		</div>
 		<ZButton
 			class="carousel-action prev at-slide-hover"

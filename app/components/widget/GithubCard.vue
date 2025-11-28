@@ -11,16 +11,16 @@ const repo = computed(() => meta.value?.github as Repo | undefined)
 </script>
 
 <template>
-<ZWidget title="GitHub 仓库">
-	<ZRawLink v-if="repo" class="card" :to="repo.url">
+<BlogWidget title="GitHub 仓库">
+	<UtilLink v-if="repo" class="card" :to="repo.url">
 		<div class="name">
 			{{ repo.name }}
 		</div>
 		<div class="desc">
 			{{ repo.description }}
 		</div>
-	</ZRawLink>
-</ZWidget>
+	</UtilLink>
+</BlogWidget>
 </template>
 
 <style lang="scss" scoped>

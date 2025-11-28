@@ -6,12 +6,12 @@ const { widgets } = useWidgets(() => layoutStore.asideWidgets)
 
 <template>
 <Transition>
-	<div v-if="layoutStore.isOpen('aside')" id="z-aside-bgmask" @click="layoutStore.toggle('aside')" />
+	<div v-if="layoutStore.isOpen('aside')" id="blog-aside-bgmask" @click="layoutStore.toggle('aside')" />
 </Transition>
 <!-- 此处不能使用 Transition，因为宽屏状态始终显示 -->
 <!-- 如果为空数组则隐藏 -->
 <Transition>
-	<aside v-if="layoutStore.asideWidgets?.length" id="z-aside" :class="{ show: layoutStore.isOpen('aside') }">
+	<aside v-if="layoutStore.asideWidgets?.length" id="blog-aside" :class="{ show: layoutStore.isOpen('aside') }">
 		<TransitionGroup name="float-in">
 			<!-- 更换页面时相同 key 的组件不会更新 -->
 			<component :is="widget.comp" v-for="widget in widgets" :key="widget.name" />
@@ -21,7 +21,7 @@ const { widgets } = useWidgets(() => layoutStore.asideWidgets)
 </template>
 
 <style lang="scss" scoped>
-#z-aside {
+#blog-aside {
 	overflow: auto;
 	padding: 0.5rem;
 
@@ -51,7 +51,7 @@ const { widgets } = useWidgets(() => layoutStore.asideWidgets)
 	}
 }
 
-#z-aside-bgmask {
+#blog-aside-bgmask {
 	position: fixed;
 	inset: 0;
 	background-color: #0003;
