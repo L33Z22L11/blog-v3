@@ -28,7 +28,7 @@
 	color: transparent;
 	transition: background-position 0.2s;
 
-	.widget:hover & {
+	.blog-widget:hover & {
 		background-position: 0 0;
 	}
 }

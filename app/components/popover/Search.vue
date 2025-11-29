@@ -147,7 +147,7 @@ function openActiveItem() {
 	flex-direction: column;
 	position: fixed;
 	inset: 0;
-	width: 95%;
+	width: 90%;
 	height: fit-content;
 	max-width: $breakpoint-mobile;
 	max-height: 80%;

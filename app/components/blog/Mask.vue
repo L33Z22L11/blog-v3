@@ -30,7 +30,6 @@ const style = computed<CSSProperties>(() => ({
 	inset: 0;
 	background-color: #0003;
 	backdrop-filter: var(--bdfilter);
-	isolation: isolate;
 	z-index: var(--z-index-popover);
 }
 

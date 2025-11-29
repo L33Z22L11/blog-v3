@@ -8,7 +8,6 @@ const title = computed(() => props.title ?? props.sitenick ?? props.author)
 const domainTip = computed(() => getDomainType(getMainDomain(props.link, true)))
 const domainIcon = computed(() => getDomainIcon(props.link))
 
-const inspect = ref(false)
 function getInspectStyle(src: string): CSSProperties {
 	src = getMainDomain(src)
 	let color = 'red'
@@ -27,10 +26,6 @@ function getInspectStyle(src: string): CSSProperties {
 		boxSizing: 'content-box',
 	}
 }
-
-onMounted(() => {
-	inspect.value = import.meta.env.DEV && location.search.includes('inspect')
-})
 </script>
 
 <template>
@@ -41,10 +36,11 @@ onMounted(() => {
 		:data-error="error"
 	>
 		<div class="avatar">
-			<ClientOnly v-if="inspect">
+			<!-- /link?inspect 查看图标和头像 -->
+			<DevOnly v-if="useRoute().query.inspect !== undefined">
 				<NuxtImg :src="icon" :title="icon" :style="getInspectStyle(icon)" />
 				<NuxtImg :src="avatar" :title="avatar" :style="getInspectStyle(avatar)" />
-			</ClientOnly>
+			</DevOnly>
 
 			<NuxtImg v-else :src="avatar" :alt="author" loading="lazy" :title="feed ? undefined : '无订阅源'" />
 			<Icon v-if="!feed" class="no-feed" name="ph:bell-simple-slash-bold" />

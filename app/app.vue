@@ -1,5 +1,6 @@
 <template>
 <NuxtLoadingIndicator />
+<NuxtRouteAnnouncer />
 <BlogSkipToContent />
 <BlogSidebar />
 <div id="content">

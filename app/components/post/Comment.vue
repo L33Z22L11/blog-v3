@@ -36,7 +36,7 @@ onMounted(() => {
 
 	.tk-admin-container {
 		position: fixed;
-		z-index: 1;
+		z-index: calc(var(--z-index-popover) + 1);
 	}
 
 	.tk-input {
