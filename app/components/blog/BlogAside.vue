@@ -1,29 +1,33 @@
 <script setup lang="ts">
 const layoutStore = useLayoutStore()
+const { asideWidgets } = storeToRefs(layoutStore)
+const show = computed(() => layoutStore.isOpen('aside'))
 
-const { widgets } = useWidgets(() => layoutStore.asideWidgets)
+const { widgets } = useWidgets(asideWidgets)
 </script>
 
 <template>
-<Transition>
-	<div v-if="layoutStore.isOpen('aside')" id="blog-aside-bgmask" @click="layoutStore.toggle('aside')" />
-</Transition>
-<!-- 此处不能使用 Transition，因为宽屏状态始终显示 -->
+<BlogMask
+	v-model:show="show"
+	class="widescreen-only"
+	@click="layoutStore.toggle('aside')"
+/>
+
+<!-- 不能用 Transition 实现弹出收起动画，因为宽屏状态始终显示 -->
 <!-- 如果为空数组则隐藏 -->
-<Transition>
-	<aside v-if="layoutStore.asideWidgets?.length" id="blog-aside" :class="{ show: layoutStore.isOpen('aside') }">
-		<TransitionGroup name="float-in">
-			<!-- 更换页面时相同 key 的组件不会更新 -->
-			<component :is="widget.comp" v-for="widget in widgets" :key="widget.name" />
-		</TransitionGroup>
-	</aside>
-</Transition>
+<aside v-if="asideWidgets?.length" class="blog-aside" :class="{ show }">
+	<TransitionGroup name="float-in">
+		<!-- 更换页面时相同 key 的组件不会更新 -->
+		<component :is="widget.comp" v-for="widget in widgets" :key="widget.name" />
+	</TransitionGroup>
+</aside>
 </template>
 
 <style lang="scss" scoped>
-#blog-aside {
+.blog-aside {
 	overflow: auto;
 	padding: 0.5rem;
+	z-index: var(--z-index-popover);
 
 	@media (max-width: $breakpoint-widescreen) {
 		position: fixed;
@@ -35,9 +39,8 @@ const { widgets } = useWidgets(() => layoutStore.asideWidgets)
 		max-height: 100%;
 		transform: var(--transform-end-far);
 		transition: transform 0.2s;
-		z-index: 100;
 
-		:deep(.widget) {
+		:deep(.blog-widget) {
 			padding: 0.5rem;
 			border-radius: 1rem;
 			box-shadow: 0 0 1rem var(--ld-shadow);
@@ -49,27 +52,5 @@ const { widgets } = useWidgets(() => layoutStore.asideWidgets)
 			transform: none;
 		}
 	}
-}
-
-#blog-aside-bgmask {
-	position: fixed;
-	inset: 0;
-	background-color: #0003;
-	transition: opacity 0.2s;
-	z-index: 100;
-
-	@media (min-width: $breakpoint-widescreen) {
-		display: none;
-	}
-}
-
-.v-enter-from,
-.v-leave-to {
-	opacity: 0;
-}
-
-.v-enter-active,
-.v-leave-active {
-	transition: all 0.2s;
 }
 </style>

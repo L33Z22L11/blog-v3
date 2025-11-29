@@ -81,7 +81,8 @@ const { copy, copied } = useCopy(shareText)
 		border-radius: 0;
 	}
 
-	&:hover .operations {
+	&:hover .operations,
+	&:focus-within .operations {
 		opacity: 1;
 	}
 

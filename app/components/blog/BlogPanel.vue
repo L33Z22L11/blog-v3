@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const layoutStore = useLayoutStore()
-const hasAside = computed(() => layoutStore.asideWidgets?.length)
-const { translate } = storeToRefs(layoutStore)
+const { asideWidgets, translate } = storeToRefs(layoutStore)
 
 const panelTranslateStyle = computed(() => ({
 	transform: Object.values(translate.value).map(v => v ? `translate(${v})` : '').join(' '),
@@ -15,9 +14,9 @@ useEventListener('keydown', (event) => {
 </script>
 
 <template>
-<div id="blog-panel" :class="{ 'has-active': layoutStore.isAnyOpen }" :style="panelTranslateStyle">
+<div class="blog-panel" :class="{ 'has-active': layoutStore.isAnyOpen }" :style="panelTranslateStyle">
 	<button
-		id="toggle-sidebar"
+		class="toggle-sidebar mobile-only"
 		:class="{ active: layoutStore.isOpen('sidebar') }"
 		aria-label="切换菜单"
 		@click="layoutStore.toggle('sidebar')"
@@ -26,8 +25,8 @@ useEventListener('keydown', (event) => {
 	</button>
 
 	<button
-		v-if="hasAside"
-		id="toggle-aside"
+		v-if="asideWidgets.length"
+		class="toggle-aside widescreen-only"
 		:class="{ active: layoutStore.isOpen('aside') }"
 		aria-label="切换侧边栏"
 		@click="layoutStore.toggle('aside')"
@@ -38,36 +37,25 @@ useEventListener('keydown', (event) => {
 </template>
 
 <style lang="scss" scoped>
-#blog-panel {
+.blog-panel {
 	position: fixed;
 	overflow: hidden;
+	overflow: clip;
 	bottom: min(2rem, 5%);
 	border-radius: 0.5rem;
 	background-color: var(--c-bg-a50);
 	backdrop-filter: blur(0.5rem);
 	font-size: 1.4rem;
 	transition: transform 0.1s;
-	z-index: 100;
+	z-index: var(--z-index-popover);
 	inset-inline-end: min(1rem, 5%);
 
 	@media (max-height: $breakpoint-phone) {
 		display: flex;
 	}
 
-	@media (min-width: $breakpoint-widescreen) {
-		display: none;
-	}
-
 	&.has-active {
 		box-shadow: 0 0 0.5rem var(--ld-shadow);
-	}
-}
-
-#toggle-sidebar, #toggle-search {
-	display: none;
-
-	@media (max-width: $breakpoint-mobile) {
-		display: block;
 	}
 }
 

@@ -84,7 +84,8 @@ const listRecommended = computed(() => sort(
 	transition: all 0.2s 1s, color 0.2s;
 	z-index: -1;
 
-	:hover > & {
+	:hover > &,
+	:focus-within > & {
 		opacity: 1;
 		color: var(--c-primary);
 		z-index: 0;

@@ -1,30 +1,30 @@
 :root {
-	--bg-1: #F3F7F9;
-	--bg-alt: #FFF;
-	--text-1: #333;
-	--text-2: #666;
-	--text-3: #999;
-	--shadow-1: 0 0.1em 0.2em rgb(0 0 0 / 10%);
-	--shadow-2: 0 0.4em 0.5em rgb(0 0 0 / 15%);
+	--xsl-bg-1: #F3F7F9;
+	--xsl-bg-alt: #FFF;
+	--xsl-text-1: #333;
+	--xsl-text-2: #666;
+	--xsl-text-3: #999;
+	--xsl-shadow-1: 0 0.1em 0.2em rgb(0 0 0 / 10%);
+	--xsl-shadow-2: 0 0.4em 0.5em rgb(0 0 0 / 15%);
 
-	background-color: var(--bg-1);
+	background-color: var(--xsl-bg-1);
 	font-family: Inter, sans-serif;
 	line-height: 1.6;
 	text-autospace: normal;
-	color: var(--text-1);
+	color: var(--xsl-text-1);
 	color-scheme: light dark;
 	transition: background-color 0.3s, color 0.1s;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--bg-1: #1E1E1E;
-		--bg-alt: #333;
-		--text-1: #EEE;
-		--text-2: #AAA;
-		--text-3: #666;
-		--shadow-1: 0 0.1em 0.2em rgb(255 255 255 / 10%);
-		--shadow-2: 0 0.4em 0.5em rgb(255 255 255 / 15%);
+		--xsl-bg-1: #1E1E1E;
+		--xsl-bg-alt: #333;
+		--xsl-text-1: #EEE;
+		--xsl-text-2: #AAA;
+		--xsl-text-3: #666;
+		--xsl-shadow-1: 0 0.1em 0.2em rgb(255 255 255 / 10%);
+		--xsl-shadow-2: 0 0.4em 0.5em rgb(255 255 255 / 15%);
 
 		color-scheme: dark;
 	}
@@ -58,7 +58,7 @@ p {
 blockquote {
 	margin: 1em 0;
 	padding: 0 0.8em;
-	border-inline-start: 0.2em solid var(--text-3);
+	border-inline-start: 0.2em solid var(--xsl-text-3);
 }
 
 code, pre {
@@ -77,7 +77,7 @@ code, pre {
 .logo {
 	height: 2.4em;
 	border-radius: 2em;
-	box-shadow: var(--shadow-1);
+	box-shadow: var(--xsl-shadow-1);
 }
 
 .title {
@@ -88,7 +88,7 @@ code, pre {
 
 .subtitle {
 	font-size: 0.8em;
-	color: var(--text-2);
+	color: var(--xsl-text-2);
 }
 
 .entry {
@@ -98,8 +98,8 @@ code, pre {
 	overflow: clip;
 	margin: 1em 0;
 	border-radius: 0.8em;
-	box-shadow: var(--shadow-1);
-	background-color: var(--bg-alt);
+	box-shadow: var(--xsl-shadow-1);
+	background-color: var(--xsl-bg-alt);
 	transition: all 0.2s;
 }
 
@@ -110,7 +110,7 @@ code, pre {
 }
 
 .entry:hover {
-	box-shadow: var(--shadow-2);
+	box-shadow: var(--xsl-shadow-2);
 	transform: translateY(-0.1em);
 }
 
@@ -120,17 +120,17 @@ code, pre {
 
 .entry-title {
 	font-size: 1.2em;
-	color: var(--text-1);
+	color: var(--xsl-text-1);
 }
 
 .entry-meta {
 	font-size: 0.9em;
-	color: var(--text-2);
+	color: var(--xsl-text-2);
 }
 
 .entry-summary {
 	font-size: 0.9em;
-	color: var(--text-2);
+	color: var(--xsl-text-2);
 }
 
 .entry-summary:empty {
@@ -146,15 +146,13 @@ code, pre {
 	height: 100%;
 	margin: 0;
 	mask-image: linear-gradient(to right, transparent, #FFF 50%);
-	transition: all 0.2s;
+	transition: opacity 0.2s;
 	object-fit: cover;
 }
 
 img {
+	contain: layout;
 	display: inline-block;
-	overflow: hidden;
-	overflow: clip;
-	transform: scale(1);
 
 	&::before {
 		position: absolute;
@@ -167,14 +165,14 @@ img {
 		place-content: center;
 		overflow: visible;
 		padding: 0.5em;
-		background-color: var(--bg-alt);
+		background-color: var(--xsl-bg-alt);
 		font-size: 1.5em;
 		font-weight: bold;
 		line-height: 1.2;
 		word-break: normal;
 		text-align: center;
 		text-shadow: none;
-		color: var(--text-3);
+		color: var(--xsl-text-3);
 	}
 }
 
@@ -220,8 +218,8 @@ img {
 	max-height: 80%;
 	padding: 1.5em 2em;
 	border-radius: 0.8em;
-	box-shadow: var(--shadow-2);
-	background-color: var(--bg-1);
+	box-shadow: var(--xsl-shadow-2);
+	background-color: var(--xsl-bg-1);
 }
 
 .entry-content > figcaption {
@@ -260,11 +258,11 @@ img {
 	left: 50%;
 	padding: 0.5em 1em;
 	border-radius: 0.8em;
-	background-color: var(--bg-alt);
+	background-color: var(--xsl-bg-alt);
 	font-size: 1.2em;
 	font-weight: bold;
 	text-align: center;
-	color: var(--text-1);
+	color: var(--xsl-text-1);
 	transform: translateX(-50%);
 }
 
@@ -272,5 +270,5 @@ footer {
 	margin-top: 2em;
 	font-size: 0.8em;
 	text-align: center;
-	color: var(--text-2);
+	color: var(--xsl-text-2);
 }

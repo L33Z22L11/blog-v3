@@ -72,7 +72,8 @@ useEventListener(carouselEl, 'wheel', (e) => {
 .z-slide {
 	margin: 1rem;
 
-	&:hover .at-slide-hover {
+	&:hover .at-slide-hover,
+	&:focus-within .at-slide-hover {
 		opacity: 1;
 	}
 }
@@ -170,7 +171,8 @@ useEventListener(carouselEl, 'wheel', (e) => {
 			}
 		}
 
-		&:hover > .info {
+		&:hover > .info,
+		&:focus-within > .info {
 			opacity: 1;
 		}
 	}

@@ -3,6 +3,8 @@
 	--end: right;
 	--transform-start-far: translateX(-100%);
 	--transform-end-far: translateX(100%);
+	--delay: 0.2s;
+	--z-index-popover: 100;
 
 	overflow-wrap: break-word;
 	background-color: var(--c-bg-1);
@@ -102,10 +104,8 @@ button, input, textarea {
 
 // 图片加载失败 fallback
 img {
+	contain: layout; // 限制溢出
 	display: inline-block;
-	overflow: hidden;    // Chrome 90- 😡
-	overflow: clip;      // 🔥🦊😡
-	transform: scale(1); // position: fixed 的定位祖先
 
 	&::before {
 		position: absolute;

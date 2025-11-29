@@ -13,7 +13,7 @@
 	margin: 1rem;
 	padding: 0.5rem;
 	text-align: center;
-	z-index: 1000;
+	z-index: calc(infinity);
 }
 
 .skip-link:focus {

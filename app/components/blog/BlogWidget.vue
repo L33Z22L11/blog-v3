@@ -35,7 +35,7 @@ defineProps<{
 		opacity: 0.3;
 		transition: opacity 0.2s;
 
-		#blog-aside:hover &, #blog-aside.show & {
+		.blog-aside:hover &, .blog-aside.show & {
 			opacity: 1;
 		}
 	}

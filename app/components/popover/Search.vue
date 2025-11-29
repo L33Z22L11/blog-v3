@@ -82,107 +82,82 @@ function openActiveItem() {
 </script>
 
 <template>
-<div class="z-search">
-	<Transition>
-		<div
-			v-if="show"
-			id="z-search-bgmask"
-			@click="searchStore.toggle()"
-		/>
-	</Transition>
-	<Transition name="float-in">
-		<div v-if="show" id="z-search">
-			<form class="input" @submit.prevent>
-				<Icon :name="status === 'pending' ? 'line-md:loading-alt-loop' : 'ph:magnifying-glass-bold'" />
+<BlogMask
+	:show
+	blur
+	@click="searchStore.toggle()"
+/>
 
-				<!-- 方向键切换搜索结果不应只在搜索框内触发 -->
-				<input
-					ref="searchInput"
-					v-model="word"
-					type="search"
-					incremental
-					class="search-input"
-					placeholder="键入开始搜索"
-					@keydown.up.prevent
-					@keydown.down.prevent
-				>
-			</form>
+<Transition name="float-in">
+	<div v-if="show" class="blog-search">
+		<form class="input" @submit.prevent>
+			<Icon :name="status === 'pending' ? 'line-md:loading-alt-loop' : 'ph:magnifying-glass-bold'" />
 
-			<TransitionGroup name="expand">
-				<div v-if="word && status === 'success' && !result?.length" class="no-result">
-					无结果
-				</div>
+			<!-- 方向键切换搜索结果不应只在搜索框内触发 -->
+			<input
+				ref="searchInput"
+				v-model="word"
+				type="search"
+				incremental
+				class="search-input"
+				placeholder="键入开始搜索"
+				@keydown.up.prevent
+				@keydown.down.prevent
+			>
+		</form>
 
-				<ol
-					v-if="word && result?.length"
-					ref="list-result"
-					class="scrollcheck-y search-result"
-				>
-					<PopoverSearchItem
-						v-for="(item, itemIndex) in result"
-						:key="item.id"
-						v-bind="item"
-						:class="{ active: activeIndex === itemIndex }"
-						@mousemove="updateActiveIndex(itemIndex)"
-					/>
-				</ol>
+		<TransitionGroup name="expand">
+			<div v-if="word && status === 'success' && !result?.length" class="no-result">
+				无结果
+			</div>
 
-				<div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
-					<Key code="ArrowUp" prevent @press="updateActiveIndex(activeIndex - 1, true)" />
-					<Key code="ArrowDown" prevent @press="updateActiveIndex(activeIndex + 1, true)" />
-					切换&emsp;
-					<Key code="Enter" icon @press="openActiveItem" />
-					选择&emsp;
-					<Key code="Escape" :icon="false" @press="searchStore.toggle()" />
-					关闭
-				</div>
-			</TransitionGroup>
-		</div>
-	</Transition>
-</div>
+			<ol
+				v-if="word && result?.length"
+				ref="list-result"
+				class="scrollcheck-y search-result"
+			>
+				<PopoverSearchItem
+					v-for="(item, itemIndex) in result"
+					:key="item.id"
+					v-bind="item"
+					:class="{ active: activeIndex === itemIndex }"
+					@mousemove="updateActiveIndex(itemIndex)"
+				/>
+			</ol>
+
+			<div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
+				<Key code="ArrowUp" prevent @press="updateActiveIndex(activeIndex - 1, true)" />
+				<Key code="ArrowDown" prevent @press="updateActiveIndex(activeIndex + 1, true)" />
+				切换&emsp;
+				<Key code="Enter" icon @press="openActiveItem" />
+				选择&emsp;
+				<Key code="Escape" :icon="false" @press="searchStore.toggle()" />
+				关闭
+			</div>
+		</TransitionGroup>
+	</div>
+</Transition>
 </template>
 
 <style lang="scss" scoped>
-.z-search {
+.blog-search {
 	--float-distance: 20vh;
 
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	flex-direction: column;
 	position: fixed;
 	inset: 0;
-}
-
-@keyframes scan {
-	0% { left: -100%; }
-	100% { left: 150%; }
-}
-
-#z-search {
-	overflow: hidden;
 	width: 95%;
+	height: fit-content;
 	max-width: $breakpoint-mobile;
+	max-height: 80%;
+	margin: auto;
 	border: 1px solid var(--c-primary);
 	border-radius: 1em;
 	box-shadow: 0 0.5em 1em var(--ld-shadow);
 	background-color: var(--ld-bg-card);
-	transition: all var(--delay, 200);
-	z-index: 1000;
-}
-
-#z-search-bgmask {
-	position: fixed;
-	inset: 0;
-	background-color: #0003;
-	backdrop-filter: blur(0.2em);
-	transition: backdrop-filter 1s;
-	transition: opacity var(--delay, 200);
-	z-index: 100;
-
-	&.v-enter-from,
-	&.v-leave-to {
-		opacity: 0;
-	}
+	transition: all var(--delay);
+	z-index: var(--z-index-popover);
 }
 
 .input {

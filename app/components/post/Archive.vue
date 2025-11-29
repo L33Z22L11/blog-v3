@@ -66,7 +66,8 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 		}
 	}
 
-	&:hover > time {
+	&:hover > time,
+	&:focus-within > time {
 		opacity: 1;
 	}
 }

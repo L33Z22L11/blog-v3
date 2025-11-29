@@ -31,7 +31,7 @@
 		z-index: -1;
 	}
 
-	&:hover, &.active {
+	&:hover, &:focus, &.active {
 		color: var(--c-text-1);
 
 		&::before {
@@ -136,20 +136,19 @@ mark {
 	}
 }
 
-.mobile-only {
-	display: none;
+// 生成响应式可见性类
+$visibility-rules: (
+	only: min-width,
+	hidden: max-width,
+);
 
-	@media (max-width: $breakpoint-mobile) {
-		display: revert;
-		overflow: hidden;
-	}
-}
-
-.widescreen-only {
-	display: none;
-
-	@media (min-width: $breakpoint-widescreen) {
-		display: revert;
+@each $name, $size in $breakpoints {
+	@each $suffix, $direction in $visibility-rules {
+		@media (#{$direction}: #{$size}) {
+			.#{$name}-#{$suffix} {
+				display: none !important; /* stylelint-disable-line declaration-no-important */
+			}
+		}
 	}
 }
 

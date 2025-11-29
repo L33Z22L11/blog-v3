@@ -1,4 +1,9 @@
 <script setup lang="ts">
+withDefaults(defineProps<{
+	tag?: string
+}>(), {
+	tag: 'div',
+})
 const appConfig = useAppConfig()
 </script>
 
@@ -9,26 +14,29 @@ const appConfig = useAppConfig()
 			v-for="(emoji, emojiIndex) in appConfig.header.emojiTail"
 			:key="emojiIndex"
 			class="split-char"
-			:style="{ '--delay': `${emojiIndex * .6 - 3}s` }"
+			:style="{ '--delay': `${(emojiIndex * .6 - 3).toFixed(1)}s` }"
 			v-text="emoji"
 		/>
 	</div>
+
 	<NuxtImg
 		:src="appConfig.header.logo"
 		class="blog-logo"
 		:class="{ circle: appConfig.header.showTitle }"
 		:alt="appConfig.title"
 	/>
+
 	<div v-if="appConfig.header.showTitle" class="blog-text">
-		<div class="header-title">
+		<component :is="tag" class="header-title">
 			<span
 				v-for="(char, charIndex) in appConfig.title"
 				:key="charIndex"
 				class="split-char"
-				:style="{ '--delay': `${(charIndex + 1) * .1}s` }"
+				:style="{ '--delay': `${((charIndex + 1) * .1).toFixed(1)}s` }"
 				v-text="char"
 			/>
-		</div>
+		</component>
+
 		<div class="header-subtitle">
 			{{ appConfig.header.subtitle }}
 		</div>
@@ -38,6 +46,7 @@ const appConfig = useAppConfig()
 
 <style lang="scss" scoped>
 .blog-header {
+	contain: layout;
 	display: flex;
 	align-items: center;
 	gap: 0.5em;
