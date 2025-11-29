@@ -21,7 +21,7 @@
 
 | 博客名称                                     | 作者          | 对应上游版本 | 下游特色功能                   |
 | -------------------------------------------- | ------------- | ------------ | ------------------------------ |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**   | **L33Z22L11** | **v3.5.0**   | (我是上游)                     |
+| **[纸鹿摸鱼处](https://blog.zhilu.site/)**   | **L33Z22L11** | **v3.5.1**   | (我是上游)                     |
 | [希乐博客](https://blog.xlenco.top/)         | Xlenco        | v3.4.8       | 最新评论                       |
 | [SteinsNote](https://blog.labmem.chat/)      | Labmem-00     | v3.1-241112  | 专栏                           |
 | [月空人](https://whbbit.cn/)                 | Whbbit1999    | v3.4.9       | 项目/博客/Snippets页           |
@@ -40,7 +40,7 @@
 | [fishcpy的小破站](https://blog.fis.ink/)     | fishcpy       | v3.4.8       | 友圈+Artalk评论                |
 | [六月墨语](https://blog.june.ink/)           | Akuma-real    | v3.5.0       | 友圈+最新评论                  |
 | [Cталин博客](https://blog.jiclub.site/)      | StalinDev54   | v3.4.8       | 侧栏时间轴+关于页              |
-| [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong  | v3.4.9       | 即刻+友圈                      |
+| [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong  | v3.5.0       | 即刻+友圈                      |
 | [小源151博客](https://blog.xiaoyuan151.com/) | XiaoYuan151   | v3.4.8       |                                |
 | [墨韵云阁](https://luoyuanxiang.top/)        | luoyuanxiang  | v3.4.8       |                                |
 | [KingKangBlog](https://blog.kingkang.xyz/)   | KingStoning   | v3.4.9       |                                |
