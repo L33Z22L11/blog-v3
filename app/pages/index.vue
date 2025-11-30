@@ -10,7 +10,7 @@ useSeoMeta({
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-stats', 'blog-tech', 'comm-group'])
 
-const { data: listRaw } = await useArticleIndex()
+const { data: listRaw } = await useAsyncData('index_posts', () => useArticleIndexOptions(), { default: () => [] })
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw, { bindDirectionQuery: 'asc', bindOrderQuery: 'sort' })
 const { category, categories, listCategorized } = useCategory(listSorted, { bindQuery: 'category' })
 const { page, totalPages, listPaged } = usePagination(listCategorized, { bindQuery: 'page' })
@@ -29,10 +29,7 @@ const listRecommended = computed(() => sort(
 </script>
 
 <template>
-<div class="mobile-only">
-	<!-- 若不包裹，display: none 在 JS 加载后才有足够优先级 -->
-	<BlogHeader to="/" tag="h1" />
-</div>
+<BlogHeader class="mobile-only" to="/" tag="h1" />
 
 <UtilHydrateSafe>
 	<PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />

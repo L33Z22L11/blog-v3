@@ -11,7 +11,7 @@ interface SearchItem extends SearchResult {
 const props = defineProps<Partial<SearchItem>>()
 
 const title = computed(() => [...props.titles ?? [], props.title].join(' > '))
-const word = computed(() => props.queryTerms?.[0] ?? '')
+const word = computed(() => props.queryTerms?.join('') ?? '')
 
 const highlightTitle = computed(() => highlightHtml(title.value, word.value))
 const highlightContent = computed(() => highlightHtml(props.content ?? '', word.value))

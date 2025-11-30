@@ -7,7 +7,7 @@ useSeoMeta({
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-log'])
 
-const { data: listRaw } = useArticleIndex('previews/%')
+const { data: listRaw } = await useAsyncData('index_previews', () => useArticleIndexOptions('previews/%'), { default: () => [] })
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted)
 </script>

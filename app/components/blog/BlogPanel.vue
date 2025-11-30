@@ -14,7 +14,7 @@ useEventListener('keydown', (event) => {
 </script>
 
 <template>
-<div class="blog-panel" :class="{ 'has-active': layoutStore.isAnyOpen }" :style="panelTranslateStyle">
+<div id="blog-panel" :class="{ 'has-active': layoutStore.isAnyOpen }" :style="panelTranslateStyle">
 	<button
 		class="toggle-sidebar mobile-only"
 		:class="{ active: layoutStore.isOpen('sidebar') }"
@@ -37,7 +37,7 @@ useEventListener('keydown', (event) => {
 </template>
 
 <style lang="scss" scoped>
-.blog-panel {
+#blog-panel {
 	position: fixed;
 	overflow: hidden;
 	overflow: clip;

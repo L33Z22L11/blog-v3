@@ -1,6 +1,6 @@
 <template>
 <NuxtLoadingIndicator />
-<NuxtRouteAnnouncer />
+<NuxtRouteAnnouncer :style="{ position: 'absolute' }" />
 <BlogSkipToContent />
 <BlogSidebar />
 <div id="content">
@@ -14,15 +14,16 @@
 <BlogPopover />
 </template>
 
-<style lang="scss" scoped>
-:global(#z-root) {
+<!-- eslint-disable-next-line vue/enforce-style-attribute -->
+<style lang="scss">
+#z-root {
 	display: flex;
 	justify-content: center;
 	gap: 1rem;
 	min-width: 0;
 }
 
-:global(.blog-sidebar), :global(.blog-aside) {
+#blog-sidebar, #blog-aside {
 	flex-shrink: 0;
 	position: sticky;
 	top: 0;

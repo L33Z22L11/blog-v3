@@ -15,7 +15,7 @@ const { word } = storeToRefs(searchStore)
 />
 
 <!-- 不能用 Transition 实现弹出收起动画，因为半宽屏状态始终显示 -->
-<aside class="blog-sidebar" :class="{ show }">
+<aside id="blog-sidebar" :class="{ show }">
 	<BlogHeader class="sidebar-header" to="/" />
 
 	<nav class="sidebar-nav scrollcheck-y">
@@ -50,7 +50,7 @@ const { word } = storeToRefs(searchStore)
 </template>
 
 <style lang="scss" scoped>
-.blog-sidebar {
+#blog-sidebar {
 	display: flex;
 	flex-direction: column;
 	color: var(--c-text-2);

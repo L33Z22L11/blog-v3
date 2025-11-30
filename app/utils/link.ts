@@ -37,6 +37,6 @@ export function getGhUsername(url?: string) {
 
 export function isExtLink(url?: string) {
 	return url
-		? url.includes(':') || isPathFile(url)
+		? url.includes(':') || !!isPathFile(url)
 		: false
 }
