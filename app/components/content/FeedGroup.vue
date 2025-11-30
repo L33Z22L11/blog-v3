@@ -3,6 +3,7 @@ import type { FeedEntry, FeedGroup } from '~/types/feed'
 import { shuffle } from 'radash'
 
 const props = defineProps<FeedGroup & { shuffle?: boolean }>()
+const route = useRoute()
 const entries = ref(props.entries)
 
 // 友链浮现随机延迟
@@ -14,12 +15,12 @@ function getCardDelay(feed: FeedEntry) {
 	return (hash % 1000) / 1000
 }
 
-function shuffleEntries() {
-	if (props.shuffle)
-		entries.value = shuffle(entries.value)
-}
+const shuffleEntries = () => entries.value = shuffle(entries.value)
 
-onMounted(() => shuffleEntries())
+onMounted(() => {
+	if (props.shuffle && route.query.shuffle !== 'false')
+		shuffleEntries()
+})
 
 if (import.meta.dev) {
 	watch(() => props.entries, (newEntries) => {
@@ -31,7 +32,8 @@ if (import.meta.dev) {
 <template>
 <section class="feed-group">
 	<h3 class="feed-title">
-		<button role="button" title="点击随机排序" @click="shuffleEntries" v-text="name" />
+		<button v-if="props.shuffle" role="button" title="点击随机排序" @click="shuffleEntries" v-text="name" />
+		<span v-else v-text="name" />
 	</h3>
 	<p class="feed-desc" v-text="desc" />
 

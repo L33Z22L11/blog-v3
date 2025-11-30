@@ -104,8 +104,9 @@ button, input, textarea {
 
 // 图片加载失败 fallback
 img {
-	contain: layout; // 限制溢出
+	contain: layout;
 	display: inline-block;
+	overflow: clip; // Firefox
 
 	&::before {
 		position: absolute;
