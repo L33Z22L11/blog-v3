@@ -35,7 +35,7 @@
 | [歆鸢阁](https://www.myxz.top/)              | 661111         | v3.4.9       | 即刻+友圈+Heo友链轮播/Profile  |
 | [落憾](https://blog.enltlh.me/)              | LuoH-AN        | v3.5.0       | 即刻+一言+卡片Profile          |
 | [落尘up](https://www.luochen.chat/)          | luochenup      | v3.3.4       | 侧栏时间轴                     |
-| [硅基漫游指南](https://blog.helong.online/)  | HeLongaa       | v3.4.0       | 即刻+友圈+Artalk评论           |
+| [硅基漫游指南](https://blog.helong.online/)  | HeLongy        | v3.4.8       | 即刻+友圈+Artalk评论           |
 | [ATao-Blog](https://blog.atao.cyou/)         | ataoyan        | v3.4.0       | 即刻+装备页                    |
 | [fishcpy的小破站](https://blog.fis.ink/)     | fishcpy        | v3.4.8       | 友圈+Artalk评论                |
 | [六月墨语](https://blog.june.ink/)           | Akuma-real     | v3.5.0       | 友圈+最新评论                  |
@@ -168,7 +168,14 @@ pnpm preview
 - Vercel 先前创建的项目需要 [手动指定 pnpm 10](https://vercel.com/docs/builds/configure-a-build#corepack)。
 - Netlify 需要关闭 Build & deploy settings - Post processing - Pretty URLs，否则会导致 404 错误。
 - 如果修改了 API 路径，使用 EdgeOne 部署需要同步修改 `edgeone.json`。
-- 运行、部署项目时 Node.js 版本需要高于 `22.15.0`。
+- 运行、部署项目时 Node.js 版本需要高于 `22.15.0`，推荐使用 Node LTS 最新版。
+
+### 检测友链状态
+
+```sh
+pnpm check:feed # 检测某友链 / 任意 URL 的托管商及可访问性
+pnpm check:feed/all # 检测所有友链可访问性并生成报告
+```
 
 ## 贡献
 
@@ -178,5 +185,5 @@ pnpm preview
 
 - 项目本体：[MIT](LICENSE)
 - 博客文章：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans)
-- 请完成必要的配置与修改后再部署项目，**不得以我的名义或将我的文章发布到互联网**，否则我将设法与你联系。
+- 请完成必要的配置与修改后再部署项目，**不得以我的名义或将我的文章原样重新发布到互联网**，否则我将设法与你联系。
 - 希望你在页脚保留此项目链接，助力开源传播。
