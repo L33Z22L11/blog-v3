@@ -11,6 +11,7 @@ interface SearchItem extends SearchResult {
 const props = defineProps<Partial<SearchItem>>()
 
 const title = computed(() => [...props.titles ?? [], props.title].join(' > '))
+// FIXME 搜索多个英文单词时不会高亮
 const word = computed(() => props.queryTerms?.join('') ?? '')
 
 const highlightTitle = computed(() => highlightHtml(title.value, word.value))

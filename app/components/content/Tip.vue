@@ -21,7 +21,14 @@ const icon = computed(() => props.icon ?? (copied.value ? 'ph:check-bold' : prop
 </script>
 
 <template>
-<span ref="tip-text" v-tip="tip" class="tip" @click="props.copy && copy()">
+<span
+	ref="tip-text"
+	v-tip="tip"
+	class="tip"
+	tabindex="0"
+	@keypress.enter="props.copy && copy()"
+	@click="props.copy && copy()"
+>
 	<slot>{{ text }}</slot>
 	<Icon v-if="typeof icon === 'string'" :name="icon" class="tip-icon" />
 </span>

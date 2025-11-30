@@ -31,7 +31,12 @@ const copyFields = {
 	<BlogHeader to="/" suffix="友链" tag="h1" />
 </div>
 
-<FeedGroup :feeds />
+<FeedGroup
+	v-for="group in feeds"
+	:key="group.name"
+	v-bind="group"
+	:shuffle="appConfig.link.randomInGroup"
+/>
 
 <Tab :tabs="['我的博客信息', '申请友链']" center>
 	<template #tab1>

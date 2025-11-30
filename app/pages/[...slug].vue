@@ -37,7 +37,7 @@ else {
 	layoutStore.setAside(['blog-log'])
 }
 
-if (import.meta.env.DEV) {
+if (import.meta.dev) {
 	watchEffect(() => setTocAndMeta())
 }
 </script>

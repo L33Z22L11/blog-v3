@@ -2,7 +2,7 @@ import type { Nav, NavItem } from '~/types/nav'
 import blogConfig from '~~/blog.config'
 import { version } from '~~/package.json'
 
-// 图标查询：https://yesicon.app/ph
+// 图标查询：https://yesicon.app/ph?s=bold
 // 图标插件：https://marketplace.visualstudio.com/items?itemName=antfu.iconify
 
 // @keep-sorted
@@ -92,6 +92,14 @@ export default defineAppConfig({
 		emojiTail: ['📄', '🦌', '🙌', '🐟', '🏖️'],
 	},
 
+	/** 友链页面 */
+	link: {
+		/** 无订阅源展示静音图标 */
+		remindNoFeed: true,
+		/** 友链分组内随机排序 */
+		randomInGroup: true,
+	},
+
 	/** 左侧栏导航 */
 	nav: [
 		{
@@ -107,7 +115,7 @@ export default defineAppConfig({
 	pagination: {
 		perPage: 10,
 		/** 默认排序方式，需要是 this.article.order 中的键名 */
-		sortOrder: 'date' as const,
+		sortOrder: 'date' as keyof typeof blogConfig.article.order,
 		/** 允许（普通/预览/归档）文章列表正序，开启后排序方式左侧图标可切换顺序 */
 		allowAscending: false,
 	},

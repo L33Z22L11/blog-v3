@@ -1,13 +1,14 @@
 <script setup lang="ts">
 const layoutStore = useLayoutStore()
-const { asideWidgets, translate } = storeToRefs(layoutStore)
+const { asideWidgets, isAnyOpen, translate } = storeToRefs(layoutStore)
 
 const panelTranslateStyle = computed(() => ({
 	transform: Object.values(translate.value).map(v => v ? `translate(${v})` : '').join(' '),
 }))
 
-useEventListener('keydown', (event) => {
-	if (event.key === 'Escape') {
+useEventListener('keydown', (e) => {
+	if (isAnyOpen.value && e.key === 'Escape') {
+		e.preventDefault()
 		layoutStore.closeAll()
 	}
 })

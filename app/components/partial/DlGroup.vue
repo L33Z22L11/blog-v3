@@ -52,11 +52,13 @@ withDefaults(defineProps<{
 }
 
 .dl-group.medium {
+	display: grid;
+	grid-template-columns: auto auto;
+	gap: 0.4em 8%;
+	padding: 0.2em 0;
+
 	> div {
-		display: grid;
-		grid-template-columns: 1fr 2fr;
-		gap: 8%;
-		padding: 0.2em 0;
+		display: contents;
 
 		> dt {
 			font-size: inherit;

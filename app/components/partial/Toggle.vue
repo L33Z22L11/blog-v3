@@ -5,11 +5,8 @@ defineProps<{
 
 const modelValue = defineModel<boolean>()
 
-function onKeypress(e: KeyboardEvent) {
-	if (e.key === ' ' || e.key === 'Enter') {
-		e.preventDefault()
-		modelValue.value = !modelValue.value
-	}
+function toggle() {
+	modelValue.value = !modelValue.value
 }
 </script>
 
@@ -19,7 +16,8 @@ function onKeypress(e: KeyboardEvent) {
 	tabindex="0"
 	role="switch"
 	:aria-checked="modelValue"
-	@keypress="onKeypress"
+	@keypress.space.prevent="toggle"
+	@keypress.enter="toggle"
 >
 	<input v-model="modelValue" name="toggle" type="checkbox" hidden>
 	<span class="toggle-slider" />

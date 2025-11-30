@@ -142,8 +142,10 @@ function onLeave(el: Element, done: () => void) {
 }
 
 useEventListener('keydown', (e) => {
-	if (e.key === 'Escape')
+	if (props.show && e.key === 'Escape') {
+		e.preventDefault()
 		emit('close')
+	}
 })
 </script>
 

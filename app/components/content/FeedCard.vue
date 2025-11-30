@@ -2,7 +2,11 @@
 import type { CSSProperties } from 'vue'
 import type { FeedEntry } from '~/types/feed'
 
-const props = defineProps<FeedEntry & { inspect?: boolean }>()
+const props = defineProps<FeedEntry>()
+
+const appConfig = useAppConfig()
+const route = useRoute()
+const isInspect = computed(() => import.meta.dev && route.query.inspect !== undefined)
 
 const title = computed(() => props.title ?? props.sitenick ?? props.author)
 const domainTip = computed(() => getDomainType(getMainDomain(props.link, true)))
@@ -36,19 +40,18 @@ function getInspectStyle(src: string): CSSProperties {
 		:data-error="error"
 	>
 		<div class="avatar">
-			<!-- /link?inspect 查看图标和头像 -->
-			<DevOnly v-if="useRoute().query.inspect !== undefined">
+			<ClientOnly v-if="isInspect">
+				<span style="position: absolute; left: 100%; white-space: nowrap;" v-text="title" />
 				<NuxtImg :src="icon" :title="icon" :style="getInspectStyle(icon)" />
 				<NuxtImg :src="avatar" :title="avatar" :style="getInspectStyle(avatar)" />
-			</DevOnly>
+			</ClientOnly>
 
 			<NuxtImg v-else :src="avatar" :alt="author" loading="lazy" :title="feed ? undefined : '无订阅源'" />
-			<Icon v-if="!feed" class="no-feed" name="ph:bell-simple-slash-bold" />
+			<Icon v-if="appConfig.link.remindNoFeed && !feed" class="no-feed" name="ph:bell-simple-slash-bold" />
 		</div>
 
 		<span>{{ author }}</span>
 		<span class="title">{{ sitenick }}</span>
-		<span v-if="inspect" style="position: absolute; top: 0;">{{ title }}</span>
 	</UtilLink>
 
 	<template #content>
