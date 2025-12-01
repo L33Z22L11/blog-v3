@@ -1,6 +1,7 @@
 import type { NitroConfig } from 'nitropack'
 import process from 'node:process'
 import ci from 'ci-info'
+import { pascal } from 'radash'
 import blogConfig from './blog.config'
 import packageJson from './package.json'
 import redirectList from './redirects.json'
@@ -156,7 +157,7 @@ export default defineNuxtConfig({
 		'ready': () => {
 			console.info(`
 ================================
-${packageJson.name} ${packageJson.version}
+${pascal(packageJson.name)} ${packageJson.version}
 ${packageJson.homepage}
 ================================
 `)

@@ -65,7 +65,6 @@ function render() {
 		text-align: end;
 
 		& + .chat-body {
-			width: fit-content;
 			margin-inline-start: auto;
 			border-radius: 1em;
 			border-start-end-radius: 0.2em;

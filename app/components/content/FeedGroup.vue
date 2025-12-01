@@ -51,6 +51,7 @@ if (import.meta.dev) {
 
 <style lang="scss" scoped>
 .feed-group {
+	contain: layout; // 防止打乱时溢出
 	container-type: inline-size;
 	margin: 2rem 1rem;
 }

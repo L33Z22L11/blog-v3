@@ -1,8 +1,9 @@
 import type { ContentCollectionItem } from '@nuxt/content'
 import { toDate } from 'date-fns-tz'
 import { XMLBuilder } from 'fast-xml-parser'
+import { pascal } from 'radash'
 import blogConfig from '~~/blog.config'
-import { version } from '~~/package.json'
+import packageJson from '~~/package.json'
 
 const runtimeConfig = useRuntimeConfig()
 
@@ -71,8 +72,8 @@ export default defineEventHandler(async (event) => {
 		language: blogConfig.language, // RSS 2.0
 		generator: {
 			$uri: 'https://github.com/L33Z22L11/blog-v3',
-			$version: version,
-			_: 'Zhilu Blog',
+			$version: packageJson.version,
+			_: pascal(packageJson.name),
 		},
 		icon: blogConfig.favicon,
 		logo: blogConfig.author.avatar, // Ratio should be 2:1

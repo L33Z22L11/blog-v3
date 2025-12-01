@@ -62,6 +62,7 @@ function render() {
 	.timeline-body {
 		overflow: hidden;
 		width: fit-content;
+		max-width: 100%;
 		margin-bottom: 1em;
 		padding: 0 1em;
 	}

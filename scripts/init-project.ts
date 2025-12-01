@@ -20,9 +20,14 @@ s.start('正在处理文章、配置文件...')
 
 // 清空 content 目录并新建示例文章
 const PATH_LINK_MD = './content/link.md'
+const PATH_EXAMPLE_MD = './content/previews/example.md'
 const PATH_NEW_MD = `./content/posts/${new Date().getFullYear()}`
 const linkMdContent = fs.readFileSync(PATH_LINK_MD, 'utf8')
-const exampleMdContent = fs.readFileSync('./content/previews/example.md', 'utf8')
+if (!fs.existsSync(PATH_EXAMPLE_MD)) {
+	s.stop('示例文章不存在')
+	process.exit(1)
+}
+const exampleMdContent = fs.readFileSync(PATH_EXAMPLE_MD, 'utf8')
 fs.rmSync('./content', { recursive: true, force: true })
 fs.mkdirSync(PATH_NEW_MD, { recursive: true })
 fs.writeFileSync(PATH_LINK_MD, linkMdContent)
@@ -46,7 +51,7 @@ fs.writeFileSync(PATH_BLOG_CONFIG, blogConfigContent)
 
 // 处理 redirects.json
 fs.writeFileSync('./redirects.json', `{
-	"/theme": "https://blog.zhilu.site/theme",
+  "/theme": "https://blog.zhilu.site/theme"
 }`)
 
 s.stop('初始化完成')

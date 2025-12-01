@@ -94,7 +94,7 @@ function getInspectStyle(src: string): CSSProperties {
 	display: flex;
 	align-items: center;
 	gap: 0.2rem;
-	width: fit-content;
+	width: 14em;
 	margin: 1rem auto;
 	padding: 0.5rem;
 	line-height: 1.4;
