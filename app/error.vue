@@ -19,10 +19,11 @@ const handleError = () => clearError({ redirect: '/' })
 
 <template>
 <NuxtLoadingIndicator />
+<NuxtRouteAnnouncer :style="{ position: 'absolute' }" />
 <BlogSkipToContent />
 <BlogSidebar />
 <div id="content">
-	<main>
+	<main id="main-content">
 		<div class="app-error">
 			<ZError
 				:code="errorStack"
@@ -39,6 +40,7 @@ const handleError = () => clearError({ redirect: '/' })
 	<BlogAside v-if="!$route.meta.hideAside" />
 </div>
 <BlogPanel />
+<BlogPopover />
 </template>
 
 <style lang="scss" scoped>

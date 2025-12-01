@@ -32,7 +32,9 @@ onMounted(() => mounted.value = true)
 	<Icon v-if="icon" :name="icon" />
 	<template v-if="icon && !nospace">&nbsp;</template>
 
+	<span v-if="isNaN(datetime.getTime())" v-text="datetime" />
 	<NuxtTime
+		v-else
 		:datetime
 		:relative
 		:year="isSameYear(Date.now(), datetime) ? undefined : '2-digit'"

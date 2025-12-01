@@ -16,7 +16,7 @@ function normalize(val: string | symbol | undefined): string | undefined {
 let fileName: string | undefined = process.argv[2]
 const usePermalink = blogConfig.article.useRandomPremalink
 const now = new Date()
-const dateStr = now.toLocaleString('zh-CN', { hour12: false }).replaceAll('/', '-')
+const dateStr = now.toLocaleString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).replaceAll('/', '-')
 
 const dir = path.join('content', 'posts', now.getFullYear().toString())
 
@@ -92,8 +92,8 @@ if (fs.existsSync(mdPath)) {
 let category = normalize(await select({
 	message: '请选择分类',
 	options: [
-		...Object.keys(blogConfig.article.categories).map(c => ({ value: c, label: c })),
-		{ value: 'custom', label: '自定义' },
+		...Object.keys(blogConfig.article.categories).map(c => ({ value: c })),
+		{ value: '自定义' },
 	],
 }))
 if (!category)
@@ -101,7 +101,7 @@ if (!category)
 // #endregion
 
 // #region 自定义分类
-if (category === 'custom') {
+if (category === '自定义') {
 	const customCategory = normalize(await text({
 		message: '请输入自定义分类',
 		validate: val => val.trim() === '' ? '分类不能为空' : undefined,
