@@ -14,7 +14,7 @@ const appConfig = useAppConfig()
 			v-for="(emoji, emojiIndex) in appConfig.header.emojiTail"
 			:key="emojiIndex"
 			class="split-char"
-			:style="{ '--delay': `${(emojiIndex * .6 - 3).toFixed(1)}s` }"
+			:style="getFixedDelay(emojiIndex * .6 - 3)"
 			v-text="emoji"
 		/>
 	</div>
@@ -32,7 +32,7 @@ const appConfig = useAppConfig()
 				v-for="(char, charIndex) in appConfig.title"
 				:key="charIndex"
 				class="split-char"
-				:style="{ '--delay': `${((charIndex + 1) * .1).toFixed(1)}s` }"
+				:style="getFixedDelay((charIndex + 1) * .1)"
 				v-text="char"
 			/>
 		</component>

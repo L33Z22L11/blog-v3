@@ -70,7 +70,7 @@ const yearlyWordCount = computed(() => {
 				v-bind="article"
 				:to="article.path"
 				:use-updated="sortOrder === 'updated'"
-				:style="{ '--delay': `${index * 0.03}s` }"
+				:style="getFixedDelay(index * 0.03)"
 			/>
 		</TransitionGroup>
 	</section>

@@ -33,7 +33,7 @@ export const usePopoverStore = defineStore('popover', () => {
 			}
 			pops.value.push(state)
 			Object.assign(vnode.props ??= {}, {
-				style: { '--delay': `${state.duration}ms` },
+				style: getFixedDelay(state.duration),
 				onClose: vnode.props?.onClose ?? close,
 				onVnodeMounted: () => (show.value = true),
 			})

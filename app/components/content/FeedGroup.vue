@@ -51,9 +51,8 @@ if (import.meta.dev) {
 
 <style lang="scss" scoped>
 .feed-group {
-	contain: layout; // 防止打乱时溢出
 	container-type: inline-size;
-	margin: 2rem 1rem;
+	margin: 2em 1em;
 }
 
 .feed-title {
@@ -83,12 +82,12 @@ if (import.meta.dev) {
 
 .feed-list {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-	gap: 0.2rem 0.5rem;
-	margin: 1rem auto;
+	grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+	gap: 0.2em 0.5em;
+	margin: 1em auto;
 
 	@mixin feed-narrow {
-		grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(5em, 1fr));
 		font-size: 0.9em;
 
 		:deep(.feed-card) {
@@ -96,7 +95,7 @@ if (import.meta.dev) {
 			text-align: center;
 
 			.avatar.avatar {
-				margin: 0 0 0.2rem;
+				margin: 0 0 0.2em;
 			}
 		}
 	}
@@ -113,5 +112,9 @@ if (import.meta.dev) {
 :deep(.feed-card.feed-card) {
 	width: auto;
 	margin: 0;
+}
+
+.float-in-move {
+	contain: paint; // 防止移动时出现滚动条
 }
 </style>

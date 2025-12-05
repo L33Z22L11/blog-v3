@@ -59,7 +59,7 @@ const listRecommended = computed(() => sort(
 				v-bind="article"
 				:to="article.path"
 				:use-updated="sortOrder === 'updated'"
-				:style="{ '--delay': `${index * 0.05}s` }"
+				:style="getFixedDelay(index * 0.05)"
 			/>
 		</TransitionGroup>
 

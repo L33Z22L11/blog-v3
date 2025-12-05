@@ -33,3 +33,5 @@ export function animateBetweenRects(
 		...options,
 	})
 }
+
+export const getFixedDelay = (s: number, fixed = 2) => ({ '--delay': `${s.toFixed(fixed)}s` })

@@ -1,6 +1,6 @@
 import type { NitroConfig } from 'nitropack'
-import process from 'node:process'
-import ci from 'ci-info'
+import { arch, env, version as nodeVersion, platform } from 'node:process'
+import { name as ciName, CLOUDFLARE_PAGES, GITHUB_ACTIONS, NETLIFY } from 'ci-info'
 import { pascal } from 'radash'
 import blogConfig from './blog.config'
 import packageJson from './package.json'
@@ -13,7 +13,7 @@ export default defineNuxtConfig({
 			meta: [
 				{ name: 'author', content: [blogConfig.author.name, blogConfig.author.email].filter(Boolean).join(', ') },
 				// 此处为元数据的生成器标识，不建议修改
-				{ 'name': 'generator', 'content': packageJson.name, 'data-github-repo': packageJson.homepage, 'data-version': packageJson.version },
+				{ 'name': 'generator', 'content': `${pascal(packageJson.name)} ${packageJson.version}`, 'data-github-repo': packageJson.homepage },
 				{ name: 'mobile-web-app-capable', content: 'yes' },
 			],
 			link: [
@@ -66,6 +66,14 @@ export default defineNuxtConfig({
 		inlineStyles: false,
 	},
 
+	nitro: {
+		prerender: {
+			// 修复部分平台会在文章路径后添加 `/`，导致闪现 404 错误
+			// https://github.com/nuxt/content/issues/2378
+			autoSubfolderIndex: CLOUDFLARE_PAGES || GITHUB_ACTIONS || NETLIFY ? false : undefined,
+		},
+	},
+
 	// @keep-sorted
 	routeRules: {
 		...Object.entries(redirectList)
@@ -80,12 +88,14 @@ export default defineNuxtConfig({
 	},
 
 	runtimeConfig: {
+		// @keep-sorted
 		public: {
+			arch,
 			buildTime: new Date().toISOString(),
-			nodeVersion: process.version,
-			platform: process.platform,
-			arch: process.arch,
-			ci: process.env.TENCENTCLOUD_RUNENV === 'SCF' ? 'EdgeOne' : ci.name || '',
+			// EdgeOne 检测暂时不可用
+			ci: env.TENCENTCLOUD_RUNENV === 'SCF' ? 'EdgeOne' : ciName || '',
+			nodeVersion,
+			platform,
 		},
 	},
 
@@ -188,8 +198,9 @@ ${packageJson.homepage}
 	},
 
 	image: {
-		// Netlify 需要特殊处理
-		provider: process.env.NUXT_IMAGE_PROVIDER,
+		// Neylify 下 netlify 处理器无法显示站外图片，ipx 处理器无法显示站内图片，需彻底禁用
+		// https://github.com/nuxt/image/issues/1353
+		provider: NETLIFY ? 'none' : undefined,
 		format: ['avif', 'webp'],
 	},
 
