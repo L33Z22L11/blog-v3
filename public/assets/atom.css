@@ -76,7 +76,8 @@ code, pre {
 
 .logo {
 	height: 2.4em;
-	border-radius: 2em;
+	border-radius: 50%;
+	corner-shape: superellipse(1.2);
 	box-shadow: var(--xsl-shadow-1);
 }
 

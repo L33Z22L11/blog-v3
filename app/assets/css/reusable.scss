@@ -156,6 +156,10 @@ $visibility-rules: (
 	min-height: 70vh;
 }
 
+.round-cobblestone {
+	corner-shape: superellipse(1.2);
+}
+
 .text-center {
 	text-align: center;
 }

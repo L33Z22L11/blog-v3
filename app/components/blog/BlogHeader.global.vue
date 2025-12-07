@@ -21,7 +21,7 @@ const appConfig = useAppConfig()
 
 	<NuxtImg
 		:src="appConfig.header.logo"
-		class="blog-logo"
+		class="blog-logo round-cobblestone"
 		:class="{ circle: appConfig.header.showTitle }"
 		:alt="appConfig.title"
 	/>
@@ -62,7 +62,7 @@ const appConfig = useAppConfig()
 
 	&.circle {
 		width: 3em;
-		border-radius: 2em;
+		border-radius: 50%;
 		box-shadow: 2px 4px 1rem var(--ld-shadow);
 	}
 }

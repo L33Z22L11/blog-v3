@@ -46,7 +46,7 @@ function getInspectStyle(src: string): CSSProperties {
 				<NuxtImg :src="avatar" :title="avatar" :style="getInspectStyle(avatar)" />
 			</ClientOnly>
 
-			<NuxtImg v-else :src="avatar" :alt="author" loading="lazy" :title="feed ? undefined : '无订阅源'" />
+			<NuxtImg v-else class="round-cobblestone" :src="avatar" :alt="author" loading="lazy" :title="feed ? undefined : '无订阅源'" />
 			<Icon v-if="appConfig.link.remindNoFeed && !feed" class="no-feed" name="ph:bell-simple-slash-bold" />
 		</div>
 
@@ -118,7 +118,7 @@ function getInspectStyle(src: string): CSSProperties {
 			display: block;
 			width: 2.5em;
 			height: 2.5em;
-			border-radius: 4em;
+			border-radius: 50%;
 			box-shadow: 2px 4px 0.5em var(--ld-shadow);
 			background-color: white;
 			object-fit: cover;
@@ -161,9 +161,9 @@ function getInspectStyle(src: string): CSSProperties {
 	padding: 0.5em 1em;
 
 	.site-icon {
-		width: 1.5em;
-		height: 1.5em;
-		border-radius: 0.2em;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 4px;
 		object-fit: contain;
 	}
 
