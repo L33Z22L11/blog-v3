@@ -120,22 +120,6 @@
 	}
 }
 
-mark {
-	background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat left bottom / 100% 0.4em;
-	text-decoration: none;
-	color: var(--c-primary);
-	transition: 0.2s;
-	animation: line-spread 0.5s;
-
-	@keyframes line-spread {
-		from { background-size: 0 0.3em; }
-	}
-
-	&:hover {
-		background-size: 100% 50%;
-	}
-}
-
 // 生成响应式可见性类
 $visibility-rules: (
 	only: min-width,

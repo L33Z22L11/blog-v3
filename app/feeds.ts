@@ -454,6 +454,7 @@ export default [
 				archs: ['Halo', 'Cloudflare'],
 				date: '2024-07-14',
 				comment: '学生，折腾博客。',
+				error: '文章数据库丢失，暂时关站',
 			},
 			{
 				author: 'FloatSheep',
@@ -866,7 +867,7 @@ export default [
 				link: 'https://blog.elykia.cn/',
 				feed: 'https://blog.elykia.cn/atom.xml',
 				icon: 'https://blog.elykia.cn/favicon.ico',
-				avatar: getGhAvatar('elykia-cn'),
+				avatar: getGhAvatar('Elykia093'),
 				archs: ['Hexo', '国内 CDN'],
 				date: '2025-09-26',
 				comment: 'Hexo 安知鱼主题美化。',

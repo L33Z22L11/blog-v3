@@ -2,7 +2,7 @@
 const appConfig = useAppConfig()
 
 onMounted(() => {
-	window.twikoo?.init({
+	window.twikoo?.init?.({
 		envId: appConfig.twikoo?.envId,
 		// twikoo 会把挂载后的元素变为 #twikoo
 		el: '#twikoo',
@@ -43,16 +43,19 @@ onMounted(() => {
 		font-family: var(--font-monospace);
 	}
 
+	@supports (corner-shape: squircle) {
+		.tk-avatar {
+			border-radius: 50%;
+			corner-shape: superellipse(1.2);
+		}
+	}
+
 	.tk-time {
 		color: var(--c-text-3);
 	}
 
-	.tk-main {
-		margin-top: -0.1rem;
-	}
-
 	.tk-content {
-		margin-top: 0.1rem;
+		margin-top: 0;
 	}
 
 	.tk-comments-title, .tk-nick > strong {

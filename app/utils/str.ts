@@ -1,3 +1,5 @@
+import { toArray } from '@vueuse/core'
+
 // @keep-sorted
 const promptLanguageMap: Record<string, string> = {
 	'#': 'sh',
@@ -46,19 +48,32 @@ export function escapeHtml(text: string) {
 	return text.replace(/[&<>"']/g, match => map[match] || match)
 }
 
-export function highlightHtml(text: string, word: string, className = 'highlight') {
-	const escapedText = escapeHtml(text)
-	if (!word)
-		return escapedText.replace(/\n+/g, '<br>')
+export function highlightHtml(text: string, words: string | string[] | undefined, className?: string) {
+	if (!text)
+		return ''
+	const format = (str: string) => str.replace(/\n+/g, '<br>')
 
-	// 分割文本，只在高亮非转义部分
-	const parts = escapedText.split(/(&[a-z]+;)/i)
+	const validTerms = new Set(
+		toArray(words)
+			.filter((t): t is string => !!t && t.trim().length > 0)
+			.map(t => t.toLowerCase()),
+	)
 
-	return parts.map(part =>
-		part.startsWith('&') && part.endsWith(';')
-			? part
-			: part.replace(new RegExp(word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), matched => `<span class="${className}">${matched}</span>`),
-	).join('').replace(/\n+/g, '<br>')
+	if (validTerms.size === 0)
+		return format(escapeHtml(text))
+
+	const escapedTerms = Array.from(validTerms)
+		.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+
+	const regex = new RegExp(`(${escapedTerms.join('|')})`, 'gi')
+
+	return text
+		.split(regex)
+		.map(part => part && validTerms.has(part.toLowerCase())
+			? `<mark ${className ? `class="${className}"` : ''}>${escapeHtml(part)}</mark>`
+			: escapeHtml(part))
+		.join('')
+		.replace(/\n+/g, '<br>')
 }
 
 export function removeHtmlTags(str?: string) {

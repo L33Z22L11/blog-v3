@@ -63,6 +63,11 @@ menu, ol, ul {
 	list-style: none;
 }
 
+mark {
+	background-color: var(--c-primary-soft);
+	color: var(--c-primary);
+}
+
 button {
 	cursor: pointer;
 

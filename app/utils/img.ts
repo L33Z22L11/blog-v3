@@ -7,7 +7,7 @@ const services = {
 export type ImgService = keyof typeof services | boolean
 
 // https://wsrv.nl/docs/quick-reference.html
-export function getGhAvatar(name = '', options: Record<string, any> = { size: 92 }) {
+export function getWsrvGhAvatar(name = '', options: Record<string, any> = { size: 92 }) {
 	const srcUrl = `github.com/${name}.png?size=${options.size}`
 	delete options.size
 
@@ -16,7 +16,12 @@ export function getGhAvatar(name = '', options: Record<string, any> = { size: 92
 	return services.weserv + params.toString()
 }
 
-export const getGhIcon = (name = '') => getGhAvatar(name, { size: 32, mask: 'circle' })
+// https://docs.webp.se/public-services/github-avatar/
+export function getGhAvatar(name = '', options = { size: 120 }) {
+	return `https://avatars-githubusercontent-webp.webp.se/${name}?s=${options.size}`
+}
+
+export const getGhIcon = (name = '') => getWsrvGhAvatar(name, { size: 32, mask: 'circle' })
 
 export enum QqAvatarSize {
 	Size1080,

@@ -23,9 +23,10 @@ const miniSearch = new MiniSearch({
 		prefix: true,
 		fuzzy: 0.2,
 		combineWith: 'AND',
+		boost: { title: 3, titles: 2 },
 	},
-	processTerm: Intl.Segmenter
-		? term => Array.from(segmenter.segment(term)).map(seg => seg.segment)
+	processTerm: segmenter
+		? term => Array.from(segmenter.segment(term)).map(seg => seg.segment.toLowerCase())
 		: undefined,
 })
 
@@ -66,18 +67,13 @@ async function focusInput() {
 
 function updateActiveIndex(index: number, isKeyboard = false) {
 	focusInput()
-
 	if (index < 0 || index >= result.value?.length)
 		return
 	activeIndex.value = index
-
 	if (isKeyboard)
 		isKeyboardMode.value = true
-
 	if (activeItem.value && isKeyboardMode.value) {
-		activeItem.value.scrollIntoView({
-			block: 'nearest',
-		})
+		activeItem.value.scrollIntoView({ block: 'nearest' })
 	}
 }
 
