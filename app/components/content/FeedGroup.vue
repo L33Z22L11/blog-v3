@@ -56,6 +56,7 @@ if (import.meta.dev) {
 }
 
 .feed-title {
+	contain: layout; // 极窄宽度阻止滚动条
 	position: sticky;
 	opacity: 0.5;
 	top: 0;

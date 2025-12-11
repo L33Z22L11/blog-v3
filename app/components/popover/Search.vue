@@ -109,13 +109,14 @@ function openActiveItem() {
 		</form>
 
 		<TransitionGroup name="expand">
-			<div v-if="word && status === 'success' && !result?.length" class="no-result">
+			<div v-if="word && status === 'success' && !result.length" class="no-result">
 				无结果
 			</div>
 
-			<ol
-				v-if="word && result?.length"
+			<menu
+				v-if="result.length"
 				ref="list-result"
+				:key="result.length < 5 ? result.length : result[activeIndex]?.id"
 				class="scrollcheck-y search-result"
 			>
 				<PopoverSearchItem
@@ -125,9 +126,9 @@ function openActiveItem() {
 					:class="{ active: activeIndex === itemIndex }"
 					@mousemove="updateActiveIndex(itemIndex)"
 				/>
-			</ol>
+			</menu>
 
-			<div v-if="word && result?.length" class="tip" @click="searchInput?.focus()">
+			<div v-if="result.length" class="tip" @click="searchInput?.focus()">
 				<Key code="ArrowUp" prevent @press="updateActiveIndex(activeIndex - 1, true)" />
 				<Key code="ArrowDown" prevent @press="updateActiveIndex(activeIndex + 1, true)" />
 				切换&emsp;
@@ -145,18 +146,17 @@ function openActiveItem() {
 .blog-search {
 	--float-distance: 20vh;
 
-	display: flex;
-	flex-direction: column;
+	contain: paint;
 	position: fixed;
 	inset: 0;
 	width: 90%;
 	height: fit-content;
 	max-width: $breakpoint-mobile;
-	max-height: 80%;
 	margin: auto;
 	border: 1px solid var(--c-primary);
 	border-radius: 1em;
 	box-shadow: 0 0.5em 1em var(--ld-shadow);
+	outline: 0.2em solid var(--c-primary-soft);
 	background-color: var(--ld-bg-card);
 	transition: all var(--delay);
 	z-index: var(--z-index-popover);
@@ -177,9 +177,9 @@ function openActiveItem() {
 }
 
 .no-result {
-	// 设置 max-height 时不要设置 padding
+	// expand 时不要设置 padding
 	max-height: 5em;
-	padding: 1em 1em 2em;
+	line-height: 5em;
 	text-align: center;
 	color: var(--c-text-3);
 	transition: all 0.5s;
@@ -189,7 +189,7 @@ function openActiveItem() {
 	max-height: 75vh;
 	max-height: 75dvh;
 	transition: all 0.5s;
-	scroll-padding: 2rem;
+	scroll-padding: var(--fadeout-height);
 }
 
 .search-item {

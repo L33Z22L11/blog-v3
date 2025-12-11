@@ -424,7 +424,7 @@ export default [
 				link: 'https://blog.tnxg.moe/',
 				feed: 'https://blog.tnxg.moe/feed',
 				icon: 'https://blog.tnxg.moe/favicon.png',
-				avatar: 'https://api-space.tnxg.moe/avatar?s=qq',
+				avatar: 'https://api-space.tnxg.top/avatar?s=qq',
 				archs: ['Mix Space', 'Vercel'],
 				date: '2024-07-11',
 				comment: '西北地区高中生，开源爱好者。',

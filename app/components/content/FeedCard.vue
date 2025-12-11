@@ -39,19 +39,19 @@ function getInspectStyle(src: string): CSSProperties {
 		:to="error ? undefined : link"
 		:data-error="error"
 	>
-		<div class="avatar">
+		<div class="avatar" :title="feed ? undefined : '无订阅源'">
 			<ClientOnly v-if="isInspect">
 				<span style="position: absolute; left: 100%; white-space: nowrap;" v-text="title" />
 				<NuxtImg :src="icon" :title="icon" :style="getInspectStyle(icon)" />
 				<NuxtImg :src="avatar" :title="avatar" :style="getInspectStyle(avatar)" />
 			</ClientOnly>
 
-			<NuxtImg v-else class="round-cobblestone" :src="avatar" :alt="author" loading="lazy" :title="feed ? undefined : '无订阅源'" />
+			<NuxtImg v-else class="round-cobblestone" :src="avatar" :alt="author" loading="lazy" />
 			<Icon v-if="appConfig.link.remindNoFeed && !feed" class="no-feed" name="ph:bell-simple-slash-bold" />
 		</div>
 
-		<span>{{ author }}</span>
-		<span class="title">{{ sitenick }}</span>
+		<span class="author">{{ author }}</span>
+		<span class="sitenick">{{ sitenick }}</span>
 	</UtilLink>
 
 	<template #content>
@@ -116,8 +116,8 @@ function getInspectStyle(src: string): CSSProperties {
 
 		img {
 			display: block;
-			width: 2.5em;
-			height: 2.5em;
+			width: 2.5rem;
+			height: 2.5rem;
 			border-radius: 50%;
 			box-shadow: 2px 4px 0.5em var(--ld-shadow);
 			background-color: white;
@@ -131,7 +131,11 @@ function getInspectStyle(src: string): CSSProperties {
 		}
 	}
 
-	.title {
+	.author {
+		overflow: hidden; // 长词折行
+	}
+
+	.sitenick {
 		opacity: 0.4;
 		font-size: 0.8em;
 	}

@@ -21,8 +21,8 @@ const status = computed(() => {
 	const minute = datetime.value.getMinutes()
 
 	if (!props.rotate) {
-		const clockIndex = hour * 2 + Math.round(minute / 30) % emojiStatic.length
-		return { emoji: emojiStatic[clockIndex] }
+		const emojiIndex = (hour * 2 + Math.round(minute / 30)) % emojiStatic.length
+		return { emoji: emojiStatic[emojiIndex] }
 	}
 
 	const minuteAt = Math.round(minute / 5)

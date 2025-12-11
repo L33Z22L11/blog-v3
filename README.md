@@ -50,7 +50,7 @@
 | [鹊楠の小窝](https://blog.quenan.cn/)        | QNquenan       | v3.4.9       |                                              |
 | [KingKangBlog](https://blog.kingkang.xyz/)   | KingStoning    | v3.4.9       |                                              |
 | [阿黄说](https://ayellowdogsays.cn/)         | ayellowdogsays | v3.5.0       |                                              |
-| [Cizai](https://wl.do/)                      | Cizai          | v3.5.1       |                                              |
+| [Cizai](https://blog.wl.do/)                 | Cizai          | v3.5.1       |                                              |
 | [林间拾语](https://www.xhhao.com/)           | acanyo         | Halo         | https://www.halo.run/store/apps/app-jglhpodw |
 
 ## 特性
