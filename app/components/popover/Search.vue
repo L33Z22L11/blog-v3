@@ -116,7 +116,7 @@ function openActiveItem() {
 			<menu
 				v-if="result.length"
 				ref="list-result"
-				:key="result.length < 5 ? result.length : result[activeIndex]?.id"
+				:key="result.length < 5 ? result.length : result[0]?.id"
 				class="scrollcheck-y search-result"
 			>
 				<PopoverSearchItem
