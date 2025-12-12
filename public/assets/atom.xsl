@@ -11,6 +11,17 @@
 			<title><xsl:value-of select="atom:feed/atom:title" /></title>
 			<link rel="stylesheet" href="/assets/atom.css" />
 			<link rel="icon" href="{atom:feed/atom:icon}" />
+			<script>
+				document.addEventListener('DOMContentLoaded', () => {
+					document.querySelectorAll('time').forEach((time) => {
+						const dateTime = new Date(time.dateTime);
+						if (!isNaN(dateTime.getTime())) {
+							time.textContent = dateTime.toLocaleDateString();
+							time.title = dateTime.toLocaleString(undefined, { timeZoneName: 'long' });
+						}
+					});
+				});
+			</script>
 		</head>
 
 		<body>
@@ -61,12 +72,16 @@
 				</xsl:if>
 
 				<div class="entry-meta">
-					<xsl:variable name="published-date" select="substring(atom:published, 1, 10)" />
-					发布于 <xsl:value-of select="$published-date" />
+					发布于
+					<time datetime="{atom:published}">
+						<xsl:value-of select="atom:published" />
+					</time>
 
 					<xsl:if test="atom:updated and atom:updated != atom:published">
 						· 更新于
-						<xsl:value-of select="substring(atom:updated, 1, 10)" />
+						<time datetime="{atom:updated}">
+							<xsl:value-of select="atom:updated" />
+						</time>
 					</xsl:if>
 
 					<xsl:if test="atom:category">

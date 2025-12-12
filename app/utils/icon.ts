@@ -19,6 +19,7 @@ const archIcons = {
 	'Mix Space': 'ph:yarn',
 	'Netlify': 'simple-icons:netlify',
 	'Next.js': 'simple-icons:nextdotjs',
+	'NotionNext': 'simple-icons:notion',
 	'Nuxt': 'simple-icons:nuxtdotjs',
 	'PHP': 'simple-icons:php',
 	'Python': 'simple-icons:python',

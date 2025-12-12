@@ -16,6 +16,7 @@ function getCardDelay(feed: FeedEntry) {
 }
 
 const shuffleEntries = () => entries.value = shuffle(entries.value)
+const unshuffleEntries = () => entries.value = props.entries
 
 onMounted(() => {
 	if (props.shuffle && route.query.shuffle !== 'false')
@@ -32,7 +33,14 @@ if (import.meta.dev) {
 <template>
 <section class="feed-group">
 	<h3 class="feed-title">
-		<button v-if="props.shuffle" role="button" title="点击随机排序" @click="shuffleEntries" v-text="name" />
+		<button
+			v-if="props.shuffle"
+			role="button"
+			title="点击随机排序，按住修饰键点击可取消随机排序"
+			@click="unshuffleEntries"
+			@click.exact="shuffleEntries"
+			v-text="name"
+		/>
 		<span v-else v-text="name" />
 	</h3>
 	<p class="feed-desc" v-text="desc" />

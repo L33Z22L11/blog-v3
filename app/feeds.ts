@@ -1054,6 +1054,17 @@ export default [
 				date: '2025-12-07',
 				comment: '“FE / ACG / 手工 / 深色模式强迫症 / INFP / 兴趣广泛养两只猫的老宅女 / remote”，运营《前端周周谈 FE Bits》周刊。',
 			},
+			{
+				author: 'Honesty',
+				desc: '花有重开日，人无再少年',
+				link: 'https://blog.hehouhui.cn/',
+				feed: 'https://blog.hehouhui.cn/rss/feed.xml',
+				icon: 'https://blog.hehouhui.cn/favicon.ico',
+				avatar: 'https://www.hehouhui.cn/images/avatar.jpeg',
+				archs: ['NotionNext', 'Netlify'],
+				date: '2025-12-12',
+				comment: 'Java 后端技术栈、AI 实战、博客搭建与生活随笔，',
+			},
 		],
 	},
 	/* ========从此处新增友链======== */

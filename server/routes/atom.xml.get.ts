@@ -16,7 +16,8 @@ const builder = new XMLBuilder({
 })
 
 function formatIsoDate(date?: string) {
-	return date ? toDate(date, { timeZone: blogConfig.timezone }).toISOString() : undefined
+	const datetime = toDate(date || '', { timeZone: blogConfig.timezone })
+	return Number.isNaN(datetime.getTime()) ? datetime.toString() : datetime.toISOString()
 }
 
 function getUrl(path: string | undefined) {
