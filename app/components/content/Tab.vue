@@ -23,17 +23,17 @@ const activeTab = ref(Number(props.active) || 1)
 		</button>
 	</div>
 	<div class="tab-content">
-		<!-- <Transition> -->
-		<!-- TODO 动画、减少布局闪烁 -->
-		<slot :name="`tab${activeTab}`" />
-		<!-- </Transition> -->
+		<Transition name="float-in" mode="out-in">
+			<slot :name="`tab${activeTab}`" />
+		</Transition>
 	</div>
 </div>
 </template>
 
 <style lang="scss" scoped>
 .float-in-leave-active {
-	position: revert;
+	/* stylelint-disable-next-line declaration-no-important */
+	position: revert !important;
 }
 
 .center {

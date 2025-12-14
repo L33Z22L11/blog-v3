@@ -877,6 +877,7 @@ export default [
 				title: 'VnYzm的博客',
 				desc: '分享技术心得和摸鱼感想',
 				link: 'https://vnyzm.top/',
+				feed: 'https://vnyzm.top/extra/atom.xml',
 				icon: 'https://vnyzm.top/img/favicon.ico',
 				avatar: 'https://vnyzm.top/img/profile.jpg',
 				archs: ['Python', 'GitHub Pages'],

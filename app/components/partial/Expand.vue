@@ -10,8 +10,9 @@ const expand = defineModel<boolean>()
 <template>
 <div class="z-expand">
 	<Transition name="collapse">
-		<!-- TODO v-show -->
-		<slot v-if="expand" />
+		<div v-show="expand" class="expand-content">
+			<slot />
+		</div>
 	</Transition>
 
 	<button class="toggle-btn" :class="{ 'in-place': inPlace }" @click="expand = !expand">

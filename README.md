@@ -24,34 +24,33 @@
 
 > 主题吸收了 [Stellar](https://github.com/xaoxuu/hexo-theme-stellar) 的设计风格，命名为 **Clarity**，寓意清楚的阅读体验和清晰的观点表达。限于下游越来越多，未来将会有选择地收录。
 
-| 博客名称                                     | 作者           | 对应上游版本 | 下游特色功能                                 |
-| -------------------------------------------- | -------------- | ------------ | -------------------------------------------- |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**   | **L33Z22L11**  | **v3.5.1**   | (我是上游)                                   |
-| [希乐博客](https://blog.xlenco.top/)         | Xlenco         | v3.4.8       | 最新评论                                     |
-| [SteinsNote](https://blog.labmem.chat/)      | Labmem-00      | v3.1-241112  | 专栏                                         |
-| [月空人](https://whbbit.cn/)                 | Whbbit1999     | v3.5.1       | 项目/博客/Snippets页                         |
-| [Mugzx's Blog](https://blog.mugzx.top/)      | Mugzx          | v3.5.2       | 设计风格统一                                 |
-| [喵落阁](https://blog-v3.kemeow.top/)        | Kemeow815      | v3.4.7       | 即刻+友圈+最新评论+游戏/番剧页               |
-| [梦爱吃鱼](https://blog.bsgun.cn/)           | JLinmr         | v3.2-250304  | 即刻+友圈+最新评论                           |
-| [Mikuの极光星](https://blog.sotkg.com/)      | PaloMiku       | v3.5.2       | 设计风格统一，设置面板                       |
-| [Shenley的存档点](https://blog.shenley.cn/)  | shenlye        | v3.4.4       | 游戏/番剧页，方形卡片+科技风                 |
-| [BiuXin-s Blog](https://zhilu.biuxin.com/)   | damizai        | v3.2-250304  | 即刻+友圈+最新评论                           |
-| [液泡部落格](https://blog.vacu.top/)         | VacuolePaoo    | v3.4.9       | 一言+标签tags+页脚随机友链                   |
-| [歆鸢阁](https://www.myxz.top/)              | 661111         | v3.4.9       | 即刻+友圈+Heo友链轮播/Profile                |
-| [落憾](https://blog.enltlh.me/)              | LuoH-AN        | v3.5.2       | 即刻+一言+卡片Profile                        |
-| [落尘up](https://www.luochen.chat/)          | luochenup      | v3.3.4       | 侧栏时间轴                                   |
-| [硅基漫游指南](https://blog.helong.online/)  | HeLongy        | v3.4.8       | 即刻+友圈+Artalk评论                         |
-| [fishcpy的小破站](https://blog.fis.ink/)     | fishcpy        | v3.4.8       | 友圈+Artalk评论                              |
-| [六月墨语](https://blog.june.ink/)           | Akuma-real     | v3.5.1       | 友圈+最新评论                                |
-| [Cталин博客](https://blog.jiclub.site/)      | StalinDev54    | v3.4.8       | 侧栏时间轴+关于页                            |
-| [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong   | v3.5.1       | 即刻+友圈                                    |
-| [小源151博客](https://blog.xiaoyuan151.com/) | XiaoYuan151    | v3.4.8       |                                              |
-| [墨韵云阁](https://luoyuanxiang.top/)        | luoyuanxiang   | v3.4.8       |                                              |
-| [鹊楠の小窝](https://blog.quenan.cn/)        | QNquenan       | v3.4.9       |                                              |
-| [KingKangBlog](https://blog.kingkang.xyz/)   | KingStoning    | v3.4.9       |                                              |
-| [阿黄说](https://ayellowdogsays.cn/)         | ayellowdogsays | v3.5.0       |                                              |
-| [Cizai](https://blog.wl.do/)                 | Cizai          | v3.5.1       |                                              |
-| [林间拾语](https://www.xhhao.com/)           | acanyo         | Halo         | https://www.halo.run/store/apps/app-jglhpodw |
+| 博客名称                                     | 作者          | 对应上游版本 | 下游特色功能                                 |
+| -------------------------------------------- | ------------- | ------------ | -------------------------------------------- |
+| **[纸鹿摸鱼处](https://blog.zhilu.site/)**   | **L33Z22L11** | **v3.5.1**   | (我是上游)                                   |
+| [希乐博客](https://blog.xlenco.top/)         | Xlenco        | v3.4.8       | 最新评论                                     |
+| [SteinsNote](https://blog.labmem.chat/)      | Labmem-00     | v3.1-241112  | 专栏                                         |
+| [月空人](https://whbbit.cn/)                 | Whbbit1999    | v3.5.2       | 项目/博客/Snippets页                         |
+| [Mugzx's Blog](https://blog.mugzx.top/)      | Mugzx         | v3.5.2       | 设计风格统一                                 |
+| [喵落阁](https://blog-v3.kemeow.top/)        | Kemeow815     | v3.4.7       | 即刻+友圈+最新评论+游戏/番剧页               |
+| [梦爱吃鱼](https://blog.bsgun.cn/)           | JLinmr        | v3.2-250304  | 即刻+友圈+最新评论                           |
+| [Mikuの极光星](https://blog.sotkg.com/)      | PaloMiku      | v3.5.2       | 设计风格统一，设置面板                       |
+| [Shenley的存档点](https://blog.shenley.cn/)  | shenlye       | v3.4.4       | 游戏/番剧页，方形卡片+科技风                 |
+| [BiuXin-s Blog](https://zhilu.biuxin.com/)   | damizai       | v3.2-250304  | 即刻+友圈+最新评论                           |
+| [液泡部落格](https://blog.vacu.top/)         | VacuolePaoo   | v3.4.9       | 一言+标签tags+页脚随机友链                   |
+| [歆鸢阁](https://www.myxz.top/)              | 661111        | v3.5.2       | 即刻+友圈+Heo友链轮播/Profile                |
+| [落憾](https://blog.enltlh.me/)              | LuoH-AN       | v3.5.2       | 即刻+一言+卡片Profile                        |
+| [落尘up](https://www.luochen.chat/)          | luochenup     | v3.3.4       | 侧栏时间轴                                   |
+| [硅基漫游指南](https://blog.helong.online/)  | HeLongy       | v3.4.8       | 即刻+友圈+Artalk评论                         |
+| [fishcpy的小破站](https://blog.fis.ink/)     | fishcpy       | v3.4.8       | 友圈+Artalk评论                              |
+| [六月墨语](https://blog.june.ink/)           | Akuma-real    | v3.5.1       | 友圈+最新评论                                |
+| [Cталин博客](https://blog.jiclub.site/)      | StalinDev54   | v3.4.8       | 侧栏时间轴+关于页                            |
+| [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong  | v3.5.2       | 即刻+友圈                                    |
+| [小源151博客](https://blog.xiaoyuan151.com/) | XiaoYuan151   | v3.4.8       |                                              |
+| [墨韵云阁](https://luoyuanxiang.top/)        | luoyuanxiang  | v3.4.8       |                                              |
+| [鹊楠の小窝](https://blog.quenan.cn/)        | QNquenan      | v3.4.9       |                                              |
+| [KingKangBlog](https://blog.kingkang.xyz/)   | KingStoning   | v3.4.9       |                                              |
+| [Cizai](https://blog.wl.do/)                 | Cizai         | v3.5.1       |                                              |
+| [林间拾语](https://www.xhhao.com/)           | acanyo        | Halo         | https://www.halo.run/store/apps/app-jglhpodw |
 
 ## 特性
 
