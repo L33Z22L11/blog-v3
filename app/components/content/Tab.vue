@@ -23,9 +23,9 @@ const activeTab = ref(Number(props.active) || 1)
 		</button>
 	</div>
 	<div class="tab-content">
-		<Transition name="float-in" mode="out-in">
-			<slot :name="`tab${activeTab}`" />
-		</Transition>
+		<!-- <Transition name="float-in" mode="out-in"> -->
+		<slot :name="`tab${activeTab}`" />
+		<!-- </Transition> -->
 	</div>
 </div>
 </template>
