@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { MountPlainShikiOptions } from 'plain-shiki'
 import { createPlainShiki } from 'plain-shiki'
 
 const props = withDefaults(defineProps<{

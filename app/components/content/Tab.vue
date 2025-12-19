@@ -24,7 +24,13 @@ const activeTab = ref(Number(props.active) || 1)
 	</div>
 	<div class="tab-content">
 		<!-- <Transition name="float-in" mode="out-in"> -->
-		<slot :name="`tab${activeTab}`" />
+		<keep-alive>
+			<template v-for="(_tab, tabIndex) in tabs" :key="tabIndex">
+				<div v-show="activeTab === tabIndex + 1">
+					<slot :name="`tab${tabIndex + 1}`" />
+				</div>
+			</template>
+		</keep-alive>
 		<!-- </Transition> -->
 	</div>
 </div>
