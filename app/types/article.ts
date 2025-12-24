@@ -1,4 +1,5 @@
 import type { ReadTimeResults } from 'reading-time'
+import type { MetaSlotsTree } from 'rehype-meta-slots'
 
 // TODO 使用content类型，干掉这个文件
 const _appConfig = useAppConfig()
@@ -25,5 +26,6 @@ export default interface ArticleProps extends Partial<{
 	meta: {
 		coverRevert?: boolean
 		hideInfo?: boolean
+		slots?: Record<string, MetaSlotsTree>
 	}
 }> { }

@@ -51,7 +51,7 @@
 | [KingKangBlog](https://blog.kingkang.xyz/)   | KingStoning    | v3.4.9       |                                              |
 | [阿黄说](https://ayellowdogsays.cn/)         | ayellowdogsays | v3.5.0       |                                              |
 | [Cizai](https://blog.wl.do/)                 | Cizai          | v3.5.1       |                                              |
-| [林间拾语](https://www.xhhao.com/)           | acanyo         | Halo         | https://www.halo.run/store/apps/app-jglhpodw |
+| [林间拾语](https://www.xhhao.com/?preview-theme=theme-clarity)           | acanyo         | Halo         | https://www.halo.run/store/apps/app-jglhpodw |
 
 ## 特性
 
