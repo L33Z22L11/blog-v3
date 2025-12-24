@@ -230,6 +230,17 @@ export default [
 				date: '2025-11-04',
 				comment: '后端与运维笔记。',
 			},
+			{
+				author: 'Lyi.',
+				title: '凌梦望初晓',
+				desc: '在无尽的绝望中前行...',
+				link: 'https://blog.lyi.moe/',
+				icon: 'https://i.lyi.moe/avatar',
+				avatar: 'https://i.lyi.moe/avatar',
+				date: '2025-12-15',
+				archs: ['Nuxt', 'Cloudflare'],
+				feed: 'https://blog.lyi.moe/atom.xml',
+			},
 		],
 	},
 	// #endregion

@@ -6,11 +6,13 @@ const props = withDefaults(defineProps<{
 	text?: string
 	/** https://developer.mozilla.org/zh-CN/docs/Web/API/KeyboardEvent/key */
 	code?: string
+	/** 仅 macOS 默认显示图标 */
 	icon?: boolean
 	ctrl?: boolean
 	shift?: boolean
 	alt?: boolean
 	meta?: boolean
+	win?: boolean
 	/** 智能适配：Windows用Ctrl，macOS用Cmd */
 	cmd?: boolean
 	prevent?: boolean
@@ -51,9 +53,10 @@ const symbolMap = {
 	'Meta': isMac.value ? '⌘' : '田',
 	'Shift': '⇧',
 	'Tab': '⇥',
+	'Win': '田',
 }
 
-function normalizeCodeDisplay(code: string) {
+function normalizeCodeDisplay(code?: string) {
 	if (!code)
 		return ''
 	if (useSymbol.value && code in symbolMap)
@@ -67,22 +70,20 @@ const codeDisplay = computed(() => {
 	if (props.text)
 		return props.text
 
-	const parts: string[] = []
+	const keyConfigs = [
+		{ condition: props.cmd, code: isMac.value ? 'Meta' : 'Control' },
+		{ condition: props.ctrl && !props.cmd, code: 'Control' },
+		{ condition: props.shift, code: 'Shift' },
+		{ condition: props.alt, code: 'Alt' },
+		{ condition: props.meta && !props.cmd, code: 'Meta' },
+		{ condition: props.win && !props.meta, code: 'Win' },
+		{ condition: props.code, code: props.code },
+	]
 
-	if (props.cmd)
-		parts.push(normalizeCodeDisplay(isMac.value ? 'Meta' : 'Control'))
-	if (props.ctrl && !props.cmd)
-		parts.push(normalizeCodeDisplay('Control'))
-	if (props.shift)
-		parts.push(normalizeCodeDisplay('Shift'))
-	if (props.alt)
-		parts.push(normalizeCodeDisplay('Alt'))
-	if (props.meta && !props.cmd)
-		parts.push(normalizeCodeDisplay('Meta'))
-	if (props.code)
-		parts.push(normalizeCodeDisplay(props.code))
-
-	return parts.join(keyJoiner.value)
+	return keyConfigs
+		.filter(config => config.condition)
+		.map(config => normalizeCodeDisplay(config.code))
+		.join(keyJoiner.value)
 })
 
 const active = ref(false)

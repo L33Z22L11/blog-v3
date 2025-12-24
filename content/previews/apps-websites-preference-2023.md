@@ -34,7 +34,7 @@ tags: [大学, 系统, 软件, 网站]
 | Netlify            | 前端项目部署               | :badge[app.netlify.com]                  |
 | Internet Archive   | 互联网档案馆/网页时光机    | :badge[archive.org]                      |
 | 哔哩哔哩           | 视频内容平台               | :badge[bilibili.com]                     |
-| 纸鹿摸鱼处         | 个人博客                   | :badge[blog.zhilu.cyou]                  |
+| 纸鹿摸鱼处         | 个人博客                   | :badge[blog.zhilu.site]                  |
 | CO导航             | 大学学习                   | :badge[cooo.site]                        |
 | 微软Copilot        | 微软AI大模型               | :badge[copilot.microsoft.com]            |
 | Cloudflare         | 云服务平台                 | :badge[dash.cloudflare.com]              |
@@ -68,7 +68,7 @@ tags: [大学, 系统, 软件, 网站]
 | 第二课堂           | 大学学习                   | :badge[win.9xueqi.com]                   |
 | 文心一言           | 百度AI大模型               | :badge[yiyan.baidu.com]                  |
 | Yesicon            | 前端图标库                 | :badge[yesicon.app]                      |
-| 纸鹿小站           | 个人网站                   | :badge[zhilu.cyou]                       |
+| 纸鹿小站           | 个人网站                   | :badge[zhilu.site]                       |
 
 ## 总结
 

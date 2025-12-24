@@ -199,6 +199,7 @@ export default {
 对于 Font Awesome 和 Iconify 的图标，这是我常用的安置方式，在行文中的排版更自然。
 
 ```css [docs/.vitepress/theme/style.css]
+/* Font Awesome 7 无需此声明 */
 .fa-solid, .fa-regular, .fa-brands {
 	width: 1.2em;
 	vertical-align: middle;
