@@ -1,9 +1,6 @@
 /** 友链架构图标映射 */
 // @keep-sorted
 const archIcons = {
-	'服务器': 'ph:hard-drives-fill',
-	'国内 CDN': 'ph:cloud-check-fill',
-	'虚拟主机': 'ph:file-cloud-bold',
 	'Astro': 'simple-icons:astro',
 	'Cloudflare': 'simple-icons:cloudflare',
 	'Deno Deploy': 'simple-icons:deno',
@@ -30,7 +27,11 @@ const archIcons = {
 	'Vue': 'uim:vuejs',
 	'VuePress': 'uim:vuejs',
 	'WordPress': 'simple-icons:wordpress',
-	'Zebaur': 'tabler:square-letter-z-filled', // 不准确
+	'Zebaur': 'tabler:square-letter-z-filled',
+	'国内 CDN': 'ph:cloud-check-fill',
+	'服务器': 'ph:hard-drives-fill',
+	'虚拟主机': 'ph:file-cloud-bold',
+	// 不准确
 }
 
 export type Arch = keyof typeof archIcons

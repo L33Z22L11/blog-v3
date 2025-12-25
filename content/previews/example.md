@@ -145,34 +145,6 @@ class: gradient-card active
   - 文件名也可以是路径，例如 `src/components/ProsePre.vue` 等
   - 还可以通过 `icon=图标` 自定义图标
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .
 ```
 
