@@ -112,9 +112,12 @@ onMounted(() => {
 <style lang="scss" scoped>
 .video {
 	overflow: hidden;
-	margin: 2rem auto;
 	border-radius: 0.8rem;
 	box-shadow: 0 2px 0.5rem var(--ld-shadow);
+
+	article & {
+		margin: 2rem auto;
+	}
 }
 
 iframe, video {

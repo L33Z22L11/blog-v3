@@ -8,12 +8,18 @@ categories: [经验分享]
 tags: [网站, 博客]
 type: story
 
-aside: [toc, github-card]
-github:
-  name: L33Z22L11/blog-v3
-  description: 基于 Nuxt Content 的博客主题，使用 Nuxt 3 构建。
-  url: https://github.com/L33Z22L11/blog-v3
+aside: [toc, meta-aside-github]
 ---
+
+::meta-aside-github{title="项目仓库"}
+:::link-card
+---
+title: L33Z22L11/blog-v3
+description: My blog, powered by Nuxt 4 & Nuxt Content v3. 纸鹿摸鱼处，分享技术与生活。
+link: https://github.com/L33Z22L11/blog-v3
+---
+:::
+::
 
 ::alert{type="warning" title="技术提醒"}
 本文代码为撰写时的状态，仅供参考，不代表最终实现。
