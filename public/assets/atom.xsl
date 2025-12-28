@@ -15,7 +15,7 @@
 				document.addEventListener('DOMContentLoaded', () => {
 					document.querySelectorAll('time').forEach((time) => {
 						const dateTime = new Date(time.dateTime);
-						if (!isNaN(dateTime.getTime())) {
+						if (!Number.isNaN(dateTime.getTime())) {
 							time.textContent = dateTime.toLocaleDateString();
 							time.title = dateTime.toLocaleString(undefined, { timeZoneName: 'long' });
 						}

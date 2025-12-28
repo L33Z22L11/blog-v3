@@ -154,6 +154,7 @@ export default defineNuxtConfig({
 				// @keep-sorted
 				rehypePlugins: {
 					'rehype-katex': {},
+					'rehype-meta-slots': {},
 				},
 				toc: { depth: 4, searchDepth: 4 },
 			},

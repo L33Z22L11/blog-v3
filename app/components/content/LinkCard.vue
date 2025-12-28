@@ -29,12 +29,15 @@ defineProps<{
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	width: 20rem;
-	max-width: 90%;
-	margin: 2rem auto;
 	padding: 0.5em 0.8em;
 	font-size: 0.9em;
 	line-height: 1.4;
+
+	article & {
+		width: 20rem;
+		max-width: 90%;
+		margin: 2rem auto;
+	}
 
 	// 溢出显示省略号
 	.link-card-info {

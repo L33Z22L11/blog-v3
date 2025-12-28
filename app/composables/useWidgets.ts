@@ -1,10 +1,11 @@
 import {
+	ContentRenderer,
+	LazyBlogWidget,
 	LazyWidgetBlogLog,
 	LazyWidgetBlogStats,
 	LazyWidgetBlogTech,
 	LazyWidgetCommGroup,
 	LazyWidgetEmpty,
-	LazyWidgetGithubCard,
 	LazyWidgetToc,
 } from '#components'
 import { pascal } from 'radash'
@@ -16,7 +17,6 @@ const rawWidgets = {
 	LazyWidgetBlogTech,
 	LazyWidgetCommGroup,
 	LazyWidgetEmpty,
-	LazyWidgetGithubCard,
 	LazyWidgetToc,
 }
 
@@ -29,12 +29,27 @@ type KebabCase<S extends string> = S extends `${infer First}${infer Rest}`
 
 type RemovePrefix<S extends string, Prefix extends string> = S extends `${Prefix}${infer Rest}` ? Rest : S
 
-export type WidgetName = RemovePrefix<KebabCase<RawWidgetName>, '-lazy-widget-'>
+export type WidgetName = RemovePrefix<KebabCase<RawWidgetName>, '-lazy-widget-'> | `meta-aside-${string}`
 
 export default function useWidgets(widgetList: MaybeRefOrGetter<WidgetName[]>) {
-	const widgets = computed(() => toValue(widgetList).map(widget => ({
-		name: widget,
-		comp: rawWidgets[`LazyWidget${pascal(widget)}` as RawWidgetName],
+	const store = useContentStore()
+
+	function renderMetaSlots(widgetName: WidgetName) {
+		const slotsTree = store.meta.slots[widgetName.slice('meta-'.length)]
+		return h(
+			LazyBlogWidget,
+			{ card: !slotsTree, ...slotsTree?.props },
+			() => slotsTree
+				? h(ContentRenderer, { value: slotsTree })
+				: `${widgetName} 不存在`,
+		)
+	}
+
+	const widgets = computed(() => toValue(widgetList).map(widgetName => ({
+		name: widgetName,
+		comp: widgetName.startsWith('meta-aside-')
+			? renderMetaSlots(widgetName)
+			: rawWidgets[`LazyWidget${pascal(widgetName)}` as RawWidgetName],
 	})))
 
 	return {

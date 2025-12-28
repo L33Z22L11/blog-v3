@@ -38,7 +38,10 @@ else {
 }
 
 if (import.meta.dev) {
-	watchEffect(() => setTocAndMeta())
+	watchEffect(() => {
+		setTocAndMeta()
+		layoutStore.setAside(post.value?.meta?.aside as WidgetName[] | undefined)
+	})
 }
 </script>
 

@@ -2,12 +2,18 @@
 title: 主题
 hideInfo: true
 
-aside: [toc, github-card]
-github:
-  name: L33Z22L11/blog-v3
-  description: 使用 Nuxt 4 和 Nuxt Content v3 构建的个人博客，致力于清楚的阅读体验和清晰的观点表达。
-  url: https://github.com/L33Z22L11/blog-v3
+aside: [toc, meta-aside-github]
 ---
+
+::meta-aside-github{title="项目仓库"}
+:::link-card
+---
+title: L33Z22L11/blog-v3
+description: My blog, powered by Nuxt 4 & Nuxt Content v3. 纸鹿摸鱼处，分享技术与生活。
+link: https://github.com/L33Z22L11/blog-v3
+---
+:::
+::
 
 ## 主题特性
 

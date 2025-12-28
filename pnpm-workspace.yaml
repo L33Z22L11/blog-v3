@@ -15,11 +15,10 @@ catalogs:
     remark-math: ^6.0.0
     remark-reading-time: ^2.0.2
     shiki: ^3.17.0
-    unist-util-visit: ^5.0.0
   framework:
     '@zinkawaii/tsconfig': ^0.0.2
     ci-info: ^4.3.1
-    nuxt: ^4.2.1
+    nuxt: ^4.2.2
     sass-embedded: ^1.93.3
     tsdown: ^0.15.12
     tsx: ^4.20.6
@@ -76,6 +75,9 @@ onlyBuiltDependencies:
   - rolldown
   - sharp
   - unrs-resolver
+
+overrides:
+  '@dxup/nuxt': ^0.3.1
 
 patchedDependencies:
   '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch

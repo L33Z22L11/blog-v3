@@ -32,7 +32,7 @@ onMounted(() => mounted.value = true)
 	<Icon v-if="icon" :name="icon" />
 	<template v-if="icon && !nospace">&nbsp;</template>
 
-	<span v-if="isNaN(datetime.getTime())" v-text="datetime" />
+	<span v-if="Number.isNaN(datetime.getTime())" v-text="datetime" />
 	<!-- Invalid Date 传入 NuxtTime 组件或 .toISOString() 会报错 -->
 	<NuxtTime
 		v-else
