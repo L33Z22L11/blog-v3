@@ -16,7 +16,6 @@ const archIcons = {
 	'HTML': 'simple-icons:html5',
 	'Hugo': 'simple-icons:hugo',
 	'Jekyll': 'simple-icons:jekyll',
-	'Mix Space': 'ph:yarn',
 	'Netlify': 'simple-icons:netlify',
 	'Next.js': 'simple-icons:nextdotjs',
 	'NotionNext': 'simple-icons:notion',
