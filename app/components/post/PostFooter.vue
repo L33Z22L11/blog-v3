@@ -4,7 +4,9 @@ import type ArticleProps from '~/types/article'
 defineOptions({ inheritAttrs: false })
 defineProps<ArticleProps>()
 
-const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
+const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
+	title: string
+}>({ inheritAttrs: false })
 
 const appConfig = useAppConfig()
 </script>
@@ -33,7 +35,7 @@ const appConfig = useAppConfig()
 		</ul>
 	</ReuseTemplate>
 
-	<ReuseTemplate :title="meta?.slots?.copyright?.props?.title || '许可协议'">
+	<ReuseTemplate :title="meta?.slots?.copyright?.props?.title as string || '许可协议'">
 		<ContentRenderer v-if="meta?.slots?.copyright" :value="meta?.slots?.copyright" />
 		<p v-else>
 			本文采用 <ProseA :href="appConfig.copyright.url">

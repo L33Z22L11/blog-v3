@@ -1,4 +1,5 @@
 import type { Raw, VNode } from 'vue'
+import { sleep } from 'radash'
 
 interface PopoverState {
 	vnode: VNode
@@ -45,7 +46,7 @@ export const usePopoverStore = defineStore('popover', () => {
 				return
 			show.value = false
 
-			await delay(state.duration)
+			await sleep(state.duration)
 			pops.value.splice(index, 1)
 		}
 

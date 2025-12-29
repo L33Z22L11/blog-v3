@@ -36,7 +36,7 @@ export default defineNuxtConfig({
 			script: blogConfig.scripts,
 		},
 		rootAttrs: {
-			id: 'z-root',
+			id: 'blog-root',
 		},
 	},
 

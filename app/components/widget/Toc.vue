@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import type { TocLink } from '@nuxt/content'
 
-const [DefineTemplate, ReuseTemplate] = createReusableTemplate()
+const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
+	tocTree: TocLink[]
+}>({ inheritAttrs: false })
 
 const contentStore = useContentStore()
 const { toc } = storeToRefs(contentStore)
-const { activeTocItem } = useTocAutoHighlight(() => toc.value?.links ?? [])
+const { activeHeadingId } = useToc(toc)
 
-function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
-	if (entry.id === activeId)
-		return true
-	return entry.children?.some(child => hasActiveChild(child, activeId)) ?? false
+function hasHeading(toc: TocLink, heading?: string): boolean {
+	return toc.id === heading || !!toc.children?.some(child => hasHeading(child, heading))
 }
 </script>
 
@@ -29,25 +29,25 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 	</template>
 
 	<!-- 放在顶层会导致 Transition 失效 -->
-	<DefineTemplate v-slot="{ tocItem }">
+	<DefineTemplate v-slot="{ tocTree }">
 		<ol>
 			<li
-				v-for="(entry, index) in tocItem as TocLink[]"
+				v-for="(entry, index) in tocTree"
 				:key="index"
 				:class="{
-					'has-active': hasActiveChild(entry, activeTocItem),
-					'active': entry.id === activeTocItem,
+					'has-active': hasHeading(entry, activeHeadingId),
+					'active': entry.id === activeHeadingId,
 				}"
 			>
 				<!-- 使用 <a> 确保键盘焦点切换 -->
 				<a :href="`#${entry?.id}`" :title="entry.text">{{ entry.text }}</a>
-				<ReuseTemplate v-if="entry.children" :toc-item="entry.children" />
+				<ReuseTemplate v-if="entry.children" :toc-tree="entry.children" />
 			</li>
 		</ol>
 	</DefineTemplate>
 
 	<UtilHydrateSafe>
-		<ReuseTemplate v-if="toc?.links.length" :toc-item="toc.links" />
+		<ReuseTemplate v-if="toc?.links.length" :toc-tree="toc.links" />
 		<p v-else class="no-toc">
 			暂无目录信息
 		</p>
@@ -68,9 +68,12 @@ function hasActiveChild(entry: TocLink, activeId: string | null): boolean {
 		background-color: var(--c-bg-3);
 	}
 
+	ol {
+		padding-inline-start: 0.8rem;
+	}
+
 	li {
 		opacity: 0.6;
-		margin-inline-start: 0.8rem;
 		font-size: 0.94em;
 		color: var(--c-text);
 		transition: opacity 0.2s;

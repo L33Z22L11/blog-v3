@@ -33,10 +33,10 @@ const miniSearch = new MiniSearch({
 const searchStore = useSearchStore()
 const searchInput = ref<HTMLInputElement>()
 
-const { word } = storeToRefs(searchStore)
+const { word, debouncedWord } = storeToRefs(searchStore)
 const result = computed(() => {
 	void data.value
-	return miniSearch.search(word.value)
+	return miniSearch.search(debouncedWord.value)
 })
 
 const isKeyboardMode = ref(false)
@@ -53,7 +53,7 @@ watch(status, (newStatus) => {
 	}
 })
 
-watch(word, () => {
+watch(debouncedWord, () => {
 	activeIndex.value = 0
 })
 
@@ -109,7 +109,7 @@ function openActiveItem() {
 		</form>
 
 		<TransitionGroup name="expand">
-			<div v-if="word && status === 'success' && !result.length" class="no-result">
+			<div v-if="debouncedWord && status === 'success' && !result.length" class="no-result">
 				无结果
 			</div>
 

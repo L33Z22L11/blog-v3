@@ -1,6 +1,8 @@
+import type { Toc } from '@nuxt/content'
+
 export const useContentStore = defineStore('content', () => {
 	const router = useRouter()
-	const toc = ref()
+	const toc = ref<Toc>()
 	const meta = ref()
 
 	// 离开 /(.*)* 路由 ([...slug].vue) 时清除文章数据

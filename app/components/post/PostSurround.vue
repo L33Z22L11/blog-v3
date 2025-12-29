@@ -18,9 +18,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 	fallbackIcon: string
 	fallbackText: string
 	alignEnd?: boolean
-}>({
-	inheritAttrs: false,
-})
+}>({ inheritAttrs: false })
 </script>
 
 <template>
@@ -51,6 +49,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 
 <style lang="scss" scoped>
 .surround-post {
+	contain: layout;
 	display: flex;
 	justify-content: space-between;
 	gap: 1rem;

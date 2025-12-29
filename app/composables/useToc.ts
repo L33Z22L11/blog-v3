@@ -1,53 +1,54 @@
-import type { TocLink } from '@nuxt/content'
+import type { Toc, TocLink } from '@nuxt/content'
 
-interface TocOffset {
+interface TocList {
 	id: string
 	offsetTop: number
 }
 
-export function useTocAutoHighlight(toc: MaybeRefOrGetter<TocLink[]>) {
-	const activeTocItem = ref<string | null>(null)
+export function useToc(toc: MaybeRefOrGetter<Toc | undefined>) {
+	const { height: bodyHeight } = useElementSize(document?.body)
 
-	const flattenToc = (toc: TocLink[], offsetList: TocOffset[] = []) => {
-		toc.forEach((item) => {
-			const element = document.getElementById(item.id)
-			if (element)
-				offsetList.push({ id: item.id, offsetTop: element.offsetTop })
+	function flattenToc(tocTree: TocLink[], tocList: TocList[] = []) {
+		tocTree.forEach((item) => {
+			const headingEl = document.getElementById(item.id)
+			if (headingEl)
+				tocList.push({ id: item.id, offsetTop: headingEl.offsetTop })
 			if (item.children)
-				flattenToc(item.children, offsetList)
+				flattenToc(item.children, tocList)
 		})
-		return offsetList
+		return tocList
 	}
 
 	const tocOffsets = computedWithControl(
-		() => toValue(toc),
-		// 此处不需担心 reverse 改变原数组
-		() => flattenToc(toValue(toc)).reverse(),
+		refDebounced(bodyHeight),
+		() => flattenToc(toValue(toc)?.links || []).reverse(),
 	)
 
-	const updateActiveToc = () => {
+	const { y: windowScrollY } = useWindowScroll()
+
+	function getActiveHeading() {
 		const scrollMargin = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('scroll-margin-top'))
-
-		const scrollPosition = window.scrollY + (scrollMargin || 64)
-
-		// 为兼容性不使用 findLast
-		const currentItem = tocOffsets.value.find(item => item.offsetTop <= scrollPosition)
-
-		activeTocItem.value = currentItem?.id || null
-
-		// 滚动到当前 item
-		const scrollContainer = document.querySelector('#z-aside')
-		const activeElement = document.querySelector(`#z-aside a[href="#${activeTocItem.value}"]`) as HTMLElement | null
-		// scrollIntoView 触发目录滚动时导致文章持续缓慢滚动并打断正常滚动
-		scrollContainer?.scroll({ top: activeElement?.offsetTop || 0 })
+		const scrollPosition = windowScrollY.value + (scrollMargin || 64)
+		// 为兼容性不使用 findLast，而是使用倒序的 tocOffsets
+		return tocOffsets.value.find(item => item.offsetTop <= scrollPosition)?.id
 	}
 
-	useEventListener('scroll', autoThrottleAndDebounce(() => updateActiveToc()), { passive: true })
+	const activeHeadingId = computedWithControl(
+		refThrottled(windowScrollY, undefined, true),
+		() => document && getActiveHeading(),
+	)
 
-	const { height: bodyHeight } = useElementSize(document?.body)
-	debouncedWatch(bodyHeight, tocOffsets.trigger)
+	function scrollToActiveHeading() {
+		const tocContainerEl = document.querySelector('#blog-aside')
+		const activeTocEl = document.querySelector(`#blog-aside a[href="#${activeHeadingId.value}"]`) as HTMLElement | null
+		// scrollIntoView 触发目录滚动时导致文章持续缓慢滚动并打断正常滚动
+		tocContainerEl?.scroll({ top: activeTocEl?.offsetTop || 0 })
+	}
+
+	watch(activeHeadingId, scrollToActiveHeading)
 
 	return {
-		activeTocItem,
+		tocOffsets,
+		activeHeadingId,
 	}
 }
