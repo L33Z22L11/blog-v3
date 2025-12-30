@@ -22,10 +22,8 @@ const activeTab = ref(Number(props.active) || 1)
 			{{ tab }}
 		</button>
 	</div>
-	<div class="tab-content">
-		<!-- <Transition name="float-in" mode="out-in"> -->
-		<slot :name="`tab${activeTab}`" />
-		<!-- </Transition> -->
+	<div v-for="tabIndex in tabs.length" v-show="activeTab === tabIndex" :key="tabIndex" class="tab-content">
+		<slot :name="`tab${tabIndex}`" />
 	</div>
 </div>
 </template>
