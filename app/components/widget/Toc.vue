@@ -9,8 +9,8 @@ const contentStore = useContentStore()
 const { toc } = storeToRefs(contentStore)
 const { activeHeadingId } = useToc(toc)
 
-function hasHeading(toc: TocLink, heading?: string): boolean {
-	return toc.id === heading || !!toc.children?.some(child => hasHeading(child, heading))
+function hasHeading(tocTree: TocLink, heading?: string): boolean {
+	return tocTree.id === heading || !!tocTree.children?.some(child => hasHeading(child, heading))
 }
 </script>
 

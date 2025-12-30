@@ -70,7 +70,7 @@ const title = computed(() => props.title || typeMap[props.type].title)
 
 	@supports (color: color-mix(in srgb, transparent, transparent)) {
 		--c-primary-soft: color-mix(in srgb, var(--c-primary) 15%, transparent);
-		--c-bg-2: color-mix(in srgb, var(--c-primary) 8%, transparent);
+		--c-bg-2: color-mix(in srgb, var(--c-primary) 8%, var(--ld-bg-card));
 	}
 
 	&.card {

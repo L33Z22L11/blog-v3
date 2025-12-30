@@ -38,14 +38,14 @@ export function useToc(toc: MaybeRefOrGetter<Toc | undefined>) {
 		() => document && getActiveHeading(),
 	)
 
-	function scrollToActiveHeading() {
+	function scrollToActiveTocItem() {
 		const tocContainerEl = document.querySelector('#blog-aside')
 		const activeTocEl = document.querySelector(`#blog-aside a[href="#${activeHeadingId.value}"]`) as HTMLElement | null
 		// scrollIntoView 触发目录滚动时导致文章持续缓慢滚动并打断正常滚动
 		tocContainerEl?.scroll({ top: activeTocEl?.offsetTop || 0 })
 	}
 
-	watch(activeHeadingId, scrollToActiveHeading)
+	watch(activeHeadingId, scrollToActiveTocItem)
 
 	return {
 		tocOffsets,
