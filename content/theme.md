@@ -111,4 +111,3 @@ link: /2024/blog-using-nuxt
 ::
 
 - 更多技术依赖可参考 [`pnpm-workspace.yaml`](https://github.com/L33Z22L11/blog-v3/blob/main/pnpm-workspace.yaml)。
-
