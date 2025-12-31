@@ -4,7 +4,7 @@ import type { TippyOptions } from 'vue-tippy'
 const props = defineProps<{
 	text?: string
 	tip?: string
-	icon?: string | boolean
+	icon?: string
 	copy?: boolean
 	tipOptions?: TippyOptions
 }>()

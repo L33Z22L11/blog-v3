@@ -1,34 +1,32 @@
 <script setup lang="ts">
 defineProps<{
 	title?: string
-	open?: boolean
 }>()
 </script>
 
 <template>
-<details :open>
+<details>
 	<summary>
 		<slot name="title">
 			{{ title }}
 		</slot>
 	</summary>
-	<div class="detail">
-		<slot />
-	</div>
+	<slot />
 </details>
 </template>
 
 <style lang="scss" scoped>
 details {
 	margin: 1em 0;
+	padding: 0.5em 0.8em;
 	border: 1px solid var(--c-border);
 	border-radius: 0.5em;
 	background-color: var(--c-bg-2);
 	font-size: 0.9em;
-	transition: height 0.2s;
 
 	&[open] {
-		summary {
+		> summary {
+			margin-bottom: 0.5em;
 			font-weight: bold;
 			color: currentcolor;
 
@@ -38,8 +36,9 @@ details {
 		}
 	}
 
-	summary {
-		padding: 0.5em 0.8rem;
+	> summary {
+		margin: -0.5em -0.8em;
+		padding: 0.5em 0.8em;
 		color: var(--c-text-2);
 		transition: all 0.2s;
 		cursor: pointer;
@@ -63,13 +62,8 @@ details {
 		}
 	}
 
-	.detail {
-		position: relative;
-		padding: 0 0.8rem 0.5rem;
-
-		:deep(.z-codeblock) {
-			margin: 0 -0.5rem -0.8rem;
-		}
+	> :deep(.z-codeblock) {
+		margin: 0 -0.8em -0.5em;
 	}
 }
 </style>
