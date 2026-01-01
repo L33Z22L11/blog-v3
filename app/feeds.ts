@@ -491,6 +491,7 @@ export default [
 				archs: ['Hugo', 'Cloudflare'],
 				date: '2024-07-24',
 				comment: '喜欢折腾。',
+				error: '2025年10月起大陆无法访问 (403)',
 			},
 			{
 				author: 'Henry',
@@ -500,7 +501,7 @@ export default [
 				link: 'https://henry.city/blog/',
 				feed: 'https://henry.city/blog/atom.xml',
 				icon: 'https://henry.city/blog/favicon.ico',
-				avatar: 'https://blog.henrywhu.cn/images/avatar.png',
+				avatar: 'https://henry.city/blog/images/avatar.png',
 				archs: ['Gridea', '服务器'],
 				date: '2024-07-24',
 				comment: '高中生，很有博客的味道。',
@@ -1390,6 +1391,7 @@ export default [
 				archs: ['Next.js', '服务器'],
 				date: '2024-09-01',
 				comment: '前端技术笔记，希望能做好响应式。',
+				error: '2025年10月起无法访问（Connection closed）',
 			},
 			{
 				author: '菜园前端',
@@ -1486,7 +1488,6 @@ export default [
 				avatar: 'https://ayu.land/favicon.png',
 				archs: ['HTML', 'Deno Deploy'],
 				date: '2024-10-26',
-				error: '由于个人原因暂停运转。不便之处望见谅。',
 			},
 			{
 				author: 'Anthony Fu',

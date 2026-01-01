@@ -33,11 +33,11 @@
 
 | 博客名称                                                       | 作者          | 对应上游版本   | 下游特色功能                                 |
 | -------------------------------------------------------------- | ------------- | -------------- | -------------------------------------------- |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**                     | **L33Z22L11** | v3.6.0-alpha.1 | (我是上游)                                   |
+| **[纸鹿摸鱼处](https://blog.zhilu.site/)**                     | **L33Z22L11** | v3.6.0-alpha.3 | (我是上游)                                   |
 | [希乐博客](https://blog.xlenco.top/)                           | Xlenco        | v3.4.8         | 最新评论                                     |
 | [SteinsNote](https://blog.labmem.chat/)                        | Labmem-00     | v3.1-241112    | 专栏                                         |
 | [月空人](https://whbbit.cn/)                                   | Whbbit1999    | v3.5.2         | 项目/博客/Snippets页                         |
-| [Mugzx's Blog](https://blog.mugzx.top/)                        | Mugzx         | v3.6.0-alpha.1 | 设计风格统一                                 |
+| [Mugzx's Blog](https://blog.mugzx.top/)                        | Mugzx         | v3.6.0-alpha.2 | 设计风格统一                                 |
 | [喵落阁](https://blog-v3.kemeow.top/)                          | Kemeow815     | v3.4.7         | 即刻+友圈+最新评论+游戏/番剧页               |
 | [梦爱吃鱼](https://blog.bsgun.cn/)                             | JLinmr        | v3.2-250304    | 即刻+友圈+最新评论                           |
 | [Mikuの极光星](https://blog.sotkg.com/)                        | PaloMiku      | v3.6.0-alpha.1 | 设计风格统一，设置面板                       |
@@ -51,12 +51,12 @@
 | [fishcpy的小破站](https://blog.fis.ink/)                       | fishcpy       | v3.4.8         | 友圈+Artalk评论                              |
 | [六月墨语](https://blog.june.ink/)                             | Akuma-real    | v3.5.2         | 友圈+最新评论                                |
 | [Cталин博客](https://blog.jiclub.site/)                        | StalinDev54   | v3.4.8         | 侧栏时间轴+关于页                            |
-| [栖童の小站](https://blog.linux-qitong.top/)                   | Linux-qitong  | v3.6.0-alpha.1 | 即刻+友圈                                    |
+| [栖童の小站](https://blog.linux-qitong.top/)                   | Linux-qitong  | v3.6.0-alpha.2 | 即刻+友圈                                    |
 | [墨韵云阁](https://luoyuanxiang.top/)                          | luoyuanxiang  | v3.4.8         |                                              |
 | [鹊楠の小窝](https://blog.quenan.cn/)                          | QNquenan      | v3.4.9         |                                              |
 | [KingKangBlog](https://blog.kingkang.xyz/)                     | KingStoning   | v3.4.9         |                                              |
 | [LittleBun](https://blog.wl.do/)                               | CiZaii        | v3.5.1         |                                              |
-| [钟神秀](https://blog.zsxcoder.top/)                           | mcyzsx        | v3.5.2         |                                              |
+| [钟神秀](https://blog.zsxcoder.top/)                           | mcyzsx        | v3.6.0-alpha.2 |                                              |
 | [林间拾语](https://www.xhhao.com/?preview-theme=theme-clarity) | acanyo        | Halo           | https://www.halo.run/store/apps/app-jglhpodw |
 | [Wa 的小家](https://blog.gslpro.top/)                          | Shalomguan    | v3.5.2         |                                              |
 | [青序栈](https://qxzhan.cn/)                                   | scfcn         | v3.5.2         |                                              |

@@ -148,6 +148,7 @@ img {
 
 	> .tippy-svg-arrow {
 		fill: var(--ld-bg-card);
+		pointer-events: none;
 	}
 }
 
