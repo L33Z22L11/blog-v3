@@ -40,3 +40,12 @@ export function isExtLink(url?: string) {
 		? url.includes(':') || !!isPathFile(url)
 		: false
 }
+
+export function safelyDecodeUriComponent(str: string) {
+	try {
+		return decodeURIComponent(str)
+	}
+	catch {
+		return str
+	}
+}

@@ -28,7 +28,7 @@ const tip = computed(() => {
 		return ''
 	if (isExtLink(props.link))
 		return getDomain(props.link)
-	return decodeURIComponent(props.link)
+	return safelyDecodeUriComponent(props.link)
 })
 </script>
 

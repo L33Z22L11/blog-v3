@@ -6,7 +6,7 @@ const props = defineProps<{
 
 const icon = computed(() => props.icon || getDomainIcon(props.href))
 const tip = computed(() => ({
-	content: isExtLink(props.href) ? getDomain(props.href) : decodeURIComponent(props.href),
+	content: isExtLink(props.href) ? getDomain(props.href) : safelyDecodeUriComponent(props.href),
 	inlinePositioning: true,
 }))
 </script>
