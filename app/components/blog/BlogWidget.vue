@@ -62,9 +62,7 @@ defineProps<{
 
 .widget-body {
 	&.with-bg {
-		position: relative;
-		overflow: hidden;
-		overflow: clip;
+		contain: paint; // overflow hidden + position relative
 		z-index: 0;
 
 		> .bg-img {

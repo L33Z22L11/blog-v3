@@ -1,6 +1,5 @@
 <script setup lang="ts">
-const appConfig = useAppConfig()
-const timeEstablished = appConfig.timeEstablished
+const { timeEstablished } = useAppConfig()
 
 const blogLog = [
 	{ label: '2025-07-26', value: '重构到 Nuxt 4 + Nuxt Content v3，启用 zhilu.site 域名' },

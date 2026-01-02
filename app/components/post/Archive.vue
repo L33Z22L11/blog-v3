@@ -78,7 +78,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 
 .article-link {
 	flex-grow: 1;
-	overflow: hidden;
+	overflow: hidden; // 标题换行
 	padding: 0.3em 0.6em;
 }
 

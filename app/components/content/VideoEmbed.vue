@@ -58,26 +58,26 @@ const videoPlayer = useTemplateRef('video-player')
 
 // 抖音会预检测宽度是否小于 730px，再返回竖屏或横屏模式
 // douyin-wide 需要阻塞加载，等进入视口后通过 zoom: 0.1 触发横屏模式
-const needBlock = ref(props.type === 'douyin-wide')
-const zoom = ref(needBlock.value ? 0.1 : props.zoom)
+// 已优化为 loading="lazy"
+const zoom = ref<number>()
 const zoomFactorForFixed = {
 	'douyin': 0.0031,
 	'douyin-wide': 0.00134,
 }
 
-onMounted(() => {
-	needBlock.value && useIntersectionObserver(videoPlayer, () => {
-		needBlock.value = false
-	})
-
-	const needZoom = props.type in zoomFactorForFixed
-	needZoom && useResizeObserver(videoPlayer, ([entry]) => {
+function useZoomHelper(resizeType: keyof typeof zoomFactorForFixed) {
+	useResizeObserver(videoPlayer, ([entry]) => {
 		if (!entry)
 			return
 		const { width } = entry.contentRect
-		const zoomFactor = zoomFactorForFixed[props.type as keyof typeof zoomFactorForFixed]
+		const zoomFactor = zoomFactorForFixed[resizeType]
 		zoom.value = width * zoomFactor
 	})
+}
+
+onMounted(() => {
+	if (props.type in zoomFactorForFixed)
+		useZoomHelper(props.type as keyof typeof zoomFactorForFixed)
 })
 </script>
 
@@ -98,20 +98,19 @@ onMounted(() => {
 		controls
 	/>
 	<iframe
-		v-else-if="!needBlock"
+		v-else
 		:src
 		:style="{ zoom }"
 		scrolling="no"
-		frameborder="0"
-		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-		allowfullscreen
+		loading="lazy"
+		allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture"
 	/>
 </div>
 </template>
 
 <style lang="scss" scoped>
 .video {
-	overflow: hidden;
+	contain: paint;
 	border-radius: 0.8rem;
 	box-shadow: 0 2px 0.5rem var(--ld-shadow);
 

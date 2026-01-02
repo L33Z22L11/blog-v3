@@ -87,9 +87,7 @@ const { copy, copied } = useCopy(shareText)
 	}
 
 	&.has-cover {
-		position: relative;
-		overflow: hidden;
-		overflow: clip;
+		contain: paint; // overflow hidden + position relative
 		min-height: 256px;
 		max-height: 320px;
 		color: white;

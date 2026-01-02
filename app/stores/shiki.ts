@@ -1,6 +1,6 @@
 import type { BundledLanguage, CodeToHastOptions, HighlighterCore, RegexEngine } from 'shiki'
 import { transformerColorizedBrackets } from '@shikijs/colorized-brackets'
-import { transformerMetaHighlight, transformerMetaWordHighlight, transformerNotationDiff, transformerNotationErrorLevel, transformerNotationFocus, transformerNotationHighlight, transformerNotationWordHighlight, transformerRenderIndentGuides, transformerRenderWhitespace } from '@shikijs/transformers'
+import { transformerNotationDiff, transformerNotationErrorLevel, transformerNotationFocus, transformerNotationHighlight, transformerNotationWordHighlight, transformerRenderIndentGuides, transformerRenderWhitespace } from '@shikijs/transformers'
 
 let promise: Promise<HighlighterCore>
 let shiki: HighlighterCore
@@ -36,8 +36,6 @@ export const useShikiStore = defineStore('shiki', () => {
 			transformerOptions?.includes('ignoreRenderWhitespace') || ['ansi', 'log', 'text'].includes(lang)
 				? {}
 				: transformerRenderWhitespace(),
-			transformerMetaHighlight(),
-			transformerMetaWordHighlight(),
 			transformerOptions?.includes('ignoreColorizedBrackets')
 				? {}
 				: transformerColorizedBrackets(),

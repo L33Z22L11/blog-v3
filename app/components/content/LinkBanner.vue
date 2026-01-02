@@ -25,9 +25,6 @@ defineProps<{
 
 <style lang="scss" scoped>
 .link-banner {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
 	line-height: 1.4;
 
 	article & {
@@ -36,6 +33,8 @@ defineProps<{
 	}
 
 	.link-banner-bg {
+		display: block;
+		width: 100%;
 		aspect-ratio: 2.4;
 		margin-bottom: -5%;
 		mask-image: linear-gradient(#FFF 50%, transparent);

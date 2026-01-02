@@ -1,8 +1,7 @@
 // 一部分具有卡片样式的组件复用了此类
 .card {
+	contain: paint;
 	display: block;
-	overflow: hidden;
-	overflow: clip;
 	border-radius: 0.5em;
 	box-shadow: 0 0.1em 0.2em var(--ld-shadow);
 	background-color: var(--ld-bg-card);

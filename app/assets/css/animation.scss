@@ -37,8 +37,7 @@
 
 .collapse-enter-active,
 .collapse-leave-active {
-	overflow: hidden;
-	overflow: clip;
+	contain: paint;
 	transition: max-height 0.1s;
 }
 

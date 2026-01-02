@@ -6,6 +6,9 @@ import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
 
 defineProps<{ list: ArticleProps[] }>()
 
+const appConfig = useAppConfig()
+const compConf = computed(() => appConfig.component.slide)
+
 // @keep-sorted
 const [carouselEl, carouselApi] = emblaCarouselVue({
 	containScroll: false,
@@ -44,8 +47,13 @@ useEventListener(carouselEl, 'wheel', (e) => {
 				:title="article.description"
 				:to="article.path"
 			>
-				<NuxtImg class="cover" :src="article.image" :alt="article.title" />
-				<div class="info">
+				<NuxtImg class="cover" :src="article.image" :alt="compConf.showTitle ? '' : article.title" />
+
+				<div v-if="compConf.showTitle" class="stable-info text-creative">
+					{{ article.title }}
+				</div>
+
+				<div class="hover-info">
 					<div class="title text-creative">
 						{{ article.title }}
 					</div>
@@ -92,7 +100,6 @@ useEventListener(carouselEl, 'wheel', (e) => {
 	align-items: center;
 	justify-content: space-between;
 	gap: 2rem;
-	overflow: hidden;
 	height: 3rem;
 	margin-bottom: -0.2rem;
 	mask-image: linear-gradient(#FFF, transparent);
@@ -133,9 +140,9 @@ useEventListener(carouselEl, 'wheel', (e) => {
 }
 
 .slide-item {
+	contain: paint;
 	flex-shrink: 0;
 	position: relative;
-	overflow: hidden;
 	width: max(12rem, 28%);
 	max-width: 80%;
 	aspect-ratio: 1.77;
@@ -151,19 +158,32 @@ useEventListener(carouselEl, 'wheel', (e) => {
 		object-fit: cover;
 	}
 
-	> .info {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-evenly;
+	>.stable-info, > .hover-info {
 		position: absolute;
+		text-align: center;
+		color: white;
+		transition: opacity 0.2s;
+	}
+
+	> .stable-info {
+		overflow: hidden;
+		bottom: 0;
+		width: 100%;
+		padding: 0.5em;
+		background-image: linear-gradient(transparent, #0003, #0005);
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		text-shadow: 0 1px 1px #0003, 0 1px 2px #0003;
+	}
+
+	> .hover-info {
+		display: grid;
+		place-items: center;
 		opacity: 0;
 		inset: 0;
 		padding: 1em;
 		backdrop-filter: brightness(0.8) saturate(10) contrast(0.8) blur(2em);
-		text-align: center;
-		color: white;
-		transition: opacity 0.2s;
+		text-shadow: 0 1px 2px var(--ld-shadow);
 
 		> .title {
 			text-wrap: balance;
@@ -175,9 +195,14 @@ useEventListener(carouselEl, 'wheel', (e) => {
 		}
 	}
 
-	&:hover > .info,
-	&:focus-within > .info {
-		opacity: 1;
+	&:hover, &:focus-within {
+		>.stable-info {
+			opacity: 0;
+		}
+
+		> .hover-info {
+			opacity: 1;
+		}
 	}
 }
 </style>

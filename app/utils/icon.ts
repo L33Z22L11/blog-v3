@@ -24,6 +24,7 @@ const archIcons = {
 	'Python': 'simple-icons:python',
 	'React': 'simple-icons:react',
 	'Typecho': 'icon-park-solid:align-text-left-one', // 不准确
+	'Valaxy': 'tabler:letter-v', // 不准确
 	'Vercel': 'simple-icons:vercel',
 	'VitePress': 'simple-icons:vitepress',
 	'Vue': 'uim:vuejs',

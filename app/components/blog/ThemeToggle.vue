@@ -21,7 +21,6 @@ const colorMode = useColorMode()
 <style lang="scss" scoped>
 .theme-toggle {
 	display: flex;
-	justify-content: center;
 	gap: 3px;
 	width: fit-content;
 	margin: 0 auto;

@@ -93,10 +93,8 @@ code, pre {
 }
 
 .entry {
+	contain: paint;
 	display: block;
-	position: relative;
-	overflow: hidden;
-	overflow: clip;
 	margin: 1em 0;
 	border-radius: 0.8em;
 	box-shadow: var(--xsl-shadow-1);

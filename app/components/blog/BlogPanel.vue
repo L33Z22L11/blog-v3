@@ -39,9 +39,8 @@ useEventListener('keydown', (e) => {
 
 <style lang="scss" scoped>
 #blog-panel {
+	contain: paint;
 	position: fixed;
-	overflow: hidden;
-	overflow: clip;
 	bottom: min(2rem, 5%);
 	border-radius: 0.5rem;
 	background-color: var(--c-bg-a50);

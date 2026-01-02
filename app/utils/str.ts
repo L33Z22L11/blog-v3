@@ -23,6 +23,33 @@ export function formatNumber(num?: number) {
 	return num.toString()
 }
 
+interface FormatBytesOptions {
+	decimals?: number
+	binary?: boolean
+	unitSeparator?: string
+}
+
+export function formatBytes(bytes: number, options: FormatBytesOptions = {}) {
+	const {
+		decimals = 2,
+		binary = true,
+		unitSeparator = ' ',
+	} = options
+
+	if (bytes === 0)
+		return `0${unitSeparator}Bytes`
+
+	const base = binary ? 1024 : 1000
+	const units = binary
+		? ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
+		: ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+
+	const i = Math.floor(Math.log(bytes) / Math.log(base))
+	const value = Number.parseFloat((bytes / base ** i).toFixed(decimals))
+
+	return `${value}${unitSeparator}${units[i]}`
+}
+
 export function getPromptLanguage(prompt: string | boolean) {
 	if (typeof prompt === 'boolean')
 		return 'text'

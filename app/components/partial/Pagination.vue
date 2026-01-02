@@ -63,8 +63,6 @@ onUnmounted(() => {
 <style lang="scss" scoped>
 .pagination {
 	display: flex;
-	overflow: hidden;
-	overflow: clip;
 	max-width: calc(100vw);
 	margin: 1rem auto;
 	border: 1px solid var(--c-border);
@@ -89,8 +87,15 @@ onUnmounted(() => {
 		border-radius: 0;
 		box-shadow: none;
 
-		&:first-child { margin-inline-end: auto; }
-		&:last-child { margin-inline-start: auto; }
+		&:first-child {
+			margin-inline-end: auto;
+			border-radius: 0.5rem 0 0 0.5rem;
+		}
+
+		&:last-child {
+			margin-inline-start: auto;
+			border-radius: 0 0.5rem 0.5rem 0;
+		}
 	}
 
 	> .pagination-num {

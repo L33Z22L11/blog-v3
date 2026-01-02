@@ -145,35 +145,21 @@ class: gradient-card active
   - 文件名也可以是路径，例如 `src/components/ProsePre.vue` 等
   - 还可以通过 `icon=图标` 自定义图标
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 ```
 
 ````md [更多功能] icon=ph:files-duotone wrap expand
@@ -194,9 +180,11 @@ class: gradient-card active
 ```
 ````
 
-#### 高亮
+#### 高亮和转换
 
 代码块通过 Shiki 进行高亮，可在 `blog.config.ts` 中配置语言（Markdown 中出现的所有语言）和代码高亮主题。
+
+转换器（如 diff）可通过 https://shiki.style/packages/transformers#transformers 配置，启用的转换器可在 `app/stores/shiki.ts` 查看。
 
 #### 为更多语言匹配图标
 
@@ -972,8 +960,8 @@ active: 2 # 默认显示第二个选项卡，可选
 ::video-embed
 ---
 type: raw
-id: https://sf16-sg.tiktokcdn.com/obj/eden-sg/ha_lm_lswvlw/ljhwZthlaukjlkulzlp/portal/reunion/61872647867123yhdajskf.mp4
-poster: https://lf-package-cn.feishucdn.com/obj/atsx-throne/hire-fe-prod/portal/i18n/static/image/video-poster.d9fdf4be.jpeg
+id: https://sf-atsx-tob.larksuite.com/obj/static-atsx-online-sg-ee-tob-mycis/02c7da694d343896877c09de9db4fc42/8ede49e0a92f53cdafbbf49339194986d9d900fb2abe242b9a8b4e338bf18b05.mp4
+poster: https://sf-atsx-tob.larksuite.com/obj/static-atsx-online-sg-ee-tob-mycis/02c7da694d343896877c09de9db4fc42/e23074879c61a4d61e905ccef5771a36a2d19689c1204c2b32caa53711ac83ad.png
 ---
 ::
 
@@ -1003,8 +991,8 @@ id: '7222222794333998392'
 ::video-embed
 ---
 type: raw
-id: https://sf16-sg.tiktokcdn.com/obj/eden-sg/ha_lm_lswvlw/ljhwZthlaukjlkulzlp/portal/reunion/61872647867123yhdajskf.mp4
-poster: https://lf-package-cn.feishucdn.com/obj/atsx-throne/hire-fe-prod/portal/i18n/static/image/video-poster.d9fdf4be.jpeg
+id: https://sf-atsx-tob.larksuite.com/obj/static-atsx-online-sg-ee-tob-mycis/02c7da694d343896877c09de9db4fc42/8ede49e0a92f53cdafbbf49339194986d9d900fb2abe242b9a8b4e338bf18b05.mp4
+poster: https://sf-atsx-tob.larksuite.com/obj/static-atsx-online-sg-ee-tob-mycis/02c7da694d343896877c09de9db4fc42/e23074879c61a4d61e905ccef5771a36a2d19689c1204c2b32caa53711ac83ad.png
 ---
 ::
 

@@ -3,13 +3,13 @@ const props = withDefaults(defineProps<{
 	code?: string
 	language?: string
 	filename?: string
+	/** @deprecated Use `transformerNotationHighlight` instead */
 	highlights?: number[]
 	meta?: string
 	class?: string
 }>(), {
 	code: '',
 	language: 'text', // Nuxt Content 已经做了此处理
-	highlights: () => [],
 })
 
 interface CodeblockMeta {
@@ -30,14 +30,15 @@ const meta = computed(() => {
 })
 
 const appConfig = useAppConfig()
-const compConf = appConfig.component.codeblock
+const compConf = computed(() => appConfig.component.codeblock)
 
 const rows = computed(() => props.code.split('\n').length - 1)
-const collapsible = computed(() => !meta.value.expand && rows.value > compConf.triggerRows)
+const collapsible = computed(() => !meta.value.expand && rows.value > compConf.value.triggerRows)
 const [isCollapsed, toggleCollapsed] = useToggle(collapsible.value)
 
 const icon = computed(() => meta.value.icon || getFileIcon(props.filename) || getLangIcon(props.language))
 const isWrap = ref(meta.value.wrap)
+const byteSize = computed(() => formatBytes(new TextEncoder().encode(props.code).length))
 
 const codeblock = useTemplateRef('codeblock')
 const { copy, copied } = useCopy(codeblock)
@@ -52,7 +53,7 @@ function getIndent() {
 	if (['json', 'jsonc', 'yaml', 'yml'].includes(props.language))
 		return 2
 
-	return compConf.indent
+	return compConf.value.indent
 }
 
 onMounted(async () => {
@@ -73,7 +74,7 @@ onMounted(async () => {
 		props.code.trimEnd(),
 		shikiStore.getOptions(
 			props.language,
-			[compConf.enableIndentGuide ? 'ignoreRenderWhitespace' : 'ignoreRenderIndentGuides'],
+			[compConf.value.enableIndentGuide ? 'ignoreRenderWhitespace' : 'ignoreRenderIndentGuides'],
 			{ meta: { indent: getIndent() } },
 		),
 	)
@@ -125,39 +126,28 @@ onMounted(async () => {
 			:class="{ 'is-collapsed': isCollapsed }"
 			name="ph:caret-double-up-bold"
 		/>
-		<span class="toggle-tip">{{ rows }} 行</span>
+		<span>{{ rows }} lines, {{ props.code.length }} chars, {{ byteSize }}</span>
 	</button>
 </figure>
 </template>
 
 <style lang="scss" scoped>
 .z-codeblock {
-	--line-height: 1.4em;
+	--line-height: 1.4;
 
-	position: relative;
-	overflow: clip;
+	contain: paint;
 	margin: 0.5em 0;
 	border-radius: 0.5em;
 	background-color: var(--c-bg-2);
 	font-size: 0.8125rem;
-	line-height: var(--line-height);
+	line-height: 1.4;
 	tab-size: var(--tab-size, 4);
 
-	&.collapsed {
-		pre {
-			overflow: hidden;
-			max-height: calc(var(--line-height) * var(--collapsed-rows) + 3rem);
-			mask-image: linear-gradient(to top, transparent 2rem, #FFF 4rem);
-			animation: none;
-		}
-
-		.toggle-btn {
-			margin: 0.5em;
-		}
-	}
-
-	&.collapsible pre {
-		padding-bottom: 2rem;
+	&.collapsed > pre {
+		overflow: hidden;
+		max-height: calc(var(--line-height) * var(--collapsed-rows) * 1em + 2rem);
+		mask-image: linear-gradient(to top, transparent 1em, #FFF 4em);
+		animation: none;
 	}
 }
 
@@ -212,7 +202,6 @@ pre {
 	// 如果填写 0 会在 calc() 时出错
 	--start-offset: 4em;
 
-	overflow: auto;
 	padding: 1rem;
 	padding-inline-start: var(--start-offset);
 
@@ -222,59 +211,96 @@ pre {
 }
 
 :deep(.line) {
+	&.diff {
+		background-color: var(--ld-bg-active);
+
+		&.add {
+			--line-indicator: "+ ";
+			--line-indicator-color: var(--c-success);
+			--ld-bg-active: var(--c-success-soft);
+		}
+
+		&.remove {
+			--line-indicator: "- ";
+			--line-indicator-color: var(--c-error);
+			--ld-bg-active: var(--c-error-soft);
+		}
+	}
+
+	&.highlighted {
+		--line-indicator-color: var(--c-text-1);
+
+		background-color: var(--ld-bg-active);
+
+		&.error {
+			--line-indicator-color: var(--c-error);
+			--ld-bg-active: var(--c-error-soft);
+		}
+
+		&.warning {
+			--line-indicator-color: var(--c-warning);
+			--ld-bg-active: var(--c-warning-soft);
+		}
+	}
+
+	&.focused {
+		--line-indicator: "→ ";
+		--line-indicator-color: var(--c-text-1);
+
+		display: inline-block;
+		position: relative;
+		box-shadow: 0 0 10rem 4rem var(--c-bg-2);
+		transition: box-shadow 0.2s;
+
+		@supports (color: color-mix(in srgb, transparent, transparent)) {
+			box-shadow: 0 0 0 100vmax color-mix(in srgb, transparent, var(--c-bg-2));
+		}
+
+		pre:hover > & {
+			box-shadow: none;
+		}
+	}
+
+	// 行指示器
 	&::before {
-		content: attr(data-line);
-		position: absolute;
+		content: var(--line-indicator, "") attr(data-line);
+		position: fixed;
 		inset-inline-start: 0;
 		width: var(--start-offset);
 		padding-inline-end: 1em;
 		background-color: var(--c-bg-2);
 		text-align: end;
-		color: var(--c-text-3);
+		color: var(--line-indicator-color, var(--c-text-3));
 		z-index: 1;
 	}
 
-	&.highlight {
-		&::before {
-			color: inherit;
-		}
-
-		outline: 0.2em solid var(--ld-bg-active);
-		background-color: var(--ld-bg-active);
+	> .highlighted-word {
+		border-radius: 0.2em;
+		box-shadow: inset 0 0 0 1em var(--ld-bg-active);
 	}
 }
 
 .toggle-btn {
-	position: absolute;
-	inset: auto 0 0;
-	margin: 0.8em;
+	display: block;
+	position: relative; // 移动到 pre 上方
+	opacity: 0.3;
+	width: 100%;
+	margin-top: -1em;
 	padding: 0.2em;
-	border-radius: 0.5em;
 	background-color: var(--c-bg-3);
-	text-align: center;
-	color: var(--c-text-2);
+	transition: opacity 0.2s;
+
+	&:hover {
+		opacity: 1;
+	}
 }
 
 .toggle-icon {
 	transition: all 0.2s;
+	margin-inline-end: 0.2em;
 
 	&.is-collapsed {
 		transform: rotate(180deg);
-	}
-
-	:hover > & {
-		opacity: 0;
-	}
-}
-
-.toggle-tip {
-	position: absolute;
-	opacity: 0;
-	inset: auto 0;
-	transition: opacity 0.2s;
-
-	:hover > & {
-		opacity: 1;
 	}
 }
 </style>
