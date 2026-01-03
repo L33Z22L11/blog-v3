@@ -151,6 +151,11 @@ useEventListener(carouselEl, 'wheel', (e) => {
 	scroll-snap-align: center;
 	scroll-snap-stop: always;
 
+	// Firefox 图片 alt 为空时 fallback 失效
+	@supports (-moz-force-broken-image-icon: 1) {
+		background-color: var(--c-border);
+	}
+
 	> .cover {
 		display: block;
 		width: 100%;

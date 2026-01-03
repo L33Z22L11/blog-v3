@@ -37,6 +37,7 @@ function getInspectStyle(src: string): CSSProperties {
 	<UtilLink
 		class="feed-card gradient-card"
 		:to="error ? undefined : link"
+		rel="noopener"
 		:data-error="error"
 	>
 		<div class="avatar" :title="feed ? undefined : '无订阅源'">
@@ -76,7 +77,7 @@ function getInspectStyle(src: string): CSSProperties {
 		</div>
 		<div class="desc-content">
 			<div class="date">
-				{{ date }}
+				{{ toZonedDate(date).toLocaleDateString() }}
 			</div>
 
 			<p>{{ error ?? desc }}</p>

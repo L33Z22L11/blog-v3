@@ -6,9 +6,11 @@ const appConfig = useAppConfig()
 const commentEl = useTemplateRef('comment')
 const popoverEl = useTemplateRef<TippyComponent>('popover')
 const popoverJumpTo = ref('')
+const popoverInputEl = useTemplateRef('popover-input')
 
 const popoverBind = ref<TippyComponent['$props']>({})
 
+/** 评论区链接守卫 */
 useEventListener(commentEl, 'click', (e) => {
 	if (!(e.target instanceof HTMLElement))
 		return
@@ -27,7 +29,7 @@ useEventListener(commentEl, 'click', (e) => {
 	if (popoverTarget?.target === '_blank') {
 		popoverEl.value?.hide()
 
-		popoverJumpTo.value = popoverTarget.href
+		popoverJumpTo.value = safelyDecodeUriComponent(popoverTarget.href)
 		popoverBind.value = {
 			getReferenceClientRect: () => popoverTarget.getBoundingClientRect(),
 			triggerTarget: popoverTarget,
@@ -67,11 +69,28 @@ onMounted(() => {
 	>
 		<template #content>
 			<div class="popover-confirm">
-				{{ safelyDecodeUriComponent(popoverJumpTo) }}
+				<span
+					ref="popover-input"
+					class="input"
+					contenteditable="plaintext-only"
+					spellcheck="false"
+					@update="popoverJumpTo = $event.target?.textContent"
+					v-text="popoverJumpTo"
+				/>
+
+				<button
+					v-if="popoverInputEl && popoverInputEl.textContent !== popoverJumpTo"
+					aria-label="恢复原始内容"
+					@click="popoverInputEl.textContent = popoverJumpTo"
+				>
+					<Icon name="ph:arrow-u-up-left-bold" />
+				</button>
+
 				<ZButton
+					v-if="popoverInputEl"
 					primary
 					text="访问"
-					@click="confirmOpen(popoverJumpTo)"
+					@click="confirmOpen(popoverInputEl.textContent)"
 				/>
 			</div>
 		</template>
@@ -93,16 +112,25 @@ onMounted(() => {
 	}
 }
 
+:deep() > [data-tippy-root] > .tippy-box {
+	padding: 0;
+}
+
 .popover-confirm {
 	display: flex;
 	align-items: center;
 	overflow-wrap: anywhere;
 
-	> .button {
+	> .input {
+		min-width: 0;
+		padding: 0.3em 0.6em;
+	}
+
+	> button {
+		flex-shrink: 0;
 		align-self: stretch;
-		margin: -0.3em -0.6em;
+		padding: 0.3em;
 		border-radius: 0 0.5em 0.5em 0;
-		margin-inline-start: 0.5em;
 	}
 }
 

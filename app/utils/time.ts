@@ -1,9 +1,13 @@
 import { differenceInMilliseconds } from 'date-fns'
 import { toDate } from 'date-fns-tz'
 
+export function toZonedDate(date: string | Date, useUserTimeZone = false) {
+	const timeZone = useUserTimeZone ? Intl.DateTimeFormat().resolvedOptions().timeZone : useAppConfig().timezone
+	return toDate(date, { timeZone })
+}
+
 export function getLocaleDatetime(date: string | Date) {
-	const appConfig = useAppConfig()
-	return toDate(date, { timeZone: appConfig.timezone })
+	return toZonedDate(date)
 		.toLocaleString(undefined, {
 			year: 'numeric',
 			month: '2-digit',

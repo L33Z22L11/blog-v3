@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { toDate } from 'date-fns-tz'
-
 const props = defineProps<{
 	datetime?: string
 	rotate?: boolean
@@ -11,9 +9,8 @@ const emojiRotate = ['🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '�
 
 const now = ref(new Date())
 
-const appConfig = useAppConfig()
 const datetime = computed(() => props.datetime
-	? toDate(props.datetime, { timeZone: appConfig.timezone })
+	? toZonedDate(props.datetime)
 	: now.value)
 
 const status = computed(() => {

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { differenceInWeeks, isSameYear } from 'date-fns'
-import { toDate } from 'date-fns-tz'
 
 const props = withDefaults(defineProps<{
 	icon?: string
@@ -13,8 +12,7 @@ const props = withDefaults(defineProps<{
 	tipPrefix: '',
 })
 
-const appConfig = useAppConfig()
-const datetime = computed(() => toDate(props.date, { timeZone: appConfig.timezone }))
+const datetime = computed(() => toZonedDate(props.date))
 
 const relative = computed(() => props.absolute
 	? false
