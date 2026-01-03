@@ -7,7 +7,7 @@ const domainTip: Record<string, string> = {
 	'pages.dev': 'Cloudflare 域名',
 	'thisis.host': '纸鹿提供的域名',
 	'vercel.app': 'Vercel 域名',
-	'zabaur.app': 'Zebaur 域名',
+	'zeabur.app': 'Zeabur 域名',
 }
 
 export function getDomain(url: string) {
