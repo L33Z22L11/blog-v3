@@ -16,21 +16,21 @@ const archIcons = {
 	'HTML': 'simple-icons:html5',
 	'Hugo': 'simple-icons:hugo',
 	'Jekyll': 'simple-icons:jekyll',
+	'Mix Space': 'simple-icons:yarn', // 不准确
 	'Netlify': 'simple-icons:netlify',
 	'Next.js': 'simple-icons:nextdotjs',
 	'NotionNext': 'simple-icons:notion',
-	'Nuxt': 'simple-icons:nuxtdotjs',
+	'Nuxt': 'simple-icons:nuxt',
 	'PHP': 'simple-icons:php',
 	'Python': 'simple-icons:python',
 	'React': 'simple-icons:react',
 	'Typecho': 'icon-park-solid:align-text-left-one', // 不准确
-	'Valaxy': 'tabler:letter-v', // 不准确
 	'Vercel': 'simple-icons:vercel',
 	'VitePress': 'simple-icons:vitepress',
 	'Vue': 'uim:vuejs',
 	'VuePress': 'uim:vuejs',
 	'WordPress': 'simple-icons:wordpress',
-	'Zebaur': 'tabler:square-letter-z-filled', // 不准确
+	'Zeabur': 'tabler:square-letter-z-filled', // 不准确
 }
 
 export type Arch = keyof typeof archIcons
