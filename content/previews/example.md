@@ -573,22 +573,21 @@ pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
 ::tab{:tabs='["组件","语法"]'}
 #tab1
 
-::folding
-#title
-可以通过标题插槽传值 [超链接](#folding) **粗体** `Inline code`
-#default
-默认插槽的 [超链接](#folding) **粗体** `Inline code`
-
-:::folding{open title="折叠还可以嵌套"}
-默认展开的折叠。
-
-  ::::alert{type="error"}
+  ::folding
   #title
-  在嵌套使用的组件内部使用 MDC 的 `#slotname` 插槽语法
+  可以通过标题插槽传值 [超链接](#folding) **粗体** `Inline code`
   #default
-  必须缩进，否则会报错。
-:::
-::
+  默认插槽的 [超链接](#folding) **粗体** `Inline code`
+
+    ::folding{open title="折叠还可以嵌套"}
+    默认展开的折叠。
+
+      ::alert{type="error"}
+      #title
+      在嵌套使用的组件内部使用 MDC 的 `#slotname` 插槽语法
+      #default
+      必须缩进，否则会报错。
+  ::
 
 ::folding{open}
 ```md
@@ -598,22 +597,21 @@ pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
 
 #tab2
 ````mdc expand
-::folding
-#title
-可以通过标题插槽传值 [超链接](#folding) **粗体** `Inline code`
-#default
-默认插槽的 [超链接](#folding) **粗体** `Inline code`
-
-:::folding{open title="折叠还可以嵌套"}
-默认展开的折叠。
-
-  ::::alert{type="error"}
+  ::folding
   #title
-  在嵌套使用的组件内部使用 MDC 的 `#slotname` 插槽语法
+  可以通过标题插槽传值 [超链接](#folding) **粗体** `Inline code`
   #default
-  必须缩进，否则会报错。
-:::
-::
+  默认插槽的 [超链接](#folding) **粗体** `Inline code`
+
+    ::folding{open title="折叠还可以嵌套"}
+    默认展开的折叠。
+
+      ::alert{type="error"}
+      #title
+      在嵌套使用的组件内部使用 MDC 的 `#slotname` 插槽语法
+      #default
+      必须缩进，否则会报错。
+  ::
 
 ::folding{open}
 ```md

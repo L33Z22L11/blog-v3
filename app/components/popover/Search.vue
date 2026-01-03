@@ -5,6 +5,10 @@ const props = defineProps<{
 	show?: boolean
 }>()
 
+defineEmits<{
+	close: []
+}>()
+
 const appConfig = useAppConfig()
 const segmenter = Intl.Segmenter && new Intl.Segmenter(appConfig.language, { granularity: 'word' })
 
@@ -87,7 +91,7 @@ function openActiveItem() {
 <BlogMask
 	:show
 	blur
-	@click="searchStore.toggle()"
+	@click="$emit('close')"
 />
 
 <Transition name="float-in">
@@ -134,7 +138,7 @@ function openActiveItem() {
 				切换&emsp;
 				<Key code="Enter" icon @press="openActiveItem" />
 				选择&emsp;
-				<Key code="Escape" :icon="false" @press="searchStore.toggle()" />
+				<Key code="Escape" :icon="false" @press="$emit('close')" />
 				关闭
 			</div>
 		</TransitionGroup>

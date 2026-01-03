@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import type { TippyOptions } from 'vue-tippy'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
 	text?: string
 	tip?: string
-	/** 不需要默认图标时可以传空字符串 */
-	icon?: string
+	icon?: string | boolean
 	copy?: boolean
 	tipOptions?: TippyOptions
-}>()
+}>(), {
+	icon: undefined,
+})
 
 const tip = computed(() => ({
 	content: props.tip || (props.copy ? '点击复制' : ''),

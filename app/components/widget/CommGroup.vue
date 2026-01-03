@@ -10,7 +10,7 @@
 		纸网接入点
 	</div>
 
-	<Tip copy icon="" :tip-options="{ placement: 'left' }">
+	<Tip copy icon :tip-options="{ placement: 'left' }">
 		<Icon name="ri:qq-fill" />169994096
 	</Tip>
 </BlogWidget>
