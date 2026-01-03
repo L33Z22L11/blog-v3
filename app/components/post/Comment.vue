@@ -7,6 +7,7 @@ const commentEl = useTemplateRef('comment')
 const popoverEl = useTemplateRef<TippyComponent>('popover')
 const popoverJumpTo = ref('')
 const popoverInputEl = useTemplateRef('popover-input')
+const showUndo = ref(false)
 
 const popoverBind = ref<TippyComponent['$props']>({})
 
@@ -29,19 +30,31 @@ useEventListener(commentEl, 'click', (e) => {
 	if (popoverTarget?.target === '_blank') {
 		popoverEl.value?.hide()
 
+		e.preventDefault()
 		popoverJumpTo.value = safelyDecodeUriComponent(popoverTarget.href)
+		nextTick(() => checkUndoable())
 		popoverBind.value = {
 			getReferenceClientRect: () => popoverTarget.getBoundingClientRect(),
 			triggerTarget: popoverTarget,
 		}
 
 		popoverEl.value?.show()
-		e.preventDefault()
 	}
 }, { capture: true })
 
-function confirmOpen(url: string) {
-	window.open(url, '_blank')
+function checkUndoable() {
+	showUndo.value = popoverInputEl.value?.textContent !== popoverJumpTo.value
+}
+
+function undo() {
+	if (!popoverInputEl.value)
+		return
+	popoverInputEl.value.textContent = popoverJumpTo.value
+	checkUndoable()
+}
+
+function confirmOpen() {
+	window.open(popoverInputEl.value?.textContent, '_blank')
 }
 
 onMounted(() => {
@@ -74,23 +87,23 @@ onMounted(() => {
 					class="input"
 					contenteditable="plaintext-only"
 					spellcheck="false"
-					@update="popoverJumpTo = $event.target?.textContent"
+					@input="checkUndoable"
+					@keydown.enter.prevent="confirmOpen"
 					v-text="popoverJumpTo"
 				/>
 
 				<button
-					v-if="popoverInputEl && popoverInputEl.textContent !== popoverJumpTo"
+					v-if="showUndo"
 					aria-label="恢复原始内容"
-					@click="popoverInputEl.textContent = popoverJumpTo"
+					@click="undo()"
 				>
 					<Icon name="ph:arrow-u-up-left-bold" />
 				</button>
 
 				<ZButton
-					v-if="popoverInputEl"
 					primary
 					text="访问"
-					@click="confirmOpen(popoverInputEl.textContent)"
+					@click="confirmOpen"
 				/>
 			</div>
 		</template>

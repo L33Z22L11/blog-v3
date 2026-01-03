@@ -5,10 +5,7 @@ const props = defineProps<{
 	show?: boolean
 }>()
 
-defineEmits<{
-	close: []
-}>()
-
+const layoutStore = useLayoutStore()
 const appConfig = useAppConfig()
 const segmenter = Intl.Segmenter && new Intl.Segmenter(appConfig.language, { granularity: 'word' })
 
@@ -64,9 +61,11 @@ watch(debouncedWord, () => {
 useEventListener('mousemove', () => isKeyboardMode.value = false)
 useEventListener('keydown', () => isKeyboardMode.value = true)
 
-async function focusInput() {
+async function focusInput(allSelect = false) {
 	await nextTick()
 	searchInput.value?.focus()
+	if (allSelect)
+		searchInput.value?.select()
 }
 
 function updateActiveIndex(index: number, isKeyboard = false) {
@@ -91,7 +90,7 @@ function openActiveItem() {
 <BlogMask
 	:show
 	blur
-	@click="$emit('close')"
+	@click="layoutStore.toggle('search')"
 />
 
 <Transition name="float-in">
@@ -138,7 +137,7 @@ function openActiveItem() {
 				切换&emsp;
 				<Key code="Enter" icon @press="openActiveItem" />
 				选择&emsp;
-				<Key code="Escape" :icon="false" @press="$emit('close')" />
+				<Key code="Escape" :icon="false" @press="layoutStore.toggle('search')" />
 				关闭
 			</div>
 		</TransitionGroup>

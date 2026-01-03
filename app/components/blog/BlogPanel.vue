@@ -18,7 +18,7 @@ useEventListener('keydown', (e) => {
 <div id="blog-panel" :class="{ 'has-active': layoutStore.isAnyOpen }" :style="panelTranslateStyle">
 	<button
 		class="toggle-sidebar mobile-only"
-		:class="{ active: layoutStore.isOpen('sidebar') }"
+		:class="{ active: layoutStore.open.sidebar }"
 		aria-label="切换菜单"
 		@click="layoutStore.toggle('sidebar')"
 	>
@@ -28,7 +28,7 @@ useEventListener('keydown', (e) => {
 	<button
 		v-if="asideWidgets.length"
 		class="toggle-aside widescreen-only"
-		:class="{ active: layoutStore.isOpen('aside') }"
+		:class="{ active: layoutStore.open.aside }"
 		aria-label="切换侧边栏"
 		@click="layoutStore.toggle('aside')"
 	>

@@ -10,7 +10,11 @@ export const useSearchStore = defineStore('search', () => {
 	const { open, close } = popoverStore.use(() => h(LazyPopoverSearch))
 
 	watch(() => layoutStore.open.search, (searchOpen) => {
-		searchOpen ? open() : close()
+		if (!searchOpen)
+			return close()
+
+		word.value = window.getSelection()?.toString().trim() || word.value
+		open()
 	})
 
 	return {

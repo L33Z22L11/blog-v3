@@ -1,21 +1,20 @@
 <script setup lang="ts">
 const layoutStore = useLayoutStore()
 const { asideWidgets } = storeToRefs(layoutStore)
-const show = computed(() => layoutStore.isOpen('aside'))
 
 const { widgets } = useWidgets(asideWidgets)
 </script>
 
 <template>
 <BlogMask
-	v-model:show="show"
+	v-model:show="layoutStore.open.aside"
 	class="widescreen-only"
 	@click="layoutStore.toggle('aside')"
 />
 
 <!-- 不能用 Transition 实现弹出收起动画，因为宽屏状态始终显示 -->
 <!-- 如果为空数组则隐藏 -->
-<aside v-if="asideWidgets?.length" id="blog-aside" :class="{ show }">
+<aside v-if="asideWidgets?.length" id="blog-aside" :class="{ show: layoutStore.open.aside }">
 	<TransitionGroup name="float-in">
 		<!-- 更换页面时相同 key 的组件不会更新 -->
 		<component :is="widget.comp" v-for="widget in widgets" :key="widget.name" />

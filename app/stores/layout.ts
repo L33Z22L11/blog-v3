@@ -36,8 +36,6 @@ export const useLayoutStore = defineStore('layout', () => {
 		translate.value[reason] = value
 	}
 
-	const isOpen = (key: LayoutSection) => open.value[key]
-
 	router.beforeEach(() => {
 		closeAll()
 	})
@@ -51,6 +49,5 @@ export const useLayoutStore = defineStore('layout', () => {
 		toggle,
 		setAside,
 		setTranslate,
-		isOpen,
 	}
 })

@@ -2,26 +2,25 @@
 const appConfig = useAppConfig()
 const layoutStore = useLayoutStore()
 const searchStore = useSearchStore()
-const show = computed(() => layoutStore.isOpen('sidebar'))
 
-const { word } = storeToRefs(searchStore)
+const selection = useTextSelection()
 </script>
 
 <template>
 <BlogMask
-	v-model:show="show"
+	v-model:show="layoutStore.open.sidebar"
 	class="mobile-only"
 	@click="layoutStore.toggle('sidebar')"
 />
 
 <!-- 不能用 Transition 实现弹出收起动画，因为半宽屏状态始终显示 -->
-<aside id="blog-sidebar" :class="{ show }">
+<aside id="blog-sidebar" :class="{ show: layoutStore.open.sidebar }">
 	<BlogHeader class="sidebar-header" to="/" />
 
 	<nav class="sidebar-nav scrollcheck-y">
 		<div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
 			<Icon name="ph:magnifying-glass-bold" />
-			<span class="nav-text">{{ word || '搜索' }}</span>
+			<span class="nav-text">{{ selection.text.value || searchStore.word || '搜索' }}</span>
 			<Key class="keycut" code="K" cmd prevent @press="layoutStore.toggle('search')" />
 		</div>
 
@@ -121,6 +120,9 @@ const { word } = storeToRefs(searchStore)
 
 	> .nav-text {
 		flex-grow: 1;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 
 	> .external-tip {
@@ -135,6 +137,7 @@ const { word } = storeToRefs(searchStore)
 	outline: 2px solid var(--c-border);
 	outline-offset: -2px;
 	cursor: text;
+	user-select: none;
 
 	&:hover {
 		opacity: 1;

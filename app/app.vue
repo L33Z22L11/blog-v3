@@ -24,12 +24,12 @@
 }
 
 #blog-sidebar, #blog-aside {
-	flex-shrink: 0;
+	flex: 0 0 280px; // 防止搜索框 grow
 	position: sticky;
 	top: 0;
-	width: 280px;
 	height: 100vh;
 	height: 100dvh;
+	min-width: 0; // 防止搜索框撑开页面
 	scrollbar-width: thin;
 
 	@media (max-width: $breakpoint-widescreen) {
