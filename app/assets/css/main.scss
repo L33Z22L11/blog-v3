@@ -5,6 +5,7 @@
 	--transform-end-far: translateX(100%);
 	--delay: 0.2s;
 	--z-index-popover: 100;
+	--text-black-shadow: 0 1px 1px #0003, 0 1px 2px #0003;
 
 	overflow-wrap: break-word;
 	background-color: var(--c-bg-1);
@@ -124,6 +125,7 @@ img {
 		font: bold 1.5rem/1.2 var(--font-serif);
 		text-align: center;
 		color: var(--c-bg-soft);
+		cursor: inherit;
 	}
 }
 

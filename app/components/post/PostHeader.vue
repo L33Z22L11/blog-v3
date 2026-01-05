@@ -88,14 +88,10 @@ const { copy, copied } = useCopy(shareText)
 
 	&.has-cover {
 		contain: paint; // overflow hidden + position relative
-		min-height: 256px;
-		max-height: 320px;
+		min-height: 16rem;
+		max-height: 20rem;
 		color: white;
 		transition: font-size 0.2s;
-
-		&:hover {
-			font-size: 0.8em;
-		}
 
 		.post-info {
 			filter: drop-shadow(0 1px 2px #000);
@@ -103,24 +99,10 @@ const { copy, copied } = useCopy(shareText)
 
 		.post-title {
 			background-image: linear-gradient(transparent, #0003, #0005);
-			text-shadow: 0 1px 1px #0003, 0 1px 2px #0003;
+			text-shadow: var(--text-black-shadow);
 
 			&.text-story {
 				text-align: center;
-			}
-		}
-
-		&.text-revert {
-			text-shadow: 0 0 2px #FFF, 0 1px 0.5em #FFF;
-			color: #333;
-
-			.post-info {
-				filter: drop-shadow(0 1px 2px #FFF);
-			}
-
-			.post-title {
-				background-image: linear-gradient(transparent, #FFF3, #FFF5);
-				text-shadow: 0 1px 1px #FFF3, 0 1px 2px #FFF3;
 			}
 		}
 	}
@@ -138,9 +120,12 @@ const { copy, copied } = useCopy(shareText)
 .post-cover {
 	position: absolute;
 	inset: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+
+	> :deep(img) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 }
 
 .post-title {
@@ -151,15 +136,8 @@ const { copy, copied } = useCopy(shareText)
 }
 
 .post-nav {
-	position: relative;
-	opacity: 0.9;
 	padding: 0.8em 1rem;
-
-	// 如果在父级设置字体尺寸，会影响祖先字体尺寸改变的行为
-	// 并且设置相对尺寸会导致过渡
-	>* {
-		font-size: 0.8rem;
-	}
+	font-size: 0.8em;
 
 	.post-info {
 		display: flex;

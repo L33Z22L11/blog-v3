@@ -166,6 +166,7 @@ useEventListener(carouselEl, 'wheel', (e) => {
 	>.stable-info, > .hover-info {
 		position: absolute;
 		text-align: center;
+		text-shadow: var(--text-black-shadow);
 		color: white;
 		transition: opacity 0.2s;
 	}
@@ -178,7 +179,6 @@ useEventListener(carouselEl, 'wheel', (e) => {
 		background-image: linear-gradient(transparent, #0003, #0005);
 		white-space: nowrap;
 		text-overflow: ellipsis;
-		text-shadow: 0 1px 1px #0003, 0 1px 2px #0003;
 	}
 
 	> .hover-info {
@@ -188,7 +188,6 @@ useEventListener(carouselEl, 'wheel', (e) => {
 		inset: 0;
 		padding: 1em;
 		backdrop-filter: brightness(0.8) saturate(10) contrast(0.8) blur(2em);
-		text-shadow: 0 1px 2px var(--ld-shadow);
 
 		> .title {
 			text-wrap: balance;

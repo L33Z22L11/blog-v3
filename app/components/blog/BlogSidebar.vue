@@ -3,7 +3,8 @@ const appConfig = useAppConfig()
 const layoutStore = useLayoutStore()
 const searchStore = useSearchStore()
 
-const selection = useTextSelection()
+const { text } = useTextSelection()
+const debouncedSelection = refDebounced(text)
 </script>
 
 <template>
@@ -20,7 +21,7 @@ const selection = useTextSelection()
 	<nav class="sidebar-nav scrollcheck-y">
 		<div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
 			<Icon name="ph:magnifying-glass-bold" />
-			<span class="nav-text">{{ selection.text.value || searchStore.word || '搜索' }}</span>
+			<span class="nav-text">{{ debouncedSelection || searchStore.word || '搜索' }}</span>
 			<Key class="keycut" code="K" cmd prevent @press="layoutStore.toggle('search')" />
 		</div>
 
