@@ -24,7 +24,8 @@ export default interface ArticleProps extends Partial<{
 	references: { title?: string, link?: string }[]
 
 	meta: {
-		coverRevert?: boolean
+		coverDim?: boolean
+		coverFilter?: string
 		hideInfo?: boolean
 		slots?: Record<string, MetaSlotsTree>
 	}

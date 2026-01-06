@@ -6,6 +6,7 @@ const props = defineProps<ArticleProps>()
 
 const appConfig = useAppConfig()
 
+const coverFilter = computed(() => props.meta?.coverFilter || (props.meta?.coverDim && 'brightness(0.75)') || undefined)
 const categoryLabel = computed(() => props.categories?.[0])
 const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 
@@ -18,8 +19,8 @@ const { copy, copied } = useCopy(shareText)
 
 <template>
 <!-- 💩夸克浏览器，桌面端只有IE不支持 :has() 了 -->
-<div class="post-header" :class="{ 'has-cover': image, 'text-revert': meta?.coverRevert }">
-	<NuxtImg v-if="image" class="post-cover" :src="image" :alt="title" />
+<div class="post-header" :class="{ 'has-cover': image }">
+	<Pic v-if="image" class="post-cover" :src="image" :alt="title" :filter="coverFilter" />
 	<div class="post-nav">
 		<div class="operations">
 			<ZButton
