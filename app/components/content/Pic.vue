@@ -1,12 +1,9 @@
 <script setup lang="ts">
+import type { UtilImgProps } from '../util/Img.vue'
 import { LazyPopoverLightbox } from '#components'
 
-const props = withDefaults(defineProps<{
-	src: string
-	mirror?: ImgService
+const props = withDefaults(defineProps<UtilImgProps & {
 	caption?: string
-	width?: string | number
-	height?: string | number
 	zoom?: boolean
 }>(), {
 	caption: '',
@@ -21,7 +18,7 @@ const popoverStore = usePopoverStore()
 const { open } = popoverStore.use(
 	() => h(LazyPopoverLightbox, {
 		el: picEl.value,
-		caption: props.caption,
+		caption: props.alt || props.caption,
 	}),
 	{ unique: true },
 )
@@ -34,7 +31,8 @@ const { open } = popoverStore.use(
 		ref="pic"
 		class="image"
 		:style="{ cursor: zoom && 'zoom-in' }"
-		:src :alt="caption" :width :height :mirror
+		:alt="caption || alt"
+		:src :width :height :mirror :filter
 		@click="zoom && open()"
 	/>
 	<figcaption v-if="caption" aria-hidden v-text="caption" />
