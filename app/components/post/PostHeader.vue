@@ -19,7 +19,7 @@ const { copy, copied } = useCopy(shareText)
 <template>
 <!-- 💩夸克浏览器，桌面端只有IE不支持 :has() 了 -->
 <div class="post-header" :class="{ 'has-cover': image, 'text-revert': meta?.coverRevert }">
-	<NuxtImg v-if="image" class="post-cover" :src="image" :alt="title" />
+	<pic v-if="image" class="post-cover" :src="image" />
 	<div class="post-nav">
 		<div class="operations">
 			<ZButton
