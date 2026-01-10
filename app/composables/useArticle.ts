@@ -1,5 +1,4 @@
-import type ArticleProps from '~/types/article'
-import type { ArticleOrderType } from '~/types/article'
+import type { ArticleOrderType, ArticleProps } from '~/types/article'
 import { alphabetical } from 'radash'
 
 /**

@@ -76,8 +76,9 @@ onMounted(() => {
 	<Tooltip
 		ref="popover"
 		v-bind="popoverBind"
-		:append-to="() => commentEl"
+		:append-to="() => commentEl!"
 		interactive
+		:aria="{ expanded: false }"
 		trigger="focusin"
 	>
 		<template #content>
@@ -137,6 +138,7 @@ onMounted(() => {
 	> .input {
 		min-width: 0;
 		padding: 0.3em 0.6em;
+		outline: none;
 	}
 
 	> button {

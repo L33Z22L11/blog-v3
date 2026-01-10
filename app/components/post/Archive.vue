@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type ArticleProps from '~/types/article'
+import type { ArticleProps } from '~/types/article'
 import { isSameYear } from 'date-fns'
 
 const props = defineProps<{

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type ArticleProps from '~/types/article'
+import type { ArticleProps } from '~/types/article'
 
 const route = useRoute()
 

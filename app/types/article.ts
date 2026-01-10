@@ -1,32 +1,16 @@
-import type { ReadTimeResults } from 'reading-time'
+import type { AppConfig } from 'nuxt/schema'
 import type { MetaSlotsTree } from 'rehype-meta-slots'
+import type { ArticleSchema } from '~~/content.config'
 
-// TODO 使用content类型，干掉这个文件
-const _appConfig = useAppConfig()
+export type ArticleOrderType = keyof AppConfig['article']['order']
 
-export type ArticleOrderType = keyof typeof _appConfig.article.order
-
-export default interface ArticleProps extends Partial<{
+export interface ArticleProps extends ArticleSchema {
 	path: string
-	readingTime: ReadTimeResults
 
-	title: string
-	description: string
-	link: string
-	date: string
-	updated: string
-	published: string
-	categories: string[]
-	tags: string[]
-	type: 'tech' | 'story'
-	image: string
-	recommend: number
-	references: { title?: string, link?: string }[]
-
-	meta: {
+	meta?: {
 		coverDim?: boolean
 		coverFilter?: string
 		hideInfo?: boolean
 		slots?: Record<string, MetaSlotsTree>
 	}
-}> { }
+}
