@@ -5,6 +5,7 @@ const archIcons = {
 	'Cloudflare': 'simple-icons:cloudflare',
 	'Deno Deploy': 'simple-icons:deno',
 	'EdgeOne': 'simple-icons:cloudnativebuild', // 不准确
+	'Express': 'simple-icons:express',
 	'GitHub Pages': 'simple-icons:github',
 	'Golang': 'simple-icons:go',
 	'Gridea': 'tabler:square-rounded-letter-g-filled', // 不准确
