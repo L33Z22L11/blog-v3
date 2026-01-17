@@ -40,7 +40,7 @@ const colorMode = useColorMode()
 		}
 
 		&.active {
-			box-shadow: 0.1em 0.2em 0.5rem var(--ld-shadow);
+			box-shadow: var(--box-shadow-2);
 			background-color: var(--ld-bg-card);
 			color: var(--c-text-1);
 			cursor: auto;

@@ -214,7 +214,7 @@ useEventListener('keydown', (e) => {
 	margin-inline: auto;
 	border: 1px solid #0003;
 	border-radius: 0.5em;
-	box-shadow: 0 0.2em 0.5em var(--ld-shadow), 0 0.5em 1em var(--ld-shadow);
+	box-shadow: var(--box-shadow-2), var(--box-shadow-3);
 	background-color: #0007;
 	backdrop-filter: blur(1rem) saturate(2);
 	color: white;

@@ -9,7 +9,6 @@ const { widgets } = useWidgets(asideWidgets)
 <BlogMask
 	v-model:show="layoutStore.open.aside"
 	class="widescreen-only"
-	@click="layoutStore.toggle('aside')"
 />
 
 <!-- 不能用 Transition 实现弹出收起动画，因为宽屏状态始终显示 -->
@@ -42,7 +41,7 @@ const { widgets } = useWidgets(asideWidgets)
 		:deep(.blog-widget) {
 			padding: 0.5rem;
 			border-radius: 1rem;
-			box-shadow: 0 0 1rem var(--ld-shadow);
+			box-shadow: var(--box-shadow-1), var(--box-shadow-2);
 			background-color: var(--ld-bg-blur);
 			backdrop-filter: blur(0.5rem);
 		}

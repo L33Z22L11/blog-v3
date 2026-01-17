@@ -67,7 +67,7 @@ onUnmounted(() => {
 	margin: 1rem auto;
 	border: 1px solid var(--c-border);
 	border-radius: 0.5rem;
-	box-shadow: 0 0.1em 0.2em var(--ld-shadow);
+	box-shadow: var(--box-shadow-1);
 	background-color: var(--ld-bg-card);
 	transition: max-width 0.2s var(--max-bezier-to-full);
 	font-variant-numeric: tabular-nums;

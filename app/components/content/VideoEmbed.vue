@@ -112,7 +112,7 @@ onMounted(() => {
 .video {
 	contain: paint;
 	border-radius: 0.8rem;
-	box-shadow: 0 2px 0.5rem var(--ld-shadow);
+	box-shadow: var(--box-shadow-2);
 
 	article & {
 		margin: 2rem auto;

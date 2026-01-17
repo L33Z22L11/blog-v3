@@ -55,7 +55,7 @@ useEventListener('keydown', (e) => {
 	}
 
 	&.has-active {
-		box-shadow: 0 0 0.5rem var(--ld-shadow);
+		box-shadow: var(--box-shadow-1), var(--box-shadow-3);
 	}
 }
 

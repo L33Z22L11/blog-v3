@@ -5,7 +5,10 @@
 	--transform-end-far: translateX(100%);
 	--delay: 0.2s;
 	--z-index-popover: 100;
-	--text-black-shadow: 0 1px 1px #0003, 0 1px 2px #0003;
+	--text-shadow-black: 0 0.1em 0.1em #0003, 0 0.1em 0.2em #0003;
+	--box-shadow-1: 0 0.1em 0.2em var(--ld-shadow);
+	--box-shadow-2: 0 0.2em 0.5em var(--ld-shadow);
+	--box-shadow-3: 0 0.5em 1em var(--ld-shadow);
 
 	overflow-wrap: break-word;
 	background-color: var(--c-bg-1);
@@ -132,7 +135,7 @@ img {
 .tippy-box {
 	padding: 0.3em 0.6em;
 	border-radius: 0.5em;
-	box-shadow: 0 0 1rem var(--ld-shadow);
+	box-shadow: var(--box-shadow-3);
 	background-color: var(--ld-bg-card);
 	font-size: 0.8rem;
 	line-height: 1.4;

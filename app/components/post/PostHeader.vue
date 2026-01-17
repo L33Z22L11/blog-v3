@@ -99,7 +99,7 @@ const { copy, copied } = useCopy(shareText)
 
 		.post-title {
 			background-image: linear-gradient(transparent, #0003, #0005);
-			text-shadow: var(--text-black-shadow);
+			text-shadow: var(--text-shadow-black);
 
 			&.text-story {
 				text-align: center;

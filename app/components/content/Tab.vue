@@ -82,7 +82,7 @@ button {
 	}
 
 	&.active {
-		box-shadow: 0 1px 0.5em var(--ld-shadow);
+		box-shadow: var(--box-shadow-1), var(--box-shadow-1);
 		background-color: var(--ld-bg-card);
 		color: var(--c-text);
 

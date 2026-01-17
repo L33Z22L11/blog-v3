@@ -166,7 +166,7 @@ useEventListener(carouselEl, 'wheel', (e) => {
 	>.stable-info, > .hover-info {
 		position: absolute;
 		text-align: center;
-		text-shadow: var(--text-black-shadow);
+		text-shadow: var(--text-shadow-black);
 		color: white;
 		transition: opacity 0.2s;
 	}

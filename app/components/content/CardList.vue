@@ -24,7 +24,7 @@
 		>li {
 			padding: 0.5em 0.8em;
 			border-radius: 0.5em;
-			box-shadow: 0 2px 4px var(--ld-shadow);
+			box-shadow: var(--box-shadow-2);
 			background-color: var(--ld-bg-card);
 		}
 	}

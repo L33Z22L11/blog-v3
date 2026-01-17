@@ -63,7 +63,7 @@ const appConfig = useAppConfig()
 	&.circle {
 		width: 3em;
 		border-radius: 50%;
-		box-shadow: 2px 4px 1rem var(--ld-shadow);
+		box-shadow: var(--box-shadow-1), var(--box-shadow-3);
 	}
 }
 

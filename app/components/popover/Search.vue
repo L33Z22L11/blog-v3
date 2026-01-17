@@ -158,7 +158,7 @@ function openActiveItem() {
 	margin: auto;
 	border: 1px solid var(--c-primary);
 	border-radius: 1em;
-	box-shadow: 0 0.5em 1em var(--ld-shadow);
+	box-shadow: var(--box-shadow-2), var(--box-shadow-3);
 	outline: 0.2em solid var(--c-primary-soft);
 	background-color: var(--ld-bg-card);
 	transition: all var(--delay);

@@ -11,7 +11,6 @@ const debouncedSelection = refDebounced(text)
 <BlogMask
 	v-model:show="layoutStore.open.sidebar"
 	class="mobile-only"
-	@click="layoutStore.toggle('sidebar')"
 />
 
 <!-- 不能用 Transition 实现弹出收起动画，因为半宽屏状态始终显示 -->
@@ -72,7 +71,7 @@ const debouncedSelection = refDebounced(text)
 		z-index: var(--z-index-popover);
 
 		&.show {
-			box-shadow: 0 0 1rem var(--ld-shadow);
+			box-shadow: var(--box-shadow-1), var(--box-shadow-3);
 			transform: none;
 		}
 	}
