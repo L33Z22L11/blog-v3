@@ -1,9 +1,9 @@
 {
   "name": "clarity",
   "type": "module",
-  "version": "3.6.0",
+  "version": "3.6.1",
   "private": true,
-  "packageManager": "pnpm@10.27.0",
+  "packageManager": "pnpm@10.28.1",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "engines": {
     "node": ">=22.15 <25",

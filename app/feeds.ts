@@ -1130,6 +1130,18 @@ export default [
 				date: '2026-01-06',
 				comment: '捣鼓了不少东西的前端程序员。',
 			},
+			{
+				author: 'Viki',
+				title: 'Viki 写东西的地方',
+				desc: '生活需要记录。',
+				link: 'https://blog.viki.moe/',
+				feed: 'https://blog.viki.moe/rss',
+				icon: 'https://blog.viki.moe/favicon.ico',
+				avatar: 'https://blog.viki.moe/avatar.png',
+				archs: ['Next.js', 'Vercel'],
+				date: '2026-01-19',
+				comment: '博客与前端知识分享。',
+			},
 		],
 	},
 	/* ========从此处新增友链======== */
