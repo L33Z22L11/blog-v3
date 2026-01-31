@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getShikiOptions } from '~/shiki.config'
+
 const props = defineProps<{
 	language?: string
 	code: string
@@ -15,7 +17,7 @@ onMounted(async () => {
 
 	rawHtml.value = shiki.codeToHtml(
 		props.code,
-		shikiStore.getOptions(props.language, ['ignoreColorizedBrackets']),
+		getShikiOptions(props.language, ['ignoreColorizedBrackets']),
 	)
 })
 </script>

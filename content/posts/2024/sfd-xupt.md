@@ -237,7 +237,7 @@ link: https://www.criwits.top/missing/
 
 全世界最大的代码托管平台的称号当属于 GitHub。它 :tip[UGC]{tip="用户生产内容"} 的特性一方面促进了各类项目的百花齐放，另一方面又使得我们访问这个平台会遇到一些困难——不过不用担心，还是有*相对 Free* 的方法来访问这个平台。
 
-#### 瓦特工具箱 / Watt Tookit（Steam++）
+#### 瓦特工具箱 / Watt Toolkit（Steam++）
 
 > Watt Toolkit 是由江苏蒸汽凡星科技有限公司开发与维护的 (GNU) 自由开源软件，采用 GPL v3 开源协议同时发布于 Github 及 Gitee。
 
@@ -472,7 +472,7 @@ Updating 'frp' (0.59.0 -> 0.60.0)
 在搜索引擎输入“VMware”，跳出的联想词就有“激活密钥”相关字样。与其用破解版，为何不试试免费开源的 VirtualBox？
 ::
 
-如果你对虚拟机没有特殊要求，VitualBox 是最适合新手的选择之一。
+如果你对虚拟机没有特殊要求，VirtualBox 是最适合新手的选择之一。
 
 ### 性能监控：Traffic Monitor
 

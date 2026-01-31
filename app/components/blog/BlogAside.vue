@@ -7,13 +7,14 @@ const { widgets } = useWidgets(asideWidgets)
 
 <template>
 <BlogMask
-	v-model:show="layoutStore.open.aside"
+	:show="layoutStore.state === 'aside'"
 	class="widescreen-only"
+	@click="layoutStore.close()"
 />
 
 <!-- 不能用 Transition 实现弹出收起动画，因为宽屏状态始终显示 -->
 <!-- 如果为空数组则隐藏 -->
-<aside v-if="asideWidgets?.length" id="blog-aside" :class="{ show: layoutStore.open.aside }">
+<aside v-if="asideWidgets?.length" id="blog-aside" :class="{ show: layoutStore.state === 'aside' }">
 	<TransitionGroup name="float-in">
 		<!-- 更换页面时相同 key 的组件不会更新 -->
 		<component :is="widget.comp" v-for="widget in widgets" :key="widget.name" />
@@ -50,5 +51,9 @@ const { widgets } = useWidgets(asideWidgets)
 			transform: none;
 		}
 	}
+}
+
+.float-in-leave-active {
+	position: absolute;
 }
 </style>

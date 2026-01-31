@@ -1,20 +1,33 @@
 import { LazyPopoverSearch } from '#components'
 
 export const useSearchStore = defineStore('search', () => {
+	// 搜索框应和侧边栏状态联动
 	const layoutStore = useLayoutStore()
-	const popoverStore = usePopoverStore()
+	const modalStore = useModalStore()
 
 	const word = ref('')
 	const debouncedWord = refDebounced(word)
 
-	const { open, close } = popoverStore.use(() => h(LazyPopoverSearch))
+	const {
+		open: _open,
+		close: _close,
+	} = modalStore.use(() => h(LazyPopoverSearch, {
+		onClose: () => {
+			_close()
+			layoutStore.close()
+		},
+	}), {
+		unique: true,
+		duration: 200,
+	})
 
-	watch(() => layoutStore.open.search, (searchOpen) => {
-		if (!searchOpen)
-			return close()
+	// 从外部调用时应该操作 layoutStore
+	watch(() => layoutStore.state, (state) => {
+		if (state !== 'search')
+			return _close()
 
 		word.value = window.getSelection()?.toString().trim() || word.value
-		open()
+		_open()
 	})
 
 	return {

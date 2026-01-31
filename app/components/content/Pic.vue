@@ -13,9 +13,9 @@ const props = withDefaults(defineProps<UtilImgProps & {
 const pic = ref()
 const picEl = useCurrentElement<HTMLImageElement>(pic)
 
-const popoverStore = usePopoverStore()
+const modalStore = useModalStore()
 
-const { open } = popoverStore.use(
+const { open } = modalStore.use(
 	() => h(LazyPopoverLightbox, {
 		el: picEl.value,
 		caption: props.alt || props.caption,

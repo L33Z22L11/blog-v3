@@ -2,10 +2,13 @@
 import MiniSearch from 'minisearch'
 
 const props = defineProps<{
-	show?: boolean
+	open?: boolean
 }>()
 
-const layoutStore = useLayoutStore()
+defineEmits<{
+	close: []
+}>()
+
 const appConfig = useAppConfig()
 const segmenter = Intl.Segmenter && new Intl.Segmenter(appConfig.language, { granularity: 'word' })
 
@@ -46,7 +49,7 @@ const listResult = useTemplateRef('list-result')
 const activeIndex = ref(0)
 const activeItem = computed(() => listResult.value?.children[activeIndex.value] as HTMLElement | undefined)
 
-watch(() => props.show, focusInput)
+watch(() => props.open, focusInput)
 
 watch(status, (newStatus) => {
 	if (newStatus === 'success' && data.value) {
@@ -87,14 +90,8 @@ function openActiveItem() {
 </script>
 
 <template>
-<BlogMask
-	:show
-	blur
-	@click="layoutStore.toggle('search')"
-/>
-
-<Transition name="float-in">
-	<div v-if="show" class="blog-search">
+<Transition name="float-in" @keydown.k.stop.prevent="$emit('close')">
+	<div v-if="open" class="blog-search">
 		<form class="input" @submit.prevent>
 			<Icon :name="status === 'pending' ? 'line-md:loading-alt-loop' : 'ph:magnifying-glass-bold'" />
 
@@ -137,7 +134,7 @@ function openActiveItem() {
 				切换&emsp;
 				<Key code="Enter" icon @press="openActiveItem" />
 				选择&emsp;
-				<Key code="Escape" :icon="false" @press="layoutStore.toggle('search')" />
+				<Key code="Escape" :icon="false" @press="$emit('close')" />
 				关闭
 			</div>
 		</TransitionGroup>
@@ -161,8 +158,6 @@ function openActiveItem() {
 	box-shadow: var(--box-shadow-2), var(--box-shadow-3);
 	outline: 0.2em solid var(--c-primary-soft);
 	background-color: var(--ld-bg-card);
-	transition: all var(--delay);
-	z-index: var(--z-index-popover);
 }
 
 .input {

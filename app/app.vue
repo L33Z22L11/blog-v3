@@ -11,7 +11,7 @@
 	<BlogAside />
 </div>
 <BlogPanel />
-<BlogPopover />
+<BikariyaModals />
 </template>
 
 <!-- eslint-disable-next-line vue/enforce-style-attribute -->

@@ -1,24 +1,23 @@
 <script setup lang="ts">
-const layoutStore = useLayoutStore()
-const { asideWidgets, isAnyOpen, translate } = storeToRefs(layoutStore)
+import type { CSSProperties } from 'vue'
 
-const panelTranslateStyle = computed(() => ({
+const layoutStore = useLayoutStore()
+const { asideWidgets, panelTranslate: translate } = storeToRefs(layoutStore)
+
+const panelTranslateStyle = computed<CSSProperties>(() => ({
 	transform: Object.values(translate.value).map(v => v ? `translate(${v})` : '').join(' '),
 }))
-
-useEventListener('keydown', (e) => {
-	if (isAnyOpen.value && e.key === 'Escape') {
-		e.preventDefault()
-		layoutStore.closeAll()
-	}
-})
 </script>
 
 <template>
-<div id="blog-panel" :class="{ 'has-active': layoutStore.isAnyOpen }" :style="panelTranslateStyle">
+<div
+	id="blog-panel"
+	:class="{ 'has-active': layoutStore.state !== 'none' }"
+	:style="panelTranslateStyle"
+>
 	<button
 		class="toggle-sidebar mobile-only"
-		:class="{ active: layoutStore.open.sidebar }"
+		:class="{ active: layoutStore.state === 'sidebar' }"
 		aria-label="切换菜单"
 		@click="layoutStore.toggle('sidebar')"
 	>
@@ -28,7 +27,7 @@ useEventListener('keydown', (e) => {
 	<button
 		v-if="asideWidgets.length"
 		class="toggle-aside widescreen-only"
-		:class="{ active: layoutStore.open.aside }"
+		:class="{ active: layoutStore.state === 'aside' }"
 		aria-label="切换侧边栏"
 		@click="layoutStore.toggle('aside')"
 	>

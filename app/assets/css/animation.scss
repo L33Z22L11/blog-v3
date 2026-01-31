@@ -18,11 +18,7 @@
 
 .float-in-enter-active,
 .float-in-leave-active {
-	transition: all 0.2s !important;
-}
-
-.float-in-leave-active {
-	position: absolute !important;
+	transition: all var(--delay) !important;
 }
 
 .float-in-enter-from,
@@ -32,7 +28,7 @@
 }
 
 .float-in-move {
-	transition: transform 0.2s !important;
+	transition: transform var(--delay) !important;
 }
 
 .collapse-enter-active,

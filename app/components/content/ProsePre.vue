@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getShikiOptions } from '~/shiki.config'
+
 const props = withDefaults(defineProps<{
 	code?: string
 	language?: string
@@ -72,7 +74,7 @@ onMounted(async () => {
 
 	rawHtml.value = shiki.codeToHtml(
 		props.code.trimEnd(),
-		shikiStore.getOptions(
+		getShikiOptions(
 			props.language,
 			[compConf.value.enableIndentGuide ? 'ignoreRenderWhitespace' : 'ignoreRenderIndentGuides'],
 			{ meta: { indent: getIndent() } },

@@ -1,30 +1,20 @@
-const defaultState = {
-	sidebar: false,
-	aside: false,
-	search: false,
-}
+export type LayoutState = 'none' | 'sidebar' | 'aside' | 'search' | 'lightbox'
 
-type LayoutSection = keyof typeof defaultState
+export type PanelTranslateSource = 'pagination'
 
 export const useLayoutStore = defineStore('layout', () => {
 	const router = useRouter()
 
-	const open = ref({ ...defaultState })
-	const isAnyOpen = computed(() => Object.values(open.value).some(Boolean))
-	const translate = ref<Record<string, string>>({})
-
+	const state = ref<LayoutState>('none')
+	const panelTranslate = ref<Partial<Record<PanelTranslateSource, string>>>({})
 	const asideWidgets = ref<WidgetName[]>([])
 
-	const closeAll = () => {
-		Object.keys(open.value).forEach((key) => {
-			open.value[key as LayoutSection] = false
-		})
-	}
+	const close = () => state.value = 'none'
 
-	const toggle = (key: LayoutSection) => {
-		const isActive = open.value[key]
-		closeAll()
-		open.value[key] = !isActive
+	const toggle = (key: LayoutState) => {
+		if (state.value === key)
+			return close()
+		state.value = key
 	}
 
 	const setAside = (widgets?: WidgetName[]) => {
@@ -32,20 +22,26 @@ export const useLayoutStore = defineStore('layout', () => {
 			asideWidgets.value = widgets
 	}
 
-	const setTranslate = (reason: string, value: string) => {
-		translate.value[reason] = value
+	const setTranslate = (reason: PanelTranslateSource, value: string) => {
+		panelTranslate.value[reason] = value
 	}
 
+	useEventListener('keydown', (e) => {
+		if (state.value !== 'none' && e.key === 'Escape') {
+			e.preventDefault()
+			close()
+		}
+	})
+
 	router.beforeEach(() => {
-		closeAll()
+		close()
 	})
 
 	return {
-		open,
-		isAnyOpen,
+		state,
 		asideWidgets,
-		translate,
-		closeAll,
+		panelTranslate,
+		close,
 		toggle,
 		setAside,
 		setTranslate,

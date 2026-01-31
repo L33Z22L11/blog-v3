@@ -132,6 +132,23 @@ img {
 	}
 }
 
+.bikariya-overlay {
+	position: fixed;
+	inset: 0;
+	background-color: #0003;
+	backdrop-filter: blur(4px);
+
+	&.v-enter-from,
+	&.v-leave-to {
+		opacity: 0;
+	}
+
+	&.v-enter-active,
+	&.v-leave-active {
+		transition: all var(--delay);
+	}
+}
+
 .tippy-box {
 	padding: 0.3em 0.6em;
 	border-radius: 0.5em;

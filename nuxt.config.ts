@@ -124,6 +124,9 @@ export default defineNuxtConfig({
 
 	// @keep-sorted
 	modules: [
+		'@bikariya/image-viewer',
+		'@bikariya/modals',
+		'@bikariya/shiki',
 		'@nuxt/a11y',
 		'@nuxt/content',
 		'@nuxt/hints',
