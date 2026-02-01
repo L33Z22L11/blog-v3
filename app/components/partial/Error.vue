@@ -19,6 +19,10 @@ withDefaults(defineProps<{
 	<Icon class="error-icon" :name="icon" />
 	<div class="error-title" v-html="title" />
 
+	<div class="operation">
+		<slot name="operation" />
+	</div>
+
 	<ProsePre
 		v-if="code"
 		:filename="message"

@@ -13,8 +13,6 @@ const errorStack = removeHtmlTags(props.error?.stack)
 onMounted(() => {
 	console.error(errorStack)
 })
-
-const handleError = () => clearError({ redirect: '/' })
 </script>
 
 <template>
@@ -30,17 +28,22 @@ const handleError = () => clearError({ redirect: '/' })
 				:message="error?.url"
 				:title="`[${error?.statusCode}] ${error?.message}`"
 			>
-				<ZButton @click="handleError">
-					返回主页
-				</ZButton>
+				<template #operation>
+					<ZButton @click="clearError({ redirect: '/' })">
+						返回主页
+					</ZButton>
+					<ZButton @click="clearError()">
+						尝试忽略
+					</ZButton>
+				</template>
 			</ZError>
 		</div>
 		<BlogFooter />
 	</main>
-	<BlogAside v-if="!$route.meta.hideAside" />
+	<BlogAside />
 </div>
 <BlogPanel />
-<BlogPopover />
+<BikariyaModals />
 </template>
 
 <style lang="scss" scoped>

@@ -34,7 +34,7 @@ const tip = computed(() => {
 
 <template>
 <UtilLink v-tip="tip" class="badge" :class="{ round }" :to="link">
-	<NuxtImg v-if="img" class="badge-icon" :src="img" :alt="img" />
+	<NuxtImg v-if="img" class="badge-icon" :src="img" alt="" />
 	<span class="badge-text">
 		<slot>{{ text }}</slot>
 	</span>
