@@ -1,0 +1,24 @@
+{
+  "name": "remark-mermaid",
+  "type": "module",
+  "version": "0.0.1",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown --exports",
+    "dev": "tsdown --exports --watch"
+  },
+  "devDependencies": {
+    "@zinkawaii/tsconfig": "catalog:framework",
+    "tsdown": "catalog:framework",
+    "typescript": "catalog:framework"
+  }
+}
