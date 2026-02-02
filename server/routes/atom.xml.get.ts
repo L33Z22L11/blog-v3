@@ -1,9 +1,10 @@
 import type { ContentCollectionItem } from '@nuxt/content'
-import { toDate } from 'date-fns-tz'
 import { XMLBuilder } from 'fast-xml-parser'
 import { pascal } from 'radash'
+import { Temporal } from 'temporal-polyfill'
 import blogConfig from '~~/blog.config'
 import packageJson from '~~/package.json'
+import { toZonedTemporal } from '~~/shared/utils/time'
 
 const runtimeConfig = useRuntimeConfig()
 
@@ -16,8 +17,9 @@ const builder = new XMLBuilder({
 })
 
 function formatIsoDate(date?: string) {
-	const datetime = toDate(date || '', { timeZone: blogConfig.timezone })
-	return Number.isNaN(datetime.getTime()) ? datetime.toString() : datetime.toISOString()
+	if (!date)
+		return
+	return toZonedTemporal(date).toInstant().toString()
 }
 
 function getUrl(path: string | undefined) {
@@ -77,7 +79,7 @@ export default defineEventHandler(async (event) => {
 		},
 		icon: blogConfig.favicon,
 		logo: blogConfig.author.avatar, // Ratio should be 2:1
-		rights: `© ${new Date().getFullYear()} ${blogConfig.author.name}`,
+		rights: `© ${Temporal.Now.plainDateISO().year.toString()} ${blogConfig.author.name}`,
 		subtitle: blogConfig.subtitle || blogConfig.description,
 		entry: entries,
 	}

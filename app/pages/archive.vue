@@ -18,7 +18,7 @@ const { category, categories, listCategorized } = useCategory(listSorted)
 const listGrouped = computed(() => {
 	const groupList = Object.entries(group(
 		listCategorized.value,
-		article => new Date(article[sortOrder.value] || 0).getFullYear(),
+		article => article[sortOrder.value] ? toZonedTemporal(article[sortOrder.value] as string).year.toString() : '',
 	))
 	return isAscending.value ? groupList : groupList.reverse()
 })

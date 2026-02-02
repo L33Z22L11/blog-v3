@@ -3,6 +3,7 @@
 import fs from 'node:fs'
 import process from 'node:process'
 import { intro, log, outro, spinner, text } from '@clack/prompts'
+import { Temporal } from 'temporal-polyfill'
 
 intro('初始化博客：删除原有文章、配置')
 
@@ -21,7 +22,7 @@ s.start('正在处理文章、配置文件...')
 // 清空 content 目录并新建示例文章
 const PATH_LINK_MD = './content/link.md'
 const PATH_EXAMPLE_MD = './content/previews/example.md'
-const PATH_NEW_MD = `./content/posts/${new Date().getFullYear()}`
+const PATH_NEW_MD = `./content/posts/${Temporal.Now.plainDateISO().year.toString()}`
 const linkMdContent = fs.readFileSync(PATH_LINK_MD, 'utf8')
 if (!fs.existsSync(PATH_EXAMPLE_MD)) {
 	s.stop('示例文章不存在')

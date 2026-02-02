@@ -3,6 +3,7 @@
 import type { FeedEntry } from '../../app/types/feed'
 import process from 'node:process'
 import { cancel, intro, isCancel, outro, select, text } from '@clack/prompts'
+import { Temporal } from 'temporal-polyfill'
 import { entries, getLinkInfo } from './utils'
 
 function displayName(e: FeedEntry): string {
@@ -36,7 +37,7 @@ if (query?.startsWith('http')) {
 		link: query,
 		icon: query,
 		avatar: query,
-		date: new Date().toLocaleString('en-CA'),
+		date: Temporal.Now.zonedDateTimeISO().toLocaleString('sv'),
 	})
 }
 

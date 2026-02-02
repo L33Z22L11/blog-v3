@@ -6,6 +6,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { intro, outro, spinner } from '@clack/prompts'
 import pLimit from 'p-limit'
+import { Temporal } from 'temporal-polyfill'
 import { entries, getLinkInfo, tableToString, toCsv } from './utils'
 
 intro('🌐 批量检测友链 Server + 域名/IP 证书')
@@ -27,7 +28,7 @@ const results = await Promise.all(entries.map(e => limit(async () => {
 s.stop('✅ 检测完成，开始生成日志')
 
 fs.mkdirSync(path.resolve('logs'), { recursive: true })
-const logFile = `logs/feeds-check-${new Date().getTime()}`
+const logFile = `logs/feeds-check-${Temporal.Now.plainDateISO().toLocaleString('sv').replaceAll(':', '-')}`
 
 const tableStr = tableToString(results, Object.keys(results[0]))
 const csvStr = toCsv(results, Object.keys(results[0]))

@@ -58,8 +58,6 @@ catalogs:
     '@vueuse/core': ^14.2.0
     '@vueuse/nuxt': ^14.2.0
     '@vueuse/router': ^14.2.0
-    date-fns: ^4.1.0
-    date-fns-tz: ^3.2.0
     fast-xml-parser: ^5.3.4
     minisearch: ^7.2.0
     nanoid: ^5.1.6
@@ -70,6 +68,7 @@ catalogs:
     rimraf: ^6.1.2
     site-config-stack: ^3.2.19
     strip-ansi: ^7.1.2
+    temporal-polyfill: ^0.3.0
     zfeed: ^0.2.4
 
 engineStrict: true

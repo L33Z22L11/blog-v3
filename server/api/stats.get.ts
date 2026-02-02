@@ -43,17 +43,19 @@ export default defineEventHandler(async (event) => {
 		stats.total.posts++
 		stats.total.words += post.readingTime.words
 
-		if (!post.date)
-			continue
-
 		// 年文章/年字数计数
-		const year = new Date(post.date).getFullYear()
-		if (!stats.annual[year]) {
-			stats.annual[year] = { posts: 0, words: 0 }
-		}
+		try {
+			const year = toZonedTemporal(post.date || '').year
+			if (!stats.annual[year]) {
+				stats.annual[year] = { posts: 0, words: 0 }
+			}
 
-		stats.annual[year].posts++
-		stats.annual[year].words += post.readingTime.words
+			stats.annual[year].posts++
+			stats.annual[year].words += post.readingTime.words
+		}
+		catch (e) {
+			console.warn(`${post.path} date ${post.date ? '格式错误' : '为空'}: ${e}`)
+		}
 
 		// 分类文章计数
 		const categories = post.categories || []

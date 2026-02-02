@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Temporal } from 'temporal-polyfill'
+
 const props = defineProps<{
 	datetime?: string
 	rotate?: boolean
@@ -7,15 +9,15 @@ const props = defineProps<{
 const emojiStatic = ['🕛', '🕧', '🕐', '🕜', '🕑', '🕝', '🕒', '🕞', '🕓', '🕟', '🕔', '🕠', '🕕', '🕡', '🕖', '🕢', '🕗', '🕣', '🕘', '🕤', '🕙', '🕥', '🕚', '🕦']
 const emojiRotate = ['🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚']
 
-const now = ref(new Date())
+const now = ref(Temporal.Now.zonedDateTimeISO())
 
 const datetime = computed(() => props.datetime
-	? toZonedDate(props.datetime)
+	? toZonedTemporal(props.datetime)
 	: now.value)
 
 const status = computed(() => {
-	const hour = datetime.value.getHours()
-	const minute = datetime.value.getMinutes()
+	const hour = datetime.value.hour
+	const minute = datetime.value.minute
 
 	if (!props.rotate) {
 		const emojiIndex = (hour * 2 + Math.round(minute / 30)) % emojiStatic.length
@@ -28,7 +30,7 @@ const status = computed(() => {
 })
 
 const { pause, resume } = useIntervalFn(() => {
-	now.value = new Date()
+	now.value = Temporal.Now.zonedDateTimeISO()
 }, 30000)
 
 watchImmediate(

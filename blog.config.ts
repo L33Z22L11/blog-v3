@@ -19,7 +19,7 @@ const basicConfig = {
 	favicon: 'https://www.zhilu.site/api/icon.png',
 	language: 'zh-CN',
 	timeEstablished: '2019-07-19',
-	timezone: 'Asia/Shanghai',
+	timeZone: 'Asia/Shanghai',
 	url: 'https://blog.zhilu.site/',
 	defaultCategory: '未分类',
 }

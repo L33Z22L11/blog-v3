@@ -6,6 +6,7 @@ import path from 'node:path'
 import process from 'node:process'
 import { intro, log, outro, select, spinner, text } from '@clack/prompts'
 import { customAlphabet } from 'nanoid'
+import { Temporal } from 'temporal-polyfill'
 import blogConfig from '../blog.config.ts'
 
 function normalize(val: string | symbol | undefined): string | undefined {
@@ -15,10 +16,10 @@ function normalize(val: string | symbol | undefined): string | undefined {
 // #region 读参
 let fileName: string | undefined = process.argv[2]
 const usePermalink = blogConfig.article.useRandomPremalink
-const now = new Date()
-const dateStr = now.toLocaleString('zh-CN', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).replaceAll('/', '-')
+const now = Temporal.Now.plainDateTimeISO()
+const dateStr = now.toLocaleString('sv')
 
-const dir = path.join('content', 'posts', now.getFullYear().toString())
+const dir = path.join('content', 'posts', now.year.toString())
 
 if (!fs.existsSync(dir))
 	fs.mkdirSync(dir, { recursive: true })
@@ -41,8 +42,8 @@ do {
 
 	fileName = normalize(await text({
 		message: `请输入文件名（将创建在 ${dir} 下）`,
-		placeholder: `monthly-${now.getMonth() + 1}`,
-		validate: val => val.trim() === '' ? '文件名不能为空' : undefined,
+		placeholder: `monthly-${now.month}`,
+		validate: val => val?.trim() === '' ? '文件名不能为空' : undefined,
 	}))
 	if (!fileName)
 		process.exit(0)
@@ -63,8 +64,8 @@ do {
 
 	title = normalize(await text({
 		message: '请输入博客标题',
-		placeholder: `${now.getMonth() + 1}月生活`,
-		validate: val => val.trim() === '' ? '标题不能为空' : undefined,
+		placeholder: `${now.month}月生活`,
+		validate: val => val?.trim() === '' ? '标题不能为空' : undefined,
 	}))
 	if (!title)
 		process.exit(0)
@@ -104,7 +105,7 @@ if (!category)
 if (category === '自定义') {
 	const customCategory = normalize(await text({
 		message: '请输入自定义分类',
-		validate: val => val.trim() === '' ? '分类不能为空' : undefined,
+		validate: val => val?.trim() === '' ? '分类不能为空' : undefined,
 	}))
 	if (!customCategory)
 		process.exit(0)
@@ -135,7 +136,7 @@ if (!type)
 if (type === 'custom') {
 	const customType = normalize(await text({
 		message: '请输入自定义类型',
-		validate: val => val.trim() === '' ? '类型不能为空' : undefined,
+		validate: val => val?.trim() === '' ? '类型不能为空' : undefined,
 	}))
 	if (!customType)
 		process.exit(0)

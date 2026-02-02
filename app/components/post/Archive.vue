@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ArticleProps } from '~/types/article'
-import { isSameYear } from 'date-fns'
+import { Temporal } from 'temporal-polyfill'
 
 const props = defineProps<{
 	to?: string
@@ -12,13 +12,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 
 <template>
 <li class="article-item">
-	<NuxtTime
-		v-if="mainDate"
-		:datetime="mainDate"
-		:title="getLocaleDatetime(mainDate)"
-		month="2-digit"
-		day="2-digit"
-	/>
+	<UtilDate class="dim-hover" :date="mainDate" format="monthDay" />
 
 	<div class="gradient-card">
 		<UtilLink class="article-link scrollcheck-x" :to :title="description">
@@ -26,17 +20,14 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 				{{ title }}
 			</span>
 
-			<NuxtTime
+			<UtilDate
 				v-if="date && useUpdated && isTimeDiffSignificant(date, updated)"
-				class="info"
-				:datetime="date"
-				:title="getLocaleDatetime(date)"
-				:year="isSameYear(date, updated ?? 0) ? undefined : 'numeric'"
-				month="2-digit"
-				day="2-digit"
+				class="dim-hover info"
+				:date="date"
+				:format="updated && Temporal.PlainDate.from(date).year === Temporal.PlainDate.from(updated).year ? 'date' : 'monthDay'"
 			/>
 
-			<ul class="info tag-list">
+			<ul v-if="tags?.length" class="dim-hover info tag-list">
 				<li v-for="tag in tags" :key="tag" v-text="tag" />
 			</ul>
 		</UtilLink>
@@ -57,13 +48,16 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 		font-size: 0.9em;
 	}
 
-	time {
+	.dim-hover {
 		opacity: 0.4;
+		transition: opacity 0.2s;
+	}
+
+	:deep(time) {
 		font-variant-numeric: tabular-nums;
 	}
 
 	.info {
-		opacity: 0.4;
 		font-size: 0.8em;
 	}
 
@@ -73,7 +67,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 			color: var(--c-text);
 		}
 
-		> time, .info {
+		.dim-hover {
 			opacity: 1;
 		}
 	}

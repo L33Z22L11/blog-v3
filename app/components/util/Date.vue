@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { differenceInWeeks, isSameYear } from 'date-fns'
+import { Temporal } from 'temporal-polyfill'
 
 const props = withDefaults(defineProps<{
 	icon?: string
-	date: string
+	date?: string | Temporal.ZonedDateTime
+	format?: dateTimeFormatOptions
 	absolute?: boolean
 	relative?: boolean
 	nospace?: boolean
@@ -12,15 +13,26 @@ const props = withDefaults(defineProps<{
 	tipPrefix: '',
 })
 
-const datetime = computed(() => toZonedDate(props.date))
+const today = Temporal.Now.plainDateISO()
+const zdt = computed(() => {
+	try {
+		return typeof props.date === 'string' ? toZonedTemporal(props.date) : props.date
+	}
+	catch {
+		return null
+	}
+})
 
-const relative = computed(() => props.absolute
+const relative = computed(() => props.absolute || !zdt.value
 	? false
-	: props.relative || Math.abs(differenceInWeeks(Date.now(), datetime.value)) < 1,
+	: props.relative || today.since(zdt.value, { largestUnit: 'week' }).weeks < 1,
 )
 
 const mounted = ref(false)
-const tooltip = computed(() => mounted.value ? `${props.tipPrefix}${getLocaleDatetime(datetime.value)}` : undefined)
+const tooltip = computed(() => mounted.value && zdt.value
+	? `${props.tipPrefix}${toZdtLocaleString(zdt.value)}`
+	: undefined,
+)
 
 onMounted(() => mounted.value = true)
 </script>
@@ -30,16 +42,24 @@ onMounted(() => mounted.value = true)
 	<Icon v-if="icon" :name="icon" />
 	<template v-if="icon && !nospace">&nbsp;</template>
 
-	<span v-if="Number.isNaN(datetime.getTime())" v-text="datetime" />
+	<span v-if="!zdt">Invalid Date</span>
+
+	<time
+		v-else-if="format"
+		:datetime="toInstantString(zdt)"
+		v-text="toZdtLocaleString(zdt, format)"
+	/>
+
 	<!-- Invalid Date 传入 NuxtTime 组件或 .toISOString() 会报错 -->
 	<NuxtTime
 		v-else
-		:datetime
+		:datetime="toInstantString(zdt)"
 		:relative
-		:year="isSameYear(Date.now(), datetime) ? undefined : '2-digit'"
+		:year="zdt.year === today.year ? undefined : '2-digit'"
 		month="long"
 		day="numeric"
 		numeric="auto"
 	/>
+
 </span>
 </template>

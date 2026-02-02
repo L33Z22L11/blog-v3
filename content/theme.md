@@ -93,7 +93,6 @@ link: /2024/blog-using-nuxt
   - **评论数据库**：MongoDB
   - **包管理器**：pnpm
 - 工具库
-  - **日期处理**：date-fns
   - **轮播图**：Embla Carousel
   - **订阅源生成**：Fast XML Parser
   - **域名解析**：parse-domain
@@ -106,8 +105,9 @@ link: /2024/blog-using-nuxt
   - **SEO优化**：Nuxt SEO
   - **状态管理**：Pinia
   - **Vue 实用功能库**：VueUse
+  - **Nuxt 实用模块**：Bikariya
   - **代码质量**：ESLint + Stylelint
-  - **代码压缩**：oxc-minify
+  - **代码压缩**：Oxc Minify
 ::
 
 - 更多技术依赖可参考 [`pnpm-workspace.yaml`](https://github.com/L33Z22L11/blog-v3/blob/main/pnpm-workspace.yaml)。

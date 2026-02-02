@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue'
 import type { FeedEntry } from '~/types/feed'
+import { Temporal } from 'temporal-polyfill'
 
 const props = defineProps<FeedEntry>()
 
@@ -77,7 +78,7 @@ function getInspectStyle(src: string): CSSProperties {
 		</div>
 		<div class="desc-content">
 			<div class="date">
-				{{ toZonedDate(date).toLocaleDateString() }}
+				{{ Temporal.PlainDate.from(date).toLocaleString() }}
 			</div>
 
 			<p>{{ error ?? desc }}</p>
