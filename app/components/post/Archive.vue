@@ -85,8 +85,8 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 .article-cover {
 	position: absolute;
 	opacity: 0.8;
-	top: 0;
 	inset-inline-end: 0;
+	top: 0;
 	width: min(50%, 180px);
 	height: 100%;
 	margin: 0;

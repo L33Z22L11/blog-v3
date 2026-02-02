@@ -298,8 +298,8 @@ pre {
 }
 
 .toggle-icon {
-	transition: all 0.2s;
 	margin-inline-end: 0.2em;
+	transition: all 0.2s;
 
 	&.is-collapsed {
 		transform: rotate(180deg);

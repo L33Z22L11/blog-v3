@@ -132,6 +132,12 @@ img {
 	}
 }
 
+.katex-display {
+	overflow: auto hidden;
+	padding: 1px 0;
+	scrollbar-width: thin;
+}
+
 .bikariya-overlay {
 	position: fixed;
 	inset: 0;

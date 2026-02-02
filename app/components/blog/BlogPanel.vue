@@ -40,6 +40,7 @@ const panelTranslateStyle = computed<CSSProperties>(() => ({
 #blog-panel {
 	contain: paint;
 	position: fixed;
+	inset-inline-end: min(1rem, 5%);
 	bottom: min(2rem, 5%);
 	border-radius: 0.5rem;
 	background-color: var(--c-bg-a50);
@@ -47,7 +48,6 @@ const panelTranslateStyle = computed<CSSProperties>(() => ({
 	font-size: 1.4rem;
 	transition: transform 0.1s;
 	z-index: var(--z-index-popover);
-	inset-inline-end: min(1rem, 5%);
 
 	@media (max-height: $breakpoint-phone) {
 		display: flex;

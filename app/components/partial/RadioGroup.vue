@@ -68,10 +68,10 @@ const modelValue = defineModel<T>()
 	&:not(.active) + &:not(.active)::before {
 		content: "";
 		position: absolute;
+		inset-inline-start: -1px;
 		top: 25%;
 		bottom: 25%;
 		border-inline-start: 1px solid var(--c-bg-soft);
-		inset-inline-start: -1px;
 	}
 }
 </style>

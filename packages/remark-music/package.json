@@ -3,11 +3,9 @@
   "type": "module",
   "version": "0.2.1",
   "exports": {
-    ".": "./dist/index.js",
+    ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -15,6 +13,9 @@
   "scripts": {
     "build": "tsdown --exports",
     "dev": "tsdown --exports --watch"
+  },
+  "peerDependencies": {
+    "abcjs": "*"
   },
   "devDependencies": {
     "@zinkawaii/tsconfig": "catalog:framework",

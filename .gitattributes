@@ -1,3 +1,4 @@
-*                 text=auto      eol=lf
-*.md              diff=markdown  linguist-detectable
-pnpm-lock.yaml    -diff
+*               text=auto
+*.md            linguist-detectable
+pnpm-lock.yaml  -linguist-detectable
+app/feeds.ts    -linguist-detectable

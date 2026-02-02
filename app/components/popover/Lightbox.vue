@@ -45,6 +45,7 @@ defineEmits<{
 	display: flex;
 	align-items: center;
 	position: fixed;
+	inset-inline: 0;
 	bottom: clamp(2rem, 10vh, 5rem);
 	width: fit-content;
 	max-width: min(40rem, 80%);
@@ -56,7 +57,6 @@ defineEmits<{
 	backdrop-filter: blur(1rem) saturate(2);
 	color: white;
 	transition: all var(--delay);
-	inset-inline: 0;
 
 	&.v-enter-from,
 	&.v-leave-to {
