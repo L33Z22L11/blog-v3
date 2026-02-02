@@ -80,7 +80,8 @@ const yearlyWordCount = computed(() => {
 <style lang="scss" scoped>
 .archive {
 	margin: 1rem;
-	mask-image: linear-gradient(#FFF 50%, #FFF5);
+
+	// mask-image: linear-gradient(#FFF 50%, #FFF7);
 }
 
 .archive-group {
