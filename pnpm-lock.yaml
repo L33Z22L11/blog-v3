@@ -217,7 +217,7 @@ patchedDependencies:
     hash: 56851d6c1b4dd6fc387d2cd7e584f71d4da7066ca6177e1df1cdae8903dd72be
     path: patches/plain-shiki.patch
   playwright-core:
-    hash: 536916d63e09c7e81a767ed5a92946b4cd7ad6c8e45dd3dd1d96f28d2873f09c
+    hash: f0c3f09b98f7b77d52de4c97cb292498ef772922bf8f39baf979167710296863
     path: patches/playwright-core.patch
 
 importers:
@@ -12965,7 +12965,7 @@ snapshots:
       ohash: 2.0.11
       pathe: 2.0.3
       pkg-types: 2.3.0
-      playwright-core: 1.58.1(patch_hash=536916d63e09c7e81a767ed5a92946b4cd7ad6c8e45dd3dd1d96f28d2873f09c)
+      playwright-core: 1.58.1(patch_hash=f0c3f09b98f7b77d52de4c97cb292498ef772922bf8f39baf979167710296863)
       radix3: 1.1.2
       satori: 0.18.4
       satori-html: 0.3.2
@@ -13503,7 +13503,7 @@ snapshots:
     dependencies:
       shiki: 3.22.0
 
-  playwright-core@1.58.1(patch_hash=536916d63e09c7e81a767ed5a92946b4cd7ad6c8e45dd3dd1d96f28d2873f09c): {}
+  playwright-core@1.58.1(patch_hash=f0c3f09b98f7b77d52de4c97cb292498ef772922bf8f39baf979167710296863): {}
 
   pluralize@8.0.0: {}
 
