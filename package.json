@@ -1,12 +1,12 @@
 {
   "name": "clarity",
   "type": "module",
-  "version": "3.6.2",
+  "version": "3.6.3",
   "private": true,
   "packageManager": "pnpm@10.28.2",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "engines": {
-    "node": ">=22.15 <25",
+    "node": ">=22.15",
     "pnpm": ">=10"
   },
   "scripts": {
@@ -18,8 +18,8 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "bump": "pnpx taze -w && rimraf pnpm-lock.yaml && pnpm i",
-    "lint": "stylelint '**/*.{vue,scss}'",
+    "bump": "pnpx taze -w && rimraf pnpm-lock.yaml && pnpm update && pnpm dedupe",
+    "lint": "eslint && stylelint '**/*.{vue,scss}'",
     "lint:fix": "eslint --fix && stylelint '**/*.{vue,scss}' --fix",
     "init-project": "tsx scripts/init-project",
     "new": "tsx scripts/new-blog",
