@@ -21,6 +21,12 @@ catalogs:
     '@shikijs/transformers':
       specifier: ^3.22.0
       version: 3.22.0
+    '@types/hast':
+      specifier: ^3.0.4
+      version: 3.0.4
+    '@types/mdast':
+      specifier: ^4.0.4
+      version: 4.0.4
     abcjs:
       specifier: ^6.6.0
       version: 6.6.0
@@ -45,6 +51,12 @@ catalogs:
     shiki:
       specifier: ^3.22.0
       version: 3.22.0
+    unist-util-visit:
+      specifier: ^5.1.0
+      version: 5.1.0
+    vfile:
+      specifier: ^6.0.3
+      version: 6.0.3
   framework:
     '@zinkawaii/tsconfig':
       specifier: ^0.0.2
@@ -396,9 +408,15 @@ importers:
 
   packages/rehype-meta-slots:
     dependencies:
+      '@types/hast':
+        specifier: catalog:content
+        version: 3.0.4
       minimark:
         specifier: catalog:content
         version: 0.2.0
+      vfile:
+        specifier: catalog:content
+        version: 6.0.3
     devDependencies:
       '@zinkawaii/tsconfig':
         specifier: catalog:framework
@@ -412,9 +430,15 @@ importers:
 
   packages/remark-music:
     dependencies:
+      '@types/mdast':
+        specifier: catalog:content
+        version: 4.0.4
       abcjs:
         specifier: '*'
         version: 6.6.0
+      unist-util-visit:
+        specifier: catalog:content
+        version: 5.1.0
     devDependencies:
       '@zinkawaii/tsconfig':
         specifier: catalog:framework
