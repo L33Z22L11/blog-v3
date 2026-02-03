@@ -8,9 +8,6 @@ catalogs:
     '@nuxtjs/seo': ^3.4.0
     '@shikijs/colorized-brackets': ^3.22.0
     '@shikijs/transformers': ^3.22.0
-    '@types/hast': ^3.0.4
-    '@types/unist': ^3.0.3
-    '@types/vfile': ^4.0.0
     abcjs: ^6.6.0
     hast: ^1.0.0
     mdast: ^3.0.0
@@ -24,7 +21,6 @@ catalogs:
     shiki: ^3.22.0
     unist-util-visit: ^5.0.0
     vfile: ^6.0.3
-    vfile-message: ^4.0.2
   framework:
     '@zinkawaii/tsconfig': ^0.0.2
     ci-info: ^4.4.0

@@ -21,15 +21,6 @@ catalogs:
     '@shikijs/transformers':
       specifier: ^3.22.0
       version: 3.22.0
-    '@types/hast':
-      specifier: ^3.0.4
-      version: 3.0.4
-    '@types/unist':
-      specifier: ^3.0.3
-      version: 3.0.3
-    '@types/vfile':
-      specifier: ^4.0.0
-      version: 4.0.0
     abcjs:
       specifier: ^6.6.0
       version: 6.6.0
@@ -66,9 +57,6 @@ catalogs:
     vfile:
       specifier: ^6.0.3
       version: 6.0.3
-    vfile-message:
-      specifier: ^4.0.2
-      version: 4.0.3
   framework:
     '@zinkawaii/tsconfig':
       specifier: ^0.0.2
@@ -420,15 +408,6 @@ importers:
 
   packages/rehype-meta-slots:
     dependencies:
-      '@types/hast':
-        specifier: catalog:content
-        version: 3.0.4
-      '@types/unist':
-        specifier: catalog:content
-        version: 3.0.3
-      '@types/vfile':
-        specifier: catalog:content
-        version: 4.0.0
       hast:
         specifier: catalog:content
         version: 1.0.0
@@ -438,9 +417,6 @@ importers:
       vfile:
         specifier: catalog:content
         version: 6.0.3
-      vfile-message:
-        specifier: catalog:content
-        version: 4.0.3
     devDependencies:
       '@zinkawaii/tsconfig':
         specifier: catalog:framework
@@ -2922,10 +2898,6 @@ packages:
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
-
-  '@types/vfile@4.0.0':
-    resolution: {integrity: sha512-eleP0/Cz8uVWxARDLi3Axq2+fDdN4ibAXoC6Pv8p6s7znXaUL7XvhgeIhjCiNMnvlLNP+tmCLd+RuCryGgmtEg==}
-    deprecated: This is a stub types definition. vfile provides its own type definitions, so you do not need this installed.
 
   '@types/web-bluetooth@0.0.21':
     resolution: {integrity: sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==}
@@ -9866,10 +9838,6 @@ snapshots:
   '@types/unist@2.0.11': {}
 
   '@types/unist@3.0.3': {}
-
-  '@types/vfile@4.0.0':
-    dependencies:
-      vfile: 6.0.3
 
   '@types/web-bluetooth@0.0.21': {}
 
