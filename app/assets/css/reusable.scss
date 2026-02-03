@@ -39,6 +39,14 @@
 	}
 }
 
+.scrollbar-hidden {
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
 // 横向滚动遮罩
 // PURE CSS MAGIC!
 .scrollcheck-x, .scrollcheck-y {
