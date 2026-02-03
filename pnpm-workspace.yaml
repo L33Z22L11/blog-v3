@@ -19,6 +19,7 @@ catalogs:
     abcjs: ^6.7.0
     minimark: 0.2.0
     nuxt-llms: ^0.2.0
+    mermaid: ^11.14.0
     plain-shiki: ^0.3.2
     rehype-katex: ^7.0.1
     remark-math: ^6.0.0
