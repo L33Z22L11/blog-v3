@@ -169,6 +169,7 @@ export default defineNuxtConfig({
 				highlight: false,
 				// @keep-sorted
 				remarkPlugins: {
+					[pluginPath('remark-mermaid')]: {},
 					[pluginPath('remark-music')]: {},
 					'remark-math': {},
 					'remark-reading-time': {},
