@@ -15,7 +15,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 	<UtilDate class="dim-hover" :date="mainDate" format="monthDay" />
 
 	<div class="gradient-card">
-		<UtilLink class="article-link scrollcheck-x" :to :title="description">
+		<UtilLink class="article-link scrollbar-hidden scrollcheck-x" :to :title="description">
 			<span class="article-title">
 				{{ title }}
 			</span>
@@ -86,7 +86,6 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 	gap: 1em;
 	padding: 0.3em 0.6em;
 	white-space: nowrap;
-	scrollbar-width: none;
 
 	> .tag-list {
 		display: flex;

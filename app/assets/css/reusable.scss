@@ -119,6 +119,15 @@
 	}
 }
 
+// 需位于 scrollcheck-x, scrollcheck-y 之后
+.scrollbar-hidden {
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
 // 生成响应式可见性类
 $visibility-rules: (
 	only: min-width,

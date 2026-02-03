@@ -17,6 +17,10 @@
   "peerDependencies": {
     "abcjs": "*"
   },
+  "dependencies": {
+    "@types/mdast": "catalog:content",
+    "unist-util-visit": "catalog:content"
+  },
   "devDependencies": {
     "@zinkawaii/tsconfig": "catalog:framework",
     "tsdown": "catalog:framework",

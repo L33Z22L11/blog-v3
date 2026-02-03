@@ -21,6 +21,12 @@ catalogs:
     '@shikijs/transformers':
       specifier: ^3.22.0
       version: 3.22.0
+    '@types/hast':
+      specifier: ^3.0.4
+      version: 3.0.4
+    '@types/mdast':
+      specifier: ^4.0.4
+      version: 4.0.4
     abcjs:
       specifier: ^6.6.0
       version: 6.6.0
@@ -48,6 +54,12 @@ catalogs:
     shiki:
       specifier: ^3.22.0
       version: 3.22.0
+    unist-util-visit:
+      specifier: ^5.1.0
+      version: 5.1.0
+    vfile:
+      specifier: ^6.0.3
+      version: 6.0.3
   framework:
     '@zinkawaii/tsconfig':
       specifier: ^0.0.2
@@ -208,7 +220,7 @@ patchedDependencies:
     hash: 56851d6c1b4dd6fc387d2cd7e584f71d4da7066ca6177e1df1cdae8903dd72be
     path: patches/plain-shiki.patch
   playwright-core:
-    hash: 536916d63e09c7e81a767ed5a92946b4cd7ad6c8e45dd3dd1d96f28d2873f09c
+    hash: f0c3f09b98f7b77d52de4c97cb292498ef772922bf8f39baf979167710296863
     path: patches/playwright-core.patch
 
 importers:
@@ -405,9 +417,15 @@ importers:
 
   packages/rehype-meta-slots:
     dependencies:
+      '@types/hast':
+        specifier: catalog:content
+        version: 3.0.4
       minimark:
         specifier: catalog:content
         version: 0.2.0
+      vfile:
+        specifier: catalog:content
+        version: 6.0.3
     devDependencies:
       '@zinkawaii/tsconfig':
         specifier: catalog:framework
@@ -433,9 +451,15 @@ importers:
 
   packages/remark-music:
     dependencies:
+      '@types/mdast':
+        specifier: catalog:content
+        version: 4.0.4
       abcjs:
         specifier: '*'
         version: 6.6.0
+      unist-util-visit:
+        specifier: catalog:content
+        version: 5.1.0
     devDependencies:
       '@zinkawaii/tsconfig':
         specifier: catalog:framework
@@ -13773,7 +13797,7 @@ snapshots:
       ohash: 2.0.11
       pathe: 2.0.3
       pkg-types: 2.3.0
-      playwright-core: 1.58.1(patch_hash=536916d63e09c7e81a767ed5a92946b4cd7ad6c8e45dd3dd1d96f28d2873f09c)
+      playwright-core: 1.58.1(patch_hash=f0c3f09b98f7b77d52de4c97cb292498ef772922bf8f39baf979167710296863)
       radix3: 1.1.2
       satori: 0.18.4
       satori-html: 0.3.2
@@ -14313,7 +14337,7 @@ snapshots:
     dependencies:
       shiki: 3.22.0
 
-  playwright-core@1.58.1(patch_hash=536916d63e09c7e81a767ed5a92946b4cd7ad6c8e45dd3dd1d96f28d2873f09c): {}
+  playwright-core@1.58.1(patch_hash=f0c3f09b98f7b77d52de4c97cb292498ef772922bf8f39baf979167710296863): {}
 
   pluralize@8.0.0: {}
 

@@ -15,7 +15,9 @@
     "dev": "tsdown --exports --watch"
   },
   "dependencies": {
-    "minimark": "catalog:content"
+    "@types/hast": "catalog:content",
+    "minimark": "catalog:content",
+    "vfile": "catalog:content"
   },
   "devDependencies": {
     "@zinkawaii/tsconfig": "catalog:framework",

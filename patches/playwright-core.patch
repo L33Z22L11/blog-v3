@@ -1,8 +1,8 @@
 diff --git a/lib/server/registry/index.js b/lib/server/registry/index.js
-index db598f19493c257070e5889be80c1dafd09c4d75..60b63ebce0f385009294b588f4d36efe2d00cc82 100644
+index 9a771c11b992a026552028ab5bb2ffcc9789d848..c7a8e0a8fb64e0fef783c97c29ab3370960b2ccb 100644
 --- a/lib/server/registry/index.js
 +++ b/lib/server/registry/index.js
-@@ -431,7 +431,7 @@ const registryDirectory = (() => {
+@@ -476,7 +476,7 @@ const registryDirectory = (() => {
      result = envDefined;
    } else {
      let cacheDirectory;

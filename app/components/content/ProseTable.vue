@@ -26,6 +26,7 @@ const scroll = ref(true)
 	word-break: break-all;
 
 	table.scroll {
+		contain: layout; // KaTeX 撑开宽度
 		display: block;
 		white-space: nowrap;
 		word-break: normal;
