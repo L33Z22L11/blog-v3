@@ -100,4 +100,8 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 		}
 	}
 }
+
+::-webkit-scrollbar {
+	display: none;
+}
 </style>
