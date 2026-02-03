@@ -2,50 +2,54 @@ import type { Parent, Root } from 'mdast'
 import { visit } from 'unist-util-visit'
 
 interface MermaidNode extends Parent {
-  type: 'mermaid'
+	type: 'mermaid'
 }
 
 declare module 'mdast' {
-  interface RootContentMap {
-    mermaid: MermaidNode
-  }
+	interface RootContentMap {
+		mermaid: MermaidNode
+	}
 }
 
 export interface MermaidOptions {
-  theme?: 'default' | 'neutral' | 'base' | 'dark' | 'forest' | 'night'
-  lightTheme?: string
-  darkTheme?: string
+	theme?: 'default' | 'neutral' | 'base' | 'dark' | 'forest' | 'night'
+	lightTheme?: string
+	darkTheme?: string
 }
 
-function getThemeFromClass(className: string | undefined, options: MermaidOptions): string {
-  if (!className)
-    return options.theme ?? 'default'
+export default function remarkMermaid(userOptions: MermaidOptions = {}) {
+	const defaultTheme = userOptions.theme ?? 'default'
+	const defaultLightTheme = userOptions.lightTheme ?? 'default'
+	const defaultDarkTheme = userOptions.darkTheme ?? 'dark'
 
-  const isDark = className.includes('dark') || className.includes('night')
-  return isDark ? (options.darkTheme ?? 'dark') : (options.lightTheme ?? 'default')
-}
+	function getThemeFromClass(className: string | undefined): string {
+		if (!className)
+			return defaultTheme
 
-export default function remarkMermaid(options: MermaidOptions = {}) {
-  return (tree: Root) => {
-    visit(tree, 'code', (node, index, parent) => {
-      if (node.lang === 'mermaid') {
-        if (!parent || index === undefined)
-          return
+		const isDark = className.includes('dark') || className.includes('night')
+		return isDark ? defaultDarkTheme : defaultLightTheme
+	}
 
-        const theme = getThemeFromClass(node.meta ?? undefined, options)
+	function createMermaidNode(code: string, theme: string): MermaidNode {
+		return {
+			type: 'mermaid',
+			data: {
+				hName: 'mermaid',
+				hProperties: { code, theme },
+			},
+			children: [],
+		}
+	}
 
-        parent.children.splice(index, 1, {
-          type: 'mermaid',
-          data: {
-            hName: 'mermaid',
-            hProperties: {
-              code: node.value,
-              theme,
-            },
-          },
-          children: [],
-        })
-      }
-    })
-  }
+	return (tree: Root) => {
+		visit(tree, 'code', (node, index, parent) => {
+			if (node.lang !== 'mermaid')
+				return
+			if (!parent || index === undefined)
+				return
+
+			const theme = getThemeFromClass(node.meta ?? undefined)
+			parent.children[index] = createMermaidNode(node.value, theme)
+		})
+	}
 }

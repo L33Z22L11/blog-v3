@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { useColorMode } from '#imports'
-import { useDark } from '@vueuse/core'
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 
-type MermaidTheme = 'default' | 'base' | 'dark' | 'forest' | 'neutral' | 'null'
+type Theme = 'default' | 'base' | 'dark' | 'forest' | 'neutral' | 'null'
 
 interface Props {
 	code: string
-	theme?: MermaidTheme
+	theme?: Theme
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -16,28 +15,32 @@ const props = withDefaults(defineProps<Props>(), {
 
 const container = ref<HTMLElement | null>(null)
 const colorMode = useColorMode()
-const isDark = useDark()
 
 const actualTheme = computed(() => {
-	const preference = colorMode.preference
-
-	if (preference === 'system')
-		return isDark.value ? 'dark' : 'default'
-
+	const preference = colorMode.value
 	return preference === 'dark' ? 'dark' : 'default'
 })
 
 let renderId = 0
+let renderTimeout: ReturnType<typeof setTimeout> | null = null
+let mermaidModule: typeof import('mermaid') | null = null
+
+async function getMermaid() {
+	if (!mermaidModule) {
+		mermaidModule = await import('mermaid')
+	}
+	return mermaidModule
+}
 
 async function renderMermaid() {
 	if (!container.value)
 		return
 
 	const currentId = ++renderId
-	const theme = actualTheme.value || 'default'
+	const theme = actualTheme.value
 
 	try {
-		const mermaid = await import('mermaid')
+		const mermaid = await getMermaid()
 		mermaid.default.initialize({
 			startOnLoad: false,
 			theme,
@@ -49,10 +52,7 @@ async function renderMermaid() {
 		await nextTick()
 
 		const targetNode = container.value.querySelector(`#${id}`) as HTMLElement | null
-		if (!targetNode)
-			return
-
-		if (renderId !== currentId)
+		if (!targetNode || renderId !== currentId)
 			return
 
 		await mermaid.default.run({
@@ -67,12 +67,29 @@ async function renderMermaid() {
 	}
 }
 
+function debouncedRender() {
+	if (renderTimeout) {
+		clearTimeout(renderTimeout)
+	}
+	renderTimeout = setTimeout(() => {
+		renderMermaid()
+	}, 100)
+}
+
 onMounted(async () => {
 	await nextTick()
 	await renderMermaid()
 })
 
-watch(actualTheme, async () => {
+onUnmounted(() => {
+	if (renderTimeout) {
+		clearTimeout(renderTimeout)
+	}
+})
+
+watch(actualTheme, debouncedRender)
+
+watch(() => props.code, async () => {
 	await nextTick()
 	await renderMermaid()
 })
