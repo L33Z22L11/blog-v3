@@ -39,14 +39,6 @@
 	}
 }
 
-.scrollbar-hidden {
-	scrollbar-width: none;
-
-	&::-webkit-scrollbar {
-		display: none;
-	}
-}
-
 // 横向滚动遮罩
 // PURE CSS MAGIC!
 .scrollcheck-x, .scrollcheck-y {
@@ -124,6 +116,15 @@
 		mask-image:
 			linear-gradient(to bottom, #FFF var(--top-offset), transparent var(--top-offset), #FFF calc(var(--top-offset) + var(--fadeout-height))),
 			linear-gradient(to var(--start), #FFF var(--guessed-scrollbar-width), transparent var(--guessed-scrollbar-width));
+	}
+}
+
+// 需位于 scrollcheck-x, scrollcheck-y 之后
+.scrollbar-hidden {
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar {
+		display: none;
 	}
 }
 

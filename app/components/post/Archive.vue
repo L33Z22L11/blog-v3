@@ -11,11 +11,11 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 </script>
 
 <template>
-<li class="article-item scrollbar-hidden">
+<li class="article-item">
 	<UtilDate class="dim-hover" :date="mainDate" format="monthDay" />
 
 	<div class="gradient-card">
-		<UtilLink class="article-link scrollcheck-x" :to :title="description">
+		<UtilLink class="article-link scrollbar-hidden scrollcheck-x" :to :title="description">
 			<span class="article-title">
 				{{ title }}
 			</span>
