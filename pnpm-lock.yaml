@@ -438,6 +438,13 @@ importers:
         version: 5.9.3
 
   packages/remark-mermaid:
+    dependencies:
+      '@types/mdast':
+        specifier: catalog:content
+        version: 4.0.4
+      unist-util-visit:
+        specifier: catalog:content
+        version: 5.1.0
     devDependencies:
       '@zinkawaii/tsconfig':
         specifier: catalog:framework
