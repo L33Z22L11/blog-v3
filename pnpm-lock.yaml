@@ -21,15 +21,15 @@ catalogs:
     '@shikijs/transformers':
       specifier: ^3.22.0
       version: 3.22.0
+    '@types/hast':
+      specifier: ^3.0.4
+      version: 3.0.4
+    '@types/mdast':
+      specifier: ^4.0.4
+      version: 4.0.4
     abcjs:
       specifier: ^6.6.0
       version: 6.6.0
-    hast:
-      specifier: ^1.0.0
-      version: 1.0.0
-    mdast:
-      specifier: ^3.0.0
-      version: 3.0.0
     minimark:
       specifier: ^0.2.0
       version: 0.2.0
@@ -52,7 +52,7 @@ catalogs:
       specifier: ^3.22.0
       version: 3.22.0
     unist-util-visit:
-      specifier: ^5.0.0
+      specifier: ^5.1.0
       version: 5.1.0
     vfile:
       specifier: ^6.0.3
@@ -408,9 +408,9 @@ importers:
 
   packages/rehype-meta-slots:
     dependencies:
-      hast:
+      '@types/hast':
         specifier: catalog:content
-        version: 1.0.0
+        version: 3.0.4
       minimark:
         specifier: catalog:content
         version: 0.2.0
@@ -430,12 +430,12 @@ importers:
 
   packages/remark-music:
     dependencies:
+      '@types/mdast':
+        specifier: catalog:content
+        version: 4.0.4
       abcjs:
         specifier: '*'
         version: 6.6.0
-      mdast:
-        specifier: catalog:content
-        version: 3.0.0
       unist-util-visit:
         specifier: catalog:content
         version: 5.1.0
@@ -4603,10 +4603,6 @@ packages:
   hast-util-whitespace@3.0.0:
     resolution: {integrity: sha512-88JUN06ipLwsnv+dVn+OIYOvAuvBMy/Qoi6O7mQHxdPXpjy+Cd6xRkWwux7DKO+4sYILtLBRIKgsdpS2gQc7qw==}
 
-  hast@1.0.0:
-    resolution: {integrity: sha512-vFUqlRV5C+xqP76Wwq2SrM0kipnmpxJm7OfvVXpB35Fp+Fn4MV+ozr+JZr5qFvyR1q/U+Foim2x+3P+x9S1PLA==}
-    deprecated: Renamed to rehype
-
   hastscript@9.0.1:
     resolution: {integrity: sha512-g7df9rMFX/SPi34tyGCyUBREQoKkapwdY/T04Qn9TDWfHhAYt4/I0gMVirzK5wEzeUqIjEB+LXC/ypb7Aqno5w==}
 
@@ -5116,10 +5112,6 @@ packages:
 
   mdast-util-to-string@4.0.0:
     resolution: {integrity: sha512-0H44vDimn51F0YwvxSJSm0eCDOJTRlmN0R1yBh4HLj9wiV1Dn0QoXGbvFAWj2hSItVTlCmBF1hqKlIyUBVFLPg==}
-
-  mdast@3.0.0:
-    resolution: {integrity: sha512-xySmf8g4fPKMeC07jXGz971EkLbWAJ83s4US2Tj9lEdnZ142UP5grN73H1Xd3HzrdbU5o9GYYP/y8F9ZSwLE9g==}
-    deprecated: '`mdast` was renamed to `remark`'
 
   mdn-data@2.0.28:
     resolution: {integrity: sha512-aylIc7Z9y4yzHYAJNuESG3hfhC+0Ibp/MAMiaOZgNv4pmEdFyfZhhhny4MNiAfWdBQ1RQ2mfDWmM1x8SvGyp8g==}
@@ -11837,8 +11829,6 @@ snapshots:
     dependencies:
       '@types/hast': 3.0.4
 
-  hast@1.0.0: {}
-
   hastscript@9.0.1:
     dependencies:
       '@types/hast': 3.0.4
@@ -12445,8 +12435,6 @@ snapshots:
   mdast-util-to-string@4.0.0:
     dependencies:
       '@types/mdast': 4.0.4
-
-  mdast@3.0.0: {}
 
   mdn-data@2.0.28: {}
 

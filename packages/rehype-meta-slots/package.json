@@ -15,7 +15,7 @@
     "dev": "tsdown --exports --watch"
   },
   "dependencies": {
-    "hast": "catalog:content",
+    "@types/hast": "catalog:content",
     "minimark": "catalog:content",
     "vfile": "catalog:content"
   },

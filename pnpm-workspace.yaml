@@ -8,18 +8,17 @@ catalogs:
     '@nuxtjs/seo': ^3.4.0
     '@shikijs/colorized-brackets': ^3.22.0
     '@shikijs/transformers': ^3.22.0
+    '@types/hast': ^3.0.4
+    '@types/mdast': ^4.0.4
     abcjs: ^6.6.0
-    hast: ^1.0.0
-    mdast: ^3.0.0
     minimark: ^0.2.0
     nuxt-llms: ^0.2.0
     plain-shiki: ^0.3.2
     rehype-katex: ^7.0.1
-    remark-abcjs: ^0.1.6
     remark-math: ^6.0.0
     remark-reading-time: ^2.0.2
     shiki: ^3.22.0
-    unist-util-visit: ^5.0.0
+    unist-util-visit: ^5.1.0
     vfile: ^6.0.3
   framework:
     '@zinkawaii/tsconfig': ^0.0.2
