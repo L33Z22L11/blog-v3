@@ -90,7 +90,7 @@ function openActiveItem() {
 </script>
 
 <template>
-<Transition name="float-in" @keydown.k.stop.prevent="$emit('close')">
+<Transition name="float-in">
 	<div v-if="open" class="blog-search">
 		<form class="input" @submit.prevent>
 			<Icon :name="status === 'pending' ? 'line-md:loading-alt-loop' : 'ph:magnifying-glass-bold'" />

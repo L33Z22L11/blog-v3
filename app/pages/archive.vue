@@ -7,8 +7,11 @@ useSeoMeta({
 	description: `${appConfig.title}的所有文章归档。`,
 })
 const birthYear = computed(() => appConfig.component.stats.birthYear)
+const showDensity = ref(false)
+const density = ref(0.2)
 
 const layoutStore = useLayoutStore()
+const { panelTranslate } = storeToRefs(layoutStore)
 layoutStore.setAside(['blog-stats', 'blog-log'])
 
 const { data: listRaw } = await useAsyncData('index_posts', () => useArticleIndexOptions(), { default: () => [] })
@@ -31,6 +34,14 @@ const yearlyWordCount = computed(() => {
 		return acc
 	}, {})
 })
+
+watchImmediate(showDensity, (newVal) => {
+	panelTranslate.value.archiveDensity = newVal ? '0, -1em' : ''
+})
+
+onUnmounted(() => {
+	panelTranslate.value.archiveDensity = ''
+})
 </script>
 
 <template>
@@ -40,12 +51,20 @@ const yearlyWordCount = computed(() => {
 		v-model:sort-order="sortOrder"
 		v-model:category="category"
 		:categories
-	/>
+	>
+		<template #secret>
+			<ZToggle
+				v-model="showDensity"
+				label="密度调节"
+			/>
+		</template>
+	</PostOrderToggle>
 
 	<section
 		v-for="[year, yearGroup] in listGrouped"
 		:key="year"
 		class="archive-group"
+		:style="{ '--archive-item-gap': `${density}em` }"
 	>
 		<div class="archive-title">
 			<h2 class="archive-year">
@@ -74,18 +93,36 @@ const yearlyWordCount = computed(() => {
 			/>
 		</TransitionGroup>
 	</section>
+
+	<ZSlider
+		v-if="showDensity"
+		v-model="density"
+		class="archive-density-slider"
+		label="密度"
+		:spring-min="-1"
+		:spring-max="0.2"
+		:list="['-1', '0.2']"
+		min="-2"
+		max=".4"
+		step=".2"
+	/>
 </div>
 </template>
 
 <style lang="scss" scoped>
 .archive {
 	margin: 1rem;
-
-	// mask-image: linear-gradient(#FFF 50%, #FFF7);
+	mask-image: linear-gradient(#FFF 50%, #FFF7);
 }
 
 .archive-group {
 	margin: 1rem 0 3rem;
+}
+
+.archive-density-slider {
+	position: sticky;
+	bottom: 1em;
+	margin: 1rem 0;
 }
 
 .archive-title {

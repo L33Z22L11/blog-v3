@@ -40,7 +40,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 	display: flex;
 	align-items: center;
 	gap: 0.5em;
-	margin: 0.2em 0;
+	margin: var(--archive-item-gap, 0.2em) 0;
 	transition: all 0.2s;
 	animation: float-in 0.2s var(--delay) backwards;
 

@@ -35,22 +35,19 @@ const listRecommended = computed(() => sort(
 	<PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
 
 	<div class="post-list">
-		<div class="toolbar">
-			<div>
-				<!-- 外层元素用于占位 -->
+		<PostOrderToggle
+			v-model:is-ascending="isAscending"
+			v-model:sort-order="sortOrder"
+			v-model:category="category"
+			:categories
+		>
+			<template #secret>
 				<UtilLink to="/preview" class="preview-entrance">
 					<Icon name="ph:file-lock-bold" />
 					查看预览文章
 				</UtilLink>
-			</div>
-
-			<PostOrderToggle
-				v-model:is-ascending="isAscending"
-				v-model:sort-order="sortOrder"
-				v-model:category="category"
-				:categories
-			/>
-		</div>
+			</template>
+		</PostOrderToggle>
 
 		<TransitionGroup tag="menu" class="proper-height" name="float-in">
 			<PostArticle
@@ -69,26 +66,6 @@ const listRecommended = computed(() => sort(
 </template>
 
 <style lang="scss" scoped>
-.toolbar {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
-.preview-entrance {
-	position: relative;
-	opacity: 0;
-	transition: all 0.2s 1s, color 0.2s;
-	z-index: -1;
-
-	:hover > &,
-	:focus-within > & {
-		opacity: 1;
-		color: var(--c-primary);
-		z-index: 0;
-	}
-}
-
 .post-list {
 	margin: 1rem;
 }

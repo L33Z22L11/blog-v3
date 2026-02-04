@@ -9,15 +9,16 @@ const page = defineModel<number>({ required: true })
 const pageArr = computed(() => genPageArr(page.value, props.totalPages, props.expandPages ?? 2))
 
 const layoutStore = useLayoutStore()
+const { panelTranslate } = storeToRefs(layoutStore)
 const anchorEl = useTemplateRef('pagination-anchor')
 const expand = useElementVisibility(anchorEl)
 
 onMounted(() => {
-	layoutStore.setTranslate('pagination', '0, -2em')
+	panelTranslate.value.pagination = '0, -2em'
 })
 
 onUnmounted(() => {
-	layoutStore.setTranslate('pagination', '')
+	panelTranslate.value.pagination = ''
 })
 </script>
 

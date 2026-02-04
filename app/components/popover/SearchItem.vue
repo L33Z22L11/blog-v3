@@ -8,23 +8,19 @@ interface SearchItem extends SearchResult {
 	level: number
 }
 
-const props = defineProps<Partial<SearchItem>>()
-
-const title = computed(() => [...props.titles ?? [], props.title].join(' > '))
-
-const highlightTitle = computed(() => highlightHtml(title.value, props.queryTerms))
-const highlightContent = computed(() => highlightHtml(props.content ?? '', props.queryTerms))
+withDefaults(defineProps<Partial<SearchItem>>(), {
+	titles: () => [],
+	title: '',
+})
 </script>
 
 <template>
 <UtilLink :to="id" class="search-item">
-	<div class="title text-creative">
-		<Badge round :class="{ primary: level === 1 }">
-			{{ level === 1 ? '文章' : `H${level}` }}
-		</Badge>
-		<span v-html="highlightTitle" />
-	</div>
-	<p class="content" v-html="highlightContent" />
+	<hgroup class="text-creative">
+		<span v-for="heading in [...titles, title]" :key="heading" class="title" v-html="highlightHtml(heading, queryTerms)" />
+		<Icon v-if="level === 1" name="ph:file-text-bold" />
+	</hgroup>
+	<p v-if="content" class="content" v-html="highlightHtml(content, queryTerms)" />
 </UtilLink>
 </template>
 
@@ -39,28 +35,30 @@ const highlightContent = computed(() => highlightHtml(props.content ?? '', props
 	&.active {
 		background-color: var(--c-bg-soft);
 	}
+}
 
-	> .title {
-		font-size: 1em;
+.title:not(:first-child) {
+	opacity: 0.5;
+	transition: opacity 0.2s;
 
-		> .badge {
-			margin-inline-end: 0.5em;
-			font-size: 0.8em;
-
-			&.primary {
-				color: var(--c-primary);
-			}
-		}
-
-		& + .content {
-			margin-top: 0.2em;
-		}
+	.active & {
+		opacity: 1;
 	}
 
-	> .content {
-		font-size: 0.8em;
-		white-space: pre-wrap;
-		color: var(--c-text-2);
+	&::before {
+		content: " > ";
+		opacity: 0.5;
 	}
+}
+
+.title + .iconify {
+	margin-inline-start: 0.2em;
+}
+
+.content {
+	margin-top: 0.2em;
+	font-size: 0.8em;
+	white-space: pre-wrap;
+	color: var(--c-text-2);
 }
 </style>

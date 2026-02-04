@@ -6,6 +6,7 @@ const props = defineProps<{
 	enableAscending?: boolean
 	disableAscending?: boolean
 	categories?: (string | undefined)[]
+	secretDelay?: string
 }>()
 
 const appConfig = useAppConfig()
@@ -30,7 +31,16 @@ function toggleDirection() {
 </script>
 
 <template>
-<div class="order-toggle">
+<div class="order-toggle" :style="{ '--secret-delay': secretDelay }">
+	<slot />
+
+	<!-- 外层元素用于占位 -->
+	<div class="secret-container">
+		<div class="secret">
+			<slot name="secret" />
+		</div>
+	</div>
+
 	<ZDropdown trigger="focusin" tabindex="0">
 		<button :disabled="!categories">
 			<Icon :name="getCategoryIcon(category)" />
@@ -66,11 +76,10 @@ function toggleDirection() {
 <style lang="scss" scoped>
 .order-toggle {
 	display: flex;
-	justify-content: flex-end;
 	gap: 1rem;
+	color: var(--c-text-2);
 
-	button {
-		color: var(--c-text-2);
+	:deep(button), :deep(a) {
 		transition: color 0.2s;
 
 		&:hover {
@@ -86,6 +95,23 @@ function toggleDirection() {
 		&.ascending {
 			transform: scaleY(-1);
 		}
+	}
+}
+
+.secret-container {
+	margin-inline-end: auto;
+}
+
+.secret {
+	position: relative;
+	opacity: 0;
+	transition: all 0.2s var(--secret-delay, 0.5s), color 0.2s;
+	z-index: -1;
+
+	:hover > &,
+	:focus-within > & {
+		opacity: 1;
+		z-index: 0;
 	}
 }
 

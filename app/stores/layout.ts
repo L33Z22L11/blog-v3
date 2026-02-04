@@ -1,13 +1,15 @@
 export type LayoutState = 'none' | 'sidebar' | 'aside' | 'search' | 'lightbox'
 
-export type PanelTranslateSource = 'pagination'
+export type PanelTranslateSource = 'pagination' | 'archiveDensity'
 
 export const useLayoutStore = defineStore('layout', () => {
 	const router = useRouter()
 
 	const state = ref<LayoutState>('none')
-	const panelTranslate = ref<Partial<Record<PanelTranslateSource, string>>>({})
 	const asideWidgets = ref<WidgetName[]>([])
+	const panelTranslate = ref<Partial<Record<PanelTranslateSource, string>>>({})
+
+	const panelTransform = computed(() => Object.values(panelTranslate.value).map(v => v ? `translate(${v})` : '').join(' '))
 
 	const close = () => state.value = 'none'
 
@@ -20,10 +22,6 @@ export const useLayoutStore = defineStore('layout', () => {
 	const setAside = (widgets?: WidgetName[]) => {
 		if (widgets)
 			asideWidgets.value = widgets
-	}
-
-	const setTranslate = (reason: PanelTranslateSource, value: string) => {
-		panelTranslate.value[reason] = value
 	}
 
 	useEventListener('keydown', (e) => {
@@ -41,9 +39,9 @@ export const useLayoutStore = defineStore('layout', () => {
 		state,
 		asideWidgets,
 		panelTranslate,
+		panelTransform,
 		close,
 		toggle,
 		setAside,
-		setTranslate,
 	}
 })
