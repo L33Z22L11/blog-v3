@@ -18,7 +18,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-	panelTranslate.value.pagination = ''
+	panelTranslate.value.pagination = undefined
 })
 </script>
 

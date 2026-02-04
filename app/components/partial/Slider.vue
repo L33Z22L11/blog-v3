@@ -10,7 +10,7 @@ const modelValue = defineModel<number>({ required: true })
 const id = useId()
 const list = computed(() => props.list?.map(v => typeof v === 'string' ? { value: v } : v))
 
-function handleMouseUp() {
+function handleRelease() {
 	if (props.springMin !== undefined && modelValue.value < props.springMin) {
 		modelValue.value = props.springMin
 	}
@@ -30,7 +30,7 @@ function handleMouseUp() {
 		class="input"
 		type="range"
 		:list="id"
-		@mouseup="handleMouseUp"
+		@pointerup="handleRelease"
 	>
 
 	<datalist v-if="list" :id>

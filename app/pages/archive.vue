@@ -36,11 +36,11 @@ const yearlyWordCount = computed(() => {
 })
 
 watchImmediate(showDensity, (newVal) => {
-	panelTranslate.value.archiveDensity = newVal ? '0, -1em' : ''
+	panelTranslate.value.archiveDensity = newVal ? '0, -1em' : undefined
 })
 
 onUnmounted(() => {
-	panelTranslate.value.archiveDensity = ''
+	panelTranslate.value.archiveDensity = undefined
 })
 </script>
 

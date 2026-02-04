@@ -4,10 +4,11 @@ const { asideWidgets, panelTransform } = storeToRefs(layoutStore)
 </script>
 
 <template>
+<!-- 使用 :style="{ transform: panelTransform }" 可能丢失响应性 -->
 <div
 	id="blog-panel"
 	:class="{ 'has-active': layoutStore.state !== 'none' }"
-	:style="{ transform: panelTransform }"
+	:style="{ '--transform': panelTransform }"
 >
 	<button
 		class="toggle-sidebar mobile-only"
@@ -40,6 +41,7 @@ const { asideWidgets, panelTransform } = storeToRefs(layoutStore)
 	background-color: var(--c-bg-a50);
 	backdrop-filter: blur(0.5rem);
 	font-size: 1.4rem;
+	transform: var(--transform);
 	transition: transform 0.1s;
 	z-index: var(--z-index-popover);
 
