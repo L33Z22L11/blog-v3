@@ -7,8 +7,9 @@ useSeoMeta({
 	description: `${appConfig.title}的所有文章归档。`,
 })
 const birthYear = computed(() => appConfig.component.stats.birthYear)
-const showDensity = ref(false)
-const density = ref(0.2)
+const showTuning = ref(false)
+const spacing = ref(0)
+const column = ref(1)
 
 const layoutStore = useLayoutStore()
 const { panelTranslate } = storeToRefs(layoutStore)
@@ -35,12 +36,12 @@ const yearlyWordCount = computed(() => {
 	}, {})
 })
 
-watchImmediate(showDensity, (newVal) => {
-	panelTranslate.value.archiveDensity = newVal ? '0, -1em' : undefined
+watchImmediate(showTuning, (newVal) => {
+	panelTranslate.value.archiveTuning = newVal ? '0, -3em' : undefined
 })
 
 onUnmounted(() => {
-	panelTranslate.value.archiveDensity = undefined
+	panelTranslate.value.archiveTuning = undefined
 })
 </script>
 
@@ -54,7 +55,7 @@ onUnmounted(() => {
 	>
 		<template #secret>
 			<ZToggle
-				v-model="showDensity"
+				v-model="showTuning"
 				label="密度调节"
 			/>
 		</template>
@@ -64,7 +65,11 @@ onUnmounted(() => {
 		v-for="[year, yearGroup] in listGrouped"
 		:key="year"
 		class="archive-group"
-		:style="{ '--archive-item-gap': `${density}em` }"
+		:class="{ 'hide-info': column > 1 }"
+		:style="{
+			'--archive-item-gap': `${spacing}em`,
+			'--archive-item-column': column,
+		}"
 	>
 		<div class="archive-title">
 			<h2 class="archive-year">
@@ -94,35 +99,55 @@ onUnmounted(() => {
 		</TransitionGroup>
 	</section>
 
-	<ZSlider
-		v-if="showDensity"
-		v-model="density"
-		class="archive-density-slider"
-		label="密度"
-		:spring-min="-1"
-		:spring-max="0.2"
-		:list="['-1', '0.2']"
-		min="-2"
-		max=".4"
-		step=".2"
-	/>
+	<div v-if="showTuning" class="archive-tuning card">
+		<ZSlider
+			v-model="spacing"
+			label="间距"
+			:spring-min="-0.4"
+			:spring-max="0.1"
+			:list="['-0.3', '0']"
+			min="-1"
+			max=".2"
+			step=".1"
+		/>
+
+		<ZSlider
+			v-model="column"
+			label="列数"
+			min="1"
+			max="8"
+		/>
+	</div>
 </div>
 </template>
 
 <style lang="scss" scoped>
 .archive {
-	margin: 1rem;
+	padding: 1rem; // 防止内部 outline 被 mask
 	mask-image: linear-gradient(#FFF 50%, #FFF7);
 }
 
 .archive-group {
 	margin: 1rem 0 3rem;
+
+	> .archive-list {
+		display: grid;
+		grid-template-columns: repeat(var(--archive-item-column), 1fr);
+		column-gap: calc((5 - var(--archive-item-column)) * 0.2em);
+	}
+
+	&.hide-info :deep(.dim-hover) {
+		display: none;
+	}
 }
 
-.archive-density-slider {
+.archive-tuning {
 	position: sticky;
-	bottom: 1em;
-	margin: 1rem 0;
+	bottom: min(2em, 5%);
+
+	> .z-slider {
+		margin: 0.5em 0.8em;
+	}
 }
 
 .archive-title {

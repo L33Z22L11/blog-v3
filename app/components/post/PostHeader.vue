@@ -23,7 +23,7 @@ const { copy, copied } = useCopy(shareText)
 	<div class="post-nav">
 		<div class="operations">
 			<ZButton
-				:icon="copied ? 'ph:check-bold' : 'ph:share-bold' "
+				:icon="copied ? 'ph:check-bold' : 'ph:share-bold'"
 				@click="copy()"
 			>
 				文字分享
@@ -34,15 +34,15 @@ const { copy, copied } = useCopy(shareText)
 			<UtilDate
 				v-if="date"
 				v-tip
-				tip-prefix="创建于"
-				:date="date"
+				:tip-transform="d => `创建于${d}`"
+				:date
 				icon="ph:calendar-dots-bold"
 			/>
 
 			<UtilDate
-				v-if="updated && isTimeDiffSignificant(date, updated, .999)"
+				v-if="updated && isTimeDiffSignificant(date, updated, 1)"
 				v-tip
-				tip-prefix="修改于"
+				:tip-transform="d => `修改于${d}`"
 				:date="updated"
 				icon="ph:calendar-plus-bold"
 			/>

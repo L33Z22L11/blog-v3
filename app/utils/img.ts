@@ -23,7 +23,7 @@ export function getGhAvatar(name = '', options = { size: 120 }) {
 
 export const getGhIcon = (name = '') => getWsrvGhAvatar(name, { size: 32, mask: 'circle' })
 
-export enum QqAvatarSize {
+export enum OicqAvatarSize {
 	Size1080,
 	Size40,
 	Size40a,
@@ -36,17 +36,20 @@ export enum QqAvatarSize {
 }
 
 // https://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=
-export function getQqAvatar(qq = '', size = QqAvatarSize.Size140) {
+export function getOicqAvatar(qq = '', size = OicqAvatarSize.Size140) {
 	return `https://q1.qlogo.cn/g?b=qq&nk=${qq}&s=${size}`
+}
+
+interface FaviconOptions {
+	provider?: 'google' | 'duckduckgo'
+	size?: number
 }
 
 // https://github.com/microlinkhq/unavatar
 // https://docs.webp.se/public-services/unavatar/
-export function getFavicon(domain: string, options: Record<string, any> = {
-	provider: 'google',
-	size: 32,
-}) {
-	return `https://unavatar.webp.se/${options.provider}/${domain}?w=${options.size}`
+export function getFavicon(domain: string, options?: FaviconOptions) {
+	const { provider = 'google', size = 32 } = options || {}
+	return `https://unavatar.webp.se/${provider}/${domain}?w=${size}`
 }
 
 export function getImgUrl(src: string, service?: ImgService) {

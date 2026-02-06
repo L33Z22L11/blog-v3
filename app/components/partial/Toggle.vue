@@ -4,24 +4,12 @@ defineProps<{
 }>()
 
 const modelValue = defineModel<boolean>()
-
-function toggle() {
-	modelValue.value = !modelValue.value
-}
 </script>
 
 <template>
-<label
-	class="z-toggle"
-	tabindex="0"
-	role="switch"
-	:aria-checked="modelValue"
-	@keypress.space.prevent="toggle"
-	@keypress.enter="toggle"
->
-	<input v-model="modelValue" name="toggle" type="checkbox" hidden>
-	<span class="toggle-slider" />
-	<slot><span>{{ label }}</span></slot>
+<label class="z-toggle">
+	<input v-model="modelValue" class="input-toggle" name="toggle" type="checkbox" @keypress.enter="modelValue = !modelValue">
+	<slot><span v-if="label" v-text="label" /></slot>
 </label>
 </template>
 
@@ -30,35 +18,48 @@ function toggle() {
 	user-select: none;
 }
 
-.toggle-slider {
-	display: inline-block;
+.input-toggle {
 	position: relative;
-	width: 2.1em;
-	height: 1.2em;
-	border: 0.2em solid transparent;
-	border-radius: 1em;
-	outline: 1px solid var(--c-text-1);
-	outline-offset: -1px;
-	vertical-align: text-bottom;
-	transition: background-color 0.2s, outline-color 0.2s;
+	appearance: none;
+
+	&::before {
+		content: "";
+		display: inline-block;
+		position: relative;
+		width: 2em;
+		height: 1.2em;
+		border-radius: 1em;
+		outline: 1px solid var(--c-text-1);
+		outline-offset: -1px;
+		vertical-align: text-bottom;
+		transition: background-color 0.2s, outline-color 0.2s;
+	}
 
 	&::after {
 		content: "";
 		position: absolute;
-		height: 100%;
+		inset-inline-start: 0.2em;
+		top: calc(50% - 0.4em);
+		height: 0.8em;
 		aspect-ratio: 1;
 		border-radius: 50%;
 		background-color: var(--c-text-1);
-		transition: transform 0.2s, background-color 0.2s;
+		transition: all 0.2s;
+
+		:hover > & {
+			filter: contrast(0.6);
+		}
 	}
 
 	&:not(:last-child) {
 		margin-inline-end: 0.5em;
 	}
 
-	input:checked + & {
-		outline-color: var(--c-primary);
-		background-color: var(--c-primary);
+	&:checked {
+		&::before {
+			outline-color: transparent;
+			background-color: var(--c-primary);
+		}
 
 		&::after {
 			background-color: var(--c-bg-1);

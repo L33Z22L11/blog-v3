@@ -1,7 +1,7 @@
 // 友链检测 CLI 需要使用显式导入和相对路径
 import type { FeedGroup } from '../app/types/feed'
 import { myFeed } from '../blog.config'
-import { getFavicon, getGhAvatar, getGhIcon, getQqAvatar, QqAvatarSize } from './utils/img'
+import { getFavicon, getGhAvatar, getGhIcon, getOicqAvatar, OicqAvatarSize } from './utils/img'
 
 export default [
 	// #region Clarity
@@ -18,7 +18,7 @@ export default [
 				link: 'https://blog.xlenco.top/',
 				feed: 'https://blog.xlenco.top/atom.xml',
 				icon: 'https://weavatar.com/avatar/67254b346498965226e5c91ebff66a69570b97f224d2d061e504b4eade1f00fa',
-				avatar: getQqAvatar('1043865083'),
+				avatar: getOicqAvatar('1043865083'),
 				archs: ['Nuxt', 'EdgeOne'],
 				date: '2024-07-28',
 				comment: '学生，经验分享。',
@@ -203,7 +203,7 @@ export default [
 				link: 'https://blog.jiclub.site/',
 				feed: 'https://blog.jiclub.site/atom.xml',
 				icon: 'https://m4.publicimg.browser.qq.com/publicimg/nav/qbtool/qbtool-latest.png',
-				avatar: getQqAvatar('1545433540'),
+				avatar: getOicqAvatar('1545433540'),
 				archs: ['Nuxt', 'EdgeOne'],
 				date: '2025-10-12',
 				comment: '情绪记录与表达。',
@@ -366,7 +366,7 @@ export default [
 				link: 'https://blog.chyk.ink/',
 				feed: 'https://blog.chyk.ink/atom.xml',
 				icon: getGhIcon('chiyuki0325'),
-				avatar: getQqAvatar('3526514925'),
+				avatar: getOicqAvatar('3526514925'),
 				archs: ['Hexo', 'Vercel'],
 				date: '2024-03-03',
 				comment: 'Archlinux，折腾，大学生。',
@@ -413,7 +413,7 @@ export default [
 				link: 'https://www.iczrx.cn/',
 				feed: 'https://www.iczrx.cn/feed/',
 				icon: 'https://www.iczrx.cn/favicon.ico',
-				avatar: getQqAvatar('1463656527'),
+				avatar: getOicqAvatar('1463656527'),
 				archs: ['Typecho', '国内 CDN'],
 				date: '2024-07-11',
 				comment: '分享折腾与生活的高中生。',
@@ -693,7 +693,7 @@ export default [
 				link: 'https://www.dao.js.cn/',
 				feed: 'https://www.dao.js.cn/feed.php',
 				icon: 'https://www.dao.js.cn/zb_users/upload/2024/09/202409191726720024363275.png',
-				avatar: getQqAvatar('466660026'),
+				avatar: getOicqAvatar('466660026'),
 				archs: ['PHP', '国内 CDN'],
 				date: '2025-04-14',
 				comment: '懋和道人，聚焦网站建设与技术，弘扬传统文化。',
@@ -787,8 +787,8 @@ export default [
 				desc: '轻思若水，雪化生香',
 				link: 'https://blog.sfkm.me/',
 				feed: 'https://blog.sfkm.me/feed.xml',
-				icon: getQqAvatar('2751454815', QqAvatarSize.Size100),
-				avatar: getQqAvatar('2751454815'),
+				icon: getOicqAvatar('2751454815', OicqAvatarSize.Size100),
+				avatar: getOicqAvatar('2751454815'),
 				archs: ['Hexo', '国内 CDN'],
 				date: '2025-08-25',
 				comment: '云原生、HomeLab 搭建、网络安全、容器化、静态网站托管等领域的技术实践。',
@@ -1153,9 +1153,21 @@ export default [
 				date: '2026-02-01',
 				comment: '前端技术研究与生活记录。',
 			},
+			{
+				author: '故河',
+				title: 'Guhe Blog',
+				desc: '分享技术与生活趣事',
+				link: 'https://blog.aevi.top/',
+				feed: 'https://blog.aevi.top/feed.xml',
+				icon: getFavicon('blog.aevi.top', { provider: 'duckduckgo' }),
+				avatar: getGhAvatar('tongzanyang'),
+				archs: ['Halo', '服务器'],
+				date: '2026-02-05',
+				comment: '自部署服务与博客美化。',
+			},
+			/* ========从此处新增友链======== */
 		],
 	},
-	/* ========从此处新增友链======== */
 	// #endregion
 	// #region XUPTers
 	{
@@ -1256,8 +1268,8 @@ export default [
 			// 	desc: '正在学习嵌入式',
 			// 	link: 'https://www.kayle7.top/',
 			// 	feed: 'https://www.kayle7.top/atom.xml',
-			// 	icon: getQqAvatar('1239625475', QqAvatarSize.Size100),
-			// 	avatar: getQqAvatar('1239625475'),
+			// 	icon: getOicqAvatar('1239625475', OicqAvatarSize.Size100),
+			// 	avatar: getOicqAvatar('1239625475'),
 			// 	archs: ['Hexo', 'Cloudflare'],
 			// 	date: '2024-06-27',
 			// 	comment: '大学同级，嵌入式学习中。',
@@ -1282,8 +1294,8 @@ export default [
 				desc: '我知我喜乐，纵情跋涉。',
 				link: 'https://magic.thisis.host/',
 				feed: 'https://magic.thisis.host/atom.xml',
-				icon: getQqAvatar('1623728267', QqAvatarSize.Size100),
-				avatar: getQqAvatar('1623728267'),
+				icon: getOicqAvatar('1623728267', OicqAvatarSize.Size100),
+				avatar: getOicqAvatar('1623728267'),
 				archs: ['Hexo', 'Cloudflare'],
 				date: '2024-07-22',
 				comment: '大学学妹，前端学习中。',
@@ -1319,7 +1331,7 @@ export default [
 				link: 'https://yunjianworld.fun/',
 				feed: 'https://yunjianworld.fun/atom.xml',
 				icon: 'https://yunjianworld.fun/img/fluid.png',
-				avatar: getQqAvatar('2098600899'),
+				avatar: getOicqAvatar('2098600899'),
 				archs: ['Hexo', 'Cloudflare'],
 				date: '2024-11-14',
 				comment: '大学学妹，操作系统学习中。',

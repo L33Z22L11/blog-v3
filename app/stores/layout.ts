@@ -1,6 +1,6 @@
 export type LayoutState = 'none' | 'sidebar' | 'aside' | 'search' | 'lightbox'
 
-export type PanelTranslateSource = 'pagination' | 'archiveDensity'
+export type PanelTranslateSource = 'pagination' | 'archiveTuning'
 
 export const useLayoutStore = defineStore('layout', () => {
 	const router = useRouter()

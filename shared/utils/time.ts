@@ -52,11 +52,13 @@ export function toZdtLocaleString(date: string | Temporal.ZonedDateTime, format:
 export function isTimeDiffSignificant(
 	date1?: string | Temporal.PlainDateTime,
 	date2?: string | Temporal.PlainDateTime,
-	/** 对于时间差的敏感程度，0~1 之间 */
-	threshold: number = 0.6,
+	/** 对于时间差的敏感程度，0~1 之间，1:不同则认为显著，>1:始终认为显著 */
+	threshold = 0.6,
 ) {
-	if (!date1 || !date2)
+	if (!date1 || !date2 || threshold <= 0)
 		return false
+	if (threshold > 1)
+		return true
 
 	const now = Temporal.Now.plainDateTimeISO()
 

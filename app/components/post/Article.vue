@@ -13,7 +13,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 </script>
 
 <template>
-<UtilLink class="article-card card">
+<UtilLink class="article-card card upraise">
 	<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" />
 	<article>
 		<h2 class="article-title text-creative">

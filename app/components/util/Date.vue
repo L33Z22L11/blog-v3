@@ -8,9 +8,10 @@ const props = withDefaults(defineProps<{
 	absolute?: boolean
 	relative?: boolean
 	nospace?: boolean
-	tipPrefix?: string
+	tipFormat?: dateTimeFormatOptions
+	tipTransform?: (formattedDate: string) => string
 }>(), {
-	tipPrefix: '',
+	tipTransform: String,
 })
 
 const today = Temporal.Now.plainDateISO()
@@ -30,7 +31,7 @@ const relative = computed(() => props.absolute || !zdt.value
 
 const mounted = ref(false)
 const tooltip = computed(() => mounted.value && zdt.value
-	? `${props.tipPrefix}${toZdtLocaleString(zdt.value)}`
+	? props.tipTransform(toZdtLocaleString(zdt.value, props.tipFormat))
 	: undefined,
 )
 
