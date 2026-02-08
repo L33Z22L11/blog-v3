@@ -3,7 +3,7 @@ title: 为了轻，再买一台
 description: 为了减轻游戏本负重，作者先后利用手机充电器供电、购买迷你电脑主机；为了解决远程操作需求，尝试了多种远程控制方案，最终成功实现目标。
 date: 2023-08-08 10:34:00
 updated: 2024-01-29 21:26:26
-image: https://7.isyangs.cn/24/65b6628ac8181-24.jpg
+image: https://assets.zhilu.cyou/cover2/light-backpack.jpg
 type: story
 categories: [杂谈]
 tags: [设备, 说说, 远程]

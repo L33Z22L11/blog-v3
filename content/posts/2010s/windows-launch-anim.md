@@ -16,7 +16,6 @@ tags: [Windows, 说说]
 ---
 type: bilibili
 id: BV1nkGFetEks
-width: 60%
-ratio: 2/3
+ratio: 9/16
 ---
 ::

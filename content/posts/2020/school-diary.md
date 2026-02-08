@@ -3,7 +3,7 @@ title: 高中无聊的日记节选
 description: 一名男高中生2020年6月至2021年9月的生活片段，包括与同桌一起分享日记、日常生活趣事、学业起伏、与同学互动以及心态变化等，展现了高中生活的多彩与挑战。
 date: 2020-06-14 15:27:00
 updated: 2021-09-25
-image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjwe8Uc32M5n1jGL4A9KgZZ0ZNicrEqwSQRtJ6yg5HicDxnVbSzkmTssX1hw/640
+image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjwe8Uc32M5n1jGL4A9KgZZ0ZNicrEqwSQRtJ6yg5HicDxnVbSzkmTssX1hw/640
 type: story
 categories: [生活]
 tags: [高中, 说说, 校园]

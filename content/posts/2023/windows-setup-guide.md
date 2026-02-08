@@ -3,7 +3,7 @@ title: Windows 安装指南
 description: 使用 Ventoy、微 PE、Dism++ 安装系统，绕过账户限制并激活 Office 与 Windows，合理分区布局使数据安全有序。
 date: 2023-09-24 12:00:00
 updated: 2025-03-30 15:02:31
-image: https://7.isyangs.cn/24/65b66289c9a2e-24.jpg
+image: https://assets.zhilu.cyou/cover2/windows-setup-guide.jpg
 categories: [经验分享]
 tags: [教程, 系统, Windows]
 recommend: true
@@ -198,7 +198,7 @@ winget remove 7zip
 
 ::link-banner
 ---
-banner: https://7.isyangs.cn/24/669776aed29f4-24.jpg
+banner: https://assets.zhilu.cyou/cover3/windows-storage.jpg
 title: Windows 空间管理/清理指南
 description: “软件装D盘”是且仅是旧日的经验之谈，如果想让电脑用起来更顺手，“无为而治”或许是个好选择。
 link: /2024/windows-storage

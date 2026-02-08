@@ -3,7 +3,7 @@ title: 西邮Linux兴趣小组2020纳新面试题题解
 description: ''
 date: 2022-11-20 13:57:19
 updated: 2023-11-10 21:08:28
-image: https://7.isyangs.cn/24/65a8dcfb73493-24.jpg
+image: https://assets.zhilu.cyou/cover2/linux-interview-2020.jpg
 categories: [代码]
 tags: [实验室, Lab, C语言]
 ---

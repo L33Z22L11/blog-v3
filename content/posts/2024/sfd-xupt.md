@@ -3,7 +3,7 @@ title: Windows 上的开源软件入门
 description: 软件自由日西邮站上的一场分享，从 CLI、GUI、开源协议、GitHub 讲起，推荐了一些开源软件。
 date: 2024-09-17 17:51:12
 updated: 2024-09-21 14:47:02
-image: https://7.isyangs.cn/24/67211d656e0ac-24.webp
+image: https://assets.zhilu.cyou/cover4/sfd-xupt.jpg
 categories: [经验分享]
 tags: [开源, 软件自由日, 大学, 分享]
 ---
@@ -298,7 +298,7 @@ WinGet 是微软官方的 Windows 程序包管理器，它提供了命令行程�
 src: https://raw.githubusercontent.com/microsoft/winget-cli/master/.github/images/WingetInstall.gif
 mirror: true
 caption: WinGet 官方演示
-mirror: weserv
+mirror: true
 ---
 ::
 
@@ -380,7 +380,7 @@ caption: Oh My Posh
 
 ::link-banner
 ---
-banner: https://7.isyangs.cn/24/6671b766a4312-24.jpg
+banner: https://assets.zhilu.cyou/cover3/windows-terminal.jpg
 title: Windows 终端体验优化指南
 description: 一篇优化 Windows Terminal 体验的指南，涵盖 PowerShell 增强、Oh My Posh 主题配置、集成 Git Bash 以及终端美化等方面。
 link: /2024/windows-terminal
@@ -524,7 +524,7 @@ LocalSend 是一款免费、开源、跨平台的文件传输软件。采用 Apa
 src: https://raw.githubusercontent.com/viarotel-org/escrcpy/main/screenshots/zh-CN/overview.jpg
 mirror: true
 caption: Escrcpy 截图
-mirror: weserv
+mirror: true
 ---
 ::
 
@@ -538,7 +538,7 @@ mirror: weserv
 
 ::link-banner
 ---
-banner: https://7.isyangs.cn/24/6664009b8f999-24.jpg
+banner: https://assets.zhilu.cyou/cover3/moonlight-streaming-guide.jpg
 title: Moonlight 串流指南
 description: 服务端Sunshine设置、客户端分辨率调整、隐私屏功能实现及触摸优化。
 link: /2024/moonlight-streaming-guide
@@ -594,7 +594,7 @@ Termux 是一个 Android 终端应用程序和 Linux 环境。通过 GPL v3 协�
 
 ::link-banner
 ---
-banner: https://7.isyangs.cn/24/6664009d45024-24.jpg
+banner: https://assets.zhilu.cyou/cover3/termux-guide.jpg
 title: Termux 简单指南
 description: Termux 安装、配置 SSH，切换国内源，安装 ZSH、X11 图形界面，探索更多可能性。
 link: /2023/termux-guide
@@ -662,7 +662,7 @@ Linux 101 是一份由 USTC LUG（中国科学技术大学 Linux 用户组）编
 ::link-card
 ---
 icon: https://github.com/ustclug.png
-mirror: weserv
+mirror: true
 title: Linux 101
 link: https://101.ustclug.org/
 ---

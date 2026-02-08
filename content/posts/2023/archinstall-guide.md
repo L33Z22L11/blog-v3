@@ -3,7 +3,7 @@ title: 使用 ArchInstall 安装 Arch Linux
 description: 在2025年3月版的 Arch Linux 安装镜像的基础上，使用 ArchInstall 安装系统全过程。
 date: 2023-05-23 20:37:07
 updated: 2025-03-21 22:04:14
-image: https://7.isyangs.cn/24/66640095c770c-24.jpg
+image: https://assets.zhilu.cyou/cover3/archinstall-guide.jpg
 categories: [经验分享]
 tags: [教程, archlinux, 系统]
 recommend: 20
@@ -15,7 +15,7 @@ recommend: 20
 
 ::link-banner
 ---
-banner: https://7.isyangs.cn/24/65b66289c9a2e-24.jpg
+banner: https://assets.zhilu.cyou/cover2/windows-setup-guide.jpg
 title: Windows 安装指南
 description: 使用 Ventoy、微 PE、Dism++ 安装系统，绕过账户限制并激活 Office 与 Windows，合理分区布局使数据安全有序。
 link: /2023/windows-setup-guide
@@ -24,7 +24,7 @@ link: /2023/windows-setup-guide
 
 ::link-banner
 ---
-banner: https://7.isyangs.cn/24/66640097e0cbb-24.jpg
+banner: https://assets.zhilu.cyou/cover3/archlinux-boot-repair.jpg
 link: /2024/archlinux-boot-repair
 title: Arch Linux 启动引导修复
 description: 可以修复绝大多数 Arch Linux 无法启动的问题。
@@ -214,7 +214,7 @@ Ventoy 需要加载自定义证书文件才能在启用“安全启动”特性�
 
 ::link-banner
 ---
-banner: https://7.isyangs.cn/24/6664009851eb0-24.jpg
+banner: https://assets.zhilu.cyou/cover3/archlinux-configure.jpg
 title: Arch Linux 初步配置
 link: /2023/archlinux-configure
 ---

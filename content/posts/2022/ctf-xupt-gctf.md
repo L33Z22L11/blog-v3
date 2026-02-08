@@ -3,7 +3,7 @@ title: 西邮GCTF2022-个人WriteUp
 description: 西邮GCTF2022新生赛参与记录。领到了奖品，感觉不错。
 date: 2022-09-28 19:40:10
 updated: 2022-11-13 16:11:55
-image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWTVjL3YA0cJOwfvEHD7TlUuc6hKE0QZqwka3qpbZdJ403WNjNDuuktw/640
+image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWTVjL3YA0cJOwfvEHD7TlUuc6hKE0QZqwka3qpbZdJ403WNjNDuuktw/640
 zoom: true
 categories: [代码]
 tags: [大学, CTF]

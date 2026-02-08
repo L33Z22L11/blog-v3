@@ -3,7 +3,7 @@ title: 电脑连接手机，手机给电脑传文件……
 description: 在同一局域网下，电脑与手机之间互传文件、屏幕投影和远程控制的各种方法。
 date: 2024-02-01 00:28:48
 updated: 2024-11-28 11:08:41
-image: https://7.isyangs.cn/24/6664009b04dea-24.jpg
+image: https://assets.zhilu.cyou/cover3/link-util.jpg
 categories: [经验分享]
 tags: [教程, Windows, 安卓, 互联, 互传, 网络, 系统, 远程]
 ---

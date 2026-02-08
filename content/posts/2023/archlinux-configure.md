@@ -3,7 +3,7 @@ title: Arch Linux 初步配置
 description: 在 Arch Linux 系统上安装配置必备软件，如蓝牙、Yay、Zsh、输入法等。
 date: 2023-06-24 09:31:15
 updated: 2024-12-19 08:23:15
-image: https://7.isyangs.cn/24/6664009851eb0-24.jpg
+image: https://assets.zhilu.cyou/cover3/archlinux-configure.jpg
 categories: [经验分享]
 tags: [教程, archlinux, 系统]
 ---
@@ -223,7 +223,7 @@ Pacman（Arch Linux 的包管理器）会使用安装时的镜像源列表设置
 
 ::link-banner
 ---
-banner: https://7.isyangs.cn/24/666400971559b-24.jpg
+banner: https://assets.zhilu.cyou/cover3/archlinux-beautify.jpg
 title: Arch Linux 易用性及美化
 link: /2023/archlinux-beautify
 ---

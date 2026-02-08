@@ -3,7 +3,7 @@ title: 病毒高占用CPU，三天杀俩
 description: 2024年2月两次处理同一病毒导致随机进程名高CPU占用问题，推测源自盗版软件，成功清理TrueUpdate Client引入的相关病毒脚本。
 date: 2024-02-29 23:54:43
 updated: 2024-03-02 00:09:56
-image: https://7.isyangs.cn/24/6664009db743b-24.jpg
+image: https://assets.zhilu.cyou/cover3/virus-trueupdate.jpg
 indent: true
 categories: [经验分享]
 tags: [病毒, Windows, 系统, 问题]

@@ -229,7 +229,7 @@ public class Palindrome {
 
 ::pic
 ---
-src: https://7.isyangs.cn/24/67075d3d11de4-24.jpg
+src: https://assets.zhilu.cyou/content/241009-telecom-recruit.jpg
 caption: 电信校招海报
 width: 639
 ---

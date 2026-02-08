@@ -3,7 +3,7 @@ title: Moonlight 串流指南
 description: 服务端Sunshine设置、客户端分辨率调整、隐私屏功能实现及触摸优化。
 date: 2024-01-18 18:58:55
 updated: 2024-07-08 12:51:35
-image: https://7.isyangs.cn/24/6664009b8f999-24.jpg
+image: https://assets.zhilu.cyou/cover3/moonlight-streaming-guide.jpg
 categories: [经验分享]
 tags: [tailscale, moonlight, sunshine, 网络, 远程, 教程]
 references:
@@ -19,7 +19,7 @@ recommend: 50
 ::link-banner
 ---
 title: Tailscale 不完全使用指南
-banner: https://7.isyangs.cn/24/6664009cce512-24.jpg
+banner: https://assets.zhilu.cyou/cover3/moonlight-streaming-guide.jpg
 link: /2023/tailscale-incomplete-guide
 ---
 ::

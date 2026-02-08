@@ -3,7 +3,7 @@ title: 今日有「假」
 description: 外卖空包、无知造谣、钓鱼网站、山寨品牌、开源倒卖，世界这个草台班子有些「假」。
 date: 2024-05-03 12:22:31
 updated: 2024-05-03 15:17:34
-image: https://7.isyangs.cn/24/66346bbe07c33-24.jpg
+image: https://assets.zhilu.cyou/cover3/fake-in-the-world.jpg
 type: story
 categories: [生活]
 tags: [大学, 问题]

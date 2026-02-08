@@ -3,7 +3,7 @@ title: SSH 免密登录
 description: 生成SSH密钥，启用公钥认证，将公钥添加至授权列表，实现 Windows/Linux/GitHub SSH 免密登录。
 date: 2023-12-25 16:15:00
 updated: 2024-12-26 20:32:04
-image: https://7.isyangs.cn/24/6664009c87ec5-24.jpg
+image: https://assets.zhilu.cyou/cover3/ssh-key-login.jpg
 categories: [经验分享]
 tags: [教程, ssh, 远程]
 recommend: true
@@ -13,7 +13,7 @@ recommend: true
 
 ::link-banner
 ---
-banner: https://7.isyangs.cn/24/6671b766a4312-24.jpg
+banner: https://assets.zhilu.cyou/cover3/windows-terminal.jpg
 title: Windows 终端体验优化指南
 description: 一篇优化 Windows Terminal 体验的指南，涵盖 PowerShell 增强、Oh My Posh 主题配置、集成 Git Bash 以及终端美化等方面。
 link: /2024/windows-terminal

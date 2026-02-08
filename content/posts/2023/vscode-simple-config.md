@@ -3,7 +3,7 @@ title: VS Code 简单配置项
 description: 简单配置 VS Code，启用字体连字、平滑滚动、自动换行等功能，并提供了前端实用配置和常用快捷键，提升编辑器体验。
 date: 2023-04-13 20:05:50
 updated: 2024-12-18 22:13:41
-image: https://7.isyangs.cn/24/65a8dcff71bdf-24.jpg
+image: https://assets.zhilu.cyou/cover2/vscode-simple-config.jpg
 categories: [经验分享]
 tags: [教程, vscode, 软件]
 recommend: true

@@ -3,7 +3,7 @@ title: 封面被 Linux QQ 官方用了，但是有一些小缺陷
 description: 怀疑 Linux QQ 团队使用了作者的封面图片，严谨求证后发现事实确实如此，并且因此找到了 Linux QQ 官网的 bug。
 date: 2024-06-18 13:23:05
 updated: 2024-06-18 17:23:24
-image: https://7.isyangs.cn/24/66714b1f0bc35-24.jpg
+image: https://assets.zhilu.cyou/cover3/cover-copied.jpg
 type: story
 categories: [杂谈]
 tags: [qq, 问题, 软件]
@@ -32,7 +32,7 @@ link: https://mp.weixin.qq.com/s/M3-7XnNy30HprMpDsKBi7w
 ---
 title: Linux QQ 崩溃解决办法
 description: 原创　纸鹿本鹿　2023-03-16 21:02:22　纸鹿摸鱼处
-banner: https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
+banner: https://assets.zhilu.cyou/cover2/linuxqq-crash.jpg
 link: /2023/linuxqq-crash
 ---
 ::
@@ -45,7 +45,7 @@ link: /2023/linuxqq-crash
 
 ::pic
 ---
-src: https://7.isyangs.cn/24/65a8dcff995c4-24.jpg
+src: https://assets.zhilu.cyou/cover2/linuxqq-crash.jpg
 caption: 我的封面
 zoom: true
 ---

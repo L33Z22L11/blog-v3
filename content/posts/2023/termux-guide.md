@@ -3,7 +3,7 @@ title: Termux 简单指南
 description: Termux 安装、配置 SSH，切换国内源，安装 ZSH、X11 图形界面，探索更多可能性。
 date: 2023-11-13 21:50:08
 updated: 2024-04-28 20:25:16
-image: https://7.isyangs.cn/24/6664009d45024-24.jpg
+image: https://assets.zhilu.cyou/cover3/termux-guide.jpg
 categories: [经验分享]
 tags: [教程, termux, 软件]
 recommend: true

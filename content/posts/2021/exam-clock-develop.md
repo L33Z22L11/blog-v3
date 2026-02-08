@@ -3,7 +3,7 @@ title: 考试时钟的升级打怪攻略
 description: 为应对考试场景而开发并不断优化升级“考试时钟”网页应用的过程，从最初为解决学生看不清挂钟问题而创建，经历多次功能迭代，如增加科目倒计时、支持不同年级文理科切换、临时添加考试科目等功能。最终，这款“考试时钟”在多个年级得到广泛应用，并持续在线升级服务考试需求。
 date: 2021-10-01 21:30:00
 updated: 2021-11-07 14:08:00
-image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26M22aKhJHOahC7fkdKpHsgTpQQgtia5uN4ROYAgd2bOzPD5Yzb0LOibgA/640
+image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26M22aKhJHOahC7fkdKpHsgTpQQgtia5uN4ROYAgd2bOzPD5Yzb0LOibgA/640
 type: story
 categories: [代码]
 tags: [高中, 电教, 校园]

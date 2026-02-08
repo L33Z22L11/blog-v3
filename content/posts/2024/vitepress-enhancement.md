@@ -3,7 +3,7 @@ title: VitePress 不完全优化指南
 description: VitePress 的基本使用与定制技巧，涵盖项目初始化、汉化配置、图标引入、自定义主题等内容，旨在利用 VitePress 构建美观、高效的静态站点。
 date: 2024-11-03 17:54:50
 updated: 2025-09-15 23:19:18
-image: https://7.isyangs.cn/24/67290b1bd1b29-24.webp
+image: https://assets.zhilu.cyou/cover4/vitepress-enhancement.jpg
 categories: [经验分享]
 tags: [VitePress, 前端]
 ---

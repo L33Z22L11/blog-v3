@@ -3,7 +3,7 @@ title: 博客进化：从 Hexo 到 Nuxt Content
 description: 抬笔一挥，便洒出占半的前端样式代码。开发功能并不慢，样式优化与问题修复却很耗时间。博客前端的现代化转型，且听我话其分晓。
 date: 2024-08-27 18:30:55
 updated: 2024-09-04 21:18:32
-image: https://7.isyangs.cn/24/66d4c3ea35003-24.jpg
+image: https://assets.zhilu.cyou/cover3/blog-using-nuxt.jpg
 categories: [经验分享]
 tags: [网站, 博客]
 type: story

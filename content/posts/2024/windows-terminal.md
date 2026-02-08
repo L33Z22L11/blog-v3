@@ -3,7 +3,7 @@ title: Windows 终端体验优化指南
 description: 一篇优化 Windows Terminal 体验的指南，涵盖 PowerShell 增强、Oh My Posh 主题配置、集成 Git Bash 以及终端美化等方面。
 date: 2024-06-16 22:48:57
 updated: 2024-11-02 17:55:29
-image: https://7.isyangs.cn/24/6671b766a4312-24.jpg
+image: https://assets.zhilu.cyou/cover3/windows-terminal.jpg
 categories: [经验分享]
 tags: [教程, 系统, Windows, 终端]
 recommend: true
@@ -102,7 +102,7 @@ PSReadLine 模块会提供自动补全功能，Windows PowerShell 安装的是�
 
 ::link-banner
 ---
-banner: https://7.isyangs.cn/24/6664009c87ec5-24.jpg
+banner: https://assets.zhilu.cyou/cover3/ssh-key-login.jpg
 title: SSH 免密登录
 description: 生成SSH密钥，启用公钥认证，将公钥添加至授权列表，实现 Windows/Linux/GitHub SSH 免密登录。
 link: /2023/ssh-key-login

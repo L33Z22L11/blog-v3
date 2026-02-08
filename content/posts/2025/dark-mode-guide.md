@@ -3,7 +3,7 @@ title: 深色模式开发的最佳实践
 description: 前端深色模式不止于 prefers-color-scheme，完整解析自动检测、手动切换的实现方案，解决闪屏、样式冲突、变量管理等常见痛点，提供稳健的深色模式最佳实践。
 date: 2025-04-14 10:07:16
 updated: 2025-04-14 18:45:28
-image: https://7.isyangs.cn/24/680072e87a129-24.webp
+image: https://assets.zhilu.cyou/cover4/dark-mode-guide.jpg
 categories: [经验分享]
 tags: [代码, 前端, 问题]
 ---

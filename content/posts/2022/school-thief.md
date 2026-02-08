@@ -3,7 +3,7 @@ title: “ 熟 贼 难 防 ”
 description: 高中生活中多次出现个人物品丢失的现象，揭示了中学中难以防范的失窃行为，引发对于尊重他人私人物品和个人空间的思考。
 date: 2022-01-20
 updated: 2022-01-22 22:49:00
-image: https://image.baidu.com/search/down?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fZOET0iaB29muw24RYFpe5n4XHbzicWrMekkx4bQ1xm2NCdC3Rlk53icpyqOpJSH9f4bGGJm9861Qibjg/0
+image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fZOET0iaB29muw24RYFpe5n4XHbzicWrMekkx4bQ1xm2NCdC3Rlk53icpyqOpJSH9f4bGGJm9861Qibjg/0
 type: story
 categories: [生活]
 tags: [高中, 说说, 班级, 校园]
