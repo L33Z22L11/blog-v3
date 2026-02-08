@@ -6,10 +6,6 @@ import { version } from '~~/package.json'
 // 图标查询：https://yesicon.app/ph?s=bold
 // 图标插件：https://marketplace.visualstudio.com/items?itemName=antfu.iconify
 
-declare module 'nuxt/schema' {
-	interface AppConfigInput { }
-}
-
 // @keep-sorted
 export default defineAppConfig({
 	// 将 blog.config 中的配置项复制到 appConfig，方便调用

@@ -29,12 +29,8 @@ onMounted(() => {
 				:title="`[${error?.statusCode}] ${error?.message}`"
 			>
 				<template #operation>
-					<ZButton @click="clearError({ redirect: '/' })">
-						返回主页
-					</ZButton>
-					<ZButton @click="clearError()">
-						尝试忽略
-					</ZButton>
+					<ZButton text="返回主页" @click="clearError({ redirect: '/' })" />
+					<ZButton text="尝试忽略" @click="clearError()" />
 				</template>
 			</ZError>
 		</div>

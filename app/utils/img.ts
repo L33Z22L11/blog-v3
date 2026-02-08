@@ -1,6 +1,9 @@
 // @keep-sorted
 const services = {
 	baidu: 'https://image.baidu.com/search/down?url=',
+	/** https://webp.se/fly/ */
+	fly: 'https://fly.webp.se/?url=',
+	/** https://wsrv.nl/docs/ */
 	weserv: 'https://wsrv.nl/?url=',
 }
 
@@ -41,7 +44,7 @@ export function getOicqAvatar(qq = '', size = OicqAvatarSize.Size140) {
 }
 
 interface FaviconOptions {
-	provider?: 'google' | 'duckduckgo'
+	provider?: 'google' | 'duckduckgo' | 'microlink'
 	size?: number
 }
 
@@ -52,13 +55,11 @@ export function getFavicon(domain: string, options?: FaviconOptions) {
 	return `https://unavatar.webp.se/${provider}/${domain}?w=${size}`
 }
 
-export function getImgUrl(src: string, service?: ImgService) {
+export function getImgUrl(src: string, service?: ImgService | true) {
 	if (!service)
 		return src
-	if (service === true) {
-		const autoService = getMainDomain(src) === 'github.com' ? 'weserv' : 'baidu'
-		return services[autoService] + src
-	}
+	if (service === true)
+		service = 'fly'
 	if (service in services)
 		return services[service] + src
 	return src

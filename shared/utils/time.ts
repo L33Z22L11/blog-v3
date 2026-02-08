@@ -50,8 +50,8 @@ export function toZdtLocaleString(date: string | Temporal.ZonedDateTime, format:
 
 /** 检查两个时间相对现在是否相差显著 */
 export function isTimeDiffSignificant(
-	date1?: string | Temporal.PlainDateTime,
-	date2?: string | Temporal.PlainDateTime,
+	date1?: string,
+	date2?: string,
 	/** 对于时间差的敏感程度，0~1 之间，1:不同则认为显著，>1:始终认为显著 */
 	threshold = 0.6,
 ) {
@@ -59,11 +59,9 @@ export function isTimeDiffSignificant(
 		return false
 	if (threshold > 1)
 		return true
-
-	const now = Temporal.Now.plainDateTimeISO()
-
-	const diff1 = now.since(date1, { largestUnit: 'second' }).seconds
-	const diff2 = now.since(date2, { largestUnit: 'second' }).seconds
+	const now = Temporal.Now.instant().epochMilliseconds
+	const diff1 = now - toZonedTemporal(date1).epochMilliseconds
+	const diff2 = now - toZonedTemporal(date2).epochMilliseconds
 	return diff1 / diff2 < threshold || diff2 / diff1 < threshold
 }
 

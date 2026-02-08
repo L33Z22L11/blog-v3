@@ -69,4 +69,8 @@ const listRecommended = computed(() => sort(
 .post-list {
 	margin: 1rem;
 }
+
+.float-in-leave-to {
+	position: absolute;
+}
 </style>

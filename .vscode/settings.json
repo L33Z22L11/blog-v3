@@ -1,16 +1,7 @@
 {
-  "[css]": {
-    "editor.defaultFormatter": "stylelint.vscode-stylelint"
-  },
   "[mdc]": {
     "editor.defaultFormatter": "Nuxt.mdc",
     "files.autoGuessEncoding": false
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "[vue]": {
-    "editor.defaultFormatter": null
   },
   "[yaml]": {
     "editor.formatOnSave": false
@@ -19,6 +10,8 @@
     "source.fixAll.eslint": "always",
     "source.fixAll.stylelint": "always"
   },
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
   "editor.tabSize": 3,
   "errorLens.fontSize": ".8em",
   "errorLens.messageBackgroundMode": "message",

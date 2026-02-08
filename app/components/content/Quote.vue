@@ -22,6 +22,7 @@ const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
 	font-size: 1.2rem;
 	line-height: 1.5;
 	color: var(--c-text-2);
+	isolation: isolate;
 
 	:deep(p) {
 		margin: 0;
