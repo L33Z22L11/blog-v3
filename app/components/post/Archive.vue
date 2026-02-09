@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { ArticleProps } from '~/types/article'
-import { Temporal } from 'temporal-polyfill'
 
 const props = defineProps<{
 	to?: string
@@ -24,7 +23,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 				v-if="date && useUpdated && isTimeDiffSignificant(date, updated)"
 				class="dim-hover info"
 				:date="date"
-				:format="updated && Temporal.PlainDate.from(date).year === Temporal.PlainDate.from(updated).year ? 'date' : 'monthDay'"
+				:format="updated && toZonedTemporal(date).year !== toZonedTemporal(updated).year ? 'date' : 'monthDay'"
 			/>
 
 			<ul v-if="tags?.length" class="dim-hover info tag-list">

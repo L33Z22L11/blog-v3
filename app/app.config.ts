@@ -1,7 +1,8 @@
 import type { Nav, NavItem } from '~/types/nav'
+import { pascal } from 'radash'
 import { Temporal } from 'temporal-polyfill'
 import blogConfig from '~~/blog.config'
-import { version } from '~~/package.json'
+import { name, version } from '~~/package.json'
 
 // 图标查询：https://yesicon.app/ph?s=bold
 // 图标插件：https://marketplace.visualstudio.com/items?itemName=antfu.iconify
@@ -82,7 +83,7 @@ export default defineAppConfig({
 			{
 				title: '信息',
 				items: [
-					{ icon: 'simple-icons:nuxt', text: `主题: Clarity ${version}`, url: 'https://github.com/L33Z22L11/blog-v3' },
+					{ icon: 'simple-icons:nuxt', text: `主题: ${pascal(name)} ${version}`, url: 'https://github.com/L33Z22L11/blog-v3' },
 					{ icon: 'ph:swatches-bold', text: '主题和组件文档', url: '/theme' },
 					{ icon: 'ph:certificate-bold', text: '陕ICP备2025082251号', url: 'https://beian.miit.gov.cn/' },
 				],

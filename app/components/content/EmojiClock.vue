@@ -16,8 +16,7 @@ const datetime = computed(() => props.datetime
 	: now.value)
 
 const status = computed(() => {
-	const hour = datetime.value.hour
-	const minute = datetime.value.minute
+	const { hour, minute } = datetime.value
 
 	if (!props.rotate) {
 		const emojiIndex = (hour * 2 + Math.round(minute / 30)) % emojiStatic.length
@@ -29,15 +28,12 @@ const status = computed(() => {
 	return { rotate: minuteAt * 30, emoji: emojiRotate[emojiIndex] }
 })
 
-const { pause, resume } = useIntervalFn(() => {
+// 定时器只能在客户端运行，否则 nuxt generate 不能自动退出
+const { resume } = useIntervalFn(() => {
 	now.value = Temporal.Now.zonedDateTimeISO()
-}, 30000)
+}, 30000, { immediate: false })
 
-watchImmediate(
-	() => props.datetime,
-	// 定时器只能在客户端运行，否则 nuxt generate 不能自动退出
-	val => val ? pause() : import.meta.client && resume(),
-)
+whenever(() => !props.datetime, resume)
 </script>
 
 <template>

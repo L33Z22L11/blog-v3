@@ -29,13 +29,11 @@ const relative = computed(() => props.absolute || !zdt.value
 	: props.relative || today.since(zdt.value, { largestUnit: 'week' }).weeks < 1,
 )
 
-const mounted = ref(false)
+const mounted = useMounted()
 const tooltip = computed(() => mounted.value && zdt.value
 	? props.tipTransform(toZdtLocaleString(zdt.value, props.tipFormat))
 	: undefined,
 )
-
-onMounted(() => mounted.value = true)
 </script>
 
 <template>

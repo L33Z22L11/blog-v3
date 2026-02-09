@@ -49,7 +49,7 @@ const listResult = useTemplateRef('list-result')
 const activeIndex = ref(0)
 const activeItem = computed(() => listResult.value?.children[activeIndex.value] as HTMLElement | undefined)
 
-watch(() => props.open, focusInput)
+whenever(() => props.open, focusInput)
 
 watch(status, (newStatus) => {
 	if (newStatus === 'success' && data.value) {
