@@ -13,15 +13,13 @@ const popoverBind = ref<TippyComponent['$props']>({})
 
 /** 评论区链接守卫 */
 useEventListener(commentEl, 'click', (e) => {
-	const target = e.target
-	if (!(target instanceof HTMLElement)) return
-
-	if (target.matches('.tk-avatar-img')) {
-		e.stopPropagation()
+	if (!(e.target instanceof Element))
 		return
-	}
 
-	const popoverTarget = target.closest('a[target="_blank"]')
+	if (e.target.matches('.tk-avatar-img'))
+		e.stopPropagation()
+
+	const popoverTarget = e.target.closest('a[target="_blank"]')
 	if (!(popoverTarget instanceof HTMLAnchorElement))
 		return
 
