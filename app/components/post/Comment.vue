@@ -13,33 +13,27 @@ const popoverBind = ref<TippyComponent['$props']>({})
 
 /** 评论区链接守卫 */
 useEventListener(commentEl, 'click', (e) => {
-	if (!(e.target instanceof HTMLElement))
+	if (!(e.target instanceof Element))
 		return
 
-	if (e.target.classList.contains('tk-avatar-img')) {
+	if (e.target.matches('.tk-avatar-img'))
 		e.stopPropagation()
+
+	const popoverTarget = e.target.closest('a[target="_blank"]')
+	if (!(popoverTarget instanceof HTMLAnchorElement))
 		return
+
+	e.preventDefault()
+	popoverEl.value?.hide()
+
+	popoverJumpTo.value = safelyDecodeUriComponent(popoverTarget.href)
+	popoverBind.value = {
+		getReferenceClientRect: () => popoverTarget.getBoundingClientRect(),
+		triggerTarget: popoverTarget,
 	}
 
-	const popoverTarget = e.target instanceof HTMLAnchorElement
-		? e.target
-		: e.target.parentElement instanceof HTMLAnchorElement
-			? e.target.parentElement
-			: null
-
-	if (popoverTarget?.target === '_blank') {
-		popoverEl.value?.hide()
-
-		e.preventDefault()
-		popoverJumpTo.value = safelyDecodeUriComponent(popoverTarget.href)
-		nextTick(() => checkUndoable())
-		popoverBind.value = {
-			getReferenceClientRect: () => popoverTarget.getBoundingClientRect(),
-			triggerTarget: popoverTarget,
-		}
-
-		popoverEl.value?.show()
-	}
+	nextTick(checkUndoable)
+	popoverEl.value?.show()
 }, { capture: true })
 
 function checkUndoable() {
