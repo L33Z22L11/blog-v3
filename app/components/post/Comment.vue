@@ -16,16 +16,14 @@ useEventListener(commentEl, 'click', (e) => {
 	const target = e.target
 	if (!(target instanceof HTMLElement)) return
 
-	if (target.classList.contains('tk-avatar-img')) {
+	if (target.matches('.tk-avatar-img')) {
 		e.stopPropagation()
 		return
 	}
 
-	const popoverTarget = target instanceof HTMLAnchorElement
-		? target
-		: target.closest('a')
-
-	if (popoverTarget?.target !== '_blank') return
+	const popoverTarget = target.closest('a[target="_blank"]')
+	if (!(popoverTarget instanceof HTMLAnchorElement))
+		return
 
 	e.preventDefault()
 	popoverEl.value?.hide()
