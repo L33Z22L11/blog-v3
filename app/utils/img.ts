@@ -20,11 +20,11 @@ export function getWsrvGhAvatar(name = '', options: Record<string, any> = { size
 }
 
 // https://docs.webp.se/public-services/github-avatar/
-export function getGhAvatar(name = '', options = { size: 120 }) {
+export function getGithubAvatar(name = '', options = { size: 120 }) {
 	return `https://avatars-githubusercontent-webp.webp.se/${name}?s=${options.size}`
 }
 
-export const getGhIcon = (name = '') => getWsrvGhAvatar(name, { size: 32, mask: 'circle' })
+export const getGithubIcon = (name = '') => getWsrvGhAvatar(name, { size: 32, mask: 'circle' })
 
 export enum OicqAvatarSize {
 	Size1080,
@@ -49,7 +49,7 @@ export enum QgroupAvatarSize {
 	Size640_ = 640,
 }
 
-export function getQgroupAvatar(group = '', size = QgroupAvatarSize.Size100) {
+export function getOciqGroupAvatar(group = '', size = QgroupAvatarSize.Size100) {
 	return `https://p.qlogo.cn/gh/${group}/${group}/${size}/`
 }
 

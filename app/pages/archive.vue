@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ArticleProps } from '~/types/article'
 import { group } from 'radash'
 
 const appConfig = useAppConfig()
@@ -20,10 +21,15 @@ const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted)
 
 const listGrouped = computed(() => {
-	const groupList = Object.entries(group(
-		listCategorized.value,
-		article => article[sortOrder.value] ? toZonedTemporal(article[sortOrder.value] as string).year.toString() : '',
-	))
+	function getArticleYear(article: ArticleProps) {
+		try {
+			return toZonedTemporal(article[sortOrder.value] as string).year.toString()
+		}
+		catch {
+			return ''
+		}
+	}
+	const groupList = Object.entries(group(listCategorized.value, getArticleYear))
 	return isAscending.value ? groupList : groupList.reverse()
 })
 

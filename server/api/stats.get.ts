@@ -54,7 +54,7 @@ export default defineEventHandler(async (event) => {
 			stats.annual[year].words += post.readingTime.words
 		}
 		catch (e) {
-			console.warn(`${post.path} date ${post.date ? '格式错误' : '为空'}: ${e}`)
+			console.warn(`${post.path} 文章日期${post.date ? '格式错误' : '为空'}: ${e}`)
 		}
 
 		// 分类文章计数

@@ -6,7 +6,7 @@ const props = defineProps<{
 }>()
 
 const page = defineModel<number>({ required: true })
-const pageArr = computed(() => genPageArr(page.value, props.totalPages, props.expandPages ?? 2))
+const pageArr = computed(() => getPaginationIndicator(page.value, props.totalPages, props.expandPages ?? 2))
 
 const layoutStore = useLayoutStore()
 const { panelTranslate } = storeToRefs(layoutStore)

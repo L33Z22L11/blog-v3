@@ -28,7 +28,7 @@ export function getDomainType(mainDomain: string) {
 	return domainTip[mainDomain]
 }
 
-export function getGhUsername(url?: string) {
+export function getGithubUsername(url?: string) {
 	if (!url)
 		return ''
 	const usernameRegex = /github\.com\/([a-zA-Z0-9-]+)(?:\/[^/]+)?(\/?)$/

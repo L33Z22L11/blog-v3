@@ -3,15 +3,15 @@ packages:
 
 catalogs:
   content:
-    '@bikariya/shiki': ^0.0.6
-    '@nuxt/content': ^3.11.0
+    '@bikariya/shiki': ^0.0.7
+    '@nuxt/content': ^3.11.2
     '@nuxtjs/seo': ^3.4.0
     '@shikijs/colorized-brackets': ^3.22.0
     '@shikijs/transformers': ^3.22.0
     '@types/hast': ^3.0.4
     '@types/mdast': ^4.0.4
-    abcjs: ^6.6.0
-    minimark: ^0.2.0
+    abcjs: ^6.6.1
+    minimark: ^1.0.0
     nuxt-llms: ^0.2.0
     plain-shiki: ^0.3.2
     rehype-katex: ^7.0.1
@@ -21,31 +21,31 @@ catalogs:
     unist-util-visit: ^5.1.0
     vfile: ^6.0.3
   framework:
-    '@zinkawaii/tsconfig': ^0.0.2
+    '@zinkawaii/tsconfig': ^0.1.0
     ci-info: ^4.4.0
-    nuxt: ^4.3.0
+    nuxt: ^4.3.1
     sass-embedded: ^1.97.3
-    tsdown: ^0.20.1
+    tsdown: ^0.20.3
     tsx: ^4.21.0
     typescript: ^5.9.3
     unplugin-yaml: ^3.0.7
-    vue: ^3.5.27
+    vue: ^3.5.28
     vue-router: ^5.0.2
   quality:
-    '@antfu/eslint-config': ^7.2.0
+    '@antfu/eslint-config': ^7.4.3
     '@nuxt/a11y': 1.0.0-alpha.1
     '@nuxt/hints': 1.0.0-alpha.6
     '@zinkawaii/stylelint-config': ^0.4.0
-    cspell: ^9.6.2
-    eslint: ^9.39.2
-    stylelint: ^17.1.0
+    cspell: ^9.6.4
+    eslint: ^10.0.0
+    stylelint: ^17.2.0
   ui:
-    '@bikariya/image-viewer': ^0.0.6
-    '@bikariya/modals': ^0.0.6
+    '@bikariya/image-viewer': ^0.0.7
+    '@bikariya/modals': ^0.0.7
     '@iconify-json/catppuccin': ^1.2.17
     '@iconify-json/ph': ^1.2.2
-    '@iconify-json/ri': ^1.2.9
-    '@iconify-json/simple-icons': ^1.2.69
+    '@iconify-json/ri': ^1.2.10
+    '@iconify-json/simple-icons': ^1.2.70
     '@iconify-json/solar': ^1.2.5
     '@nuxt/icon': ^2.2.1
     '@nuxt/image': ^2.0.0
@@ -58,21 +58,20 @@ catalogs:
   util:
     '@clack/prompts': ^1.0.0
     '@pinia/nuxt': ^0.11.3
-    '@vueuse/core': ^14.2.0
-    '@vueuse/nuxt': ^14.2.0
-    '@vueuse/router': ^14.2.0
-    fast-xml-parser: ^5.3.4
+    '@vueuse/core': ^14.2.1
+    '@vueuse/nuxt': ^14.2.1
+    '@vueuse/router': ^14.2.1
+    fast-xml-parser: ^5.3.5
     minisearch: ^7.2.0
     nanoid: ^5.1.6
     oxc-minify: ^0.112.0
-    p-limit: ^7.2.0
+    p-limit: ^7.3.0
     parse-domain: ^8.2.2
     radash: ^12.1.1
     rimraf: ^6.1.2
     site-config-stack: ^3.2.19
     strip-ansi: ^7.1.2
     temporal-polyfill: ^0.3.0
-    zfeed: ^0.2.4
 
 engineStrict: true
 

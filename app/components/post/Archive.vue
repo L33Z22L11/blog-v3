@@ -23,7 +23,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 				v-if="date && useUpdated && isTimeDiffSignificant(date, updated)"
 				class="dim-hover info"
 				:date="date"
-				:format="updated && toZonedTemporal(date).year !== toZonedTemporal(updated).year ? 'date' : 'monthDay'"
+				:format="updated && isSameUnit(date, updated, 'year') ? 'monthDay' : 'date'"
 			/>
 
 			<ul v-if="tags?.length" class="dim-hover info tag-list">

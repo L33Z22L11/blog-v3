@@ -11,9 +11,9 @@ const props = defineProps<{
 const img = computed(() => {
 	if (props.img)
 		return props.img
-	const ghUsername = getGhUsername(props.link)
+	const ghUsername = getGithubUsername(props.link)
 	if (ghUsername)
-		return getGhAvatar(ghUsername)
+		return getGithubAvatar(ghUsername)
 	if (props.link && isExtLink(props.link))
 		return getFavicon(getDomain(props.link))
 	return ''

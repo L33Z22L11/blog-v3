@@ -1,13 +1,10 @@
 <script setup lang="ts">
+import type { ModalEmits, ModalProps } from '#modals'
 import MiniSearch from 'minisearch'
 
-const props = defineProps<{
-	open?: boolean
-}>()
+const props = defineProps<ModalProps>()
 
-defineEmits<{
-	close: []
-}>()
+defineEmits<ModalEmits>()
 
 const appConfig = useAppConfig()
 const segmenter = Intl.Segmenter && new Intl.Segmenter(appConfig.language, { granularity: 'word' })

@@ -1,51 +1,19 @@
 import { Temporal } from 'temporal-polyfill'
 import blogConfig from '~~/blog.config'
 
-export const dateTimeFormat = {
-	date: {
-		year: 'numeric',
-		month: '2-digit',
-		day: '2-digit',
-	},
-	monthDay: {
-		month: '2-digit',
-		day: '2-digit',
-	},
-	full: {
-		year: 'numeric',
-		month: '2-digit',
-		day: '2-digit',
-		weekday: 'long',
-		hour: '2-digit',
-		minute: '2-digit',
-		second: '2-digit',
-		timeZoneName: 'long',
-	},
-} satisfies Record<string, Intl.DateTimeFormatOptions>
-
-export type dateTimeFormatOptions = keyof typeof dateTimeFormat | Intl.DateTimeFormatOptions
-
-export function toInstantString(date: string | Temporal.ZonedDateTime) {
-	return (typeof date === 'string' ? toZonedTemporal(date) : date).toInstant().toString()
-}
-
-export function toZonedTemporal(date: string) {
+export function isSameUnit(date1: string, date2: string, unit: Temporal.DateTimeUnit) {
 	try {
-		return Temporal.ZonedDateTime.from(date)
+		const p1 = toZonedTemporal(date1).toPlainDateTime()
+		const p2 = toZonedTemporal(date2).toPlainDateTime()
+		return p1.until(p2, {
+			largestUnit: unit,
+			smallestUnit: unit,
+			roundingMode: 'trunc',
+		}).blank
 	}
 	catch {
-		try {
-			return Temporal.Instant.from(date).toZonedDateTimeISO(blogConfig.timeZone)
-		}
-		catch {
-			return Temporal.PlainDateTime.from(date).toZonedDateTime(blogConfig.timeZone)
-		}
+		return false
 	}
-}
-
-export function toZdtLocaleString(date: string | Temporal.ZonedDateTime, format: dateTimeFormatOptions = 'full') {
-	return (typeof date === 'string' ? toZonedTemporal(date) : date)
-		.toLocaleString(undefined, typeof format === 'string' ? dateTimeFormat[format] : format)
 }
 
 /** 检查两个时间相对现在是否相差显著 */
@@ -59,10 +27,15 @@ export function isTimeDiffSignificant(
 		return false
 	if (threshold > 1)
 		return true
-	const now = Temporal.Now.instant().epochMilliseconds
-	const diff1 = now - toZonedTemporal(date1).epochMilliseconds
-	const diff2 = now - toZonedTemporal(date2).epochMilliseconds
-	return diff1 / diff2 < threshold || diff2 / diff1 < threshold
+	try {
+		const now = Temporal.Now.instant().epochMilliseconds
+		const diff1 = now - toZonedTemporal(date1).epochMilliseconds
+		const diff2 = now - toZonedTemporal(date2).epochMilliseconds
+		return diff1 / diff2 < threshold || diff2 / diff1 < threshold
+	}
+	catch {
+		return true
+	}
 }
 
 const timeIntervals = [
@@ -88,4 +61,51 @@ export function timeElapse(date: string | Temporal.PlainDateTime, maxDepth = 2) 
 			break
 	}
 	return timeString || '刚刚'
+}
+
+export function toInstantString(date: string | Temporal.ZonedDateTime) {
+	return (typeof date === 'string' ? toZonedTemporal(date) : date).toInstant().toString()
+}
+
+export function toZonedTemporal(date: string) {
+	try {
+		return Temporal.ZonedDateTime.from(date)
+	}
+	catch {
+		try {
+			return Temporal.Instant.from(date).toZonedDateTimeISO(blogConfig.timeZone)
+		}
+		catch {
+			return Temporal.PlainDateTime.from(date).toZonedDateTime(blogConfig.timeZone)
+		}
+	}
+}
+
+export const dateTimeFormat = {
+	date: {
+		year: 'numeric',
+		month: '2-digit',
+		day: '2-digit',
+	},
+	monthDay: {
+		month: '2-digit',
+		day: '2-digit',
+	},
+	full: {
+		year: 'numeric',
+		month: '2-digit',
+		day: '2-digit',
+		weekday: 'long',
+		hour: '2-digit',
+		minute: '2-digit',
+		second: '2-digit',
+		timeZoneName: 'long',
+	},
+} satisfies Record<string, Intl.DateTimeFormatOptions>
+
+export type dateTimeFormatOptions = keyof typeof dateTimeFormat | Intl.DateTimeFormatOptions
+
+export function toZdtLocaleString(date: string | Temporal.ZonedDateTime, format: dateTimeFormatOptions = 'full') {
+	return (typeof date === 'string' ? toZonedTemporal(date) : date)
+		.toLocaleString(undefined, typeof format === 'string' ? dateTimeFormat[format] : format)
 }
