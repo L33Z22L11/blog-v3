@@ -154,6 +154,7 @@ export default defineNuxtConfig({
 				// @keep-sorted
 				remarkPlugins: {
 					'remark-math': {},
+					'remark-mermaid': {},
 					'remark-music': {},
 					'remark-reading-time': {},
 				},
