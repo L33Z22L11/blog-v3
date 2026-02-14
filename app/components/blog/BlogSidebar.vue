@@ -19,10 +19,10 @@ const debouncedSelection = refDebounced(text)
 	<BlogHeader class="sidebar-header" to="/" />
 
 	<nav class="sidebar-nav scrollcheck-y">
-		<div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
+		<div class="search-btn sidebar-nav-item gradient-card" @click="searchStore.open()">
 			<Icon name="ph:magnifying-glass-bold" />
 			<span class="nav-text">{{ debouncedSelection || searchStore.word || '搜索' }}</span>
-			<Key class="keycut" code="K" cmd prevent @press="layoutStore.toggle('search')" />
+			<Key class="keycut" code="K" cmd prevent @press="searchStore.toggle()" />
 		</div>
 
 		<template v-for="(group, groupIndex) in appConfig.nav" :key="groupIndex">

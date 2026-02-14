@@ -1,6 +1,6 @@
 import { defineNuxtModule } from 'nuxt/kit'
-import { minify } from 'oxc-minify'
 import blogConfig from '../../blog.config'
+import { toIifeString } from '../../shared/utils/function'
 import handleMirror from './runtime/client'
 
 const blacklist = [
@@ -21,10 +21,3 @@ export default defineNuxtModule({
 		})
 	},
 })
-
-function toIifeString<T extends unknown[]>(fn: (...args: T) => void, ...args: T) {
-	const fnString = fn.toString()
-	const argsString = JSON.stringify(args).slice(1, -1)
-	const minified = minify('', `(${fnString})(${argsString})`)
-	return minified.code
-}

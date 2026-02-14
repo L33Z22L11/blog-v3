@@ -1,9 +1,22 @@
 <script setup lang="ts">
+import { LazyBlogPreference } from '#components'
+
 const appConfig = useAppConfig()
 const colorMode = useColorMode()
+
+const layoutStore = useLayoutStore()
+const modalStore = useModalStore()
+
+const { open } = modalStore.use(() => h(LazyBlogPreference), { unique: true })
 </script>
 
 <template>
+<ZSecret>
+	<ZButton @click="layoutStore.close(); open()">
+		偏好设置（Beta）
+	</ZButton>
+</ZSecret>
+
 <div class="theme-toggle">
 	<button
 		v-for="(themeData, themeName) in appConfig.themes"
