@@ -125,5 +125,6 @@ if (import.meta.dev) {
 
 .float-in-move {
 	contain: paint; // 防止移动时出现滚动条
+	pointer-events: none; // 阻止触发错误定位的气泡
 }
 </style>

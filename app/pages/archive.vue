@@ -59,12 +59,12 @@ onUnmounted(() => {
 		v-model:category="category"
 		:categories
 	>
-		<template #secret>
+		<ZSecret>
 			<ZToggle
 				v-model="showTuning"
 				label="密度调节"
 			/>
-		</template>
+		</ZSecret>
 	</PostOrderToggle>
 
 	<section

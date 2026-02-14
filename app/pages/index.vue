@@ -41,12 +41,12 @@ const listRecommended = computed(() => sort(
 			v-model:category="category"
 			:categories
 		>
-			<template #secret>
+			<ZSecret>
 				<UtilLink to="/preview" class="preview-entrance">
 					<Icon name="ph:file-lock-bold" />
 					查看预览文章
 				</UtilLink>
-			</template>
+			</ZSecret>
 		</PostOrderToggle>
 
 		<TransitionGroup tag="menu" class="proper-height" name="float-in">

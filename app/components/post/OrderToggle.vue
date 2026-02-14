@@ -34,13 +34,6 @@ function toggleDirection() {
 <div class="order-toggle" :style="{ '--secret-delay': secretDelay }">
 	<slot />
 
-	<!-- 外层元素用于占位 -->
-	<div class="secret-container">
-		<div class="secret">
-			<slot name="secret" />
-		</div>
-	</div>
-
 	<ZDropdown trigger="focusin" tabindex="0">
 		<button :disabled="!categories">
 			<Icon :name="getCategoryIcon(category)" />
@@ -98,21 +91,8 @@ function toggleDirection() {
 	}
 }
 
-.secret-container {
+:deep(.secret-container) {
 	margin-inline-end: auto;
-}
-
-.secret {
-	position: relative;
-	opacity: 0;
-	transition: all 0.2s var(--secret-delay, 0.5s), color 0.2s;
-	z-index: -1;
-
-	:hover > &,
-	:focus-within > & {
-		opacity: 1;
-		z-index: 0;
-	}
 }
 
 .iconify + span {
