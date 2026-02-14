@@ -7,7 +7,7 @@ const props = defineProps<{
 }>()
 
 const shikiStore = useShikiStore()
-const rawHtml = ref(escapeHtml(props.code))
+const rawHtml = ref(escapeHtml(props.code || ''))
 
 onMounted(async () => {
 	if (!props.language)
