@@ -49,7 +49,6 @@ const tooltip = computed(() => mounted.value && zdt.value
 		v-text="toZdtLocaleString(zdt, format)"
 	/>
 
-	<!-- Invalid Date 传入 NuxtTime 组件或 .toISOString() 会报错 -->
 	<NuxtTime
 		v-else
 		:datetime="toInstantString(zdt)"
@@ -59,6 +58,5 @@ const tooltip = computed(() => mounted.value && zdt.value
 		day="numeric"
 		numeric="auto"
 	/>
-
 </span>
 </template>

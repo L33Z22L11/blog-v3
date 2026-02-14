@@ -19,7 +19,13 @@ const builder = new XMLBuilder({
 function formatIsoDate(date?: string) {
 	if (!date)
 		return
-	return toZonedTemporal(date).toInstant().toString()
+	try {
+		return toZonedTemporal(date).toInstant().toString()
+	}
+	catch {
+		console.error('Invalid date format', date)
+		return date
+	}
 }
 
 function getUrl(path: string | undefined) {

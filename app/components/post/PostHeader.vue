@@ -36,7 +36,7 @@ const { copy, copied } = useCopy(shareText)
 				v-tip
 				:tip-transform="d => `创建于${d}`"
 				:date
-				icon="ph:calendar-dots-bold"
+				icon="ph:pencil-simple-line-bold"
 			/>
 
 			<UtilDate
@@ -44,7 +44,7 @@ const { copy, copied } = useCopy(shareText)
 				v-tip
 				:tip-transform="d => `修改于${d}`"
 				:date="updated"
-				icon="ph:calendar-plus-bold"
+				icon="ph:clock-counter-clockwise-bold"
 			/>
 
 			<span v-if="categoryLabel">

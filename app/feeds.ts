@@ -13,6 +13,19 @@ export default [
 		entries: [
 			myFeed,
 			{
+				author: 'GuuGuai',
+				sitenick: '杂记本',
+				title: '古怪杂记本',
+				desc: '一个什么都可能会写的博客',
+				link: 'https://blog.guuguai.site/',
+				feed: 'https://blog.guuguai.site/atom.xml',
+				icon: 'https://cravatar.cn/avatar/646331BFF8F19A0E05679C3CC0FC54D6',
+				avatar: 'https://cdn.libravatar.org/avatar/646331bff8f19a0e05679c3cc0fc54d6?s=160',
+				archs: ['Nuxt', 'Netlify'],
+				date: '2023-12-23',
+				comment: '高中同学，技术好友，爱好番剧/折腾。',
+			},
+			{
 				author: 'Xlenco',
 				sitenick: '希乐博客',
 				desc: '互联网中的静谧之地',
@@ -253,19 +266,6 @@ export default [
 		desc: '哔——啵——电波通讯中，欢迎常来串门。',
 		// @keep-sorted { "keys": ["date"] }
 		entries: [
-			{
-				author: 'GuuGuai',
-				sitenick: '杂记本',
-				title: '古怪杂记本',
-				desc: '一个什么都可能会写的博客',
-				link: 'https://gug.thisis.host/',
-				feed: 'https://gug.thisis.host/atom.xml',
-				icon: getFavicon('gug.thisis.host'),
-				avatar: 'https://cdn.libravatar.org/avatar/646331bff8f19a0e05679c3cc0fc54d6?s=160',
-				archs: ['Hexo', 'Netlify'],
-				date: '2023-12-23',
-				comment: '高中同学，技术好友，爱好番剧/折腾。',
-			},
 			{
 				author: 'isYangs',
 				desc: '一个前端Bug构造师的博客',

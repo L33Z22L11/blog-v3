@@ -10,8 +10,8 @@
     "pnpm": ">=10"
   },
   "scripts": {
-    "prepare": "pnpm clean && pnpm build:packages",
-    "clean": "rimraf .data .nuxt node_modules/.cache",
+    "prepare": "pnpm clean && pnpm build:packages && nuxt prepare",
+    "clean": "rimraf .data node_modules/.cache",
     "build:packages": "pnpm --filter ./packages/remark-music --filter ./packages/rehype-meta-slots build",
     "dev": "nuxt dev --open",
     "dev:host": "nuxt dev --host",

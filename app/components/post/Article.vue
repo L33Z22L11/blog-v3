@@ -27,14 +27,15 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 		<div class="article-info">
 			<UtilDate
 				v-if="date && (showAllDate || !useUpdated)"
-				:date="date"
-				icon="ph:calendar-dots-bold"
+				:date
+				icon="ph:pencil-simple-line-bold"
 			/>
 
 			<UtilDate
 				v-if="updated && (showAllDate || useUpdated)"
+				:class="{ 'use-updated': useUpdated }"
 				:date="updated"
-				icon="ph:calendar-plus-bold"
+				icon="ph:clock-counter-clockwise-bold"
 			/>
 
 			<span
