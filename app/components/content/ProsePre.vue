@@ -117,6 +117,8 @@ onMounted(async () => {
 		v-html="rawHtml"
 	/>
 
+	<slot />
+
 	<button
 		v-if="collapsible"
 		class="toggle-btn"

@@ -1,7 +1,7 @@
 import type { ReadTimeResults } from 'reading-time'
-import { defineCollection } from '@nuxt/content'
+import { defineCollection, z } from '@nuxt/content'
 import { asSitemapCollection } from '@nuxtjs/sitemap/content'
-import { z } from 'zod'
+// import { z } from 'zod'
 import blogConfig from './blog.config'
 
 type ArticleType = keyof typeof blogConfig.article.types
@@ -53,7 +53,7 @@ const articleSchema = z.object({
 		time: z.number(),
 		words: z.number(),
 	}),
-}) satisfies z.ZodType<ArticleSchema>
+}) /* satisfies z.ZodType<ArticleSchema> */
 
 export const collections = {
 	content: defineCollection(asSitemapCollection({

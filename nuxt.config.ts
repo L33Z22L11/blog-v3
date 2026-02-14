@@ -1,4 +1,5 @@
 import type { NitroConfig } from 'nitropack'
+import { resolve } from 'node:path'
 import { arch, env, version as nodeVersion, platform } from 'node:process'
 import { name as ciName, CLOUDFLARE_PAGES, GITHUB_ACTIONS, NETLIFY } from 'ci-info'
 import { pascal } from 'radash'
@@ -9,6 +10,10 @@ import redirectList from './redirects.json'
 
 // 此处配置无需修改
 export default defineNuxtConfig({
+	alias: {
+		postme: resolve(import.meta.dirname, './packages/postme/src'),
+	},
+
 	app: {
 		head: {
 			meta: [
@@ -152,16 +157,16 @@ export default defineNuxtConfig({
 			markdown: {
 				highlight: false,
 				// @keep-sorted
-				remarkPlugins: {
-					'remark-math': {},
-					'remark-music': {},
-					'remark-reading-time': {},
-				},
-				// @keep-sorted
-				rehypePlugins: {
-					'rehype-katex': {},
-					'rehype-meta-slots': {},
-				},
+				// remarkPlugins: {
+				// 	'remark-math': {},
+				// 	'remark-music': {},
+				// 	'remark-reading-time': {},
+				// },
+				// // @keep-sorted
+				// rehypePlugins: {
+				// 	'rehype-katex': {},
+				// 	'rehype-meta-slots': {},
+				// },
 				toc: { depth: 4, searchDepth: 4 },
 			},
 		},
@@ -172,11 +177,12 @@ export default defineNuxtConfig({
 
 	hooks: {
 		'ready': () => {
+			const fence = '='.repeat(Math.max(32, packageJson.homepage.length))
 			console.info(`
-================================
+${fence}
 ${pascal(packageJson.name)} ${packageJson.version}
 ${packageJson.homepage}
-================================
+${fence}
 `)
 		},
 		'content:file:afterParse': (ctx) => {

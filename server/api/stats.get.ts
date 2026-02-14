@@ -39,6 +39,8 @@ export default defineEventHandler(async (event) => {
 			console.warn('文章存在重复路径', post.path)
 		existedPath.set(post.path, true)
 
+		post.readingTime ??= { words: 0 }
+
 		// 文章/总字数计数
 		stats.total.posts++
 		stats.total.words += post.readingTime.words
