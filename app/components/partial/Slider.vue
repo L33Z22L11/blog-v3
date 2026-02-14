@@ -1,13 +1,14 @@
 <script setup lang="ts">
 const props = defineProps<{
 	label?: string
+	initial?: string
 	springMin?: number
 	springMax?: number
 	list?: (string | { value: string, label?: string })[]
 }>()
 
 const modelValue = defineModel<number>({ required: true })
-const initialValue = modelValue.value
+const initialValue = props.initial ? Number.parseFloat(props.initial) : modelValue.value
 const id = useId()
 const list = computed(() => props.list?.map(v => typeof v === 'string' ? { value: v } : v))
 
@@ -36,7 +37,7 @@ const debounceSpring = useDebounceFn(spring, 500)
 		@dblclick="modelValue = initialValue"
 	>
 
-	<data class="data-value" :value="modelValue" v-text="modelValue" />
+	<data class="data-value" :value="modelValue" @dblclick="modelValue = initialValue" v-text="modelValue" />
 
 	<datalist v-if="list" :id="id">
 		<option v-for="{ value, label: text } in list" :key="value" :value :label="text" />

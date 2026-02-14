@@ -13,7 +13,7 @@
 	overflow-wrap: break-word;
 	background-color: var(--c-bg-1);
 	font-family: sans-serif;
-	font-family: var(--font-basic);
+	font-family: var(--font-family, var(--font-sans));
 	font-synthesis: style;
 	line-height: 1.4;
 	text-autospace: normal;

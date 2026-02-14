@@ -21,7 +21,7 @@
 
 :root,
 .light {
-	--hue-theme: 220deg;
+	--hue-theme: var(--hue, 220deg);
 	--c-text: hsl(var(--hue-theme) 0% 0%);
 	--c-text-1: hsl(var(--hue-theme) 0% 20%);
 	--c-text-2: hsl(var(--hue-theme) 0% 40%);
