@@ -39,7 +39,7 @@ export const textAlignOptions = [
 export const defaultPreferences = {
 	fontFamily: fontFamilyOptions[0].value,
 	fontSize: '1em',
-	hue: '220deg',
+	hue: '220',
 	letterSpacing: '0em',
 	lineHeight: '1.8',
 	textAlign: textAlignOptions[0].value,

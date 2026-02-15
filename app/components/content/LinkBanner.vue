@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-<UtilLink :to="link" class="link-banner card" :title="joinWith([title, description, link])">
+<UtilLink :to="link" class="link-banner card" :title="joinWith('\n', title, description, link)">
 	<UtilImg v-if="banner" class="link-banner-bg" :src="banner" :mirror />
 	<div class="link-banner-header" />
 	<div class="link-banner-info">

@@ -10,17 +10,12 @@ const { preferences } = storeToRefs(preferenceStore)
 const fontSize = useUnit(toRef(preferences.value, 'fontSize'), 'em')
 const letterSpacing = useUnit(toRef(preferences.value, 'letterSpacing'), 'em')
 const lineHeight = useUnit(toRef(preferences.value, 'lineHeight'))
-const hue = useUnit(toRef(preferences.value, 'hue'), 'deg')
-
-useEventListener('keydown', (e) => {
-	if (e.key === 'Escape')
-		emit('close')
-})
+const hue = useUnit(toRef(preferences.value, 'hue'))
 </script>
 
 <template>
 <Transition name="float-in">
-	<div v-if="open" class="preference card" @keypress.esc="emit('close')">
+	<PopoverPanel v-if="open" title="偏好设置" @close="emit('close')">
 		<form class="form">
 			<label for="hue">主题色调</label>
 			<ZSlider v-model="hue" min="0" max="360" step="1" :initial="defaultPreferences.hue" />
@@ -40,20 +35,11 @@ useEventListener('keydown', (e) => {
 			<label for="fontFamily">字体</label>
 			<ZRadioGroup v-model="preferences.fontFamily" :items="fontFamilyOptions" />
 		</form>
-	</div>
+	</PopoverPanel>
 </Transition>
 </template>
 
 <style lang="scss" scoped>
-.preference {
-	position: fixed;
-	inset: 0;
-	width: 90%;
-	height: fit-content;
-	max-width: $breakpoint-mobile;
-	margin: auto;
-}
-
 .form {
 	display: grid;
 	grid-template-columns: auto 1fr;

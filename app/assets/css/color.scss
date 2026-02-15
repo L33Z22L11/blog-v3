@@ -1,4 +1,5 @@
 @mixin dark-theme {
+	--primary-lightness: clamp(70%, calc((-0.005 * (var(--hue) - 220) * (var(--hue) - 280) + 70) * 1%), 90%);
 	--c-text: hsl(var(--hue-theme) 0% 100%);
 	--c-text-1: hsl(var(--hue-theme) 0% 90%);
 	--c-text-2: hsl(var(--hue-theme) 0% 70%);
@@ -11,8 +12,8 @@
 	--c-border: hsl(var(--hue-theme) 10% 20%);
 	--c-bg-a50: hsl(var(--hue-theme) 10% 10% / 50%);
 	--c-bg-a80: hsl(var(--hue-theme) 10% 10% / 80%);
-	--c-primary: hsl(var(--hue-theme) 100% 70%);
-	--c-primary-soft: hsl(var(--hue-theme) 100% 60% / 20%);
+	--c-primary: hsl(var(--hue-theme) 100% var(--primary-lightness));
+	--c-primary-soft: hsl(var(--hue-theme) 100% var(--primary-lightness) / 20%);
 	--ld-bg-blur: var(--c-bg-a80);
 	--ld-bg-card: var(--c-bg-3);
 	--ld-bg-active: var(--c-primary-soft);
@@ -21,7 +22,8 @@
 
 :root,
 .light {
-	--hue-theme: var(--hue, 220deg);
+	--hue-theme: calc(var(--hue, 220) * 1deg);
+	--primary-lightness: clamp(0%, calc((0.005 * min(calc((var(--hue) - 10) * (var(--hue) - 160)), calc((var(--hue) - 80) * (var(--hue) - 220))) + 60) * 1%), 60%);
 	--c-text: hsl(var(--hue-theme) 0% 0%);
 	--c-text-1: hsl(var(--hue-theme) 0% 20%);
 	--c-text-2: hsl(var(--hue-theme) 0% 40%);
@@ -34,8 +36,8 @@
 	--c-border: hsl(var(--hue-theme) 10% 91%);
 	--c-bg-a50: hsl(var(--hue-theme) 20% 98% / 50%);
 	--c-bg-a80: hsl(var(--hue-theme) 20% 98% / 80%);
-	--c-primary: hsl(var(--hue-theme) 100% 55%);
-	--c-primary-soft: hsl(var(--hue-theme) 100% 60% / 15%);
+	--c-primary: hsl(var(--hue-theme) 100% var(--primary-lightness));
+	--c-primary-soft: hsl(var(--hue-theme) 100% var(--primary-lightness) / 15%);
 	--c-accent: hsl(180deg 70% 60%);
 	--ld-bg-blur: var(--c-bg-1);
 	--ld-bg-card: var(--c-bg);

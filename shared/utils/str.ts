@@ -60,7 +60,7 @@ export function getPromptLanguage(prompt: string | boolean) {
 	return 'text'
 }
 
-export function joinWith(strings: (string | undefined)[], separator = '\n') {
+export function joinWith(separator = '\n', ...strings: (string | undefined)[]) {
 	return strings.filter(Boolean).join(separator)
 }
 

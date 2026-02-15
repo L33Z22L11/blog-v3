@@ -46,7 +46,7 @@ onUnmounted(() => {
 			v-text="i"
 		/>
 		<!-- TODO: 点击后自主选择目标页面 -->
-		<button v-else disabled class="pagination-num">
+		<button v-else disabled class="pagination-num" translate="no">
 			…
 		</button>
 	</template>
@@ -101,7 +101,7 @@ onUnmounted(() => {
 
 	> .pagination-num {
 		width: 3em;
-		transition: background-color 0.2s;
+		transition: color 0.1s, background-color 0.2s;
 
 		&:hover { background-color: var(--c-border); }
 
