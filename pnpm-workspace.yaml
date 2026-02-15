@@ -11,7 +11,7 @@ catalogs:
     '@types/hast': ^3.0.4
     '@types/mdast': ^4.0.4
     abcjs: ^6.6.1
-    minimark: ^1.0.0
+    minimark: 0.2.0
     nuxt-llms: ^0.2.0
     plain-shiki: ^0.3.2
     rehype-katex: ^7.0.1
@@ -38,7 +38,7 @@ catalogs:
     '@zinkawaii/stylelint-config': ^0.4.0
     cspell: ^9.6.4
     eslint: ^10.0.0
-    stylelint: ^17.2.0
+    stylelint: ^17.3.0
   ui:
     '@bikariya/image-viewer': ^0.0.7
     '@bikariya/modals': ^0.0.7
@@ -56,12 +56,12 @@ catalogs:
     vue-tippy: ^6.7.1
     vue-virtual-scroller: 2.0.0-beta.8
   util:
-    '@clack/prompts': ^1.0.0
+    '@clack/prompts': ^1.0.1
     '@pinia/nuxt': ^0.11.3
     '@vueuse/core': ^14.2.1
     '@vueuse/nuxt': ^14.2.1
     '@vueuse/router': ^14.2.1
-    fast-xml-parser: ^5.3.5
+    fast-xml-parser: ^5.3.6
     minisearch: ^7.2.0
     nanoid: ^5.1.6
     oxc-minify: ^0.112.0
