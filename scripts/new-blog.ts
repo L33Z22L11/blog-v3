@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 import { exec } from 'node:child_process'
+import { randomBytes } from 'node:crypto'
 import fs from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 import { intro, log, outro, select, spinner, text } from '@clack/prompts'
-import { customAlphabet } from 'nanoid'
 import { Temporal } from 'temporal-polyfill'
 import blogConfig from '../blog.config.ts'
 
@@ -32,7 +32,7 @@ if (fileName)
 	log.info(`文件名: ${path.join(dir, fileName)}.md`)
 
 const permalink = usePermalink
-	? `/posts/${customAlphabet('1234567890abcdef', 7)()}`
+	? `/posts/${randomBytes(4).toString('hex').slice(0, 7)}`
 	: undefined
 
 // #region url为名

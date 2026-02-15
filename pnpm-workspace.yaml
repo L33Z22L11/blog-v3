@@ -63,7 +63,6 @@ catalogs:
     '@vueuse/router': ^14.2.1
     fast-xml-parser: ^5.3.5
     minisearch: ^7.2.0
-    nanoid: ^5.1.6
     oxc-minify: ^0.112.0
     p-limit: ^7.3.0
     parse-domain: ^8.2.2

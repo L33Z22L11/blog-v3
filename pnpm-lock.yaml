@@ -178,9 +178,6 @@ catalogs:
     minisearch:
       specifier: ^7.2.0
       version: 7.2.0
-    nanoid:
-      specifier: ^5.1.6
-      version: 5.1.6
     oxc-minify:
       specifier: ^0.112.0
       version: 0.112.0
@@ -357,9 +354,6 @@ importers:
       fast-xml-parser:
         specifier: catalog:util
         version: 5.3.5
-      nanoid:
-        specifier: catalog:util
-        version: 5.1.6
       nuxt-llms:
         specifier: catalog:content
         version: 0.2.0(magicast@0.5.2)
