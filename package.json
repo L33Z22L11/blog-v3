@@ -74,7 +74,6 @@
     "cspell": "catalog:quality",
     "eslint": "catalog:quality",
     "fast-xml-parser": "catalog:util",
-    "nanoid": "catalog:util",
     "nuxt-llms": "catalog:content",
     "oxc-minify": "catalog:util",
     "p-limit": "catalog:util",
