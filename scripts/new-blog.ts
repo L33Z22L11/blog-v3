@@ -32,7 +32,7 @@ if (fileName)
 	log.info(`文件名: ${path.join(dir, fileName)}.md`)
 
 const permalink = usePermalink
-	? `/posts/${randomBytes(4).toString('hex').slice(0, 7)}`
+	? `/posts/${randomBytes(4).toString('hex').slice(1)}`
 	: undefined
 
 // #region url为名
