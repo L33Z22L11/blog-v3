@@ -4,7 +4,6 @@ packages:
 catalogs:
   content:
     '@bikariya/shiki': ^0.0.7
-    '@nuxt/content': ^3.11.2
     '@nuxtjs/seo': ^3.4.0
     '@shikijs/colorized-brackets': ^3.22.0
     '@shikijs/transformers': ^3.22.0
@@ -14,7 +13,6 @@ catalogs:
     kerria: ^0.5.0
     mdast-util-frontmatter: ^2.0.1
     micromark-extension-frontmatter: ^2.0.0
-    minimark: ^1.0.0
     nuxt-llms: ^0.2.0
     plain-shiki: ^0.3.2
     rehype-katex: ^7.0.1
@@ -95,7 +93,7 @@ onlyBuiltDependencies:
   - unrs-resolver
 
 patchedDependencies:
-  '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch
+  # '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch
   '@vue/shared': patches/@vue__shared.patch
   plain-shiki: patches/plain-shiki.patch
   playwright-core: patches/playwright-core.patch

@@ -1,3 +1,4 @@
+import type { ArticleType } from 'postme'
 import type { FeedEntry } from './app/types/feed'
 
 const basicConfig = {
@@ -43,7 +44,7 @@ const blogConfig = {
 		types: {
 			tech: {},
 			story: {},
-		},
+		} satisfies Record<ArticleType, unknown>,
 		/** 分类排序方式，键为排序字段，值为显示名称 */
 		order: {
 			date: '创建日期',

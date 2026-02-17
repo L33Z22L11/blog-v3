@@ -1,6 +1,6 @@
 import {
-	ContentRenderer,
 	LazyBlogWidget,
+	LazyPostRender,
 	LazyWidgetBlogLog,
 	LazyWidgetBlogStats,
 	LazyWidgetBlogTech,
@@ -32,15 +32,15 @@ type RemovePrefix<S extends string, Prefix extends string> = S extends `${Prefix
 export type WidgetName = RemovePrefix<KebabCase<RawWidgetName>, '-lazy-widget-'> | `meta-aside-${string}`
 
 export default function useWidgets(widgetList: MaybeRefOrGetter<WidgetName[]>) {
-	const store = useContentStore()
+	const store = useLayoutStore()
 
 	function renderMetaSlots(widgetName: WidgetName) {
-		const slotsTree = store.meta.slots[widgetName.slice('meta-'.length)]
+		const slotsTree = store.customAsideWidgets[widgetName.slice('meta-'.length)]
 		return h(
 			LazyBlogWidget,
 			{ card: !slotsTree, ...slotsTree?.props },
 			() => slotsTree
-				? h(ContentRenderer, { value: slotsTree })
+				? h(LazyPostRender, { body: slotsTree })
 				: `${widgetName} 不存在`,
 		)
 	}

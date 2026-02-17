@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ArticleProps } from '~/types/article'
+import type { ArticleSchema } from 'postme'
 import { group } from 'radash'
 
 const appConfig = useAppConfig()
@@ -16,12 +16,15 @@ const layoutStore = useLayoutStore()
 const { panelTranslate } = storeToRefs(layoutStore)
 layoutStore.setAside(['blog-stats', 'blog-log'])
 
-const { data: listRaw } = await useAsyncData('index_posts', () => useArticleIndexOptions(), { default: () => [] })
+const { data: listRaw } = await useFetch('/api/collection', {
+	query: { collection: 'posts' },
+	default: () => [],
+})
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted)
 
 const listGrouped = computed(() => {
-	function getArticleYear(article: ArticleProps) {
+	function getArticleYear(article: ArticleSchema) {
 		try {
 			return toZonedTemporal(article[sortOrder.value] as string).year.toString()
 		}
@@ -96,9 +99,9 @@ onUnmounted(() => {
 		<TransitionGroup tag="menu" class="archive-list" name="float-in">
 			<PostArchive
 				v-for="article, index in yearGroup"
-				:key="article.path"
+				:key="article.slug"
 				v-bind="article"
-				:to="article.path"
+				:to="`/${article.slug}`"
 				:use-updated="sortOrder === 'updated'"
 				:style="getFixedDelay(index * 0.03)"
 			/>

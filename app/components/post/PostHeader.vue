@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import type { ArticleProps } from '~/types/article'
+import type { ArticleSchema } from 'postme'
 
 defineOptions({ inheritAttrs: false })
-const props = defineProps<ArticleProps>()
+const props = defineProps<ArticleSchema>()
 
 const appConfig = useAppConfig()
 
-const coverFilter = computed(() => props.meta?.coverFilter || (props.meta?.coverDim && 'brightness(0.75)') || undefined)
+const coverFilter = computed(() => props.coverFilter || (props.coverDim && 'brightness(0.75)') || undefined)
 const categoryLabel = computed(() => props.categories?.[0])
 const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 
 const shareText = `【${appConfig.title}】${props.title}\n\n${
 	props.description ? `${props.description}\n\n` : ''}${
-	new URL(props.path!, appConfig.url).href}`
+	new URL(props.slug, appConfig.url).href}`
 
 const { copy, copied } = useCopy(shareText)
 </script>
@@ -30,7 +30,7 @@ const { copy, copied } = useCopy(shareText)
 			</ZButton>
 		</div>
 
-		<div v-if="!meta?.hideInfo" class="post-info">
+		<div v-if="!hideInfo" class="post-info">
 			<UtilDate
 				v-if="date"
 				v-tip

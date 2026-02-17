@@ -51,6 +51,7 @@ export default defineNuxtConfig({
 
 	components: [
 		{ path: '~/components/partial', prefix: 'Z' },
+		{ path: '~/components/content', prefix: '' },
 		'~/components',
 	],
 
@@ -134,7 +135,6 @@ export default defineNuxtConfig({
 		'@bikariya/modals',
 		'@bikariya/shiki',
 		'@nuxt/a11y',
-		'@nuxt/content',
 		'@nuxt/hints',
 		'@nuxt/icon',
 		'@nuxt/image',

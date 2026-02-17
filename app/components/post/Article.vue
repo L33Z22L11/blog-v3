@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { ArticleProps } from '~/types/article'
+import type { ArticleSchema } from 'postme'
 
-const props = defineProps<{ useUpdated?: boolean } & ArticleProps>()
+const props = defineProps<{ useUpdated?: boolean } & ArticleSchema>()
 
 const appConfig = useAppConfig()
 

@@ -12,7 +12,7 @@ import remarkFrontmatter from './plugins/frontmatter'
 import rehypeMetaSlots from './plugins/meta-slots'
 import remarkMusic from './plugins/music'
 
-export async function parseArticle(text: string) {
+export function parseArticle(text: string) {
 	const processor = unified()
 		.use(remarkParse)
 		.use(remarkFrontmatter)
@@ -27,11 +27,5 @@ export async function parseArticle(text: string) {
 		.use(rehypeMetaSlots)
 		.use(compiler)
 
-	const { result, data } = await processor.process(text)
-
-	return {
-		body: result,
-		slots: data.slots,
-		frontmatter: data.frontmatter,
-	}
+	return processor.process(text)
 }

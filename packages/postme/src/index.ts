@@ -4,9 +4,15 @@ import { relative, resolve } from 'pathe'
 import blogConfig from '../../../blog.config'
 import { parseArticle } from './remark'
 
+export * from './types'
+
 export const article = createKerria('article', () => {
-	const meta = useLoad('meta', {
-		dist: '.data/article.json',
+	const collections = useLoad('collections', {
+		dist: '.data/collections.json',
+	})
+
+	const slugs = useLoad('slugs', {
+		dist: '.data/slugs.json',
 	})
 
 	useSource(0, {
@@ -17,33 +23,46 @@ export const article = createKerria('article', () => {
 		async parse(path, info) {
 			const file = await readFile(path)
 			const text = file.toString()
-			const { body, frontmatter, slots } = await parseArticle(text)
+			const { result, data } = await parseArticle(text)
 
-			await info.output(path, { body, frontmatter, slots })
+			const unstrippedSlug = relative(resolve('content'), path).replace(/.md$/, '')
+			const collection = unstrippedSlug.split('/')[0]
 
-			function transformSlug(path: string) {
-				path = relative(resolve('content'), path).slice(0, -'.md'.length)
-				if (blogConfig.article.hidePostPrefix)
-					path = path.replace(/^posts\//, '')
-				return path
+			const slug = blogConfig.article.hidePostPrefix && unstrippedSlug.startsWith('posts/')
+				? unstrippedSlug.slice('posts/'.length)
+				: unstrippedSlug
+
+			const frontmatter = {
+				...data.frontmatter,
+				readingTime: data.readingTime,
+				slug,
 			}
 
+			await info.output(path, {
+				body: result,
+				frontmatter,
+				slots: data.slots,
+			})
+
 			return {
-				slug: transformSlug(path),
-				path,
+				collection,
+				slug,
+				path: `.data/content/${unstrippedSlug}.json`,
 				frontmatter,
 			}
 		},
 
 		cache(cache) {
-			const { frontmatter, path } = cache
-			meta.value.content ??= {}
-			meta.value.content[path] = { frontmatter }
+			const { frontmatter, collection, slug, path } = cache
+			collections.value[collection] ??= {}
+			collections.value[collection][slug] = frontmatter
+			slugs.value[slug] = { collection, path, frontmatter }
 		},
 
 		unlink(cache) {
-			const { path } = cache
-			delete meta.value.content[path]
+			const { collection, slug } = cache
+			delete collections.value[collection][slug]
+			delete slugs.value[slug]
 		},
 	})
 })

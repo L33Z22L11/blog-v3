@@ -7,7 +7,10 @@ useSeoMeta({
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-log'])
 
-const { data: listRaw } = await useAsyncData('index_previews', () => useArticleIndexOptions('previews/%'), { default: () => [] })
+const { data: listRaw } = await useFetch('/api/collection', {
+	query: { collection: 'previews' },
+	default: () => [],
+})
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted)
 </script>
@@ -32,9 +35,9 @@ const { category, categories, listCategorized } = useCategory(listSorted)
 	<menu class="proper-height">
 		<PostArticle
 			v-for="article in listCategorized"
-			:key="article.path"
+			:key="article.slug"
 			v-bind="article"
-			:to="article.path"
+			:to="`/${article.slug}`"
 			:use-updated="sortOrder === 'updated'"
 		/>
 	</menu>

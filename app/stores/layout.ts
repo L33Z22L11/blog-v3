@@ -1,3 +1,5 @@
+import type { Element } from 'postme'
+
 export type LayoutState = 'none' | 'sidebar' | 'aside' | 'search' | 'lightbox'
 
 export type PanelTranslateSource = 'pagination' | 'archiveTuning'
@@ -7,6 +9,7 @@ export const useLayoutStore = defineStore('layout', () => {
 
 	const state = ref<LayoutState>('none')
 	const asideWidgets = ref<WidgetName[]>([])
+	const customAsideWidgets = ref<Record<string, Element>>({})
 	const panelTranslate = ref<Partial<Record<PanelTranslateSource, string>>>({})
 
 	const panelTransform = computed(() => Object.values(panelTranslate.value).map(v => v ? `translate(${v})` : '').join(' '))
@@ -38,6 +41,7 @@ export const useLayoutStore = defineStore('layout', () => {
 	return {
 		state,
 		asideWidgets,
+		customAsideWidgets,
 		panelTranslate,
 		panelTransform,
 		close,

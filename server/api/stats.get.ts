@@ -9,7 +9,7 @@ interface CategoryEntry {
 	children?: CategoryEntry[]
 }
 
-export default defineEventHandler(async (event) => {
+export default defineEventHandler(async () => {
 	const stats = {
 		total: { posts: 0, words: 0 },
 		annual: <Record<number, StatsEntry>>{},
@@ -19,7 +19,10 @@ export default defineEventHandler(async (event) => {
 
 	const existedPath = new Map()
 
-	const posts = await queryCollection(event, 'content').all()
+	const posts = await $fetch('/api/collection', {
+		query: { collection: 'posts' },
+		default: () => [],
+	})
 
 	const findOrCreateCategory = (
 		name: string,
@@ -35,15 +38,13 @@ export default defineEventHandler(async (event) => {
 
 	for (const post of posts) {
 		// 重复路径检测
-		if (existedPath.has(post.path))
-			console.warn('文章存在重复路径', post.path)
-		existedPath.set(post.path, true)
-
-		post.readingTime ??= { words: 0 }
+		if (existedPath.has(post.slug))
+			console.warn('文章存在重复路径', post.slug)
+		existedPath.set(post.slug, true)
 
 		// 文章/总字数计数
 		stats.total.posts++
-		stats.total.words += post.readingTime.words
+		stats.total.words += post.readingTime?.words || 0
 
 		// 年文章/年字数计数
 		try {
@@ -53,10 +54,10 @@ export default defineEventHandler(async (event) => {
 			}
 
 			stats.annual[year].posts++
-			stats.annual[year].words += post.readingTime.words
+			stats.annual[year].words += post.readingTime?.words || 0
 		}
 		catch (e) {
-			console.warn(`${post.path} 文章日期${post.date ? '格式错误' : '为空'}: ${e}`)
+			console.warn(`${post.slug} 文章日期${post.date ? '格式错误' : '为空'}: ${e}`)
 		}
 
 		// 分类文章计数

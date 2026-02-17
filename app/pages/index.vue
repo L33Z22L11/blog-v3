@@ -10,7 +10,10 @@ useSeoMeta({
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-stats', 'blog-tech', 'comm-group'])
 
-const { data: listRaw } = await useAsyncData('index_posts', () => useArticleIndexOptions(), { default: () => [] })
+const { data: listRaw } = await useFetch('/api/collection', {
+	query: { collection: 'posts' },
+	default: () => [],
+})
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw, { bindDirectionQuery: 'asc', bindOrderQuery: 'sort' })
 const { category, categories, listCategorized } = useCategory(listSorted, { bindQuery: 'category' })
 const { page, totalPages, listPaged } = usePagination(listCategorized, { bindQuery: 'page' })
@@ -52,10 +55,9 @@ const listRecommended = computed(() => sort(
 		<TransitionGroup tag="menu" class="proper-height" name="float-in">
 			<PostArticle
 				v-for="article, index in listPaged"
-				:key="article.path"
+				:key="article.slug"
 				v-bind="article"
-				:to="article.path"
-				:use-updated="sortOrder === 'updated'"
+				:to="`/${article.slug}`"
 				:style="getFixedDelay(index * 0.05)"
 			/>
 		</TransitionGroup>
