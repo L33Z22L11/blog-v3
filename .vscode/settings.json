@@ -13,6 +13,9 @@
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
   "editor.tabSize": 3,
+  "editor.unicodeHighlight.allowedLocales": {
+    "zh-hans": true
+  },
   "errorLens.fontSize": ".8em",
   "errorLens.messageBackgroundMode": "message",
   "errorLens.messageMaxChars": 50,
@@ -31,5 +34,8 @@
   "vue.inlayHints.inlineHandlerLeading": true,
   "vue.inlayHints.missingProps": true,
   "vue.inlayHints.vBindShorthand": true,
+  "workbench.editorAssociations": {
+    "*.svg": "default"
+  },
   "yaml.format.singleQuote": true
 }

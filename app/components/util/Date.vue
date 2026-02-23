@@ -32,7 +32,7 @@ const relative = computed(() => props.absolute || !zdt.value
 const mounted = useMounted()
 const tooltip = computed(() => mounted.value && zdt.value
 	? props.tipTransform(toZdtLocaleString(zdt.value, props.tipFormat))
-	: undefined,
+	: props.date as string,
 )
 </script>
 

@@ -152,7 +152,7 @@ const frontmatter = {
 	description: `讲述关于${title}的故事，并根据${tags?.join('、')}给出${category}。`,
 	date: dateStr,
 	updated: dateStr,
-	image: '# 图片',
+	image: '# 封面图推荐 2:1，不含与标题重复的文字',
 	permalink,
 	type: type === 'tech' ? undefined : type,
 	categories: category === blogConfig.defaultCategory ? undefined : `[${category}]`,
@@ -186,7 +186,7 @@ exec(`code "${mdPath}"`, (error) => {
 	log.error(error.message)
 	process.exit(1)
 })
-s.stop('⌨ 已通过 VS Code 打开文件')
+s.stop('⌨️ 已通过 VS Code 打开文件')
 // #endregion
 
 outro(`🎉 开始书写吧！`)

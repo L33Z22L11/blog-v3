@@ -230,6 +230,7 @@ img {
 
 .entry-content img {
 	max-width: 100%;
+	max-height: fit-content;
 	border-radius: 0.2em;
 }
 
