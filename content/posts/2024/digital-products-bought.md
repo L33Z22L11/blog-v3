@@ -9,16 +9,17 @@ tags: [数码产品, 硬件, 二手]
 
 ## 键鼠
 
-### 罗技 MK245 Nano
+### 罗技 MK245 Nano ⌨️🖱️
 
 高中作为电教委员，我负责管理班级教学使用的电脑大屏。自习时常有对答案的需求，需要时常操作电脑。为了减少上下讲台的跑动，我向老师申请购买了罗技 MK245 Nano 无线键鼠。
 
 ::pic
 ---
-src: https://img11.360buyimg.com//popWaterMark/jfs/t5392/247/2614428577/57380/68e693e/591c08aeN2220d31c.jpg
-width: 320
-caption: 罗技 MK245 Nano
+src: https://img10.360buyimg.com/pcpubliccms/jfs/t3169/176/1198866036/197067/2efc37fa/57c79de3N83ed9c6a.jpg
+height: 320
 ---
+#caption
+[罗技 MK245 Nano](https://item.jd.com/3161367.html)
 ::
 
 - 键鼠非常小巧，刚好可以立起来放进我的抽屉中。
@@ -28,16 +29,17 @@ caption: 罗技 MK245 Nano
 
 在我离开高中后，班主任将它赠予了我，它的使用频率越来越低。最后，我在今年 4 月以 20 包邮的方式将它送给了当年 21 班的电教委员 GuuGuai，希望它能继续发挥余热。
 
-### 雷蛇炼狱蝰蛇标准版
+### 雷蛇炼狱蝰蛇标准版 🖱️
 
 非常经典的有线鼠标，适合大手。
 
 ::pic
 ---
-src: https://img14.360buyimg.com//popWaterMark/jfs/t1/196576/23/11028/145275/60dee4cbEf8b6f282/12fcc85e270fec98.jpg
-width: 320
-caption: 雷蛇炼狱蝰蛇标准版
+src: https://img10.360buyimg.com/pcpubliccms/jfs/t1/396188/1/3391/71729/698bffe0F31141227/0083320320a830cd.png
+height: 320
 ---
+#caption
+[雷蛇炼狱蝰蛇标准版](https://item.jd.com/100023650594.html)
 ::
 
 - 鼠标按键功能可自定义。我定义了按住侧键时滚轮调整音量。
@@ -45,14 +47,14 @@ caption: 雷蛇炼狱蝰蛇标准版
 
 第二个鼠标在使用时出现了左键单击变双击的问题，也是通病。我在淘宝叠券后以 0.74 元的价格购入了一个新的欧姆龙 D2FC-F-7N(20M) 微动开关，自己动手用电烙铁更换后，问题解决。
 
-### 雷蛇毒蝰迷你版
+### 雷蛇毒蝰迷你版 🖱️
 
 非常轻便的有线鼠标。在去年 6 月实在无法忍受“双击蛇”时，我看到校园二手交易，便以 50 元的价格购入。后来朋友 WoodHolz 也在巧合下买了卖家的二手显示器。
 
 ::pic
 ---
-src: https://img10.360buyimg.com//popWaterMark/jfs/t1/241405/16/5740/34936/660239f2Fed713250/915ed91940916f25.jpg
-width: 320
+src: https://img10.360buyimg.com/pcpubliccms/jfs/t1/241405/16/5740/34936/660239f2Fed713250/915ed91940916f25.jpg
+height: 320
 caption: 雷蛇毒蝰迷你版
 ---
 ::
@@ -63,16 +65,17 @@ caption: 雷蛇毒蝰迷你版
 
 滚轮乱跳的概率小了很多，很多时候朝滚轮编码器吹气就能解决问题。
 
-### VGN N75 Pro
+### VGN N75 Pro ⌨️
 
 由于 VGN 做过 V98Pro 这款口碑很好的键盘，它在发布第一批 VGN N75 Pro 时，很快便变成了“预售”状态。去年 8 月，我给实验室配了一台 [廉价二手迷你主机](/2023/light-backpack)，适逢 VGN N75 Pro 有货，便以 199 元的价格入手了它。
 
 ::pic
 ---
-src: https://img14.360buyimg.com//popWaterMark/jfs/t1/122317/40/50731/88996/6732b31aFade9ac2e/1b34c4efdf342338.jpg
-width: 320
-caption: VGN N75 Pro
+src: https://img14.360buyimg.com/pcpubliccms/jfs/t1/122317/40/50731/88996/6732b31aFade9ac2e/1b34c4efdf342338.jpg
+height: 320
 ---
+#caption
+[VGN N75 Pro](https://detail.tmall.com/item.htm?id=714388213373&skuId=5507530049310)
 ::
 
 - 手感还行。我买的蒸汽波轴，算是类红轴吧。
@@ -86,14 +89,14 @@ caption: VGN N75 Pro
 
 ## 充电宝
 
-### 罗马仕 sense6 移动电源
+### 罗马仕 sense6 移动电源 🔋
 
 高中入学时买入，目前我已大三，仍在使用。
 
 ::pic
 ---
-src: https://img11.360buyimg.com//popWaterMark/jfs/t1/241917/3/22038/49885/67361509Fa3e692e9/d50661d0110d2bb3.jpg
-width: 320
+src: https://img11.360buyimg.com/pcpubliccms/jfs/t1/241917/3/22038/49885/67361509Fa3e692e9/d50661d0110d2bb3.jpg
+height: 320
 caption: 罗马仕 sense6 移动电源
 ---
 ::
@@ -103,16 +106,17 @@ caption: 罗马仕 sense6 移动电源
 
 罗马仕早期产品的质量不错，最近的产品没买过。
 
-### 酷态科 15 号电能柱 SE
+### 酷态科 15 号电能柱 SE 🔋
 
 今年 11 月，以 199 元价格购入。
 
 ::pic
 ---
-src: https://img10.360buyimg.com//popWaterMark//jfs/t1/190480/35/45106/63204/661e02e6Fb51951ec/474638623e4ae15e.jpg
-width: 320
-caption: 酷态科 15 号电能柱 SE
+src: https://img10.360buyimg.com/pcpubliccms/jfs/t1/190480/35/45106/63204/661e02e6Fb51951ec/474638623e4ae15e.jpg
+height: 320
 ---
+#caption
+[酷态科 15 号电能柱 SE](https://item.jd.com/100106099450.html)
 ::
 
 - 20000mAh 容量，单口最高支持小米 67W 充电，PD 65W 充电。
@@ -123,14 +127,14 @@ caption: 酷态科 15 号电能柱 SE
 
 ## 耳机
 
-### 真我原耳耳机
+### 真我原耳耳机 🎧
 
 2021 年 8 月以 25.5 元价格购入，购买时已停产，原价 49 元，据网友评价音质媲美百元耳机，至今仍在使用。
 
 ::pic
 ---
 src: https://img.alicdn.com/imgextra/i2/637436765/O1CN01vhFU3R1zqQDld2JPU_!!637436765.jpg
-width: 320
+height: 320
 caption: 真我原耳耳机
 ---
 ::
@@ -141,14 +145,14 @@ caption: 真我原耳耳机
 
 去年 12 月在玩 Phigros、Milthm、RYCEAM 等一系列音游，这款耳机的体验不错。
 
-### 黑鲨 Lucifer T10 蓝牙无线耳塞
+### 黑鲨 Lucifer T10 蓝牙无线耳塞 🎧
 
 跟着闲搞机公众号在闲鱼上以 45 元价格购入，这款耳机是海外版本。
 
 ::pic
 ---
-src: https://img12.360buyimg.com//popWaterMark/jfs/t1/237198/28/12413/21356/65bb2ed9F5f0cd1fc/def5b1ae2bccf788.jpg
-width: 320
+src: https://img12.360buyimg.com/pcpubliccms/jfs/t1/237198/28/12413/21356/65bb2ed9F5f0cd1fc/def5b1ae2bccf788.jpg
+height: 320
 caption: 黑鲨 Lucifer T10 蓝牙无线耳塞
 ---
 ::
@@ -158,14 +162,14 @@ caption: 黑鲨 Lucifer T10 蓝牙无线耳塞
 
 是个蓝牙耳机，音质也不错。
 
-### iKF King Pro 主动降噪头戴式耳机 :badge[一代] :badge[已退货]
+### iKF King Pro 主动降噪头戴式耳机 :badge[一代] :badge[已退货] 🎧
 
 2024 年 12 月在 PDD 上使用 200-25 券以 178 元价格购入，使用一周发现两个明显问题后退货。
 
 ::pic
 ---
-src: https://img10.360buyimg.com//popWaterMark/jfs/t1/268405/24/1207/141641/6766872bF9e11c5b6/07e3252f6dcf863c.jpg
-width: 320
+src: https://img10.360buyimg.com/pcpubliccms/jfs/t1/268405/24/1207/141641/6766872bF9e11c5b6/07e3252f6dcf863c.jpg
+height: 320
 caption: iKF King Pro 主动降噪头戴式耳机
 ---
 ::

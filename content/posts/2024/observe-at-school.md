@@ -231,7 +231,7 @@ public class Palindrome {
 ---
 src: https://assets.zhilu.cyou/content/241009-telecom-recruit.jpg
 caption: 电信校招海报
-width: 639
+height: 720
 ---
 ::
 

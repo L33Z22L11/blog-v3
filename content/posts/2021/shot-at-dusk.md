@@ -13,7 +13,6 @@ tags: [高中, 拍照]
 ---
 src: https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fYmiagTWUXm7NjnYBWSaHvek4DbToTueRY9ZqU18lhucRM7TYa0lDicFxpWvtkic9ryLgM7JJ7UA0jEA/
 mirror: true
-zoom: true
 ---
 ::
 
@@ -21,6 +20,5 @@ zoom: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fYmiagTWUXm7NjnYBWSaHveklp2iba4RtAiamUsias8HZw6fEQ6BnAweajKC7iapE1d14ib7yzmILZC0icYg/
 mirror: true
-zoom: true
 ---
 ::

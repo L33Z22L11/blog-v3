@@ -1,6 +1,6 @@
 ---
 title: 不想去幼儿园
-description: 2009年的夏天不想上幼儿园，在幼儿园给妈妈写了封信。三个月后是六岁生日，礼物是一本相册，这封信随之装入其中。
+description: 2009年的夏天不想上幼儿园，在幼儿园给妈妈写了封信。三个月后是六岁生日，礼物是一本相册，这封信随之装入其中。历经十几年，这封信依旧保存完好。
 date: 2009-06-23
 updated: 2009-09-22
 type: story
@@ -11,9 +11,7 @@ tags: [幼儿园, 信]
 ::pic
 ---
 src: https://assets.zhilu.cyou/content/090623-letter-in-kindergarton.jpg
-caption: 历经十几年，这封信依旧保存完好。
-width: 360px
-zoom: true
+caption: 《不想去幼儿园》
 ---
 ::
 

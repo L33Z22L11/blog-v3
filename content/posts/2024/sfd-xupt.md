@@ -298,7 +298,6 @@ WinGet 是微软官方的 Windows 程序包管理器，它提供了命令行程�
 src: https://raw.githubusercontent.com/microsoft/winget-cli/master/.github/images/WingetInstall.gif
 mirror: true
 caption: WinGet 官方演示
-mirror: true
 ---
 ::
 
@@ -524,7 +523,6 @@ LocalSend 是一款免费、开源、跨平台的文件传输软件。采用 Apa
 src: https://raw.githubusercontent.com/viarotel-org/escrcpy/main/screenshots/zh-CN/overview.jpg
 mirror: true
 caption: Escrcpy 截图
-mirror: true
 ---
 ::
 

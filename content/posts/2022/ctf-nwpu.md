@@ -17,7 +17,7 @@ tags: [大学, CTF]
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxhCN2mjo8oBibzT4ibhicJr13h1RBMVbSzpbWHpkibHhCq8je3A1AVyJrqw/640
 mirror: true
 caption: 小刘找到了我
-width: 360px
+width: 360
 ---
 ::
 
@@ -28,7 +28,7 @@ width: 360px
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxfyJqhYDHmO7cibo59vhTJSbfAyXp0xtfQfq47aS9VzvGUphEGMM7dFg/640
 mirror: true
 caption: 此时比赛刚刚开始
-width: 480px
+width: 480
 ---
 ::
 
@@ -88,7 +88,7 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxCZZo7LKyPTicdJpbCmbyeNOYALnyI8cbbEsuLkpviaA7xYOUy0Hk0jCg/640
 mirror: true
-width: 200px
+width: 200
 ---
 ::
 
@@ -247,8 +247,7 @@ console.log(originStr)
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx0iaRk8j1fd8A8CG465FTXchVPSZx6FoKZfOLugmwfc0bbVl7npuATWg/640
 mirror: true
-width: 400px
-zoom: true
+width: 400
 ---
 ::
 
@@ -291,7 +290,7 @@ QQ 群
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx8OK7t3MhFkFcb3PvREa1XrjBA0TN17FoDqBGbOd0anD2RtIoG6eaTw/640
 mirror: true
-width: 400px
+width: 400
 ---
 ::
 
@@ -310,7 +309,6 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxgVAmCT6JfmaQNQVnJaHiaDzl3WVlTwjKRO8f3ibHzLDYkSia5TpBVL7Pg/640
 mirror: true
-zoom: true
 ---
 ::
 
@@ -345,7 +343,7 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxGtFj5zxwSBqqqI6Ynz3yTSeysRcJmXloblTjVICxShaCTWibrnndOkA/640
 mirror: true
-width: 300px
+width: 300
 ---
 ::
 
@@ -355,7 +353,7 @@ width: 300px
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxEQ2rh0AgOLXBcFdD7L1lMTVOLMQYHyia45r6wibu3RlsweoBPzdElc6w/640
 mirror: true
-width: 400px
+width: 400
 ---
 ::
 
@@ -394,7 +392,6 @@ print(correct)
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJx8oDVicpWhxX0ticyCwiajDbuGw7wFy4l5TgbNY6ic3Nx3Xqib5eaM92umcw/640
 mirror: true
 caption: 显然，我没有设置中止循环的条件，有可能是因为我懒。
-zoom: true
 ---
 ::
 
@@ -434,7 +431,7 @@ YGNG
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxnJNDHn6BBqWOcicJoc9b3LrJFXzOggXsPH5rJu3Mv3jmMciaP7GqTbSA/640
 mirror: true
-width: 360px
+width: 360
 ---
 ::
 
@@ -533,7 +530,7 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxMPuCt6aJk2olkZt6JVQpqueUzwDMgPFicia2WzsuPfHG5DenFrxSmI6w/640
 mirror: true
-width: 200px
+width: 200
 ---
 ::
 
@@ -543,7 +540,7 @@ width: 200px
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxamDHEibTSOUVQ2t8cZr4icDGUYlkmTM0yZ7CZgm8R4qoFM8F4qQlibh7A/640
 mirror: true
-width: 200px
+width: 200
 ---
 ::
 
@@ -575,8 +572,7 @@ width: 200px
 ---
 src: https://pic.baike.soso.com/ugc/baikepic2/0/20230422171906-1719590246_bmp_706_750_1590054.jpg/
 caption: 校歌.jpg(点击放大)
-width: 400px
-zoom: true
+width: 400
 ---
 ::
 
@@ -601,6 +597,6 @@ hex(0o256624611407306323450125)
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxkHe6xGhJeRReACvRQ9nFSX0kyoq4ONgZegNBibl06Vc9TzSUEzXlJYA/640
 mirror: true
-width: 300px
+width: 300
 ---
 ::

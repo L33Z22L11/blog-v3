@@ -73,7 +73,6 @@ caption: 答题
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWxlySyBmXib5VYThQWiaLFT1VPqIOvasfeut9hTicBLfyaxXZjLTC1wHqw/640
 mirror: true
-zoom: true
 ---
 ::
 
@@ -83,7 +82,7 @@ zoom: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW4L5wiaDtV9XTrnb5T4H8cUT0O6UJoMwP0dLqBrSPicETKBmcrxdX96Yg/640
 mirror: true
-width: 280px
+width: 280
 ---
 ::
 
@@ -108,7 +107,6 @@ caption: DVR工具
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWMOicz6JP7UibBgBLB9MLxGiakwficAjgFiaFojRaqDqVnN1vTjTHu0YoS2g/640
 mirror: true
-zoom: true
 ---
 ::
 
@@ -139,7 +137,6 @@ caption: flag
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWVHSED0ic7zNcOqkyQPvzcUffZxibIKYhplrVVe05gcUn96qDL8hL6vVw/640
 mirror: true
-zoom: true
 ---
 ::
 

@@ -4,7 +4,6 @@ description: 西邮GCTF2022新生赛参与记录。领到了奖品，感觉不�
 date: 2022-09-28 19:40:10
 updated: 2022-11-13 16:11:55
 image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWTVjL3YA0cJOwfvEHD7TlUuc6hKE0QZqwka3qpbZdJ403WNjNDuuktw/640
-zoom: true
 categories: [代码]
 tags: [大学, CTF]
 ---
@@ -13,8 +12,7 @@ tags: [大学, CTF]
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWwsjQ9HSjSpJtePhe0Vkb1JNuUWeNcotGVXj5JYWPFdxr0oGZ3ibKnAw/640
 mirror: true
-width: 360px
-zoom: true
+width: 360
 ---
 ::
 
@@ -109,7 +107,6 @@ caption: Secret题目
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWGBGxS8cZJMDDqXOicdRymRpV3KA9AF88R9DBicQVMQ9d2icQtSfDCWqGA/640
 mirror: true
-zoom: true
 ---
 ::
 
@@ -119,7 +116,6 @@ zoom: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWAEm8RRE27JChicUEbleGD19ExF8CWdCicawAGpSon6lhxHDpedJ4Cg8w/640
 mirror: true
-zoom: true
 ---
 ::
 
@@ -167,7 +163,6 @@ caption: curl命令
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWY9ZgIASZc9jtFPiahUI6KBA988od6EJDwN4lO25kFk2Q1rm7vUW1icNw/640
 mirror: true
-zoom: true
 ---
 ::
 
@@ -198,7 +193,6 @@ caption: ezaf题目
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW3gXib7JUgKANUEBiciawIW5KcKkCd1pMeTPBBOboPrjVwLHsUicuCZhbzg/640
 mirror: true
-zoom: true
 ---
 ::
 
@@ -212,7 +206,6 @@ zoom: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWHyFhsOVKEAIfXibibicI1buUxeQrRnSdtQWlTfVabn5AUxd1s8qsMibzaQ/640
 mirror: true
-zoom: true
 ---
 ::
 
@@ -224,7 +217,6 @@ zoom: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW5qlfjgspRljbFM6nDMCI8gajgrldjGOXcQDrmLtKZTgYBF0rW3tIWw/640
 mirror: true
-zoom: true
 ---
 ::
 
@@ -239,7 +231,6 @@ zoom: true
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW1jMicEUkwohzUAa6qXBAHzzEme1p3hNg26NIibZfLbyJLyEuia9HDUoyA/640
 mirror: true
 caption: 好耶，是netcat
-zoom: true
 ---
 ::
 
@@ -248,7 +239,7 @@ zoom: true
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW2ibxpKCpnR7a1d6iapbbR7E2Fa7DUZSgiaxCK6Ht4v87ORolzGkQ9hsiag/640
 mirror: true
 caption: 我信你个鬼
-width: 360px
+width: 360
 ---
 ::
 
@@ -347,7 +338,6 @@ caption: Excel
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWWS1XicDZr1NTNyndMGMubDzOB6L3iaGuADZZKELyS5S5ia4I6Ybu4Gt2w/640
 mirror: true
-zoom: true
 ---
 ::
 
