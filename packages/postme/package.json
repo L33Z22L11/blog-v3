@@ -1,0 +1,28 @@
+{
+  "name": "postme",
+  "type": "module",
+  "version": "0.0.1",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "kerria": "catalog:content",
+    "mdast-util-frontmatter": "catalog:content",
+    "micromark-extension-frontmatter": "catalog:content",
+    "pathe": "catalog:util",
+    "rehype-katex": "catalog:content",
+    "rehype-raw": "catalog:content",
+    "remark-gfm": "catalog:content",
+    "remark-math": "catalog:content",
+    "remark-mdc": "catalog:content",
+    "remark-parse": "catalog:content",
+    "remark-reading-time": "catalog:content",
+    "remark-rehype": "catalog:content",
+    "unified": "catalog:content",
+    "unist-util-visit": "catalog:content",
+    "yaml": "catalog:util"
+  },
+  "devDependencies": {
+    "@zinkawaii/tsconfig": "catalog:framework"
+  }
+}

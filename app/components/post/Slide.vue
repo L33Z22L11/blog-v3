@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { ArticleProps } from '~/types/article'
+import type { ArticleSchema } from '~~/packages/postme/src'
 import Autoplay from 'embla-carousel-autoplay'
 import emblaCarouselVue from 'embla-carousel-vue'
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
 
-defineProps<{ list: ArticleProps[] }>()
+defineProps<{ list: ArticleSchema[] }>()
 
 const appConfig = useAppConfig()
 const compConf = computed(() => appConfig.component.slide)
@@ -45,7 +45,7 @@ useEventListener(carouselEl, 'wheel', (e) => {
 				:key="index"
 				class="slide-item"
 				:title="article.description"
-				:to="article.path"
+				:to="`/${article.slug}`"
 			>
 				<NuxtImg class="cover" :src="article.image" :alt="compConf.showTitle ? '' : article.title" />
 

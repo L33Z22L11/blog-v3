@@ -1,7 +1,7 @@
 {
   "name": "clarity",
   "type": "module",
-  "version": "3.6.3",
+  "version": "4.0.0-alpha.1",
   "private": true,
   "packageManager": "pnpm@10.29.3",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
@@ -10,9 +10,8 @@
     "pnpm": ">=10"
   },
   "scripts": {
-    "prepare": "pnpm clean && pnpm build:packages && nuxt prepare",
+    "prepare": "pnpm clean && nuxt prepare",
     "clean": "rimraf .data node_modules/.cache",
-    "build:packages": "pnpm --filter ./packages/remark-music --filter ./packages/rehype-meta-slots build",
     "dev": "nuxt dev --open",
     "dev:host": "nuxt dev --host",
     "build": "nuxt build",
@@ -24,13 +23,13 @@
     "init-project": "tsx scripts/init-project",
     "new": "tsx scripts/new-blog",
     "check:feed": "tsx scripts/framework/get-feed",
-    "check:feed/all": "tsx scripts/framework/check-all-feeds"
+    "check:feed/all": "tsx scripts/framework/check-all-feeds",
+    "test:postme/build": "tsx scripts/postme"
   },
   "dependencies": {
     "@bikariya/image-viewer": "catalog:ui",
     "@bikariya/modals": "catalog:ui",
     "@bikariya/shiki": "catalog:content",
-    "@nuxt/content": "catalog:content",
     "@nuxt/icon": "catalog:ui",
     "@nuxt/image": "catalog:ui",
     "@nuxtjs/color-mode": "catalog:ui",
@@ -69,6 +68,7 @@
     "@iconify-json/solar": "catalog:ui",
     "@nuxt/a11y": "catalog:quality",
     "@nuxt/hints": "catalog:quality",
+    "@types/node": "catalog:framework",
     "@zinkawaii/stylelint-config": "catalog:quality",
     "cspell": "catalog:quality",
     "eslint": "catalog:quality",
@@ -77,9 +77,7 @@
     "oxc-minify": "catalog:util",
     "p-limit": "catalog:util",
     "rehype-katex": "catalog:content",
-    "rehype-meta-slots": "workspace:^",
     "remark-math": "catalog:content",
-    "remark-music": "workspace:^",
     "remark-reading-time": "catalog:content",
     "rimraf": "catalog:util",
     "sass-embedded": "catalog:framework",

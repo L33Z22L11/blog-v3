@@ -4,31 +4,17 @@ const route = useRoute()
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['toc'])
 
-const { data: post } = await useAsyncData(
-	route.path,
-	() => queryCollection('content').path(route.path).first(),
-)
-
-const contentStore = useContentStore()
-const { toc, meta } = storeToRefs(contentStore)
-
-const excerpt = computed(() => post.value?.description || '')
-
-function setTocAndMeta() {
-	toc.value = post.value?.body.toc
-	meta.value = post.value?.meta
-}
-
-setTocAndMeta()
+const { data: post } = await useFetch(`/api/content${route.path}`)
 
 if (post.value) {
 	useSeoMeta({
-		title: post.value.title,
+		title: post.value.frontmatter.title,
 		ogType: 'article',
-		ogImage: post.value.image,
-		description: post.value.description,
+		ogImage: post.value.frontmatter.image,
+		description: post.value.frontmatter.description,
 	})
-	layoutStore.setAside(post.value.meta?.aside as WidgetName[] | undefined)
+	layoutStore.customAsideWidgets = post.value.slots || {}
+	layoutStore.setAside(post.value.frontmatter.aside as WidgetName[] | undefined)
 }
 else {
 	const event = useRequestEvent()
@@ -39,23 +25,22 @@ else {
 
 if (import.meta.dev) {
 	watchEffect(() => {
-		setTocAndMeta()
-		layoutStore.setAside(post.value?.meta?.aside as WidgetName[] | undefined)
+		layoutStore.setAside(post.value?.frontmatter.aside as WidgetName[] | undefined)
 	})
 }
 </script>
 
 <template>
 <template v-if="post">
-	<PostHeader v-bind="post" />
-	<PostExcerpt v-if="excerpt" :excerpt />
-	<!-- 使用 float-in 动画会导致搜索跳转不准确 -->
-	<ContentRenderer
+	<PostHeader v-bind="post.frontmatter" />
+	<PostExcerpt v-if="post?.frontmatter.description" :excerpt="post.frontmatter.description" />
+	<PostRender :body="post.body" />
+	<!-- <ContentRenderer
 		class="article"
 		:class="getPostTypeClassName(post?.type, { prefix: 'md' })"
 		:value="post"
 		tag="article"
-	/>
+	/> -->
 
 	<PostFooter v-bind="post" />
 	<PostSurround />

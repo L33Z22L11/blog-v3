@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { ArticleProps } from '~/types/article'
+import type { ArticleSchema } from 'postme'
 
 const props = defineProps<{
 	to?: string
 	useUpdated?: boolean
-} & ArticleProps>()
+} & ArticleSchema>()
 
 const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 </script>

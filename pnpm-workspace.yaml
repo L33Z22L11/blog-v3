@@ -4,23 +4,31 @@ packages:
 catalogs:
   content:
     '@bikariya/shiki': ^0.0.7
-    '@nuxt/content': ^3.11.2
     '@nuxtjs/seo': ^3.4.0
     '@shikijs/colorized-brackets': ^3.22.0
     '@shikijs/transformers': ^3.22.0
     '@types/hast': ^3.0.4
     '@types/mdast': ^4.0.4
     abcjs: ^6.6.1
-    minimark: 0.2.0
+    kerria: ^0.5.0
+    mdast-util-frontmatter: ^2.0.1
+    micromark-extension-frontmatter: ^2.0.0
     nuxt-llms: ^0.2.0
     plain-shiki: ^0.3.2
     rehype-katex: ^7.0.1
+    rehype-raw: ^7.0.0
+    remark-gfm: ^4.0.1
     remark-math: ^6.0.0
+    remark-mdc: ^3.10.0
+    remark-parse: ^11.0.0
     remark-reading-time: ^2.0.2
+    remark-rehype: ^11.1.2
     shiki: ^3.22.0
+    unified: ^11.0.5
     unist-util-visit: ^5.1.0
     vfile: ^6.0.3
   framework:
+    '@types/node': ^25.1.0
     '@zinkawaii/tsconfig': ^0.1.0
     ci-info: ^4.4.0
     nuxt: ^4.3.1
@@ -66,11 +74,13 @@ catalogs:
     oxc-minify: ^0.112.0
     p-limit: ^7.3.0
     parse-domain: ^8.2.2
+    pathe: ^2.0.3
     radash: ^12.1.1
     rimraf: ^6.1.2
     site-config-stack: ^3.2.19
     strip-ansi: ^7.1.2
     temporal-polyfill: ^0.3.0
+    yaml: ^2.8.2
 
 engineStrict: true
 
@@ -83,7 +93,7 @@ onlyBuiltDependencies:
   - unrs-resolver
 
 patchedDependencies:
-  '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch
+  # '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch
   '@vue/shared': patches/@vue__shared.patch
   plain-shiki: patches/plain-shiki.patch
   playwright-core: patches/playwright-core.patch
