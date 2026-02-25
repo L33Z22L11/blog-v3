@@ -36,7 +36,7 @@ const { open } = modalStore.use(
 		class="image"
 		:style="{ cursor: zoom && 'zoom-in' }"
 		:alt="caption || alt"
-		:src :width :height :mirror :filter
+		:src :width :height :mirror :filter :densities
 		@click="zoom && open()"
 	/>
 	<figcaption v-if="caption || $slots.caption" aria-hidden>

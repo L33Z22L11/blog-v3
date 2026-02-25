@@ -147,7 +147,7 @@ export default [
 				avatar: 'https://bitmc.uno/picgo/126662463_p2.jpg',
 				archs: ['Nuxt', '服务器'],
 				date: '2025-07-28',
-				comment: '分享 Vue、Nuxt 等前端技术的使用技巧、版本特性、工具集成及相关翻译文章。',
+				comment: '前端大手子，运营prop.show播客，分享前端技术的心得。',
 			},
 			{
 				author: '落憾',
@@ -298,7 +298,7 @@ export default [
 				avatar: getGithubAvatar('KazariEX'),
 				archs: ['Nuxt', 'Netlify'],
 				date: '2024-01-30',
-				comment: '“四邮四电”直系学长，Vue相关开发者，前端方面指引我不少。',
+				comment: 'Vue.js Member，前端大手子。',
 			},
 			{
 				author: '恩泽',
@@ -1118,7 +1118,7 @@ export default [
 				avatar: 'https://blog.viki.moe/avatar.png',
 				archs: ['Next.js', 'Vercel'],
 				date: '2026-01-19',
-				comment: '博客与前端知识分享。',
+				comment: '前端大手子，博客与前端知识分享。',
 			},
 			{
 				author: 'GnixAij',
@@ -1143,6 +1143,18 @@ export default [
 				archs: ['Nuxt', 'Vercel'],
 				date: '2026-02-21',
 				comment: 'TUI风格的Nuxt博客，讲述博客技术学习历程。',
+			},
+			{
+				author: 'bakaptr',
+				title: 'Nostalgia Garden',
+				desc: 'I\'m a person dedicated to what I am interested in.',
+				link: 'https://rua.sh/',
+				feed: 'https://rua.sh/rss.xml',
+				icon: getGithubIcon('Zhousiru'),
+				avatar: getGithubAvatar('Zhousiru'),
+				archs: ['Astro', 'Cloudflare'],
+				date: '2026-02-25',
+				comment: '素未谋面的同事，前端大手子。',
 			},
 			/* ========从此处新增友链======== */
 		],

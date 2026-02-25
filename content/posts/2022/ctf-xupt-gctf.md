@@ -12,7 +12,8 @@ tags: [大学, CTF]
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWwsjQ9HSjSpJtePhe0Vkb1JNuUWeNcotGVXj5JYWPFdxr0oGZ3ibKnAw/640
 mirror: true
-width: 360
+height: 1000
+densities: 1.5x
 ---
 ::
 
@@ -24,15 +25,18 @@ width: 360
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWSFfmZFCVQwH0e8iah91iapKxyxw3qNFcurGNIibibqY7Q2rrMkO7NQuCnA/640
 mirror: true
+densities: 1.5x
 caption: Sign in题目
 ---
 ::
+
 根据 `解压测试` 判断，源码被打包到了 `/www.zip`，遂下载，解压后发现网站目录里有另一份文件，访问此路径得到 flag。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWTDJE3aYygOF6VeyBjTTvq3zvHusMIOl8elMhUDuy2eXtNlzsTAjOcw/640
 mirror: true
+densities: 1.5x
 caption: 你猜猜直接打开会得到什么？
 ---
 ::
@@ -43,62 +47,77 @@ caption: 你猜猜直接打开会得到什么？
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW6hFaKWVxct4la1vMPwXrL4X8UwoeU3hmF5KMocg00Ao1HH8DA5nsOg/640
 mirror: true
+densities: 1.5x
 caption: md5题目
 ---
 ::
+
 本题使用的是 PHP 语言 MD5 的相等判断漏洞。我所使用的 Edge 开发人员工具网络控制台不能得到预期中的结果，故使用 `curl` 来 post 参数，得到 flag。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWTVjL3YA0cJOwfvEHD7TlUuc6hKE0QZqwka3qpbZdJ403WNjNDuuktw/640
 mirror: true
+densities: 1.5x
 caption: curl命令
 ---
 ::
+
 ### 6 Method
+
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWtIicxHG2ZuyRrv1qYdIjhCjdhTibFsnoFVOR3icMQqy6xyedAZLXhMfyg/640
 mirror: true
+densities: 1.5x
 caption: Method题目
 ---
 ::
+
 在控制台使用JavaScript发送`GCTF`请求，得到的body只是把图中的`GET`改成了`GCTF`。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWPOAzZCP3ln6Qsm9yPoOoQIGJC5vXG85ca89fmEaHWfAicJTLBz6Rs7g/640
 mirror: true
+densities: 1.5x
 caption: 控制台
 ---
 ::
+
 在网络控制台查看请求，响应头中包含了 flag。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWDrox9jCFSUicbUJ23Pvy8LAOgRictdqgA8UfIG8hQDCMzTtY3cMIaKGw/640
 mirror: true
+densities: 1.5x
 caption: 网络控制台
 ---
 ::
+
 另外，也可使用 curl，但需要附上 `-v` 参数。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWWiaMqe4KOADrnPPQvicpMaKHRUFOjvEz1Lxata4ibeY0u1bARccUKtvxQ/640
 mirror: true
+densities: 1.5x
 caption: curl命令
 ---
 ::
+
 ### 7 Secret
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW9Sc4LicD0guR0CHEGvRibianjWFp66NmvSOm7j0CRk8NxCot8c07YFtQw/640
 mirror: true
+densities: 1.5x
 caption: Secret题目
 ---
 ::
+
 使用Edge开发人员工具的网络条件工具伪造UA还不够，还需要伪造请求IP。
 
 ### 8 BackupFile
@@ -107,6 +126,7 @@ caption: Secret题目
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWGBGxS8cZJMDDqXOicdRymRpV3KA9AF88R9DBicQVMQ9d2icQtSfDCWqGA/640
 mirror: true
+densities: 1.5x
 ---
 ::
 
@@ -116,6 +136,7 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWAEm8RRE27JChicUEbleGD19ExF8CWdCicawAGpSon6lhxHDpedJ4Cg8w/640
 mirror: true
+densities: 1.5x
 ---
 ::
 
@@ -125,36 +146,44 @@ PHP 中数字与字符串判断是否不完全相等时，会将字符串转换�
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW1SZZDgPJzWdkgmQaG0g2WzGDRqqUBVgvFfRumsPdQgp5Gnic2ZojotQ/640
 mirror: true
+densities: 1.5x
 caption: 传入参数key=2333
 ---
 ::
+
 ### 11 一波三折
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWYtMQIM86VYRTGrNribOOYE3AOZRwU01W5YyasXp4Gx3Nz8HY4tqHmNg/640
 mirror: true
+densities: 1.5x
 caption: 一波三折题目
 ---
 ::
+
 根据提示查看 Cookie，访问 `flag.html` 却被重定向到百度。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWr3nJzsS3HShlbdSb89RGcmx4tbZkSIDM0gDOYF7HCExMssWwGEBUAQ/640
 mirror: true
+densities: 1.5x
 caption: 怎么被重定向了
 ---
 ::
+
 使用 curl 可避免重定向。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWEibLfZ8V7mTyzPC02icrSPIBvdp0pApMGRy7N4Njb7GJpSqwy5T11c3Q/640
 mirror: true
+densities: 1.5x
 caption: curl命令
 ---
 ::
+
 使用 Base64 解码工具，得到 `flag{cc9383e8-120e-11ed-9c5d-902e16798283}`。
 
 ### 50 Pocman
@@ -163,6 +192,7 @@ caption: curl命令
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWY9ZgIASZc9jtFPiahUI6KBA988od6EJDwN4lO25kFk2Q1rm7vUW1icNw/640
 mirror: true
+densities: 1.5x
 ---
 ::
 
@@ -184,15 +214,18 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW8WJSZTYDz1m2h0D2TicKsf7vQLCDb5dB3icHccDbOUFEHvDUHxrbiaybg/640
 mirror: true
+densities: 1.5x
 caption: ezaf题目
 ---
 ::
+
 让加密工具直接加密字符集 `a~z`，得到加密后的字符集。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW3gXib7JUgKANUEBiciawIW5KcKkCd1pMeTPBBOboPrjVwLHsUicuCZhbzg/640
 mirror: true
+densities: 1.5x
 ---
 ::
 
@@ -206,6 +239,7 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWHyFhsOVKEAIfXibibicI1buUxeQrRnSdtQWlTfVabn5AUxd1s8qsMibzaQ/640
 mirror: true
+densities: 1.5x
 ---
 ::
 
@@ -217,6 +251,7 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW5qlfjgspRljbFM6nDMCI8gajgrldjGOXcQDrmLtKZTgYBF0rW3tIWw/640
 mirror: true
+densities: 1.5x
 ---
 ::
 
@@ -230,6 +265,7 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW1jMicEUkwohzUAa6qXBAHzzEme1p3hNg26NIibZfLbyJLyEuia9HDUoyA/640
 mirror: true
+densities: 1x
 caption: 好耶，是netcat
 ---
 ::
@@ -238,8 +274,8 @@ caption: 好耶，是netcat
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW2ibxpKCpnR7a1d6iapbbR7E2Fa7DUZSgiaxCK6Ht4v87ORolzGkQ9hsiag/640
 mirror: true
+densities: 1.5x
 caption: 我信你个鬼
-width: 360
 ---
 ::
 
@@ -251,18 +287,22 @@ width: 360
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWJZF8vzzaplk2nFoZSF2JRSuELGOHyiaibPZDc2D9ibYeOibfIMGQLLE0xQ/640
 mirror: true
+densities: 1.5x
 caption: Welcome题目
 ---
 ::
+
 ### 39 海绵宝宝的秘密
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWp7tzyWVicdlX9IH6mhSOwZ48HAq3gbOMJQJFE2AylGa4r9o96Ppax4Q/640
 mirror: true
+densities: 1.5x
 caption: 海绵宝宝的秘密
 ---
 ::
+
 使用十六进制编辑器打开，发现 flag 藏在 png 文件的末尾。
 
 ### 40 开心派大星
@@ -273,18 +313,22 @@ caption: 海绵宝宝的秘密
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWycUKqOhmfxsjVLzQ9O8W2wUUibRdqZL341yA0zAJAZl0pb8GP8JB9fw/640
 mirror: true
+densities: 1.5x
 caption: 暴力破解密码
 ---
 ::
+
 解压后得到“开心的派大星.png”，使用十六进制编辑器修改png高度，得到派大星下方隐藏的文字。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWeFSKCRI6clY0O0sdjj9kib0LJWUKd36h7AiaZ84foBpM0ic0ynTMDaVFw/640
 mirror: true
+densities: 1.5x
 caption: 开心派大星
 ---
 ::
+
 Base58 解码得 `flag{have_a_G00D_t1me!!}`。
 
 ### 41 滴滴滴
@@ -293,51 +337,62 @@ Base58 解码得 `flag{have_a_G00D_t1me!!}`。
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWuVWHymSfcvHhtULzDCRlUzsOibkapMeGODs78Pk7t3MwgbutCQe2IbA/640
 mirror: true
+densities: 1.5x
 caption: dididi.wav
 ---
 ::
+
 使用 Audacity，根据波形写出摩斯密码。（这一步也可以直接播放，边听边写。）
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWPFpr2V1Q1ybkw06yP5bGlCvTzUYSNyvf6YBZsyGXoFdiay71m3D2GuA/640
 mirror: true
+densities: 1.5x
 caption: 摩斯密码
 ---
 ::
+
 ### 42 无字天书
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWJqAbaQBljfsMqKOiasRic0wQiaEiaQ0ekGIn8BibJGldNfCG3bYhd5XgZYA/640
 mirror: true
+densities: 1.5x
 caption: 无字天书题目
 ---
 ::
+
 使用记事本打开，发现大量零宽字符。使用零宽字符隐写工具，还原后得到flag。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWuoB9EGDVDIBO5VZWYSOwrOiaMowIgdItKZI3BsWe0QyNoic6Tvv3Allw/640
 mirror: true
+densities: 1.5x
 caption: 零宽字符隐写工具
 ---
 ::
+
 ### 43 Excel
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWWic7QpOrJFchcwMICfwa0cWyX6q76sVqw60dtV5AdpXAlt30YdxXCDg/640
 mirror: true
+densities: 1.5x
 caption: Excel
 ---
 ::
+
 从 A2 单元格开始，向右、向下间断分布有数值 `1`，使用公式引用后可以显示，发现数值 `1` 所在的单元格组成了二维码。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWWS1XicDZr1NTNyndMGMubDzOB6L3iaGuADZZKELyS5S5ia4I6Ybu4Gt2w/640
 mirror: true
+densities: 1.5x
 ---
 ::
 
@@ -347,9 +402,11 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWKsLAeFQQ9bnzT68Aoqvib9rG09ibObTian0RN0BK5icFGialUZVtRsPFXKg/640
 mirror: true
+densities: 1.5x
 caption: 显示二维码
 ---
 ::
+
 修改列宽，使单元格变成方形。扫码得到 `flag{36982547439sdsd343}`。
 
 ### 44 No Password
@@ -358,9 +415,11 @@ caption: 显示二维码
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW2PT77yZIuHAxVRiamicHQicxdSvNa62YKtice4CKlq3ESJh2LOMribBzwZA/640
 mirror: true
+densities: 1.5x
 caption: No Password
 ---
 ::
+
 知识点：Zip 伪加密
 
 预期外的解法：使用 7-Zip 打开文件，直接得到答案。
@@ -373,6 +432,7 @@ caption: No Password
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWnjCEvF1ZDRkjKNj91jKjtqXyuMkrTxfraboVaAbvWjr0SW4NR95xqg/640
 mirror: true
+densities: 1.5x
 caption: 欸嘿我进墙了
 ---
 ::
@@ -381,6 +441,7 @@ caption: 欸嘿我进墙了
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWMCuDvk1GdrLtjCR3o2n3FGQ4xjNnFjpiaLIULnjXRWib6ywZsHEB9Lhw/640
 mirror: true
+densities: 1.5x
 caption: 闯过第三关后得到flag
 ---
 ::
@@ -393,27 +454,33 @@ caption: 闯过第三关后得到flag
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWm0EaRxe1y3nDqyhGxCFiaMR8RIVYlMLUqVf7WO9iaMkzibUbdY3d6Vq6g/640
 mirror: true
+densities: 1.5x
 caption: 可爱捏
 ---
 ::
+
 使用AAEncode解密工具，得到十六进制字符串。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWTPeIkOWR8eUKp3IZga4zxib3bNLWdLvE9A8uX6C56nEc7liagBu4Fic3g/640
 mirror: true
+densities: 1.5x
 caption: 转文本
 ---
 ::
+
 当作 ASCII 编码转换为文本，发现应该是 png 文件的十六进制编码。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWqHXQPsjPzJAkkElibvoh8oSOPUSkoMvHJp5swwyIaibxibBicsbYVBmROQ/640
 mirror: true
+densities: 1.5x
 caption: 写文件
 ---
 ::
+
 使用十六进制编辑器将编码存入文件，得到二维码图片。
 
 ::pic
@@ -423,6 +490,7 @@ mirror: true
 caption: 生成图
 ---
 ::
+
 扫码得到 `flag{cutECutecute!}`。
 
 ### 48 解方程
@@ -431,6 +499,7 @@ caption: 生成图
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWQK4kb3ib9PHv8Uy9T8ib1dCE0s7v2GFC8l2R93S5icDk5fLiaTrTiaa65uA/640
 mirror: true
+densities: 1.5x
 caption: "@代打出题人 你还接单吗？"
 ---
 ::
@@ -439,9 +508,11 @@ caption: "@代打出题人 你还接单吗？"
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWCpXkaNK4B15EGe3rZ5OdibGjFrAsPk2OjfNvjLtVK7icBL1gIDh4Nw6g/640
 mirror: true
+densities: 1.5x
 caption: 解方程工具
 ---
 ::
+
 使用解方程工具，得到 flag 为 `[103, 111, 111, 100, 87, 111, 114, 107, 33, 33]`，转换为十六进制，拼接得到 `676f6f64576f726b2121`，再作为ASCII码变成文本得到flag为 `goodWork!!`。
 
 ::quote

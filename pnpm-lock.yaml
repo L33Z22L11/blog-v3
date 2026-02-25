@@ -204,6 +204,9 @@ catalogs:
       version: 0.3.0
 
 patchedDependencies:
+  '@nuxt/image':
+    hash: 579706651997597c070d331e56e6cf9f3deb05477e3696c678c5c49ff614ea9c
+    path: patches/@nuxt__image.patch
   '@nuxtjs/mdc':
     hash: e0283e75f475e855851a8b791250710895e1946f9f5e93eef1d27db151c44a64
     path: patches/@nuxtjs__mdc.patch
@@ -238,7 +241,7 @@ importers:
         version: 2.2.1(magicast@0.5.2)(vite@7.3.1(@types/node@25.2.3)(jiti@2.6.1)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))(vue@3.5.28(typescript@5.9.3))
       '@nuxt/image':
         specifier: catalog:ui
-        version: 2.0.0(db0@0.3.4)(ioredis@5.9.3)(magicast@0.5.2)
+        version: 2.0.0(patch_hash=579706651997597c070d331e56e6cf9f3deb05477e3696c678c5c49ff614ea9c)(db0@0.3.4)(ioredis@5.9.3)(magicast@0.5.2)
       '@nuxtjs/color-mode':
         specifier: catalog:ui
         version: 4.0.0(magicast@0.5.2)
@@ -8480,7 +8483,7 @@ snapshots:
       - vite
       - vue
 
-  '@nuxt/image@2.0.0(db0@0.3.4)(ioredis@5.9.3)(magicast@0.5.2)':
+  '@nuxt/image@2.0.0(patch_hash=579706651997597c070d331e56e6cf9f3deb05477e3696c678c5c49ff614ea9c)(db0@0.3.4)(ioredis@5.9.3)(magicast@0.5.2)':
     dependencies:
       '@nuxt/kit': 4.3.1(magicast@0.5.2)
       consola: 3.4.2

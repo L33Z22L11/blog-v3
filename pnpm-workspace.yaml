@@ -83,6 +83,7 @@ onlyBuiltDependencies:
   - unrs-resolver
 
 patchedDependencies:
+  '@nuxt/image': patches/@nuxt__image.patch
   '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch
   '@vue/shared': patches/@vue__shared.patch
   plain-shiki: patches/plain-shiki.patch

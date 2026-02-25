@@ -26,9 +26,11 @@ tags: [大学, CTF]
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWlN2DuWkx4QegGN2iaWMibbt3G6xXDRwIHGgBww0ic9OV3hQH2tKlqWiakQ/640
 mirror: true
+densities: 1.5x
 caption: 复盘题目需要付费
 ---
 ::
+
 举办比赛本身需要耗费大量的人力物力财力，比赛依托第三方平台，赛后一个月复盘时收费属于正常现象。**本人在答题时只留存了WriteUp，但为了撰写此文章，题目内容均作了回忆，若有偏差，敬请谅解！**
 
 ### 本人的反思
@@ -41,18 +43,22 @@ caption: 复盘题目需要付费
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWogpgJDsZbfjY6fNmGejeGxUHniawPLkSDFGaLnHVgD39yQnrFvAOhcw/640
 mirror: true
+densities: 1.5x
 caption: 排名
 ---
 ::
+
 赛事设置一等奖1组、二等奖2组、三等奖3组、优秀奖5组，最后一个获奖队伍的排名为34，但由于种种原因，没有参加评奖环节。
 
 ::pic
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWxGHgLN7PvGS0LXvVaQcWJ0Me8HS1qRxqhHv2nodTKLAnlOqga1aAiag/640
 mirror: true
+densities: 1.5x
 caption: 答题
 ---
 ::
+
 比赛每队三人，但由于本人能力有限，在周围没能找到未组队的选手，最后独自一队参加比赛。
 
 ## WriteUp
@@ -73,6 +79,7 @@ caption: 答题
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWxlySyBmXib5VYThQWiaLFT1VPqIOvasfeut9hTicBLfyaxXZjLTC1wHqw/640
 mirror: true
+densities: 1.5x
 ---
 ::
 
@@ -82,7 +89,7 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW4L5wiaDtV9XTrnb5T4H8cUT0O6UJoMwP0dLqBrSPicETKBmcrxdX96Yg/640
 mirror: true
-width: 280
+densities: 1.5x
 ---
 ::
 
@@ -98,6 +105,7 @@ width: 280
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW4iaHIAwicF2or5nqyoSsPKtQk7OFiaqtDrvQyK7TibCge5AfvMiamvfPsmw/640
 mirror: true
+densities: 1.5x
 caption: DVR工具
 ---
 ::
@@ -107,6 +115,7 @@ caption: DVR工具
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWMOicz6JP7UibBgBLB9MLxGiakwficAjgFiaFojRaqDqVnN1vTjTHu0YoS2g/640
 mirror: true
+densities: 1.5x
 ---
 ::
 
@@ -124,6 +133,7 @@ mirror: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibW6GNrWuOQruKuu8dYldMSrhnG8Ox830RqJibEljz43rIDFptbBetY6Vg/640
 mirror: true
+densities: 1.5x
 caption: flag
 ---
 ::
@@ -137,6 +147,7 @@ caption: flag
 ---
 src: https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWVHSED0ic7zNcOqkyQPvzcUffZxibIKYhplrVVe05gcUn96qDL8hL6vVw/640
 mirror: true
+densities: 1.5x
 ---
 ::
 

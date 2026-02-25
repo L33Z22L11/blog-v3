@@ -297,6 +297,7 @@ WinGet 是微软官方的 Windows 程序包管理器，它提供了命令行程�
 ---
 src: https://raw.githubusercontent.com/microsoft/winget-cli/master/.github/images/WingetInstall.gif
 mirror: true
+densities: 1x
 caption: WinGet 官方演示
 ---
 ::
@@ -372,7 +373,7 @@ Oh My Posh 是一个用于 Windows 终端的命令行主题管理工具。根据
 ::pic
 ---
 src: https://ohmyposh.dev/img/hero.png
-width: 720
+densities: 1.5x
 caption: Oh My Posh
 ---
 ::
@@ -483,7 +484,7 @@ Updating 'frp' (0.59.0 -> 0.60.0)
 ---
 src: https://gitee.com/zhongyang219/TrafficMonitor/raw/master/Screenshots/taskbar.PNG
 mirror: true
-width: 323
+densities: 1x
 caption: Traffic Monitor 悬浮窗
 ---
 ::
@@ -520,8 +521,9 @@ LocalSend 是一款免费、开源、跨平台的文件传输软件。采用 Apa
 
 ::pic
 ---
-src: https://raw.githubusercontent.com/viarotel-org/escrcpy/main/screenshots/zh-CN/overview.jpg
+src: https://raw.githubusercontent.com/viarotel/resources/main/screenshots/escrcpy/zh-CN/overview.png
 mirror: true
+densities: 2x
 caption: Escrcpy 截图
 ---
 ::

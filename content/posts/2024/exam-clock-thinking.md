@@ -82,7 +82,7 @@ mirror: true
 ::pic
 ---
 src: https://ooo.0x0.ooo/2022/04/04/kByKC.jpg
-width: 540
+height: 320
 caption: 书桌@齐天
 ---
 ::
