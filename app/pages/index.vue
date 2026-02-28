@@ -42,10 +42,10 @@ const listRecommended = computed(() => sort(
 			:categories
 		>
 			<ZSecret>
-				<UtilLink to="/preview" class="preview-entrance">
+				<ZButton variant="text" to="/preview" class="preview-entrance">
 					<Icon name="ph:file-lock-bold" />
 					查看预览文章
-				</UtilLink>
+				</ZButton>
 			</ZSecret>
 		</PostOrderToggle>
 

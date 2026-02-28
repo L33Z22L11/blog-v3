@@ -2,17 +2,26 @@
 import { UtilLink } from '#components'
 
 export interface ButtonProps {
+	variant?: 'button' | 'text'
 	icon?: string
 	text?: string
 	to?: string
 	desc?: string
 	primary?: boolean
 }
-defineProps<ButtonProps>()
+
+withDefaults(defineProps<ButtonProps>(), {
+	variant: 'button',
+})
 </script>
 
 <template>
-<component :is="to ? UtilLink : 'button'" :to class="button" :class="{ primary }">
+<component
+	:is="to ? UtilLink : 'button'"
+	:to
+	class="z-button"
+	:class="[variant, { primary }]"
+>
 	<div class="button-main">
 		<Icon v-if="icon" :name="icon" />
 		<slot>{{ text }}</slot>
@@ -24,35 +33,47 @@ defineProps<ButtonProps>()
 </template>
 
 <style lang="scss" scoped>
-.button {
+.z-button {
 	display: inline-block;
-	padding: 0.4em 0.6em;
-	border: 1px solid var(--c-bg-soft);
-	border-radius: 0.5em;
-	box-shadow: var(--box-shadow-1);
-	background-color: var(--ld-bg-card);
-	line-height: 1.2;
-	vertical-align: middle;
 	transition: color 0.1s, background-color 0.2s;
-	cursor: pointer;
 
-	&.primary {
-		background-color: var(--c-primary);
-		color: var(--c-bg);
+	&.button {
+		padding: 0.4em 0.6em;
+		border: 1px solid var(--c-bg-soft);
+		border-radius: 0.5em;
+		box-shadow: var(--box-shadow-1);
+		background-color: var(--ld-bg-card);
+		line-height: 1.2;
+		vertical-align: middle;
+		cursor: pointer;
+
+		&.primary {
+			background-color: var(--c-primary);
+			color: var(--c-bg);
+		}
+
+		&:hover {
+			box-shadow: var(--box-shadow-2);
+			background-color: var(--c-bg-2);
+			color: var(--c-text);
+		}
+
+		&:active {
+			background-color: var(--ld-shadow);
+		}
+
+		&:disabled {
+			background-color: var(--c-bg-1);
+		}
 	}
 
-	&:hover {
-		box-shadow: var(--box-shadow-2);
-		background-color: var(--c-bg-2);
-		color: var(--c-text);
-	}
-
-	&:active {
-		background-color: var(--ld-shadow);
+	&.text {
+		&:hover {
+			color: var(--c-primary);
+		}
 	}
 
 	&:disabled {
-		background-color: var(--c-bg-1);
 		color: var(--c-text-3);
 		cursor: not-allowed;
 	}
