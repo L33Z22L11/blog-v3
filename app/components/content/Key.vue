@@ -50,10 +50,10 @@ const symbolMap = {
 	'Delete': '⌦',
 	'Enter': '↵',
 	'Escape': '⎋',
-	'Meta': isMac.value ? '⌘' : '田',
+	'Meta': isMac.value ? '⌘' : '⊞',
 	'Shift': '⇧',
 	'Tab': '⇥',
-	'Win': '田',
+	'Win': '⊞',
 }
 
 function normalizeCodeDisplay(code?: string) {
@@ -88,40 +88,22 @@ const codeDisplay = computed(() => {
 
 const active = ref(false)
 
-/**
- * 当前全局修饰键状态
- */
-const modifierState = ref({
-	ctrl: false,
-	shift: false,
-	alt: false,
-	meta: false,
-})
+const ctrlState = useKeyModifier('Control')
+const shiftState = useKeyModifier('Shift')
+const altState = useKeyModifier('Alt')
+const metaState = useKeyModifier('Meta')
 
-function updateModifierState(e: KeyboardEvent, isDown: boolean) {
-	if (e.key === 'Control')
-		modifierState.value.ctrl = isDown
-	if (e.key === 'Shift')
-		modifierState.value.shift = isDown
-	if (e.key === 'Alt')
-		modifierState.value.alt = isDown
-	if (e.key === 'Meta')
-		modifierState.value.meta = isDown
-}
-
-/**
- * 检查当前修饰键状态是否匹配 props
- */
+/** 检查当前修饰键状态是否匹配 props */
 function modifiersMatch() {
 	const cmdMatch = props.cmd
-		? (isMac.value ? modifierState.value.meta : modifierState.value.ctrl)
+		? (isMac.value ? metaState.value : ctrlState.value)
 		: true
 
 	return cmdMatch
-		&& (!props.ctrl || (!props.cmd && modifierState.value.ctrl))
-		&& (!props.shift || modifierState.value.shift)
-		&& (!props.alt || modifierState.value.alt)
-		&& (!props.meta || (!props.cmd && modifierState.value.meta))
+		&& (!props.ctrl || (!props.cmd && ctrlState.value))
+		&& (!props.shift || shiftState.value)
+		&& (!props.alt || altState.value)
+		&& (!props.meta || (!props.cmd && metaState.value))
 }
 
 function matchKeyEvent(e: KeyboardEvent, expectedCode?: string) {
@@ -131,7 +113,6 @@ function matchKeyEvent(e: KeyboardEvent, expectedCode?: string) {
 }
 
 useEventListener('keydown', (e) => {
-	updateModifierState(e, true)
 	if (matchKeyEvent(e, props.code)) {
 		emit('press')
 		active.value = true
@@ -140,13 +121,11 @@ useEventListener('keydown', (e) => {
 })
 
 useEventListener('keyup', (e) => {
-	updateModifierState(e, false)
 	if (matchKeyEvent(e, props.code) || !modifiersMatch())
 		active.value = false
 })
 
 useEventListener('blur', () => {
-	modifierState.value = { ctrl: false, shift: false, alt: false, meta: false }
 	active.value = false
 })
 </script>
@@ -167,9 +146,8 @@ kbd {
 	border-radius: 0.2em;
 	box-shadow: inset 0 -0.15em 0 var(--c-bg-soft);
 	background-color: var(--c-bg-soft);
-	font-family: var(--font-monospace);
+	font-family: var(--font-basic);
 	font-size: 0.9em;
-	letter-spacing: -0.05em;
 	line-height: 1.4;
 	color: var(--c-text-2);
 	transition: all 0.1s;
