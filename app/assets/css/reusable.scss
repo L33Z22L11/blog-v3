@@ -67,8 +67,8 @@
 }
 
 .scrollcheck-x {
-	--start-offset: 0em; // 如果填写 0 会在 calc() 时出错
-	--scrollbar-height: 0.5em;
+	--start-offset: 0px; // 如果填写 0 会在 calc() 时出错
+	--scrollbar-height: 8px;
 	--fadeout-width: 2em;
 
 	overflow-x: auto;
@@ -98,8 +98,8 @@
 
 .scrollcheck-y {
 	// 如果填写 0 会在 calc() 时出错
-	--top-offset: 0em;
-	--guessed-scrollbar-width: 0.5em;
+	--top-offset: 0px;
+	--guessed-scrollbar-width: 8px;
 	--fadeout-height: 2em;
 
 	overflow-y: auto;

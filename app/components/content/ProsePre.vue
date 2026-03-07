@@ -52,7 +52,7 @@ function getIndent() {
 	if (meta.value.indent)
 		return meta.value.indent
 
-	if (['json', 'jsonc', 'yaml', 'yml'].includes(props.language))
+	if (['md', 'mdc', 'json', 'jsonc', 'yaml', 'yml'].includes(props.language))
 		return 2
 
 	return compConf.value.indent
@@ -141,14 +141,18 @@ onMounted(async () => {
 	margin: 0.5em 0;
 	border-radius: 0.5em;
 	background-color: var(--c-bg-2);
-	font-size: 0.8125rem;
+	font-size: 0.85em;
 	line-height: 1.4;
 	tab-size: var(--tab-size, 4);
 
+	&.collapsible > pre {
+		padding-bottom: 0.5rem;
+	}
+
 	&.collapsed > pre {
 		overflow: hidden;
-		max-height: calc(var(--line-height) * var(--collapsed-rows) * 1em + 2rem);
-		mask-image: linear-gradient(to top, transparent 1em, #FFF 4em);
+		max-height: calc(var(--line-height) * var(--collapsed-rows) * 1em + 1rem);
+		mask-image: linear-gradient(to top, transparent -2em, #FFF 4em);
 		animation: none;
 	}
 }
@@ -287,7 +291,6 @@ pre {
 	position: relative; // 移动到 pre 上方
 	opacity: 0.3;
 	width: 100%;
-	margin-top: -1em;
 	padding: 0.2em;
 	background-color: var(--c-bg-3);
 	transition: opacity 0.2s;

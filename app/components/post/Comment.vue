@@ -186,16 +186,16 @@ onMounted(() => {
 	}
 
 	.tk-extras, .tk-footer {
-		font-size: 0.7rem;
+		font-size: 0.7em;
 		color: var(--c-text-3);
 	}
 
 	.tk-replies:not(.tk-replies-expand) {
-		mask-image: linear-gradient(#FFF 50%, transparent);
+		mask-image: linear-gradient(to top, transparent, #FFF 4em);
 	}
 
 	.tk-expand {
-		border-radius: 0.5rem;
+		border-radius: 0.5em;
 		transition: background-color 0.1s;
 	}
 
@@ -209,8 +209,8 @@ onMounted(() => {
 :deep(:where(.tk-preview-container,.tk-content)) {
 	pre {
 		overflow: auto;
-		border-radius: 0.5rem;
-		font-size: 0.8125rem;
+		border-radius: 0.5em;
+		font-size: 0.85em;
 	}
 
 	p {
@@ -242,7 +242,7 @@ onMounted(() => {
 		border-inline-start: 4px solid var(--c-border);
 		border-radius: 4px;
 		background-color: var(--c-bg-2);
-		font-size: 0.9rem;
+		font-size: 0.9em;
 	}
 }
 </style>
