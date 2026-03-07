@@ -30,6 +30,7 @@
 	height: 100vh;
 	height: 100dvh;
 	min-width: 0; // 防止搜索框撑开页面
+	overscroll-behavior: contain;
 	scrollbar-width: thin;
 
 	@media (max-width: $breakpoint-widescreen) {

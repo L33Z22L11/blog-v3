@@ -5,7 +5,7 @@ interface RadioItem {
 }
 
 defineProps<{
-	items: RadioItem[]
+	items: readonly RadioItem[]
 }>()
 
 const modelValue = defineModel<T>()
@@ -29,7 +29,6 @@ const modelValue = defineModel<T>()
 <style lang="scss" scoped>
 .z-radio-group {
 	display: flex;
-	margin: 1em 0;
 }
 
 .radio-item {

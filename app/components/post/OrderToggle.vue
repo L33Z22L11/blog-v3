@@ -6,7 +6,6 @@ const props = defineProps<{
 	enableAscending?: boolean
 	disableAscending?: boolean
 	categories?: (string | undefined)[]
-	secretDelay?: string
 }>()
 
 const appConfig = useAppConfig()
@@ -31,14 +30,16 @@ function toggleDirection() {
 </script>
 
 <template>
-<div class="order-toggle" :style="{ '--secret-delay': secretDelay }">
+<div class="order-toggle">
 	<slot />
 
 	<ZDropdown trigger="focusin" tabindex="0">
-		<button :disabled="!categories">
-			<Icon :name="getCategoryIcon(category)" />
-			<span class="order-text">{{ category ?? '全部分类' }}</span>
-		</button>
+		<ZButton
+			:disabled="!categories"
+			variant="text"
+			:icon="getCategoryIcon(category)"
+			:text=" category ?? '全部分类' "
+		/>
 
 		<template #content="{ hide }">
 			<button :class="{ active: !category }" @click="hide(), category = undefined">
@@ -54,14 +55,23 @@ function toggleDirection() {
 	</ZDropdown>
 
 	<span>
-		<button v-if="allowAscending" aria-label="切换排序方向" @click="toggleDirection">
-			<Icon name="ph:sort-ascending-bold" class="toggle-direction" :class="{ ascending: isAscending }" />
-		</button>
+		<ZButton
+			v-if="allowAscending"
+			class="toggle-direction"
+			:class="{ ascending: isAscending }"
+			icon="ph:sort-ascending-bold"
+			variant="text"
+			aria-label="切换排序方向"
+			@click="toggleDirection"
+		/>
 
-		<button @click="toggleOrder">
-			<Icon v-if="!allowAscending" name="ph:sort-ascending-bold" />
-			<span class="order-text">{{ orderMap[sortOrder] }}</span>
-		</button>
+		<ZButton
+			icon="ph:sort-ascending-bold"
+			variant="text"
+			:text="orderMap[sortOrder]"
+			aria-label="切换排序方式"
+			@click="toggleOrder"
+		/>
 	</span>
 </div>
 </template>
@@ -71,14 +81,6 @@ function toggleDirection() {
 	display: flex;
 	gap: 1rem;
 	color: var(--c-text-2);
-
-	:deep(button), :deep(a) {
-		transition: color 0.2s;
-
-		&:hover {
-			color: var(--c-primary);
-		}
-	}
 
 	.toggle-direction {
 		display: inline-block;

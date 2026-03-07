@@ -9,7 +9,7 @@ const appConfig = useAppConfig()
 
 <template>
 <UtilLink class="blog-header">
-	<div v-if="appConfig.header.emojiTail" class="emoji-tail">
+	<div v-if="appConfig.header.emojiTail" class="emoji-tail" translate="no">
 		<span
 			v-for="(emoji, emojiIndex) in appConfig.header.emojiTail"
 			:key="emojiIndex"
