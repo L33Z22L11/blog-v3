@@ -1,5 +1,6 @@
-// 友链检测 CLI 需要使用显式导入和相对路径
 import type { FeedGroup } from '../app/types/feed'
+// 友链检测 CLI 需要使用显式导入和相对路径
+import { get } from 'radash'
 import { myFeed } from '../blog.config'
 // eslint-disable-next-line unused-imports/no-unused-imports
 import { getFavicon, getGithubAvatar, getGithubIcon, getOciqGroupAvatar, getOicqAvatar, OicqAvatarSize } from './utils/img'
@@ -862,16 +863,17 @@ export default [
 				comment: '前端/网络技术实践与个人记录',
 			},
 			{
-				author: 'ATao',
-				title: 'ATao-Blog',
-				desc: '做自己喜欢的事',
-				link: 'https://blog.atao.cyou/',
-				feed: 'https://blog.atao.cyou/atom.xml',
-				icon: 'https://cdn.atao.cyou/Web/Avatar.png',
-				avatar: 'https://cdn.atao.cyou/Web/Avatar.png',
+				author: 'Saneko',
+				sitenick: '星屿浅奈',
+				title: '星屿浅奈 ✧ Saneko',
+				desc: 'Do the things that I like.',
+				link: 'https://saneko.me/',
+				feed: 'https://saneko.me/atom.xml',
+				icon: 'https://cdn.blog.saneko.me/Web/Avatar.png',
+				avatar: 'https://cdn.blog.saneko.me/Web/Avatar.png',
 				archs: ['Astro', '服务器'],
 				date: '2025-09-09',
-				comment: '技术实践与问题解决方案',
+				comment: '曾叫ATao，技术实践与问题解决方案',
 			},
 			{
 				author: '鲲',
@@ -1155,6 +1157,18 @@ export default [
 				archs: ['Astro', 'Cloudflare'],
 				date: '2026-02-25',
 				comment: '素未谋面的同事，前端大手子。',
+			},
+			{
+				author: 'LuckyFish',
+				title: 'NoName Blog',
+				desc: '一条鱼的自娱自乐',
+				link: 'https://blog.luckyfishes.site/',
+				feed: 'https://blog.luckyfishes.site/rss.xml',
+				icon: 'https://blog.luckyfishes.site/favicon.ico',
+				avatar: getOicqAvatar('2383690354'),
+				archs: ['Next.js', 'Vercel'],
+				date: '2026-03-02',
+				comment: '舍友，曾任西建大iOS Club社长',
 			},
 			/* ========从此处新增友链======== */
 		],

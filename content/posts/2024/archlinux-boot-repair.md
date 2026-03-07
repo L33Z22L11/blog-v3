@@ -4,8 +4,8 @@ description: 可以修复绝大多数 Arch Linux 无法启动的问题。
 date: 2024-04-01 23:14:39
 updated: 2025-03-04 22:30:59
 image: https://assets.zhilu.cyou/cover3/archlinux-boot-repair.jpg
-categories: [经验分享]
-tags: [教程, 系统, archlinux]
+categories: [技术]
+tags: [Arch Linux, 引导修复, 故障排查]
 
 references:
   - title: systemd-boot - Arch Linux 中文维基

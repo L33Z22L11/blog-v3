@@ -6,7 +6,7 @@ updated: 2024-06-18 17:23:24
 image: https://assets.zhilu.cyou/cover3/cover-copied.jpg
 type: story
 categories: [杂谈]
-tags: [qq, 问题, 软件]
+tags: [开源署名, QQ, 版权]
 references:
   - title: Linux QQ 官网
     link: https://im.qq.com/linuxqq/index.shtml

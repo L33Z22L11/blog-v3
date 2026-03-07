@@ -5,8 +5,8 @@ date: 2024-02-29 23:54:43
 updated: 2024-03-02 00:09:56
 image: https://assets.zhilu.cyou/cover3/virus-trueupdate.jpg
 indent: true
-categories: [经验分享]
-tags: [病毒, Windows, 系统, 问题]
+categories: [安全]
+tags: [Windows, 恶意软件, 应急处理]
 references:
   - title: TrueUpdate白加黑木马分析保姆级教程
     link: https://www.cnblogs.com/VxerLee/p/17736138.html

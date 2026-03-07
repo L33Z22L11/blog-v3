@@ -5,7 +5,7 @@ date: 2009-06-23
 updated: 2009-09-22
 type: story
 categories: [生活]
-tags: [幼儿园, 信]
+tags: [童年, 幼儿园, 回忆]
 ---
 
 ::pic

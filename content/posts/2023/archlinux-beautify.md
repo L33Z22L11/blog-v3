@@ -4,8 +4,8 @@ description: Plasma 桌面环境下优化小键盘、触摸板行为，配置字
 date: 2023-07-24 21:27:45
 updated: 2024-12-19 08:54:18
 image: https://assets.zhilu.cyou/cover3/archlinux-beautify.jpg
-categories: [经验分享]
-tags: [教程, archlinux, 系统]
+categories: [技术]
+tags: [Arch Linux, 桌面美化, 配置]
 ---
 
 ## KDE 系统设置

@@ -6,7 +6,7 @@ updated: 2024-03-31 22:39:27
 image: https://assets.zhilu.cyou/cover3/balancing-today-tomorrow.jpg
 type: story
 categories: [杂谈]
-tags: [大学, 睡眠]
+tags: [时间管理, 作息, 大学]
 ---
 
 ## 今天暂时不能结束

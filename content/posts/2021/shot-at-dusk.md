@@ -6,7 +6,7 @@ updated: 2021-09-25 09:12:00
 image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fYmiagTWUXm7NjnYBWSaHvekXibO0hSfWY6y8LowhqtgX6C3N3HLefMBkmE3Rv3iaBibrFDHP7K5qOGOQ/0
 type: story
 categories: [生活]
-tags: [高中, 拍照]
+tags: [摄影, 黄昏, 校园]
 ---
 
 ::pic

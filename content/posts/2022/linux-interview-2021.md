@@ -4,8 +4,8 @@ description: ''
 date: 2022-11-20 12:52:52
 updated: 2023-07-30 11:45:33
 image: https://assets.zhilu.cyou/cover2/linux-interview-2021.jpg
-categories: [代码]
-tags: [实验室, Lab, C语言]
+categories: [开发]
+tags: [Linux社团, 面试题, C语言]
 ---
 
 > 注：

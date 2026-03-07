@@ -4,8 +4,8 @@ description: 在2025年3月版的 Arch Linux 安装镜像的基础上，使用 A
 date: 2023-05-23 20:37:07
 updated: 2025-03-21 22:04:14
 image: https://assets.zhilu.cyou/cover3/archinstall-guide.jpg
-categories: [经验分享]
-tags: [教程, archlinux, 系统]
+categories: [技术]
+tags: [Arch Linux, 安装, 教程]
 recommend: 20
 ---
 

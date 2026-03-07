@@ -6,7 +6,7 @@ updated: 2024-05-03 15:17:34
 image: https://assets.zhilu.cyou/cover3/fake-in-the-world.jpg
 type: story
 categories: [生活]
-tags: [大学, 问题]
+tags: [大学, 日常, 心情]
 ---
 
 ## 近况

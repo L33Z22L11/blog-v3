@@ -4,8 +4,8 @@ description: 一篇优化 Windows Terminal 体验的指南，涵盖 PowerShell �
 date: 2024-06-16 22:48:57
 updated: 2024-11-02 17:55:29
 image: https://assets.zhilu.cyou/cover3/windows-terminal.jpg
-categories: [经验分享]
-tags: [教程, 系统, Windows, 终端]
+categories: [技术]
+tags: [Windows Terminal, 命令行, 配置]
 recommend: true
 ---
 

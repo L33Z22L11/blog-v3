@@ -6,7 +6,7 @@ updated: 2022-10-08 18:01:00
 image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fanhCXLENPFNE8ERNJ9cAIZgBT0gb6K2IefVfqokxbo6DhCpQscdEdktPR0jCvafyZesFxmxgLfQg/0
 type: story
 categories: [生活]
-tags: [大学, 校园, 拍照]
+tags: [大学, 校园, 随笔]
 ---
 
 [查看原文](https://mp.weixin.qq.com/s/Wg1VtwYT24YijxEUYePJqQ)

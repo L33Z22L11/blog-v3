@@ -4,8 +4,8 @@ description: 指哪里就启动哪里——在 Windows 和 Linux 系统下实现
 date: 2024-03-01 14:06:19
 updated: 2024-03-01 15:17:30
 image: https://assets.zhilu.cyou/cover3/boot-management.jpg
-categories: [经验分享]
-tags: [教程, 系统, archlinux, Windows]
+categories: [技术]
+tags: [双系统, 引导管理, Arch Linux]
 ---
 
 ## 前置知识

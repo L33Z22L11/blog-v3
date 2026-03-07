@@ -5,7 +5,7 @@ date: 2024-10-28 08:23:08
 updated: 2024-11-02 16:41:56
 image: https://assets.zhilu.cyou/cover4/new-laptop-guide.jpg
 categories: [杂谈]
-tags: [电脑, Windows, 新手]
+tags: [新电脑, Windows, 入门建议]
 references:
   - title: 文档太多，时间跨度也大，罄竹难书。
 ---

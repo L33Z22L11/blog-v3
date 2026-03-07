@@ -4,8 +4,8 @@ description: 西工大第三届“探索·解密”趣味密码比赛-个人Writ
 date: 2022-09-06 21:02:00
 updated: 2024-02-03 19:55:49
 image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fZKkd6byLH93QsQDWyGNaJxO0L3rLIJL5ND6KbbEBBonjHsEDXVNEW6iacNG6k39x74MAibRa9KM8Fw/0
-categories: [代码]
-tags: [大学, CTF]
+categories: [安全]
+tags: [CTF, WriteUp, 比赛复盘]
 ---
 
 [查看原文](https://mp.weixin.qq.com/s/oGf660AaxTQS_10qUoUaow)

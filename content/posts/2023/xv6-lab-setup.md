@@ -3,8 +3,8 @@ title: xv6 lab环境配置
 description: 配置 MIT 6.S081 操作系统课程中的 xv6 实验环境，包括 RISC-V 和 QEMU 安装，调整 Makefile 编译选项，以及 VSCode 和 clangd 相关设置。
 date: 2023-11-20 17:09:28
 updated: 2023-11-20 17:09:28
-categories: [经验分享]
-tags: [实验室, Lab]
+categories: [开发]
+tags: [xv6, 实验环境, 操作系统]
 ---
 
 ::alert

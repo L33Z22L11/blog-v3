@@ -6,7 +6,7 @@ updated: 2022-01-22 22:49:00
 image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fZOET0iaB29muw24RYFpe5n4XHbzicWrMekkx4bQ1xm2NCdC3Rlk53icpyqOpJSH9f4bGGJm9861Qibjg/0
 type: story
 categories: [生活]
-tags: [高中, 说说, 班级, 校园]
+tags: [校园, 安全, 见闻]
 ---
 
 [查看原文](https://mp.weixin.qq.com/s/mDj_Ug08Tb3xtgR7kOyfUw)

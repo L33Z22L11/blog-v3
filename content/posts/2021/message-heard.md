@@ -6,7 +6,7 @@ updated: 2021-11-07 14:08:00
 image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fZclobj17h7XiawIziavdejl55ziahIqnyXrJV1YibpXxSZNMj6yybyo5ic6pF5f1K6NulElicVCCnDeaiag/640
 type: story
 categories: [生活]
-tags: [高中, 说说, 校园]
+tags: [高中, 校园, 随笔]
 ---
 
 [查看原文](https://mp.weixin.qq.com/s/S8Em0RoySgjOGQMExHTHag)

@@ -6,7 +6,7 @@ updated: 2021-10-09 23:33:00
 image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjweNYr4bLDnz83cm1N2hg66zEmH2NQLV3uSOx2D9KZzo9m5I4yA1vsaaQ/640
 type: story
 categories: [生活]
-tags: [高中, 说说, 校园]
+tags: [高中, 校园, 随笔]
 ---
 
 考试过后，名次并不理想，遂将自己最差的几个年级名次写在自己桌子上。

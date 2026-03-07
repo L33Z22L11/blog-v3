@@ -4,8 +4,8 @@ description: Tailscale 搭建虚拟局域网，支持多设备间轻松实现 Wi
 date: 2023-10-08 10:34:00
 updated: 2024-05-16 08:30:47
 image: https://assets.zhilu.cyou/cover3/tailscale-incomplete-guide.jpg
-categories: [经验分享]
-tags: [教程, tailscale, 软件, 远程]
+categories: [技术]
+tags: [Tailscale, 内网穿透, 远程访问]
 recommend: true
 ---
 

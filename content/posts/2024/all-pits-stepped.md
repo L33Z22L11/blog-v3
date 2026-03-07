@@ -5,8 +5,8 @@ date: 2024-07-24 21:20:57
 updated: 2024-08-03 10:23:46
 image: https://assets.zhilu.cyou/cover4/all-pits-stepped.jpg
 type: story
-categories: [杂谈]
-tags: [博客, 问题]
+categories: [技术]
+tags: [博客部署, 故障排查, 本地环境]
 ---
 
 > 在决心踏入计算机的世界之后，我们总会勇敢踏步，朝着某个方向走去。也许那里是堵墙，也许墙上贴着前辈们的经验，只要有怀揣一颗热爱探索的心，总归能找到答案。
