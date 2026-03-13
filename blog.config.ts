@@ -1,26 +1,26 @@
 import type { FeedEntry } from './app/types/feed'
 
 const basicConfig = {
-	title: '博客',
-	subtitle: '博客',
+	title: 'Murphy Station',
+	subtitle: '平安喜乐, 都要好好的',
 	// 长 description 利好于 SEO
-	description: '博客',
+	description: '记录一些有的没的, 主要是技术相关的, 也会当朋友圈用, 希望人人都能所愿皆得',
 	author: {
-		name: '博客',
-		avatar: 'https://www.example.site/api/avatar.png',
-		email: 'hi@example.cyou',
-		homepage: 'https://www.example.site/',
+		name: 'Murphy',
+		avatar: '',
+		email: '739855188@qq.com',
+		homepage: 'https://www.trytobetter.cn/',
 	},
 	copyright: {
 		abbr: 'CC BY-NC-SA 4.0',
 		name: '署名-非商业性使用-相同方式共享 4.0 国际',
 		url: 'https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans',
 	},
-	favicon: 'https://www.example.site/api/icon.png',
+	favicon: '',
 	language: 'zh-CN',
 	timeEstablished: '2019-07-19',
 	timeZone: 'Asia/Shanghai',
-	url: 'https://blog.example.site/',
+	url: 'https://blog.trytobetter.cn/',
 	defaultCategory: '未分类',
 }
 
@@ -84,15 +84,15 @@ const blogConfig = {
 
 	/** 自己部署的 Twikoo 服务 */
 	twikoo: {
-		envId: 'https://twikoo.example.site/',
-		preload: 'https://twikoo.example.site/',
+		envId: 'https://twikoo-tx5t.vercel.app/',
+		preload: 'https://twikoo-tx5t.vercel.app/',
 	},
 }
 
 /** 用于生成 OPML 和友链页面配置 */
 export const myFeed: FeedEntry = {
 	author: blogConfig.author.name,
-	sitenick: '摸鱼处',
+	sitenick: '空间站',
 	title: blogConfig.title,
 	desc: blogConfig.subtitle || blogConfig.description,
 	link: blogConfig.url,
@@ -101,7 +101,7 @@ export const myFeed: FeedEntry = {
 	avatar: blogConfig.author.avatar,
 	archs: ['Nuxt', 'Vercel'],
 	date: blogConfig.timeEstablished,
-	comment: '这是我自己',
+	comment: '有缘会再相见',
 }
 
 export default blogConfig

@@ -45,7 +45,7 @@ export default defineAppConfig({
 
 		stats: {
 			/** 归档页面每年标题对应的年龄 */
-			birthYear: 2003,
+			birthYear: 2000,
 			/** blog-stats widget 的预置文本 */
 			wordCount: '约10万',
 		},
@@ -58,8 +58,8 @@ export default defineAppConfig({
 		/** 侧边栏底部图标导航 */
 		iconNav: [
 			{ icon: 'ph:house-bold', text: '个人主页', url: blogConfig.author.homepage },
-			{ icon: 'ri:qq-line', text: '交流群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
-			{ icon: 'ph:github-logo-bold', text: 'GitHub: octocat', url: 'https://github.com/octocat' },
+			{ icon: 'ri:qq-line', text: '交流: 739855188', url: '' },
+			{ icon: 'ph:github-logo-bold', text: 'GitHub: lycorisadiata', url: 'https://github.com/lycorisadiata' },
 			{ icon: 'ph:rss-simple-bold', text: 'Atom订阅', url: '/atom.xml' },
 			{ icon: 'ph:subway-bold', text: '开往', url: 'https://www.travellings.cn/' },
 		] satisfies NavItem[],
@@ -75,17 +75,17 @@ export default defineAppConfig({
 			{
 				title: '社交',
 				items: [
-					{ icon: 'ph:github-logo-bold', text: 'octocat', url: 'https://github.com/octocat' },
-					{ icon: 'ri:qq-line', text: '群: 169994096', url: 'https://jq.qq.com/?_wv=1027&k=lQfNSeEd' },
+					{ icon: 'ph:github-logo-bold', text: 'lycorisadiata', url: 'https://github.com/lycorisadiata' },
+					{ icon: 'ri:qq-line', text: 'Q: 739855188', url: '' },
 					{ icon: 'ph:envelope-simple-bold', text: blogConfig.author.email, url: `mailto:${blogConfig.author.email}` },
 				],
 			},
 			{
 				title: '信息',
 				items: [
-					{ icon: 'simple-icons:nuxt', text: `主题: ${pascal(name)} ${version}`, url: 'https://github.com/L33Z22L11/blog-v3' },
-					{ icon: 'ph:swatches-bold', text: '主题和组件文档', url: 'https://blog.zhilu.site/theme' },
-					{ icon: 'ph:certificate-bold', text: '备案', url: 'https://beian.miit.gov.cn/' },
+					{ icon: 'simple-icons:nuxt', text: `主题: ${pascal(name)} ${version}`, url: 'https://github.com/lycorisadiata/blog-v3' },
+					{ icon: 'ph:swatches-bold', text: '主题和组件文档', url: 'https://blog.trytobetter.cn/theme' },
+					// { icon: 'ph:certificate-bold', text: '备案', url: 'https://beian.miit.gov.cn/' },
 				],
 			},
 		] satisfies Nav,
