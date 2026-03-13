@@ -9,7 +9,7 @@ const basicConfig = {
 		name: 'Murphy',
 		avatar: 'https://tu.trytobetter.cn/file/AgACAgQAAyEGAATSCYFUAAMDaa_muDcVxgofe29Qvew7XqnhcUoAAhsNaxvo2YFRuymRoLWhCyMBAAMCAAN4AAM6BA.png',
 		email: '739855188@qq.com',
-		homepage: 'https://www.trytobetter.cn/',
+		homepage: 'https://trytobetter.cn/',
 	},
 	copyright: {
 		abbr: 'CC BY-NC-SA 4.0',
