@@ -7,7 +7,7 @@ const basicConfig = {
 	description: '记录一些有的没的, 主要是技术相关的, 也会当朋友圈用, 希望人人都能所愿皆得',
 	author: {
 		name: 'Murphy',
-		avatar: '',
+		avatar: 'https://tu.trytobetter.cn/file/AgACAgQAAyEGAATSCYFUAAMDaa_muDcVxgofe29Qvew7XqnhcUoAAhsNaxvo2YFRuymRoLWhCyMBAAMCAAN4AAM6BA.png',
 		email: '739855188@qq.com',
 		homepage: 'https://www.trytobetter.cn/',
 	},
@@ -18,7 +18,7 @@ const basicConfig = {
 	},
 	favicon: '',
 	language: 'zh-CN',
-	timeEstablished: '2019-07-19',
+	timeEstablished: '2025-12-31',
 	timeZone: 'Asia/Shanghai',
 	url: 'https://blog.trytobetter.cn/',
 	defaultCategory: '未分类',
