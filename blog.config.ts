@@ -7,7 +7,7 @@ const basicConfig = {
 	description: '记录一些有的没的, 主要是技术相关的, 也会当朋友圈用, 希望人人都能所愿皆得',
 	author: {
 		name: 'Murphy',
-		avatar: 'https://tu.trytobetter.cn/file/AgACAgQAAyEGAATSCYFUAAMDaa_muDcVxgofe29Qvew7XqnhcUoAAhsNaxvo2YFRuymRoLWhCyMBAAMCAAN4AAM6BA.png',
+		avatar: 'https://tu.trytobetter.cn/file/1773485047219_photo_01.png',
 		email: '739855188@qq.com',
 		homepage: 'https://trytobetter.cn/',
 	},
