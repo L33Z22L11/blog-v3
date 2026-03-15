@@ -3,6 +3,7 @@ title: 生成式AI正在生成
 description: 2025年初我对AI内容泛滥感到不适，但察觉内容空洞的人只有少数。生成式AI在2025一整年迭代太快，以至于2026年初整理好的这些文字显得有些过时。
 date: 2025-06-10 21:52:43
 updated: 2026-02-09 02:07:51
+image: https://assets.zhilu.cyou/cover5/ai-abuse.webp
 type: story
 categories: [杂谈]
 tags: [生成式AI, 内容生态, 观点]

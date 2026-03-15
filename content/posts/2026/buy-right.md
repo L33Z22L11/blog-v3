@@ -3,7 +3,7 @@ title: 实习后买了一堆东西
 description: 键盘鼠标显示器，手环VR小东西。可以买贵的，但不能买贵了。
 date: 2026-02-23 11:02:12
 updated: 2026-03-07 20:42:12
-image: https://assets.zhilu.cyou/content/260223-rental-desk-setup.webp
+image: https://assets.zhilu.cyou/cover5/but-right.webp
 categories: [生活]
 tags: [消费记录, 数码产品, 实习]
 ---
@@ -75,7 +75,7 @@ height: 320
 
 ::pic
 ---
-src: https://img10.360buyimg.com/pcpubliccms/jfs/t1/344918/39/19649/35686/690312daF15c61032/e96994fc577b5077.jpg
+src: https://img10.360buyimg.com/pcpubliccms/jfs/t1/200914/5/36347/53557/6555d49cF6a920635/d94ceb9df33d8e8c.jpg
 height: 320
 ---
 #caption
@@ -141,7 +141,7 @@ caption: 出租屋的桌面环境（2026年1月）
 
 ::pic
 ---
-src: https://img10.360buyimg.com/pcpubliccms/s1440x1440_jfs/t1/132902/21/20693/41817/61ca7749Ef4e59a32/f081872cc9d0d609.jpg.avif
+src: https://img10.360buyimg.com/pcpubliccms/jfs/t1/132902/21/20693/41817/61ca7749Ef4e59a32/f081872cc9d0d609.jpg
 height: 320
 caption: Meta Quest 2
 ---

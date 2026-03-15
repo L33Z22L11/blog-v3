@@ -3,7 +3,7 @@ title: 我们的设备被拿来做了什么：软件的背景行为
 description: 软件为了利益添加不合用户预期的「背景行为」，无论早晚都会暴雷。你我都可能是「背景行为」的波及者，你享受了免费，你的设备在为你打工。
 date: 2025-08-18 01:16:02
 updated: 2025-08-18 03:27:42
-# image:
+image: https://assets.zhilu.cyou/cover5/background-behavior.webp
 type: story
 categories: [杂谈]
 tags: [隐私安全, 后台行为, 软件治理]
