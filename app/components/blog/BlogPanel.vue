@@ -10,24 +10,24 @@ const { asideWidgets, panelTransform } = storeToRefs(layoutStore)
 	:class="{ 'has-active': layoutStore.state !== 'none' }"
 	:style="{ '--transform': panelTransform }"
 >
-	<button
-		class="toggle-sidebar mobile-only"
+	<ZButton
+		class="toggle-sidebar mobile-only rtl-flip"
+		icon="ph:sidebar-duotone"
+		variant="text"
 		:class="{ active: layoutStore.state === 'sidebar' }"
 		aria-label="切换菜单"
 		@click="layoutStore.toggle('sidebar')"
-	>
-		<Icon class="rtl-flip" name="ph:sidebar-duotone" />
-	</button>
+	/>
 
-	<button
+	<ZButton
 		v-if="asideWidgets.length"
-		class="toggle-aside widescreen-only"
+		class="toggle-aside widescreen-only rtl-flip"
 		:class="{ active: layoutStore.state === 'aside' }"
+		icon="ph:align-right-duotone"
+		variant="text"
 		aria-label="切换侧边栏"
 		@click="layoutStore.toggle('aside')"
-	>
-		<Icon class="rtl-flip" name="ph:align-right-duotone" />
-	</button>
+	/>
 </div>
 </template>
 
@@ -54,14 +54,12 @@ const { asideWidgets, panelTransform } = storeToRefs(layoutStore)
 	}
 }
 
-button {
+.z-button {
 	display: block;
 	padding: 0.5rem;
-	transition: all 0.2s;
 
 	&:hover {
 		background-color: var(--c-bg-a80);
-		color: var(--c-primary);
 	}
 
 	&.active {
