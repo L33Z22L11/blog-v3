@@ -11,6 +11,7 @@ const props = withDefaults(defineProps<{
 	class?: string
 }>(), {
 	code: '',
+	meta: '',
 	language: 'text', // Nuxt Content 已经做了此处理
 })
 
@@ -20,16 +21,11 @@ interface CodeblockMeta {
 	[meta: string]: string | boolean | undefined
 }
 
-const meta = computed(() => {
-	if (!props.meta)
-		return {}
-
-	return props.meta.split(' ').reduce((acc: CodeblockMeta, item) => {
-		const [key, value] = item.split('=')
-		acc[key!] = value ?? true
-		return acc
-	}, {})
-})
+const meta = computed(() => props.meta.split(' ').reduce((acc: CodeblockMeta, item) => {
+	const [key, value] = item.split('=')
+	acc[key!] = value ?? true
+	return acc
+}, {}))
 
 const appConfig = useAppConfig()
 const compConf = computed(() => appConfig.component.codeblock)
@@ -66,8 +62,7 @@ onMounted(async () => {
 	if (props.language === 'markdown' || props.language.startsWith('md')) {
 		const mdLangRegex = /^\s*`{3,}(\S+)/gm
 		const langs = Array
-			.from(props.code.matchAll(mdLangRegex))
-			.map(match => match[1])
+			.from(props.code.matchAll(mdLangRegex), match => match[1])
 			.filter(lang => lang !== undefined)
 		await shikiStore.loadLang(...langs)
 	}
@@ -188,7 +183,7 @@ figcaption {
 		background-color: var(--c-bg-2);
 		transition: opacity 0.2s;
 
-		:hover > & {
+		:hover > &, :focus-within > & {
 			opacity: 1;
 		}
 

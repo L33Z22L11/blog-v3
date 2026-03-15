@@ -60,15 +60,15 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 .article-card {
 	container-type: inline-size;
 	position: relative;
-	margin: 1rem 0;
-	border-radius: 0.8rem;
+	margin: 1em 0;
+	border-radius: 0.8em;
 	color: var(--c-text);
 	animation: float-in 0.2s var(--delay) backwards;
 
 	> article {
 		display: grid;
-		gap: 0.5rem;
-		padding: 1rem;
+		gap: 0.5em;
+		padding: 1em;
 	}
 }
 
@@ -107,7 +107,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	opacity: 0.8;
 	inset-inline-end: 0;
 	top: 0;
-	width: min(320px, 50%);
+	width: calc(40% + 2em);
 	height: 100%;
 	margin: 0;
 	mask-image: linear-gradient(to var(--end), transparent, #FFF 50%);
@@ -121,7 +121,6 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 	& + article {
 		position: relative;
 		width: 60%;
-		text-shadow: 0 0 0.5rem var(--ld-bg-card), 0 0 1rem var(--ld-bg-card);
 	}
 
 	@mixin cover-narrow {
@@ -136,6 +135,10 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 
 		& + article {
 			width: auto;
+
+			> .article-title {
+				text-shadow: 0 0 0.2em var(--ld-bg-card), 0 0 0.5em var(--ld-bg-card), 0 0 1em var(--ld-bg-card);
+			}
 		}
 	}
 

@@ -1,11 +1,17 @@
 import type { NitroConfig } from 'nitropack'
+import { resolve } from 'node:path'
 import { arch, env, version as nodeVersion, platform } from 'node:process'
+import { pathToFileURL } from 'node:url'
 import { name as ciName, CLOUDFLARE_PAGES, GITHUB_ACTIONS, NETLIFY } from 'ci-info'
 import { pascal } from 'radash'
 import { Temporal } from 'temporal-polyfill'
 import blogConfig from './blog.config'
 import packageJson from './package.json'
 import redirectList from './redirects.json'
+
+function pluginPath(path: string) {
+	return pathToFileURL(resolve(`./remark-plugins/${path}.ts`)).href
+}
 
 // 此处配置无需修改
 export default defineNuxtConfig({
@@ -118,6 +124,10 @@ export default defineNuxtConfig({
 			/** 在生产环境启用 Vue 水合不匹配详情 */
 			// __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true',
 		},
+		optimizeDeps: {
+			// @keep-sorted
+			include: ['@shikijs/colorized-brackets', '@shikijs/transformers', '@unhead/schema-org/vue', '@vue/devtools-core', '@vue/devtools-kit', 'embla-carousel-autoplay', 'embla-carousel-vue', 'embla-carousel-wheel-gestures', 'minisearch', 'parse-domain', 'plain-shiki', 'radash', 'shiki/themes/catppuccin-latte.mjs', 'shiki/themes/one-dark-pro.mjs', 'temporal-polyfill', 'vue-tippy'],
+		},
 		server: {
 			allowedHosts: true,
 		},
@@ -153,14 +163,14 @@ export default defineNuxtConfig({
 				highlight: false,
 				// @keep-sorted
 				remarkPlugins: {
+					[pluginPath('remark-music')]: {},
 					'remark-math': {},
-					'remark-music': {},
 					'remark-reading-time': {},
 				},
 				// @keep-sorted
 				rehypePlugins: {
+					[pluginPath('rehype-meta-slots')]: {},
 					'rehype-katex': {},
-					'rehype-meta-slots': {},
 				},
 				toc: { depth: 4, searchDepth: 4 },
 			},
@@ -180,16 +190,12 @@ ${packageJson.homepage}
 `)
 		},
 		'content:file:afterParse': (ctx) => {
-			const permalink = ctx.content.permalink as string
-			if (permalink) {
+			const { permalink, path } = ctx.content as Record<string, string | undefined>
+			// 优先使用自定义链接（permalink/abbrlink），其次隐藏基于文件路由的 URL 中的 /posts 前缀
+			if (permalink)
 				ctx.content.path = permalink
-				return
-			}
-			// 在 URL 中隐藏文件路由自动生成的 /posts 路径前缀
-			if (blogConfig.article.hidePostPrefix) {
-				const realPath = ctx.content.path as string | undefined
-				ctx.content.path = realPath?.replace(/^\/posts/, '')
-			}
+			else if (blogConfig.article.hidePostPrefix && path?.startsWith('/posts/'))
+				ctx.content.path = path.slice('/posts'.length)
 		},
 	},
 

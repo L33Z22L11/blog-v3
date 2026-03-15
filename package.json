@@ -3,16 +3,15 @@
   "type": "module",
   "version": "3.6.4",
   "private": true,
-  "packageManager": "pnpm@10.30.3",
+  "packageManager": "pnpm@10.32.1",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "engines": {
     "node": ">=22.15",
     "pnpm": ">=10"
   },
   "scripts": {
-    "prepare": "pnpm clean && pnpm build:packages && nuxt prepare",
+    "prepare": "pnpm clean && nuxt prepare",
     "clean": "rimraf .data node_modules/.cache",
-    "build:packages": "pnpm --filter ./packages/remark-music --filter ./packages/rehype-meta-slots build",
     "dev": "nuxt dev --open",
     "dev:host": "nuxt dev --host",
     "build": "nuxt build",
@@ -56,8 +55,7 @@
     "temporal-polyfill": "catalog:util",
     "vue": "catalog:framework",
     "vue-router": "catalog:framework",
-    "vue-tippy": "catalog:ui",
-    "vue-virtual-scroller": "catalog:ui"
+    "vue-tippy": "catalog:ui"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:quality",
@@ -77,9 +75,7 @@
     "oxc-minify": "catalog:util",
     "p-limit": "catalog:util",
     "rehype-katex": "catalog:content",
-    "rehype-meta-slots": "workspace:^",
     "remark-math": "catalog:content",
-    "remark-music": "workspace:^",
     "remark-reading-time": "catalog:content",
     "rimraf": "catalog:util",
     "sass-embedded": "catalog:framework",

@@ -96,6 +96,6 @@ function toggleDirection() {
 }
 
 .iconify + span {
-	margin-inline-start: 0.1em;
+	margin-inline-start: 0.2em;
 }
 </style>
