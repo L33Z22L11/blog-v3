@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { sleep } from 'radash'
+import { delay } from 'es-toolkit/promise'
 
 const props = defineProps<{
 	excerpt: string
@@ -16,7 +16,7 @@ if (appConfig.component.excerpt?.animation !== false) {
 		caret.value = appConfig.component.excerpt?.caret ?? '_'
 		for (const char of props.excerpt) {
 			excerpt.value += char
-			await sleep(50)
+			await delay(50)
 		}
 		caret.value = ''
 	})

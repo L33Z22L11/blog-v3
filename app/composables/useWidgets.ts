@@ -8,7 +8,7 @@ import {
 	LazyWidgetEmpty,
 	LazyWidgetToc,
 } from '#components'
-import { pascal } from 'radash'
+import { pascalCase } from 'es-toolkit/string'
 
 // @keep-sorted
 const rawWidgets = {
@@ -49,7 +49,7 @@ export default function useWidgets(widgetList: MaybeRefOrGetter<WidgetName[]>) {
 		name: widgetName,
 		comp: widgetName.startsWith('meta-aside-')
 			? renderMetaSlots(widgetName)
-			: rawWidgets[`LazyWidget${pascal(widgetName)}` as RawWidgetName],
+			: rawWidgets[`LazyWidget${pascalCase(widgetName)}` as RawWidgetName],
 	})))
 
 	return {

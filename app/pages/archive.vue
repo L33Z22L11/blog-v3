@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ArticleProps } from '~/types/article'
-import { group } from 'radash'
+import { groupBy } from 'es-toolkit/array'
 
 const appConfig = useAppConfig()
 useSeoMeta({
@@ -29,7 +29,7 @@ const listGrouped = computed(() => {
 			return ''
 		}
 	}
-	const groupList = Object.entries(group(listCategorized.value, getArticleYear))
+	const groupList = Object.entries(groupBy(listCategorized.value, getArticleYear))
 	return isAscending.value ? groupList : groupList.reverse()
 })
 

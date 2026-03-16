@@ -93,7 +93,7 @@ export function toCsv(data: any[], columns: string[]) {
 	for (const row of data) {
 		const vals = columns.map((col) => {
 			const v = row[col]
-			return (v.join?.('; ') ?? v ?? '').replace(/"/g, '""')
+			return (v.join?.('; ') ?? v ?? '').replaceAll('"', '""')
 		})
 		lines.push(vals.join(','))
 	}
@@ -102,12 +102,11 @@ export function toCsv(data: any[], columns: string[]) {
 
 export function tableToString(data: any[], columns?: string[]) {
 	let output = ''
-	const writable = new Writable({
+	new Console(new Writable({
 		write(chunk, encoding, callback) {
 			output += chunk.toString()
 			callback()
 		},
-	})
-	new Console(writable).table(data, columns)
+	})).table(data, columns)
 	return stripAnsi(output)
 }

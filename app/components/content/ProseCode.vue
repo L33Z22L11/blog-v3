@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { escape } from 'es-toolkit/string'
 import { getShikiOptions } from '~/shiki.config'
 
 const props = defineProps<{
@@ -7,7 +8,7 @@ const props = defineProps<{
 }>()
 
 const shikiStore = useShikiStore()
-const rawHtml = ref(escapeHtml(props.code))
+const rawHtml = ref(escape(props.code))
 
 onMounted(async () => {
 	if (!props.language)

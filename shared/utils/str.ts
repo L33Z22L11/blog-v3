@@ -1,4 +1,5 @@
 import { toArray } from '@vueuse/core'
+import { escape, escapeRegExp } from 'es-toolkit/string'
 
 // @keep-sorted
 const promptLanguageMap: Record<string, string> = {
@@ -64,41 +65,18 @@ export function joinWith(strings: (string | undefined)[], separator = '\n') {
 	return strings.filter(Boolean).join(separator)
 }
 
-export function escapeHtml(text: string) {
-	const map: Record<string, string> = {
-		'&': '&amp;',
-		'<': '&lt;',
-		'>': '&gt;',
-		'"': '&quot;',
-		'\'': '&#039;',
-	}
-	return text.replace(/[&<>"']/g, match => map[match] || match)
-}
-
 export function highlightHtml(text: string, words: string | string[] | undefined, className?: string) {
-	if (!text)
-		return ''
-	const format = (str: string) => str.replace(/\n+/g, '<br>')
+	const validTerms = toArray(words)
+		.filter((t): t is string => !!t?.trim())
+		.map(t => t.toLowerCase())
 
-	const validTerms = new Set(
-		toArray(words)
-			.filter((t): t is string => !!t && t.trim().length > 0)
-			.map(t => t.toLowerCase()),
-	)
-
-	if (validTerms.size === 0)
-		return format(escapeHtml(text))
-
-	const escapedTerms = Array.from(validTerms)
-		.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
-
-	const regex = new RegExp(`(${escapedTerms.join('|')})`, 'gi')
+	const highlightRegex = new RegExp(`(${Array.from(validTerms, escapeRegExp).join('|')})`, 'gi')
 
 	return text
-		.split(regex)
-		.map(part => part && validTerms.has(part.toLowerCase())
-			? `<mark ${className ? `class="${className}"` : ''}>${escapeHtml(part)}</mark>`
-			: escapeHtml(part))
+		.split(highlightRegex)
+		.map(part => part && validTerms.includes(part.toLowerCase())
+			? `<mark${className ? ` class="${className}"` : ''}>${escape(part)}</mark>`
+			: escape(part))
 		.join('')
 		.replace(/\n+/g, '<br>')
 }

@@ -3,7 +3,7 @@ import { resolve } from 'node:path'
 import { arch, env, version as nodeVersion, platform } from 'node:process'
 import { pathToFileURL } from 'node:url'
 import { name as ciName, CLOUDFLARE_PAGES, GITHUB_ACTIONS, NETLIFY } from 'ci-info'
-import { pascal } from 'radash'
+import { pascalCase } from 'es-toolkit/string'
 import { Temporal } from 'temporal-polyfill'
 import blogConfig from './blog.config'
 import packageJson from './package.json'
@@ -21,7 +21,7 @@ export default defineNuxtConfig({
 				{ name: 'author', content: [blogConfig.author.name, blogConfig.author.email].filter(Boolean).join(', ') },
 				{ name: 'color-scheme', content: 'light dark' },
 				// 此处为元数据的生成器标识，不建议修改
-				{ 'name': 'generator', 'content': `${pascal(packageJson.name)} ${packageJson.version}`, 'data-github-repo': packageJson.homepage },
+				{ 'name': 'generator', 'content': `${pascalCase(packageJson.name)} ${packageJson.version}`, 'data-github-repo': packageJson.homepage },
 				{ name: 'mobile-web-app-capable', content: 'yes' },
 			],
 			link: [
@@ -126,7 +126,7 @@ export default defineNuxtConfig({
 		},
 		optimizeDeps: {
 			// @keep-sorted
-			include: ['@shikijs/colorized-brackets', '@shikijs/transformers', '@unhead/schema-org/vue', '@vue/devtools-core', '@vue/devtools-kit', 'embla-carousel-autoplay', 'embla-carousel-vue', 'embla-carousel-wheel-gestures', 'minisearch', 'parse-domain', 'plain-shiki', 'radash', 'shiki/themes/catppuccin-latte.mjs', 'shiki/themes/one-dark-pro.mjs', 'temporal-polyfill', 'vue-tippy'],
+			include: ['@shikijs/colorized-brackets', '@shikijs/transformers', '@unhead/schema-org/vue', '@vue/devtools-core', '@vue/devtools-kit', 'embla-carousel-autoplay', 'embla-carousel-vue', 'embla-carousel-wheel-gestures', 'es-toolkit/array', 'es-toolkit/promise', 'es-toolkit/string', 'minisearch', 'parse-domain', 'plain-shiki', 'shiki/themes/catppuccin-latte.mjs', 'shiki/themes/one-dark-pro.mjs', 'temporal-polyfill', 'vue-tippy'],
 		},
 		server: {
 			allowedHosts: true,
@@ -184,7 +184,7 @@ export default defineNuxtConfig({
 		'ready': () => {
 			console.info(`
 ================================
-${pascal(packageJson.name)} ${packageJson.version}
+${pascalCase(packageJson.name)} ${packageJson.version}
 ${packageJson.homepage}
 ================================
 `)

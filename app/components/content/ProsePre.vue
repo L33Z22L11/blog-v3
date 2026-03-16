@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { escape } from 'es-toolkit/string'
 import { getShikiOptions } from '~/shiki.config'
 
 const props = withDefaults(defineProps<{
@@ -42,7 +43,7 @@ const codeblock = useTemplateRef('codeblock')
 const { copy, copied } = useCopy(codeblock)
 
 const shikiStore = useShikiStore()
-const rawHtml = ref(escapeHtml(props.code))
+const rawHtml = ref(escape(props.code))
 
 function getIndent() {
 	if (meta.value.indent)

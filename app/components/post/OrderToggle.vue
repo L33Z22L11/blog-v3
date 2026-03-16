@@ -60,7 +60,7 @@ function toggleDirection() {
 
 		<button @click="toggleOrder">
 			<Icon v-if="!allowAscending" name="ph:sort-ascending-bold" />
-			<span class="order-text">{{ orderMap[sortOrder] }}</span>
+			<span class="order-text">{{ orderMap[sortOrder] || sortOrder }}</span>
 		</button>
 	</span>
 </div>
