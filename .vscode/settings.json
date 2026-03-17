@@ -3,6 +3,9 @@
     "editor.defaultFormatter": "Nuxt.mdc",
     "files.autoGuessEncoding": false
   },
+  "[log]": {
+    "editor.wordWrap": "off"
+  },
   "[yaml]": {
     "editor.formatOnSave": false
   },
@@ -21,13 +24,13 @@
   "errorLens.messageMaxChars": 50,
   "errorLens.messageTemplate": "$severity $message",
   "iconify.inplace": false,
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
   "stylelint.validate": [
     "css",
     "postcss",
     "scss",
     "vue"
   ],
-  "typescript.tsdk": "node_modules/typescript/lib",
   "vue.autoInsert.dotValue": true,
   "vue.format.template.initialIndent": false,
   "vue.inlayHints.destructuredProps": true,

@@ -4,7 +4,6 @@ import http from 'node:http'
 import https from 'node:https'
 import { Writable } from 'node:stream'
 import tls from 'node:tls'
-import { log } from '@clack/prompts'
 import stripAnsi from 'strip-ansi'
 import feeds from '../../app/feeds'
 
@@ -20,52 +19,59 @@ export function displayName(e: FeedEntry): string {
 
 export interface ServerResp {
 	name: string
+	url: string
+	code: number
+	time: number
 	archs: string[]
 	server: string
 	certDomains: string[]
 	ipCertDomains: string[]
+	error: string
 }
 
 export async function getLinkInfo(e: FeedEntry): Promise<ServerResp> {
-	const url = new URL(e.link.startsWith('http') ? e.link : `https://${e.link}`)
 	const basicResp: ServerResp = {
 		name: displayName(e),
+		url: e.link,
+		code: -1,
+		time: -1,
 		archs: e.archs ?? [],
-		server: '(无 Server 信息)',
+		server: '',
 		certDomains: [],
 		ipCertDomains: [],
+		error: '',
 	}
 
+	const start = Date.now()
+	const url = new URL(e.link)
 	const lib = url.protocol === 'https:' ? https : http
 
 	return new Promise<ServerResp>((resolve) => {
 		const req = lib.request(url, { method: 'HEAD', timeout: 5000 })
 
 		req.on('response', async (res) => {
-			const server = res.headers.server as string ?? '(无 Server 信息)'
+			const code = res.statusCode as number
+			const server = res.headers.server as string
 			const rawIp = res.socket.remoteAddress as string
 			const ipHost = rawIp?.includes(':') ? `[${rawIp}]` : rawIp
 			// const ip = `${url.protocol}//${ipHost}`
+			const time = Date.now() - start
 			res.resume()
 			if (url.protocol === 'https:') {
 				const certDomains = await getCertDomains({ host: url.hostname, servername: url.hostname })
 				const ipCertDomains = await getCertDomains({ host: ipHost, rejectUnauthorized: false })
-				resolve({ ...basicResp, server, certDomains, ipCertDomains })
+				resolve({ ...basicResp, code, time, server, certDomains, ipCertDomains })
 			}
 			else {
-				resolve({ ...basicResp, server })
+				resolve({ ...basicResp, code, time, server })
 			}
 		})
-		req.on('error', err => resolve({ ...basicResp, server: `请求失败: ${err.message}` }))
+
+		req.on('timeout', () => req.destroy() && resolve({ ...basicResp, error: '请求超时' }))
+		req.on('error', err => resolve({ ...basicResp, error: err.message }))
 		req.end()
 	})
 }
-
-// @keep-sorted
-const IGNORED_TLS_ERROR_CODES = [
-	'ERR_SSL_SSLV3_ALERT_HANDSHAKE_FAILURE',
-	'ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR',
-]
 
 export async function getCertDomains(options: tls.ConnectionOptions): Promise<string[]> {
 	options = { port: 443, timeout: 5000, ...options }
@@ -75,15 +81,11 @@ export async function getCertDomains(options: tls.ConnectionOptions): Promise<st
 			const san: string[] = cert.subjectaltname
 				?.split(', ')
 				.map(s => s.replace(/^DNS:/, '')) ?? []
-			const domains = san.length ? san : [cert.subject.CN]
+			const domains = san.length ? san : [cert.subject.CN] as string[]
 			resolve(domains)
 			socket.end()
 		})
-		socket.on('error', (e) => {
-			if (!IGNORED_TLS_ERROR_CODES.includes(e.code))
-				log.warn(`获取 ${options.host} 的证书域名失败: ${JSON.stringify(e)}`)
-			resolve([])
-		})
+		socket.on('error', () => resolve([]))
 	})
 }
 
@@ -93,7 +95,9 @@ export function toCsv(data: any[], columns: string[]) {
 	for (const row of data) {
 		const vals = columns.map((col) => {
 			const v = row[col]
-			return (v.join?.('; ') ?? v ?? '').replaceAll('"', '""')
+			if (Array.isArray(v))
+				return v.join('; ').replaceAll('"', '""')
+			return v
 		})
 		lines.push(vals.join(','))
 	}

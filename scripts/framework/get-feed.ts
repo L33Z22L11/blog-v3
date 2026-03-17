@@ -34,9 +34,9 @@ const filtered = query?.trim()
 if (query?.startsWith('http')) {
 	filtered.push({
 		author: query,
-		link: query,
-		icon: query,
-		avatar: query,
+		link: query.startsWith('http') ? query : `https://${query}`,
+		icon: '',
+		avatar: '',
 		date: Temporal.Now.zonedDateTimeISO().toLocaleString('sv'),
 	})
 }
