@@ -70,7 +70,7 @@
     "@zinkawaii/stylelint-config": "catalog:quality",
     "cspell": "catalog:quality",
     "eslint": "catalog:quality",
-    "fast-xml-parser": "catalog:util",
+    "fast-xml-builder": "catalog:util",
     "nuxt-llms": "catalog:content",
     "oxc-minify": "catalog:util",
     "p-limit": "catalog:util",

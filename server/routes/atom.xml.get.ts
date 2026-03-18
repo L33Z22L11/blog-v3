@@ -1,6 +1,6 @@
 import type { ContentCollectionItem } from '@nuxt/content'
 import { pascalCase } from 'es-toolkit/string'
-import { XMLBuilder } from 'fast-xml-parser'
+import XmlBuilder from 'fast-xml-builder'
 import { Temporal } from 'temporal-polyfill'
 import blogConfig from '~~/blog.config'
 import packageJson from '~~/package.json'
@@ -8,7 +8,7 @@ import { toZonedTemporal } from '~~/shared/utils/time'
 
 const runtimeConfig = useRuntimeConfig()
 
-const builder = new XMLBuilder({
+const builder = new XmlBuilder({
 	attributeNamePrefix: '$',
 	cdataPropName: '$',
 	format: true,

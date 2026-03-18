@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ArticleProps } from '~/types/article'
+import { mapValues, sumBy } from 'es-toolkit'
 import { groupBy } from 'es-toolkit/array'
 
 const appConfig = useAppConfig()
@@ -21,26 +22,17 @@ const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
 const { category, categories, listCategorized } = useCategory(listSorted)
 
 const listGrouped = computed(() => {
-	function getArticleYear(article: ArticleProps) {
-		try {
-			return toZonedTemporal(article[sortOrder.value] as string).year.toString()
-		}
-		catch {
-			return ''
-		}
-	}
 	const groupList = Object.entries(groupBy(listCategorized.value, getArticleYear))
 	return isAscending.value ? groupList : groupList.reverse()
 })
 
 // 不能使用 /api/stats，因为可能切换分组方式
-const yearlyWordCount = computed(() => {
-	return listGrouped.value.reduce<Record<string, string>>((acc, [year, yearGroup]) => {
-		const totalWords = yearGroup?.reduce((sum, cur) => sum + cur.readingTime!.words, 0) || 0
-		acc[year] = formatNumber(totalWords)
-		return acc
-	}, {})
-})
+const yearlyWordCount = computed(() =>
+	mapValues(Object.fromEntries(listGrouped.value), (articles) => {
+		const total = sumBy(articles, a => a.readingTime?.words ?? 0)
+		return formatNumber(total)
+	}),
+)
 
 watchImmediate(showTuning, (newVal) => {
 	panelTranslate.value.archiveTuning = newVal ? '0, -3em' : undefined
@@ -49,6 +41,15 @@ watchImmediate(showTuning, (newVal) => {
 onUnmounted(() => {
 	panelTranslate.value.archiveTuning = undefined
 })
+
+function getArticleYear(article: ArticleProps) {
+	try {
+		return toZonedTemporal(article[sortOrder.value] as string).year.toString()
+	}
+	catch {
+		return ''
+	}
+}
 </script>
 
 <template>

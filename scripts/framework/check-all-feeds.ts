@@ -28,8 +28,8 @@ s.stop('✅ 检测完成，开始生成日志')
 fs.mkdirSync(resolve('logs'), { recursive: true })
 const logFile = `logs/feeds-check-${Temporal.Now.plainDateTimeISO().toLocaleString('sv').replaceAll(/\W/g, '-')}`
 
-const tableStr = tableToString(results, Object.keys(results[0]))
-const csvStr = toCsv(results, Object.keys(results[0]))
+const tableStr = tableToString(results, Object.keys(results[0]!))
+const csvStr = toCsv(results, Object.keys(results[0]!))
 const logPath = resolve(`${logFile}.log`)
 const csvPath = resolve(`${logFile}.csv`)
 

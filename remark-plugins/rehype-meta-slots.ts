@@ -24,7 +24,7 @@ function hastToMinimarkNode(input: RootContent): MinimarkNode | undefined {
 	if (input.type === 'comment' || input.type === 'doctype') {
 		return undefined
 	}
-	if (input.type === 'text') {
+	if (input.type === 'text' || input.type === 'raw') {
 		return input.value
 	}
 
@@ -44,7 +44,7 @@ export default function rehypeMetaSlots() {
 		file.data.slots ??= {}
 
 		for (let i = 0; i < tree.children.length; i++) {
-			const node = tree.children[i]
+			const node = tree.children[i]!
 
 			if (node.type === 'element' && node.tagName.startsWith('meta-')) {
 				const metaName = node.tagName.slice('meta-'.length)

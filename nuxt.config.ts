@@ -1,8 +1,8 @@
-import type { NitroConfig } from 'nitropack'
 import { resolve } from 'node:path'
 import { arch, env, version as nodeVersion, platform } from 'node:process'
 import { pathToFileURL } from 'node:url'
 import { name as ciName, CLOUDFLARE_PAGES, GITHUB_ACTIONS, NETLIFY } from 'ci-info'
+import { mapValues } from 'es-toolkit/object'
 import { pascalCase } from 'es-toolkit/string'
 import { Temporal } from 'temporal-polyfill'
 import blogConfig from './blog.config'
@@ -84,11 +84,7 @@ export default defineNuxtConfig({
 
 	// @keep-sorted
 	routeRules: {
-		...Object.entries(redirectList)
-			.reduce<NitroConfig['routeRules']>((acc, [from, to]) => {
-				acc![from] = { redirect: { to, statusCode: 308 } }
-				return acc
-			}, {}),
+		...mapValues(redirectList, to => ({ redirect: { to, statusCode: 308 as const } })),
 		'/api/stats': { prerender: true, headers: { 'Content-Type': 'application/json' } },
 		'/atom.xml': { prerender: true, headers: { 'Content-Type': 'application/xml' } },
 		'/favicon.ico': { redirect: { to: blogConfig.favicon } },
@@ -109,6 +105,16 @@ export default defineNuxtConfig({
 
 	/** 在生产环境启用 sourcemap */
 	// sourcemap: true,
+
+	typescript: {
+		nodeTsConfig: {
+			// @keep-sorted
+			include: [
+				'../remark-plugins/**/*.ts',
+				'../scripts/**/*.ts',
+			],
+		},
+	},
 
 	vite: {
 		css: {

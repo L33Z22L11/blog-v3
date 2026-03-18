@@ -1133,7 +1133,6 @@ export default [
 				date: '2026-02-01',
 				comment: '前端技术研究与生活记录。',
 			},
-
 			{
 				author: 'Mr.Lee',
 				sitenick: '里世界',

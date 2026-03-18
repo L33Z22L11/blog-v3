@@ -57,7 +57,7 @@ catalogs:
     '@vueuse/nuxt': ^14.2.1
     '@vueuse/router': ^14.2.1
     es-toolkit: ^1.45.1
-    fast-xml-parser: ^5.5.5
+    fast-xml-builder: ^1.1.4
     minisearch: ^7.2.0
     oxc-minify: ^0.119.0
     p-limit: ^7.3.0

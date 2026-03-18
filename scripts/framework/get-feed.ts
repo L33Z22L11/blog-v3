@@ -3,6 +3,7 @@
 import type { FeedEntry } from '../../app/types/feed'
 import process from 'node:process'
 import { cancel, intro, isCancel, outro, select, text } from '@clack/prompts'
+import { mapValues } from 'es-toolkit/object'
 import { Temporal } from 'temporal-polyfill'
 import { entries, getLinkInfo } from './utils'
 
@@ -59,10 +60,10 @@ if (isCancel(selected)) {
 	process.exit(0)
 }
 
-const choice = filtered[Number(selected)]
+const choice = filtered[Number(selected)]!
 
 const info = await getLinkInfo(choice)
 
-console.table(Object.fromEntries(Object.entries(info).map(([k, v]) => [k, { '(value)': v }])))
+console.table(mapValues(info, v => ({ '(value)': v })))
 
 outro('完成 ✅')
