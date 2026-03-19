@@ -69,8 +69,8 @@
 	}
 
 	img {
+		height: auto;
 		max-width: 100%;
-		max-height: fit-content;
 
 		&.icon {
 			height: 1.4em;
