@@ -6,7 +6,7 @@
   "packageManager": "pnpm@10.32.1",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "engines": {
-    "node": ">=22.15",
+    "node": ">=22.18 <23 || >=23.6 <24 || >=24",
     "pnpm": ">=10"
   },
   "scripts": {
