@@ -4,8 +4,8 @@ description: 针对 Linux QQ 崩溃问题，给出了临时和长期解决办法
 date: 2023-03-16 21:02:22
 updated: 2023-08-09 17:20:11
 image: https://assets.zhilu.cyou/cover2/linuxqq-crash.jpg
-categories: [经验分享]
-tags: [qq, 问题, 软件]
+categories: [技术]
+tags: [Linux, QQ, 故障排查]
 references:
   - title: AUR 中 linuxqq 的评论
     link: https://aur.archlinux.org/packages/linuxqq

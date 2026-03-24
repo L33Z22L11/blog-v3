@@ -4,8 +4,8 @@ description: ''
 date: 2022-11-19 22:32:46
 updated: 2023-07-30 11:45:33
 image: https://assets.zhilu.cyou/cover2/linux-interview-2022.jpg
-categories: [代码]
-tags: [实验室, Lab, C语言]
+categories: [开发]
+tags: [Linux社团, 面试题, C语言]
 ---
 
 > - 本题目只作为 `Xiyou Linux 兴趣小组` 2022 纳新面试的有限参考。

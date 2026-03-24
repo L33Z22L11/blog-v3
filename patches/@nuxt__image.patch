@@ -1,0 +1,13 @@
+diff --git a/dist/runtime/utils/index.js b/dist/runtime/utils/index.js
+index 580aa9479c9f29cfb7f71cf884f38e58c43f0bc4..24acaf1f82c7fd26000d4df909c55b5a9a20e7c4 100644
+--- a/dist/runtime/utils/index.js
++++ b/dist/runtime/utils/index.js
+@@ -32,7 +32,7 @@ export function parseDensities(input = "") {
+   }
+   const densities = /* @__PURE__ */ new Set();
+   for (const density of input.split(" ")) {
+-    const d = Number.parseInt(density.replace("x", ""));
++    const d = Number.parseFloat(density.replace("x", ""));
+     if (d) {
+       densities.add(d);
+     }

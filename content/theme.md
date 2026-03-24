@@ -97,7 +97,7 @@ link: /2024/blog-using-nuxt
   - **订阅源生成**：Fast XML Parser
   - **域名解析**：parse-domain
   - **代码高亮**：Shiki + Plain Shiki
-  - **实用算法片段库**：Radash
+  - **实用函数库**：es-toolkit
   - **悬浮组件库**：Vue Tippy
 - 依赖模块
   - **图标管理**：Nuxt Icon（Iconify）

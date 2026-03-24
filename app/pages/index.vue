@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { sort } from 'radash'
+import { orderBy } from 'es-toolkit/array'
 
 const appConfig = useAppConfig()
 useSeoMeta({
@@ -21,10 +21,10 @@ watch(category, () => {
 
 useSeoMeta({ title: () => (page.value > 1 ? `第${page.value}页` : '') })
 
-const listRecommended = computed(() => sort(
-	listRaw.value.filter(item => item?.recommend),
-	post => post.recommend || 0,
-	true,
+const listRecommended = computed(() => orderBy(
+	listRaw.value.filter(item => item.recommend !== null),
+	['recommend', 'date'],
+	['desc'],
 ))
 </script>
 

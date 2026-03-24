@@ -68,7 +68,7 @@ function toggleDirection() {
 		<ZButton
 			icon="ph:sort-ascending-bold"
 			variant="text"
-			:text="orderMap[sortOrder]"
+			:text="orderMap[sortOrder] || sortOrder"
 			aria-label="切换排序方式"
 			@click="toggleOrder"
 		/>
@@ -95,9 +95,5 @@ function toggleDirection() {
 
 :deep(.secret-container) {
 	margin-inline-end: auto;
-}
-
-.iconify + span {
-	margin-inline-start: 0.1em;
 }
 </style>

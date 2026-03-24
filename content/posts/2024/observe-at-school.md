@@ -5,7 +5,7 @@ date: 2024-10-09 22:32:05
 updated: 2024-10-11 18:19:11
 type: story
 categories: [生活]
-tags: [问题, 校园]
+tags: [校园观察, 大学, 随笔]
 ---
 
 ## 战战兢兢点外卖
@@ -231,7 +231,7 @@ public class Palindrome {
 ---
 src: https://assets.zhilu.cyou/content/241009-telecom-recruit.jpg
 caption: 电信校招海报
-width: 639
+height: 720
 ---
 ::
 

@@ -4,8 +4,8 @@ description: “软件装D盘”是且仅是旧日的经验之谈，如果想让
 date: 2024-07-13 00:29:36
 updated: 2024-11-02 16:10:21
 image: https://assets.zhilu.cyou/cover3/windows-storage.jpg
-categories: [经验分享]
-tags: [教程, 系统, Windows, 存储]
+categories: [技术]
+tags: [Windows, 存储清理, 系统维护]
 ---
 
 ## 软件安装位置

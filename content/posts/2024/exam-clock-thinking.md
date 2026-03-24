@@ -6,7 +6,7 @@ updated: 2024-10-22 22:55:43
 image: https://assets.zhilu.cyou/cover4/exam-clock-thinking.jpg
 type: story
 categories: [杂谈]
-tags: [产品, 校园, 设计]
+tags: [产品思考, 校园工具, 设计复盘]
 ---
 
 ## 《高新大道 29 号回忆录》
@@ -82,7 +82,7 @@ mirror: true
 ::pic
 ---
 src: https://ooo.0x0.ooo/2022/04/04/kByKC.jpg
-width: 540
+height: 320
 caption: 书桌@齐天
 ---
 ::

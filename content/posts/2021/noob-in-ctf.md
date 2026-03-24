@@ -5,8 +5,8 @@ date: 2021-10-20
 updated: 2021-11-07 14:08:00
 image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fYUK7hslxhyibEjh7Yc4MRhRz0OWyVibZnk89pSH7aeFkXicBOS42b6hjUJfx1x9S4CgkSCQaZrMoWWg/640
 type: story
-categories: [生活]
-tags: [高中, CTF, 电教]
+categories: [安全]
+tags: [CTF, 入门经历, 校园]
 ---
 
 [查看原文](https://mp.weixin.qq.com/s/mauK9IC5R_FTshOKH39NvQ)

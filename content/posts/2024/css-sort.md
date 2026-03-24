@@ -4,8 +4,8 @@ description: 试图不走寻常路，通过 pnpm 全局安装 Stylelint 实现 C
 date: 2024-05-21 22:44:44
 updated: 2024-05-25 15:56:33
 image: https://assets.zhilu.cyou/cover3/css-sort.jpg
-categories: [经验分享]
-tags: [软件, 问题]
+categories: [开发]
+tags: [CSS, Stylelint, 工程化]
 references:
   - title: 这些内容不值得参考。
 ---

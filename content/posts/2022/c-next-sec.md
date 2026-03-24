@@ -3,8 +3,8 @@ title: C语言字符串时间获取下一秒的思考
 description: “回字有四样写法”，在 C 语言中，我为「获取下一秒」找了四种写法。
 date: 2022-12-18 19:53:37
 updated: 2023-03-18 22:09:08
-categories: [代码]
-tags: [Lab, C语言]
+categories: [开发]
+tags: [C语言, 时间处理, 编程思考]
 ---
 
 ## 题目

@@ -4,8 +4,8 @@ description: Termux 安装、配置 SSH，切换国内源，安装 ZSH、X11 图
 date: 2023-11-13 21:50:08
 updated: 2024-04-28 20:25:16
 image: https://assets.zhilu.cyou/cover3/termux-guide.jpg
-categories: [经验分享]
-tags: [教程, termux, 软件]
+categories: [技术]
+tags: [Termux, Android, 教程]
 recommend: true
 ---
 

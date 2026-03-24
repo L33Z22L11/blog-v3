@@ -5,7 +5,7 @@ date: 2024-11-19 08:08:07
 updated: 2025-03-22 23:22:08
 type: story
 categories: [杂谈]
-tags: [博客]
+tags: [博客写作, 内容规划, 年度总结]
 references:
   - title: 2750 words - 如何写好博客？（或如何写好文章？）
     link: https://pathos.page/blog/how-to-write-blog

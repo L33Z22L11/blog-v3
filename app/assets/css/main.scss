@@ -186,9 +186,26 @@ img {
 		}
 	}
 
-	> .indent {
+	.indent {
 		display: inline-block;
-		background-image: linear-gradient(to right, var(--c-border) 0.1em, transparent 0.1em);
+		position: relative;
+		left: var(--indent-offset);
+	}
+
+	.indent:empty {
+		height: 1.4em;
+		height: 1lh;
+		vertical-align: bottom;
+	}
+
+	.indent::before {
+		content: "";
+		position: absolute;
+		opacity: 0.15;
+		height: 100%;
+		border-inline-start: 1px solid currentcolor;
+		background-color: currentcolor;
+		pointer-events: none;
 	}
 
 	> .space::before,

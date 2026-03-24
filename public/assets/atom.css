@@ -229,6 +229,7 @@ img {
 }
 
 .entry-content img {
+	height: auto;
 	max-width: 100%;
 	border-radius: 0.2em;
 }

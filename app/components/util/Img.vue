@@ -7,6 +7,7 @@ export interface UtilImgProps {
 	width?: string | number
 	height?: string | number
 	alt?: string
+	densities?: string
 	mirror?: ImgService
 	filter?: string
 }
@@ -30,7 +31,7 @@ const src = computed(() => {
 <template>
 <component
 	:is="ImageComponent"
-	:src :alt :width :height
+	:src :alt :width :height :densities
 	:style="{ filter }"
 	:referrerpolicy="mirror ? 'no-referrer' : undefined"
 />

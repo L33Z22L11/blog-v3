@@ -39,6 +39,10 @@ const icon = computed(() => props.icon || 'ph:chat-centered-text-duotone')
 	transition: all 0.2s;
 	z-index: -1;
 
+	@media (max-width: $breakpoint-phone) {
+		font-size: 3rem;
+	}
+
 	:hover > & {
 		opacity: 1;
 		transform: translateY(-0.5rem);

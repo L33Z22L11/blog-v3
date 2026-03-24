@@ -10,6 +10,10 @@ const props = withDefaults(defineProps<UtilImgProps & {
 	zoom: true,
 })
 
+const slots = defineSlots<{
+	caption: () => any
+}>()
+
 const pic = ref()
 const picEl = useCurrentElement<HTMLImageElement>(pic)
 
@@ -18,7 +22,7 @@ const modalStore = useModalStore()
 const { open } = modalStore.use(
 	() => h(LazyPopoverLightbox, {
 		el: picEl.value,
-		caption: props.alt || props.caption,
+		caption: props.alt || props.caption || slots.caption,
 	}),
 	{ unique: true },
 )
@@ -32,10 +36,14 @@ const { open } = modalStore.use(
 		class="image"
 		:style="{ cursor: zoom && 'zoom-in' }"
 		:alt="caption || alt"
-		:src :width :height :mirror :filter
+		:src :width :height :mirror :filter :densities
 		@click="zoom && open()"
 	/>
-	<figcaption v-if="caption" aria-hidden v-text="caption" />
+	<figcaption v-if="caption || $slots.caption" aria-hidden>
+		<slot name="caption">
+			{{ caption }}
+		</slot>
+	</figcaption>
 </figure>
 </template>
 

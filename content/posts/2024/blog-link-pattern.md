@@ -3,8 +3,8 @@ title: 把博客文章按年份放在子文件夹中了
 description: 同时更改了文章链接前缀，编写了跳转脚本，后来通过平台重定向规则实现更规范的跳转。
 date: 2024-04-29 11:10:18
 updated: 2024-09-27 08:37:52
-categories: [经验分享]
-tags: [网站, 博客]
+categories: [技术]
+tags: [博客, 路由结构, Nuxt Content]
 references:
   - title: 使用子文件夹管理 Hexo 文章且不改变文章永久链接
     link: https://prinsss.github.io/hexo-posts-in-subfolder/

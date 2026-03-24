@@ -6,7 +6,7 @@ updated: 2024-07-13 11:46:43
 image: https://assets.zhilu.cyou/cover3/auto-payment.jpg
 type: story
 categories: [杂谈]
-tags: [华为, 问题, 扣费]
+tags: [消费陷阱, 自动扣费, 手机应用]
 references:
   - title: 云空间套餐如何申请退款 | 华为官网
     link: https://consumer.huawei.com/cn/support/content/zh-cn00838483/

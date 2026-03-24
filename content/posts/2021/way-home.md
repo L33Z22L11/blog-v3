@@ -6,7 +6,7 @@ updated: 2021-10-10 13:54:00
 image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjwe81pcvtkjq9zVIVuZBakAh3ibRMdOXSPTLkYblS2dGN6V7B10BSWqoiaA/
 type: story
 categories: [生活]
-tags: [高中, 拍照]
+tags: [摄影, 放学路, 校园]
 ---
 
 2021年9月30日，晚7时许，三天运动会结束后。
@@ -15,7 +15,6 @@ tags: [高中, 拍照]
 ---
 src: https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjwe81pcvtkjq9zVIVuZBakAh3ibRMdOXSPTLkYblS2dGN6V7B10BSWqoiaA/
 mirror: true
-zoom: true
 ---
 ::
 
@@ -23,7 +22,6 @@ zoom: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjweLLqMzeOBM73ntDxjiaWbxz2URMOhd6rIiaMxIoZNMPxYJK4Wrd0s5lnA/
 mirror: true
-zoom: true
 ---
 ::
 
@@ -31,7 +29,6 @@ zoom: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjwea8oaVVzGnJCn7TEZI0ibqIiaBZng4d801JygNicJibUnrXG8HhN2kwwydA/
 mirror: true
-zoom: true
 ---
 ::
 
@@ -39,6 +36,5 @@ zoom: true
 ---
 src: https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fb0bmOJ0WDHSIh5QLePxjweHUaarMhYxgQuh6oUERibHzORicbb3CFxhoSDicTiaM9pDJ1L5SRLgSEbFw/
 mirror: true
-zoom: true
 ---
 ::

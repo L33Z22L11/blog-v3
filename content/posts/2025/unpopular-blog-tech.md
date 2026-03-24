@@ -3,8 +3,9 @@ title: 谈谈不受欢迎的博客技术特征
 description: 从弹窗干扰到服务滥用，文章剖析博客网站「自以为在优化，实则在添堵」的负面技术特征。
 date: 2025-10-07 16:06:46
 updated: 2025-12-24 22:47:40
+image: https://assets.zhilu.cyou/cover5/unpopular-blog-tech.webp
 categories: [杂谈]
-tags: [博客, 网站, 前端]
+tags: [博客, 技术选型, 前端]
 ---
 
 ::chat

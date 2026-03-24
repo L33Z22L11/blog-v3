@@ -1,11 +1,11 @@
 import type { FeedEntry, FeedGroup } from '~/types/feed'
-import { XMLBuilder } from 'fast-xml-parser'
+import XmlBuilder from 'fast-xml-builder'
 import blogConfig, { myFeed } from '~~/blog.config'
 import feeds from '~/feeds'
 
 const runtimeConfig = useRuntimeConfig()
 
-const builder = new XMLBuilder({
+const builder = new XmlBuilder({
 	attributeNamePrefix: '$',
 	format: true,
 	ignoreAttributes: false,
@@ -23,8 +23,7 @@ function mapEntry(item: FeedEntry) {
 }
 
 function flattenGroups(groups: FeedGroup[]) {
-	return groups.flatMap(group =>
-		group.entries.filter(entry => entry.feed).map(mapEntry))
+	return groups.flatMap(({ entries }) => entries.filter(({ feed }) => feed).map(mapEntry))
 }
 
 export default defineEventHandler(async (_e) => {

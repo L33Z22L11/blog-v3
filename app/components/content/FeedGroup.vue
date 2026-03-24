@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FeedEntry, FeedGroup } from '~/types/feed'
-import { shuffle } from 'radash'
+import { shuffle } from 'es-toolkit/array'
 
 const props = defineProps<FeedGroup & { shuffle?: boolean }>()
 const route = useRoute()

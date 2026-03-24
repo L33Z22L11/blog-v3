@@ -3,8 +3,8 @@ title: Windows 7 开机动画的制作
 description: 介绍了如何利用 Flash CS5 和 Photoshop CS5 制作 Windows 7 系统的开机动画，以及最终通过软媒美化大师将其应用至 Windows 7 启动画面的过程。
 date: 2018-05-18 20:47:20
 updated: 2018-08-27 21:33:10
-categories: [经验分享]
-tags: [Windows, 说说]
+categories: [技术]
+tags: [Windows, 系统定制, 动画制作]
 ---
 
 - 使用Flash CS5制作尺寸为200*200的105帧动画，其中前60帧为单次播放，后45帧为循环播放

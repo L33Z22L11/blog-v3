@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 
 defineProps<{
 	el: HTMLImageElement
-	caption?: string
+	caption?: string | Component
 	open?: boolean
 	style?: CSSProperties
 }>()
@@ -28,7 +28,9 @@ defineEmits<{
 
 <Transition>
 	<div v-if="open" class="tooltip" :style="{ zIndex: style?.zIndex }">
-		<span v-if="caption" class="caption">{{ caption }}</span>
+		<span v-if="caption" class="caption">
+			<component :is="() => toValue(caption)" />
+		</span>
 		<button
 			class="close"
 			aria-label="关闭灯箱"
@@ -50,12 +52,11 @@ defineEmits<{
 	width: fit-content;
 	max-width: min(40rem, 80%);
 	margin-inline: auto;
-	border: 1px solid #0003;
+	border: 1px solid var(--c-border);
 	border-radius: 0.5em;
 	box-shadow: var(--box-shadow-2), var(--box-shadow-3);
-	background-color: #0007;
+	background-color: var(--c-bg-a80);
 	backdrop-filter: blur(1rem) saturate(2);
-	color: white;
 	transition: all var(--delay);
 
 	&.v-enter-from,

@@ -6,7 +6,7 @@ updated: 2024-01-29 21:26:26
 image: https://assets.zhilu.cyou/cover2/light-backpack.jpg
 type: story
 categories: [杂谈]
-tags: [设备, 说说, 远程]
+tags: [数码设备, 远程办公, 体验]
 ---
 
 ## 买游戏本，当然要配个好支架

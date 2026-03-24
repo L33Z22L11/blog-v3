@@ -5,8 +5,8 @@ date: 2021-05-08 23:08:30
 updated: 2021-10-01 21:30:00
 image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26SuYFj0v7jz4Wpao1JAzlibcKia6mPLktFvKabXAcWOsZbxIB01DdGnCQ/640
 coverDim: true
-categories: [经验分享]
-tags: [高中, Windows, 系统, 病毒]
+categories: [安全]
+tags: [Windows, 恶意软件, 应急处理]
 ---
 
 [查看原文](https://mp.weixin.qq.com/s/uiJgwmLSX6hYPkIR7pRbRw)

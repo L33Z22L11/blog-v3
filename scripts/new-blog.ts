@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
 import { exec } from 'node:child_process'
+import { randomBytes } from 'node:crypto'
 import fs from 'node:fs'
-import path from 'node:path'
+import { join, resolve } from 'node:path'
 import process from 'node:process'
 import { intro, log, outro, select, spinner, text } from '@clack/prompts'
-import { customAlphabet } from 'nanoid'
 import { Temporal } from 'temporal-polyfill'
 import blogConfig from '../blog.config.ts'
 
@@ -19,7 +19,7 @@ const usePermalink = blogConfig.article.useRandomPremalink
 const now = Temporal.Now.plainDateTimeISO()
 const dateStr = now.toLocaleString('sv')
 
-const dir = path.join('content', 'posts', now.year.toString())
+const dir = join('content', 'posts', now.year.toString())
 
 if (!fs.existsSync(dir))
 	fs.mkdirSync(dir, { recursive: true })
@@ -29,10 +29,10 @@ intro(usePermalink ? '📝 使用中文名 + 随机 URL 新建文章' : '📝 �
 
 // #region 传入文件名
 if (fileName)
-	log.info(`文件名: ${path.join(dir, fileName)}.md`)
+	log.info(`文件名: ${join(dir, fileName)}.md`)
 
 const permalink = usePermalink
-	? `/posts/${customAlphabet('1234567890abcdef', 7)()}`
+	? `/posts/${randomBytes(4).toString('hex').slice(1)}`
 	: undefined
 
 // #region url为名
@@ -48,7 +48,7 @@ do {
 	if (!fileName)
 		process.exit(0)
 
-	if (fs.existsSync(path.join(dir, `${fileName}.md`))) {
+	if (fs.existsSync(join(dir, `${fileName}.md`))) {
 		log.error('❌ 文件已存在')
 		fileName = undefined
 	}
@@ -71,7 +71,7 @@ do {
 		process.exit(0)
 
 	if (usePermalink) {
-		if (fs.existsSync(path.join(dir, `${title}.md`))) {
+		if (fs.existsSync(join(dir, `${title}.md`))) {
 			log.error('❌ 文件已存在')
 			title = undefined
 		}
@@ -80,7 +80,7 @@ do {
 // #endregion
 
 // #region 生成路径
-const mdPath = path.join(dir, `${usePermalink ? title : fileName}.md`)
+const mdPath = join(dir, `${usePermalink ? title : fileName}.md`)
 if (!process.argv[2])
 	log.info(`文件名: ${mdPath}`)
 
@@ -152,7 +152,7 @@ const frontmatter = {
 	description: `讲述关于${title}的故事，并根据${tags?.join('、')}给出${category}。`,
 	date: dateStr,
 	updated: dateStr,
-	image: '# 图片',
+	image: '# 封面图推荐 2:1，不含与标题重复的文字',
 	permalink,
 	type: type === 'tech' ? undefined : type,
 	categories: category === blogConfig.defaultCategory ? undefined : `[${category}]`,
@@ -172,7 +172,7 @@ fs.writeFileSync(mdPath, `---\n${Object.entries(frontmatter)
 
 `, 'utf8')
 
-log.info(`✅ 已创建: ${path.resolve(mdPath)}`)
+log.info(`✅ 已创建: ${resolve(mdPath)}`)
 if (permalink)
 	log.info(`🔗 文章链接: ${new URL(permalink, blogConfig.url)}`)
 
@@ -186,7 +186,7 @@ exec(`code "${mdPath}"`, (error) => {
 	log.error(error.message)
 	process.exit(1)
 })
-s.stop('⌨ 已通过 VS Code 打开文件')
+s.stop('⌨️ 已通过 VS Code 打开文件')
 // #endregion
 
 outro(`🎉 开始书写吧！`)

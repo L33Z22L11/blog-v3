@@ -1,5 +1,5 @@
 import type { ArticleOrderType, ArticleProps } from '~/types/article'
-import { alphabetical } from 'radash'
+import { orderBy } from 'es-toolkit/array'
 
 /**
  * 生成文章查询参数，完全包装 useAsyncData 会使 SSR 行为异常，缓存 key 需要暴露
@@ -69,10 +69,10 @@ export function useArticleSort(list: MaybeRefOrGetter<ArticleProps[]>, options?:
 		? useRouteQuery(bindDirectionQuery, initialAscend.toString(), { transform: booleanQueryTransformer })
 		: ref<boolean>(initialAscend)
 
-	const listSorted = computed(() => alphabetical(
+	const listSorted = computed(() => orderBy(
 		toValue(list),
-		item => item[sortOrder.value] || '',
-		isAscending.value ? 'asc' : 'desc',
+		[sortOrder.value, 'date'],
+		[isAscending.value ? 'asc' : 'desc'],
 	))
 
 	return {
