@@ -122,7 +122,7 @@ onMounted(async () => {
 		<Icon
 			class="toggle-icon"
 			:class="{ 'is-collapsed': isCollapsed }"
-			name="ph:caret-double-up-bold"
+			name="tabler:chevrons-up"
 		/>
 		<span>{{ rows }} lines, {{ props.code.length }} chars, {{ byteSize }}</span>
 	</button>

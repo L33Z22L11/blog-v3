@@ -33,7 +33,7 @@ useEventListener(carouselEl, 'wheel', (e) => {
 	<div class="z-slide-header">
 		<span class="title text-creative">精选文章</span>
 		<div class="at-slide-hover">
-			<Icon name="ph:mouse-simple-bold" />
+			<Icon name="tabler:mouse" />
 			按住 Shift 横向滚动
 		</div>
 	</div>
@@ -65,7 +65,7 @@ useEventListener(carouselEl, 'wheel', (e) => {
 		<ZButton
 			class="carousel-action prev at-slide-hover"
 			aria-label="上一页"
-			icon="ph:caret-left-bold"
+			icon="tabler:chevron-left"
 			tabindex="-1"
 			@click="carouselApi?.scrollPrev()"
 		/>
@@ -73,7 +73,7 @@ useEventListener(carouselEl, 'wheel', (e) => {
 		<ZButton
 			class="carousel-action next at-slide-hover"
 			aria-label="下一页"
-			icon="ph:caret-right-bold"
+			icon="tabler:chevron-right"
 			tabindex="-1"
 			@click="carouselApi?.scrollNext()"
 		/>

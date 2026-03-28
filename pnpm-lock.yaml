@@ -99,9 +99,6 @@ catalogs:
     '@iconify-json/catppuccin':
       specifier: ^1.2.17
       version: 1.2.17
-    '@iconify-json/ph':
-      specifier: ^1.2.2
-      version: 1.2.2
     '@iconify-json/ri':
       specifier: ^1.2.10
       version: 1.2.10
@@ -300,9 +297,6 @@ importers:
       '@iconify-json/catppuccin':
         specifier: catalog:ui
         version: 1.2.17
-      '@iconify-json/ph':
-        specifier: catalog:ui
-        version: 1.2.2
       '@iconify-json/ri':
         specifier: catalog:ui
         version: 1.2.10
@@ -1180,9 +1174,6 @@ packages:
 
   '@iconify-json/catppuccin@1.2.17':
     resolution: {integrity: sha512-l1pFOADEUlw+j7V+yfFzBowdE4deeMuI4amqfKaN+7uTI9B0Ho24C86DitQk5zb62NkEM9poOyfuG7WS2bw6jg==}
-
-  '@iconify-json/ph@1.2.2':
-    resolution: {integrity: sha512-PgkEZNtqa8hBGjHXQa4pMwZa93hmfu8FUSjs/nv4oUU6yLsgv+gh9nu28Kqi8Fz9CCVu4hj1MZs9/60J57IzFw==}
 
   '@iconify-json/ri@1.2.10':
     resolution: {integrity: sha512-WWMhoncVVM+Xmu9T5fgu2lhYRrKTEWhKk3Com0KiM111EeEsRLiASjpsFKnC/SrB6covhUp95r2mH8tGxhgd5Q==}
@@ -8106,10 +8097,6 @@ snapshots:
   '@humanwhocodes/retry@0.4.3': {}
 
   '@iconify-json/catppuccin@1.2.17':
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  '@iconify-json/ph@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 

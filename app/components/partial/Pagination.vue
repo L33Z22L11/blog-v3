@@ -32,7 +32,7 @@ onUnmounted(() => {
 	<ZButton
 		:disabled="page <= 1"
 		class="pagination-button rtl-flip"
-		icon="ph:arrow-fat-left-duotone"
+		icon="tabler:arrow-left"
 		aria-label="上一页"
 		@click="page--"
 	/>
@@ -53,7 +53,7 @@ onUnmounted(() => {
 	<ZButton
 		:disabled="page >= totalPages"
 		class="pagination-button rtl-flip"
-		icon="ph:arrow-fat-right-duotone"
+		icon="tabler:arrow-right"
 		aria-label="下一页"
 		@click="page++"
 	/>

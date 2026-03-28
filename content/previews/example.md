@@ -89,11 +89,11 @@ class: gradient-card active
 ::alert{title="自定义图标"}
   ::tab{:tabs='["组件","语法"]'}
   #tab1
-  你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="ph:swatches-duotone"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
+  你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="tabler:color-swatch"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
 
   #tab2
   ```mdc wrap
-  你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="ph:swatches-duotone"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
+  你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="tabler:color-swatch"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
   ```
   ::
 ::
@@ -162,10 +162,10 @@ class: gradient-card active
 \
 ```
 
-````md [更多功能] icon=ph:files-duotone wrap expand
+````md [更多功能] icon=tabler:files wrap expand
 - 在 Markdown 文件中，可以通过代码块语法的 meta 标记
   - `wrap` 直接启用自动换行功能，以展示特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别长的文本而不换行
-  - `icon=ph:files-duotone` 自定义代码块图标
+  - `icon=tabler:files` 自定义代码块图标
   - `expand` 禁用自动折叠功能
 
 # 代码块语法
@@ -330,7 +330,7 @@ w: 我 呀 | 我 爱 | 你 | 你 爱 我 | 我 爱 你 蜜 雪 冰 城 甜 蜜 |
   默认插槽的 [超链接](#alert) **粗体** `Inline code`
   ::
 
-  :alert{icon="ph:files-duotone" color="var(--c-accent)" title="仅标题，并且自定义图标和颜色"}
+  :alert{icon="tabler:files" color="var(--c-accent)" title="仅标题，并且自定义图标和颜色"}
 
 #tab2
 ```mdc wrap expand
@@ -360,7 +360,7 @@ w: 我 呀 | 我 爱 | 你 | 你 爱 我 | 我 爱 你 蜜 雪 冰 城 甜 蜜 |
 默认插槽的 [超链接](#alert) **粗体** `Inline code`
 ::
 
-:alert{icon="ph:files-duotone" color="var(--c-accent)" title="仅标题，并且自定义图标和颜色"}
+:alert{icon="tabler:files" color="var(--c-accent)" title="仅标题，并且自定义图标和颜色"}
 ```
 ::
 
@@ -788,7 +788,7 @@ footer: 可选的落款
 #tab1
 :quote[有时候，有些话，有点意思。]
 
-::quote{icon="ph:files-duotone"}
+::quote{icon="tabler:files"}
 令图标有所指，引用亦有中心。
 ::
 
@@ -803,7 +803,7 @@ footer: 可选的落款
 ```mdc
 :quote[有时候，有些话，有点意思。]
 
-::quote{icon="ph:files-duotone"}
+::quote{icon="tabler:files"}
 令图标有所指，引用亦有中心。
 ::
 

@@ -28,14 +28,14 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 			<UtilDate
 				v-if="date && (showAllDate || !useUpdated)"
 				:date
-				icon="ph:pencil-simple-line-bold"
+				icon="tabler:pencil-minus"
 			/>
 
 			<UtilDate
 				v-if="updated && (showAllDate || useUpdated)"
 				:class="{ 'use-updated': useUpdated }"
 				:date="updated"
-				icon="ph:clock-counter-clockwise-bold"
+				icon="tabler:clock-edit"
 			/>
 
 			<span
@@ -48,7 +48,7 @@ const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 			</span>
 
 			<span v-if="readingTime?.words" class="article-words">
-				<Icon name="ph:paragraph-bold" />
+				<Icon name="tabler:pilcrow" />
 				{{ formatNumber(readingTime?.words) }}字
 			</span>
 		</div>

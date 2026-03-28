@@ -102,7 +102,7 @@ button, input, textarea {
 	transform: scaleX(-1);
 }
 
-.light [class^="iconify i-catppuccin:"] {
+.light .iconify[class*="i-catppuccin:"] {
 	filter: invert(0.7) hue-rotate(180deg) saturate(4);
 }
 
