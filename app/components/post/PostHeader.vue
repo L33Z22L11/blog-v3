@@ -23,7 +23,7 @@ const { copy, copied } = useCopy(shareText)
 	<div class="post-nav">
 		<div class="operations">
 			<ZButton
-				:icon="copied ? 'ph:check-bold' : 'ph:share-bold'"
+				:icon="copied ? 'tabler:check' : 'tabler:share'"
 				@click="copy()"
 			>
 				文字分享
@@ -36,7 +36,7 @@ const { copy, copied } = useCopy(shareText)
 				v-tip
 				:tip-transform="d => `创建于${d}`"
 				:date
-				icon="ph:pencil-simple-line-bold"
+				icon="tabler:pencil-minus"
 			/>
 
 			<UtilDate
@@ -44,7 +44,7 @@ const { copy, copied } = useCopy(shareText)
 				v-tip
 				:tip-transform="d => `修改于${d}`"
 				:date="updated"
-				icon="ph:clock-counter-clockwise-bold"
+				icon="tabler:clock-edit"
 			/>
 
 			<span v-if="categoryLabel">
@@ -53,7 +53,7 @@ const { copy, copied } = useCopy(shareText)
 			</span>
 
 			<span>
-				<Icon name="ph:paragraph-bold" />
+				<Icon name="tabler:pilcrow" />
 				{{ formatNumber(readingTime?.words) }} 字
 			</span>
 		</div>

@@ -20,11 +20,11 @@ function hasHeading(tocTree: TocLink, heading?: string): boolean {
 		<span class="title">文章目录</span>
 		<!-- use <a> for anchor -->
 		<a href="#main-content" aria-label="返回开头">
-			<Icon name="ph:arrow-circle-up-bold" />
+			<Icon name="tabler:arrow-bar-to-up" />
 		</a>
 
 		<a href="#twikoo" aria-label="评论区">
-			<Icon name="ph:chat-circle-text-bold" />
+			<Icon name="tabler:message-dots" />
 		</a>
 	</template>
 

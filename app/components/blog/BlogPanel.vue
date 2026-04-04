@@ -11,22 +11,22 @@ const { asideWidgets, panelTransform } = storeToRefs(layoutStore)
 	:style="{ '--transform': panelTransform }"
 >
 	<button
-		class="toggle-sidebar mobile-only"
-		:class="{ active: layoutStore.state === 'sidebar' }"
-		aria-label="切换菜单"
-		@click="layoutStore.toggle('sidebar')"
-	>
-		<Icon class="rtl-flip" name="ph:sidebar-duotone" />
-	</button>
-
-	<button
 		v-if="asideWidgets.length"
 		class="toggle-aside widescreen-only"
 		:class="{ active: layoutStore.state === 'aside' }"
 		aria-label="切换侧边栏"
 		@click="layoutStore.toggle('aside')"
 	>
-		<Icon class="rtl-flip" name="ph:align-right-duotone" />
+		<Icon class="rtl-flip" name="tabler:align-right" />
+	</button>
+
+	<button
+		class="toggle-sidebar mobile-only"
+		:class="{ active: layoutStore.state === 'sidebar' }"
+		aria-label="切换菜单"
+		@click="layoutStore.toggle('sidebar')"
+	>
+		<Icon class="rtl-flip" :name="layoutStore.state === 'sidebar' ? 'tabler:layout-sidebar-filled' : 'tabler:layout-sidebar'" />
 	</button>
 </div>
 </template>
