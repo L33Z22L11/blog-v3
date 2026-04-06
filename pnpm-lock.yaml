@@ -99,18 +99,15 @@ catalogs:
     '@iconify-json/catppuccin':
       specifier: ^1.2.17
       version: 1.2.17
-    '@iconify-json/ph':
-      specifier: ^1.2.2
-      version: 1.2.2
+    '@iconify-json/line-md':
+      specifier: ^1.2.16
+      version: 1.2.16
     '@iconify-json/ri':
       specifier: ^1.2.10
       version: 1.2.10
     '@iconify-json/simple-icons':
       specifier: ^1.2.74
       version: 1.2.74
-    '@iconify-json/solar':
-      specifier: ^1.2.5
-      version: 1.2.5
     '@nuxt/icon':
       specifier: ^2.2.1
       version: 2.2.1
@@ -300,18 +297,15 @@ importers:
       '@iconify-json/catppuccin':
         specifier: catalog:ui
         version: 1.2.17
-      '@iconify-json/ph':
+      '@iconify-json/line-md':
         specifier: catalog:ui
-        version: 1.2.2
+        version: 1.2.16
       '@iconify-json/ri':
         specifier: catalog:ui
         version: 1.2.10
       '@iconify-json/simple-icons':
         specifier: catalog:ui
         version: 1.2.74
-      '@iconify-json/solar':
-        specifier: catalog:ui
-        version: 1.2.5
       '@nuxt/a11y':
         specifier: catalog:quality
         version: 1.0.0-alpha.1(magicast@0.5.2)(vite@7.3.1(@types/node@25.5.0)(jiti@2.6.1)(sass-embedded@1.98.0)(sass@1.98.0)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))
@@ -1181,17 +1175,14 @@ packages:
   '@iconify-json/catppuccin@1.2.17':
     resolution: {integrity: sha512-l1pFOADEUlw+j7V+yfFzBowdE4deeMuI4amqfKaN+7uTI9B0Ho24C86DitQk5zb62NkEM9poOyfuG7WS2bw6jg==}
 
-  '@iconify-json/ph@1.2.2':
-    resolution: {integrity: sha512-PgkEZNtqa8hBGjHXQa4pMwZa93hmfu8FUSjs/nv4oUU6yLsgv+gh9nu28Kqi8Fz9CCVu4hj1MZs9/60J57IzFw==}
+  '@iconify-json/line-md@1.2.16':
+    resolution: {integrity: sha512-esHPUQUp30NyqJWa7MNu6ExdG8z/aEFC5r56rVyRGhtJ7acOme6YtYPnDOgVu6p+kk24rM8602xkFuBC6g6x+w==}
 
   '@iconify-json/ri@1.2.10':
     resolution: {integrity: sha512-WWMhoncVVM+Xmu9T5fgu2lhYRrKTEWhKk3Com0KiM111EeEsRLiASjpsFKnC/SrB6covhUp95r2mH8tGxhgd5Q==}
 
   '@iconify-json/simple-icons@1.2.74':
     resolution: {integrity: sha512-yqaohfY6jnYjTVpuTkaBQHrWbdUrQyWXhau0r/0EZiNWYXPX/P8WWwl1DoLH5CbvDjjcWQw5J0zADhgCUklOqA==}
-
-  '@iconify-json/solar@1.2.5':
-    resolution: {integrity: sha512-WMAiNwchU8zhfrySww6KQBRIBbsQ6SvgIu2yA+CHGyMima/0KQwT5MXogrZPJGoQF+1Ye3Qj6K+1CiyNn3YkoA==}
 
   '@iconify/collections@1.0.661':
     resolution: {integrity: sha512-r5dwSQHdwNxfjx8AZiHfn8IuafVYTl850xzN9gKVMi8L9sXyd/XNawTr1qIJQZbJxouCETielBRP8TM9YmiSEA==}
@@ -8109,7 +8100,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/ph@1.2.2':
+  '@iconify-json/line-md@1.2.16':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -8118,10 +8109,6 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/simple-icons@1.2.74':
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  '@iconify-json/solar@1.2.5':
     dependencies:
       '@iconify/types': 2.0.0
 

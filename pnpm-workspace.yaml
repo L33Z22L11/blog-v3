@@ -39,10 +39,9 @@ catalogs:
     '@bikariya/image-viewer': ^0.0.8
     '@bikariya/modals': ^0.0.8
     '@iconify-json/catppuccin': ^1.2.17
-    '@iconify-json/ph': ^1.2.2
+    '@iconify-json/line-md': ^1.2.16
     '@iconify-json/ri': ^1.2.10
     '@iconify-json/simple-icons': ^1.2.74
-    '@iconify-json/solar': ^1.2.5
     '@nuxt/icon': ^2.2.1
     '@nuxt/image': ^2.0.0
     '@nuxtjs/color-mode': ^4.0.0

@@ -92,7 +92,7 @@ onMounted(() => {
 					aria-label="恢复原始内容"
 					@click="undo()"
 				>
-					<Icon name="ph:arrow-u-up-left-bold" />
+					<Icon name="tabler:arrow-back-up" />
 				</button>
 
 				<ZButton

@@ -90,7 +90,7 @@ function openActiveItem() {
 <Transition name="float-in">
 	<div v-if="open" class="blog-search">
 		<form class="input" @submit.prevent>
-			<Icon :name="status === 'pending' ? 'line-md:loading-alt-loop' : 'ph:magnifying-glass-bold'" />
+			<Icon :name="status === 'pending' ? 'line-md:loading-alt-loop' : 'tabler:search'" />
 
 			<!-- 方向键切换搜索结果不应只在搜索框内触发 -->
 			<input

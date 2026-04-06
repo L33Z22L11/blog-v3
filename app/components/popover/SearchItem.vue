@@ -18,7 +18,7 @@ withDefaults(defineProps<Partial<SearchItem>>(), {
 <UtilLink :to="id" class="search-item">
 	<hgroup class="text-creative">
 		<span v-for="heading in [...titles, title]" :key="heading" class="title" v-html="highlightHtml(heading, queryTerms)" />
-		<Icon v-if="level === 1" name="ph:file-text-bold" />
+		<Icon v-if="level === 1" name="tabler:file-text" />
 	</hgroup>
 	<p v-if="content" class="content" v-html="highlightHtml(content, queryTerms)" />
 </UtilLink>

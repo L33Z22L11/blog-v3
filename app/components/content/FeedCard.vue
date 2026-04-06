@@ -49,7 +49,7 @@ function getInspectStyle(src: string): CSSProperties {
 			</ClientOnly>
 
 			<NuxtImg v-else class="round-cobblestone" :src="avatar" :alt="author" loading="lazy" />
-			<Icon v-if="appConfig.link.remindNoFeed && !feed" class="no-feed" name="ph:bell-simple-slash-bold" />
+			<Icon v-if="appConfig.link.remindNoFeed && !feed" class="no-feed" name="tabler:bell-off" />
 		</div>
 
 		<span class="author">{{ author }}</span>
@@ -84,7 +84,7 @@ function getInspectStyle(src: string): CSSProperties {
 			<p>{{ error ?? desc }}</p>
 
 			<p v-if="comment">
-				<Icon name="ph:chat-centered-dots-bold" /> {{ comment }}
+				<Icon name="tabler:message-dots" /> {{ comment }}
 			</p>
 		</div>
 	</template>
