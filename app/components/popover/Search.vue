@@ -27,7 +27,7 @@ const miniSearch = new MiniSearch({
 		boost: { title: 3, titles: 2 },
 	},
 	processTerm: segmenter
-		? term => Array.from(segmenter.segment(term)).map(seg => seg.segment.toLowerCase())
+		? term => Array.from(segmenter.segment(term), seg => seg.segment.toLowerCase())
 		: undefined,
 })
 

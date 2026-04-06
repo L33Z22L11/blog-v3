@@ -1,8 +1,8 @@
 ---
 title: 组件样式示例
 date: 2024-09-21 23:18:18
-updated: 2025-02-12 11:18:33
-
+updated: 2026-04-06 17:25:03
+aside: [toc, meta-aside-a, meta-aside-b]
 # type: story
 ---
 
@@ -202,9 +202,15 @@ class: gradient-card active
 | ----------- | -------------: | :-------------------------------------------------------------------------------- | :------------------------- |
 | 已实现       | 已实现         | 可以切换滚动方式                                                                  |
 
+### 脚注
+
+由remark-gfm的micromark-extension-gfm-footnote驱动的脚注[^micromark-extension-gfm-footnote]。
+
+[^micromark-extension-gfm-footnote]: [README of micromark-extension-gfm-footnote](https://github.com/micromark/micromark-extension-gfm-footnote#use)
+
 ### 数学公式
 
-> 由 $\KaTeX$ 驱动，支持 $\TeX$ 和部分 $\LaTeX$ 语法。如果 Markdown 正文需要直接使用 \$ 符号，需要使用 `\$` 转义。
+> 由 remark-$\KaTeX$ 驱动，支持 $\TeX$ 和部分 $\LaTeX$ 语法。如果 Markdown 正文需要直接使用 \$ 符号，需要使用 `\$` 转义。
 >
 > [支持语法列表](https://katex.org/docs/supported)（[中文版](https://www.luogu.com.cn/paste/hs3jg81l)）
 
@@ -218,6 +224,70 @@ $$ \text{学分绩点} = \text{课程学分} \times \text{课程绩点} $$
 \text{平均绩点(GPA)} =\frac {\text{学分绩点之和}}{\text{课程学分之和}} = \frac{\sum (\text{课程学分} \times \text{课程mag绩点})}{\sum \text{课程mag学分}}
 ```
 
+$$
+\colorbox{#81D8D0}{\color{white}{\small\text{我走了}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\normalsize\text{正如我}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\small\text{轻轻地}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\normalsize\text{来}}}
+$$
+
+$$
+\colorbox{#D1F2EB}{\color{#008080}{\small\text{我轻轻地}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\normalsize\text{招手}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\small\text{作别}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{西天的}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\small\text{云彩}}}
+$$
+
+$$
+\colorbox{#A3E4D7}{\color{white}{\small\text{那河畔的}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{金柳}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\small\text{是夕阳中的}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\normalsize\text{新娘}}}
+$$
+
+$$
+\colorbox{#D1F2EB}{\color{#008080}{\small\text{波光里的}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\normalsize\text{艳影}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\small\text{在我的}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{心头}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\small\text{荡漾}}}
+$$
+
+$$
+\colorbox{#81D8D0}{\color{white}{\small\text{寻梦？}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\normalsize\text{撑一支}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\small\text{长篙}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\normalsize\text{向青草}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\small\text{更青处}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{漫溯}}}
+$$
+
+$$
+\colorbox{#81D8D0}{\color{white}{\small\text{满载}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\normalsize\text{一船}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\small\text{星辉}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\normalsize\text{在星辉}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\small\text{斑斓里}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{放歌}}}
+$$
+
+$$
+\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{悄悄地}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{我走了}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{正如我}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{悄悄地}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{来}}}
+$$
+
+$$
+\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{我挥一挥}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{衣袖}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{不带走}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{一片}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{云彩}}}
+$$
+
 #tab2
 ````mdc wrap
 $\text{课程绩点} = \frac{\text{课程分数(成绩)}}{10} - 5$
@@ -227,12 +297,128 @@ $$ \text{学分绩点} = \text{课程学分} \times \text{课程绩点} $$
 ```math
 \text{平均绩点(GPA)} =\frac {\text{学分绩点之和}}{\text{课程学分之和}} = \frac{\sum (\text{课程学分} \times \text{课程mag绩点})}{\sum \text{课程mag学分}}
 ```
+
+$$
+\colorbox{#81D8D0}{\color{white}{\small\text{我走了}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\normalsize\text{正如我}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\small\text{轻轻地}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\normalsize\text{来}}}
+$$
+
+$$
+\colorbox{#D1F2EB}{\color{#008080}{\small\text{我轻轻地}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\normalsize\text{招手}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\small\text{作别}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{西天的}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\small\text{云彩}}}
+$$
+
+$$
+\colorbox{#A3E4D7}{\color{white}{\small\text{那河畔的}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{金柳}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\small\text{是夕阳中的}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\normalsize\text{新娘}}}
+$$
+
+$$
+\colorbox{#D1F2EB}{\color{#008080}{\small\text{波光里的}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\normalsize\text{艳影}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\small\text{在我的}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{心头}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\small\text{荡漾}}}
+$$
+
+$$
+\colorbox{#81D8D0}{\color{white}{\small\text{寻梦？}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\normalsize\text{撑一支}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\small\text{长篙}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\normalsize\text{向青草}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\small\text{更青处}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{漫溯}}}
+$$
+
+$$
+\colorbox{#81D8D0}{\color{white}{\small\text{满载}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\normalsize\text{一船}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\small\text{星辉}}}\kern1pt
+\colorbox{#81D8D0}{\color{white}{\normalsize\text{在星辉}}}\kern1pt
+\colorbox{#A3E4D7}{\color{white}{\small\text{斑斓里}}}\kern1pt
+\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{放歌}}}
+$$
+
+$$
+\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{悄悄地}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{我走了}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{正如我}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{悄悄地}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{来}}}
+$$
+
+$$
+\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{我挥一挥}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{衣袖}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{不带走}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{一片}}}\kern1pt
+\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{云彩}}}
+$$
 ````
 ::
 
+### 许可协议和侧栏插槽
+
+> 由自编写的rehype-meta-slots插件实现，插槽必须是文章的直接子元素，内容已插入到文章末尾 [^copyright] 和目录侧栏。
+
+[^copyright]: 文章末尾有特殊许可协议，还可从此处返回正文对插槽的讲解。
+
+::meta-aside-a{title="从文章插入的组件" card}
+展示remark插件能力，为用户自己编写插件提供实现思路。
+
+虽然一般情况下， :blur[文章侧栏不需要组件]
+::
+
+:::meta-aside-b
+::link-card
+---
+title: MDC 基本语法（必读）
+icon: https://v2.content.nuxt.com/favicon.ico
+link: https://content.nuxt.com/docs/files/markdown#mdc-syntax
+---
+::
+:::
+
+::meta-copyright{title="本文章不保留版权"}
+通过 [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/deed.zh-hans){icon="ri:creative-commons-zero-line"} 贡献至公共领域。
+::
+
+```mdc
+---
+aside: [toc, meta-aside-a, meta-aside-b]
+---
+
+::meta-aside-a{title="从文章插入的组件" card}
+展示remark插件能力，为用户自己编写插件提供实现思路。
+
+虽然一般情况下， :blur[文章侧栏不需要组件]
+::
+
+:::meta-aside-b
+::link-card
+---
+title: MDC 基本语法（必读）
+icon: https://v2.content.nuxt.com/favicon.ico
+link: https://content.nuxt.com/docs/files/markdown#mdc-syntax
+---
+::
+:::
+
+::meta-copyright{title="本文章不保留版权"}
+通过 [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/deed.zh-hans){icon="ri:creative-commons-zero-line"} 贡献至公共领域。
+::
+```
+
 ### 乐谱渲染播放
 
-> 必要时可用豆包等 AI 将乐谱识别为 ABC 记法。只在网络状态良好时加载播放能力。
+> 由自编写的remark-music插件实现，必要时可用豆包等 AI 将乐谱识别为 ABC 记法。只在网络状态良好时加载播放能力。
 >
 > 编辑器、Cheat Sheet 和语法检查：https://editor.drawthedots.com/
 
