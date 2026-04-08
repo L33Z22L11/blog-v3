@@ -216,150 +216,62 @@ class: gradient-card active
 
 ::tab{:tabs='["组件","语法"]'}
 #tab1
-$\text{课程绩点} = \frac{\text{课程分数(成绩)}}{10} - 5$
+行内公式 $\text{课程绩点} = \frac{\text{课程分数(成绩)}}{10} - 5$
 
-$$ \text{学分绩点} = \text{课程学分} \times \text{课程绩点} $$
+$$
+\text{学分绩点} = \text{课程学分} \times \text{课程绩点}
+$$
 
 ```math
-\text{平均绩点(GPA)} =\frac {\text{学分绩点之和}}{\text{课程学分之和}} = \frac{\sum (\text{课程学分} \times \text{课程mag绩点})}{\sum \text{课程mag学分}}
+\text{平均绩点(GPA)} =\frac {\text{学分绩点之和}}{\text{课程学分之和}} = \frac{\sum (\text{课程学分} \times \text{课程绩点})}{\sum \text{课程学分}}
 ```
 
 $$
-\colorbox{#81D8D0}{\color{white}{\small\text{我走了}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\normalsize\text{正如我}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\small\text{轻轻地}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\normalsize\text{来}}}
-$$
-
-$$
-\colorbox{#D1F2EB}{\color{#008080}{\small\text{我轻轻地}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\normalsize\text{招手}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\small\text{作别}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{西天的}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\small\text{云彩}}}
-$$
-
-$$
-\colorbox{#A3E4D7}{\color{white}{\small\text{那河畔的}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{金柳}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\small\text{是夕阳中的}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\normalsize\text{新娘}}}
-$$
-
-$$
-\colorbox{#D1F2EB}{\color{#008080}{\small\text{波光里的}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\normalsize\text{艳影}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\small\text{在我的}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{心头}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\small\text{荡漾}}}
-$$
-
-$$
-\colorbox{#81D8D0}{\color{white}{\small\text{寻梦？}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\normalsize\text{撑一支}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\small\text{长篙}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\normalsize\text{向青草}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\small\text{更青处}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{漫溯}}}
-$$
-
-$$
-\colorbox{#81D8D0}{\color{white}{\small\text{满载}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\normalsize\text{一船}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\small\text{星辉}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\normalsize\text{在星辉}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\small\text{斑斓里}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{放歌}}}
-$$
-
-$$
-\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{悄悄地}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{我走了}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{正如我}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{悄悄地}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{来}}}
-$$
-
-$$
-\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{我挥一挥}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{衣袖}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{不带走}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{一片}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{云彩}}}
+\raisebox{-2pt}{\colorbox{#4A90A4}{\color{white}{\Large\text{纸}}}}\kern-2pt
+\raisebox{-4pt}{\colorbox{#5BA88C}{\color{white}{\large\text{鹿}}}}\kern-3pt
+\raisebox{-1pt}{\colorbox{#6B8E9F}{\color{white}{\normalsize\text{至}}}}\kern-1pt
+\raisebox{-3pt}{\colorbox{#A8D5E2}{\color{#2C4A52}{\large\text{麓}}}}\kern-2pt
+\raisebox{0pt}{\colorbox{#B8E0D0}{\color{#2C4A52}{\normalsize\text{不}}}}\kern-3pt
+\raisebox{-5pt}{\colorbox{#5A9AA8}{\color{white}{\large\text{知}}}}\kern-1pt
+\raisebox{-2pt}{\colorbox{#C5E0E8}{\color{#2C4A52}{\Large\text{路}}}}
+\quad
+\raisebox{-4pt}{\colorbox{#5BA88C}{\color{white}{\large\text{支}}}}\kern-2pt
+\raisebox{-1pt}{\colorbox{#4A90A4}{\color{white}{\Large\text{炉}}}}\kern-3pt
+\raisebox{-3pt}{\colorbox{#7BC4B5}{\color{white}{\normalsize\text{制}}}}\kern-1pt
+\raisebox{-5pt}{\colorbox{#A8D5E2}{\color{#2C4A52}{\large\text{麓}}}}\kern-2pt
+\raisebox{-2pt}{\colorbox{#C5E0E8}{\color{#2C4A52}{\Large\text{不}}}}\kern-3pt
+\raisebox{0pt}{\colorbox{#6B8E9F}{\color{white}{\normalsize\text{止}}}}\kern-1pt
+\raisebox{-3pt}{\colorbox{#B8E0D0}{\color{#2C4A52}{\large\text{漉}}}}
 $$
 
 #tab2
 ````mdc wrap
-$\text{课程绩点} = \frac{\text{课程分数(成绩)}}{10} - 5$
+行内公式 $\text{课程绩点} = \frac{\text{课程分数(成绩)}}{10} - 5$
 
-$$ \text{学分绩点} = \text{课程学分} \times \text{课程绩点} $$
+$$
+\text{学分绩点} = \text{课程学分} \times \text{课程绩点}
+$$
 
 ```math
-\text{平均绩点(GPA)} =\frac {\text{学分绩点之和}}{\text{课程学分之和}} = \frac{\sum (\text{课程学分} \times \text{课程mag绩点})}{\sum \text{课程mag学分}}
+\text{平均绩点(GPA)} =\frac {\text{学分绩点之和}}{\text{课程学分之和}} = \frac{\sum (\text{课程学分} \times \text{课程绩点})}{\sum \text{课程学分}}
 ```
 
 $$
-\colorbox{#81D8D0}{\color{white}{\small\text{我走了}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\normalsize\text{正如我}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\small\text{轻轻地}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\normalsize\text{来}}}
-$$
-
-$$
-\colorbox{#D1F2EB}{\color{#008080}{\small\text{我轻轻地}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\normalsize\text{招手}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\small\text{作别}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{西天的}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\small\text{云彩}}}
-$$
-
-$$
-\colorbox{#A3E4D7}{\color{white}{\small\text{那河畔的}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{金柳}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\small\text{是夕阳中的}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\normalsize\text{新娘}}}
-$$
-
-$$
-\colorbox{#D1F2EB}{\color{#008080}{\small\text{波光里的}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\normalsize\text{艳影}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\small\text{在我的}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{心头}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\small\text{荡漾}}}
-$$
-
-$$
-\colorbox{#81D8D0}{\color{white}{\small\text{寻梦？}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\normalsize\text{撑一支}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\small\text{长篙}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\normalsize\text{向青草}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\small\text{更青处}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{漫溯}}}
-$$
-
-$$
-\colorbox{#81D8D0}{\color{white}{\small\text{满载}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\normalsize\text{一船}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\small\text{星辉}}}\kern1pt
-\colorbox{#81D8D0}{\color{white}{\normalsize\text{在星辉}}}\kern1pt
-\colorbox{#A3E4D7}{\color{white}{\small\text{斑斓里}}}\kern1pt
-\colorbox{#D1F2EB}{\color{#008080}{\normalsize\text{放歌}}}
-$$
-
-$$
-\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{悄悄地}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{我走了}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{正如我}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{悄悄地}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{来}}}
-$$
-
-$$
-\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{我挥一挥}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{衣袖}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{不带走}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\normalsize\text{一片}}}\kern1pt
-\colorbox{#F7F9F9}{\color{#81D8D0}{\small\text{云彩}}}
+\raisebox{-2pt}{\colorbox{#4A90A4}{\color{white}{\Large\text{纸}}}}\kern-2pt
+\raisebox{-4pt}{\colorbox{#5BA88C}{\color{white}{\large\text{鹿}}}}\kern-3pt
+\raisebox{-1pt}{\colorbox{#6B8E9F}{\color{white}{\normalsize\text{至}}}}\kern-1pt
+\raisebox{-3pt}{\colorbox{#A8D5E2}{\color{#2C4A52}{\large\text{麓}}}}\kern-2pt
+\raisebox{0pt}{\colorbox{#B8E0D0}{\color{#2C4A52}{\normalsize\text{不}}}}\kern-3pt
+\raisebox{-5pt}{\colorbox{#5A9AA8}{\color{white}{\large\text{知}}}}\kern-1pt
+\raisebox{-2pt}{\colorbox{#C5E0E8}{\color{#2C4A52}{\Large\text{路}}}}
+\quad
+\raisebox{-4pt}{\colorbox{#5BA88C}{\color{white}{\large\text{支}}}}\kern-2pt
+\raisebox{-1pt}{\colorbox{#4A90A4}{\color{white}{\Large\text{炉}}}}\kern-3pt
+\raisebox{-3pt}{\colorbox{#7BC4B5}{\color{white}{\normalsize\text{制}}}}\kern-1pt
+\raisebox{-5pt}{\colorbox{#A8D5E2}{\color{#2C4A52}{\large\text{麓}}}}\kern-2pt
+\raisebox{-2pt}{\colorbox{#C5E0E8}{\color{#2C4A52}{\Large\text{不}}}}\kern-3pt
+\raisebox{0pt}{\colorbox{#6B8E9F}{\color{white}{\normalsize\text{止}}}}\kern-1pt
+\raisebox{-3pt}{\colorbox{#B8E0D0}{\color{#2C4A52}{\large\text{漉}}}}
 $$
 ````
 ::

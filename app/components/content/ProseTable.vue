@@ -6,6 +6,7 @@ const scroll = ref(true)
 <div class="md-table">
 	<div class="operations">
 		<ZButton @click="scroll = !scroll">
+			<Icon v-show="false" :name="scroll ? 'tabler:text-wrap-disabled' : 'tabler:text-wrap'" />
 			<Icon :name="scroll ? 'tabler:text-wrap' : 'tabler:text-wrap-disabled'" />
 			<span class="tooltip">{{ scroll ? '自动换行' : '横向滚动' }}</span>
 		</ZButton>

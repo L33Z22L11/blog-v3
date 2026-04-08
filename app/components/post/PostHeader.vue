@@ -22,12 +22,12 @@ const { copy, copied } = useCopy(shareText)
 	<Pic v-if="image" class="post-cover" :src="image" :alt="title" :filter="coverFilter" />
 	<div class="post-nav">
 		<div class="operations">
+			<Icon v-show="false" name="tabler:check" />
 			<ZButton
 				:icon="copied ? 'tabler:check' : 'tabler:share'"
+				text="文字分享"
 				@click="copy()"
-			>
-				文字分享
-			</ZButton>
+			/>
 		</div>
 
 		<div v-if="!meta?.hideInfo" class="post-info">

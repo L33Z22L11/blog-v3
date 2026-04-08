@@ -26,6 +26,7 @@ const { asideWidgets, panelTransform } = storeToRefs(layoutStore)
 		aria-label="切换菜单"
 		@click="layoutStore.toggle('sidebar')"
 	>
+		<Icon v-show="false" name="tabler:layout-sidebar-filled" />
 		<Icon class="rtl-flip" :name="layoutStore.state === 'sidebar' ? 'tabler:layout-sidebar-filled' : 'tabler:layout-sidebar'" />
 	</button>
 </div>

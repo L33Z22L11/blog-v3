@@ -70,6 +70,7 @@ onMounted(async () => {
 	</button>
 
 	<button class="operation" aria-label="复制" @click="copy()">
+		<Icon v-show="false" name="tabler:check" />
 		<Icon :name="copied ? 'tabler:check' : 'tabler:copy'" />
 	</button>
 </code>
