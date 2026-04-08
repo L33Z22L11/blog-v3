@@ -5,10 +5,8 @@ const appConfig = useAppConfig()
 <template>
 <footer class="blog-footer">
 	<nav class="footer-nav">
-		<div v-for="(group, groupIndex) in appConfig.footer.nav" :key="groupIndex" class="footer-nav-group">
-			<h3 v-if="group.title">
-				{{ group.title }}
-			</h3>
+		<div v-for="(group, groupIndex) in appConfig.footer.nav" :key="groupIndex">
+			<hgroup class="text-creative" v-text="group.title" />
 			<menu>
 				<li v-for="(item, itemIndex) in group.items" :key="itemIndex">
 					<UtilLink :to="item.url">
@@ -35,9 +33,8 @@ const appConfig = useAppConfig()
 		gap: 5vw clamp(2rem, 5%, 5vw);
 		padding-block: 3rem;
 
-		h3 {
+		hgroup {
 			margin: 0.5em;
-			font: inherit;
 		}
 
 		a {

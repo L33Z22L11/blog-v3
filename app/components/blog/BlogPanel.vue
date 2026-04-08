@@ -20,13 +20,13 @@ const { asideWidgets, panelTransform } = storeToRefs(layoutStore)
 		<Icon class="rtl-flip" name="tabler:align-right" />
 	</button>
 
+	<Icon v-show="false" name="tabler:layout-sidebar-filled" />
 	<button
 		class="toggle-sidebar mobile-only"
 		:class="{ active: layoutStore.state === 'sidebar' }"
 		aria-label="切换菜单"
 		@click="layoutStore.toggle('sidebar')"
 	>
-		<Icon v-show="false" name="tabler:layout-sidebar-filled" />
 		<Icon class="rtl-flip" :name="layoutStore.state === 'sidebar' ? 'tabler:layout-sidebar-filled' : 'tabler:layout-sidebar'" />
 	</button>
 </div>

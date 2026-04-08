@@ -32,7 +32,7 @@ defineProps<{
 		margin-top: 1rem;
 	}
 
-	&.grayscale {
+	&.grayscale :where(.iconify, img) {
 		transition: filter 0.2s;
 		filter: grayscale(0.8);
 

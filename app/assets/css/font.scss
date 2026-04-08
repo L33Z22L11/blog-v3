@@ -1,9 +1,9 @@
 :root {
-	--font-basic: "InterVariable", "Noto Sans SC-Local", "sans-serif", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
-	--font-serif: "Noto Serif SC-Local", "Noto Serif SC", serif;
-	--font-creative: "InterVariable", "Noto Sans SC-Local", "Noto Sans SC", system-ui, sans-serif;
-	--font-stroke-free: "Inter", "Lantinghei SC", "Microsoft YaHei", "MiSans", system-ui, sans-serif;
-	--font-monospace: "JetBrains Mono", "monospace", "Cascadia Code", "Consolas", "Monaco", var(--font-basic), monospace;
+	--font-basic: "InterVariable", /* Android/Linux */ "sans-serif", /* Firefox */ "Noto Sans SC", sans-serif;
+	--font-serif: /* Windows */ "Noto Serif SC-Local", "Noto Serif SC", serif;
+	--font-creative: "DOUYINSANSBOLD-GB", "InterVariable", sans-serif;
+	--font-stroke-free: "DOUYINSANSBOLD-GB", "Inter", /* macOS */ "Lantinghei SC", /* Windows */ "Microsoft YaHei", sans-serif;
+	--font-monospace: "JetBrains Mono", /* Android/Linux */ "monospace", /* Windows */ "Cascadia Code", /* Windows */ "Consolas", /* Apple */ "Monaco", var(--font-basic), monospace;
 
 	@media (max-resolution: 1.2dppx) {
 		--font-basic: "InterVariable", system-ui, sans-serif;
@@ -13,12 +13,6 @@
 /* autoprefixer: ignore next */
 // 仅在 Chrome 130+ 启用本地可变字体
 @supports (box-decoration-break: clone) {
-	@font-face {
-		font-family: "Noto Sans SC-Local";
-		font-weight: 100 900; // 不指定则为 400
-		src: local("Noto Sans SC");
-	}
-
 	@font-face {
 		font-family: "Noto Serif SC-Local";
 		font-weight: 100 900;
