@@ -175,7 +175,7 @@ onMounted(() => {
 		margin-top: 0;
 	}
 
-	.tk-comments-title, .tk-nick > strong {
+	.tk-comments-title, .tk-nick {
 		font-family: var(--font-creative);
 	}
 

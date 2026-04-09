@@ -2,7 +2,7 @@
 title: 组件样式示例
 date: 2024-09-21 23:18:18
 updated: 2026-04-06 17:25:03
-aside: [toc, meta-aside-a, meta-aside-b]
+aside: [toc, meta-aside-foo, meta-aside-bar]
 # type: story
 ---
 
@@ -282,13 +282,13 @@ $$
 
 [^copyright]: 文章末尾有特殊许可协议，还可从此处返回正文对插槽的讲解。
 
-::meta-aside-a{title="从文章插入的组件" card}
+::meta-aside-foo{title="从文章插入的组件" card}
 展示remark插件能力，为用户自己编写插件提供实现思路。
 
 虽然一般情况下， :blur[文章侧栏不需要组件]
 ::
 
-:::meta-aside-b
+:::meta-aside-bar
 ::link-card
 ---
 title: MDC 基本语法（必读）
@@ -304,16 +304,16 @@ link: https://content.nuxt.com/docs/files/markdown#mdc-syntax
 
 ```mdc
 ---
-aside: [toc, meta-aside-a, meta-aside-b]
+aside: [toc, meta-aside-foo, meta-aside-bar]
 ---
 
-::meta-aside-a{title="从文章插入的组件" card}
+::meta-aside-foo{title="从文章插入的组件" card}
 展示remark插件能力，为用户自己编写插件提供实现思路。
 
 虽然一般情况下， :blur[文章侧栏不需要组件]
 ::
 
-:::meta-aside-b
+:::meta-aside-bar
 ::link-card
 ---
 title: MDC 基本语法（必读）

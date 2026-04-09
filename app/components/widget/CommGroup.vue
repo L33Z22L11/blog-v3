@@ -23,8 +23,6 @@
 	background-position: 100% 0;
 	background-size: 200%;
 	font-size: 1.8em;
-	font-weight: 800;
-	letter-spacing: 0.05em;
 	color: transparent;
 	transition: background-position 0.2s;
 
