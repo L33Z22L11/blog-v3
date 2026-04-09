@@ -14,8 +14,10 @@ const spacing = ref(0)
 const column = ref(1)
 
 const layoutStore = useLayoutStore()
-const { panelTranslate } = storeToRefs(layoutStore)
 layoutStore.setAside(['blog-stats', 'blog-log'])
+
+const tuningRef = useTemplateRef('tuning-panel')
+useAvoidTarget(tuningRef, showTuning)
 
 const { data: listRaw } = await useAsyncData('index_posts', () => useArticleIndexOptions(), { default: () => [] })
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
@@ -33,14 +35,6 @@ const yearlyWordCount = computed(() =>
 		return formatNumber(total)
 	}),
 )
-
-watchImmediate(showTuning, (newVal) => {
-	panelTranslate.value.archiveTuning = newVal ? '0, -3em' : undefined
-})
-
-onUnmounted(() => {
-	panelTranslate.value.archiveTuning = undefined
-})
 
 function getArticleYear(article: ArticleProps) {
 	try {
@@ -106,7 +100,7 @@ function getArticleYear(article: ArticleProps) {
 		</TransitionGroup>
 	</section>
 
-	<div v-if="showTuning" class="archive-tuning card">
+	<div v-if="showTuning" ref="tuning-panel" class="archive-tuning card">
 		<ZSlider
 			v-model="spacing"
 			label="间距"
