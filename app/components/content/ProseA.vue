@@ -4,7 +4,11 @@ const props = defineProps<{
 	icon?: string | boolean
 }>()
 
-const icon = computed(() => typeof props.icon === 'string' ? props.icon : getDomainIcon(props.href))
+const icon = computed(() => {
+	if (props.icon === false) return false
+	if (typeof props.icon === 'string') return props.icon
+	return getDomainIcon(props.href)
+})
 const tip = computed(() => ({
 	content: isExtLink(props.href) ? getDomain(props.href) : safelyDecodeUriComponent(props.href),
 	inlinePositioning: true,
