@@ -72,7 +72,7 @@ export default [
 				avatar: getGithubAvatar('abloom25'),
 				archs: ['Nuxt', 'Cloudflare'],
 				date: '2024-12-09',
-				comment: '高中生，技术学习中。',
+				comment: '高中生，技术学习中，因AI发展太快差点学会前端。',
 			},
 			{
 				author: 'Mugzx',
