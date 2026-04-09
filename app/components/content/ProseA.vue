@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const props = defineProps<{
 	href: string
-	icon?: string
+	icon?: string | boolean
 }>()
 
-const icon = computed(() => props.icon ?? getDomainIcon(props.href))
+const icon = computed(() => typeof props.icon === 'string' ? props.icon : getDomainIcon(props.href))
 const tip = computed(() => ({
 	content: isExtLink(props.href) ? getDomain(props.href) : safelyDecodeUriComponent(props.href),
 	inlinePositioning: true,
