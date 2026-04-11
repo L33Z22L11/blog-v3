@@ -1,14 +1,17 @@
 <script setup lang="ts">
 const layoutStore = useLayoutStore()
-const { asideWidgets, panelTransform } = storeToRefs(layoutStore)
+const { asideWidgets, avoidTargets } = storeToRefs(layoutStore)
+
+const panelRef = useTemplateRef('blog-panel')
+const { transform } = useAvoidTransform(panelRef, avoidTargets)
 </script>
 
 <template>
-<!-- 使用 :style="{ transform: panelTransform }" 可能丢失响应性 -->
 <div
 	id="blog-panel"
+	ref="blog-panel"
 	:class="{ 'has-active': layoutStore.state !== 'none' }"
-	:style="{ '--transform': panelTransform }"
+	:style="{ '--transform': transform }"
 >
 	<button
 		v-if="asideWidgets.length"

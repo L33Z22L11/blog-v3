@@ -3,27 +3,24 @@ const props = defineProps<{
 	totalPages: number
 	expandPages?: number
 	sticky?: boolean
+	avoid?: boolean
 }>()
 
 const page = defineModel<number>({ required: true })
 const pageArr = computed(() => getPaginationIndicator(page.value, props.totalPages, props.expandPages ?? 2))
 
-const layoutStore = useLayoutStore()
-const { panelTranslate } = storeToRefs(layoutStore)
+const paginationEl = useTemplateRef('pagination')
 const anchorEl = useTemplateRef('pagination-anchor')
 const expand = useElementVisibility(anchorEl)
 
-onMounted(() => {
-	panelTranslate.value.pagination = '0, -2em'
-})
-
-onUnmounted(() => {
-	panelTranslate.value.pagination = undefined
-})
+if (props.avoid) {
+	useAvoidTarget(paginationEl, toRef(props, 'avoid'))
+}
 </script>
 
 <template>
 <nav
+	ref="pagination"
 	class="pagination"
 	:class="{ sticky, expand }"
 	:aria-label="`第${page}页，共${totalPages}页`"
