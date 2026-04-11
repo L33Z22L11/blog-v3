@@ -28,14 +28,14 @@ export function useAvoidTransform(
 	watch([windowHeight, windowWidth], updateOriginalPosition)
 	onMounted(updateOriginalPosition)
 
-	watch(targets, (list) => {
+	watchImmediate(targets, (list) => {
 		const newMap = new Map<AvoidTarget, UseElementBoundingReturn>()
 		for (const target of list) {
 			if (target.value)
 				newMap.set(target, targetBounds.value.get(target) ?? useElementBounding(target))
 		}
 		targetBounds.value = newMap
-	}, { immediate: true, deep: true })
+	}, { deep: true })
 
 	const transform = computed(() => {
 		if (!panelRef.value)
@@ -52,7 +52,7 @@ export function useAvoidTransform(
 			if (vOverlap > 0)
 				maxOverlap = Math.max(maxOverlap, vOverlap)
 		}
-		return maxOverlap > 0 ? `translateY(-${(maxOverlap + 16).toFixed(2)}px)` : ''
+		return maxOverlap > 0 ? `translateY(-${maxOverlap.toFixed(2) + 16}px)` : ''
 	})
 
 	return {
@@ -77,7 +77,7 @@ export function useAvoidTarget(
 			layoutStore.avoidTargets.splice(idx, 1)
 	}
 
-	watchImmediate([() => toValue(active), targetRef], ([isActive]) => {
+	watchImmediate([toRef(active), targetRef], ([isActive]) => {
 		if (isActive ?? true)
 			add()
 		else
