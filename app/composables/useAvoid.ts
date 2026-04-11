@@ -3,30 +3,30 @@ import type { UseElementBoundingReturn } from '@vueuse/core'
 export type AvoidTarget = Ref<HTMLElement | null | undefined>
 
 export function useAvoidTransform(
-	panelRef: AvoidTarget,
+	originRef: AvoidTarget,
 	targets: Ref<AvoidTarget[]>,
 ) {
 	const { height: windowHeight, width: windowWidth } = useWindowSize()
 	const targetBounds = shallowRef(new Map<AvoidTarget, UseElementBoundingReturn>())
-	const originalPosition = shallowRef({ top: 0, bottom: 0, left: 0, right: 0 })
+	const originRect = shallowRef({ top: 0, bottom: 0, left: 0, right: 0 })
 
-	function updateOriginalPosition() {
-		const panel = panelRef.value
-		if (!panel)
+	function updateOriginPosition() {
+		const origin = originRef.value
+		if (!origin)
 			return
-		const style = getComputedStyle(panel)
+		const style = getComputedStyle(origin)
 		const bottom = Number.parseFloat(style.bottom) || 0
 		const right = Number.parseFloat(style.insetInlineEnd || style.right) || 0
-		originalPosition.value = {
-			top: windowHeight.value - bottom - panel.offsetHeight,
+		originRect.value = {
+			top: windowHeight.value - bottom - origin.offsetHeight,
 			bottom: windowHeight.value - bottom,
-			left: windowWidth.value - right - panel.offsetWidth,
+			left: windowWidth.value - right - origin.offsetWidth,
 			right: windowWidth.value - right,
 		}
 	}
 
-	watch([windowHeight, windowWidth], updateOriginalPosition)
-	onMounted(updateOriginalPosition)
+	watch([windowHeight, windowWidth], updateOriginPosition)
+	onMounted(updateOriginPosition)
 
 	watchImmediate(targets, (list) => {
 		const newMap = new Map<AvoidTarget, UseElementBoundingReturn>()
@@ -38,21 +38,20 @@ export function useAvoidTransform(
 	}, { deep: true })
 
 	const transform = computed(() => {
-		if (!panelRef.value)
+		if (!originRef.value)
 			return ''
-		const { top, bottom, left, right } = originalPosition.value
-		let maxOverlap = 0
-		for (const [target, bounds] of targetBounds.value) {
-			if (!target.value)
-				continue
-			const hOverlap = Math.min(right, bounds.right.value) - Math.max(left, bounds.left.value)
-			if (hOverlap <= 0)
-				continue
-			const vOverlap = Math.min(bottom, bounds.bottom.value) - Math.max(top, bounds.top.value)
-			if (vOverlap > 0)
-				maxOverlap = Math.max(maxOverlap, vOverlap)
-		}
-		return maxOverlap > 0 ? `translateY(-${maxOverlap.toFixed(2) + 16}px)` : ''
+		const { bottom: originBottom, left: originLeft, right: originRight, top: originTop } = originRect.value
+
+		const shifts = Array.from(targetBounds.value.values())
+			.filter(({ top, bottom, left, right }) => {
+				const hasHOverlap = originLeft < right.value && originRight > left.value
+				const hasVOverlap = top.value < originBottom && bottom.value > originTop
+				return hasHOverlap && hasVOverlap
+			})
+			.map(({ top }) => originBottom - top.value)
+
+		const maxShift = Math.max(...shifts)
+		return maxShift > 0 ? `translateY(-${maxShift + 16}px)` : ''
 	})
 
 	return {

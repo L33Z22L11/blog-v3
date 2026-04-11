@@ -17,6 +17,7 @@ catalogs:
     shiki: ^4.0.2
     unist-util-visit: ^5.1.0
     vfile: ^6.0.3
+    zod: ^4.3.6
   framework:
     '@zinkawaii/tsconfig': ^0.1.0
     ci-info: ^4.4.0
@@ -75,6 +76,7 @@ onlyBuiltDependencies:
   - rolldown
   - sharp
   - unrs-resolver
+  - vue-demi
 
 patchedDependencies:
   '@nuxt/image': patches/@nuxt__image.patch

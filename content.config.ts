@@ -65,6 +65,7 @@ export const collections = {
 				onUrl: (url, entry) => {
 					url.lastmod = new Date(entry.updated || entry.published || entry.date || undefined).toLocaleDateString('sv')
 				},
+				z,
 			}),
 		}),
 	}),
