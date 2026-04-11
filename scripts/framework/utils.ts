@@ -73,6 +73,8 @@ export async function getLinkInfo(e: FeedEntry): Promise<ServerResp> {
 	})
 }
 
+const sanRegex = /^DNS:$/
+
 export async function getCertDomains(options: tls.ConnectionOptions): Promise<string[]> {
 	options = { port: 443, timeout: 5000, ...options }
 	return new Promise((resolve) => {
@@ -80,7 +82,7 @@ export async function getCertDomains(options: tls.ConnectionOptions): Promise<st
 			const cert = socket.getPeerCertificate(true)
 			const san: string[] = cert.subjectaltname
 				?.split(', ')
-				.map(s => s.replace(/^DNS:/, '')) ?? []
+				.map(s => s.replace(sanRegex, '')) ?? []
 			const domains = san.length ? san : [cert.subject.CN] as string[]
 			resolve(domains)
 			socket.end()

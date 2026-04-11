@@ -3,6 +3,8 @@ const slots = defineSlots<{
 	default: () => VNode[]
 }>()
 
+const chatRegex = /^\{(?<control>\.|:)?(?<caption>.*)\}$/
+
 function render() {
 	const slotContent = slots.default()
 	if (!slotContent)
@@ -15,7 +17,7 @@ function render() {
 		if (typeof textContent !== 'string')
 			return body
 
-		const match = textContent.match(/^\{(?<control>\.|:)?(?<caption>.*)\}$/)
+		const match = textContent.match(chatRegex)
 		if (!match)
 			return body
 
