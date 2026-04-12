@@ -65,14 +65,22 @@ onMounted(async () => {
 		v-text="code"
 	/>
 
-	<button v-if="showUndo" class="operation" aria-label="恢复原始内容" @click="undo">
-		<Icon name="tabler:arrow-back-up" />
-	</button>
-
+	<ZButton
+		v-if="showUndo"
+		class="operation"
+		variant="text"
+		icon="tabler:arrow-back-up"
+		aria-label="恢复原始内容"
+		@click="undo"
+	/>
 	<Icon v-show="false" name="tabler:check" />
-	<button class="operation" aria-label="复制" @click="copy()">
-		<Icon :name="copied ? 'tabler:check' : 'tabler:copy'" />
-	</button>
+	<ZButton
+		class="operation"
+		variant="text"
+		:icon="copied ? 'tabler:check' : 'tabler:copy'"
+		aria-label="复制"
+		@click="copy()"
+	/>
 </code>
 </template>
 
@@ -133,11 +141,6 @@ onMounted(async () => {
 		margin-inline-start: -0.5em;
 		padding: 0.5em;
 		color: var(--c-text-2);
-		transition: color, 0.2s;
-
-		&:hover {
-			color: var(--c-primary);
-		}
 	}
 }
 </style>

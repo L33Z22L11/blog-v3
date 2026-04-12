@@ -13,25 +13,25 @@ const { transform } = useAvoidTransform(panelRef, avoidTargets)
 	:class="{ 'has-active': layoutStore.state !== 'none' }"
 	:style="{ '--transform': transform }"
 >
-	<button
+	<ZButton
 		v-if="asideWidgets.length"
-		class="toggle-aside widescreen-only"
+		class="toggle-aside widescreen-only rtl-flip"
 		:class="{ active: layoutStore.state === 'aside' }"
+		icon="tabler:align-right"
+		variant="text"
 		aria-label="切换侧边栏"
 		@click="layoutStore.toggle('aside')"
-	>
-		<Icon class="rtl-flip" name="tabler:align-right" />
-	</button>
+	/>
 
 	<Icon v-show="false" name="tabler:layout-sidebar-filled" />
-	<button
-		class="toggle-sidebar mobile-only"
+	<ZButton
+		class="toggle-sidebar mobile-only rtl-flip"
+		:icon="layoutStore.state === 'sidebar' ? 'tabler:layout-sidebar-filled' : 'tabler:layout-sidebar'"
+		variant="text"
 		:class="{ active: layoutStore.state === 'sidebar' }"
 		aria-label="切换菜单"
 		@click="layoutStore.toggle('sidebar')"
-	>
-		<Icon class="rtl-flip" :name="layoutStore.state === 'sidebar' ? 'tabler:layout-sidebar-filled' : 'tabler:layout-sidebar'" />
-	</button>
+	/>
 </div>
 </template>
 

@@ -42,10 +42,13 @@ const listRecommended = computed(() => orderBy(
 			:categories
 		>
 			<ZSecret>
-				<UtilLink to="/preview" class="preview-entrance">
-					<Icon name="tabler:shield-lock" />
-					查看预览文章
-				</UtilLink>
+				<ZButton
+					variant="text"
+					to="/preview"
+					class="preview-entrance"
+					icon="tabler:shield-lock"
+					text="查看预览文章"
+				/>
 			</ZSecret>
 		</PostOrderToggle>
 

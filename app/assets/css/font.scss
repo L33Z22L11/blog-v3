@@ -6,7 +6,7 @@
 	--font-monospace: "JetBrains Mono", /* Android/Linux */ "monospace", /* Windows */ "Cascadia Code", /* Windows */ "Consolas", /* Apple */ "Monaco", var(--font-basic), monospace;
 
 	@media (max-resolution: 1.2dppx) {
-		--font-basic: "InterVariable", system-ui, sans-serif;
+		--font-sans: "InterVariable", system-ui, sans-serif;
 	}
 }
 

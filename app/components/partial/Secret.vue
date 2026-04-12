@@ -1,6 +1,12 @@
+<script lang="ts" setup>
+defineProps<{
+	secretDelay?: string
+}>()
+</script>
+
 <template>
 <!-- 外层元素用于占位 -->
-<div class="secret-container">
+<div class="secret-container" :style="{ '--secret-delay': secretDelay }">
 	<div class="secret">
 		<slot />
 	</div>

@@ -6,11 +6,13 @@ const props = defineProps<{
 	zIndex?: number
 }>()
 
-const show = defineModel<boolean>('show')
+const show = defineModel<boolean>('show', { required: true })
 const style = computed<CSSProperties>(() => ({
 	'--z-index-popover': props.zIndex,
 	'--bdfilter': props.blur ? `blur(${props.blur === true ? '4px' : props.blur})` : 'none',
 }))
+
+useBack(false, () => show.value = false)
 </script>
 
 <template>

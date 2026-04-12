@@ -19,7 +19,7 @@ const icon = computed(() => props.icon || 'tabler:message-2')
 
 <style lang="scss" scoped>
 .quote {
-	font-size: 1.2rem;
+	font-size: 1.2em;
 	line-height: 1.5;
 	color: var(--c-text-2);
 	isolation: isolate;

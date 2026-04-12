@@ -10,9 +10,12 @@ const coverFilter = computed(() => props.meta?.coverFilter || (props.meta?.cover
 const categoryLabel = computed(() => props.categories?.[0])
 const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 
-const shareText = `【${appConfig.title}】${props.title}\n\n${
-	props.description ? `${props.description}\n\n` : ''}${
-	new URL(props.path!, appConfig.url).href}`
+const shareText = joinWith(
+	'\n\n',
+	`【${appConfig.title}】${props.title}`,
+	props.description,
+	new URL(props.path!, appConfig.url).href,
+)
 
 const { copy, copied } = useCopy(shareText)
 </script>
