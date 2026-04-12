@@ -1,4 +1,4 @@
-export type LayoutState = 'none' | 'sidebar' | 'aside'
+export type LayoutState = 'none' | 'sidebar' | 'aside' | 'search' | 'lightbox'
 
 export const useLayoutStore = defineStore('layout', () => {
 	const router = useRouter()

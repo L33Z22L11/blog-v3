@@ -1,10 +1,10 @@
-import { dash } from 'radash'
+import { kebabCase } from 'es-toolkit/string'
 import { name } from '~~/package.json'
 
 export const fontFamilyOptions = [
 	{
 		label: '自动',
-		value: 'var(--font-sans)',
+		value: 'var(--font-basic)',
 	},
 	{
 		label: '大中宫',
@@ -52,7 +52,7 @@ export const usePreferenceStore = defineStore('preference', () => {
 		if (!import.meta.client)
 			return
 		for (const [key, value] of Object.entries(data))
-			document.documentElement.style.setProperty(`--${dash(key)}`, value)
+			document.documentElement.style.setProperty(`--${kebabCase(key)}`, value)
 	}
 
 	watchDeep(preferences, updateCssVar)
