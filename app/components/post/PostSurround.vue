@@ -36,12 +36,12 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 
 <div v-if="prev || next" class="surround-post" dir="ltr">
 	<ReuseTemplate
-		:post="next" icon="solar:rewind-back-bold-duotone"
-		fallback-icon="solar:document-add-bold-duotone" fallback-text="新故事即将发生"
+		:post="next" icon="zi:solar-rewind-back-bold-duotone"
+		fallback-icon="line-md:coffee-twotone-loop" fallback-text="新故事即将发生"
 	/>
 	<ReuseTemplate
-		:post="prev" icon="solar:rewind-forward-bold-duotone"
-		fallback-icon="solar:reel-bold-duotone" fallback-text="已抵达博客尽头"
+		:post="prev" icon="zi:solar-rewind-forward-bold-duotone"
+		fallback-icon="line-md:construction-twotone" fallback-text="已抵达博客尽头"
 		align-end
 	/>
 </div>
@@ -51,7 +51,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 .surround-post {
 	contain: layout;
 	display: flex;
-	justify-content: space-between;
+	flex-wrap: wrap;
 	gap: 1rem;
 	margin: 3rem 1rem;
 }
@@ -70,10 +70,12 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 	&[align-end] {
 		// direction: rtl 会导致末尾标点居左
 		flex-direction: row-reverse;
+		margin-inline-start: auto;
 		text-align: end;
 	}
 
 	> .surround-text {
+		text-wrap: balance;
 		transition: transform 0.2s;
 
 		> .date {

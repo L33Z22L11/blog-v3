@@ -127,18 +127,16 @@
 	}
 }
 
-// 生成响应式可见性类
-$visibility-rules: (
-	only: min-width,
-	hidden: max-width,
-);
-
 @each $name, $size in $breakpoints {
-	@each $suffix, $direction in $visibility-rules {
-		@media (#{$direction}: #{$size}) {
-			.#{$name}-#{$suffix} {
-				display: none !important; /* stylelint-disable-line declaration-no-important */
-			}
+	@media not (max-width: $size) {
+		.#{$name}-only {
+			display: none !important; /* stylelint-disable-line declaration-no-important */
+		}
+	}
+
+	@media (max-width: $size) {
+		.#{$name}-hidden {
+			display: none !important; /* stylelint-disable-line declaration-no-important */
 		}
 	}
 }

@@ -31,8 +31,8 @@ if (import.meta.dev) {
 
 <template>
 <div class="md-excerpt gradient-card">
-	<span class="dynamic"><Icon name="ph:highlighter-bold" />{{ excerpt }}{{ caret }}</span>
-	<span class="static"><Icon name="ph:highlighter-bold" />{{ props.excerpt }}</span>
+	<span class="dynamic"><Icon name="tabler:sparkles-2" />{{ excerpt }}{{ caret }}</span>
+	<span class="static"><Icon name="tabler:sparkles-2" />{{ props.excerpt }}</span>
 </div>
 </template>
 

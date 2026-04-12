@@ -3,6 +3,8 @@ const slots = defineSlots<{
 	default: () => VNode[]
 }>()
 
+const timelineRegex = /^\{(?<caption>.*)\}$/
+
 function render() {
 	const slotContent = slots.default()
 	if (!slotContent)
@@ -10,10 +12,12 @@ function render() {
 
 	return slotContent.map((node: VNode) => {
 		// WARN: 此处使用了非标准的 v-slot:default
-		const textContent: string = (node.children as any)?.default?.()[0].children || ''
-		const match = textContent?.match?.(/^\{(?<caption>.*)\}$/)
-		return match?.groups
-			? <dt class="timeline-caption">{match.groups.caption}</dt>
+		const textContent = (node.children as any)?.default?.()[0].children
+		const matchGroups = typeof textContent === 'string'
+			? textContent.match(timelineRegex)?.groups
+			: undefined
+		return matchGroups
+			? <dt class="timeline-caption">{matchGroups.caption}</dt>
 			: <dd class="timeline-body card">{node}</dd>
 	})
 }

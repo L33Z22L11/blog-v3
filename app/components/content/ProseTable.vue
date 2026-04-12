@@ -1,19 +1,21 @@
 <script setup lang="ts">
-const scroll = ref(true)
+const [scroll, toggleScroll] = useToggle(true)
 </script>
 
 <template>
-<div class="md-table">
-	<div class="operations">
-		<ZButton @click="scroll = !scroll">
-			<Icon :name="scroll ? 'ph:arrow-u-down-left-bold' : 'ph:arrows-out-line-horizontal-bold'" />
-			<span class="tooltip">{{ scroll ? '自动换行' : '横向滚动' }}</span>
-		</ZButton>
-	</div>
+<Tooltip class="md-table" tag="figure" interactive :delay="500">
+	<template #content>
+		<Icon v-show="false" :name="scroll ? 'tabler:text-wrap-disabled' : 'tabler:text-wrap'" />
+		<ZButton
+			:icon="scroll ? 'tabler:text-wrap' : 'tabler:text-wrap-disabled'"
+			:text="scroll ? '自动换行' : '横向滚动'"
+			@click="toggleScroll()"
+		/>
+	</template>
 	<table class="scrollcheck-x" :class="{ scroll }">
 		<slot />
 	</table>
-</div>
+</Tooltip>
 </template>
 
 <style lang="scss" scoped>
@@ -30,28 +32,6 @@ const scroll = ref(true)
 		display: block;
 		white-space: nowrap;
 		word-break: normal;
-	}
-}
-
-.operations {
-	position: sticky;
-	opacity: 0;
-	top: 0;
-	height: 0;
-	text-align: end;
-	transition: opacity 0.2s;
-	z-index: 1;
-
-	.tooltip {
-		display: none;
-	}
-
-	:hover > & {
-		opacity: 1;
-
-		&:hover .tooltip {
-			display: revert;
-		}
 	}
 }
 

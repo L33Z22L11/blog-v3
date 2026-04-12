@@ -1,9 +1,9 @@
 {
   "name": "clarity",
   "type": "module",
-  "version": "3.6.4",
+  "version": "3.7.0-alpha.2",
   "private": true,
-  "packageManager": "pnpm@10.32.1",
+  "packageManager": "pnpm@10.33.0",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "engines": {
     "node": ">=22.18 <23 || >=23.6 <24 || >=24",
@@ -55,16 +55,16 @@
     "temporal-polyfill": "catalog:util",
     "vue": "catalog:framework",
     "vue-router": "catalog:framework",
-    "vue-tippy": "catalog:ui"
+    "vue-tippy": "catalog:ui",
+    "zod": "catalog:content"
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:quality",
     "@clack/prompts": "catalog:util",
     "@iconify-json/catppuccin": "catalog:ui",
-    "@iconify-json/ph": "catalog:ui",
+    "@iconify-json/line-md": "catalog:ui",
     "@iconify-json/ri": "catalog:ui",
     "@iconify-json/simple-icons": "catalog:ui",
-    "@iconify-json/solar": "catalog:ui",
     "@nuxt/a11y": "catalog:quality",
     "@nuxt/hints": "catalog:quality",
     "@zinkawaii/stylelint-config": "catalog:quality",

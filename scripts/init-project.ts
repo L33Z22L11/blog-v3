@@ -47,7 +47,7 @@ fs.writeFileSync(PATH_APP_CONFIG, appConfigContent)
 const PATH_BLOG_CONFIG = './blog.config.ts'
 const blogConfigContent = fs.readFileSync(PATH_BLOG_CONFIG, 'utf8')
 	.replace(/'[^']*纸鹿[^']*'/g, '\'博客\'')
-	.replace(/'[^']*zhilu[^']*'/g, match => match.replace(/zhilu/, 'example'))
+	.replace(/'[^']*zhilu[^']*'/g, match => match.replace('zhilu', 'example'))
 fs.writeFileSync(PATH_BLOG_CONFIG, blogConfigContent)
 
 // 处理 redirects.json

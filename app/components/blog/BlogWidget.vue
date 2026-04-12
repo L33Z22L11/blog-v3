@@ -2,6 +2,7 @@
 defineProps<{
 	title?: string
 	card?: boolean
+	grayscale?: boolean
 	dim?: boolean
 	bgImg?: string
 	bgRight?: boolean
@@ -9,7 +10,7 @@ defineProps<{
 </script>
 
 <template>
-<section class="blog-widget" :class="{ dim }">
+<section class="blog-widget" :class="{ grayscale, dim }">
 	<hgroup class="widget-title text-creative">
 		<slot name="title">
 			{{ title }}
@@ -31,6 +32,17 @@ defineProps<{
 		margin-top: 1rem;
 	}
 
+	&.grayscale :where(.iconify, img) {
+		transition: filter 0.2s;
+		filter: grayscale(0.8);
+
+		#blog-aside:hover &,
+		&:focus-within,
+		#blog-aside.show & {
+			filter: grayscale(0);
+		}
+	}
+
 	&.dim {
 		opacity: 0.3;
 		transition: opacity 0.2s;
@@ -50,6 +62,10 @@ defineProps<{
 	gap: 0.5rem;
 	margin: 0.5rem;
 	color: var(--c-text-2);
+
+	&:empty {
+		display: none;
+	}
 
 	a {
 		transition: color 0.2s;

@@ -8,7 +8,7 @@ withDefaults(defineProps<{
 	code?: string
 	language?: BundledLanguage
 }>(), {
-	icon: 'solar:siren-rounded-bold-duotone',
+	icon: 'line-md:cloud-alt-print-twotone-loop',
 	language: 'log',
 })
 </script>

@@ -6,7 +6,7 @@ const archIcons = {
 	'Deno Deploy': 'simple-icons:deno',
 	'EdgeOne': 'simple-icons:cloudnativebuild', // 不准确
 	'Express': 'simple-icons:express',
-	'Fly': 'ph:balloon-bold',
+	'Fly': 'tabler:air-balloon',
 	'Ghost': 'simple-icons:ghost',
 	'GitHub Pages': 'simple-icons:github',
 	'Golang': 'simple-icons:go',
@@ -32,9 +32,9 @@ const archIcons = {
 	'VuePress': 'uim:vuejs',
 	'WordPress': 'simple-icons:wordpress',
 	'Zeabur': 'tabler:square-letter-z-filled', // 不准确
-	'国内 CDN': 'ph:cloud-check-fill',
-	'服务器': 'ph:hard-drives-fill',
-	'虚拟主机': 'ph:file-cloud-bold',
+	'国内 CDN': 'tabler:cloud-data-connection',
+	'服务器': 'tabler:server',
+	'虚拟主机': 'tabler:cloud-upload',
 }
 
 export type Arch = keyof typeof archIcons
@@ -69,7 +69,7 @@ const mainDomainIcons: Record<string, string> = {
 	'pages.dev': 'simple-icons:cloudflare',
 	'qq.com': 'ri:qq-fill',
 	'taobao.com': 'ri:taobao-fill',
-	'thisis.host': 'ph:star-four-fill',
+	'thisis.host': 'tabler:star-filled',
 	'tmall.com': 'ri:taobao-fill',
 	'v2ex.com': 'simple-icons:v2ex',
 	'vercel.app': 'simple-icons:vercel',

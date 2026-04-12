@@ -36,7 +36,7 @@ defineEmits<{
 			aria-label="关闭灯箱"
 			@click="$emit('close')"
 		>
-			<Icon name="ph:x-bold" />
+			<Icon name="tabler:x" />
 		</button>
 	</div>
 </Transition>

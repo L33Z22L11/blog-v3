@@ -59,14 +59,14 @@ function toggleDirection() {
 			v-if="allowAscending"
 			class="toggle-direction"
 			:class="{ ascending: isAscending }"
-			icon="ph:sort-ascending-bold"
+			icon="tabler:sort-ascending"
 			variant="text"
 			aria-label="切换排序方向"
 			@click="toggleDirection"
 		/>
 
 		<ZButton
-			icon="ph:sort-ascending-bold"
+			icon="tabler:sort-ascending"
 			variant="text"
 			:text="orderMap[sortOrder] || sortOrder"
 			aria-label="切换排序方式"

@@ -3,27 +3,24 @@ const props = defineProps<{
 	totalPages: number
 	expandPages?: number
 	sticky?: boolean
+	avoid?: boolean
 }>()
 
 const page = defineModel<number>({ required: true })
 const pageArr = computed(() => getPaginationIndicator(page.value, props.totalPages, props.expandPages ?? 2))
 
-const layoutStore = useLayoutStore()
-const { panelTranslate } = storeToRefs(layoutStore)
+const paginationEl = useTemplateRef('pagination')
 const anchorEl = useTemplateRef('pagination-anchor')
 const expand = useElementVisibility(anchorEl)
 
-onMounted(() => {
-	panelTranslate.value.pagination = '0, -2em'
-})
-
-onUnmounted(() => {
-	panelTranslate.value.pagination = undefined
-})
+if (props.avoid) {
+	useAvoidTarget(paginationEl, toRef(props, 'avoid'))
+}
 </script>
 
 <template>
 <nav
+	ref="pagination"
 	class="pagination"
 	:class="{ sticky, expand }"
 	:aria-label="`第${page}页，共${totalPages}页`"
@@ -32,7 +29,7 @@ onUnmounted(() => {
 	<ZButton
 		:disabled="page <= 1"
 		class="pagination-button rtl-flip"
-		icon="ph:arrow-fat-left-duotone"
+		icon="tabler:arrow-left"
 		aria-label="上一页"
 		@click="page--"
 	/>
@@ -53,7 +50,7 @@ onUnmounted(() => {
 	<ZButton
 		:disabled="page >= totalPages"
 		class="pagination-button rtl-flip"
-		icon="ph:arrow-fat-right-duotone"
+		icon="tabler:arrow-right"
 		aria-label="下一页"
 		@click="page++"
 	/>

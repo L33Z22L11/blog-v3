@@ -1,8 +1,8 @@
 ---
 title: 组件样式示例
 date: 2024-09-21 23:18:18
-updated: 2025-02-12 11:18:33
-
+updated: 2026-04-06 17:25:03
+aside: [toc, meta-aside-foo, meta-aside-bar]
 # type: story
 ---
 
@@ -89,11 +89,11 @@ class: gradient-card active
 ::alert{title="自定义图标"}
   ::tab{:tabs='["组件","语法"]'}
   #tab1
-  你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="ph:swatches-duotone"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
+  你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="tabler:color-swatch"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
 
   #tab2
   ```mdc wrap
-  你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="ph:swatches-duotone"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
+  你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="tabler:color-swatch"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
   ```
   ::
 ::
@@ -162,10 +162,10 @@ class: gradient-card active
 \
 ```
 
-````md [更多功能] icon=ph:files-duotone wrap expand
+````md [更多功能] icon=tabler:files wrap expand
 - 在 Markdown 文件中，可以通过代码块语法的 meta 标记
   - `wrap` 直接启用自动换行功能，以展示特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别特别长的文本而不换行
-  - `icon=ph:files-duotone` 自定义代码块图标
+  - `icon=tabler:files` 自定义代码块图标
   - `expand` 禁用自动折叠功能
 
 # 代码块语法
@@ -202,37 +202,135 @@ class: gradient-card active
 | ----------- | -------------: | :-------------------------------------------------------------------------------- | :------------------------- |
 | 已实现       | 已实现         | 可以切换滚动方式                                                                  |
 
+### 脚注
+
+由remark-gfm的micromark-extension-gfm-footnote驱动的脚注[^micromark-extension-gfm-footnote]。
+
+[^micromark-extension-gfm-footnote]: [README of micromark-extension-gfm-footnote](https://github.com/micromark/micromark-extension-gfm-footnote#use)
+
 ### 数学公式
 
-> 由 $\KaTeX$ 驱动，支持 $\TeX$ 和部分 $\LaTeX$ 语法。如果 Markdown 正文需要直接使用 \$ 符号，需要使用 `\$` 转义。
+> 由 remark-$\KaTeX$ 驱动，支持 $\TeX$ 和部分 $\LaTeX$ 语法。如果 Markdown 正文需要直接使用 \$ 符号，需要使用 `\$` 转义。
 >
 > [支持语法列表](https://katex.org/docs/supported)（[中文版](https://www.luogu.com.cn/paste/hs3jg81l)）
 
 ::tab{:tabs='["组件","语法"]'}
 #tab1
-$\text{课程绩点} = \frac{\text{课程分数(成绩)}}{10} - 5$
+行内公式 $\text{课程绩点} = \frac{\text{课程分数(成绩)}}{10} - 5$
 
-$$ \text{学分绩点} = \text{课程学分} \times \text{课程绩点} $$
+$$
+\text{学分绩点} = \text{课程学分} \times \text{课程绩点}
+$$
 
 ```math
-\text{平均绩点(GPA)} =\frac {\text{学分绩点之和}}{\text{课程学分之和}} = \frac{\sum (\text{课程学分} \times \text{课程mag绩点})}{\sum \text{课程mag学分}}
+\text{平均绩点(GPA)} =\frac {\text{学分绩点之和}}{\text{课程学分之和}} = \frac{\sum (\text{课程学分} \times \text{课程绩点})}{\sum \text{课程学分}}
 ```
+
+$$
+\raisebox{-2pt}{\colorbox{#4A90A4}{\color{white}{\Large\text{纸}}}}\kern-2pt
+\raisebox{-4pt}{\colorbox{#5BA88C}{\color{white}{\large\text{鹿}}}}\kern-3pt
+\raisebox{-1pt}{\colorbox{#6B8E9F}{\color{white}{\normalsize\text{至}}}}\kern-1pt
+\raisebox{-3pt}{\colorbox{#A8D5E2}{\color{#2C4A52}{\large\text{麓}}}}\kern-2pt
+\raisebox{0pt}{\colorbox{#B8E0D0}{\color{#2C4A52}{\normalsize\text{不}}}}\kern-3pt
+\raisebox{-5pt}{\colorbox{#5A9AA8}{\color{white}{\large\text{知}}}}\kern-1pt
+\raisebox{-2pt}{\colorbox{#C5E0E8}{\color{#2C4A52}{\Large\text{路}}}}
+\quad
+\raisebox{-4pt}{\colorbox{#5BA88C}{\color{white}{\large\text{支}}}}\kern-2pt
+\raisebox{-1pt}{\colorbox{#4A90A4}{\color{white}{\Large\text{炉}}}}\kern-3pt
+\raisebox{-3pt}{\colorbox{#7BC4B5}{\color{white}{\normalsize\text{制}}}}\kern-1pt
+\raisebox{-5pt}{\colorbox{#A8D5E2}{\color{#2C4A52}{\large\text{麓}}}}\kern-2pt
+\raisebox{-2pt}{\colorbox{#C5E0E8}{\color{#2C4A52}{\Large\text{不}}}}\kern-3pt
+\raisebox{0pt}{\colorbox{#6B8E9F}{\color{white}{\normalsize\text{止}}}}\kern-1pt
+\raisebox{-3pt}{\colorbox{#B8E0D0}{\color{#2C4A52}{\large\text{漉}}}}
+$$
 
 #tab2
 ````mdc wrap
-$\text{课程绩点} = \frac{\text{课程分数(成绩)}}{10} - 5$
+行内公式 $\text{课程绩点} = \frac{\text{课程分数(成绩)}}{10} - 5$
 
-$$ \text{学分绩点} = \text{课程学分} \times \text{课程绩点} $$
+$$
+\text{学分绩点} = \text{课程学分} \times \text{课程绩点}
+$$
 
 ```math
-\text{平均绩点(GPA)} =\frac {\text{学分绩点之和}}{\text{课程学分之和}} = \frac{\sum (\text{课程学分} \times \text{课程mag绩点})}{\sum \text{课程mag学分}}
+\text{平均绩点(GPA)} =\frac {\text{学分绩点之和}}{\text{课程学分之和}} = \frac{\sum (\text{课程学分} \times \text{课程绩点})}{\sum \text{课程学分}}
 ```
+
+$$
+\raisebox{-2pt}{\colorbox{#4A90A4}{\color{white}{\Large\text{纸}}}}\kern-2pt
+\raisebox{-4pt}{\colorbox{#5BA88C}{\color{white}{\large\text{鹿}}}}\kern-3pt
+\raisebox{-1pt}{\colorbox{#6B8E9F}{\color{white}{\normalsize\text{至}}}}\kern-1pt
+\raisebox{-3pt}{\colorbox{#A8D5E2}{\color{#2C4A52}{\large\text{麓}}}}\kern-2pt
+\raisebox{0pt}{\colorbox{#B8E0D0}{\color{#2C4A52}{\normalsize\text{不}}}}\kern-3pt
+\raisebox{-5pt}{\colorbox{#5A9AA8}{\color{white}{\large\text{知}}}}\kern-1pt
+\raisebox{-2pt}{\colorbox{#C5E0E8}{\color{#2C4A52}{\Large\text{路}}}}
+\quad
+\raisebox{-4pt}{\colorbox{#5BA88C}{\color{white}{\large\text{支}}}}\kern-2pt
+\raisebox{-1pt}{\colorbox{#4A90A4}{\color{white}{\Large\text{炉}}}}\kern-3pt
+\raisebox{-3pt}{\colorbox{#7BC4B5}{\color{white}{\normalsize\text{制}}}}\kern-1pt
+\raisebox{-5pt}{\colorbox{#A8D5E2}{\color{#2C4A52}{\large\text{麓}}}}\kern-2pt
+\raisebox{-2pt}{\colorbox{#C5E0E8}{\color{#2C4A52}{\Large\text{不}}}}\kern-3pt
+\raisebox{0pt}{\colorbox{#6B8E9F}{\color{white}{\normalsize\text{止}}}}\kern-1pt
+\raisebox{-3pt}{\colorbox{#B8E0D0}{\color{#2C4A52}{\large\text{漉}}}}
+$$
 ````
 ::
 
+### 许可协议和侧栏插槽
+
+> 由自编写的rehype-meta-slots插件实现，插槽必须是文章的直接子元素，内容已插入到文章末尾 [^copyright] 和目录侧栏。
+
+[^copyright]: 文章末尾有特殊许可协议，还可从此处返回正文对插槽的讲解。
+
+::meta-aside-foo{title="从文章插入的组件" card}
+展示remark插件能力，为用户自己编写插件提供实现思路。
+
+虽然一般情况下， :blur[文章侧栏不需要组件]
+::
+
+:::meta-aside-bar
+::link-card
+---
+title: MDC 基本语法（必读）
+icon: https://v2.content.nuxt.com/favicon.ico
+link: https://content.nuxt.com/docs/files/markdown#mdc-syntax
+---
+::
+:::
+
+::meta-copyright{title="本文章不保留版权"}
+通过 [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/deed.zh-hans){icon="ri:creative-commons-zero-line"} 贡献至公共领域。
+::
+
+```mdc
+---
+aside: [toc, meta-aside-foo, meta-aside-bar]
+---
+
+::meta-aside-foo{title="从文章插入的组件" card}
+展示remark插件能力，为用户自己编写插件提供实现思路。
+
+虽然一般情况下， :blur[文章侧栏不需要组件]
+::
+
+:::meta-aside-bar
+::link-card
+---
+title: MDC 基本语法（必读）
+icon: https://v2.content.nuxt.com/favicon.ico
+link: https://content.nuxt.com/docs/files/markdown#mdc-syntax
+---
+::
+:::
+
+::meta-copyright{title="本文章不保留版权"}
+通过 [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/deed.zh-hans){icon="ri:creative-commons-zero-line"} 贡献至公共领域。
+::
+```
+
 ### 乐谱渲染播放
 
-> 必要时可用豆包等 AI 将乐谱识别为 ABC 记法。只在网络状态良好时加载播放能力。
+> 由自编写的remark-music插件实现，必要时可用豆包等 AI 将乐谱识别为 ABC 记法。只在网络状态良好时加载播放能力。
 >
 > 编辑器、Cheat Sheet 和语法检查：https://editor.drawthedots.com/
 
@@ -330,7 +428,7 @@ w: 我 呀 | 我 爱 | 你 | 你 爱 我 | 我 爱 你 蜜 雪 冰 城 甜 蜜 |
   默认插槽的 [超链接](#alert) **粗体** `Inline code`
   ::
 
-  :alert{icon="ph:files-duotone" color="var(--c-accent)" title="仅标题，并且自定义图标和颜色"}
+  :alert{icon="tabler:files" color="var(--c-accent)" title="仅标题，并且自定义图标和颜色"}
 
 #tab2
 ```mdc wrap expand
@@ -360,7 +458,7 @@ w: 我 呀 | 我 爱 | 你 | 你 爱 我 | 我 爱 你 蜜 雪 冰 城 甜 蜜 |
 默认插槽的 [超链接](#alert) **粗体** `Inline code`
 ::
 
-:alert{icon="ph:files-duotone" color="var(--c-accent)" title="仅标题，并且自定义图标和颜色"}
+:alert{icon="tabler:files" color="var(--c-accent)" title="仅标题，并且自定义图标和颜色"}
 ```
 ::
 
@@ -788,7 +886,7 @@ footer: 可选的落款
 #tab1
 :quote[有时候，有些话，有点意思。]
 
-::quote{icon="ph:files-duotone"}
+::quote{icon="tabler:files"}
 令图标有所指，引用亦有中心。
 ::
 
@@ -803,7 +901,7 @@ footer: 可选的落款
 ```mdc
 :quote[有时候，有些话，有点意思。]
 
-::quote{icon="ph:files-duotone"}
+::quote{icon="tabler:files"}
 令图标有所指，引用亦有中心。
 ::
 

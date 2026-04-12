@@ -1,6 +1,6 @@
 import type { ReadTimeResults } from 'reading-time'
 import { defineCollection } from '@nuxt/content'
-import { asSitemapCollection } from '@nuxtjs/sitemap/content'
+import { defineSitemapSchema } from '@nuxtjs/sitemap/content'
 import { z } from 'zod'
 import blogConfig from './blog.config'
 
@@ -56,9 +56,17 @@ const articleSchema = z.object({
 }) satisfies z.ZodType<ArticleSchema>
 
 export const collections = {
-	content: defineCollection(asSitemapCollection({
+	content: defineCollection({
 		source: '**',
 		type: 'page',
-		schema: articleSchema,
-	})),
+		schema: articleSchema.extend({
+			sitemap: defineSitemapSchema({
+				name: 'content',
+				onUrl: (url, entry) => {
+					url.lastmod = new Date(entry.updated || entry.published || entry.date || undefined).toLocaleDateString('sv')
+				},
+				z,
+			}),
+		}),
+	}),
 }

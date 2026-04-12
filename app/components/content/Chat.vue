@@ -3,6 +3,16 @@ const slots = defineSlots<{
 	default: () => VNode[]
 }>()
 
+const chatRegex = /^\{(?<control>\.|:)?(?<caption>.*)\}$/
+
+function getControlClass(control?: string) {
+	if (control === '.')
+		return 'chat-myself'
+	if (control === ':')
+		return 'chat-system'
+	return ''
+}
+
 function render() {
 	const slotContent = slots.default()
 	if (!slotContent)
@@ -11,17 +21,12 @@ function render() {
 	return slotContent.map((node: VNode) => {
 		// WARN: 此处使用了非标准的 v-slot:default
 		const textContent = (node.children as any)?.default?.()[0].children
-		const body = <dd class="chat-body">{node}</dd>
-		if (typeof textContent !== 'string')
-			return body
-
-		const match = textContent.match(/^\{(?<control>\.|:)?(?<caption>.*)\}$/)
-		if (!match)
-			return body
-
-		const { caption, control } = match?.groups || {}
-		const controlClass = control === '.' ? 'chat-myself' : control === ':' ? 'chat-system' : ''
-		return <dt class={`chat-caption ${controlClass}`}>{caption}</dt>
+		const matchGroups = typeof textContent === 'string'
+			? textContent.match(chatRegex)?.groups
+			: undefined
+		return matchGroups
+			? <dt class={`chat-caption ${getControlClass(matchGroups.control)}`}>{matchGroups.caption}</dt>
+			: <dd class="chat-body">{node}</dd>
 	})
 }
 </script>

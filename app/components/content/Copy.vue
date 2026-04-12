@@ -69,15 +69,15 @@ onMounted(async () => {
 		v-if="showUndo"
 		class="operation"
 		variant="text"
-		icon="ph:arrow-u-up-left-bold"
+		icon="tabler:arrow-back-up"
 		aria-label="恢复原始内容"
 		@click="undo"
 	/>
-
+	<Icon v-show="false" name="tabler:check" />
 	<ZButton
 		class="operation"
 		variant="text"
-		:icon="copied ? 'ph:check-bold' : 'ph:copy-bold'"
+		:icon="copied ? 'tabler:check' : 'tabler:copy'"
 		aria-label="复制"
 		@click="copy()"
 	/>

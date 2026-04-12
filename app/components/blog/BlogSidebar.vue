@@ -19,8 +19,8 @@ const debouncedSelection = refDebounced(text)
 	<BlogHeader class="sidebar-header" to="/" />
 
 	<nav class="sidebar-nav scrollcheck-y">
-		<div class="search-btn sidebar-nav-item gradient-card" @click="searchStore.open()">
-			<Icon name="ph:magnifying-glass-bold" />
+		<div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
+			<Icon name="tabler:search" />
 			<span class="nav-text">{{ debouncedSelection || searchStore.word || '搜索' }}</span>
 			<Key class="keycut" code="K" cmd prevent @press="searchStore.toggle()" />
 		</div>
@@ -35,7 +35,7 @@ const debouncedSelection = refDebounced(text)
 					<UtilLink :to="item.url" class="sidebar-nav-item">
 						<Icon :name="item.icon" />
 						<span class="nav-text">{{ item.text }}</span>
-						<Icon v-if="isExtLink(item.url)" class="external-tip" name="ph:arrow-up-right" />
+						<Icon v-if="isExtLink(item.url)" class="external-tip" name="tabler:arrow-up-right" />
 					</UtilLink>
 				</li>
 			</menu>

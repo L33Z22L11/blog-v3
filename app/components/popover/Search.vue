@@ -27,7 +27,7 @@ const miniSearch = new MiniSearch({
 		boost: { title: 3, titles: 2 },
 	},
 	processTerm: segmenter
-		? term => Array.from(segmenter.segment(term)).map(seg => seg.segment.toLowerCase())
+		? term => Array.from(segmenter.segment(term), seg => seg.segment.toLowerCase())
 		: undefined,
 })
 
@@ -90,7 +90,8 @@ function openActiveItem() {
 <Transition name="float-in">
 	<div v-if="open" class="blog-search">
 		<form class="input" @submit.prevent>
-			<Icon :name="status === 'pending' ? 'line-md:loading-alt-loop' : 'ph:magnifying-glass-bold'" />
+			<Icon v-show="false" name="line-md:loading-alt-loop" />
+			<Icon :name="status === 'pending' ? 'line-md:loading-alt-loop' : 'tabler:search'" />
 
 			<!-- 方向键切换搜索结果不应只在搜索框内触发 -->
 			<input

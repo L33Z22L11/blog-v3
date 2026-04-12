@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '#components'
+import { merge } from 'es-toolkit/object'
 import { packageManager, version } from '~~/package.json'
 import pnpmWorkspace from '~~/pnpm-workspace.yaml'
 
@@ -18,12 +19,13 @@ const ciPlatform = computed(() => {
 	return h('span', {}, [iconNode, ` ${ci.split(' ')[0]}`])
 })
 
-const packages = Object.assign({}, ...Object.values(pnpmWorkspace.catalogs as any)) as Record<string, string>
+// @ts-expect-error pnpm-workspace.yaml 无类型定义
+const packages = merge(...Object.values(pnpmWorkspace.catalogs))
 const [pm, pmVersion] = packageManager.split('@') as [string, string]
 
 const service = computed(() => ([
 	...ci ? [{ label: '构建平台', value: ciPlatform }] : [],
-	{ label: '图片存储', value: () => [h(Icon, { name: 'simple-icons:cloudflare', alt: '' }), ' R2'] },
+	{ label: '图片存储', value: () => [h(Icon, { name: 'devicon:cloudflare' }), ' R2'] },
 	{ label: '软件协议', value: 'MIT' },
 	{ label: '文章许可', value: appConfig.copyright.abbr },
 	{ label: '规范域名', value: getDomain(appConfig.url) },
@@ -44,7 +46,7 @@ const expand = ref(false)
 </script>
 
 <template>
-<BlogWidget card title="技术信息">
+<BlogWidget card grayscale title="技术信息">
 	<ZDlGroup :items="service" />
 	<ZExpand v-model="expand" in-place name="构建信息">
 		<ZDlGroup size="small" :items="techstack" />

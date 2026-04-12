@@ -84,7 +84,7 @@ export function useArticleSort(list: MaybeRefOrGetter<ArticleProps[]>, options?:
 
 export function getCategoryIcon(category?: string) {
 	const appConfig = useAppConfig()
-	return appConfig.article.categories[category!]?.icon ?? 'ph:folder-bold'
+	return appConfig.article.categories[category!]?.icon ?? 'tabler:folder'
 }
 
 interface GetPostTypeClassNameOptions {

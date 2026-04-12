@@ -16,7 +16,7 @@ const expand = defineModel<boolean>()
 	</Transition>
 
 	<button class="toggle-btn" :class="{ 'in-place': inPlace }" @click="expand = !expand">
-		<Icon class="toggle-icon" :class="{ expand }" name="ph:caret-double-down-bold" />
+		<Icon class="toggle-icon" :class="{ expand }" name="tabler:chevrons-down" />
 		<span>{{ `${expand ? '收起' : '展开'}${name}` }}</span>
 	</button>
 </div>

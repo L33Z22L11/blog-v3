@@ -42,10 +42,13 @@ const listRecommended = computed(() => orderBy(
 			:categories
 		>
 			<ZSecret>
-				<ZButton variant="text" to="/preview" class="preview-entrance">
-					<Icon name="ph:file-lock-bold" />
-					查看预览文章
-				</ZButton>
+				<ZButton
+					variant="text"
+					to="/preview"
+					class="preview-entrance"
+					icon="tabler:shield-lock"
+					text="查看预览文章"
+				/>
 			</ZSecret>
 		</PostOrderToggle>
 
@@ -60,7 +63,7 @@ const listRecommended = computed(() => orderBy(
 			/>
 		</TransitionGroup>
 
-		<ZPagination v-model="page" sticky :total-pages="totalPages" />
+		<ZPagination v-model="page" sticky avoid :total-pages="totalPages" />
 	</div>
 </UtilHydrateSafe>
 </template>
