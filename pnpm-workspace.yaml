@@ -22,6 +22,7 @@ catalogs:
     '@zinkawaii/tsconfig': ^0.1.0
     ci-info: ^4.4.0
     nuxt: ^4.4.2
+    pinia: ^3.0.4
     sass-embedded: ^1.99.0
     tsx: ^4.21.0
     typescript: ^6.0.2

@@ -1,7 +1,7 @@
 {
   "name": "clarity",
   "type": "module",
-  "version": "3.7.0-alpha.2",
+  "version": "3.7.0-alpha.3",
   "private": true,
   "packageManager": "pnpm@10.33.0",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
@@ -49,6 +49,7 @@
     "minisearch": "catalog:util",
     "nuxt": "catalog:framework",
     "parse-domain": "catalog:util",
+    "pinia": "catalog:framework",
     "plain-shiki": "catalog:content",
     "shiki": "catalog:content",
     "site-config-stack": "catalog:util",

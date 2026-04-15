@@ -1,18 +1,12 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
 
-const props = defineProps<{
+defineProps<{
 	error: NuxtError & { url?: string }
 }>()
 
 const layoutStore = useLayoutStore()
 layoutStore.setAside(['blog-log'])
-
-const errorStack = removeHtmlTags(props.error?.stack)
-
-onMounted(() => {
-	console.error(errorStack)
-})
 </script>
 
 <template>
@@ -24,9 +18,9 @@ onMounted(() => {
 	<main id="main-content">
 		<div class="app-error">
 			<ZError
-				:code="errorStack"
-				:message="error?.url"
-				:title="`[${error?.statusCode}] ${error?.message}`"
+				:code="error.stack"
+				:message="error.url"
+				:title="`[${error.status}] ${error.message}`"
 			>
 				<template #operation>
 					<ZButton text="返回主页" @click="clearError({ redirect: '/' })" />
@@ -45,14 +39,5 @@ onMounted(() => {
 <style lang="scss" scoped>
 .app-error {
 	margin: 1rem;
-
-	pre {
-		text-align: start;
-	}
-
-	.error-stack {
-		font-size: 0.9em;
-		white-space: pre-wrap;
-	}
 }
 </style>

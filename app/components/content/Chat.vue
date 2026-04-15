@@ -50,8 +50,7 @@ function render() {
 	}
 
 	.chat-body {
-		// BFC
-		overflow: hidden;
+		overflow: hidden; // BFC
 		width: fit-content;
 		max-width: 90%;
 		margin-bottom: 1em;

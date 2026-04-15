@@ -33,9 +33,8 @@
 
 | 博客名称                                     | 作者          | 对应上游版本号 | 下游特色功能                                 |
 | -------------------------------------------- | ------------- | -------------- | -------------------------------------------- |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**   | **L33Z22L11** | v3.7.0-alpha.2 | (我是上游)                                   |
+| **[纸鹿摸鱼处](https://blog.zhilu.site/)**   | **L33Z22L11** | v3.7.0-alpha.3 | (我是上游)                                   |
 | [希乐博客](https://blog.xlenco.top/)         | Xlenco        | v3.4.8         | 最新评论                                     |
-| [SteinsNote](https://blog.labmem.chat/)      | Labmem-00     | v3.1-241112    | 专栏                                         |
 | [月空人](https://www.weilog.me/)             | Whbbit1999    | v3.6.5         | 项目/博客/Snippets页                         |
 | [Mugzx's Blog](https://blog.mugzx.top/)      | Mugzx         | v3.6.4         | 设计风格统一                                 |
 | [喵落阁](https://blog-v3.kemeow.top/)        | Kemeow815     | v3.4.7         | 即刻+友圈+最新评论+游戏/番剧页               |
@@ -45,12 +44,12 @@
 | [BiuXin-s Blog](https://zhilu.biuxin.com/)   | damizai       | v3.2-250304    | 即刻+友圈+最新评论                           |
 | [液泡部落格](https://blog.vacu.top/)         | VacuolePaoo   | v3.6.3         | 一言+标签tags+页脚随机友链                   |
 | [闻絮语](https://www.wxuyu.top/)             | 661111        | v3.6.5         | 即刻+友圈+Heo友链轮播/Profile                |
-| [落憾](https://blog.luoh.org/)               | LuoH-AN       | v3.6.4         | 即刻+一言+卡片Profile                        |
+| [落憾](https://blog.luoh.org/)               | LuoH-AN       | v3.7.0-alpha.2 | 即刻+一言+卡片Profile                        |
 | [落尘up](https://www.luochen.chat/)          | luochenup     | v3.3.4         | 侧栏时间轴                                   |
 | [fishcpy的小破站](https://blog.fis.ink/)     | fishcpy       | v3.4.8         | 友圈+Artalk评论                              |
 | [六月墨语](https://blog.june.ink/)           | Akuma-real    | v3.6.3         | 友圈+最新评论                                |
 | [Cталин博客](https://blog.jiclub.site/)      | StalinDev54   | v3.4.8         | 侧栏时间轴+关于页                            |
-| [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong  | v3.6.5         | 即刻+友圈                                    |
+| [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong  | v3.7.0-alpha.1 | 即刻+友圈                                    |
 | [墨韵云阁](https://luoyuanxiang.top/)        | luoyuanxiang  | v3.6.0-rc.2    |                                              |
 | [鹊楠の小窝](https://blog.quenan.cn/)        | QNquenan      | v3.4.9         |                                              |
 | [KingKangBlog](https://blog.kingkang.xyz/)   | KingStoning   | v3.4.9         |                                              |

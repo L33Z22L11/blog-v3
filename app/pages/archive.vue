@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import type { ArticleProps } from '~/types/article'
-import { mapValues, sumBy } from 'es-toolkit'
 import { groupBy } from 'es-toolkit/array'
+import { sumBy } from 'es-toolkit/math'
+import { mapValues } from 'es-toolkit/object'
 
 const appConfig = useAppConfig()
 useSeoMeta({

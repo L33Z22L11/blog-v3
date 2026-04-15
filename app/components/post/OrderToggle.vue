@@ -55,11 +55,11 @@ function toggleDirection() {
 
 	<span>
 		<button v-if="allowAscending" aria-label="切换排序方向" @click="toggleDirection">
-			<Icon name="tabler:sort-ascending" class="toggle-direction" :class="{ ascending: isAscending }" />
+			<Icon name="tabler:sort-descending" class="toggle-direction" :class="{ ascending: isAscending }" />
 		</button>
 
 		<button @click="toggleOrder">
-			<Icon v-if="!allowAscending" name="tabler:sort-ascending" />
+			<Icon v-if="!allowAscending" name="tabler:sort-descending" />
 			<span class="order-text">{{ orderMap[sortOrder] || sortOrder }}</span>
 		</button>
 	</span>

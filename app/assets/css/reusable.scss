@@ -156,6 +156,7 @@
 .text-creative, .text-tech {
 	font-family: var(--font-creative);
 	font-weight: 550;
+	-webkit-font-smoothing: antialiased; // macOS下"DOUYINSANSBOLD-GB"过粗
 }
 
 .text-story {
