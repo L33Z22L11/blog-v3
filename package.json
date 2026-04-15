@@ -41,6 +41,7 @@
     "@vueuse/nuxt": "catalog:util",
     "@vueuse/router": "catalog:util",
     "abcjs": "catalog:content",
+    "asciinema-player": "^3.15.1",
     "ci-info": "catalog:framework",
     "embla-carousel-autoplay": "catalog:ui",
     "embla-carousel-vue": "catalog:ui",
