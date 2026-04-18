@@ -1,8 +1,10 @@
 <script setup lang="ts">
-const props = defineProps<{
+const props = withDefaults(defineProps<{
 	href: string
 	icon?: string | false
-}>()
+}>(), {
+	icon: undefined,
+})
 
 const icon = computed(() => props.icon ?? getDomainIcon(props.href))
 const tip = computed(() => ({
