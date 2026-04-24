@@ -3,10 +3,11 @@
   "type": "module",
   "version": "3.7.0-alpha.3",
   "private": true,
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.33.2",
+  "license": "(MIT OR CC-BY-NC-SA-4.0)",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "engines": {
-    "node": ">=22.18 <23 || >=23.6 <24 || >=24",
+    "node": "^22.18 || ^23.6 || >=24",
     "pnpm": ">=10"
   },
   "scripts": {

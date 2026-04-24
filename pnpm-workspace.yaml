@@ -1,8 +1,8 @@
 catalogs:
   content:
     '@bikariya/shiki': ^0.0.8
-    '@nuxt/content': ^3.12.0
-    '@nuxtjs/seo': ^5.1.2
+    '@nuxt/content': ^3.13.0
+    '@nuxtjs/seo': ^5.1.3
     '@shikijs/colorized-brackets': ^4.0.2
     '@shikijs/transformers': ^4.0.2
     '@types/hast': ^3.0.4
@@ -25,25 +25,25 @@ catalogs:
     pinia: ^3.0.4
     sass-embedded: ^1.99.0
     tsx: ^4.21.0
-    typescript: ^6.0.2
+    typescript: ^6.0.3
     unplugin-yaml: ^4.1.0
-    vue: ^3.5.32
-    vue-router: ^5.0.4
+    vue: ^3.5.33
+    vue-router: ^5.0.6
   quality:
-    '@antfu/eslint-config': ^8.1.1
+    '@antfu/eslint-config': ^8.2.0
     '@nuxt/a11y': 1.0.0-alpha.1
     '@nuxt/hints': 1.0.0-alpha.6
     '@zinkawaii/stylelint-config': ^0.4.0
     cspell: ^10.0.0
-    eslint: ^10.2.0
-    stylelint: ^17.6.0
+    eslint: ^10.2.1
+    stylelint: ^17.9.0
   ui:
     '@bikariya/image-viewer': ^0.0.8
     '@bikariya/modals': ^0.0.8
     '@iconify-json/catppuccin': ^1.2.17
     '@iconify-json/line-md': ^1.2.16
     '@iconify-json/ri': ^1.2.10
-    '@iconify-json/simple-icons': ^1.2.77
+    '@iconify-json/simple-icons': ^1.2.79
     '@nuxt/icon': ^2.2.1
     '@nuxt/image': ^2.0.0
     '@nuxtjs/color-mode': ^4.0.0
@@ -57,10 +57,10 @@ catalogs:
     '@vueuse/core': ^14.2.1
     '@vueuse/nuxt': ^14.2.1
     '@vueuse/router': ^14.2.1
-    es-toolkit: ^1.45.1
-    fast-xml-builder: ^1.1.4
+    es-toolkit: ^1.46.0
+    fast-xml-builder: ^1.1.5
     minisearch: ^7.2.0
-    oxc-minify: ^0.124.0
+    oxc-minify: ^0.127.0
     p-limit: ^7.3.0
     parse-domain: ^8.3.0
     rimraf: ^6.1.3

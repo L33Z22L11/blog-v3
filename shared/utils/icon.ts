@@ -19,6 +19,7 @@ const archIcons = {
 	'Material for MkDocs': 'simple-icons:materialformkdocs',
 	'Netlify': 'simple-icons:netlify',
 	'Next.js': 'simple-icons:nextdotjs',
+	'Notion': 'simple-icons:notion',
 	'NotionNext': 'simple-icons:notion',
 	'Nuxt': 'simple-icons:nuxt',
 	'PHP': 'simple-icons:php',
