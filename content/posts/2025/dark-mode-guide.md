@@ -66,10 +66,10 @@ body {
 	--text1: #334;
 	--text2: #556;
 	--text3: #aab;
-	--line: rgba(127, 127, 191, .2);
+	--line: hsl(240 33% 60% / 0.2);
 	--ac1: #37f;
-	--ac2: rgba(0, 127, 255, .5);
-	--ac3: rgba(0, 127, 255, .2);
+	--ac2: hsl(210 100% 50% / 0.5);
+	--ac3: hsl(210 100% 50% / 0.2);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -80,8 +80,8 @@ body {
 		--text2: #ccc;
 		--text3: #777;
 		--ac1: #fc2;
-		--ac2: rgba(255, 191, 0, .5);
-		--ac3: rgba(255, 191, 0, .2);
+	--ac2: hsl(45 100% 50% / 0.5);
+	--ac3: hsl(45 100% 50% / 0.2);
 	}
 }
 ```
@@ -117,13 +117,13 @@ body {
 
 你的深色模式在设备深色模式下表现很好，但是当设备在浅色模式下，你的深色模式在初载时可能闪白，这对于用户眼睛的伤害是巨大的（点名批评 [GitHub Docs](https://docs.github.com/zh)）。
 
-我曾使用 Pinia 管理用户主题，但 Pinia 的挂载需要时间，产生了页面闪白问题。我留意到一些网站是没有的，比如 VitePress，我研究了其代码实现（[vitepress/src/node/config.ts#L263](https://github.com/vuejs/vitepress/blob/main/src/node/config.ts#L263)）。它在 `<head>`{lang="html"} 中添加了同步的 `<script>`{lang="html"}，通过 IIFE 立即执行函数，在 DOM 构建完成前就完成了主题切换，避免了页面闪白。
+我曾使用 Pinia 管理用户主题，但 Pinia 的挂载需要时间，产生了页面闪白问题。我留意到一些网站是没有的，比如 VitePress，我研究了其代码实现（[vitepress/src/node/config.ts#L360](https://github.com/vuejs/vitepress/blob/main/src/node/config.ts#L360)）。它在 `<head>`{lang="html"} 中添加了同步的 `<script>`{lang="html"}，通过 IIFE 立即执行函数，在 DOM 构建完成前就完成了主题切换，避免了页面闪白。
 
 ```html
 <head>
 	<script>
 		if (localStorage.getItem('theme') === 'dark')
-			document.documentElement.setAttribute('data-theme', 'dark')
+			document.documentElement.dataset.theme = 'dark'
 	</script>
 </head>
 ```
@@ -170,7 +170,7 @@ function setTheme(theme?: 'light' | 'dark' | 'auto') {
 	const targetTheme = theme || localStorage.getItem('theme') || 'auto'
 	const isDark = targetTheme === 'dark' || (targetTheme === 'auto' && colorSchemeQuery.matches)
 
-	document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light')
+	document.documentElement.dataset.theme = isDark ? 'dark' : 'light'
 	// 如果使用类名实现，则
 	// document.body.classList.toggle('dark', isDark ? 'dark' : 'light')
 }

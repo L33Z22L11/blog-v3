@@ -213,6 +213,19 @@ onMounted(() => {
 		font-size: 0.85em;
 	}
 
+	a {
+		margin: -0.1em -0.2em;
+		padding: 0.1em 0.2em;
+		background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 0.1em;
+		color: var(--c-primary);
+		transition: all 0.2s;
+
+		&:hover {
+			border-radius: 0.3em;
+			background-size: 100% 100%;
+		}
+	}
+
 	p {
 		margin: 0.2em 0;
 	}
