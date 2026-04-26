@@ -11,10 +11,12 @@ defineProps<{
 
 <template>
 <section class="blog-widget" :class="{ grayscale, dim }">
-	<hgroup class="widget-title text-creative">
+	<hgroup class="widget-header text-creative">
 		<slot name="title">
 			{{ title }}
 		</slot>
+		<span v-if="$slots.action" class="seperator" />
+		<slot name="action" />
 	</hgroup>
 
 	<div class="widget-body" :class="{ 'widget-card': card, 'with-bg': bgImg }">
@@ -55,24 +57,31 @@ defineProps<{
 	}
 }
 
-.widget-title {
+.widget-header {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	gap: 0.5rem;
-	margin: 0.5rem;
+	position: sticky;
+	top: -0.5rem;
+	padding: 0.5rem;
+	background-image: linear-gradient(var(--c-bg-1) 80%, transparent);
 	color: var(--c-text-2);
+	z-index: 1;
 
 	&:empty {
 		display: none;
 	}
 
-	a {
-		transition: color 0.2s;
+	> .seperator {
+		flex-grow: 1;
 	}
 
-	> [onclick]:hover, > [href]:hover {
-		color: var(--c-primary);
+	> :deep(a) {
+		transition: color 0.2s;
+
+		&[href]:hover {
+			color: var(--c-primary);
+		}
 	}
 }
 

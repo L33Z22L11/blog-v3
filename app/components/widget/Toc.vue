@@ -5,8 +5,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 	tocTree: TocLink[]
 }>({ inheritAttrs: false })
 
-const contentStore = useContentStore()
-const { toc } = storeToRefs(contentStore)
+const { toc } = useArticle()
 const { activeHeadingId } = useToc(toc)
 
 function hasHeading(tocTree: TocLink, heading?: string): boolean {
@@ -15,9 +14,8 @@ function hasHeading(tocTree: TocLink, heading?: string): boolean {
 </script>
 
 <template>
-<BlogWidget>
-	<template #title>
-		<span class="title">文章目录</span>
+<BlogWidget title="文章目录">
+	<template #action>
 		<!-- use <a> for anchor -->
 		<a href="#main-content" aria-label="返回开头">
 			<Icon name="tabler:arrow-bar-to-up" />
@@ -46,12 +44,10 @@ function hasHeading(tocTree: TocLink, heading?: string): boolean {
 		</ol>
 	</DefineTemplate>
 
-	<UtilHydrateSafe>
-		<ReuseTemplate v-if="toc?.links.length" :toc-tree="toc.links" />
-		<p v-else class="no-toc">
-			暂无目录信息
-		</p>
-	</UtilHydrateSafe>
+	<ReuseTemplate v-if="toc?.links.length" :toc-tree="toc.links" />
+	<p v-else class="no-toc">
+		暂无目录信息
+	</p>
 </BlogWidget>
 </template>
 
@@ -97,7 +93,7 @@ function hasHeading(tocTree: TocLink, heading?: string): boolean {
 			background-color: var(--c-primary);
 		}
 
-		a {
+		> a {
 			display: block;
 			overflow: hidden;
 			padding: 0.2em 0.5em;
@@ -111,10 +107,6 @@ function hasHeading(tocTree: TocLink, heading?: string): boolean {
 			}
 		}
 	}
-}
-
-.title {
-	flex-grow: 1;
 }
 
 .no-toc {

@@ -1,5 +1,19 @@
+import type { ContentCollectionItem } from '@nuxt/content'
+import type { MetaSlotsTree } from '~~/remark-plugins/rehype-meta-slots'
 import type { ArticleOrderType, ArticleProps } from '~/types/article'
 import { orderBy } from 'es-toolkit/array'
+
+/** 获取已加载的文章内容/元信息 */
+export function useArticle(path?: MaybeRefOrGetter<string | undefined>) {
+	const route = useRoute()
+	const post = computed(() => useNuxtData<ContentCollectionItem | null | undefined>(toValue(path) ?? route.path).data.value)
+
+	return {
+		post,
+		toc: computed(() => post.value?.body.toc),
+		metaSlots: computed(() => post.value?.meta.slots as { [key: string]: MetaSlotsTree }),
+	}
+}
 
 /**
  * 生成文章查询参数，完全包装 useAsyncData 会使 SSR 行为异常，缓存 key 需要暴露
@@ -7,7 +21,7 @@ import { orderBy } from 'es-toolkit/array'
  * @see https://github.com/nuxt/nuxt/issues/14736
  * @todo 支持分页/分类筛选
  */
-export function useArticleIndexOptions(path = 'posts/%') {
+export function getArticleIndexOptions(path = 'posts/%') {
 	return queryCollection('content')
 		.where('stem', 'LIKE', path)
 		.select('categories', 'date', 'description', 'image', 'path', 'readingTime', 'recommend', 'tags', 'title', 'type', 'updated')

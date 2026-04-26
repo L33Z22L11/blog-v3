@@ -1,3 +1,4 @@
+import { pascalCase } from 'es-toolkit/string'
 import {
 	ContentRenderer,
 	LazyBlogWidget,
@@ -8,7 +9,6 @@ import {
 	LazyWidgetEmpty,
 	LazyWidgetToc,
 } from '#components'
-import { pascalCase } from 'es-toolkit/string'
 
 // @keep-sorted
 const rawWidgets = {
@@ -32,10 +32,10 @@ type RemovePrefix<S extends string, Prefix extends string> = S extends `${Prefix
 export type WidgetName = RemovePrefix<KebabCase<RawWidgetName>, '-lazy-widget-'> | `meta-aside-${string}`
 
 export default function useWidgets(widgetList: MaybeRefOrGetter<WidgetName[]>) {
-	const store = useContentStore()
+	const { metaSlots } = useArticle()
 
 	function renderMetaSlots(widgetName: WidgetName) {
-		const slotsTree = store.meta.slots[widgetName.slice('meta-'.length)]
+		const slotsTree = metaSlots.value?.[widgetName.slice('meta-'.length)]
 		return h(
 			LazyBlogWidget,
 			{ card: !slotsTree, ...slotsTree?.props },
