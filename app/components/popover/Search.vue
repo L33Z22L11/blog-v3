@@ -44,7 +44,7 @@ const isKeyboardMode = ref(false)
 const listResult = useTemplateRef('list-result')
 
 const activeIndex = ref(0)
-const activeItem = computed(() => listResult.value?.children[activeIndex.value] as HTMLElement | undefined)
+const activeItem = computed(() => listResult.value?.children[activeIndex.value] as HTMLLinkElement | undefined)
 
 whenever(() => props.open, focusInput)
 

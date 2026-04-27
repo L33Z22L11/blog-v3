@@ -1,11 +1,12 @@
 import type { Toc, TocLink } from '@nuxt/content'
+import type { MaybeComputedElementRef } from '@vueuse/core'
 
 interface TocList {
 	id: string
 	offsetTop: number
 }
 
-export function useToc(toc: MaybeRefOrGetter<Toc | undefined>) {
+export function useToc(toc: MaybeRefOrGetter<Toc | undefined>, scrollableEl?: MaybeComputedElementRef) {
 	const { height: bodyHeight } = useElementSize(document?.body)
 
 	function flattenToc(tocTree: TocLink[], tocList: TocList[] = []) {
@@ -39,10 +40,15 @@ export function useToc(toc: MaybeRefOrGetter<Toc | undefined>) {
 	)
 
 	function scrollToActiveTocItem() {
-		const tocContainerEl = document.querySelector('#blog-aside')
-		const activeTocEl = document.querySelector(`#blog-aside a[href="#${activeHeadingId.value}"]`) as HTMLElement | null
-		// scrollIntoView 触发目录滚动时导致文章持续缓慢滚动并打断正常滚动
-		tocContainerEl?.scroll({ top: activeTocEl?.offsetTop || 0 })
+		const el = unrefElement(scrollableEl)
+		const active = el?.querySelector<HTMLLinkElement>(`a[href="#${activeHeadingId.value}"]`)
+
+		if (el && active) {
+			el.scrollTo({
+				top: active.offsetTop - el.clientHeight / 4,
+				behavior: 'smooth',
+			})
+		}
 	}
 
 	watch(activeHeadingId, scrollToActiveTocItem)

@@ -47,7 +47,7 @@ function render() {
 }
 
 :deep() {
-	.timeline-caption {
+	> .timeline-caption {
 		opacity: 0.8;
 		font-size: 0.9em;
 
@@ -63,7 +63,7 @@ function render() {
 		}
 	}
 
-	.timeline-body {
+	> .timeline-body {
 		width: fit-content;
 		max-width: 100%;
 		margin-bottom: 1em;

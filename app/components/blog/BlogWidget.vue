@@ -2,15 +2,24 @@
 defineProps<{
 	title?: string
 	card?: boolean
+	flexShrink?: string
 	grayscale?: boolean
 	dim?: boolean
 	bgImg?: string
 	bgRight?: boolean
 }>()
+
+const body = useTemplateRef('widget-body')
+
+defineExpose({ body })
 </script>
 
 <template>
-<section class="blog-widget" :class="{ grayscale, dim }">
+<section
+	class="blog-widget"
+	:class="{ 'flex-shrink': flexShrink, grayscale, dim }"
+	:style="{ minHeight: flexShrink }"
+>
 	<hgroup class="widget-header text-creative">
 		<slot name="title">
 			{{ title }}
@@ -19,7 +28,11 @@ defineProps<{
 		<slot name="action" />
 	</hgroup>
 
-	<div class="widget-body" :class="{ 'widget-card': card, 'with-bg': bgImg }">
+	<div
+		ref="widget-body"
+		class="widget-body"
+		:class="{ 'widget-card': card, 'with-bg': bgImg, 'scrollcheck-y scrollbar-hidden': flexShrink }"
+	>
 		<NuxtImg v-if="bgImg" class="bg-img" :class="{ 'bg-right': bgRight }" :src="bgImg" alt="" />
 		<slot />
 	</div>
@@ -28,10 +41,13 @@ defineProps<{
 
 <style lang="scss" scoped>
 .blog-widget {
+	flex-shrink: 1;
 	font-size: 0.9em;
 
-	.blog-widget + & {
-		margin-top: 1rem;
+	&.flex-shrink {
+		display: flex;
+		flex-direction: column;
+		overflow: auto;
 	}
 
 	&.grayscale :where(.iconify, img) {
@@ -61,12 +77,8 @@ defineProps<{
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	position: sticky;
-	top: -0.5rem;
 	padding: 0.5rem;
-	background-image: linear-gradient(var(--c-bg-1) 80%, transparent);
 	color: var(--c-text-2);
-	z-index: 1;
 
 	&:empty {
 		display: none;
@@ -86,6 +98,8 @@ defineProps<{
 }
 
 .widget-body {
+	overscroll-behavior: contain;
+
 	&.with-bg {
 		contain: paint; // overflow hidden + position relative
 		z-index: 0;

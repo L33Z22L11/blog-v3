@@ -24,6 +24,9 @@ const { widgets } = useWidgets(asideWidgets)
 
 <style lang="scss" scoped>
 #blog-aside {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 	overflow: auto;
 	padding: 0.5rem;
 	z-index: var(--z-index-popover);

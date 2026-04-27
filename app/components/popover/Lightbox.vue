@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue'
 
-defineOptions({ inheritAttrs: false })
-
 defineProps<{
 	el: HTMLImageElement
 	caption?: string | Component

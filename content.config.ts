@@ -63,7 +63,9 @@ export const collections = {
 			sitemap: defineSitemapSchema({
 				name: 'content',
 				onUrl: (url, entry) => {
-					url.lastmod = new Date(entry.updated || entry.published || entry.date || undefined).toLocaleDateString('sv')
+					const lastmod = (entry.updated || entry.published || entry.date) as string | undefined
+					if (lastmod)
+						url.lastmod = new Date(lastmod).toLocaleDateString('sv')
 				},
 				z,
 			}),

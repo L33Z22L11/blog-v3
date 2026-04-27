@@ -40,6 +40,9 @@
 }
 
 .scrollbar-hidden.scrollbar-hidden {
+	--scrollbar-height: 0px;
+	--guessed-scrollbar-width: 0px;
+
 	scrollbar-width: none;
 
 	&::-webkit-scrollbar {

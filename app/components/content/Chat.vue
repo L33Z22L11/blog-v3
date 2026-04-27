@@ -44,12 +44,12 @@ function render() {
 }
 
 :deep() {
-	.chat-caption {
+	> .chat-caption {
 		opacity: 0.8;
 		font-size: 0.9em;
 	}
 
-	.chat-body {
+	> .chat-body {
 		overflow: hidden; // BFC
 		width: fit-content;
 		max-width: 90%;
@@ -60,12 +60,12 @@ function render() {
 		background-color: var(--c-bg-2);
 	}
 
-	.chat-system {
+	> .chat-system {
 		margin-bottom: 1em;
 		text-align: center;
 	}
 
-	.chat-myself {
+	> .chat-myself {
 		text-align: end;
 
 		& + .chat-body {
