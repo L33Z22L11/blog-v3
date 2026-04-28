@@ -101,6 +101,11 @@ export function getCategoryIcon(category?: string) {
 	return appConfig.article.categories[category!]?.icon ?? 'tabler:folder'
 }
 
+export function getCategoryColor(category?: string) {
+	const appConfig = useAppConfig()
+	return appConfig.article.categories[category!]?.color
+}
+
 interface GetPostTypeClassNameOptions {
 	prefix?: string
 }

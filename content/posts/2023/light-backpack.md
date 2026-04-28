@@ -5,7 +5,7 @@ date: 2023-08-08 10:34:00
 updated: 2024-01-29 21:26:26
 image: https://assets.zhilu.cyou/cover2/light-backpack.jpg
 type: story
-categories: [杂谈]
+categories: [生活]
 tags: [数码产品, 远程办公, 体验]
 ---
 

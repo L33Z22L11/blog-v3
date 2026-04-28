@@ -4,6 +4,7 @@ import type { ArticleProps } from '~/types/article'
 const props = defineProps<{
 	to?: string
 	useUpdated?: boolean
+	showCategory?: boolean
 } & ArticleProps>()
 
 const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
@@ -13,9 +14,10 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 <li class="article-item">
 	<UtilDate class="dim-hover" :date="mainDate" format="monthDay" />
 
-	<div class="gradient-card">
+	<div class="gradient-card" :style="{ '--c-accent': getCategoryColor(categories?.[0]) }">
 		<UtilLink class="article-link scrollbar-hidden scrollcheck-x" :to :title="description">
 			<span class="article-title">
+				<Icon v-if="showCategory" :name="getCategoryIcon(categories?.[0])" />
 				{{ title }}
 			</span>
 

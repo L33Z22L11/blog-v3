@@ -7,8 +7,6 @@ const props = defineProps<ArticleProps>()
 const appConfig = useAppConfig()
 
 const coverFilter = computed(() => props.meta?.coverFilter || (props.meta?.coverDim && 'brightness(0.75)') || undefined)
-const categoryLabel = computed(() => props.categories?.[0])
-const categoryIcon = computed(() => getCategoryIcon(categoryLabel.value))
 
 const shareText = `【${appConfig.title}】${props.title}\n\n${
 	props.description ? `${props.description}\n\n` : ''}${
@@ -47,9 +45,9 @@ const { copy, copied } = useCopy(shareText)
 				icon="tabler:clock-edit"
 			/>
 
-			<span v-if="categoryLabel">
-				<Icon :name="categoryIcon" />
-				{{ categoryLabel }}
+			<span v-if="categories">
+				<Icon :name="getCategoryIcon(categories[0])" />
+				{{ categories[0] }}
 			</span>
 
 			<span>

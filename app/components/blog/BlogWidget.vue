@@ -2,7 +2,7 @@
 defineProps<{
 	title?: string
 	card?: boolean
-	flexShrink?: string
+	shrink?: boolean
 	grayscale?: boolean
 	dim?: boolean
 	bgImg?: string
@@ -17,8 +17,7 @@ defineExpose({ body })
 <template>
 <section
 	class="blog-widget"
-	:class="{ 'flex-shrink': flexShrink, grayscale, dim }"
-	:style="{ minHeight: flexShrink }"
+	:class="{ shrink, grayscale, dim }"
 >
 	<hgroup class="widget-header text-creative">
 		<slot name="title">
@@ -31,7 +30,7 @@ defineExpose({ body })
 	<div
 		ref="widget-body"
 		class="widget-body"
-		:class="{ 'widget-card': card, 'with-bg': bgImg, 'scrollcheck-y scrollbar-hidden': flexShrink }"
+		:class="{ 'widget-card': card, 'with-bg': bgImg, 'scrollcheck-y scrollbar-hidden': shrink }"
 	>
 		<NuxtImg v-if="bgImg" class="bg-img" :class="{ 'bg-right': bgRight }" :src="bgImg" alt="" />
 		<slot />
@@ -44,7 +43,7 @@ defineExpose({ body })
 	flex-shrink: 1;
 	font-size: 0.9em;
 
-	&.flex-shrink {
+	&.shrink {
 		display: flex;
 		flex-direction: column;
 		overflow: auto;

@@ -95,6 +95,7 @@ function getArticleYear(article: ArticleProps) {
 				:key="article.path"
 				v-bind="article"
 				:to="article.path"
+				:show-category="column < 3"
 				:use-updated="sortOrder === 'updated'"
 				:style="getFixedDelay(index * 0.03)"
 			/>

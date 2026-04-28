@@ -1,6 +1,6 @@
 import type { AppConfig } from 'nuxt/schema'
-import type { MetaSlotsTree } from 'rehype-meta-slots'
 import type { ArticleSchema } from '~~/content.config'
+import type { MetaSlotsTree } from '~~/remark-plugins/rehype-meta-slots'
 
 export type ArticleOrderType = keyof AppConfig['article']['order']
 

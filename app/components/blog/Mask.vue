@@ -1,16 +1,10 @@
 <script setup lang="ts">
-import type { CSSProperties } from 'vue'
-
-const props = defineProps<{
+defineProps<{
 	blur?: boolean | string
 	zIndex?: number
 }>()
 
 const show = defineModel<boolean>('show')
-const style = computed<CSSProperties>(() => ({
-	'--z-index-popover': props.zIndex,
-	'--bdfilter': props.blur ? `blur(${props.blur === true ? '4px' : props.blur})` : 'none',
-}))
 </script>
 
 <template>
@@ -18,7 +12,10 @@ const style = computed<CSSProperties>(() => ({
 	<div
 		v-if="show"
 		class="bg-mask"
-		:style
+		:style="{
+			'--z-index-popover': zIndex,
+			'--bdfilter': blur ? `blur(${blur === true ? '4px' : blur})` : 'none',
+		}"
 		@click="show = false"
 	/>
 </Transition>

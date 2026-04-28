@@ -9,7 +9,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate({
 
 const { toc } = useArticle()
 const scrollableEl = useTemplateRef('toc')
-const { activeHeadingId } = useToc(toc, computed(() => scrollableEl.value?.body))
+const { tocOffsets, activeHeadingId } = useToc(toc, computed(() => scrollableEl.value?.body))
 
 function hasHeading(tocTree: TocLink, heading?: string): boolean {
 	return tocTree.id === heading || !!tocTree.children?.some(child => hasHeading(child, heading))
@@ -17,7 +17,12 @@ function hasHeading(tocTree: TocLink, heading?: string): boolean {
 </script>
 
 <template>
-<BlogWidget ref="toc" title="文章目录" flex-shrink="4rem">
+<BlogWidget
+	ref="toc"
+	title="文章目录"
+	shrink
+	:style="{ minHeight: `clamp(4rem, ${tocOffsets.length}rem, 20rem)` }"
+>
 	<template #action>
 		<!-- use <a> for anchor -->
 		<a href="#main-content" aria-label="返回开头">
