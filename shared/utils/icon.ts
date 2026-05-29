@@ -7,6 +7,7 @@ const archIcons = {
 	'EdgeOne': 'simple-icons:cloudnativebuild', // 不准确
 	'Express': 'simple-icons:express',
 	'Fly': 'tabler:air-balloon',
+	'Framer': 'simple-icons:framer',
 	'Ghost': 'simple-icons:ghost',
 	'GitHub Pages': 'simple-icons:github',
 	'Golang': 'simple-icons:go',
