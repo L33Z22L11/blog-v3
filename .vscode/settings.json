@@ -32,7 +32,6 @@
   "errorLens.messageMaxChars": 50,
   "errorLens.messageTemplate": "$severity $message",
   "iconify.inplace": false,
-  "js/ts.experimental.useTsgo": true,
   "js/ts.tsdk.path": "node_modules/typescript/lib",
   "stylelint.validate": [
     "css",

@@ -1,9 +1,9 @@
 {
   "name": "clarity",
   "type": "module",
-  "version": "3.7.0-rc.0",
+  "version": "3.7.0-rc.1",
   "private": true,
-  "packageManager": "pnpm@11.0.4",
+  "packageManager": "pnpm@11.6.0",
   "license": "(MIT OR CC-BY-NC-SA-4.0)",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "engines": {
