@@ -1,13 +1,13 @@
 {
   "name": "clarity",
   "type": "module",
-  "version": "3.7.0-rc.1",
+  "version": "3.7.0",
   "private": true,
-  "packageManager": "pnpm@11.6.0",
+  "packageManager": "pnpm@11.8.0",
   "license": "(MIT OR CC-BY-NC-SA-4.0)",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "engines": {
-    "node": "^22.18 || ^23.6 || >=24",
+    "node": "^22.5 || ^23.6 || >=24",
     "pnpm": ">=10"
   },
   "scripts": {
@@ -21,10 +21,10 @@
     "bump": "pnpx taze -w && rimraf pnpm-lock.yaml && pnpm update && pnpm dedupe",
     "lint": "eslint && stylelint '**/*.{vue,scss}'",
     "lint:fix": "eslint --fix && stylelint '**/*.{vue,scss}' --fix",
-    "init-project": "tsx scripts/init-project",
-    "new": "tsx scripts/new-blog",
-    "check:feed": "tsx scripts/framework/get-feed",
-    "check:feed/all": "tsx scripts/framework/check-all-feeds"
+    "init-project": "unrun scripts/init-project",
+    "new": "unrun scripts/new-blog",
+    "check:feed": "unrun scripts/framework/get-feed",
+    "check:feed/all": "unrun scripts/framework/check-all-feeds"
   },
   "dependencies": {
     "@bikariya/image-viewer": "catalog:ui",
@@ -83,8 +83,8 @@
     "sass-embedded": "catalog:framework",
     "strip-ansi": "catalog:util",
     "stylelint": "catalog:quality",
-    "tsx": "catalog:framework",
     "typescript": "catalog:framework",
-    "unplugin-yaml": "catalog:framework"
+    "unplugin-yaml": "catalog:framework",
+    "unrun": "catalog:framework"
   }
 }

@@ -1,3 +1,25 @@
+diff --git a/dist/module.mjs b/dist/module.mjs
+index fb002e6278f7fb05cca8f2c27b5de9caddbec101..e03ecb075a68c81db3dc2a94df2877cc85853ef8 100644
+--- a/dist/module.mjs
++++ b/dist/module.mjs
+@@ -173,11 +173,14 @@ function processUnistPlugins(plugins) {
+   Object.entries(plugins).forEach(([name, plugin]) => {
+     const instanceName = `_${pascalCase(name).replace(/\W/g, "")}`;
+     if (plugin) {
+-      imports.push(`import ${instanceName} from '${plugin.src || name}'`);
++      const specifier = plugin.src || name;
++      const isTsPlugin = /\.(?:[cm]?ts|tsx)(?:[?#].*)?$/.test(String(specifier)) && !/\.d\.ts(?:[?#].*)?$/.test(String(specifier));
++      imports.push(isTsPlugin ? `import { unrun as ${instanceName}Loader } from 'unrun'` : `import ${instanceName} from '${specifier}'`);
++      const instance = isTsPlugin ? `(await ${instanceName}Loader({ path: ${JSON.stringify(specifier)} })).module` : instanceName;
+       if (Object.keys(plugin).length) {
+-        definitions.push(`  '${name}': { instance: ${instanceName}, options: ${JSON.stringify(plugin.options || plugin)} },`);
++        definitions.push(`  '${name}': { instance, options: ${JSON.stringify(plugin.options || plugin)} },`);
+       } else {
+-        definitions.push(`  '${name}': { instance: ${instanceName} },`);
++        definitions.push(`  '${name}': { instance },`);
+       }
+     } else {
+       definitions.push(`  '${name}': false,`);
 diff --git a/dist/runtime/parser/handlers/code.js b/dist/runtime/parser/handlers/code.js
 index f87404ebde2bd152e393be9c8474e53ad3629cae..735081241215bf6246946ec7c796c794b02996c1 100644
 --- a/dist/runtime/parser/handlers/code.js

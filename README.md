@@ -33,7 +33,7 @@
 
 | 博客名称                                     | 作者          | 对应上游版本号 | 下游特色功能                                 |
 | -------------------------------------------- | ------------- | -------------- | -------------------------------------------- |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**   | **L33Z22L11** | v3.7.0-rc.1    | (我是上游)                                   |
+| **[纸鹿摸鱼处](https://blog.zhilu.site/)**   | **L33Z22L11** | v3.7.0         | (我是上游)                                   |
 | [希乐博客](https://blog.xlenco.top/)         | Xlenco        | v3.4.8         | 最新评论                                     |
 | [月空人](https://www.weilog.me/)             | Whbbit1999    | v3.7.0-alpha.4 | 项目/博客/Snippets页                         |
 | [Mugzx's Blog](https://blog.mugzx.top/)      | Mugzx         | v3.7.0-rc.0    | 设计风格统一                                 |
@@ -49,7 +49,7 @@
 | [fishcpy的小破站](https://blog.fis.ink/)     | fishcpy       | v3.4.8         | 友圈+Artalk评论                              |
 | [六月墨语](https://blog.june.ink/)           | Akuma-real    | v3.6.3         | 友圈+最新评论                                |
 | [Cталин博客](https://blog.jiclub.site/)      | StalinDev54   | v3.4.8         | 侧栏时间轴+关于页                            |
-| [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong  | v3.7.0-rc.0    | 即刻+友圈                                    |
+| [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong  | v3.7.0-rc.1    | 即刻+友圈                                    |
 | [墨韵云阁](https://luoyuanxiang.top/)        | luoyuanxiang  | v3.6.0-rc.2    |                                              |
 | [鹊楠の小窝](https://blog.quenan.cn/)        | QNquenan      | v3.4.9         |                                              |
 | [KingKangBlog](https://blog.kingkang.xyz/)   | KingStoning   | v3.4.9         |                                              |
@@ -114,7 +114,7 @@
 │   │   └── stats.get.ts # 博客静态统计
 │   └── routes # 根路由
 │       ├── atom.xml.get.ts # Atom 订阅源
-│       └── zhilu.opml.get.ts # OPML 订阅源聚合
+│       └── subscriptions.opml.get.ts # OPML 订阅源聚合
 ├── blog.config.ts # 博客静态公共配置★
 ├── content.config.ts # Nuxt Content 配置
 ├── edgeone.json # EdgeOne 配置
@@ -169,7 +169,7 @@ pnpm preview
 
 ### 部署指南
 
-支持 Vercel、Netlify、Cloudflare Pages、EdgeOne 等平台部署。建议采用静态（SSG）部署方式：
+支持 Vercel、Netlify、Cloudflare Pages、EdgeOne Makers 等平台部署。建议采用静态（SSG）部署方式：
 
 - 构建命令: `pnpm generate`
 - 输出目录: `dist`
@@ -180,7 +180,7 @@ pnpm preview
 #### 疑难解答
 
 - 当你发现文章页面 404 问题时，请注意文章 URL 不应尾随 `/`。
-- 如果修改了 API 路径，使用 EdgeOne 部署需要同步修改 `edgeone.json`。
+- 如果修改了 API 路径，使用 EdgeOne Makers 部署需要同步修改 `edgeone.json`。
 - 运行、部署项目时 Node.js 版本需要遵照 `package.json` 限制，推荐使用 Node LTS 最新版。
 
 ### 检测友链状态

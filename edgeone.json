@@ -16,7 +16,7 @@
           "value": "application/xml"
         }
       ],
-      "source": "/zhilu.opml"
+      "source": "*.opml"
     }
   ],
   "redirects": [
