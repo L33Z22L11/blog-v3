@@ -14,9 +14,6 @@ const showTuning = ref(false)
 const spacing = ref(0)
 const column = ref(1)
 
-const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog-stats', 'blog-log'])
-
 const tuningRef = useTemplateRef('tuning-panel')
 useAvoidTarget(tuningRef, showTuning)
 
@@ -48,6 +45,11 @@ function getArticleYear(article: ArticleProps) {
 </script>
 
 <template>
+<template #aside>
+	<WidgetBlogStats />
+	<WidgetBlogLog />
+</template>
+
 <div class="archive proper-height">
 	<PostOrderToggle
 		v-model:is-ascending="isAscending"

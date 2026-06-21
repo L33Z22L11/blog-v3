@@ -3,8 +3,6 @@ import { myFeed } from '~~/blog.config'
 import feeds from '~/feeds'
 
 const appConfig = useAppConfig()
-const layoutStore = useLayoutStore()
-layoutStore.setAside([])
 
 const { data: postLink } = await useAsyncData(
 	'content:/link',

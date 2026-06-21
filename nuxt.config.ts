@@ -186,6 +186,12 @@ export default defineNuxtConfig({
 		},
 	},
 
+	dxup: {
+		features: {
+			namedLayoutSlots: true,
+		},
+	},
+
 	hooks: {
 		'ready': () => {
 			console.info(`

@@ -7,9 +7,6 @@ useSeoMeta({
 	ogImage: appConfig.author.avatar,
 })
 
-const layoutStore = useLayoutStore()
-layoutStore.setAside(['blog-stats', 'blog-tech', 'comm-group'])
-
 const { data: listRaw } = await useAsyncData('posts:index', () => getArticleIndexOptions(), { default: () => [] })
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw, { bindDirectionQuery: 'asc', bindOrderQuery: 'sort' })
 const { category, categories, listCategorized } = useCategory(listSorted, { bindQuery: 'category' })
@@ -34,6 +31,12 @@ const { data: previewCount } = useAsyncData(
 </script>
 
 <template>
+<template #aside>
+	<WidgetBlogStats />
+	<WidgetBlogTech />
+	<WidgetCommGroup />
+</template>
+
 <BlogHeader class="mobile-only" to="/" tag="h1" />
 
 <UtilHydrateSafe>

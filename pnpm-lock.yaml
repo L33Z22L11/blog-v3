@@ -182,6 +182,9 @@ catalogs:
       specifier: ^1.0.1
       version: 1.0.1
 
+overrides:
+  '@dxup/nuxt': ^0.5.1
+
 patchedDependencies:
   '@nuxt/image': 579706651997597c070d331e56e6cf9f3deb05477e3696c678c5c49ff614ea9c
   '@nuxtjs/mdc': b5d48b9dd5e7a491f1fac75b120ebf15f57f1c2fdba5b78336ad337828186d34
@@ -919,13 +922,8 @@ packages:
     peerDependencies:
       devframe: 0.5.4
 
-  '@dxup/nuxt@0.4.1':
-    resolution: {integrity: sha512-gtYffW6OfWNvoLW+XD3Mx/K8uUq08PMGLYJoDxc92EzZAWqR0FhcR5iaLm5r/OxyGTKz+P5f5Y7Aoir9+SjYaw==}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
+  '@dxup/nuxt@0.5.1':
+    resolution: {integrity: sha512-0tRoeAjupkmFRCKNyHgpQvTJpPYa5XCKPECHvi1PJivLu2gZwKahcFr0h4Mnd5nZerNm5QjzeJmA8lChyH5u6Q==}
 
   '@dxup/unimport@0.1.2':
     resolution: {integrity: sha512-/B8YJGPzaYq1NbsQmwgP8EZqg40NpTw4ZB3suuI0TplbxKHeK94jeaawLmVhCv+YwUnOpiWEz9U6SeThku/8JQ==}
@@ -9243,17 +9241,22 @@ snapshots:
       perfect-debounce: 2.1.0
       tinyexec: 1.2.4
 
-  '@dxup/nuxt@0.4.1(magicast@0.5.3)(typescript@6.0.3)':
+  '@dxup/nuxt@0.5.1(magicast@0.5.3)(oxc-parser@0.133.0)(rolldown@1.1.2)':
     dependencies:
       '@dxup/unimport': 0.1.2
       '@nuxt/kit': 4.4.8(magicast@0.5.3)
+      '@vue/compiler-dom': 3.5.38
       chokidar: 5.0.0
+      knitwork: 1.3.0
+      magic-string: 0.30.21
+      oxc-walker: 1.0.0(oxc-parser@0.133.0)(rolldown@1.1.2)
       pathe: 2.0.3
       tinyglobby: 0.2.17
-    optionalDependencies:
-      typescript: 6.0.3
+      unplugin: 3.0.0
     transitivePeerDependencies:
       - magicast
+      - oxc-parser
+      - rolldown
 
   '@dxup/unimport@0.1.2': {}
 
@@ -15940,7 +15943,7 @@ snapshots:
 
   nuxt@4.4.8(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7))(@parcel/watcher@2.5.6)(@types/node@26.0.0)(@vue/compiler-sfc@3.5.38)(cac@6.7.14)(db0@0.3.4)(eslint@10.5.0(jiti@2.7.0))(ioredis@5.11.1)(lightningcss@1.32.0)(magicast@0.5.3)(meow@14.1.0)(optionator@0.9.4)(pinia@3.0.4(typescript@6.0.3)(vue@3.5.38(typescript@6.0.3)))(rolldown@1.1.2)(rollup-plugin-visualizer@7.0.1(rolldown@1.1.2)(rollup@4.62.2))(rollup@4.62.2)(sass-embedded@1.100.0)(sass@1.100.0)(srvx@0.11.17)(stylelint@17.13.0(typescript@6.0.3))(terser@5.48.0)(typescript@6.0.3)(vite@7.3.5(@types/node@26.0.0)(jiti@2.7.0)(lightningcss@1.32.0)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))(yaml@2.9.0):
     dependencies:
-      '@dxup/nuxt': 0.4.1(magicast@0.5.3)(typescript@6.0.3)
+      '@dxup/nuxt': 0.5.1(magicast@0.5.3)(oxc-parser@0.133.0)(rolldown@1.1.2)
       '@nuxt/cli': 3.36.0(@nuxt/schema@4.4.8)(cac@6.7.14)(magicast@0.5.3)
       '@nuxt/devtools': 3.2.4(vite@7.3.5(@types/node@26.0.0)(jiti@2.7.0)(lightningcss@1.32.0)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(yaml@2.9.0))(vue@3.5.38(typescript@6.0.3))
       '@nuxt/kit': 4.4.8(magicast@0.5.3)

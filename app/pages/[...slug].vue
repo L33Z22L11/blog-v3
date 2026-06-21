@@ -1,15 +1,18 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const layoutStore = useLayoutStore()
-layoutStore.setAside(['toc'])
-
 const { data: post } = await useAsyncData(
 	`content:${route.path}`,
 	() => queryCollection('content').path(route.path).first(),
 )
 
 const excerpt = computed(() => post.value?.description || '')
+const asideWidgetNames = computed<WidgetName[]>(() => {
+	if (!post.value)
+		return ['blog-log']
+	return (post.value.meta?.aside as WidgetName[] | undefined) ?? ['toc']
+})
+const { widgets } = useWidgets(asideWidgetNames)
 
 if (post.value) {
 	useSeoMeta({
@@ -18,23 +21,20 @@ if (post.value) {
 		ogImage: post.value.image,
 		description: post.value.description,
 	})
-	layoutStore.setAside(post.value.meta?.aside as WidgetName[] | undefined)
 }
 else {
 	const event = useRequestEvent()
 	event && setResponseStatus(event, 404)
 	route.meta.title = '404'
-	layoutStore.setAside(['blog-log'])
-}
-
-if (import.meta.dev) {
-	watchEffect(() => {
-		layoutStore.setAside(post.value?.meta?.aside as WidgetName[] | undefined)
-	})
 }
 </script>
 
 <template>
+<template #aside>
+	<!-- 更换页面时相同 key 的组件不会更新 -->
+	<component :is="widget.comp" v-for="widget in widgets" :key="widget.name" />
+</template>
+
 <template v-if="post">
 	<PostHeader v-bind="post" />
 	<PostExcerpt v-if="excerpt" :excerpt />

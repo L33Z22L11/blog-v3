@@ -4,7 +4,6 @@ export const useLayoutStore = defineStore('layout', () => {
 	const router = useRouter()
 
 	const state = ref<LayoutState>('none')
-	const asideWidgets = ref<WidgetName[]>([])
 	const avoidTargets = ref<AvoidTarget[]>([])
 
 	const close = () => state.value = 'none'
@@ -13,11 +12,6 @@ export const useLayoutStore = defineStore('layout', () => {
 		if (state.value === key)
 			return close()
 		state.value = key
-	}
-
-	const setAside = (widgets?: WidgetName[]) => {
-		if (widgets)
-			asideWidgets.value = widgets
 	}
 
 	useEventListener('keydown', (e) => {
@@ -33,10 +27,8 @@ export const useLayoutStore = defineStore('layout', () => {
 
 	return {
 		state,
-		asideWidgets,
 		avoidTargets,
 		close,
 		toggle,
-		setAside,
 	}
 })

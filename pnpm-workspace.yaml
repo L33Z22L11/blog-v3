@@ -82,6 +82,9 @@ engineStrict: true
 minimumReleaseAgeExclude:
   - es-toolkit@1.48.1
 
+overrides:
+  '@dxup/nuxt': ^0.5.1
+
 patchedDependencies:
   '@nuxt/image': patches/@nuxt__image.patch
   '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch

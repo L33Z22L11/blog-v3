@@ -1,6 +1,10 @@
 <script setup lang="ts">
+defineProps<{
+	hasAside?: boolean
+}>()
+
 const layoutStore = useLayoutStore()
-const { asideWidgets, avoidTargets } = storeToRefs(layoutStore)
+const { avoidTargets } = storeToRefs(layoutStore)
 
 const panelRef = useTemplateRef('blog-panel')
 const { transform } = useAvoidTransform(panelRef, avoidTargets)
@@ -14,7 +18,7 @@ const { transform } = useAvoidTransform(panelRef, avoidTargets)
 	:style="{ transform }"
 >
 	<button
-		v-if="asideWidgets.length"
+		v-if="hasAside"
 		class="toggle-aside widescreen-only"
 		:class="{ active: layoutStore.state === 'aside' }"
 		aria-label="切换侧边栏"
