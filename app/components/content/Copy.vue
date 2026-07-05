@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { createPlainShiki } from 'plain-shiki'
-import { getShikiOptions } from '~/shiki.config'
-
 const props = withDefaults(defineProps<{
 	prompt?: string | boolean
 	code?: string
@@ -16,7 +13,7 @@ const language = computed(() => props.lang ?? getPromptLanguage(props.prompt))
 
 const showUndo = ref(false)
 const codeInput = useTemplateRef('code-input')
-const shikiStore = useShikiStore()
+const shiki = useShiki()
 
 const { copy, copied } = useCopy(codeInput)
 
@@ -41,13 +38,7 @@ function checkUndoable(event: InputEvent) {
 }
 
 onMounted(async () => {
-	const shiki = await shikiStore.load()
-	await shikiStore.loadLang(language.value)
-
-	createPlainShiki(shiki).mount(
-		codeInput.value!,
-		getShikiOptions(language.value),
-	)
+	await shiki.mountPlain(codeInput.value!, language.value)
 })
 </script>
 

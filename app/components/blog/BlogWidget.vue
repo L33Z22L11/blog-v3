@@ -6,7 +6,7 @@ defineProps<{
 	grayscale?: boolean
 	dim?: boolean
 	bgImg?: string
-	bgRight?: boolean
+	bgAside?: boolean
 }>()
 
 const body = useTemplateRef('widget-body')
@@ -32,7 +32,7 @@ defineExpose({ body })
 		class="widget-body"
 		:class="{ 'widget-card': card, 'with-bg': bgImg, 'scrollcheck-y scrollbar-hidden': shrink }"
 	>
-		<NuxtImg v-if="bgImg" class="bg-img" :class="{ 'bg-right': bgRight }" :src="bgImg" alt="" />
+		<NuxtImg v-if="bgImg" class="bg-img" :class="{ 'bg-right': bgAside }" :src="bgImg" alt="" />
 		<slot />
 	</div>
 </section>

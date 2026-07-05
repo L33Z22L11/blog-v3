@@ -175,17 +175,18 @@ img {
 	}
 }
 
-.shiki > .line {
-	> span {
-		font-style: var(--shiki-light-font-style);
+.shiki > .line > span,
+.shiki > span[style] {
+	font-style: var(--shiki-light-font-style);
 
-		.dark & {
-			background-color: var(--shiki-dark-bg) !important; /* stylelint-disable-line declaration-no-important */
-			font-style: var(--shiki-dark-font-style);
-			color: var(--shiki-dark) !important; /* stylelint-disable-line declaration-no-important */
-		}
+	.dark & {
+		background-color: var(--shiki-dark-bg) !important; /* stylelint-disable-line declaration-no-important */
+		font-style: var(--shiki-dark-font-style);
+		color: var(--shiki-dark) !important; /* stylelint-disable-line declaration-no-important */
 	}
+}
 
+.shiki > .line {
 	.indent {
 		display: inline-block;
 		position: relative;
