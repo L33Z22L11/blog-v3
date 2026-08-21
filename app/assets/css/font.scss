@@ -1,3 +1,19 @@
+@font-feature-values InterVariable {
+	@styleset {
+		open-digits: 1;
+		disambiguation: 2;
+		round-quotes-and-commas: 3;
+	}
+}
+
+@font-feature-values Inter {
+	@styleset {
+		open-digits: 1;
+		disambiguation: 2;
+		round-quotes-and-commas: 3;
+	}
+}
+
 :root {
 	--font-basic: "InterVariable", /* Android/Linux */ "sans-serif", /* Firefox */ "Noto Sans SC", sans-serif;
 	--font-serif: /* Windows */ "Noto Serif SC-Local", "Noto Serif SC", serif;
