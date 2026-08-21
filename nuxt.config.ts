@@ -28,7 +28,7 @@ export default defineNuxtConfig({
 				{ rel: 'icon', href: blogConfig.favicon },
 				{ rel: 'alternate', type: 'application/atom+xml', href: '/atom.xml' },
 				{ rel: 'preconnect', href: blogConfig.twikoo.preload },
-				{ rel: 'stylesheet', href: 'https://s4.zstatic.net/ajax/libs/KaTeX/0.16.44/katex.min.css' },
+				{ rel: 'stylesheet', href: 'https://registry.npmmirror.com/katex/0.16.44/files/dist/katex.min.css' },
 				// "InterVariable", "Inter"
 				{ rel: 'stylesheet', href: 'https://s4.zstatic.net/npm/inter-ui@4.1.1/inter-variable.css' },
 				{ rel: 'stylesheet', href: 'https://s4.zstatic.net/npm/inter-ui@4.1.1/inter.css' },
