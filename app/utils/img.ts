@@ -54,15 +54,12 @@ export function getOciqGroupAvatar(group = '', size = QgroupAvatarSize.Size100) 
 }
 
 interface FaviconOptions {
-	provider?: 'google' | 'duckduckgo' | 'microlink'
 	size?: number
 }
 
-// https://github.com/microlinkhq/unavatar
-// https://docs.webp.se/public-services/unavatar/
 export function getFavicon(domain: string, options?: FaviconOptions) {
-	const { provider = 'google', size = 32 } = options || {}
-	return `https://unavatar.webp.se/${provider}/${domain}?w=${size}`
+	const { size = 32 } = options || {}
+	return `https://t0.gstatic.cn/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://${domain}&size=${size}`
 }
 
 export function getImgUrl(src: string, service?: ImgService | true) {

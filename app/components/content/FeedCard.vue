@@ -24,7 +24,7 @@ function getInspectStyle(src: string): CSSProperties {
 
 	if (src === getMainDomain(props.link))
 		color = 'transparent' // 来自源站
-	else if (src === 'webp.se')
+	else if (src === 'gstatic.cn')
 		color = 'yellow' // 来自API获取
 	else if (src === 'qlogo.cn')
 		color = 'lightblue' // 来自QQ头像
