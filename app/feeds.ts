@@ -1695,7 +1695,7 @@ export default [
 				desc: '分享技术与生活趣事',
 				link: 'https://blog.aevi.top/',
 				feed: 'https://blog.aevi.top/feed.xml',
-				icon: getFavicon('blog.aevi.top'),
+				icon: getFavicon('blog.aevi.top', { provider: 'duckduckgo' }),
 				avatar: getGithubAvatar('tongzanyang'),
 				archs: ['Halo', '服务器'],
 				date: '2026-02-05',

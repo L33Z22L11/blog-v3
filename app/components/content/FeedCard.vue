@@ -2,6 +2,7 @@
 import type { CSSProperties } from 'vue'
 import type { FeedEntry } from '~/types/feed'
 import { Temporal } from 'temporal-polyfill'
+import { parseURL } from 'ufo'
 
 const props = defineProps<FeedEntry>()
 
@@ -15,7 +16,8 @@ const domainIcon = computed(() => getDomainIcon(props.link))
 
 /** IPX 使用 Sharp，无法处理 ICO 格式 */
 function getImageProvider(src: string) {
-	return /\.ico(?:[?#]|$)/i.test(src) ? 'none' : undefined
+	const isIco = parseURL(src).pathname.toLowerCase().endsWith('.ico')
+	return isIco ? 'none' : undefined
 }
 
 function getInspectStyle(src: string): CSSProperties {
@@ -24,7 +26,7 @@ function getInspectStyle(src: string): CSSProperties {
 
 	if (src === getMainDomain(props.link))
 		color = 'transparent' // 来自源站
-	else if (src === 'gstatic.cn')
+	else if (src === 'gstatic.cn' || src === 'webp.se')
 		color = 'yellow' // 来自API获取
 	else if (src === 'qlogo.cn')
 		color = 'lightblue' // 来自QQ头像
