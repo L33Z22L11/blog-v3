@@ -1,0 +1,18 @@
+diff --git a/dist/_chunks/node-fs.mjs b/dist/_chunks/node-fs.mjs
+index fecfc99f8bfa4dc145c053373342f2ae1529514d..db8fad0908978a8c8f02e401179e28fe649d4fe7 100644
+--- a/dist/_chunks/node-fs.mjs
++++ b/dist/_chunks/node-fs.mjs
+@@ -969,6 +969,13 @@ function createIPX(userOptions) {
+ 						meta: imageMeta$1
+ 					};
+ 				}
++				if (imageMeta$1.type === "ico" && (!mFormat || mFormat === "ico")) {
++					return {
++						data: sourceData,
++						format: "x-icon",
++						meta: imageMeta$1
++					};
++				}
+ 				const format = mFormat && SUPPORTED_FORMATS.has(mFormat) ? mFormat : SUPPORTED_FORMATS.has(imageMeta$1.type || "") ? imageMeta$1.type : "jpeg";
+ 				const animated = modifiers.animated !== void 0 || modifiers.a !== void 0 || format === "gif";
+ 				const Sharp = await getSharp();

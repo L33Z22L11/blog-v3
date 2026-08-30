@@ -1,29 +1,3 @@
-@font-feature-values InterVariable {
-	@styleset {
-		open-digits: 1;
-		disambiguation: 2;
-		round-quotes-and-commas: 3;
-		disambiguation-except-zero: 4;
-		circled-characters: 5;
-		squared-characters: 6;
-		square-punctuation: 7;
-		square-quotes: 8;
-	}
-}
-
-@font-feature-values Inter {
-	@styleset {
-		open-digits: 1;
-		disambiguation: 2;
-		round-quotes-and-commas: 3;
-		disambiguation-except-zero: 4;
-		circled-characters: 5;
-		squared-characters: 6;
-		square-punctuation: 7;
-		square-quotes: 8;
-	}
-}
-
 :root {
 	--font-basic: "InterVariable", /* Android/Linux */ "sans-serif", /* Firefox */ "Noto Sans SC", sans-serif;
 	--font-serif: /* Windows */ "Noto Serif SC-Local", "Noto Serif SC", serif;
@@ -35,6 +9,24 @@
 		--font-basic: "InterVariable", system-ui, sans-serif;
 	}
 }
+
+@mixin inter-styleset($font-family) {
+	@font-feature-values "#{$font-family}" {
+		@styleset {
+			open-digits: 1;
+			disambiguation: 2;
+			round-quotes-and-commas: 3;
+			disambiguation-except-zero: 4;
+			circled-characters: 5;
+			squared-characters: 6;
+			square-punctuation: 7;
+			square-quotes: 8;
+		}
+	}
+}
+
+@include inter-styleset(InterVariable);
+@include inter-styleset(Inter);
 
 /* autoprefixer: ignore next */
 // 仅在 Chrome 130+ 启用本地可变字体

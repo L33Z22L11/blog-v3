@@ -86,6 +86,8 @@ patchedDependencies:
   # 代码块不将 tab 转为空格
   # 行内代码 props.code 传入原文
   '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch
+  # IPX 的 Sharp 无法处理 ICO ，但改变运行时 NuxtImg provider 有类型问题 https://github.com/nuxt/image/issues/2174
+  ipx: patches/ipx.patch
   # adoptedStyleSheet ::highlight 高亮选择器
   plain-shiki: patches/plain-shiki.patch
 

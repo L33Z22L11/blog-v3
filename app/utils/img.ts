@@ -53,15 +53,22 @@ export function getOciqGroupAvatar(group = '', size = QgroupAvatarSize.Size100) 
 	return `https://p.qlogo.cn/gh/${group}/${group}/${size}/`
 }
 
-interface FaviconOptions {
-	provider?: 'google' | 'duckduckgo' | 'microlink'
+interface GstaticFaviconOptions {
+	provider?: 'gstatic'
+	size?: 16 | 32 | 64 | 96 | 128 | 256 | 512
+}
+
+interface WebpseFaviconOptions {
+	provider: 'google' | 'duckduckgo' | 'microlink'
 	size?: number
 }
 
-export function getFavicon(domain: string, options?: FaviconOptions) {
-	const { provider = 'google', size = 32 } = options || {}
-	if (provider === 'google')
-		return `https://t0.gstatic.cn/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://${domain}&size=${size}`
+// https://github.com/microlinkhq/unavatar
+// https://docs.webp.se/public-services/unavatar/
+export function getFavicon(domain: string, options?: GstaticFaviconOptions | WebpseFaviconOptions) {
+	const { provider = 'gstatic', size = 32 } = options || {}
+	if (provider === 'gstatic')
+		return `https://t0.gstatic.cn/faviconV2?client=SOCIAL&fallback_opts=SIZE&url=http://${domain}&size=${size}`
 	return `https://unavatar.webp.se/${provider}/${domain}?w=${size}`
 }
 

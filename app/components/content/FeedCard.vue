@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue'
 import type { FeedEntry } from '~/types/feed'
+// eslint-disable-next-line unused-imports/no-unused-imports
 import { Temporal } from 'temporal-polyfill'
-import { parseURL } from 'ufo'
 
 const props = defineProps<FeedEntry>()
 
@@ -13,12 +13,6 @@ const isInspect = computed(() => import.meta.dev && route.query.inspect !== unde
 const title = computed(() => props.title ?? props.sitenick ?? props.author)
 const domainTip = computed(() => getDomainType(getMainDomain(props.link, true)))
 const domainIcon = computed(() => getDomainIcon(props.link))
-
-/** IPX 使用 Sharp，无法处理 ICO 格式 */
-function getImageProvider(src: string) {
-	const isIco = parseURL(src).pathname.toLowerCase().endsWith('.ico')
-	return isIco ? 'none' : undefined
-}
 
 function getInspectStyle(src: string): CSSProperties {
 	src = getMainDomain(src)
@@ -51,11 +45,11 @@ function getInspectStyle(src: string): CSSProperties {
 		<div class="avatar" :title="feed ? undefined : '无订阅源'">
 			<ClientOnly v-if="isInspect">
 				<span style="position: absolute; left: 100%; white-space: nowrap;" v-text="title" />
-				<NuxtImg :src="icon" :provider="getImageProvider(icon)" :title="icon" :style="getInspectStyle(icon)" />
-				<NuxtImg :src="avatar" :provider="getImageProvider(avatar)" :title="avatar" :style="getInspectStyle(avatar)" />
+				<NuxtImg :src="icon" :title="icon" :style="getInspectStyle(icon)" />
+				<NuxtImg :src="avatar" :title="avatar" :style="getInspectStyle(avatar)" />
 			</ClientOnly>
 
-			<NuxtImg v-else class="round-cobblestone" :src="avatar" :provider="getImageProvider(avatar)" :alt="author" loading="lazy" />
+			<NuxtImg v-else class="round-cobblestone" :src="avatar" :alt="author" loading="lazy" />
 			<Icon v-if="appConfig.link.remindNoFeed && !feed" class="no-feed" name="tabler:bell-off" />
 		</div>
 
@@ -65,7 +59,7 @@ function getInspectStyle(src: string): CSSProperties {
 
 	<template #content>
 		<div class="site-content">
-			<NuxtImg class="site-icon" :src="icon" :provider="getImageProvider(icon)" :alt="title" />
+			<NuxtImg class="site-icon" :src="icon" :alt="title" loading="lazy" />
 
 			<div class="site-info">
 				<h3 class="text-creative">
