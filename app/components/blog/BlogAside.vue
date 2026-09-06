@@ -1,5 +1,10 @@
 <script setup lang="ts">
 const layoutStore = useLayoutStore()
+
+// 页面完成异步 setup 后才注册具名插槽；水合前等待，避免重复插入 SSR 侧栏。
+const layoutSlots = inject<{ ready: Promise<void> }>(Symbol.for('dxup:layout-slots'))
+if (layoutSlots)
+	await layoutSlots.ready
 </script>
 
 <template>
