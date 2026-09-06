@@ -33,35 +33,42 @@
 
 > 主题吸收了 [Stellar](https://github.com/xaoxuu/hexo-theme-stellar) 的设计风格，命名为 **Clarity**，寓意清楚的阅读体验和清晰的观点表达。限于下游越来越多，未来将会有选择地收录。
 
-| 博客名称                                     | 作者          | 对应上游版本号 | 下游特色功能                                 |
-| -------------------------------------------- | ------------- | -------------- | -------------------------------------------- |
-| **[纸鹿摸鱼处](https://blog.zhilu.site/)**   | **L33Z22L11** | v3.7.1         | (我是上游)                                   |
-| [希乐博客](https://blog.xlenco.top/)         | Xlenco        | v3.4.8         | 最新评论                                     |
-| [月空人](https://www.weilog.me/)             | Whbbit1999    | v3.7.0-alpha.4 | 项目/博客/Snippets页                         |
-| [Mugzx's Blog](https://blog.mugzx.top/)      | Mugzx         | v3.7.0         | 设计风格统一                                 |
-| [喵落阁](https://blog-v3.kemeow.top/)        | Kemeow815     | v3.4.7         | 即刻+友圈+最新评论+游戏/番剧页               |
-| [梦爱吃鱼](https://blog.bsgun.cn/)           | JLinmr        | v3.6.0         | 即刻+友圈+最新评论                           |
-| [Mikuの极光星](https://blog.sotkg.com/)      | PaloMiku      | v3.6.5         | 设计风格统一，设置面板                       |
-| [Shenley的存档点](https://blog.shenley.cn/)  | shenlye       | v3.4.4         | 游戏/番剧页，方形卡片+科技风                 |
-| [BiuXin-s Blog](https://zhilu.biuxin.com/)   | damizai       | v3.2-250304    | 即刻+友圈+最新评论                           |
-| [液泡部落格](https://blog.vacu.top/)         | VacuolePaoo   | v3.6.3         | 一言+标签tags+页脚随机友链                   |
-| [闻絮语](https://www.wxuyu.top/)             | 661111        | v3.6.5         | 即刻+友圈+Heo友链轮播/Profile                |
-| [落憾](https://blog.luoh.org/)               | LuoH-AN       | v3.7.0-rc.0    | 即刻+一言+卡片Profile                        |
-| [落尘up](https://www.luochen.chat/)          | luochenup     | v3.3.4         | 侧栏时间轴                                   |
-| [fishcpy的小破站](https://blog.fis.ink/)     | fishcpy       | v3.4.8         | 友圈+Artalk评论                              |
-| [六月墨语](https://blog.june.ink/)           | Akuma-real    | v3.6.3         | 友圈+最新评论                                |
-| [Cталин博客](https://blog.jiclub.site/)      | StalinDev54   | v3.4.8         | 侧栏时间轴+关于页                            |
-| [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong  | v3.7.0         | 即刻+友圈                                    |
-| [墨韵云阁](https://luoyuanxiang.top/)        | luoyuanxiang  | v3.6.0-rc.2    |                                              |
-| [鹊楠の小窝](https://blog.quenan.cn/)        | QNquenan      | v3.4.9         |                                              |
-| [KingKangBlog](https://blog.kingkang.xyz/)   | KingStoning   | v3.4.9         |                                              |
-| [LittleBun](https://blog.wl.do/)             | CiZaii        | v3.5.1         |                                              |
-| [钟神秀](https://blog.zsxcoder.top/)         | mcyzsx        | v3.6.0         |                                              |
-| [林间拾语](https://www.xhhao.com/)           | acanyo        | Halo           | https://www.halo.run/store/apps/app-jglhpodw |
-| [Wa 的小家](https://blog.gslpro.top/)        | Shalomguan    | v3.5.2         |                                              |
-| [青序栈](https://www.qixz.cn/)               | scfcn         | v3.6.4         |                                              |
-| [Axel Beta](https://sc.axel.xin/)            | ErenAxel      | v3.7.0-rc.0    |                                              |
-| [AirTouch](https://www.xsl.im/)              | AirTouch666   | v3.6.0         |                                              |
+版本以站点公开信息为准（2026-09-06）。
+
+| 博客名称                                     | 作者            | 线上版本    | 特色                           |
+| -------------------------------------------- | --------------- | ----------- | ------------------------------ |
+| **[纸鹿摸鱼处](https://blog.zhilu.site/)**   | **L33Z22L11**   | v3.7.1      | 上游                           |
+| [希乐博客](https://blog.xlenco.top/)         | Xlenco          | 未公开      | 最新评论、更新日志             |
+| [Mugzx's Blog](https://blog.mugzx.top/)      | Mugzx           | v3.7.1      | 精简导航、Umami 统计           |
+| [喵洛阁](https://blog-v3.kemeow.top/)        | Kemeow815       | 未公开      | 番剧、影视、书房、游戏页       |
+| [钟神秀](https://blog.zsxcoder.top/)         | mcyzsx          | v3.6.0      | 朋友圈、即刻、装备、追番       |
+| [梦爱吃鱼](https://blog.bsgun.cn/)           | JLinmr          | v3.6.0      | 鱼塘、瞬间、最新评论           |
+| [Mikuの极光星](https://blog.sotkg.com/)      | PaloMiku        | v3.7.0      | Linux 与 Galgame 长文、游戏页  |
+| [BiuXin-s Blog](https://blog.biuxin.de/)     | damizai         | 未公开      | 鱼塘、说说、最新评论           |
+| [液泡部落格](https://blog.vacu.top/)         | VacuolePaoo     | v3.7.1      | 开发工具配置、技术与思考       |
+| [闻絮语](https://www.wxuyu.top/)             | wxuyu           | v3.6.5      | 友链轮播、追更历史、音乐控制   |
+| [落憾](https://blog.luoh.org/)               | LuoH-AN         | v3.7.1      | 原创诗词、闲言、今日诗词       |
+| [fishcpy的小破站](https://blog.fis.ink/)     | fishcpy         | v3.4.8      | 鱼塘、时间盒、监控美化         |
+| [六月墨语](https://blog.june.ink/)           | Akuma-real      | v3.7.1      | 说说、访客卡片、音乐           |
+| [Cталин博客](https://blog.jiclub.site/)      | StalinDev54     | v3.4.8      | 生活长文、动态、关于页         |
+| [栖童の小站](https://blog.linux-qitong.top/) | Linux-qitong    | v3.7.1      | 标签、友圈、Linux 实践         |
+| [鹊楠の小窝](https://blog.quenan.cn/)        | QNquenan        | v3.4.9      | 建站教程、公告、更新日志       |
+| [KingKangBlog](https://blog.kingkang.xyz/)   | KingStoning     | v3.4.9      | 标签筛选、大学随笔             |
+| [Axel's BLOG](https://blog.axelx.cn/)        | AxelEwan        | v3.7.0-rc.0 | 演唱会图文、动态               |
+| [AirTouchの小站](https://www.xsl.im/)        | AirTouch666     | v3.6.0      | 自部署教程、鱼塘、说说         |
+| [Olinl Blog](https://blog.olinl.com/)        | olinll          | v3.7.1      | 部署与容器教程、主题改造笔记   |
+| [古怪杂记本](https://blog.guuguai.site/)     | GuuGuai         | v3.6.3      | 考研复盘、Minecraft 长文       |
+| [敖苛记](https://blog.kayro.cn/)             | jeoor           | v3.7.1      | 相册、标签云、时间进度         |
+| [灯火不休时](https://blog.dhbxs.top/)        | dhbxs           | v3.7.0-rc.0 | Java 与大数据实践、碎碎念      |
+| [郭雨博](https://blog.guoyubo.cn/)           | guojiahaous-alt | v3.7.0-rc.0 | CTF 复盘、折叠好友、音乐播放器 |
+
+### 社区移植
+
+| 框架    | 项目                                                                    | 版本 / 状态 | 特色                                                                             |
+| ------- | ----------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------- |
+| Hugo    | [it985/hugo-theme-clarity](https://github.com/it985/hugo-theme-clarity) | 开发中      | Pagefind、相册、说说                                                             |
+| Halo    | [acanyo/theme-clarity](https://github.com/acanyo/theme-clarity)         | v1.6.6      | 可配置小组件、分享海报；[应用市场](https://www.halo.run/store/apps/app-jglhpodw) |
+| Typecho | [jkjoy/theme-clarity](https://github.com/jkjoy/theme-clarity)           | v1.1.9      | 基于 Halo 版移植，图库、瞬间、追番                                               |
 
 ## 特性
 

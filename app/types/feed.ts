@@ -1,9 +1,9 @@
 export interface FeedEntry {
-	/** 博客作者 */
+	/** 博客作者，使用作者明确的自称 */
 	author: string
-	/** 网站趣称 */
+	/** 友链卡片的作者名后缀；作者自称明确且较短时，可填简短站名，避免重复作者名 */
 	sitenick?: string
-	/** 博客网站标题，允许长标题，用于订阅源，为空则使用网站趣称或作者名 */
+	/** 悬浮卡片与订阅源使用的完整站点标题；与作者名相同时省略，默认使用 sitenick 或 author */
 	title?: string
 	/** 个人简介/博客描述 */
 	desc?: string
@@ -17,7 +17,7 @@ export interface FeedEntry {
 	avatar: string
 	/** 博客技术架构 */
 	archs?: Arch[]
-	/** 订阅日期 */
+	/** 申请/评论日期；主动收录时使用收录日期 */
 	date: string
 	/** 博主备注 */
 	comment?: string
