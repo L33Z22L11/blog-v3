@@ -166,7 +166,12 @@ export default defineNuxtConfig({
 				highlight: false,
 				// @keep-sorted
 				remarkPlugins: {
-					[pluginPath('remark-music')]: {},
+					[pluginPath('remark-code-component')]: {
+						options: {
+							'mermaid': { component: 'mermaid', prop: 'code' },
+							'music-abc': { component: 'music-score', prop: 'abc' },
+						},
+					},
 					'remark-math': {},
 					'remark-reading-time': {},
 				},

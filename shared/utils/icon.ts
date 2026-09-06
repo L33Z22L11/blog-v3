@@ -187,6 +187,7 @@ const ext2lang: Record<string, string> = {
 	'md': 'catppuccin:markdown',
 	'mdc': 'catppuccin:markdown',
 	'mdx': 'catppuccin:markdown',
+	'mermaid': 'catppuccin:mermaid',
 	'mmd': 'catppuccin:mermaid',
 	'powershell': 'catppuccin:powershell',
 	'ps': 'catppuccin:powershell',
