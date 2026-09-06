@@ -2,7 +2,7 @@
 const layoutStore = useLayoutStore()
 
 // 页面异步数据完成后才会注册具名插槽；水合时必须保留原有 SSR 侧栏。
-const layoutSlots = useLayoutSlots()
+const layoutSlots = useLayoutSlotProvider()
 if (layoutSlots)
 	await layoutSlots.ready
 

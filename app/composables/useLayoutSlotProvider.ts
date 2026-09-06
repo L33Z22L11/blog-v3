@@ -7,13 +7,13 @@ interface LayoutSlotsProvider {
 
 const layoutSlotsKey = Symbol.for('dxup:layout-slots')
 
-export function useLayoutSlots() {
+export function useLayoutSlotProvider() {
 	return inject<LayoutSlotsProvider>(layoutSlotsKey)
 }
 
 /** dxup 在 setup 注册插槽；布局只发布已由 Nuxt 提交的页面插槽。 */
 export function provideLayoutSlots() {
-	const provider = useLayoutSlots()
+	const provider = useLayoutSlotProvider()
 	const slots = shallowRef(provider?.slots.value ?? null)
 	const route = useRoute()
 	if (provider) {
