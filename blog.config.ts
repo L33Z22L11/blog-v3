@@ -81,6 +81,16 @@ const blogConfig = {
 		{ src: 'https://s4.zstatic.net/npm/twikoo@1.7.20/dist/twikoo.min.js', defer: true },
 	],
 
+	/** 文章统计配置 */
+	stats: {
+		/**
+		 * 统计范围，匹配 content 下不含扩展名的路径（stem）；空数组统计全部内容
+		 * 使用 SQL LIKE 语法：% 匹配任意长度字符，_ 匹配单个字符
+		 * 多个范围取并集，如 ['posts/%', 'book/%']
+		 */
+		includePaths: [] as string[],
+	},
+
 	/** 自己部署的 Twikoo 服务 */
 	twikoo: {
 		envId: 'https://twikoo.zhilu.site/',

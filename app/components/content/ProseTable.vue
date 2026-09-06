@@ -7,6 +7,7 @@ const [scroll, toggleScroll] = useToggle(true)
 	<template #content>
 		<Icon v-show="false" :name="scroll ? 'tabler:text-wrap-disabled' : 'tabler:text-wrap'" />
 		<ZButton
+			variant="text"
 			:icon="scroll ? 'tabler:text-wrap' : 'tabler:text-wrap-disabled'"
 			:text="scroll ? '自动换行' : '横向滚动'"
 			@click="toggleScroll()"

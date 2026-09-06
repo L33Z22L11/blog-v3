@@ -1,3 +1,5 @@
+import blogConfig from '~~/blog.config'
+
 interface StatsEntry {
 	posts: number
 	words: number
@@ -17,9 +19,16 @@ export default defineEventHandler(async (event) => {
 		tags: <string[]>[],
 	}
 
-	const existedPath = new Map()
+	const existedPaths = new Set<string>()
 
-	const posts = await queryCollection(event, 'content').all()
+	const query = queryCollection(event, 'content')
+	if (blogConfig.stats.includePaths.length) {
+		query.orWhere(group => blogConfig.stats.includePaths.reduce(
+			(group, path) => group.where('stem', 'LIKE', path),
+			group,
+		))
+	}
+	const posts = await query.all()
 
 	const findOrCreateCategory = (
 		name: string,
@@ -35,9 +44,9 @@ export default defineEventHandler(async (event) => {
 
 	for (const post of posts) {
 		// 重复路径检测
-		if (existedPath.has(post.path))
+		if (existedPaths.has(post.path))
 			console.warn('文章存在重复路径', post.path)
-		existedPath.set(post.path, true)
+		existedPaths.add(post.path)
 
 		// 文章/总字数计数
 		stats.total.posts++
