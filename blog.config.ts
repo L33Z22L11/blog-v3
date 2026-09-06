@@ -88,7 +88,7 @@ const blogConfig = {
 		 * 使用 SQL LIKE 语法：% 匹配任意长度字符，_ 匹配单个字符
 		 * 多个范围取并集，如 ['posts/%', 'book/%']
 		 */
-		includePaths: ['posts/%'],
+		includePaths: [] as string[],
 	},
 
 	/** 自己部署的 Twikoo 服务 */
