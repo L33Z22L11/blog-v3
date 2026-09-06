@@ -10,26 +10,22 @@
 	}
 }
 
-@mixin inter-styleset($font-family) {
-	@font-feature-values "#{$font-family}" {
-		@styleset {
-			open-digits: 1;
-			disambiguation: 2;
-			round-quotes-and-commas: 3;
-			disambiguation-except-zero: 4;
-			circled-characters: 5;
-			squared-characters: 6;
-			square-punctuation: 7;
-			square-quotes: 8;
-		}
+@font-feature-values "InterVariable", "Inter" {
+	@styleset {
+		open-digits: 1;
+		disambiguation: 2;
+		round-quotes-and-commas: 3;
+		disambiguation-except-zero: 4;
+		circled-characters: 5;
+		squared-characters: 6;
+		square-punctuation: 7;
+		square-quotes: 8;
 	}
 }
 
-@include inter-styleset(InterVariable);
-@include inter-styleset(Inter);
+/* 仅在 Chrome 130+ 启用本地可变字体 */
 
 /* autoprefixer: ignore next */
-// 仅在 Chrome 130+ 启用本地可变字体
 @supports (box-decoration-break: clone) {
 	@font-face {
 		font-family: "Noto Serif SC-Local";

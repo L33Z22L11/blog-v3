@@ -128,6 +128,8 @@
 
 ### 安装依赖
 
+需要 Node.js 22.19+（22.x）、24.11+（24.x）或 26+，推荐使用满足要求的最新 LTS 版本。
+
 ```sh
 pnpm i
 ```
@@ -137,12 +139,17 @@ pnpm i
 ### 初始配置
 
 ```sh
-pnpm init-project # 初始化项目配置
+pnpm init-project # 初始化项目配置，输入 confirm 确认
 ```
 
-- 在启动或部署项目时，你需要移除我的文章、我的个人信息、我的统计/评论配置。
+初始化会删除整个 `content` 目录，重建示例文章与通用友链申请说明，重置 `app/feeds.ts`（仅保留主题作者纸鹿的博客），并清空个人导航及统计/评论配置。请先备份自己的内容；自动化环境可显式执行 `pnpm init-project --yes`，没有确认参数时会退出且不修改文件。
+
+初始化后头像和图标使用 WeAvatar 首字占位头像（无需邮箱或 MD5），站点地址为 `http://localhost:3000/`。上线前请按终端清单修改：
+
+- 站点与个人配置：
   - `blog.config.ts` 中的站点信息、Umami 站点统计、Cloudflare Insights 统计、Twikoo 评论服务源。
-  - `app.config.ts` 中的页脚导航、出生年份等。
+  - `app/app.config.ts` 中的页脚导航、出生年份等（`birthYear: 0` 隐藏年龄）。
+  - `content/link.md` 中的友链申请方式、`app/feeds.ts` 中的友链列表。
 
 - 为保证开发体验，需要安装 ESLint、Stylelint 等 VS Code 扩展。如果你不喜欢此项目的格式化风格，可以在 `./eslint.config.mjs` 和 `./.vscode/settings.json` 中调整或者不安装 VS Code 扩展。
 
@@ -180,6 +187,9 @@ pnpm preview
 如果直接使用平台提供的“Nuxt”预设部署，则会变成 SSR 模式，此模式每次访问都会等待服务端重新渲染。请参阅 [Nuxt 文档](https://nuxt.com/docs/getting-started/deployment) 和 [Nuxt Content 文档](https://content.nuxt.com/docs/deploy/static) 的“部署”一节。
 
 #### 疑难解答
+
+- 手动清理文章后若 `generate` 报 `Exiting due to prerender errors`，请在完整日志中搜索 `[404]` 和 `Linked from`，修正引用已删除文章的链接。推荐在全新模板上使用初始化命令统一清理。
+- `absolute-site-urls` 表示站内链接使用了绝对 URL，并非 IP 地址无效。Atom / OPML 等订阅信息需要绝对地址；自托管时将 `blog.config.ts` 的 `url` 设为实际访问地址，且协议、主机、端口保持一致。
 
 - 当你发现文章页面 404 问题时，请注意文章 URL 不应尾随 `/`。
 - 如果修改了 API 路径，使用 EdgeOne Makers 部署需要同步修改 `edgeone.json`。

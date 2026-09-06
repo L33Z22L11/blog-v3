@@ -7,7 +7,7 @@
   "license": "(MIT OR CC-BY-NC-SA-4.0)",
   "homepage": "https://github.com/L33Z22L11/blog-v3",
   "engines": {
-    "node": "^22.18 || ^23.6 || >=24",
+    "node": "^22.19 || ^24.11 || >=26",
     "pnpm": ">=10"
   },
   "scripts": {
