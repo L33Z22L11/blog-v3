@@ -19,8 +19,6 @@
 	text-autospace: normal;
 	text-size-adjust: none;
 	color: var(--c-text-1);
-	transition: color 0.1s, background-color 0.2s;
-	scroll-behavior: smooth;
 	scroll-padding: 2rem;
 	scrollbar-color: var(--c-text-3) transparent;
 	font-variant-alternates: styleset(open-digits, disambiguation, round-quotes-and-commas);
@@ -31,11 +29,6 @@
 		--end: left;
 		--transform-start-far: translateX(100%);
 		--transform-end-far: translateX(-100%);
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		transition: none;
-		scroll-behavior: auto;
 	}
 }
 

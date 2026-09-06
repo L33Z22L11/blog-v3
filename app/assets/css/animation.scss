@@ -1,13 +1,21 @@
 /* stylelint-disable declaration-no-important */
 :root {
+	--motion-duration: 300ms;
+	--motion-fade-duration: 200ms;
+	--motion-exit-duration: 100ms;
+	--motion-delay: 50ms;
+	--motion-easing: cubic-bezier(0.2, 1, 0.4, 1);
 	--max-bezier-to-full: cubic-bezier(0.5, 0, 1, 0.5);
 	--max-bezier-to-collapse: cubic-bezier(0, 0.5, 0.5, 1);
+
+	transition: color 0.1s, background-color 0.2s;
+	scroll-behavior: smooth;
 }
 
 @keyframes float-in {
 	0% {
 		opacity: 0;
-		transform: translateY(var(--float-distance, 10%));
+		transform: translateY(var(--float-distance, 12px));
 	}
 
 	100% {
@@ -18,17 +26,17 @@
 
 .float-in-enter-active,
 .float-in-leave-active {
-	transition: all var(--delay) !important;
+	transition: opacity var(--motion-duration) var(--motion-easing), transform var(--motion-duration) var(--motion-easing) !important;
 }
 
 .float-in-enter-from,
 .float-in-leave-to {
 	opacity: 0;
-	transform: translateY(var(--float-distance, 10%));
+	transform: translateY(var(--float-distance, 12px));
 }
 
 .float-in-move {
-	transition: transform var(--delay) !important;
+	transition: transform var(--motion-duration) var(--motion-easing) !important;
 }
 
 .collapse-enter-active,
@@ -47,4 +55,164 @@
 .collapse-leave-from {
 	max-height: 50vh;
 	transition-timing-function: var(--max-bezier-to-full);
+}
+
+@keyframes content-in {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes widget-in {
+	from {
+		opacity: 0;
+		translate: 0 12px;
+	}
+}
+
+/* 正文只淡入，不移动包含锚点的坐标系，也不改变 sticky/fixed 的包含块。 */
+.article, .post-header {
+	animation: content-in var(--motion-duration) var(--motion-easing);
+}
+
+#blog-aside > .blog-widget {
+	animation: widget-in var(--motion-duration) var(--motion-easing) backwards;
+
+	/* 不支持 sibling-index() 时沿用无延迟的基础动画。 */
+	animation-delay: calc((sibling-index() - 1) * var(--motion-delay));
+}
+
+#blog-aside {
+	transition: padding-inline var(--motion-duration) var(--motion-easing);
+}
+
+#blog-root {
+	transition: grid-template-columns var(--motion-duration) var(--motion-easing);
+}
+
+[data-native-entered] {
+	animation: none !important;
+}
+
+/* View Transition 只移动快照；布局与锚点在捕获新画面前已完成。 */
+:root[data-article-transition] {
+	scroll-behavior: auto;
+
+	#blog-root, #blog-aside {
+		transition: none !important;
+	}
+
+	.article-card, .article-item, .feed-card, .article, .post-header, #blog-aside > .blog-widget {
+		animation: none !important;
+	}
+}
+
+:root[data-article-transition]:not([data-page-snapshot]) {
+	#main-content { view-transition-name: article-body; }
+
+	/* 抽屉不参与共享快照，避免捕获屏幕外带 backdrop-filter 的固定层。 */
+	/* stylelint-disable-next-line media-query-no-invalid */
+	@media (width > $breakpoint-mobile) {
+		#blog-sidebar { view-transition-name: article-navigation; }
+	}
+
+	/* stylelint-disable-next-line media-query-no-invalid */
+	@media (width > $breakpoint-widescreen) {
+		#blog-aside:not(.is-empty) { view-transition-name: article-aside; }
+	}
+}
+
+[data-article-source],
+:root[data-article-transition="new"][data-article-hero] .post-header {
+	view-transition-name: article-hero;
+}
+
+::view-transition {
+	pointer-events: none;
+}
+
+::view-transition-group(*) {
+	animation-duration: var(--motion-duration);
+	animation-timing-function: var(--motion-easing);
+}
+
+::view-transition-group(article-body),
+::view-transition-group(article-navigation),
+::view-transition-new(root),
+::view-transition-new(article-navigation) {
+	animation: none;
+}
+
+::view-transition-old(root),
+::view-transition-old(article-navigation) {
+	display: none;
+}
+
+/* WebKit 使用完整页面快照，避免新命名图层空白形成蒙层。 */
+:root[data-page-snapshot]::view-transition-old(root) {
+	display: block;
+	animation: content-in var(--motion-fade-duration) ease reverse both;
+	mix-blend-mode: normal;
+	z-index: 1;
+}
+
+::view-transition-old(article-body),
+
+::view-transition-new(article-body) {
+	animation: float-in var(--motion-duration) var(--motion-easing) both;
+}
+
+
+::view-transition-new(article-aside) {
+	animation: content-in var(--motion-duration) var(--motion-easing) both;
+}
+
+@keyframes article-radius {
+	from { border-radius: var(--article-radius-from, 0); }
+	to { border-radius: var(--article-radius-to, 0); }
+}
+
+/* 独立于 group 的浏览器几何动画，正向、返回均使用真实元素的圆角。 */
+::view-transition-image-pair(article-hero) {
+	overflow: clip;
+	border-radius: var(--article-radius-to, 0);
+	animation: article-radius var(--motion-duration) var(--motion-easing) both;
+}
+
+::view-transition-old(article-hero),
+::view-transition-new(article-hero) {
+	height: 100%;
+	mix-blend-mode: normal;
+	object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:root {
+		transition: none;
+		scroll-behavior: auto;
+	}
+
+	#blog-root,
+	#blog-aside,
+	.article-card,
+	.article-item,
+	.feed-card,
+	.search-item,
+	.search-results,
+	.article,
+	.post-header,
+	#blog-aside > .blog-widget,
+	.float-in-enter-active,
+	.float-in-leave-active,
+	.float-in-move {
+		transition: none !important;
+		animation: none !important;
+	}
+
+	::view-transition-group(*),
+	::view-transition-image-pair(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
 }

@@ -93,7 +93,10 @@ if (import.meta.dev) {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
 	gap: 0.2em 0.5em;
+	overflow: clip;
 	margin: 1em auto;
+	// 列宽过渡与随机排序同时发生时，限制 FLIP 位移的绘制范围。
+	overflow-clip-margin: 0.5rem;
 
 	@mixin feed-narrow {
 		grid-template-columns: repeat(auto-fill, minmax(5em, 1fr));

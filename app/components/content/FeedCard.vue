@@ -7,6 +7,7 @@ import { Temporal } from 'temporal-polyfill'
 const props = defineProps<FeedEntry>()
 
 const appConfig = useAppConfig()
+const mounted = useMounted()
 const route = useRoute()
 const isInspect = computed(() => import.meta.dev && route.query.inspect !== undefined)
 
@@ -79,7 +80,7 @@ function getInspectStyle(src: string): CSSProperties {
 		</div>
 		<div class="desc-content">
 			<div class="date">
-				{{ Temporal.PlainDate.from(date).toLocaleString() }}
+				{{ Temporal.PlainDate.from(date).toLocaleString(mounted ? undefined : appConfig.language) }}
 			</div>
 
 			<p>{{ error ?? desc }}</p>

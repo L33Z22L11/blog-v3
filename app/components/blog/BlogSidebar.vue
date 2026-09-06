@@ -2,9 +2,6 @@
 const appConfig = useAppConfig()
 const layoutStore = useLayoutStore()
 const searchStore = useSearchStore()
-
-const { text } = useTextSelection()
-const debouncedSelection = refDebounced(text)
 </script>
 
 <template>
@@ -21,7 +18,7 @@ const debouncedSelection = refDebounced(text)
 	<nav class="sidebar-nav scrollcheck-y">
 		<div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
 			<Icon name="tabler:search" />
-			<span class="nav-text">{{ debouncedSelection || searchStore.word || '搜索' }}</span>
+			<span class="nav-text">{{ searchStore.label }}</span>
 			<Key class="keycut" code="K" cmd prevent @press="layoutStore.toggle('search')" />
 		</div>
 
