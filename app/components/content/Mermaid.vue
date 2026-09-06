@@ -23,14 +23,14 @@ const diagram = computedAsync<{ svg?: string, error?: string }>(async () => {
 	if (!shouldRender.value)
 		return {}
 
-	const { default: mermaid } = await import('mermaid')
-	// 等待 color-mode 换好根元素类名，以及字体就绪——否则取到旧配色、量出偏窄的文本
-	await Promise.all([nextTick(), document.fonts.ready])
-
-	const style = getComputedStyle(document.documentElement)
-	const cssVar = (name: string) => style.getPropertyValue(name)
-
 	try {
+		const { default: mermaid } = await import('mermaid')
+		// 等待 color-mode 换好根元素类名，以及字体就绪——否则取到旧配色、量出偏窄的文本
+		await Promise.all([nextTick(), document.fonts.ready])
+
+		const style = getComputedStyle(document.documentElement)
+		const cssVar = (name: string) => style.getPropertyValue(name)
+
 		mermaid.initialize({
 			fontFamily: 'inherit',
 			// 须在 load 事件前关闭，否则 mermaid 会自行扫描并接管页面元素
