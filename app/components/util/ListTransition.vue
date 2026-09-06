@@ -40,8 +40,7 @@ watch(() => [props.items, props.state] as const, async () => {
 	const target = inner.getBoundingClientRect().height
 	const motion = getComputedStyle(outer)
 	const timing = {
-		// animation.scss 的时长统一以 ms 定义，CSS 与 WAAPI 共用同一组参数。
-		duration: Number.parseFloat(motion.getPropertyValue('--motion-duration')),
+		duration: parseCssTime(motion.getPropertyValue('--motion-duration')),
 		easing: motion.getPropertyValue('--motion-easing').trim(),
 	}
 	const after = elements().map(element => ({ element, rect: element.getBoundingClientRect() }))

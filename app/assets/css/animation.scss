@@ -1,9 +1,9 @@
 /* stylelint-disable declaration-no-important */
 :root {
-	--motion-duration: 300ms;
-	--motion-fade-duration: 200ms;
-	--motion-exit-duration: 100ms;
-	--motion-delay: 50ms;
+	--motion-duration: 0.3s;
+	--motion-fade-duration: 0.2s;
+	--motion-exit-duration: 0.1s;
+	--motion-delay: 0.05s;
 	--motion-easing: cubic-bezier(0.2, 1, 0.4, 1);
 	--max-bezier-to-full: cubic-bezier(0.5, 0, 1, 0.5);
 	--max-bezier-to-collapse: cubic-bezier(0, 0.5, 0.5, 1);
@@ -157,14 +157,17 @@
 }
 
 ::view-transition-old(article-body),
-
-::view-transition-new(article-body) {
-	animation: float-in var(--motion-duration) var(--motion-easing) both;
+::view-transition-old(article-aside),
+::view-transition-old(article-hero) {
+	animation: content-in var(--motion-exit-duration) ease reverse both;
+	mix-blend-mode: normal;
 }
 
-
-::view-transition-new(article-aside) {
+::view-transition-new(article-body),
+::view-transition-new(article-aside),
+::view-transition-new(article-hero) {
 	animation: content-in var(--motion-duration) var(--motion-easing) both;
+	mix-blend-mode: normal;
 }
 
 @keyframes article-radius {
@@ -179,11 +182,12 @@
 	animation: article-radius var(--motion-duration) var(--motion-easing) both;
 }
 
+/* 快照包含整张卡片（封面和文字），不能按封面裁切放大。 */
 ::view-transition-old(article-hero),
 ::view-transition-new(article-hero) {
 	height: 100%;
-	mix-blend-mode: normal;
-	object-fit: cover;
+	object-fit: contain;
+	object-position: top left;
 }
 
 @media (prefers-reduced-motion: reduce) {
