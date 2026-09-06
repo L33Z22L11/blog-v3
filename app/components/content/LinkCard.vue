@@ -24,7 +24,7 @@ defineProps<{
 </UtilLink>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .link-card {
 	display: flex;
 	align-items: center;
@@ -39,7 +39,7 @@ defineProps<{
 		margin: 2rem auto;
 	}
 
-	// 溢出显示省略号
+	/* 溢出显示省略号 */
 	.link-card-info {
 		flex-grow: 1;
 		overflow: hidden;
@@ -53,7 +53,7 @@ defineProps<{
 		line-clamp: 2;
 	}
 
-	// 内部需要是块元素
+	/* 内部需要是块元素 */
 	.link-card-description {
 		overflow: hidden;
 		opacity: 0.5;

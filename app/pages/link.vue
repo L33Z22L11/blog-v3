@@ -58,7 +58,7 @@ const copyFields = {
 <PostComment />
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .link-tab {
 	margin: 1rem;
 }

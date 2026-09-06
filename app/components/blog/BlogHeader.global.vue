@@ -44,7 +44,7 @@ const appConfig = useAppConfig()
 </UtilLink>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .blog-header {
 	contain: layout;
 	display: flex;

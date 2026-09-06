@@ -42,7 +42,7 @@ const { category, categories, listCategorized } = useCategory(listSorted)
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .preview {
 	margin: 1rem;
 }

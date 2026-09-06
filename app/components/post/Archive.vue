@@ -36,7 +36,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 </li>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .article-item {
 	display: flex;
 	align-items: center;
@@ -46,7 +46,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 	transition: all 0.2s;
 	animation: float-in 0.2s var(--delay) backwards;
 
-	@media (max-width: $breakpoint-mobile) {
+	@media (max-width: 768px) {
 		font-size: 0.9em;
 	}
 

@@ -57,14 +57,14 @@ if (import.meta.dev) {
 </section>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .feed-group {
 	container-type: inline-size;
 	margin: 2em 1em;
 }
 
 .feed-title {
-	contain: layout; // 极窄宽度阻止滚动条
+	contain: layout; /* 极窄宽度阻止滚动条 */
 	position: sticky;
 	opacity: 0.5;
 	top: 0;
@@ -95,7 +95,7 @@ if (import.meta.dev) {
 	gap: 0.2em 0.5em;
 	margin: 1em auto;
 
-	@mixin feed-narrow {
+	@media (max-width: 528px) {
 		grid-template-columns: repeat(auto-fill, minmax(5em, 1fr));
 		font-size: 0.9em;
 
@@ -108,13 +108,21 @@ if (import.meta.dev) {
 			}
 		}
 	}
+}
 
-	@media (max-width: $breakpoint-phone) {
-		@include feed-narrow;
-	}
+@container (max-width: 528px) {
+	.feed-list {
+		grid-template-columns: repeat(auto-fill, minmax(5em, 1fr));
+		font-size: 0.9em;
 
-	@container (max-width: #{$breakpoint-phone}) {
-		@include feed-narrow;
+		:deep(.feed-card) {
+			flex-direction: column;
+			text-align: center;
+
+			.avatar.avatar {
+				margin: 0 0 0.2em;
+			}
+		}
 	}
 }
 
@@ -124,7 +132,7 @@ if (import.meta.dev) {
 }
 
 .float-in-move {
-	contain: paint; // 防止移动时出现滚动条
-	pointer-events: none; // 阻止触发错误定位的气泡
+	contain: paint; /* 防止移动时出现滚动条 */
+	pointer-events: none; /* 阻止触发错误定位的气泡 */
 }
 </style>

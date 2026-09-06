@@ -28,9 +28,8 @@ const activeTab = ref(Number(props.active) || 1)
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .float-in-leave-active {
-	/* stylelint-disable-next-line declaration-no-important */
 	position: revert !important;
 }
 

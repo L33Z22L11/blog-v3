@@ -66,7 +66,7 @@ function toggleDirection() {
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .order-toggle {
 	display: flex;
 	gap: 1rem;

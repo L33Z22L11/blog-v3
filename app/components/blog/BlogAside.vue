@@ -16,7 +16,7 @@ const layoutStore = useLayoutStore()
 </aside>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 #blog-aside {
 	display: flex;
 	flex-direction: column;
@@ -25,7 +25,7 @@ const layoutStore = useLayoutStore()
 	padding: 0.5rem;
 	z-index: var(--z-index-popover);
 
-	@media (max-width: $breakpoint-widescreen) {
+	@media (max-width: 1080px) {
 		position: fixed;
 		inset-inline-end: 0;
 		top: 0;
@@ -36,7 +36,7 @@ const layoutStore = useLayoutStore()
 		transform: var(--transform-end-far);
 		transition: transform 0.2s;
 
-		// TODO 留 padding-bottom 避让 BlogPanel
+		/* TODO 留 padding-bottom 避让 BlogPanel */
 
 		> :deep(.blog-widget) {
 			padding: 0.5rem;

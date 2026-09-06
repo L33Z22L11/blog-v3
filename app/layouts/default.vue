@@ -21,7 +21,7 @@ const { slots } = inject<any>(Symbol.for('dxup:layout-slots')) || {}
 </template>
 
 <!-- eslint-disable-next-line vue/enforce-style-attribute -->
-<style lang="scss">
+<style>
 #blog-root {
 	display: flex;
 	justify-content: center;
@@ -30,15 +30,15 @@ const { slots } = inject<any>(Symbol.for('dxup:layout-slots')) || {}
 }
 
 #blog-sidebar, #blog-aside {
-	flex: 0 0 280px; // 防止搜索框 grow
+	flex: 0 0 280px; /* 防止搜索框 grow */
 	position: sticky;
 	top: 0;
 	height: 100vh;
 	height: 100dvh;
-	min-width: 0; // 防止搜索框撑开页面
+	min-width: 0; /* 防止搜索框撑开页面 */
 	scrollbar-width: thin;
 
-	@media (max-width: $breakpoint-widescreen) {
+	@media (max-width: 1080px) {
 		flex-shrink: 0.2;
 	}
 }
@@ -47,19 +47,19 @@ const { slots } = inject<any>(Symbol.for('dxup:layout-slots')) || {}
 	display: flex;
 	gap: 1rem;
 
-	// 若设置的是 max-width，则内部 main 宽度为 fit-content，可能无法撑满
-	// 此时即使设置 flex-grow，也会影响 #sidebar 无法正确 shrink
-	width: $breakpoint-widescreen;
-	min-width: 0; // 解决父级 flexbox 设置 justify-content: center 时溢出左侧消失的问题
+	/* 若设置的是 max-width，则内部 main 宽度为 fit-content，可能无法撑满 */
+	/* 此时即使设置 flex-grow，也会影响 #sidebar 无法正确 shrink */
+	width: 1080px;
+	min-width: 0; /* 解决父级 flexbox 设置 justify-content: center 时溢出左侧消失的问题 */
 
-	// 此处不建议给内容设置 padding
+	/* 此处不建议给内容设置 padding */
 	> #main-content {
-		flex-grow: 1; // 使较小宽度的内容占满
+		flex-grow: 1; /* 使较小宽度的内容占满 */
 
-		// overflow: hidden; // 会使一部分元素吸顶失效
+		/* overflow: hidden; // 会使一部分元素吸顶失效 */
 
-		// 使内容正确计算宽度而不横向溢出
-		// 也可设置 width: 0 或者 contain: inline-size（兼容性不佳）
+		/* 使内容正确计算宽度而不横向溢出 */
+		/* 也可设置 width: 0 或者 contain: inline-size（兼容性不佳） */
 		min-width: 0;
 	}
 }

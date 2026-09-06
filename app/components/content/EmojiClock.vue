@@ -45,7 +45,7 @@ whenever(() => !props.datetime, resume)
 />
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .emoji-clock.rotate {
 	display: inline-block;
 	transform: rotate(var(--deg, 0deg));

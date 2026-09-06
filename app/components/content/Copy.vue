@@ -67,11 +67,11 @@ onMounted(async () => {
 </code>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .copy {
 	contain: paint;
 	display: flex;
-	overflow: auto; // prompt 溢出时滚动
+	overflow: auto; /* prompt 溢出时滚动 */
 	margin: 0.5rem 0;
 	border: 1px solid var(--c-border);
 	border-radius: 4px;

@@ -73,7 +73,7 @@ const { data: previewCount } = useAsyncData(
 </UtilHydrateSafe>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .post-list {
 	margin: 1rem;
 }

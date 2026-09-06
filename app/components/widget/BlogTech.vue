@@ -54,7 +54,7 @@ const expand = ref(false)
 </BlogWidget>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .z-expand {
 	margin-top: 0.2em;
 }

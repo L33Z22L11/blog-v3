@@ -39,7 +39,7 @@ const { transform } = useAvoidTransform(panelRef, avoidTargets)
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 #blog-panel {
 	contain: paint;
 	position: fixed;
@@ -52,7 +52,7 @@ const { transform } = useAvoidTransform(panelRef, avoidTargets)
 	transition: transform 0.1s;
 	z-index: var(--z-index-popover);
 
-	@media (max-height: $breakpoint-phone) {
+	@media (max-height: 528px) {
 		display: flex;
 	}
 

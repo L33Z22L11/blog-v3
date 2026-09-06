@@ -49,7 +49,7 @@ const debouncedSelection = refDebounced(text)
 </aside>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 #blog-sidebar {
 	display: flex;
 	flex-direction: column;
@@ -59,7 +59,7 @@ const debouncedSelection = refDebounced(text)
 		color: currentcolor;
 	}
 
-	@media (max-width: $breakpoint-mobile) {
+	@media (max-width: 768px) {
 		position: fixed;
 		inset-inline-start: 0;
 		width: 320px;

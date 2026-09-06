@@ -38,38 +38,29 @@ defineExpose({ body })
 </section>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .blog-widget {
 	flex-shrink: 1;
 	font-size: 0.9em;
-
-	&.shrink {
-		display: flex;
-		flex-direction: column;
-		overflow: auto;
-	}
-
-	&.grayscale :where(.iconify, img) {
-		transition: filter 0.2s;
-		filter: grayscale(0.8);
-
-		#blog-aside:hover &,
-		&:focus-within,
-		#blog-aside.show & {
-			filter: grayscale(0);
-		}
-	}
-
-	&.dim {
-		opacity: 0.3;
-		transition: opacity 0.2s;
-
-		#blog-aside:hover &,
-		&:focus-within,
-		#blog-aside.show & {
-			opacity: 1;
-		}
-	}
+}
+.blog-widget.shrink {
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+}
+.blog-widget.grayscale :where(.iconify, img) {
+	transition: filter 0.2s;
+	filter: grayscale(0.8);
+}
+#blog-aside:hover .blog-widget.grayscale :where(.iconify, img), .blog-widget.grayscale :where(.iconify, img):focus-within, #blog-aside.show .blog-widget.grayscale :where(.iconify, img) {
+	filter: grayscale(0);
+}
+.blog-widget.dim {
+	opacity: 0.3;
+	transition: opacity 0.2s;
+}
+#blog-aside:hover .blog-widget.dim, .blog-widget.dim:focus-within, #blog-aside.show .blog-widget.dim {
+	opacity: 1;
 }
 
 .widget-header {
@@ -78,57 +69,57 @@ defineExpose({ body })
 	gap: 0.5rem;
 	padding: 0.5rem;
 	color: var(--c-text-2);
+}
 
-	&:empty {
-		display: none;
-	}
+.widget-header:empty {
+	display: none;
+}
 
-	> .seperator {
-		flex-grow: 1;
-	}
+.widget-header > .seperator {
+	flex-grow: 1;
+}
 
-	> :deep(a) {
-		transition: color 0.2s;
+.widget-header > :deep(a) {
+	transition: color 0.2s;
+}
 
-		&[href]:hover {
-			color: var(--c-primary);
-		}
-	}
+.widget-header > :deep(a)[href]:hover {
+	color: var(--c-primary);
 }
 
 .widget-body {
 	overscroll-behavior: contain;
+}
 
-	&.with-bg {
-		contain: paint; // overflow hidden + position relative
-		z-index: 0;
+.widget-body.with-bg {
+	contain: paint; /* overflow hidden + position relative */
+	z-index: 0;
+}
 
-		> .bg-img {
-			position: absolute;
-			opacity: 0.2;
-			inset: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			pointer-events: none;
-			z-index: -1;
+.widget-body.with-bg > .bg-img {
+	position: absolute;
+	opacity: 0.2;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	pointer-events: none;
+	z-index: -1;
+}
 
-			&.bg-right {
-				inset-inline-start: 50%;
-				width: 50%;
-				mask-image: linear-gradient(to var(--end), transparent, #FFF 50%);
-			}
-		}
-	}
+.widget-body.with-bg > .bg-img.bg-right {
+	inset-inline-start: 50%;
+	width: 50%;
+	mask-image: linear-gradient(to var(--end), transparent, #FFF 50%);
+}
 
-	&.widget-card {
-		padding: 0.5rem 0.8rem;
-		border-radius: 0.8rem;
-		background-color: var(--c-bg-2);
+.widget-body.widget-card {
+	padding: 0.5rem 0.8rem;
+	border-radius: 0.8rem;
+	background-color: var(--c-bg-2);
+}
 
-		:deep(p) {
-			padding: 0.2em 0;
-		}
-	}
+.widget-body.widget-card :deep(p) {
+	padding: 0.2em 0;
 }
 </style>

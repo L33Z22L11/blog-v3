@@ -17,7 +17,7 @@ const icon = computed(() => props.icon || 'tabler:message-2')
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .quote {
 	font-size: 1.2rem;
 	line-height: 1.5;
@@ -39,7 +39,7 @@ const icon = computed(() => props.icon || 'tabler:message-2')
 	transition: all 0.2s;
 	z-index: -1;
 
-	@media (max-width: $breakpoint-phone) {
+	@media (max-width: 528px) {
 		font-size: 3rem;
 	}
 

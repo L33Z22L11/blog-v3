@@ -59,120 +59,100 @@ onUnmounted(() => {
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .music-score {
 	line-height: 1.4;
-
-	:deep(.abcjs-inline-audio) {
-		display: flex;
-		align-items: center;
-		gap: 0.5em;
-		padding: 0.2em 0.5em;
-		border-radius: 4px;
-		background-color: var(--c-bg-2);
-		font-size: 0.8em;
-		font-variant-numeric: tabular-nums;
-
-		&.abcjs-disabled {
-			opacity: 0.5;
-		}
-
-		> .abcjs-btn {
-			width: 1em;
-			padding: 0.2em;
-			box-sizing: content-box;
-			background: none;
-			line-height: 1;
-
-			> svg {
-				display: block;
-			}
-
-			&:hover, &.abcjs-pushed {
-				color: var(--c-primary);
-			}
-
-			g {
-				fill: currentcolor;
-				stroke: currentcolor;
-			}
-		}
-
-		> .abcjs-midi-start {
-			> .abcjs-pause-svg, > .abcjs-loading-svg {
-				display: none;
-			}
-
-			&.abcjs-pushed, &.abcjs-loading {
-				> .abcjs-play-svg {
-					display: none;
-				}
-			}
-
-			&.abcjs-pushed .abcjs-pause-svg {
-				display: block;
-			}
-		}
-
-		> .abcjs-midi-progress-background, .abcjs-midi-progress-indicator {
-			border: 8px solid transparent;
-			border-radius: 12px;
-			box-sizing: content-box;
-			background-clip: padding-box;
-		}
-
-		> .abcjs-midi-progress-background {
-			flex-grow: 1;
-			position: relative;
-			height: 4px;
-			background-color: var(--c-bg-soft);
-		}
-
-		.abcjs-midi-progress-indicator {
-			position: absolute;
-			top: -10px;
-			width: 8px;
-			height: 8px;
-			margin-left: -10px;
-			background-color: var(--c-text-1);
-		}
-
-		.abcjs-midi-clock {
-			display: inline-block;
-		}
-
-		.abcjs-tempo-wrapper {
-			display: flex;
-			align-items: center;
-		}
-
-		input.abcjs-midi-tempo {
-			position: relative;
-			width: 3em;
-			text-align: end;
-		}
-
-		.abcjs-loading .abcjs-loading-svg {
-			display: inherit;
-		}
-
-		.abcjs-loading {
-			@keyframes abcjs-spin {
-				from { transform: rotate(0deg); }
-				to { transform: rotate(360deg); }
-			}
-
-			outline: none;
-			animation: abcjs-spin 1s linear infinite;
-		}
-
-		.abcjs-loading-svg circle {
-			stroke: var(--c-text-1);
-		}
-
-		.abcjs-css-warning {
-			display: none;
-		}
+}
+.music-score :deep(.abcjs-inline-audio) {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+	padding: 0.2em 0.5em;
+	border-radius: 4px;
+	background-color: var(--c-bg-2);
+	font-size: 0.8em;
+	font-variant-numeric: tabular-nums;
+}
+.music-score :deep(.abcjs-inline-audio).abcjs-disabled {
+	opacity: 0.5;
+}
+.music-score :deep(.abcjs-inline-audio) > .abcjs-btn {
+	width: 1em;
+	padding: 0.2em;
+	box-sizing: content-box;
+	background: none;
+	line-height: 1;
+}
+.music-score :deep(.abcjs-inline-audio) > .abcjs-btn > svg {
+	display: block;
+}
+.music-score :deep(.abcjs-inline-audio) > .abcjs-btn:hover, .music-score :deep(.abcjs-inline-audio) > .abcjs-btn.abcjs-pushed {
+	color: var(--c-primary);
+}
+.music-score :deep(.abcjs-inline-audio) > .abcjs-btn g {
+	fill: currentcolor;
+	stroke: currentcolor;
+}
+.music-score :deep(.abcjs-inline-audio) > .abcjs-midi-start > .abcjs-pause-svg, .music-score :deep(.abcjs-inline-audio) > .abcjs-midi-start > .abcjs-loading-svg {
+	display: none;
+}
+.music-score :deep(.abcjs-inline-audio) > .abcjs-midi-start.abcjs-pushed > .abcjs-play-svg, .music-score :deep(.abcjs-inline-audio) > .abcjs-midi-start.abcjs-loading > .abcjs-play-svg {
+	display: none;
+}
+.music-score :deep(.abcjs-inline-audio) > .abcjs-midi-start.abcjs-pushed .abcjs-pause-svg {
+	display: block;
+}
+.music-score :deep(.abcjs-inline-audio) > .abcjs-midi-progress-background, .music-score :deep(.abcjs-inline-audio) .abcjs-midi-progress-indicator {
+	border: 8px solid transparent;
+	border-radius: 12px;
+	box-sizing: content-box;
+	background-clip: padding-box;
+}
+.music-score :deep(.abcjs-inline-audio) > .abcjs-midi-progress-background {
+	flex-grow: 1;
+	position: relative;
+	height: 4px;
+	background-color: var(--c-bg-soft);
+}
+.music-score :deep(.abcjs-inline-audio) .abcjs-midi-progress-indicator {
+	position: absolute;
+	top: -10px;
+	width: 8px;
+	height: 8px;
+	margin-left: -10px;
+	background-color: var(--c-text-1);
+}
+.music-score :deep(.abcjs-inline-audio) .abcjs-midi-clock {
+	display: inline-block;
+}
+.music-score :deep(.abcjs-inline-audio) .abcjs-tempo-wrapper {
+	display: flex;
+	align-items: center;
+}
+.music-score :deep(.abcjs-inline-audio) input.abcjs-midi-tempo {
+	position: relative;
+	width: 3em;
+	text-align: end;
+}
+.music-score :deep(.abcjs-inline-audio) .abcjs-loading .abcjs-loading-svg {
+	display: inherit;
+}
+@keyframes abcjs-spin {
+	from {
+		transform: rotate(0deg);
 	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+.music-score :deep(.abcjs-inline-audio) .abcjs-loading {
+	outline: none;
+	animation: abcjs-spin 1s linear infinite;
+}
+.music-score :deep(.abcjs-inline-audio) .abcjs-loading-svg circle {
+	stroke: var(--c-text-1);
+}
+.music-score :deep(.abcjs-inline-audio) .abcjs-css-warning {
+	display: none;
 }
 </style>

@@ -1,6 +1,8 @@
 import antfu from '@antfu/eslint-config'
+import css from '@zinkawaii/eslint-config-css'
+import { defineConfig } from 'eslint/config'
 
-export default antfu({
+const codeConfig = await antfu({
 	ignores: ['*.yaml'],
 	stylistic: {
 		indent: 'tab',
@@ -15,7 +17,7 @@ export default antfu({
 	rules: {
 		'vue/block-lang': ['warn', {
 			script: { lang: ['ts', 'tsx'] },
-			style: { lang: ['scss'] },
+			style: { lang: ['css'], allowNoLang: true },
 		}],
 		'vue/enforce-style-attribute': ['warn', {
 			allow: ['scoped'],
@@ -59,6 +61,7 @@ export default antfu({
 		'style/quotes': 'off',
 		'style/semi': 'off',
 		'unicorn/prefer-includes': 'off',
+		'vue/block-lang': 'off',
 	},
 }, {
 	// 文章中的 JSON 示例允许尾随逗号
@@ -67,3 +70,16 @@ export default antfu({
 		'jsonc/comma-dangle': ['warn', 'always'],
 	},
 })
+
+export default defineConfig([
+	// CSS 使用独立语言规则，避免继承只适用于 JavaScript AST 的规则
+	...codeConfig.map(config => config.rules ? { ...config, ignores: [...config.ignores || [], '**/*.css'] } : config),
+	...css.map(config => ({ ...config, files: ['app/**/*.css'] })),
+	{
+		files: ['app/**/*.css'],
+		rules: {
+			'css/no-important': 'off',
+			'css-stylistic/indentation': ['warn', 'tab', { baseIndentLevel: 0 }],
+		},
+	},
+])

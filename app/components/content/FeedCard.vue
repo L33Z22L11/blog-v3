@@ -92,7 +92,7 @@ function getInspectStyle(src: string): CSSProperties {
 </Tooltip>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .feed-card {
 	display: flex;
 	align-items: center;
@@ -135,7 +135,7 @@ function getInspectStyle(src: string): CSSProperties {
 	}
 
 	.author {
-		overflow: hidden; // 长词折行
+		overflow: hidden; /* 长词折行 */
 	}
 
 	.sitenick {
@@ -149,11 +149,11 @@ function getInspectStyle(src: string): CSSProperties {
 	}
 }
 
-// https://vue-tippy.netlify.app/props#appendto
-// Tooltip 位于组件根部时，interactive tippy 会插入到父组件
+/* https://vue-tippy.netlify.app/props#appendto */
+/* Tooltip 位于组件根部时，interactive tippy 会插入到父组件 */
 :deep() ~ [data-tippy-root] > .tippy-box {
 	overflow: hidden;
-	overflow: clip; // 需保留气泡箭头
+	overflow: clip; /* 需保留气泡箭头 */
 	padding: 0;
 
 	&[data-placement="top"] > .tippy-svg-arrow {

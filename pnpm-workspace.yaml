@@ -33,7 +33,7 @@ catalogs:
     ci-info: ^4.4.0
     nuxt: ^4.5.2
     pinia: ^4.0.2
-    sass-embedded: ^1.100.0
+    postcss-nesting: ^14.0.1
     typescript: ^6.0.3
     unrun: ^0.3.1
     unplugin-yaml: ^4.2.1
@@ -43,10 +43,9 @@ catalogs:
     '@antfu/eslint-config': ^9.3.0
     '@nuxt/a11y': 1.0.0-alpha.1
     '@nuxt/hints': ^1.1.4
-    '@zinkawaii/stylelint-config': ^0.5.2
+    '@zinkawaii/eslint-config-css': ^0.5.4
     cspell: ^10.0.1
     eslint: ^10.8.1
-    stylelint: ^17.14.1
   ui:
     '@bikariya/image-viewer': ^0.0.8
     '@bikariya/modals': ^0.0.8
