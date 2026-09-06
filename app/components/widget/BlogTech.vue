@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Icon } from '#components'
 import { merge } from 'es-toolkit/object'
 import { packageManager, version } from '~~/package.json'
 import pnpmWorkspace from '~~/pnpm-workspace.yaml'
+import { Icon } from '#components'
 
 const appConfig = useAppConfig()
 const { public: { arch, ci, nodeVersion, platform } } = useRuntimeConfig()
