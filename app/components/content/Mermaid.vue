@@ -5,6 +5,7 @@ const props = defineProps<{
 
 const colorMode = useColorMode()
 const container = useTemplateRef('mermaid')
+const [scroll, toggleScroll] = useToggle(true)
 
 const id = useId()
 // mermaid 会移除 DOM 中同 id 的旧图，故每次渲染另起 id，避免切换主题时高度塌陷
@@ -16,7 +17,7 @@ const isVisible = useElementVisibility(container, { rootMargin: '50%' })
 const shouldRender = ref(false)
 whenever(isVisible, () => shouldRender.value = true, { once: true })
 
-const diagram = computedAsync<{ svg?: string, error?: string }>(async () => {
+const diagram = computedAsync<{ svg?: string, width?: number, error?: string }>(async () => {
 	// 异步依赖需在 await 之前读取
 	const { code } = props
 	const darkMode = colorMode.value === 'dark'
@@ -50,7 +51,10 @@ const diagram = computedAsync<{ svg?: string, error?: string }>(async () => {
 				textColor: cssVar('--c-text-1'),
 			},
 		})
-		return await mermaid.render(`${id}-${renderCount++}`, code)
+		const { svg } = await mermaid.render(`${id}-${renderCount++}`, code)
+		// 用原始画布宽度保留字号，超宽图表在容器内滚动
+		const width = new DOMParser().parseFromString(svg, 'image/svg+xml').querySelector('svg')?.viewBox.baseVal.width
+		return { svg, width }
 	}
 	catch (error) {
 		return { error: error instanceof Error ? error.message : String(error) }
@@ -60,7 +64,26 @@ const diagram = computedAsync<{ svg?: string, error?: string }>(async () => {
 
 <template>
 <div ref="mermaid" class="mermaid-diagram">
-	<div v-if="diagram.svg" v-html="diagram.svg" />
+	<Tooltip
+		v-if="diagram.svg"
+		tag="div"
+		interactive
+		trigger="mouseenter focusin"
+		:hide-on-click="false"
+		:delay="500"
+	>
+		<template #content>
+			<Icon v-show="false" :name="scroll ? 'tabler:arrows-horizontal' : 'tabler:arrows-minimize'" />
+			<ZButton
+				:icon="scroll ? 'tabler:arrows-minimize' : 'tabler:arrows-horizontal'"
+				:text="scroll ? '适应宽度' : '横向滚动'"
+				@click="toggleScroll()"
+			/>
+		</template>
+		<div class="scrollcheck-x" tabindex="0" role="region" aria-label="Mermaid 图表">
+			<div :style="{ minWidth: scroll && diagram.width ? `${diagram.width}px` : undefined }" v-html="diagram.svg" />
+		</div>
+	</Tooltip>
 	<ProsePre
 		v-else-if="diagram.error"
 		:code
