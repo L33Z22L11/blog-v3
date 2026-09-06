@@ -6,6 +6,11 @@ export default antfu({
 		indent: 'tab',
 	},
 	pnpm: true,
+	jsonc: {
+		overrides: {
+			'jsonc/indent': ['error', 2],
+		},
+	},
 	// @keep-sorted
 	rules: {
 		'vue/block-lang': ['warn', {
@@ -22,12 +27,6 @@ export default antfu({
 	files: ['app/pages/**/*.vue'],
 	rules: {
 		'vue/valid-v-slot': 'off',
-	},
-}, {
-	// jsonc 规则仅在 JSON 上可用，作用到其他文件会导致规则加载失败
-	files: ['**/*.json', '**/*.json5', '**/*.jsonc'],
-	rules: {
-		'jsonc/indent': ['error', 2],
 	},
 }, {
 	files: ['**/*.json'],
