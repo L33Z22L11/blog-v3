@@ -20,34 +20,35 @@
 <style scoped>
 /* https://vue-tippy.netlify.app/props#appendto */
 /* Tooltip 位于组件根部时，interactive tippy 会插入到父组件 */
-:deep() ~ [data-tippy-root] > .tippy-box {
+:deep(~ [data-tippy-root] > .tippy-box) {
 	padding: 0.3em;
 	font-size: inherit;
 }
-:deep() ~ [data-tippy-root] > .tippy-box[data-placement=top] {
+
+:deep(~ [data-tippy-root] > .tippy-box[data-placement="top"]) {
 	--c-fill: var(--c-bg-1);
 }
 
-:deep() ~ [data-tippy-root] .tippy-content {
+:deep(~ [data-tippy-root] .tippy-content) {
 	display: grid;
-}
 
-:deep() ~ [data-tippy-root] .tippy-content button {
-	padding: 0.3em 0.5em;
-	border-radius: 0.3em;
-	text-align: start;
-	color: var(--c-text-1);
-	transition: color 0.1s, background-color 0.2s;
-	cursor: pointer;
-}
+	button {
+		padding: 0.3em 0.5em;
+		border-radius: 0.3em;
+		text-align: start;
+		color: var(--c-text-1);
+		transition: color 0.1s, background-color 0.2s;
+		cursor: pointer;
 
-:deep() ~ [data-tippy-root] .tippy-content button:hover {
-	background-color: var(--c-bg-soft);
-	color: var(--c-text-1);
-}
+		&:hover {
+			background-color: var(--c-bg-soft);
+			color: var(--c-text-1);
+		}
+	}
 
-:deep() ~ [data-tippy-root] .tippy-content button.active {
-	background-color: var(--c-primary-soft);
-	color: var(--c-primary);
+	button.active {
+		background-color: var(--c-primary-soft);
+		color: var(--c-primary);
+	}
 }
 </style>

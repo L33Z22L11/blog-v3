@@ -5,7 +5,7 @@ const layoutStore = useLayoutStore()
 <template>
 <BlogMask
 	:show="layoutStore.state === 'aside'"
-	class="widescreen-only"
+	class="hide-above-tablet"
 	@click="layoutStore.close()"
 />
 

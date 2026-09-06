@@ -10,7 +10,7 @@ const debouncedSelection = refDebounced(text)
 <template>
 <BlogMask
 	:show="layoutStore.state === 'sidebar'"
-	class="mobile-only"
+	class="hide-above-mobile"
 	@click="layoutStore.close()"
 />
 

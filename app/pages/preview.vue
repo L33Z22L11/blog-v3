@@ -17,7 +17,7 @@ const { category, categories, listCategorized } = useCategory(listSorted)
 <div class="preview">
 	<div class="preview-header">
 		<h1>
-			<UtilLink class="mobile-only" to="/" title="返回首页">
+			<UtilLink class="hide-above-mobile" to="/" title="返回首页">
 				<Icon name="tabler:chevron-left" />
 			</UtilLink>预览
 		</h1>

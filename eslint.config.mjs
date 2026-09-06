@@ -2,7 +2,7 @@ import antfu from '@antfu/eslint-config'
 import css from '@zinkawaii/eslint-config-css'
 import { defineConfig } from 'eslint/config'
 
-const codeConfig = await antfu({
+export default antfu({
 	ignores: ['*.yaml'],
 	stylistic: {
 		indent: 'tab',
@@ -69,17 +69,14 @@ const codeConfig = await antfu({
 	rules: {
 		'jsonc/comma-dangle': ['warn', 'always'],
 	},
-})
-
-export default defineConfig([
-	// CSS 使用独立语言规则，避免继承只适用于 JavaScript AST 的规则
-	...codeConfig.map(config => config.rules ? { ...config, ignores: [...config.ignores || [], '**/*.css'] } : config),
-	...css.map(config => ({ ...config, files: ['app/**/*.css'] })),
-	{
-		files: ['app/**/*.css'],
-		rules: {
-			'css/no-important': 'off',
-			'css-stylistic/indentation': ['warn', 'tab', { baseIndentLevel: 0 }],
-		},
+}).append({
+	files: ['app/**/*.css'],
+	extends: defineConfig(css),
+	rules: {
+		'css/no-important': 'off',
+		'css-stylistic/indentation': ['error', 'tab'],
 	},
+}).setDefaultIgnores(prevs => [
+	...prevs,
+	'**/*.css',
 ])

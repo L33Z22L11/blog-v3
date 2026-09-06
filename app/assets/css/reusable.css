@@ -130,38 +130,38 @@
 	}
 }
 
-@media not (max-width: 528px) {
-	.phone-only {
+@media (width > 528px) {
+	.hide-above-phone {
 		display: none !important;
 	}
 }
 
 @media (max-width: 528px) {
-	.phone-hidden {
+	.hide-through-phone {
 		display: none !important;
 	}
 }
 
-@media not (max-width: 768px) {
-	.mobile-only {
+@media (width > 768px) {
+	.hide-above-mobile {
 		display: none !important;
 	}
 }
 
 @media (max-width: 768px) {
-	.mobile-hidden {
+	.hide-through-mobile {
 		display: none !important;
 	}
 }
 
-@media not (max-width: 1080px) {
-	.widescreen-only {
+@media (width > 1080px) {
+	.hide-above-tablet {
 		display: none !important;
 	}
 }
 
 @media (max-width: 1080px) {
-	.widescreen-hidden {
+	.hide-through-tablet {
 		display: none !important;
 	}
 }

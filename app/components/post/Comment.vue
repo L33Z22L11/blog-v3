@@ -145,119 +145,119 @@ onMounted(() => {
 
 :deep(#twikoo) {
 	margin: 2em 0;
-}
 
-:deep(#twikoo) .tk-admin-container {
-	position: fixed;
-	z-index: calc(var(--z-index-popover) + 1);
-}
+	.tk-admin-container {
+		position: fixed;
+		z-index: calc(var(--z-index-popover) + 1);
+	}
 
-:deep(#twikoo) .tk-input {
-	font-family: var(--font-monospace);
-}
+	.tk-input {
+		font-family: var(--font-monospace);
+	}
 
-:deep(#twikoo) .tk-avatar {
-	border-radius: 50%;
-}
+	.tk-avatar {
+		border-radius: 50%;
 
-@supports (corner-shape: squircle) {
-	:deep(#twikoo) .tk-avatar {
-		corner-shape: superellipse(1.2);
+		@supports (corner-shape: squircle) {
+			corner-shape: superellipse(1.2);
+		}
+	}
+
+	.tk-avatar.tk-clickable {
+		cursor: auto;
+	}
+
+	.tk-time {
+		color: var(--c-text-3);
+	}
+
+	/* 防止 a 被 overflow hidden */
+	.tk-content {
+		margin: -0.2em;
+		padding: 0.2em;
+	}
+
+	.tk-comments-title, .tk-nick {
+		font-family: var(--font-creative);
+	}
+
+	.tk-owo-emotion {
+		width: auto;
+		height: 1.4em;
+		vertical-align: text-bottom;
+	}
+
+	.tk-extras, .tk-footer {
+		font-size: 0.7em;
+		color: var(--c-text-3);
+	}
+
+	.tk-replies:not(.tk-replies-expand) {
+		mask-image: linear-gradient(to top, transparent, #FFF 4em);
+	}
+
+	.tk-expand {
+		border-radius: 0.5em;
+		transition: background-color 0.1s;
+	}
+
+	.tippy-svg-arrow > svg {
+		fill: inherit;
+		width: auto;
+		height: auto;
 	}
 }
 
-:deep(#twikoo) .tk-avatar.tk-clickable {
-	cursor: auto;
-}
+:deep(:where(.tk-preview-container,.tk-content)) {
+	pre {
+		overflow: auto;
+		border-radius: 0.5em;
+		font-size: 0.85em;
+	}
 
-:deep(#twikoo) .tk-time {
-	color: var(--c-text-3);
-}
+	a {
+		margin: -0.1em -0.2em;
+		padding: 0.1em 0.2em;
+		background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom / 100% 0.1em;
+		color: var(--c-primary);
+		transition: all 0.2s;
 
-/* 防止 a 被 overflow hidden */
-:deep(#twikoo) .tk-content {
-	margin: -0.2em;
-	padding: 0.2em;
-}
+		&:hover {
+			border-radius: 0.3em;
+			background-size: 100% 100%;
+		}
+	}
 
-:deep(#twikoo) .tk-comments-title, :deep(#twikoo) .tk-nick {
-	font-family: var(--font-creative);
-}
+	p {
+		margin: 0.2em 0;
+	}
 
-:deep(#twikoo) .tk-owo-emotion {
-	width: auto;
-	height: 1.4em;
-	vertical-align: text-bottom;
-}
+	img {
+		border-radius: 0.5em;
+	}
 
-:deep(#twikoo) .tk-extras, :deep(#twikoo) .tk-footer {
-	font-size: 0.7em;
-	color: var(--c-text-3);
-}
+	menu, ol, ul {
+		margin: 0.5em 0;
+		padding-inline-start: 1.5em;
+		font-size: 0.9rem;
+		list-style: revert;
 
-:deep(#twikoo) .tk-replies:not(.tk-replies-expand) {
-	mask-image: linear-gradient(to top, transparent, #FFF 4em);
-}
+		> li {
+			margin: 0.2em 0;
 
-:deep(#twikoo) .tk-expand {
-	border-radius: 0.5em;
-	transition: background-color 0.1s;
-}
+			&::marker {
+				color: var(--c-primary);
+			}
+		}
+	}
 
-:deep(#twikoo) .tippy-svg-arrow > svg {
-	fill: inherit;
-	width: auto;
-	height: auto;
-}
-
-:deep(:where(.tk-preview-container,.tk-content)) pre {
-	overflow: auto;
-	border-radius: 0.5em;
-	font-size: 0.85em;
-}
-
-:deep(:where(.tk-preview-container,.tk-content)) a {
-	margin: -0.1em -0.2em;
-	padding: 0.1em 0.2em;
-	background: linear-gradient(var(--c-primary-soft), var(--c-primary-soft)) no-repeat center bottom/100% 0.1em;
-	color: var(--c-primary);
-	transition: all 0.2s;
-}
-
-:deep(:where(.tk-preview-container,.tk-content)) a:hover {
-	border-radius: 0.3em;
-	background-size: 100% 100%;
-}
-
-:deep(:where(.tk-preview-container,.tk-content)) p {
-	margin: 0.2em 0;
-}
-
-:deep(:where(.tk-preview-container,.tk-content)) img {
-	border-radius: 0.5em;
-}
-
-:deep(:where(.tk-preview-container,.tk-content)) menu, :deep(:where(.tk-preview-container,.tk-content)) ol, :deep(:where(.tk-preview-container,.tk-content)) ul {
-	margin: 0.5em 0;
-	padding-inline-start: 1.5em;
-	font-size: 0.9rem;
-	list-style: revert;
-}
-
-:deep(:where(.tk-preview-container,.tk-content)) menu > li, :deep(:where(.tk-preview-container,.tk-content)) ol > li, :deep(:where(.tk-preview-container,.tk-content)) ul > li {
-	margin: 0.2em 0;
-}
-
-:deep(:where(.tk-preview-container,.tk-content)) menu > li::marker, :deep(:where(.tk-preview-container,.tk-content)) ol > li::marker, :deep(:where(.tk-preview-container,.tk-content)) ul > li::marker {
-	color: var(--c-primary);
-}
-
-:deep(:where(.tk-preview-container,.tk-content)) blockquote {
-	margin: 0.5em 0;
-	padding: 0.2em 0.5em;
-	border-inline-start: 4px solid var(--c-border);
-	border-radius: 4px;
-	background-color: var(--c-bg-2);
-	font-size: 0.9em;
+	blockquote {
+		margin: 0.5em 0;
+		padding: 0.2em 0.5em;
+		border-inline-start: 4px solid var(--c-border);
+		border-radius: 4px;
+		background-color: var(--c-bg-2);
+		font-size: 0.9em;
+	}
 }
 </style>

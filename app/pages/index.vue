@@ -37,7 +37,7 @@ const { data: previewCount } = useAsyncData(
 	<WidgetCommGroup />
 </template>
 
-<BlogHeader class="mobile-only" to="/" tag="h1" />
+<BlogHeader class="hide-above-mobile" to="/" tag="h1" />
 
 <UtilHydrateSafe>
 	<PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
