@@ -2,7 +2,6 @@
 import type { ArticleProps } from '~/types/article'
 import { groupBy } from 'es-toolkit/array'
 import { sumBy } from 'es-toolkit/math'
-import { mapValues } from 'es-toolkit/object'
 
 const appConfig = useAppConfig()
 useSeoMeta({
@@ -17,22 +16,14 @@ const column = ref(1)
 const tuningRef = useTemplateRef('tuning-panel')
 useAvoidTarget(tuningRef, showTuning)
 
-const { data: listRaw } = await useAsyncData('posts:index', () => getArticleIndexOptions(), { default: () => [] })
+const { data: listRaw } = await useAsyncData('posts:index', () => queryArticleIndex(), { default: () => [] })
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
-const { category, categories, listCategorized } = useCategory(listSorted)
+const { category, categories, listCategorized } = useArticleCategory(listSorted)
 
 const listGrouped = computed(() => {
 	const groupList = Object.entries(groupBy(listCategorized.value, getArticleYear))
 	return isAscending.value ? groupList : groupList.reverse()
 })
-
-// 不能使用 /api/stats，因为可能切换分组方式
-const yearlyWordCount = computed(() =>
-	mapValues(Object.fromEntries(listGrouped.value), (articles) => {
-		const total = sumBy(articles, a => a.readingTime?.words ?? 0)
-		return formatNumber(total)
-	}),
-)
 
 function getArticleYear(article: ArticleProps) {
 	try {
@@ -65,44 +56,47 @@ function getArticleYear(article: ArticleProps) {
 		</ZSecret>
 	</PostOrderToggle>
 
-	<section
-		v-for="[year, yearGroup] in listGrouped"
-		:key="year"
-		class="archive-group"
-		:class="{ 'hide-info': column > 1 }"
-		:style="{
-			'--archive-item-gap': `${spacing}em`,
-			'--archive-item-column': column,
-		}"
-	>
-		<div class="archive-title">
-			<h2 class="archive-year">
-				{{ year }}
-			</h2>
+	<UtilListTransition v-slot="{ items, state }" :items="listGrouped" :state="sortOrder">
+		<section
+			v-for="[year, yearGroup] in items"
+			:key="year"
+			class="archive-group"
+			:class="{ 'hide-info': column > 1 }"
+			:style="{
+				'--archive-item-gap': `${spacing}em`,
+				'--archive-item-column': column,
+			}"
+		>
+			<div class="archive-title" :data-list-key="`year:${year}`">
+				<h2 class="archive-year">
+					{{ year }}
+				</h2>
 
-			<div v-if="birthYear" class="archive-age">
-				<span>{{ Number(year) - birthYear }}</span>
-				<span class="age-label">岁</span>
+				<div v-if="birthYear" class="archive-age">
+					<span>{{ Number(year) - birthYear }}</span>
+					<span class="age-label">岁</span>
+				</div>
+
+				<div class="archive-info">
+					<span>{{ formatNumber(sumBy(yearGroup, article => article.readingTime?.words ?? 0)) }}字</span>
+					<span>{{ yearGroup?.length }}篇</span>
+				</div>
 			</div>
 
-			<div class="archive-info">
-				<span>{{ yearlyWordCount[year] }}字</span>
-				<span>{{ yearGroup?.length }}篇</span>
-			</div>
-		</div>
-
-		<TransitionGroup tag="menu" class="archive-list" name="float-in">
-			<PostArchive
-				v-for="article, index in yearGroup"
-				:key="article.path"
-				v-bind="article"
-				:to="article.path"
-				:show-category="column < 3"
-				:use-updated="sortOrder === 'updated'"
-				:style="getFixedDelay(index * 0.03)"
-			/>
-		</TransitionGroup>
-	</section>
+			<menu class="archive-list">
+				<PostArchive
+					v-for="article, index in yearGroup"
+					:key="article.path"
+					:data-list-key="article.path"
+					v-bind="article"
+					:to="article.path"
+					:show-category="column < 3"
+					:use-updated="state === 'updated'"
+					:style="getFixedDelay(index * 0.03)"
+				/>
+			</menu>
+		</section>
+	</UtilListTransition>
 
 	<div v-if="showTuning" ref="tuning-panel" class="archive-tuning card">
 		<ZSlider

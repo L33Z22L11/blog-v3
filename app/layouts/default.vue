@@ -1,5 +1,16 @@
 <script setup lang="ts">
-const { slots } = inject<any>(Symbol.for('dxup:layout-slots')) || {}
+const { slots } = provideLayoutSlots()
+const main = useTemplateRef('main')
+
+const unhook = useNuxtApp().hook('page:finish', async () => {
+	await nextTick()
+
+	// Nuxt 随后才会触发 page:loading:end 并恢复滚动，确保锚点按最终列宽定位。
+	await Promise.allSettled(main.value?.parentElement?.getAnimations()
+		.filter(anim => anim instanceof CSSTransition)
+		.map(anim => anim.finished) ?? [])
+})
+onScopeDispose(unhook)
 </script>
 
 <template>
@@ -7,15 +18,13 @@ const { slots } = inject<any>(Symbol.for('dxup:layout-slots')) || {}
 <NuxtRouteAnnouncer :style="{ position: 'absolute' }" />
 <BlogSkipToContent />
 <BlogSidebar />
-<div id="content">
-	<main id="main-content">
-		<slot />
-		<BlogFooter />
-	</main>
-	<BlogAside>
-		<slot name="aside" />
-	</BlogAside>
-</div>
+<main id="main-content" ref="main">
+	<slot />
+	<BlogFooter />
+</main>
+<BlogAside>
+	<slot name="aside" />
+</BlogAside>
 <BlogPanel :has-aside="!!slots?.aside" />
 <BikariyaModals />
 </template>
@@ -23,44 +32,58 @@ const { slots } = inject<any>(Symbol.for('dxup:layout-slots')) || {}
 <!-- eslint-disable-next-line vue/enforce-style-attribute -->
 <style>
 #blog-root {
-	display: flex;
-	justify-content: center;
-	gap: 1rem;
+	--aside-width: 280px;
+	--sidebar-width: var(--aside-width);
+
+	display: grid;
+	/* 显式间隔轨道使右栏收起时只关闭右侧间隔，左右栏均保持独立。 */
+	grid-template-columns: var(--sidebar-width) 1rem minmax(0, 1fr) 1rem var(--aside-width);
+	align-items: start;
+	width: 100%;
 	min-width: 0;
+	max-width: calc(var(--aside-width) + 1rem + 1080px);
+	margin-inline: auto;
+
+	&:has(> #blog-aside.is-empty) {
+		grid-template-columns: var(--sidebar-width) 1rem minmax(0, 1fr) 0px 0px;
+	}
+
+	@media (max-width: 1080px) {
+		/* 保留原 flex-shrink: .2，按加权宽度分摊收缩：56 = 280 × .2，1136 = 56 + 1080。 */
+		--sidebar-width: calc(var(--aside-width) - (var(--aside-width) + 1rem + 1080px - 100%) * 56 / 1136);
+
+		&, &:has(> #blog-aside.is-empty) {
+			grid-template-columns: var(--sidebar-width) 1rem minmax(0, 1fr) 0px 0px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		&, &:has(> #blog-aside.is-empty) {
+			grid-template-columns: 0px 0px minmax(0, 1fr) 0px 0px;
+		}
+	}
 }
 
 #blog-sidebar, #blog-aside {
-	flex: 0 0 280px; /* 防止搜索框 grow */
 	position: sticky;
 	top: 0;
 	height: 100vh;
 	height: 100dvh;
-	min-width: 0; /* 防止搜索框撑开页面 */
+	min-width: 0;
 	scrollbar-width: thin;
-
-	@media (max-width: 1080px) {
-		flex-shrink: 0.2;
-	}
 }
 
-#content {
-	display: flex;
-	gap: 1rem;
+#blog-sidebar {
+	grid-area: 1 / 1;
+}
 
-	/* 若设置的是 max-width，则内部 main 宽度为 fit-content，可能无法撑满 */
-	/* 此时即使设置 flex-grow，也会影响 #sidebar 无法正确 shrink */
-	width: 1080px;
-	min-width: 0; /* 解决父级 flexbox 设置 justify-content: center 时溢出左侧消失的问题 */
+#main-content {
+	grid-area: 1 / 3;
+	/* 保留语义 main 和可见溢出，不影响正文内的 sticky 元素。 */
+	min-width: 0;
+}
 
-	/* 此处不建议给内容设置 padding */
-	> #main-content {
-		flex-grow: 1; /* 使较小宽度的内容占满 */
-
-		/* overflow: hidden; // 会使一部分元素吸顶失效 */
-
-		/* 使内容正确计算宽度而不横向溢出 */
-		/* 也可设置 width: 0 或者 contain: inline-size（兼容性不佳） */
-		min-width: 0;
-	}
+#blog-aside {
+	grid-area: 1 / 5;
 }
 </style>

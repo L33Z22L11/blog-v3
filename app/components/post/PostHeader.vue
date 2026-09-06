@@ -2,6 +2,7 @@
 import type { ArticleProps } from '~/types/article'
 
 defineOptions({ inheritAttrs: false })
+
 const props = defineProps<ArticleProps>()
 
 const appConfig = useAppConfig()

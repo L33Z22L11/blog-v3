@@ -2,11 +2,12 @@
 import type { ArticleProps } from '~/types/article'
 
 const props = defineProps<{ useUpdated?: boolean } & ArticleProps>()
+
 const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 </script>
 
 <template>
-<UtilLink class="article-card card upraise">
+<UtilLink class="article-card card upraise" data-article-link>
 	<NuxtImg v-if="image" class="article-cover" :src="image" :alt="title" />
 	<article>
 		<h2 class="article-title text-creative">
@@ -52,7 +53,7 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 	margin: 1em 0;
 	border-radius: 0.8em;
 	color: var(--c-text);
-	animation: float-in 0.2s var(--delay) backwards;
+	animation: float-in var(--motion-duration) var(--motion-easing) var(--delay, 0s) backwards;
 
 	> article {
 		display: grid;

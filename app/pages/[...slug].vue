@@ -1,9 +1,10 @@
 <script setup lang="ts">
 const route = useRoute()
+const contentPath = useContentPath().value
 
 const { data: post } = await useAsyncData(
-	`content:${route.path}`,
-	() => queryCollection('content').path(route.path).first(),
+	`content:${contentPath}`,
+	() => queryCollection('content').path(contentPath).first(),
 )
 
 const excerpt = computed(() => post.value?.description || '')
@@ -31,14 +32,14 @@ else {
 
 <template>
 <template #aside>
-	<!-- 更换页面时相同 key 的组件不会更新 -->
-	<component :is="widget.comp" v-for="widget in widgets" :key="widget.name" />
+	<!-- 每篇文章拥有独立的目录状态，并在具名插槽内自然入场。 -->
+	<component :is="widget.comp" v-for="widget in widgets" :key="`${post?.path ?? route.path}:${widget.name}`" />
 </template>
 
 <template v-if="post">
 	<PostHeader v-bind="post" />
 	<PostExcerpt v-if="excerpt" :excerpt />
-	<!-- 使用 float-in 动画会导致搜索跳转不准确 -->
+	<!-- 正文使用纯透明度入场，保证 URL 锚点和目录测量不受位移影响。 -->
 	<ContentRenderer
 		class="article"
 		:class="getPostTypeClassName(post?.type, { prefix: 'md' })"
