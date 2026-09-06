@@ -1,4 +1,4 @@
-import type { BundledLanguage, CodeToHastOptions, ShikiTransformer } from 'shiki'
+import type { BundledLanguage, CodeToHastOptions, HighlighterCore, ShikiTransformer } from 'shiki'
 import { transformerColorizedBrackets } from '@shikijs/colorized-brackets'
 import { transformerNotationDiff, transformerNotationErrorLevel, transformerNotationFocus, transformerNotationHighlight, transformerNotationWordHighlight, transformerRenderIndentGuides, transformerRenderWhitespace } from '@shikijs/transformers'
 
@@ -72,11 +72,14 @@ function getTransformers(options: ShikiCodeOptions): ShikiTransformer[] {
 export default function useShiki() {
 	const shikiStore = useShikiStore()
 
-	function getOptions(options: ShikiCodeOptions): ShikiOptions {
+	function getOptions(shiki: HighlighterCore, options: ShikiCodeOptions): ShikiOptions {
+		// Shiki 未收录的语言会在高亮时抛错，回退为纯文本
+		const language = shiki.getLoadedLanguages().includes(options.language) ? options.language : 'text'
+
 		return {
 			...shikiStore.options,
-			lang: options.language,
-			transformers: getTransformers(options),
+			lang: language,
+			transformers: getTransformers({ ...options, language }),
 			...options.shikiOptions,
 		}
 	}
@@ -91,7 +94,7 @@ export default function useShiki() {
 		if (typeof languageOrOptions !== 'string' && languageOrOptions.embeddedLanguages)
 			await shikiStore.loadLang(...getEmbeddedMarkdownLanguages(code, options.language))
 
-		return shiki.codeToHtml(code, getOptions(options))
+		return shiki.codeToHtml(code, getOptions(shiki, options))
 	}
 
 	async function mountPlain(target: HTMLElement, language: string): Promise<void>
@@ -102,7 +105,7 @@ export default function useShiki() {
 		const { createPlainShiki } = await import('plain-shiki')
 
 		await shikiStore.loadLang(options.language)
-		createPlainShiki(shiki).mount(target, getOptions(options))
+		createPlainShiki(shiki).mount(target, getOptions(shiki, options))
 	}
 
 	async function mountInline(target: HTMLElement, code: string, options: ShikiCodeOptions): Promise<void> {

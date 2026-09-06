@@ -332,7 +332,7 @@ link: https://content.nuxt.com/docs/files/markdown#mdc-syntax
 
 ### 乐谱渲染播放
 
-> 由自编写的remark-music插件实现，必要时可用豆包等 AI 将乐谱识别为 ABC 记法。只在网络状态良好时加载播放能力。
+> 由自编写的remark-code-component插件实现，必要时可用豆包等 AI 将乐谱识别为 ABC 记法。只在网络状态良好时加载播放能力。
 >
 > 编辑器、Cheat Sheet 和语法检查：https://editor.drawthedots.com/
 
@@ -396,7 +396,9 @@ w: 我 呀 | 我 爱 | 你 | 你 爱 我 | 我 爱 你 蜜 雪 冰 城 甜 蜜 |
 ````
 ::
 
-### Mermaid
+### 图表渲染
+
+> 由自编写的remark-code-component插件实现，语法参见 [Mermaid 文档](https://mermaid.js.org/intro/syntax-reference.html)。图表跟随亮暗色模式重绘，进入视口附近才会加载渲染器。
 
 ::tab{:tabs='["组件","语法"]'}
 #tab1
@@ -425,7 +427,6 @@ graph TD
     C --> C1[无穷间断点]
     C --> C2[振荡间断点]
 ```
-
 ````
 ::
 

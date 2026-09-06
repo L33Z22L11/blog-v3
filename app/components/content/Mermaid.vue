@@ -1,368 +1,94 @@
 <script setup lang="ts">
-import { useColorMode } from '#imports'
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
-
-type Theme = 'default' | 'base' | 'dark' | 'forest' | 'neutral' | 'null'
-
-interface Props {
+const props = defineProps<{
 	code: string
-	theme?: Theme
-}
+}>()
 
-const props = withDefaults(defineProps<Props>(), {
-	theme: 'default',
-})
-
-const container = ref<HTMLElement | null>(null)
-const mermaidWrapper = ref<HTMLElement | null>(null)
 const colorMode = useColorMode()
+const container = useTemplateRef('mermaid')
 
-const actualTheme = computed(() => {
-	const preference = colorMode.value
-	return preference === 'dark' ? 'dark' : 'default'
-})
+const id = useId()
+// mermaid 会移除 DOM 中同 id 的旧图，故每次渲染另起 id，避免切换主题时高度塌陷
+let renderCount = 0
 
-// 渲染状态
-type RenderStatus = 'idle' | 'loading' | 'success' | 'error' | 'fallback'
-const status = ref<RenderStatus>('idle')
+// mermaid 体积较大，接近视口时才动态引入；隐藏容器（如 Tab）内不渲染，避免量取到错误的尺寸
+const isVisible = useElementVisibility(container, { rootMargin: '50%' })
+// 可见后即锁定，避免滚出视口时图表被清空
+const shouldRender = ref(false)
+whenever(isVisible, () => shouldRender.value = true, { once: true })
 
-// 渲染令牌
-let renderToken = 0
+const diagram = computedAsync<{ svg?: string, error?: string }>(async () => {
+	// 异步依赖需在 await 之前读取
+	const { code } = props
+	const darkMode = colorMode.value === 'dark'
+	if (!shouldRender.value)
+		return {}
 
-// SVG 缓存
-const svgCache = new Map<string, string>()
-const CACHE_MAX_SIZE = 50
+	const { default: mermaid } = await import('mermaid')
+	// 等待 color-mode 换好根元素类名，以及字体就绪——否则取到旧配色、量出偏窄的文本
+	await Promise.all([nextTick(), document.fonts.ready])
 
-let mermaidModule: typeof import('mermaid') | null = null
-
-// 并行渲染限制
-let activeRenderCount = 0
-const MAX_CONCURRENT_RENDERS = 2
-
-// cache key 生成
-function getCacheKey(code: string, theme: string): string {
-	let hash = 0
-	for (let i = 0; i < code.length; i++) {
-		const char = code.charCodeAt(i)
-		hash = ((hash << 5) - hash) + char
-		hash = hash & hash
-	}
-	return `${hash}-${theme}`
-}
-
-async function getMermaid() {
-	if (!mermaidModule) {
-		mermaidModule = await import('mermaid')
-	}
-	return mermaidModule
-}
-
-function shouldContinue(token: number): boolean {
-	return token === renderToken
-		&& !!container.value
-		&& !!container.value.parentNode
-}
-
-// 是否为 Mermaid 自身的可忽略错误
-function isMermaidLayoutError(err: unknown): boolean {
-	const message = err instanceof Error ? err.message : String(err)
-	return message.includes('Could not find a suitable point')
-		|| message.includes('Cannot get CSS layout')
-}
-
-async function renderMermaid() {
-	const token = ++renderToken
-
-	if (!shouldContinue(token))
-		return
-
-	// 并行渲染限制
-	if (activeRenderCount >= MAX_CONCURRENT_RENDERS) {
-		// 延迟执行
-		setTimeout(() => {
-			if (shouldContinue(token + 1)) {
-				void renderMermaid()
-			}
-		}, 100)
-		return
-	}
-
-	activeRenderCount++
-	status.value = 'loading'
+	const style = getComputedStyle(document.documentElement)
+	const cssVar = (name: string) => style.getPropertyValue(name)
 
 	try {
-		const mermaid = await getMermaid()
-		const code = props.code
-		const theme = String(actualTheme.value)
-		const cacheKey = getCacheKey(code, theme)
-
-		// 检查缓存
-		const cachedSvg = svgCache.get(cacheKey)
-		if (cachedSvg && shouldContinue(token)) {
-			mermaidWrapper.value!.innerHTML = cachedSvg
-			status.value = 'success'
-			return
-		}
-
-		mermaid.default.initialize({
-			startOnLoad: false,
-			theme: theme as 'default' | 'dark',
-			securityLevel: 'loose',
+		mermaid.initialize({
 			fontFamily: 'inherit',
+			// 须在 load 事件前关闭，否则 mermaid 会自行扫描并接管页面元素
+			startOnLoad: false,
+			suppressErrorRendering: true,
+			// themeVariables 仅对 base 主题生效，其余主题会重算这些颜色
+			theme: 'base',
+			themeVariables: {
+				darkMode,
+				// 不指定则深色下连线被推导为近黑色、边标签被推导为绿色
+				background: cssVar('--c-bg'),
+				edgeLabelBackground: cssVar('--c-bg-2'),
+				// 仅把自带主题的紫色换成博客主题色，其余配色仍由 mermaid 推导
+				primaryBorderColor: cssVar('--c-primary'),
+				primaryColor: cssVar('--c-primary-soft'),
+				primaryTextColor: cssVar('--c-text-1'),
+				textColor: cssVar('--c-text-1'),
+			},
 		})
-
-		if (!shouldContinue(token))
-			return
-
-		if (mermaidWrapper.value) {
-			mermaidWrapper.value.innerHTML = `<div class="mermaid">${code}</div>`
-		}
-
-		if (!shouldContinue(token))
-			return
-
-		const mermaidDiv = mermaidWrapper.value?.querySelector('.mermaid') as HTMLElement | null | undefined
-		if (mermaidDiv) {
-			await mermaid.default.run({
-				nodes: [mermaidDiv],
-			})
-		}
-
-		if (!shouldContinue(token))
-			return
-
-		// 获取渲染后的 SVG
-		const svgElement = mermaidWrapper.value?.querySelector('svg') as HTMLElement | null
-		if (svgElement) {
-			const svgHtml = svgElement.outerHTML
-
-			// 存入缓存
-			if (svgCache.size >= CACHE_MAX_SIZE) {
-				// 清理最旧的缓存
-				const firstKey = svgCache.keys().next().value
-				if (firstKey !== undefined) {
-					svgCache.delete(firstKey)
-				}
-			}
-			svgCache.set(cacheKey, svgHtml)
-
-			status.value = 'success'
-		}
-		else {
-			status.value = 'fallback'
-		}
+		return await mermaid.render(`${id}-${renderCount++}`, code)
 	}
-	catch (err) {
-		console.error('Mermaid render error:', err)
-
-		if (!shouldContinue(token))
-			return
-
-		if (isMermaidLayoutError(err)) {
-			status.value = 'fallback'
-		}
-		else {
-			status.value = 'error'
-		}
+	catch (error) {
+		return { error: error instanceof Error ? error.message : String(error) }
 	}
-	finally {
-		activeRenderCount--
-	}
-}
-
-function retry() {
-	void renderMermaid()
-}
-
-let debounceTimer: ReturnType<typeof setTimeout> | null = null
-let intersectionObserver: IntersectionObserver | null = null
-let isVisible = false
-
-function debouncedRender() {
-	if (debounceTimer) {
-		clearTimeout(debounceTimer)
-	}
-	debounceTimer = setTimeout(() => {
-		void renderMermaid()
-	}, 200)
-}
-
-onMounted(() => {
-	// 创建 Intersection Observer 实现懒加载
-	intersectionObserver = new IntersectionObserver(
-		(entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting) {
-					isVisible = true
-					void renderMermaid()
-					intersectionObserver?.disconnect()
-				}
-			})
-		},
-		{
-			rootMargin: '200px', // 提前 200px 开始加载
-			threshold: 0,
-		},
-	)
-
-	if (container.value) {
-		intersectionObserver.observe(container.value)
-	}
-})
-
-onUnmounted(() => {
-	renderToken++
-	if (debounceTimer) {
-		clearTimeout(debounceTimer)
-	}
-	intersectionObserver?.disconnect()
-})
-
-// 监听主题变化
-watch(actualTheme, () => {
-	// 主题变化时，如果有缓存则直接使用
-	const code = props.code
-	const theme = String(actualTheme.value)
-	const cacheKey = getCacheKey(code, theme)
-
-	const cachedSvg = svgCache.get(cacheKey)
-	if (cachedSvg && mermaidWrapper.value) {
-		mermaidWrapper.value.innerHTML = cachedSvg
-		status.value = 'success'
-	}
-	else {
-		debouncedRender()
-	}
-})
-
-watch(() => props.code, () => {
-	debouncedRender()
-})
+}, {})
 </script>
 
 <template>
-<div ref="container" class="mermaid-container">
-	<!-- loading -->
-	<div v-show="status === 'loading' && isVisible" class="mermaid-loading">
-		<div class="mermaid-loading-spinner" />
-		<span class="mermaid-loading-text">Rendering...</span>
-	</div>
-
-	<!-- 错误状态 -->
-	<div v-show="status === 'error' && isVisible" class="mermaid-error">
-		<p class="mermaid-error-text">
-			Render failed
-		</p>
-		<button class="mermaid-retry-btn" @click="retry">
-			Retry
-		</button>
-		<pre class="mermaid-error-code">{{ props.code }}</pre>
-	</div>
-
-	<!-- 降级显示 -->
-	<div v-show="status === 'fallback' && isVisible" class="mermaid-fallback">
-		<pre class="mermaid-fallback-code">{{ props.code }}</pre>
-	</div>
-
-	<!-- mermaid 渲染区 -->
-	<div ref="mermaidWrapper" class="mermaid-wrapper" />
+<div ref="mermaid" class="mermaid-diagram">
+	<div v-if="diagram.svg" v-html="diagram.svg" />
+	<ProsePre
+		v-else-if="diagram.error"
+		:code
+		:filename="diagram.error"
+		language="mermaid"
+		meta="wrap"
+	/>
 </div>
 </template>
 
 <style lang="scss" scoped>
-.mermaid-container {
-	overflow-x: auto;
-	width: 100%;
-	margin: 1em 0;
-	text-align: center;
-	min-height: 40px;
+// 不可命名为 .mermaid：mermaid 会按此类名自动扫描并接管元素
+.mermaid-diagram {
+	margin: 0.5em 0;
+
+	// mermaid 在 <body> 下量取文本，此处需与根元素排版一致，否则图形错位
+	line-height: 1.4;
 
 	:deep(svg) {
+		display: block;
 		height: auto;
 		max-width: 100%;
-	}
-}
-
-.mermaid-loading {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.75rem;
-	padding: 1rem;
-}
-
-.mermaid-loading-spinner {
-	width: 24px;
-	height: 24px;
-	border: 3px solid #e5e7eb;
-	border-top-color: #3b82f6;
-	border-radius: 50%;
-	animation: spin 0.8s linear infinite;
-}
-
-.mermaid-loading-text {
-	color: #6b7280;
-	font-size: 0.875rem;
-}
-
-.mermaid-error {
-	padding: 1.25em;
-	border-radius: 8px;
-	background: var(--color-danger-bg);
-	color: var(--color-danger);
-	width: 100%;
-	text-align: left;
-
-	.mermaid-error-text {
-		margin-bottom: 0.75rem;
-		font-size: 0.875rem;
+		margin-inline: auto;
 	}
 
-	.mermaid-error-code {
-		margin-top: 1rem;
-		padding: 0.75rem;
-		border-radius: 4px;
-		background: rgba(0, 0, 0, 0.05);
-		font-size: 0.75rem;
-		overflow-x: auto;
-		white-space: pre-wrap;
-		word-break: break-word;
-	}
-
-	.mermaid-retry-btn {
-		padding: 0.5em 1em;
-		border: 1px solid var(--color-danger);
-		border-radius: 4px;
-		background: transparent;
-		color: var(--color-danger);
-		cursor: pointer;
-		font-size: 0.875rem;
-
-		&:hover {
-			background: var(--color-danger);
-			color: var(--color-bg);
-		}
-	}
-}
-
-.mermaid-fallback {
-	padding: 1em;
-	background: var(--color-code-bg);
-	border-radius: 4px;
-	text-align: left;
-	overflow-x: auto;
-
-	.mermaid-fallback-code {
+	// 文本标签由 foreignObject 承载，会继承文章的段落样式
+	:deep(p) {
 		margin: 0;
-		font-size: 0.75rem;
-		white-space: pre;
-		word-break: break-all;
-	}
-}
-
-@keyframes spin {
-	to {
-		transform: rotate(360deg);
 	}
 }
 </style>
