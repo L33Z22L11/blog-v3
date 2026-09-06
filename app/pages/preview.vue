@@ -4,9 +4,9 @@ useSeoMeta({
 	title: '预览',
 	description: `${appConfig.title}的文章预览。`,
 })
-const { data: listRaw } = await useAsyncData('previews:index', () => getArticleIndexOptions('previews/%'), { default: () => [] })
+const { data: listRaw } = await useAsyncData('previews:index', () => queryArticleIndex('previews/%'), { default: () => [] })
 const { listSorted, isAscending, sortOrder } = useArticleSort(listRaw)
-const { category, categories, listCategorized } = useCategory(listSorted)
+const { category, categories, listCategorized } = useArticleCategory(listSorted)
 </script>
 
 <template>

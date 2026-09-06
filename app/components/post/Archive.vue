@@ -15,7 +15,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 	<UtilDate class="dim-hover" :date="mainDate" format="monthDay" />
 
 	<div class="gradient-card" :style="{ '--c-accent': getCategoryColor(categories?.[0]) }">
-		<UtilLink class="article-link scrollbar-hidden scrollcheck-x" :to :title="description">
+		<UtilLink class="article-link scrollbar-hidden scrollcheck-x" data-article-link :to :title="description">
 			<span class="article-title">
 				<Icon v-if="showCategory" :name="getCategoryIcon(categories?.[0])" />
 				{{ title }}
@@ -43,7 +43,6 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 	column-gap: 0.5em;
 	min-width: 0;
 	margin: var(--archive-item-gap, 0.2em) 0;
-	transition: all 0.2s;
 	animation: float-in 0.2s var(--delay) backwards;
 
 	@media (max-width: $breakpoint-mobile) {
