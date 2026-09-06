@@ -75,6 +75,7 @@ const diagram = computedAsync<{ svg?: string, width?: number, error?: string }>(
 		<template #content>
 			<Icon v-show="false" :name="scroll ? 'tabler:arrows-horizontal' : 'tabler:arrows-minimize'" />
 			<ZButton
+				variant="text"
 				:icon="scroll ? 'tabler:arrows-minimize' : 'tabler:arrows-horizontal'"
 				:text="scroll ? '适应宽度' : '横向滚动'"
 				@click="toggleScroll()"
@@ -84,13 +85,13 @@ const diagram = computedAsync<{ svg?: string, width?: number, error?: string }>(
 			<div :style="{ minWidth: scroll && diagram.width ? `${diagram.width}px` : undefined }" v-html="diagram.svg" />
 		</div>
 	</Tooltip>
-	<ProsePre
-		v-else-if="diagram.error"
-		:code
-		:filename="diagram.error"
-		language="mermaid"
-		meta="wrap"
-	/>
+	<template v-else-if="diagram.error">
+		<details class="mermaid-error">
+			<summary>图表渲染失败，查看错误详情</summary>
+			<pre>{{ diagram.error }}</pre>
+		</details>
+		<ProsePre :code language="mermaid" meta="wrap" />
+	</template>
 </div>
 </template>
 
@@ -112,6 +113,21 @@ const diagram = computedAsync<{ svg?: string, width?: number, error?: string }>(
 	// 文本标签由 foreignObject 承载，会继承文章的段落样式
 	:deep(p) {
 		margin: 0;
+	}
+}
+
+.mermaid-error {
+	font-size: 0.85em;
+	color: var(--c-text-2);
+
+	summary {
+		color: var(--c-error);
+		cursor: pointer;
+	}
+
+	pre {
+		white-space: pre-wrap;
+		overflow-wrap: anywhere;
 	}
 }
 </style>
