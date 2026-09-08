@@ -41,7 +41,6 @@ catalogs:
     vue-router: ^5.3.1
   quality:
     '@antfu/eslint-config': ^9.5.1
-    '@nuxt/a11y': 1.0.0-alpha.1
     '@nuxt/hints': ^1.1.4
     '@zinkawaii/stylelint-config': ^0.5.2
     cspell: ^10.2.2
