@@ -21,7 +21,7 @@ const show = defineModel<boolean>('show')
 </Transition>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .bg-mask {
 	position: fixed;
 	inset: 0;

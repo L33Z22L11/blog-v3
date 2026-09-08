@@ -22,7 +22,7 @@ const expand = defineModel<boolean>()
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .z-expand {
 	display: flex;
 	flex-direction: column;

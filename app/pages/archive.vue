@@ -120,9 +120,9 @@ function getArticleYear(article: ArticleProps) {
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .archive {
-	padding: 1rem; // 防止内部 outline 被 mask
+	padding: 1rem; /* 防止内部 outline 被 mask */
 	mask-image: linear-gradient(#FFF 50%, #FFF7);
 }
 

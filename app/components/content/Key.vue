@@ -137,7 +137,7 @@ useEventListener('blur', () => {
 </kbd>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 kbd {
 	display: inline-block;
 	margin: 0.1em;

@@ -154,7 +154,7 @@ function openActiveItem() {
 </Transition>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .blog-search {
 	--float-distance: 20vh;
 
@@ -163,7 +163,7 @@ function openActiveItem() {
 	inset: 0;
 	width: 90%;
 	height: fit-content;
-	max-width: $breakpoint-mobile;
+	max-width: 768px;
 	margin: auto;
 	border: 1px solid var(--c-primary);
 	border-radius: 1em;

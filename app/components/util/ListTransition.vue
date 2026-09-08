@@ -78,9 +78,9 @@ onBeforeUnmount(() => cancel())
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .list-transition-content {
-	// 包含首尾条目的 margin，测量高度与真实占位保持一致。
+	/* 包含首尾条目的 margin，测量高度与真实占位保持一致。 */
 	display: flow-root;
 }
 

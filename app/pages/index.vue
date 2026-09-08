@@ -33,7 +33,7 @@ const { data: previewCount } = useAsyncData(
 	<WidgetCommGroup />
 </template>
 
-<BlogHeader class="mobile-only" to="/" tag="h1" />
+<BlogHeader class="hide-above-mobile" to="/" tag="h1" />
 
 <PostSlide v-if="listRecommended.length && page === 1 && !category" :list="listRecommended" />
 
@@ -71,7 +71,7 @@ const { data: previewCount } = useAsyncData(
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .post-list {
 	margin: 1rem;
 }

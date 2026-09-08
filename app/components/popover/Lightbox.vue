@@ -40,7 +40,7 @@ defineEmits<{
 </Transition>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .tooltip {
 	display: flex;
 	align-items: center;

@@ -4,7 +4,7 @@
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 :deep() {
 	:where(ol, ul):not([class]) {
 		margin: 0;

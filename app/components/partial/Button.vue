@@ -32,7 +32,7 @@ withDefaults(defineProps<ButtonProps>(), {
 </component>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .z-button {
 	display: inline-block;
 	transition: color 0.1s, background-color 0.2s;

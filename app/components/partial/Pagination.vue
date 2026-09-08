@@ -58,7 +58,7 @@ if (props.avoid) {
 <div ref="pagination-anchor" />
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .pagination {
 	display: flex;
 	max-width: calc(100vw);

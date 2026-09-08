@@ -1,4 +1,3 @@
-/* stylelint-disable declaration-no-important */
 :root {
 	--motion-duration: 0.3s;
 	--motion-fade-duration: 0.2s;
@@ -111,11 +110,11 @@
 	#main-content { view-transition-name: article-body; }
 
 	/* 抽屉不参与共享快照，避免捕获屏幕外带 backdrop-filter 的固定层。 */
-	@media not (max-width: $breakpoint-mobile) {
+	@media not (max-width: 768px) {
 		#blog-sidebar { view-transition-name: article-navigation; }
 	}
 
-	@media not (max-width: $breakpoint-widescreen) {
+	@media not (max-width: 1080px) {
 		#blog-aside:not(.is-empty) { view-transition-name: article-aside; }
 	}
 }

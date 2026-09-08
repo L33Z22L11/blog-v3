@@ -10,6 +10,7 @@
 	}
 }
 
+/* eslint-disable css/no-invalid-at-rules -- CSS Fonts 的 @styleset 暂未被检查器识别 */
 @font-feature-values "InterVariable", "Inter" {
 	@styleset {
 		open-digits: 1;
@@ -23,8 +24,8 @@
 	}
 }
 
+/* eslint-enable css/no-invalid-at-rules */
 /* 仅在 Chrome 130+ 启用本地可变字体 */
-
 /* autoprefixer: ignore next */
 @supports (box-decoration-break: clone) {
 	@font-face {

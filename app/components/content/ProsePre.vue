@@ -113,7 +113,7 @@ onMounted(async () => {
 </figure>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .z-codeblock {
 	--line-height: 1.4;
 
@@ -185,7 +185,7 @@ figcaption {
 }
 
 pre {
-	// 如果填写 0 会在 calc() 时出错
+	/* 如果填写 0 会在 calc() 时出错 */
 	--start-offset: 4em;
 
 	padding: 1rem;
@@ -247,7 +247,7 @@ pre {
 		}
 	}
 
-	// 行指示器
+	/* 行指示器 */
 	&::before {
 		content: var(--line-indicator, "") attr(data-line);
 		position: fixed;
@@ -268,7 +268,7 @@ pre {
 
 .toggle-btn {
 	display: block;
-	position: relative; // 移动到 pre 上方
+	position: relative; /* 移动到 pre 上方 */
 	opacity: 0.3;
 	width: 100%;
 	padding: 0.2em;

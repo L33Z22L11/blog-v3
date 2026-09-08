@@ -95,12 +95,12 @@ const diagram = computedAsync<{ svg?: string, width?: number, error?: string }>(
 </div>
 </template>
 
-<style lang="scss" scoped>
-// 不可命名为 .mermaid：mermaid 会按此类名自动扫描并接管元素
+<style scoped>
+/* 不可命名为 .mermaid：mermaid 会按此类名自动扫描并接管元素 */
 .mermaid-diagram {
 	margin: 0.5em 0;
 
-	// mermaid 在 <body> 下量取文本，此处需与根元素排版一致，否则图形错位
+	/* mermaid 在 <body> 下量取文本，此处需与根元素排版一致，否则图形错位 */
 	line-height: 1.4;
 
 	:deep(svg) {
@@ -110,7 +110,7 @@ const diagram = computedAsync<{ svg?: string, width?: number, error?: string }>(
 		margin-inline: auto;
 	}
 
-	// 文本标签由 foreignObject 承载，会继承文章的段落样式
+	/* 文本标签由 foreignObject 承载，会继承文章的段落样式 */
 	:deep(p) {
 		margin: 0;
 	}
@@ -126,8 +126,8 @@ const diagram = computedAsync<{ svg?: string, width?: number, error?: string }>(
 	}
 
 	pre {
-		white-space: pre-wrap;
 		overflow-wrap: anywhere;
+		white-space: pre-wrap;
 	}
 }
 </style>

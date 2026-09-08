@@ -12,7 +12,7 @@ const hasAside = computed(() => !!layoutSlots?.slots.value?.aside)
 <template>
 <BlogMask
 	:show="layoutStore.state === 'aside'"
-	class="widescreen-only"
+	class="hide-above-tablet"
 	@click="layoutStore.close()"
 />
 
@@ -26,7 +26,7 @@ const hasAside = computed(() => !!layoutSlots?.slots.value?.aside)
 </aside>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 #blog-aside {
 	display: flex;
 	flex-direction: column;
@@ -35,7 +35,7 @@ const hasAside = computed(() => !!layoutSlots?.slots.value?.aside)
 	padding: 0.5rem;
 	z-index: var(--z-index-popover);
 
-	@media (max-width: $breakpoint-widescreen) {
+	@media (max-width: 1080px) {
 		position: fixed;
 		inset-inline-end: 0;
 		top: 0;
@@ -46,7 +46,7 @@ const hasAside = computed(() => !!layoutSlots?.slots.value?.aside)
 		transform: var(--transform-end-far);
 		transition: transform 0.2s;
 
-		// TODO 留 padding-bottom 避让 BlogPanel
+		/* TODO 留 padding-bottom 避让 BlogPanel */
 
 		> :deep(.blog-widget) {
 			padding: 0.5rem;
@@ -61,8 +61,8 @@ const hasAside = computed(() => !!layoutSlots?.slots.value?.aside)
 		}
 	}
 
-	@media not (max-width: $breakpoint-widescreen) {
-		// 轨道伸缩时保持卡片排版宽度，避免内容挤成窄条后再次展开。
+	@media not (max-width: 1080px) {
+		/* 轨道伸缩时保持卡片排版宽度，避免内容挤成窄条后再次展开。 */
 		> :deep(*) {
 			width: calc(var(--aside-width) - 1rem);
 		}

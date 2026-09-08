@@ -83,7 +83,7 @@ button, input, textarea {
 	color: currentcolor;
 }
 
-// Iconify 图标复用了此类
+/* Iconify 图标复用了此类 */
 :where(.iconify) {
 	display: inline-block;
 	flex-shrink: 0;
@@ -98,20 +98,18 @@ button, input, textarea {
 .light .iconify[class*="i-catppuccin:"] {
 	filter: invert(0.7) hue-rotate(180deg) saturate(4);
 }
-
-/* stylelint-disable-next-line selector-class-pattern */
 .i-simple-icons\:mdnwebdocs {
 	transform: scale(0.8);
 }
 
-// 图片加载失败 fallback
+/* 图片加载失败 fallback */
 img {
 	contain: paint;
 	display: inline-block;
 
 	&::before {
 		all: initial;
-		content: attr(alt); // Firefox 的 ::before content 仅在 alt 不为空时展示且值为 attr(alt) 无法修改
+		content: attr(alt); /* Firefox 的 ::before content 仅在 alt 不为空时展示且值为 attr(alt) 无法修改 */
 		display: grid;
 		place-content: center;
 		position: absolute;
@@ -126,7 +124,7 @@ img {
 }
 
 .katex-display, article > .katex {
-	display: block; // ```math 不会包裹 .katex-display
+	display: block; /* ```math 不会包裹 .katex-display */
 	overflow: auto hidden;
 	padding: 1px 0;
 	scrollbar-width: thin;
@@ -174,9 +172,9 @@ img {
 	font-style: var(--shiki-light-font-style);
 
 	.dark & {
-		background-color: var(--shiki-dark-bg) !important; /* stylelint-disable-line declaration-no-important */
+		background-color: var(--shiki-dark-bg) !important;
 		font-style: var(--shiki-dark-font-style);
-		color: var(--shiki-dark) !important; /* stylelint-disable-line declaration-no-important */
+		color: var(--shiki-dark) !important;
 	}
 }
 
@@ -204,7 +202,7 @@ img {
 	}
 
 	> .space::before,
-	>.tab::before {
+	> .tab::before {
 		display: inline-block;
 		opacity: 0.3;
 		width: 0;
@@ -217,7 +215,7 @@ img {
 		content: "·";
 	}
 
-	>.tab::before {
+	> .tab::before {
 		content: "⇥";
 	}
 }

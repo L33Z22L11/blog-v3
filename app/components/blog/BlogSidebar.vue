@@ -7,7 +7,7 @@ const searchStore = useSearchStore()
 <template>
 <BlogMask
 	:show="layoutStore.state === 'sidebar'"
-	class="mobile-only"
+	class="hide-above-mobile"
 	@click="layoutStore.close()"
 />
 
@@ -46,7 +46,7 @@ const searchStore = useSearchStore()
 </aside>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 #blog-sidebar {
 	display: flex;
 	flex-direction: column;
@@ -56,7 +56,7 @@ const searchStore = useSearchStore()
 		color: currentcolor;
 	}
 
-	@media (max-width: $breakpoint-mobile) {
+	@media (max-width: 768px) {
 		position: fixed;
 		inset-inline-start: 0;
 		width: 320px;

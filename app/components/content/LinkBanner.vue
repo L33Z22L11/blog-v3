@@ -23,12 +23,12 @@ defineProps<{
 </UtilLink>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .link-banner {
 	line-height: 1.4;
 
 	article & {
-		max-width: $breakpoint-phone;
+		max-width: 528px;
 		margin: 2rem auto;
 	}
 

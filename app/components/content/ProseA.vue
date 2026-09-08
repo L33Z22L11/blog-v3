@@ -20,7 +20,7 @@ const tip = computed(() => ({
 </UtilLink>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .z-link[href] {
 	margin: -0.1em -0.2em;
 	padding: 0.1em 0.2em;

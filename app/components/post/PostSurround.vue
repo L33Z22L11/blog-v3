@@ -47,7 +47,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .surround-post {
 	contain: layout;
 	display: flex;
@@ -68,7 +68,7 @@ const [DefineTemplate, ReuseTemplate] = createReusableTemplate<{
 	}
 
 	&[align-end] {
-		// direction: rtl 会导致末尾标点居左
+		/* direction: rtl 会导致末尾标点居左 */
 		flex-direction: row-reverse;
 		margin-inline-start: auto;
 		text-align: end;
