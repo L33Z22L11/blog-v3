@@ -130,7 +130,7 @@
 	}
 }
 
-@media (width > 528px) {
+@media not (max-width: 528px) {
 	.hide-above-phone {
 		display: none !important;
 	}
@@ -142,7 +142,7 @@
 	}
 }
 
-@media (width > 768px) {
+@media not (max-width: 768px) {
 	.hide-above-mobile {
 		display: none !important;
 	}
@@ -154,7 +154,7 @@
 	}
 }
 
-@media (width > 1080px) {
+@media not (max-width: 1080px) {
 	.hide-above-tablet {
 		display: none !important;
 	}
