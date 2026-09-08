@@ -61,7 +61,7 @@ const hasAside = computed(() => !!layoutSlots?.slots.value?.aside)
 		}
 	}
 
-	@media (width > 1080px) {
+	@media not (max-width: 1080px) {
 		/* 轨道伸缩时保持卡片排版宽度，避免内容挤成窄条后再次展开。 */
 		> :deep(*) {
 			width: calc(var(--aside-width) - 1rem);

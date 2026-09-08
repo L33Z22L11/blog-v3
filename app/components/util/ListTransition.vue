@@ -1,18 +1,14 @@
 <script setup lang="ts" generic="T, S">
+import { noop, once } from 'es-toolkit/function'
+
 const props = defineProps<{ items: T[], state?: S }>()
 const container = useTemplateRef('container')
 const content = useTemplateRef('content')
 const updated = ref(false)
-let revision = 0
-let animations: Animation[] = []
-
-function cancel() {
-	animations.forEach(animation => animation.cancel())
-	animations = []
-}
+const reducedMotion = usePreferredReducedMotion()
+let cancel = noop
 
 watch(() => [props.items, props.state] as const, async () => {
-	const current = ++revision
 	const outer = container.value
 	const inner = content.value
 	if (!outer || !inner)
@@ -23,19 +19,26 @@ watch(() => [props.items, props.state] as const, async () => {
 	const before = new Map(elements().map(element => [element.dataset.listKey!, element.getBoundingClientRect()]))
 	const height = outer.getBoundingClientRect().height
 	cancel()
-	const immediate = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+	const immediate = reducedMotion.value === 'reduce'
 		|| document.documentElement.hasAttribute('data-article-transition')
 	updated.value = true
-	if (immediate) {
+	if (immediate)
+		return
+
+	const animations: Animation[] = []
+	let cancelled = false
+	const cleanup = once(() => {
+		cancelled = true
+		animations.splice(0).forEach(animation => animation.cancel())
 		outer.style.height = ''
 		delete outer.dataset.changing
-		return
-	}
+	})
+	cancel = cleanup
 	outer.style.height = `${height}px`
 	outer.dataset.changing = ''
 	// 内容立即更新；不把列表清空或等退场后再提交。
 	await nextTick()
-	if (current !== revision)
+	if (cancelled)
 		return
 	const target = inner.getBoundingClientRect().height
 	const motion = getComputedStyle(outer)
@@ -61,17 +64,10 @@ watch(() => [props.items, props.state] as const, async () => {
 		}
 	}
 	await Promise.allSettled(animations.map(animation => animation.finished))
-	if (current !== revision)
-		return
-	outer.style.height = ''
-	cancel()
-	delete outer.dataset.changing
+	cleanup()
 })
 
-onBeforeUnmount(() => {
-	revision++
-	cancel()
-})
+onBeforeUnmount(() => cancel())
 </script>
 
 <template>

@@ -3,6 +3,7 @@ import type { ShallowRef, Slots } from 'vue'
 interface LayoutSlotsProvider {
 	slots: ShallowRef<Slots | null>
 	ready: Promise<void>
+	getOwner?: (name: string) => number | undefined
 }
 
 const layoutSlotsKey = Symbol.for('dxup:layout-slots')
@@ -18,7 +19,12 @@ export function provideLayoutSlots() {
 	const route = useRoute()
 	if (provider) {
 		// 保留 dxup 的 use/ready，页面仍向原 provider 注册。
-		provide(layoutSlotsKey, { ...provider, slots })
+		provide<LayoutSlotsProvider>(layoutSlotsKey, {
+			...provider,
+			slots,
+			// aside 跨页面复用同类型 widget；文章目录仍由文章路径的 key 区分。
+			getOwner: name => name === 'aside' ? 0 : provider.getOwner?.(name),
+		})
 		provider.ready.then(() => {
 			slots.value = provider.slots.value
 		})
