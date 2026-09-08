@@ -61,7 +61,7 @@ const hasAside = computed(() => !!layoutSlots?.slots.value?.aside)
 		}
 	}
 
-	@media (width > $breakpoint-widescreen) {
+	@media not (max-width: $breakpoint-widescreen) {
 		// 轨道伸缩时保持卡片排版宽度，避免内容挤成窄条后再次展开。
 		> :deep(*) {
 			width: calc(var(--aside-width) - 1rem);

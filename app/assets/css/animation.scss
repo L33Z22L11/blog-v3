@@ -4,7 +4,7 @@
 	--motion-fade-duration: 0.2s;
 	--motion-exit-duration: 0.1s;
 	--motion-delay: 0.05s;
-	--motion-easing: cubic-bezier(0.2, 1, 0.4, 1);
+	--motion-easing: ease-out;
 	--max-bezier-to-full: cubic-bezier(0.5, 0, 1, 0.5);
 	--max-bezier-to-collapse: cubic-bezier(0, 0.5, 0.5, 1);
 
@@ -107,23 +107,20 @@
 	}
 }
 
-:root[data-article-transition]:not([data-page-snapshot]) {
+:root[data-article-transition] {
 	#main-content { view-transition-name: article-body; }
 
 	/* 抽屉不参与共享快照，避免捕获屏幕外带 backdrop-filter 的固定层。 */
-	/* stylelint-disable-next-line media-query-no-invalid */
-	@media (width > $breakpoint-mobile) {
+	@media not (max-width: $breakpoint-mobile) {
 		#blog-sidebar { view-transition-name: article-navigation; }
 	}
 
-	/* stylelint-disable-next-line media-query-no-invalid */
-	@media (width > $breakpoint-widescreen) {
+	@media not (max-width: $breakpoint-widescreen) {
 		#blog-aside:not(.is-empty) { view-transition-name: article-aside; }
 	}
 }
 
-[data-article-source],
-:root[data-article-transition="new"][data-article-hero] .post-header {
+[data-article-source] {
 	view-transition-name: article-hero;
 }
 
@@ -148,14 +145,6 @@
 	display: none;
 }
 
-/* WebKit 使用完整页面快照，避免新命名图层空白形成蒙层。 */
-:root[data-page-snapshot]::view-transition-old(root) {
-	display: block;
-	animation: content-in var(--motion-fade-duration) ease reverse both;
-	mix-blend-mode: normal;
-	z-index: 1;
-}
-
 ::view-transition-old(article-body),
 ::view-transition-old(article-aside),
 ::view-transition-old(article-hero) {
@@ -176,18 +165,26 @@
 }
 
 /* 独立于 group 的浏览器几何动画，正向、返回均使用真实元素的圆角。 */
+/* 快照保留默认的 width: 100% / height: auto，避免宽高比不同时缩成贴左的小块。 */
 ::view-transition-image-pair(article-hero) {
 	overflow: clip;
 	border-radius: var(--article-radius-to, 0);
 	animation: article-radius var(--motion-duration) var(--motion-easing) both;
 }
 
-/* 快照包含整张卡片（封面和文字），不能按封面裁切放大。 */
-::view-transition-old(article-hero),
-::view-transition-new(article-hero) {
-	height: 100%;
-	object-fit: contain;
-	object-position: top left;
+/* WebKit 快照绕过：私有属性仅用于引擎识别，不能检测快照 bug 本身。 */
+@supports (-webkit-nbsp-mode: space) {
+	/* 取消所有子元素的独立快照，保留 root 整页快照。 */
+	:root[data-article-transition] * {
+		view-transition-name: none !important;
+	}
+
+	:root[data-article-transition]::view-transition-old(root) {
+		display: block;
+		animation: content-in var(--motion-fade-duration) ease reverse both;
+		mix-blend-mode: normal;
+		z-index: 1;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
