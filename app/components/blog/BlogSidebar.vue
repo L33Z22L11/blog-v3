@@ -52,6 +52,10 @@ const searchStore = useSearchStore()
 	flex-direction: column;
 	color: var(--c-text-2);
 
+	@media not (max-width: 768px) {
+		:root[data-article-transition] & { view-transition-name: article-navigation; }
+	}
+
 	&:hover {
 		color: currentcolor;
 	}

@@ -42,6 +42,7 @@ else {
 	<!-- 正文使用纯透明度入场，保证 URL 锚点和目录测量不受位移影响。 -->
 	<ContentRenderer
 		class="article"
+		data-transition-enter
 		:class="getPostTypeClassName(post?.type, { prefix: 'md' })"
 		:value="post"
 		tag="article"

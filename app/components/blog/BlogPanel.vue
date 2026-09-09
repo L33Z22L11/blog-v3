@@ -52,6 +52,11 @@ const { transform } = useAvoidTransform(panelRef, avoidTargets)
 	transition: transform 0.1s;
 	z-index: var(--z-index-popover);
 
+	:root[data-article-transition] & {
+		transition: none !important;
+		view-transition-name: article-panel;
+	}
+
 	@media (max-height: 528px) {
 		display: flex;
 	}
@@ -75,5 +80,23 @@ button {
 		background-color: var(--ld-bg-active);
 		color: var(--c-primary);
 	}
+}
+
+/* 正文有独立快照，在 Panel 的快照层重新合成磨砂背景。 */
+:global(::view-transition-group(article-panel)) {
+	border-radius: 0.5rem;
+	backdrop-filter: blur(0.5rem);
+	/* 元素先完成避让定位，由快照在新旧位置之间播放位移动画。 */
+	animation-duration: 0.1s;
+	animation-timing-function: ease;
+	z-index: 1;
+}
+
+:global(::view-transition-new(article-panel)) {
+	animation: none;
+}
+
+:global(::view-transition-old(article-panel)) {
+	display: none;
 }
 </style>

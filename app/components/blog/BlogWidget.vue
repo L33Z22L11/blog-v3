@@ -17,6 +17,7 @@ defineExpose({ body })
 <template>
 <section
 	class="blog-widget"
+	data-transition-enter
 	:class="{ shrink, grayscale, dim }"
 >
 	<hgroup class="widget-header text-creative">

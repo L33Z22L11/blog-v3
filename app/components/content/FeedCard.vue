@@ -39,6 +39,7 @@ function getInspectStyle(src: string): CSSProperties {
 <Tooltip :delay="200" interactive ^role="link" hide-on-click="toggle">
 	<UtilLink
 		class="feed-card gradient-card"
+		data-transition-enter
 		:to="error ? undefined : link"
 		rel="noopener"
 		:data-error="error"

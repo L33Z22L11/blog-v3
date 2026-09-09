@@ -81,12 +81,8 @@
 	animation-delay: calc((sibling-index() - 1) * var(--motion-delay));
 }
 
-#blog-aside {
-	transition: padding-inline var(--motion-duration) var(--motion-easing);
-}
-
-#blog-root {
-	transition: grid-template-columns var(--motion-duration) var(--motion-easing);
+#blog-aside.aside-enter-active > .blog-widget {
+	animation: none;
 }
 
 [data-native-entered] {
@@ -97,25 +93,8 @@
 :root[data-article-transition] {
 	scroll-behavior: auto;
 
-	#blog-root, #blog-aside {
-		transition: none !important;
-	}
-
-	.article-card, .article-item, .feed-card, .article, .post-header, #blog-aside > .blog-widget {
+	[data-transition-enter] {
 		animation: none !important;
-	}
-}
-
-:root[data-article-transition] {
-	#main-content { view-transition-name: article-body; }
-
-	/* 抽屉不参与共享快照，避免捕获屏幕外带 backdrop-filter 的固定层。 */
-	@media not (max-width: 768px) {
-		#blog-sidebar { view-transition-name: article-navigation; }
-	}
-
-	@media not (max-width: 1080px) {
-		#blog-aside:not(.is-empty) { view-transition-name: article-aside; }
 	}
 }
 
@@ -192,7 +171,7 @@
 		scroll-behavior: auto;
 	}
 
-	#blog-root,
+	#blog-sidebar,
 	#blog-aside,
 	.article-card,
 	.article-item,

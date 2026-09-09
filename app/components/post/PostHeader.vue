@@ -17,7 +17,7 @@ const { copy, copied } = useCopy(shareText)
 </script>
 
 <template>
-<div class="post-header" :class="{ 'has-cover': image }">
+<div class="post-header" :class="{ 'has-cover': image }" :data-transition-key="path" data-transition-enter>
 	<Pic v-if="image" class="post-cover" :src="image" :alt="title" :filter="coverFilter" />
 	<div class="post-nav">
 		<div class="operations">

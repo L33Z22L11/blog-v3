@@ -37,36 +37,6 @@ withDefaults(defineProps<ButtonProps>(), {
 	display: inline-block;
 	transition: color 0.1s, background-color 0.2s;
 
-	&.button {
-		padding: 0.4em 0.6em;
-		border: 1px solid var(--c-bg-soft);
-		border-radius: 0.5em;
-		box-shadow: var(--box-shadow-1);
-		background-color: var(--ld-bg-card);
-		line-height: 1.2;
-		vertical-align: middle;
-		cursor: pointer;
-
-		&.primary {
-			background-color: var(--c-primary);
-			color: var(--c-bg);
-		}
-
-		&:hover {
-			box-shadow: var(--box-shadow-2);
-			background-color: var(--c-bg-2);
-			color: var(--c-text);
-		}
-
-		&:active {
-			background-color: var(--ld-shadow);
-		}
-
-		&:disabled {
-			background-color: var(--c-bg-1);
-		}
-	}
-
 	&.text {
 		&:hover {
 			color: var(--c-primary);
@@ -83,6 +53,35 @@ withDefaults(defineProps<ButtonProps>(), {
 	}
 }
 
+.button {
+	padding: 0.4em 0.6em;
+	border: 1px solid var(--c-bg-soft);
+	border-radius: 0.5em;
+	box-shadow: var(--box-shadow-1);
+	background-color: var(--ld-bg-card);
+	line-height: 1.2;
+	vertical-align: middle;
+	cursor: pointer;
+
+	&.primary {
+		background-color: var(--c-primary);
+		color: var(--c-bg);
+	}
+
+	&:hover {
+		box-shadow: var(--box-shadow-2);
+		background-color: var(--c-bg-2);
+		color: var(--c-text);
+	}
+
+	&:active {
+		background-color: var(--ld-shadow);
+	}
+
+	&:disabled {
+		background-color: var(--c-bg-1);
+	}
+}
 .button-main {
 	display: flex;
 	align-items: center;

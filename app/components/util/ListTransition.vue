@@ -8,7 +8,7 @@ const updated = ref(false)
 const reducedMotion = usePreferredReducedMotion()
 let cancel = noop
 
-watch(() => [props.items, props.state] as const, async () => {
+watch(() => [props.items, props.state], async () => {
 	const outer = container.value
 	const inner = content.value
 	if (!outer || !inner)

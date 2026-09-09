@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-<UtilLink :to="link" class="link-card card" data-article-link :title="joinWith([title, description, link])">
+<UtilLink :to="link" class="link-card card" :data-transition-key="link" :title="joinWith([title, description, link])">
 	<div class="link-card-info">
 		<div class="link-card-title">
 			{{ title }}

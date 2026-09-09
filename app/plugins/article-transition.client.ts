@@ -7,6 +7,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
 	const router = useRouter()
 	const reducedMotion = usePreferredReducedMotion()
+	const { emit } = useEventBus<'capture' | 'finish'>('page-transition')
 	const root = document.documentElement
 	const positions = new Map<number, { left: number, top: number }>()
 	let position = window.history.state?.position as number
@@ -23,14 +24,9 @@ export default defineNuxtPlugin((nuxtApp) => {
 			&& rect.right > 0 && rect.left < window.innerWidth && getComputedStyle(element).visibility !== 'hidden'
 	}
 
-	function findCard(path: string) {
-		return Array.from(document.querySelectorAll<HTMLAnchorElement>('a[data-article-link]'))
-			.find(link => normalizeContentPath(link.pathname) === normalizeContentPath(path) && isVisible(link))
-	}
-
-	function findHeader() {
-		const header = document.querySelector<HTMLElement>('.post-header')
-		return header && isVisible(header) ? header : undefined
+	function findShared(path: string) {
+		return Array.from(document.querySelectorAll<HTMLElement>('[data-transition-key]'))
+			.find(element => normalizeContentPath(element.dataset.transitionKey!) === normalizeContentPath(path) && isVisible(element))
 	}
 
 	function markHero(element: HTMLElement | undefined, side: 'from' | 'to') {
@@ -53,7 +49,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 			return
 		}
 
-		const source = !to.hash && !from.hash ? findCard(to.path) ?? findHeader() : undefined
+		const source = !to.hash && !from.hash ? findShared(to.path) ?? findShared(from.path) : undefined
 		if (!source)
 			return
 		const scrollToTop = typeof to.meta.scrollToTop === 'function' ? to.meta.scrollToTop(to, from) : to.meta.scrollToTop
@@ -80,9 +76,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 			if (active !== state)
 				return
 			// 快照结束后不重复播放元素自身的入场动画。
-			document.querySelectorAll<HTMLElement>('.article-card, .article-item, .feed-card, .article, .post-header, #blog-aside > .blog-widget')
+			document.querySelectorAll<HTMLElement>('[data-transition-enter]')
 				.forEach(element => element.dataset.nativeEntered = '')
 			document.querySelectorAll<HTMLElement>('[data-article-source]').forEach(element => delete element.dataset.articleSource)
+			emit('finish')
 			delete root.dataset.articleTransition
 			root.style.removeProperty('--article-radius-from')
 			root.style.removeProperty('--article-radius-to')
@@ -100,6 +97,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 		root.dataset.articleTransition = 'old'
 		markHero(source, 'from')
 		try {
+			emit('capture')
 			transition = document.startViewTransition(async () => {
 				resume()
 				await pageReady
@@ -119,7 +117,9 @@ export default defineNuxtPlugin((nuxtApp) => {
 					else
 						window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
 				}
-				markHero(findHeader() ?? findCard(from.path), 'to')
+				markHero(findShared(to.path) ?? findShared(from.path), 'to')
+				emit('capture')
+				await nextTick()
 			})
 			transition.ready.catch(cancel)
 			transition.finished.catch(() => {}).finally(cleanup)

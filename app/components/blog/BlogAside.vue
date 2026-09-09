@@ -7,6 +7,43 @@ if (layoutSlots)
 	await layoutSlots.ready
 
 const hasAside = computed(() => !!layoutSlots?.slots.value?.aside)
+const desktop = useMediaQuery('not (max-width: 1080px)')
+const reducedMotion = usePreferredReducedMotion()
+const retainedSlots = shallowRef(layoutSlots?.slots.value ?? null)
+if (layoutSlots) {
+	provide(Symbol.for('dxup:layout-slots'), { ...layoutSlots, slots: retainedSlots })
+	watch(layoutSlots.slots, (slots) => {
+		if (slots?.aside)
+			retainedSlots.value = slots
+	}, { flush: 'sync' })
+}
+
+function beforeLeave(element: Element) {
+	if (desktop.value) {
+		const { top, left, width } = element.getBoundingClientRect()
+		Object.assign((element as HTMLElement).style, { position: 'fixed', top: `${top}px`, left: `${left}px`, width: `${width}px` })
+	}
+	element.classList.add('is-empty')
+	element.setAttribute('inert', '')
+}
+
+function cancelLeave(element: Element) {
+	element.classList.remove('is-empty')
+	element.removeAttribute('inert')
+	const style = (element as HTMLElement).style
+	for (const property of ['position', 'top', 'left', 'width'])
+		style.removeProperty(property)
+}
+
+function animateAside() {
+	return desktop.value && reducedMotion.value !== 'reduce'
+		&& !document.documentElement.hasAttribute('data-article-transition')
+}
+
+function afterEnter(element: Element) {
+	element.querySelectorAll<HTMLElement>(':scope > .blog-widget')
+		.forEach(widget => widget.dataset.nativeEntered = '')
+}
 </script>
 
 <template>
@@ -16,14 +53,24 @@ const hasAside = computed(() => !!layoutSlots?.slots.value?.aside)
 	@click="layoutStore.close()"
 />
 
-<!-- 不能用 Transition 实现弹出收起动画，因为宽屏状态始终显示 -->
-<!-- 空侧栏保留 Grid 轨道，由轨道宽度过渡完成收起。 -->
-<aside
-	id="blog-aside" :class="{ 'show': layoutStore.state === 'aside', 'is-empty': !hasAside }"
-	:inert="!hasAside"
+<!-- 页面侧栏退场时脱离布局；窄屏抽屉仍由 show 控制。 -->
+<Transition
+	name="aside"
+	:css="animateAside()"
+	@after-enter="afterEnter"
+	@before-leave="beforeLeave"
+	@leave-cancelled="cancelLeave"
+	@after-leave="!hasAside && (retainedSlots = null)"
 >
-	<slot />
-</aside>
+	<aside
+		v-if="hasAside"
+		id="blog-aside" :class="{ 'show': layoutStore.state === 'aside', 'is-empty': !hasAside }"
+		:inert="!hasAside"
+		@click.self="layoutStore.close()"
+	>
+		<slot />
+	</aside>
+</Transition>
 </template>
 
 <style scoped>
@@ -35,6 +82,14 @@ const hasAside = computed(() => !!layoutSlots?.slots.value?.aside)
 	padding: 0.5rem;
 	z-index: var(--z-index-popover);
 
+	:root[data-article-transition] & {
+		transition: none !important;
+
+		@media not (max-width: 1080px) {
+			&:not(.is-empty) { view-transition-name: article-aside; }
+		}
+	}
+
 	@media (max-width: 1080px) {
 		position: fixed;
 		inset-inline-end: 0;
@@ -43,10 +98,15 @@ const hasAside = computed(() => !!layoutSlots?.slots.value?.aside)
 		height: auto;
 		max-width: 100%;
 		max-height: 100%;
+		/* 为底部悬浮面板的双按钮及底边距留出滚动空间。 */
+		padding-bottom: 9rem;
 		transform: var(--transform-end-far);
 		transition: transform 0.2s;
 
-		/* TODO 留 padding-bottom 避让 BlogPanel */
+		/* 平板只有一个按钮；矮屏时双按钮横排，只需留一行高度。 */
+		@media (min-width: 769px), (max-height: 528px) {
+			padding-bottom: 6rem;
+		}
 
 		> :deep(.blog-widget) {
 			padding: 0.5rem;
@@ -61,16 +121,17 @@ const hasAside = computed(() => !!layoutSlots?.slots.value?.aside)
 		}
 	}
 
-	@media not (max-width: 1080px) {
-		/* 轨道伸缩时保持卡片排版宽度，避免内容挤成窄条后再次展开。 */
-		> :deep(*) {
-			width: calc(var(--aside-width) - 1rem);
-		}
+	&.aside-enter-active, &.aside-leave-active {
+		transition: translate var(--motion-duration) var(--motion-easing), opacity var(--motion-duration) var(--motion-easing);
 	}
 
-	&.is-empty {
-		visibility: hidden;
-		padding-inline: 0;
+	&.aside-enter-from, &.aside-leave-to {
+		opacity: 0;
+		translate: 2rem 0;
+	}
+
+	&.aside-leave-active {
+		pointer-events: none;
 	}
 }
 </style>
