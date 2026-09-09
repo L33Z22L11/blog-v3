@@ -7,26 +7,11 @@ export function useAvoidTransform(
 	targets: Ref<AvoidTarget[]>,
 ) {
 	const targetBounds = shallowRef<UseElementBoundingReturn[]>([])
-	const originRect = shallowRef({ top: 0, bottom: 0, left: 0, right: 0 })
-
-	function updateOriginPosition() {
-		const origin = originRef.value
-		if (!origin)
-			return
-		const style = getComputedStyle(origin)
-		const rect = origin.getBoundingClientRect()
-		// 扣除当前避让位移，避免移动地址栏和动画中的坐标被重复计入。
-		const { m41: x, m42: y } = new DOMMatrixReadOnly(style.transform === 'none' ? undefined : style.transform)
-		originRect.value = {
-			top: rect.top - y,
-			bottom: rect.bottom - y,
-			left: rect.left - x,
-			right: rect.right - x,
-		}
-	}
+	// 测量未参与位移动画的外层容器。
+	const originBounds = useElementBounding(originRef, { windowResize: false, windowScroll: false })
 
 	function update() {
-		updateOriginPosition()
+		originBounds.update()
 		targetBounds.value.forEach(bounds => bounds.update())
 	}
 
@@ -34,8 +19,6 @@ export function useAvoidTransform(
 	useEventListener('scroll', update, { capture: true, passive: true })
 	if (import.meta.client)
 		useEventListener(window.visualViewport, ['resize', 'scroll'], update, { passive: true })
-	useResizeObserver(originRef, updateOriginPosition)
-	onMounted(updateOriginPosition)
 
 	watch(() => targets.value.map(target => target.value), (_elements, _previous, onCleanup) => {
 		// 新页面提交后测量目标；移除目标时一并释放其监听器。
@@ -48,15 +31,15 @@ export function useAvoidTransform(
 	const transform = computed(() => {
 		if (!originRef.value)
 			return ''
-		const { bottom: originBottom, left: originLeft, right: originRight, top: originTop } = originRect.value
+		const { bottom: originBottom, left: originLeft, right: originRight, top: originTop } = originBounds
 
 		const shifts = targetBounds.value
 			.filter(({ top, bottom, left, right }) => {
-				const hasHOverlap = originLeft < right.value && originRight > left.value
-				const hasVOverlap = top.value < originBottom && bottom.value > originTop
+				const hasHOverlap = originLeft.value < right.value && originRight.value > left.value
+				const hasVOverlap = top.value < originBottom.value && bottom.value > originTop.value
 				return hasHOverlap && hasVOverlap
 			})
-			.map(({ top }) => originBottom - top.value)
+			.map(({ top }) => originBottom.value - top.value)
 
 		const maxShift = Math.max(...shifts)
 		return maxShift > 0 ? `translateY(-${maxShift + 16}px)` : ''

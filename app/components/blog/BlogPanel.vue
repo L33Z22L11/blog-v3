@@ -6,51 +6,58 @@ defineProps<{
 const layoutStore = useLayoutStore()
 const { avoidTargets } = storeToRefs(layoutStore)
 
-const panelRef = useTemplateRef('blog-panel')
+const panelRef = useTemplateRef('panel-anchor')
 const { transform } = useAvoidTransform(panelRef, avoidTargets)
 </script>
 
 <template>
-<div
-	id="blog-panel"
-	ref="blog-panel"
-	:class="{ 'has-active': layoutStore.state !== 'none' }"
-	:style="{ transform }"
->
-	<button
-		v-if="hasAside"
-		class="toggle-aside hide-above-tablet"
-		:class="{ active: layoutStore.state === 'aside' }"
-		aria-label="切换侧边栏"
-		@click="layoutStore.toggle('aside')"
+<!-- 固定外层提供不受避让动画影响的测量位置。 -->
+<div ref="panel-anchor" class="panel-anchor">
+	<div
+		id="blog-panel"
+		:class="{ 'has-active': layoutStore.state !== 'none' }"
+		:style="{ transform }"
 	>
-		<Icon class="rtl-flip" name="tabler:align-right" />
-	</button>
+		<button
+			v-if="hasAside"
+			class="toggle-aside hide-above-tablet"
+			:class="{ active: layoutStore.state === 'aside' }"
+			aria-label="切换侧边栏"
+			@click="layoutStore.toggle('aside')"
+		>
+			<Icon class="rtl-flip" name="tabler:align-right" />
+		</button>
 
-	<Icon v-show="false" name="tabler:layout-sidebar-filled" />
-	<button
-		class="toggle-sidebar hide-above-mobile"
-		:class="{ active: layoutStore.state === 'sidebar' }"
-		aria-label="切换菜单"
-		@click="layoutStore.toggle('sidebar')"
-	>
-		<Icon class="rtl-flip" :name="layoutStore.state === 'sidebar' ? 'tabler:layout-sidebar-filled' : 'tabler:layout-sidebar'" />
-	</button>
+		<Icon v-show="false" name="tabler:layout-sidebar-filled" />
+		<button
+			class="toggle-sidebar hide-above-mobile"
+			:class="{ active: layoutStore.state === 'sidebar' }"
+			aria-label="切换菜单"
+			@click="layoutStore.toggle('sidebar')"
+		>
+			<Icon class="rtl-flip" :name="layoutStore.state === 'sidebar' ? 'tabler:layout-sidebar-filled' : 'tabler:layout-sidebar'" />
+		</button>
+	</div>
 </div>
 </template>
 
 <style scoped>
-#blog-panel {
-	contain: paint;
+.panel-anchor {
 	position: fixed;
 	inset-inline-end: min(1rem, 5%);
 	bottom: min(2rem, 5%);
+	pointer-events: none;
+	z-index: var(--z-index-popover);
+}
+
+#blog-panel {
+	contain: paint;
 	border-radius: 0.5rem;
 	background-color: var(--c-bg-a50);
 	backdrop-filter: blur(0.5rem);
 	font-size: 1.4rem;
 	transition: transform 0.1s;
-	z-index: var(--z-index-popover);
+	pointer-events: auto;
 
 	:root[data-article-transition] & {
 		transition: none !important;
