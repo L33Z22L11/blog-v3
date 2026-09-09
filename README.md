@@ -8,6 +8,8 @@
 
 我的第三代个人博客，于 2024 年 8 月 11 日上线。
 
+3.8.0 原生 CSS 迁移包含破坏性更改：不再默认提供 Sass 和 Stylelint。下游更新前请阅读 [迁移说明](MIGRATION.md)，保留 SCSS 定制的过渡方案也在其中。
+
 ## 耻辱柱 / Hall of Shame
 
 > [!CAUTION]

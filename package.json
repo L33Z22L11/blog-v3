@@ -1,7 +1,7 @@
 {
   "name": "clarity",
   "type": "module",
-  "version": "3.7.2",
+  "version": "3.8.0",
   "private": true,
   "packageManager": "pnpm@12.3.4",
   "license": "(MIT OR CC-BY-NC-SA-4.0)",
