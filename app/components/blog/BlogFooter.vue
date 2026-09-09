@@ -21,7 +21,7 @@ const appConfig = useAppConfig()
 </footer>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .blog-footer {
 	margin: 3rem 1rem;
 	font-size: 0.9em;

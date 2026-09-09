@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-<UtilLink :to="link" class="link-banner card" :title="joinWith([title, description, link])">
+<UtilLink :to="link" class="link-banner card" :data-transition-key="link" :title="joinWith([title, description, link])">
 	<UtilImg v-if="banner" class="link-banner-bg" :src="banner" :mirror />
 	<div class="link-banner-header" />
 	<div class="link-banner-info">
@@ -23,12 +23,12 @@ defineProps<{
 </UtilLink>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .link-banner {
 	line-height: 1.4;
 
 	article & {
-		max-width: $breakpoint-phone;
+		max-width: 528px;
 		margin: 2rem auto;
 	}
 

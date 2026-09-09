@@ -16,6 +16,23 @@ const expand = useElementVisibility(anchorEl)
 if (props.avoid) {
 	useAvoidTarget(paginationEl, toRef(props, 'avoid'))
 }
+
+if (import.meta.client) {
+	useEventBus<'capture' | 'finish'>('page-transition').on((phase) => {
+		const element = paginationEl.value
+		if (!element)
+			return
+		if (phase === 'finish') {
+			delete element.dataset.paginationSnapshot
+			element.style.removeProperty('--pagination-offset')
+		}
+		else if (props.sticky && window.matchMedia('(max-width: 768px)').matches) {
+			const { top } = element.getBoundingClientRect()
+			element.dataset.paginationSnapshot = ''
+			element.style.setProperty('--pagination-offset', `${top - element.getBoundingClientRect().top}px`)
+		}
+	})
+}
 </script>
 
 <template>
@@ -58,7 +75,7 @@ if (props.avoid) {
 <div ref="pagination-anchor" />
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .pagination {
 	display: flex;
 	max-width: calc(100vw);
@@ -69,6 +86,18 @@ if (props.avoid) {
 	background-color: var(--ld-bg-card);
 	transition: max-width 0.2s var(--max-bezier-to-full);
 	font-variant-numeric: tabular-nums;
+
+	:root[data-article-transition] & {
+		transition: none !important;
+		view-transition-name: article-pagination;
+
+		/* 保留布局占位，避免移动端快照按大视口重新定位 sticky。 */
+		&[data-pagination-snapshot] {
+			position: relative;
+			bottom: auto;
+			translate: 0 var(--pagination-offset, 0px);
+		}
+	}
 
 	&.sticky {
 		position: sticky;
@@ -109,5 +138,14 @@ if (props.avoid) {
 			color: var(--c-primary);
 		}
 	}
+}
+
+:global(::view-transition-group(article-pagination)),
+:global(::view-transition-new(article-pagination)) {
+	animation: none;
+}
+
+:global(::view-transition-old(article-pagination)) {
+	display: none;
 }
 </style>

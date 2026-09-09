@@ -2,6 +2,7 @@
 import type { ArticleProps } from '~/types/article'
 
 defineOptions({ inheritAttrs: false })
+
 const props = defineProps<ArticleProps>()
 
 const appConfig = useAppConfig()
@@ -16,7 +17,7 @@ const { copy, copied } = useCopy(shareText)
 </script>
 
 <template>
-<div class="post-header" :class="{ 'has-cover': image }">
+<div class="post-header" :class="{ 'has-cover': image }" :data-transition-key="path" data-transition-enter>
 	<Pic v-if="image" class="post-cover" :src="image" :alt="title" :filter="coverFilter" />
 	<div class="post-nav">
 		<div class="operations">
@@ -63,9 +64,9 @@ const { copy, copied } = useCopy(shareText)
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .post-header {
-	contain: paint; // overflow hidden + position relative
+	contain: paint; /* overflow hidden + position relative */
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -75,7 +76,7 @@ const { copy, copied } = useCopy(shareText)
 	background-color: var(--c-bg-2);
 	color: var(--c-text);
 
-	@media (max-width: $breakpoint-mobile) {
+	@media (max-width: 768px) {
 		margin: 0;
 		border-radius: 0;
 	}

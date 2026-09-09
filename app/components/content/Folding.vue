@@ -15,7 +15,7 @@ defineProps<{
 </details>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 details {
 	margin: 1em 0;
 	padding: 0.5em 0.8em;

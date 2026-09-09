@@ -2,15 +2,12 @@
 const appConfig = useAppConfig()
 const layoutStore = useLayoutStore()
 const searchStore = useSearchStore()
-
-const { text } = useTextSelection()
-const debouncedSelection = refDebounced(text)
 </script>
 
 <template>
 <BlogMask
 	:show="layoutStore.state === 'sidebar'"
-	class="mobile-only"
+	class="hide-above-mobile"
 	@click="layoutStore.close()"
 />
 
@@ -21,7 +18,7 @@ const debouncedSelection = refDebounced(text)
 	<nav class="sidebar-nav scrollcheck-y">
 		<div class="search-btn sidebar-nav-item gradient-card" @click="layoutStore.toggle('search')">
 			<Icon name="tabler:search" />
-			<span class="nav-text">{{ debouncedSelection || searchStore.word || '搜索' }}</span>
+			<span class="nav-text">{{ searchStore.label }}</span>
 			<Key class="keycut" code="K" cmd prevent @press="layoutStore.toggle('search')" />
 		</div>
 
@@ -49,17 +46,21 @@ const debouncedSelection = refDebounced(text)
 </aside>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 #blog-sidebar {
 	display: flex;
 	flex-direction: column;
 	color: var(--c-text-2);
 
+	@media not (max-width: 768px) {
+		:root[data-article-transition] & { view-transition-name: article-navigation; }
+	}
+
 	&:hover {
 		color: currentcolor;
 	}
 
-	@media (max-width: $breakpoint-mobile) {
+	@media (max-width: 768px) {
 		position: fixed;
 		inset-inline-start: 0;
 		width: 320px;

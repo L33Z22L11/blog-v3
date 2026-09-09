@@ -11,11 +11,11 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 </script>
 
 <template>
-<li class="article-item">
+<li class="article-item" data-transition-enter>
 	<UtilDate class="dim-hover" :date="mainDate" format="monthDay" />
 
 	<div class="gradient-card" :style="{ '--c-accent': getCategoryColor(categories?.[0]) }">
-		<UtilLink class="article-link scrollbar-hidden scrollcheck-x" :to :title="description">
+		<UtilLink class="article-link scrollbar-hidden scrollcheck-x" :data-transition-key="to ?? path" :to :title="description">
 			<span class="article-title">
 				<Icon v-if="showCategory" :name="getCategoryIcon(categories?.[0])" />
 				{{ title }}
@@ -36,17 +36,16 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 </li>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .article-item {
 	display: flex;
 	align-items: center;
 	column-gap: 0.5em;
 	min-width: 0;
 	margin: var(--archive-item-gap, 0.2em) 0;
-	transition: all 0.2s;
 	animation: float-in 0.2s var(--delay) backwards;
 
-	@media (max-width: $breakpoint-mobile) {
+	@media (max-width: 768px) {
 		font-size: 0.9em;
 	}
 

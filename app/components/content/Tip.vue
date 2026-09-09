@@ -36,7 +36,7 @@ const icon = computed(() => props.icon ?? (copied.value ? 'tabler:check' : props
 </span>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .tip {
 	position: relative;
 	text-decoration: underline dashed var(--c-text-3);

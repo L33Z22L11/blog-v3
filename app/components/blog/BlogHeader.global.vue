@@ -44,7 +44,7 @@ const appConfig = useAppConfig()
 </UtilLink>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .blog-header {
 	contain: layout;
 	display: flex;
@@ -87,7 +87,7 @@ const appConfig = useAppConfig()
 
 .header-subtitle {
 	opacity: 0.5;
-	font-size: 0.8em;
+	font-size: 0.75em;
 }
 
 @keyframes vf-weight {

@@ -59,7 +59,7 @@ onUnmounted(() => {
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .music-score {
 	line-height: 1.4;
 
@@ -73,10 +73,6 @@ onUnmounted(() => {
 		font-size: 0.8em;
 		font-variant-numeric: tabular-nums;
 
-		&.abcjs-disabled {
-			opacity: 0.5;
-		}
-
 		> .abcjs-btn {
 			width: 1em;
 			padding: 0.2em;
@@ -88,29 +84,29 @@ onUnmounted(() => {
 				display: block;
 			}
 
-			&:hover, &.abcjs-pushed {
-				color: var(--c-primary);
-			}
-
 			g {
 				fill: currentcolor;
 				stroke: currentcolor;
 			}
 		}
 
+		> .abcjs-btn:hover, > .abcjs-btn.abcjs-pushed {
+			color: var(--c-primary);
+		}
+
 		> .abcjs-midi-start {
 			> .abcjs-pause-svg, > .abcjs-loading-svg {
 				display: none;
 			}
+		}
 
-			&.abcjs-pushed, &.abcjs-loading {
-				> .abcjs-play-svg {
-					display: none;
-				}
-			}
+		> .abcjs-midi-start.abcjs-pushed .abcjs-pause-svg {
+			display: block;
+		}
 
-			&.abcjs-pushed .abcjs-pause-svg {
-				display: block;
+		> .abcjs-midi-start.abcjs-pushed, > .abcjs-midi-start.abcjs-loading {
+			> .abcjs-play-svg {
+				display: none;
 			}
 		}
 
@@ -157,11 +153,6 @@ onUnmounted(() => {
 		}
 
 		.abcjs-loading {
-			@keyframes abcjs-spin {
-				from { transform: rotate(0deg); }
-				to { transform: rotate(360deg); }
-			}
-
 			outline: none;
 			animation: abcjs-spin 1s linear infinite;
 		}
@@ -174,5 +165,14 @@ onUnmounted(() => {
 			display: none;
 		}
 	}
+
+	:deep(.abcjs-inline-audio.abcjs-disabled) {
+		opacity: 0.5;
+	}
+}
+
+@keyframes abcjs-spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
 }
 </style>

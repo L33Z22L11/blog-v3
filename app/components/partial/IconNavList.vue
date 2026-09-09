@@ -20,7 +20,7 @@ defineProps<{
 </menu>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 menu {
 	display: flex;
 	justify-content: center;

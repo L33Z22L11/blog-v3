@@ -17,6 +17,7 @@ defineExpose({ body })
 <template>
 <section
 	class="blog-widget"
+	data-transition-enter
 	:class="{ shrink, grayscale, dim }"
 >
 	<hgroup class="widget-header text-creative">
@@ -38,7 +39,7 @@ defineExpose({ body })
 </section>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .blog-widget {
 	flex-shrink: 1;
 	font-size: 0.9em;
@@ -52,12 +53,12 @@ defineExpose({ body })
 	&.grayscale :where(.iconify, img) {
 		transition: filter 0.2s;
 		filter: grayscale(0.8);
+	}
 
-		#blog-aside:hover &,
-		&:focus-within,
-		#blog-aside.show & {
-			filter: grayscale(0);
-		}
+	#blog-aside:hover &.grayscale :where(.iconify, img),
+	&.grayscale :where(.iconify, img):focus-within,
+	#blog-aside.show &.grayscale :where(.iconify, img) {
+		filter: grayscale(0);
 	}
 
 	&.dim {
@@ -89,10 +90,10 @@ defineExpose({ body })
 
 	> :deep(a) {
 		transition: color 0.2s;
+	}
 
-		&[href]:hover {
-			color: var(--c-primary);
-		}
+	> :deep(a[href]:hover) {
+		color: var(--c-primary);
 	}
 }
 
@@ -100,7 +101,7 @@ defineExpose({ body })
 	overscroll-behavior: contain;
 
 	&.with-bg {
-		contain: paint; // overflow hidden + position relative
+		contain: paint; /* overflow hidden + position relative */
 		z-index: 0;
 
 		> .bg-img {
