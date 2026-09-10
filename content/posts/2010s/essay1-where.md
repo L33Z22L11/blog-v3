@@ -5,7 +5,7 @@ date: 2011-03-20
 updated: 2024-02-04 02:18:05
 type: story
 categories: [生活]
-tags: [童年, 记叙, 回忆]
+tags: [童年, 写作]
 ---
 
 ## 我的随笔一和二哪儿去了

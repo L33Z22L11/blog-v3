@@ -4,8 +4,9 @@ description: Linux 作为 SMB 协议服务器，向其他设备提供共享文�
 date: 2024-08-04 21:11:03
 updated: 2024-09-05 02:04:43
 # image:
+image: https://assets.zhilu.cyou/cover6/linux-samba.webp
 categories: [技术]
-tags: [Linux, Samba, 局域网共享]
+tags: [文件共享, Linux, Samba]
 references:
   - title: smbpasswd - Samba man page
     link: https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html

@@ -5,11 +5,11 @@ date: 2024-01-18 18:58:55
 updated: 2024-07-08 12:51:35
 image: https://assets.zhilu.cyou/cover3/moonlight-streaming-guide.jpg
 categories: [技术]
-tags: [Moonlight, Sunshine, 串流]
+tags: [Moonlight, Sunshine, 远程访问]
+recommend: 40
 references:
   - title: 用 Sunshine + Moonlight 打造带有“隐私模式”的游戏串流服务
     link: https://www.xkww3n.cyou/2023/09/18/sunshine-moonlight-game-streaming-privately/
-recommend: 50
 ---
 
 ## 环境
@@ -19,7 +19,7 @@ recommend: 50
 ::link-banner
 ---
 title: Tailscale 不完全使用指南
-banner: https://assets.zhilu.cyou/cover3/moonlight-streaming-guide.jpg
+banner: https://assets.zhilu.cyou/cover3/tailscale-incomplete-guide.jpg
 link: /2023/tailscale-incomplete-guide
 ---
 ::

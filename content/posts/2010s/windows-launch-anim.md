@@ -4,7 +4,7 @@ description: 介绍了如何利用 Flash CS5 和 Photoshop CS5 制作 Windows 7 
 date: 2018-05-18 20:47:20
 updated: 2018-08-27 21:33:10
 categories: [技术]
-tags: [Windows, 系统定制, 动画制作]
+tags: [Windows, 桌面美化]
 ---
 
 - 使用Flash CS5制作尺寸为200*200的105帧动画，其中前60帧为单次播放，后45帧为循环播放

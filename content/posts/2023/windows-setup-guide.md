@@ -5,8 +5,7 @@ date: 2023-09-24 12:00:00
 updated: 2025-03-30 15:02:31
 image: https://assets.zhilu.cyou/cover2/windows-setup-guide.jpg
 categories: [技术]
-tags: [Windows, 系统安装, 教程]
-recommend: true
+tags: [Windows]
 ---
 
 ::alert{title="提示"}
@@ -198,7 +197,7 @@ winget remove 7zip
 
 ::link-banner
 ---
-banner: https://assets.zhilu.cyou/cover3/windows-storage.jpg
+banner: https://assets.zhilu.cyou/cover6/windows-storage.webp
 title: Windows 空间管理/清理指南
 description: “软件装D盘”是且仅是旧日的经验之谈，如果想让电脑用起来更顺手，“无为而治”或许是个好选择。
 link: /2024/windows-storage

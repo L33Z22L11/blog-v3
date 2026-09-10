@@ -3,8 +3,9 @@ title: Linux 下简单 ls 命令的实现
 description: 这个程序是一个基于C语言的命令行工具，用于在终端中展示指定目录下的文件信息。它的名字是“zls”。
 date: 2023-03-18 22:20:20
 updated: 2023-11-30 22:39:04
+image: https://assets.zhilu.cyou/cover6/zls.webp
 categories: [开发]
-tags: [C语言, Linux命令, 命令实现]
+tags: [C 语言, Linux, 命令行]
 ---
 
 ## 功能

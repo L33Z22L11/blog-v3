@@ -3,9 +3,9 @@ title: Windows 空间管理/清理指南
 description: “软件装D盘”是且仅是旧日的经验之谈，如果想让电脑用起来更顺手，“无为而治”或许是个好选择。
 date: 2024-07-13 00:29:36
 updated: 2024-11-02 16:10:21
-image: https://assets.zhilu.cyou/cover3/windows-storage.jpg
+image: https://assets.zhilu.cyou/cover6/windows-storage.webp
 categories: [技术]
-tags: [Windows, 存储清理, 系统维护]
+tags: [Windows, 存储管理]
 ---
 
 ## 软件安装位置

@@ -4,7 +4,7 @@ description: 配置 MIT 6.S081 操作系统课程中的 xv6 实验环境，包�
 date: 2023-11-20 17:09:28
 updated: 2023-11-20 17:09:28
 categories: [开发]
-tags: [xv6, 实验环境, 操作系统]
+tags: [xv6, 操作系统, 开发环境]
 ---
 
 ::alert

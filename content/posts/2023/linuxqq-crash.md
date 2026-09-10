@@ -29,7 +29,7 @@ references:
 ::link-banner
 ---
 title: 封面被 LinuxQQ 官方用了，但是有一些小缺陷
-banner: https://assets.zhilu.cyou/cover3/cover-copied.jpg
+banner: https://assets.zhilu.cyou/cover6/cover-copied.webp
 link: /2024/cover-copied
 ---
 ::

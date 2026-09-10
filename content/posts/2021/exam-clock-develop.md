@@ -6,7 +6,7 @@ updated: 2021-11-07 14:08:00
 image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_jpg/9sIibiadwv3fakRBg1y4yOeSUKNE2Sdf26M22aKhJHOahC7fkdKpHsgTpQQgtia5uN4ROYAgd2bOzPD5Yzb0LOibgA/640
 type: story
 categories: [开发]
-tags: [项目开发, 校园工具, 迭代]
+tags: [考试时钟, 前端, 校园]
 ---
 
 [查看原文](https://mp.weixin.qq.com/s/5yjgVwLOTYRhmXWOmBalOA)

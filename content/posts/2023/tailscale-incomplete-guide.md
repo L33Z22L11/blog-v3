@@ -5,8 +5,7 @@ date: 2023-10-08 10:34:00
 updated: 2024-05-16 08:30:47
 image: https://assets.zhilu.cyou/cover3/tailscale-incomplete-guide.jpg
 categories: [技术]
-tags: [Tailscale, 内网穿透, 远程访问]
-recommend: true
+tags: [Tailscale, 远程访问, 文件共享]
 ---
 
 ## 介绍

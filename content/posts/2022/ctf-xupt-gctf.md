@@ -5,7 +5,7 @@ date: 2022-09-28 19:40:10
 updated: 2022-11-13 16:11:55
 image: https://fly.webp.se/?url=https://mmbiz.qpic.cn/mmbiz_png/9sIibiadwv3fbR2djcvEqTjtOJavT3z9ibWTVjL3YA0cJOwfvEHD7TlUuc6hKE0QZqwka3qpbZdJ403WNjNDuuktw/640
 categories: [安全]
-tags: [CTF, WriteUp, 校赛]
+tags: [CTF, WriteUp]
 ---
 
 ::pic

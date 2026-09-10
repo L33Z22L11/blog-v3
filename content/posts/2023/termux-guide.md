@@ -5,8 +5,7 @@ date: 2023-11-13 21:50:08
 updated: 2024-04-28 20:25:16
 image: https://assets.zhilu.cyou/cover3/termux-guide.jpg
 categories: [技术]
-tags: [Termux, Android, 教程]
-recommend: true
+tags: [Termux, Android, 命令行]
 ---
 
 ## 安装 Termux

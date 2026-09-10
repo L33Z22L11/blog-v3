@@ -3,9 +3,9 @@ title: VitePress 不完全优化指南
 description: VitePress 的基本使用与定制技巧，涵盖项目初始化、汉化配置、图标引入、自定义主题等内容，旨在利用 VitePress 构建美观、高效的静态站点。
 date: 2024-11-03 17:54:50
 updated: 2025-09-15 23:19:18
-image: https://assets.zhilu.cyou/cover4/vitepress-enhancement.jpg
+image: https://assets.zhilu.cyou/cover6/vitepress-enhancement.webp
 categories: [开发]
-tags: [VitePress, 前端优化, 博客]
+tags: [VitePress, 前端, 博客]
 ---
 
 VitePress 是一个非常优秀的静态站点生成器，它使用 Vite 作为构建工具，并内置了 Vue 的支持。它上手简单，页面美观，许多开源项目的文档都使用 VitePress 生成。官方文档非常详细，这里补充一些周边和扩充用法。

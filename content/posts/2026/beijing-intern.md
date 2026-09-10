@@ -3,10 +3,11 @@ title: 北京实习300天
 description: 从西安到北京，从校园到大厂实习，「300天」不只工作本身，有迁移也有变化。秩序常新，但内核与长期的事情不会变。
 date: 2026-03-19 00:31:04
 updated: 2026-03-30 01:48:06
-image: # 封面图推荐 2:1，不含与标题重复的文字
+image: https://assets.zhilu.cyou/cover6/beijing-intern.webp
 type: story
 categories: [生活]
-tags: [实习, 大厂, 随笔]
+tags: [实习]
+recommend: 60
 ---
 
 ## 准备·重拾前端与实习工作

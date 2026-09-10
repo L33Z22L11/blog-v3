@@ -3,9 +3,9 @@ title: 从 CSS 排序折腾到 Stylelint 和 pnpm
 description: 试图不走寻常路，通过 pnpm 全局安装 Stylelint 实现 CSS 排序，却遭遇诸多挑战。理想的方案是否真的可行？
 date: 2024-05-21 22:44:44
 updated: 2024-05-25 15:56:33
-image: https://assets.zhilu.cyou/cover3/css-sort.jpg
+image: https://assets.zhilu.cyou/cover6/css-sort.webp
 categories: [开发]
-tags: [CSS, Stylelint, 工程化]
+tags: [CSS, Stylelint, pnpm]
 references:
   - title: 这些内容不值得参考。
 ---

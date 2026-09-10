@@ -5,8 +5,7 @@ date: 2024-06-16 22:48:57
 updated: 2024-11-02 17:55:29
 image: https://assets.zhilu.cyou/cover3/windows-terminal.jpg
 categories: [技术]
-tags: [Windows Terminal, 命令行, 配置]
-recommend: true
+tags: [Windows, PowerShell, 命令行]
 ---
 
 ## 启动

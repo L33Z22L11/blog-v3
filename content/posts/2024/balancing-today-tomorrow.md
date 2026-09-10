@@ -3,10 +3,10 @@ title: 在延长今天和期待明天之间
 description: 一位大学生充实而琐碎的一天校园生活，在忙碌中对自我生活节奏和时间安排的反思。
 date: 2024-03-21 23:45:08
 updated: 2024-03-31 22:39:27
-image: https://assets.zhilu.cyou/cover3/balancing-today-tomorrow.jpg
+image: https://assets.zhilu.cyou/cover6/balancing-today-tomorrow.webp
 type: story
 categories: [生活]
-tags: [时间管理, 作息, 大学]
+tags: [时间管理, 校园]
 ---
 
 ## 今天暂时不能结束

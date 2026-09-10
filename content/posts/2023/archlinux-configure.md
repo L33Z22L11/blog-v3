@@ -5,7 +5,7 @@ date: 2023-06-24 09:31:15
 updated: 2024-12-19 08:23:15
 image: https://assets.zhilu.cyou/cover3/archlinux-configure.jpg
 categories: [技术]
-tags: [Arch Linux, 系统配置, 教程]
+tags: [Arch Linux, Linux]
 ---
 
 ## 如果你没有浏览器

@@ -5,7 +5,7 @@ date: 2023-07-24 21:27:45
 updated: 2024-12-19 08:54:18
 image: https://assets.zhilu.cyou/cover3/archlinux-beautify.jpg
 categories: [技术]
-tags: [Arch Linux, 桌面美化, 配置]
+tags: [Arch Linux, Linux, 桌面美化]
 ---
 
 ## KDE 系统设置

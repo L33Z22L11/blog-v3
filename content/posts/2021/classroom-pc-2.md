@@ -4,8 +4,9 @@ description: 本文为 GuuGuai 所作的一篇影射性作品，文章记录了�
 date: 2021-07-09
 updated: 2024-02-16 15:48:52
 type: story
-categories: [技术]
-tags: [校园运维, 监控维护, 故障排查]
+image: https://assets.zhilu.cyou/cover6/classroom-pc-2.webp
+categories: [生活]
+tags: [校园, 校园修电脑]
 ---
 
 ::alert

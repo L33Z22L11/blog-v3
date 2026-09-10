@@ -5,8 +5,7 @@ date: 2023-12-25 16:15:00
 updated: 2024-12-26 20:32:04
 image: https://assets.zhilu.cyou/cover3/ssh-key-login.jpg
 categories: [技术]
-tags: [SSH, 免密登录, 远程访问]
-recommend: true
+tags: [SSH, 远程访问]
 ---
 
 在终端中使用 SSH 之前，可以先美化终端以提升用户体验。

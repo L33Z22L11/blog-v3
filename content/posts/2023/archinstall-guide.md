@@ -5,8 +5,7 @@ date: 2023-05-23 20:37:07
 updated: 2025-03-21 22:04:14
 image: https://assets.zhilu.cyou/cover3/archinstall-guide.jpg
 categories: [技术]
-tags: [Arch Linux, 安装, 教程]
-recommend: 20
+tags: [Arch Linux, Linux]
 ---
 
 ## 安装前准备

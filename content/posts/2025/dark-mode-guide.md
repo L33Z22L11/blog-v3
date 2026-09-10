@@ -3,9 +3,10 @@ title: 深色模式开发的最佳实践
 description: 前端深色模式不止于 prefers-color-scheme，完整解析自动检测、手动切换的实现方案，解决闪屏、样式冲突、变量管理等常见痛点，提供稳健的深色模式最佳实践。
 date: 2025-04-14 10:07:16
 updated: 2025-04-14 18:45:28
-image: https://assets.zhilu.cyou/cover4/dark-mode-guide.jpg
+image: https://assets.zhilu.cyou/cover6/dark-mode-guide.webp
 categories: [开发]
-tags: [前端, 深色模式, CSS]
+tags: [前端, CSS, 深色模式]
+recommend: 70
 ---
 
 ## 自动深色模式

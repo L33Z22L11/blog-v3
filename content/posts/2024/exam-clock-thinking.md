@@ -3,10 +3,11 @@ title: 再谈考试时钟：技术之外的思考
 description: 通过回忆高中生活和开发考试时钟的经历，结合遇到的其他事例，点出了技术与人文关怀的关联，并呼吁注重用户体验。
 date: 2024-10-18 16:50:35
 updated: 2024-10-22 22:55:43
-image: https://assets.zhilu.cyou/cover4/exam-clock-thinking.jpg
+image: https://assets.zhilu.cyou/cover6/exam-clock-thinking.webp
 type: story
 categories: [杂谈]
-tags: [产品思考, 校园工具, 设计复盘]
+tags: [考试时钟, 用户体验, 校园]
+recommend: 90
 ---
 
 ## 《高新大道 29 号回忆录》

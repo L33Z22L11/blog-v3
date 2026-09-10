@@ -4,8 +4,10 @@ description: 油糕的酥皮，是从什么时候开始不往下掉的？
 date: 2025-02-16 12:30:24
 updated: 2025-03-31 23:55:31
 type: story
+image: https://assets.zhilu.cyou/cover6/oil-cakes.webp
 categories: [生活]
-tags: [家乡味道, 食物, 回忆]
+tags: [家乡, 饮食]
+recommend: 30
 ---
 
 很久没有尝到手工现包的油糕了。

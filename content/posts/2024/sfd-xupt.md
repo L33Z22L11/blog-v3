@@ -3,9 +3,9 @@ title: Windows 上的开源软件入门
 description: 软件自由日西邮站上的一场分享，从 CLI、GUI、开源协议、GitHub 讲起，推荐了一些开源软件。
 date: 2024-09-17 17:51:12
 updated: 2024-09-21 14:47:02
-image: https://assets.zhilu.cyou/cover4/sfd-xupt.jpg
+image: https://assets.zhilu.cyou/cover6/sfd-xupt.webp
 categories: [技术]
-tags: [开源软件, 校园活动, 分享]
+tags: [开源, Windows, 校园]
 ---
 
 ::alert{type="tip"}
