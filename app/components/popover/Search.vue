@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { SearchResult } from 'minisearch'
 import type { ModalEmits, ModalProps } from '#modals'
 import MiniSearch from 'minisearch'
 
@@ -17,46 +18,57 @@ const { data, status } = await useLazyAsyncData(
 	}),
 )
 
-const miniSearch = new MiniSearch({
-	fields: ['title', 'content'],
-	storeFields: ['title', 'titles', 'content', 'level'],
-	searchOptions: {
-		prefix: true,
-		fuzzy: 0.2,
-		combineWith: 'AND',
-		boost: { title: 3, titles: 2 },
-	},
-	processTerm: segmenter
-		? term => Array.from(segmenter.segment(term), seg => seg.segment.toLowerCase())
-		: undefined,
+const miniSearch = computed(() => {
+	const index = new MiniSearch({
+		fields: ['title', 'content'],
+		storeFields: ['title', 'titles', 'content', 'level'],
+		searchOptions: {
+			prefix: true,
+			fuzzy: 0.2,
+			combineWith: 'AND',
+			boost: { title: 3, titles: 2 },
+		},
+		processTerm: segmenter
+			? term => Array.from(segmenter.segment(term), seg => seg.segment.toLowerCase())
+			: undefined,
+	})
+	index.addAll(data.value ?? [])
+	return index
 })
 
 const searchStore = useSearchStore()
 const searchInput = ref<HTMLInputElement>()
 
-const { word, debouncedWord } = storeToRefs(searchStore)
-const result = computed(() => {
-	void data.value
-	return miniSearch.search(debouncedWord.value)
-})
+const { word } = storeToRefs(searchStore)
+const debouncedWord = refDebounced(word, 100)
+const result = computed(() => miniSearch.value.search(debouncedWord.value))
 
 const isKeyboardMode = ref(false)
 const listResult = useTemplateRef('list-result')
+const resultContent = useTemplateRef('result-content')
+const resultHeight = ref(0)
+
+// 只平滑容器高度；结果节点和键盘选中状态仍即时更新。
+useResizeObserver(resultContent, ([entry]) => {
+	if (entry)
+		resultHeight.value = entry.borderBoxSize[0]?.blockSize ?? entry.contentRect.height
+})
 
 const activeIndex = ref(0)
-const activeItem = computed(() => listResult.value?.children[activeIndex.value] as HTMLLinkElement | undefined)
+const activeItem = () => listResult.value?.children[activeIndex.value] as HTMLAnchorElement | undefined
 
 whenever(() => props.open, focusInput)
 
-watch(status, (newStatus) => {
-	if (newStatus === 'success' && data.value) {
-		miniSearch.addAll(data.value)
-	}
-})
+let selectedId: string | undefined
+function onResultsUpdated(items: SearchResult[]) {
+	const retained = items.findIndex(item => item.id === selectedId)
+	activeIndex.value = Math.max(0, retained)
+	selectedId = items[activeIndex.value]?.id
+	if (retained < 0 && listResult.value)
+		listResult.value.scrollTop = 0
+}
 
-watch(debouncedWord, () => {
-	activeIndex.value = 0
-})
+watch(result, onResultsUpdated, { flush: 'post' })
 
 useEventListener('mousemove', () => isKeyboardMode.value = false)
 useEventListener('keydown', () => isKeyboardMode.value = true)
@@ -70,19 +82,19 @@ async function focusInput(allSelect = false) {
 
 function updateActiveIndex(index: number, isKeyboard = false) {
 	focusInput()
-	if (index < 0 || index >= result.value?.length)
+	if (index < 0 || index >= (listResult.value?.children.length ?? 0))
 		return
 	activeIndex.value = index
+	selectedId = activeItem()?.dataset.resultId
 	if (isKeyboard)
 		isKeyboardMode.value = true
-	if (activeItem.value && isKeyboardMode.value) {
-		activeItem.value.scrollIntoView({ block: 'nearest' })
-	}
+	if (isKeyboardMode.value)
+		activeItem()?.scrollIntoView({ block: 'nearest' })
 }
 
 function openActiveItem() {
 	// 触发 vue-router 点击事件
-	activeItem.value?.click()
+	activeItem()?.click()
 }
 </script>
 
@@ -106,41 +118,43 @@ function openActiveItem() {
 			>
 		</form>
 
-		<TransitionGroup name="expand">
-			<div v-if="debouncedWord && status === 'success' && !result.length" class="no-result">
-				无结果
-			</div>
+		<div class="search-results" :style="{ height: `${resultHeight}px` }">
+			<div ref="result-content" class="result-content">
+				<div v-if="debouncedWord && status === 'success' && !result.length" class="no-result">
+					无结果
+				</div>
 
-			<menu
-				v-if="result.length"
-				ref="list-result"
-				:key="result.length < 5 ? result.length : result[0]?.id"
-				class="scrollcheck-y search-result"
-			>
-				<PopoverSearchItem
-					v-for="(item, itemIndex) in result"
-					:key="item.id"
-					v-bind="item"
-					:class="{ active: activeIndex === itemIndex }"
-					@mousemove="updateActiveIndex(itemIndex)"
-				/>
-			</menu>
+				<menu
+					v-show="result.length"
+					ref="list-result"
+					class="scrollcheck-y search-result"
+				>
+					<PopoverSearchItem
+						v-for="(item, itemIndex) in result"
+						:key="item.id"
+						:data-result-id="item.id"
+						v-bind="item"
+						:class="{ active: activeIndex === itemIndex }"
+						@mousemove="updateActiveIndex(itemIndex)"
+					/>
+				</menu>
 
-			<div v-if="result.length" class="tip" @click="searchInput?.focus()">
-				<Key code="ArrowUp" prevent @press="updateActiveIndex(activeIndex - 1, true)" />
-				<Key code="ArrowDown" prevent @press="updateActiveIndex(activeIndex + 1, true)" />
-				切换&emsp;
-				<Key code="Enter" icon @press="openActiveItem" />
-				选择&emsp;
-				<Key code="Escape" :icon="false" @press="$emit('close')" />
-				关闭
+				<div v-if="result.length" class="tip" @click="searchInput?.focus()">
+					<Key code="ArrowUp" prevent @press="updateActiveIndex(activeIndex - 1, true)" />
+					<Key code="ArrowDown" prevent @press="updateActiveIndex(activeIndex + 1, true)" />
+					切换&emsp;
+					<Key code="Enter" icon @press="openActiveItem" />
+					选择&emsp;
+					<Key code="Escape" :icon="false" @press="$emit('close')" />
+					关闭
+				</div>
 			</div>
-		</TransitionGroup>
+		</div>
 	</div>
 </Transition>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .blog-search {
 	--float-distance: 20vh;
 
@@ -149,7 +163,7 @@ function openActiveItem() {
 	inset: 0;
 	width: 90%;
 	height: fit-content;
-	max-width: $breakpoint-mobile;
+	max-width: 768px;
 	margin: auto;
 	border: 1px solid var(--c-primary);
 	border-radius: 1em;
@@ -172,24 +186,26 @@ function openActiveItem() {
 	}
 }
 
+.search-results {
+	overflow: clip;
+	transition: height var(--motion-duration) var(--motion-easing);
+}
+
+.result-content {
+	display: flow-root;
+}
+
 .no-result {
-	// expand 时不要设置 padding
 	max-height: 5em;
 	line-height: 5em;
 	text-align: center;
 	color: var(--c-text-3);
-	transition: all 0.5s;
 }
 
 .search-result {
 	max-height: 75vh;
 	max-height: 75dvh;
-	transition: all 0.5s;
 	scroll-padding: var(--fadeout-height);
-}
-
-.search-item {
-	transition: background-color 0.1s, opacity 0.2s;
 }
 
 .tip {
@@ -198,17 +214,5 @@ function openActiveItem() {
 	font-size: 0.8em;
 	text-align: center;
 	color: var(--c-text-3);
-	transition: all 0.5s;
-}
-
-.expand-enter-active,
-.expand-leave-active {
-	transition: all 0.5s;
-}
-
-.expand-enter-from,
-.expand-leave-to {
-	opacity: 0;
-	max-height: 0;
 }
 </style>

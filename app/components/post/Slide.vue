@@ -81,7 +81,7 @@ useEventListener(carouselEl, 'wheel', (e) => {
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .z-slide {
 	margin: 1rem;
 
@@ -107,7 +107,7 @@ useEventListener(carouselEl, 'wheel', (e) => {
 	mask-image: linear-gradient(#FFF, transparent);
 	color: var(--c-text-3);
 
-	>.title {
+	> .title {
 		font-size: 3rem;
 		font-weight: bold;
 		line-height: 1;
@@ -154,7 +154,7 @@ useEventListener(carouselEl, 'wheel', (e) => {
 	scroll-snap-align: center;
 	scroll-snap-stop: always;
 
-	// Firefox 图片 alt 为空时 fallback 失效
+	/* Firefox 图片 alt 为空时 fallback 失效 */
 	@supports (-moz-force-broken-image-icon: 1) {
 		background-color: var(--c-border);
 	}
@@ -166,7 +166,7 @@ useEventListener(carouselEl, 'wheel', (e) => {
 		object-fit: cover;
 	}
 
-	>.stable-info, > .hover-info {
+	> .stable-info, > .hover-info {
 		position: absolute;
 		text-align: center;
 		text-shadow: var(--text-shadow-black);
@@ -203,7 +203,7 @@ useEventListener(carouselEl, 'wheel', (e) => {
 	}
 
 	&:hover, &:focus-within {
-		>.stable-info {
+		> .stable-info {
 			opacity: 0;
 		}
 

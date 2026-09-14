@@ -29,8 +29,8 @@ function render() {
 </dl>
 </template>
 
-<style lang="scss" scoped>
-// TODO: 优化时间线样式
+<style scoped>
+/* TODO: 优化时间线样式 */
 .timeline {
 	position: relative;
 	padding-inline-start: 1.5em;

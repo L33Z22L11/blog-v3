@@ -4,7 +4,7 @@
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .md-title {
 	margin: 0.5em 0;
 	font-size: 1.1em;

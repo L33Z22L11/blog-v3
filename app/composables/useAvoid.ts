@@ -6,49 +6,40 @@ export function useAvoidTransform(
 	originRef: AvoidTarget,
 	targets: Ref<AvoidTarget[]>,
 ) {
-	const { height: windowHeight, width: windowWidth } = useWindowSize()
-	const targetBounds = shallowRef(new Map<AvoidTarget, UseElementBoundingReturn>())
-	const originRect = shallowRef({ top: 0, bottom: 0, left: 0, right: 0 })
+	const targetBounds = shallowRef<UseElementBoundingReturn[]>([])
+	// 测量未参与位移动画的外层容器。
+	const originBounds = useElementBounding(originRef, { windowResize: false, windowScroll: false })
 
-	function updateOriginPosition() {
-		const origin = originRef.value
-		if (!origin)
-			return
-		const style = getComputedStyle(origin)
-		const bottom = Number.parseFloat(style.bottom) || 0
-		const right = Number.parseFloat(style.insetInlineEnd || style.right) || 0
-		originRect.value = {
-			top: windowHeight.value - bottom - origin.offsetHeight,
-			bottom: windowHeight.value - bottom,
-			left: windowWidth.value - right - origin.offsetWidth,
-			right: windowWidth.value - right,
-		}
+	function update() {
+		originBounds.update()
+		targetBounds.value.forEach(bounds => bounds.update())
 	}
 
-	watch([windowHeight, windowWidth], updateOriginPosition)
-	onMounted(updateOriginPosition)
+	useEventListener('resize', update)
+	useEventListener('scroll', update, { capture: true, passive: true })
+	if (import.meta.client)
+		useEventListener(window.visualViewport, ['resize', 'scroll'], update, { passive: true })
 
-	watchImmediate(targets, (list) => {
-		const newMap = new Map<AvoidTarget, UseElementBoundingReturn>()
-		for (const target of list) {
-			if (target.value)
-				newMap.set(target, targetBounds.value.get(target) ?? useElementBounding(target))
-		}
-		targetBounds.value = newMap
-	}, { deep: true })
+	watch(() => targets.value.map(target => target.value), (_elements, _previous, onCleanup) => {
+		// 新页面提交后测量目标；移除目标时一并释放其监听器。
+		const scope = effectScope()
+		onCleanup(() => scope.stop())
+		targetBounds.value = scope.run(() => targets.value.map(target => useElementBounding(target, { windowResize: false, windowScroll: false }))) ?? []
+		update()
+	}, { immediate: true, flush: 'post' })
 
 	const transform = computed(() => {
 		if (!originRef.value)
 			return ''
-		const { bottom: originBottom, left: originLeft, right: originRight, top: originTop } = originRect.value
+		const { bottom: originBottom, left: originLeft, right: originRight, top: originTop } = originBounds
 
-		const shifts = Array.from(targetBounds.value.values())
+		const shifts = targetBounds.value
 			.filter(({ top, bottom, left, right }) => {
-				const hasHOverlap = originLeft < right.value && originRight > left.value
-				const hasVOverlap = top.value < originBottom && bottom.value > originTop
+				const hasHOverlap = originLeft.value < right.value && originRight.value > left.value
+				const hasVOverlap = top.value < originBottom.value && bottom.value > originTop.value
 				return hasHOverlap && hasVOverlap
 			})
-			.map(({ top }) => originBottom - top.value)
+			.map(({ top }) => originBottom.value - top.value)
 
 		const maxShift = Math.max(...shifts)
 		return maxShift > 0 ? `translateY(-${maxShift + 16}px)` : ''

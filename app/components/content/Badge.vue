@@ -41,8 +41,8 @@ const tip = computed(() => {
 </UtilLink>
 </template>
 
-<style lang="scss" scoped>
-// 对齐到基线，同时保持图片垂直居中
+<style scoped>
+/* 对齐到基线，同时保持图片垂直居中 */
 .badge {
 	display: inline-flex;
 	align-items: baseline;

@@ -7,7 +7,7 @@
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .secret {
 	position: relative;
 	opacity: 0;

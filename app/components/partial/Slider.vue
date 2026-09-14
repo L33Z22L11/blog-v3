@@ -44,7 +44,7 @@ const debounceSpring = useDebounceFn(spring, 500)
 </label>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .z-slider {
 	display: flex;
 	align-items: center;

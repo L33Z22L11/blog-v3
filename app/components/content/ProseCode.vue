@@ -31,7 +31,7 @@ onMounted(async () => {
 </code>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 code {
 	margin: 0.1em;
 	padding: 0.1rem 0.3em;

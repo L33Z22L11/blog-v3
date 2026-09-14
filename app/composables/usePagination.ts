@@ -4,8 +4,9 @@ interface UsePaginationOptions {
 	bindQuery?: string
 }
 
-export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: UsePaginationOptions) {
+export function usePagination<T>(list: MaybeRefOrGetter<readonly T[]>, options?: UsePaginationOptions) {
 	const appConfig = useAppConfig()
+	const route = useRoute()
 	const {
 		initialPage = 1,
 		perPage = appConfig.pagination.perPage || 10,
@@ -16,17 +17,17 @@ export default function usePagination<T>(list: MaybeRefOrGetter<T[]>, options?: 
 
 	function transformPage(val: string) {
 		const page = Number(val)
-		return page >= 1 && page <= totalPages.value ? page : initialPage
+		return Number.isInteger(page) && page >= 1 && page <= totalPages.value ? page : initialPage
 	}
 
 	// 仅从无查询参数增加 query 时 push 一次
 	const mode = computed({
-		get: () => bindQuery && useRoute().query[bindQuery] ? 'replace' : 'push',
+		get: () => bindQuery && route.query[bindQuery] ? 'replace' : 'push',
 		set() { },
 	})
 
 	const page = bindQuery
-		? useRouteQuery(bindQuery, initialPage.toString(), { transform: transformPage, mode })
+		? useHydratedQuery(bindQuery, useRouteQuery(bindQuery, initialPage.toString(), { transform: transformPage, mode }))
 		: ref(initialPage)
 
 	const listPaged = computed(() => {

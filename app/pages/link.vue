@@ -25,7 +25,7 @@ const copyFields = {
 </script>
 
 <template>
-<div class="mobile-only">
+<div class="hide-above-mobile">
 	<BlogHeader to="/" suffix="友链" tag="h1" />
 </div>
 
@@ -58,7 +58,7 @@ const copyFields = {
 <PostComment />
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .link-tab {
 	margin: 1rem;
 }

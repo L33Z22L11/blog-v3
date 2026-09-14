@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ImageComponent from '#build/mdc-image-component.mjs'
 import { joinURL, withLeadingSlash, withTrailingSlash } from 'ufo'
+import ImageComponent from '#build/mdc-image-component.mjs'
 
 export interface UtilImgProps {
 	src: string
