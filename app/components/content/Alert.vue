@@ -60,7 +60,7 @@ const title = computed(() => props.title || typeMap[props.type].title)
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .alert {
 	margin: 1em 0;
 	padding: 0.2em 0.8em;

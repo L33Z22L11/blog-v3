@@ -132,14 +132,12 @@ useEventListener('blur', () => {
 </script>
 
 <template>
-<UtilHydrateSafe>
-	<kbd :class="{ active }" @click.stop="emit('press')">
-		<slot>{{ codeDisplay }}</slot>
-	</kbd>
-</UtilHydrateSafe>
+<kbd :class="{ active }" @click.stop="emit('press')">
+	<slot>{{ codeDisplay }}</slot>
+</kbd>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 kbd {
 	display: inline-block;
 	margin: 0.1em;

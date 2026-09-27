@@ -13,7 +13,7 @@ const modelValue = defineModel<boolean>()
 </label>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .z-toggle {
 	user-select: none;
 }
@@ -45,10 +45,10 @@ const modelValue = defineModel<boolean>()
 		border-radius: 50%;
 		background-color: var(--c-text-1);
 		transition: all 0.2s;
+	}
 
-		:hover > & {
-			filter: contrast(0.6);
-		}
+	:hover > &::after {
+		filter: contrast(0.6);
 	}
 
 	&:not(:last-child) {

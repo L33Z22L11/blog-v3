@@ -26,7 +26,7 @@ const modelValue = defineModel<T>()
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .z-radio-group {
 	display: flex;
 	margin: 1em 0;

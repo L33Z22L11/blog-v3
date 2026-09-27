@@ -63,7 +63,7 @@ function hasHeading(tocTree: TocLink, heading?: string): boolean {
 </BlogWidget>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .toc {
 	position: relative;
 

@@ -17,19 +17,19 @@
 </Tooltip>
 </template>
 
-<style lang="scss" scoped>
-// https://vue-tippy.netlify.app/props#appendto
-// Tooltip 位于组件根部时，interactive tippy 会插入到父组件
-:deep() ~ [data-tippy-root] > .tippy-box {
+<style scoped>
+/* https://vue-tippy.netlify.app/props#appendto */
+/* Tooltip 位于组件根部时，interactive tippy 会插入到父组件 */
+:deep(~ [data-tippy-root] > .tippy-box) {
 	padding: 0.3em;
 	font-size: inherit;
-
-	&[data-placement="top"] {
-		--c-fill: var(--c-bg-1);
-	}
 }
 
-:deep() ~ [data-tippy-root] .tippy-content {
+:deep(~ [data-tippy-root] > .tippy-box[data-placement="top"]) {
+	--c-fill: var(--c-bg-1);
+}
+
+:deep(~ [data-tippy-root] .tippy-content) {
 	display: grid;
 
 	button {
@@ -44,11 +44,11 @@
 			background-color: var(--c-bg-soft);
 			color: var(--c-text-1);
 		}
+	}
 
-		&.active {
-			background-color: var(--c-primary-soft);
-			color: var(--c-primary);
-		}
+	button.active {
+		background-color: var(--c-primary-soft);
+		color: var(--c-primary);
 	}
 }
 </style>

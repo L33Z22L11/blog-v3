@@ -35,7 +35,7 @@ withDefaults(defineProps<{
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
 .error {
 	display: flex;
 	flex-direction: column;
@@ -63,7 +63,7 @@ withDefaults(defineProps<{
 		max-width: 100%;
 
 		:deep(.shiki) {
-			background-color: transparent !important; /* stylelint-disable-line declaration-no-important */
+			background-color: transparent !important;
 		}
 	}
 }

@@ -5,9 +5,10 @@
 [![部署平台](https://img.shields.io/badge/部署平台-Vercel-000000?logo=Vercel)](https://vercel.com/)
 [![访问统计](https://img.shields.io/badge/访问统计-Umami-000000?logo=Umami)](https://github.com/umami-software/umami)
 [![代码风格](https://img.shields.io/badge/代码风格-ESLint-4B32C3?logo=ESLint)](https://eslint.org/)
-[![代码风格](https://img.shields.io/badge/代码风格-Stylelint-263238?logo=Stylelint)](https://stylelint.io/)
 
 我的第三代个人博客，于 2024 年 8 月 11 日上线。
+
+3.8.0 原生 CSS 迁移包含破坏性更改：不再默认提供 Sass 和 Stylelint。下游更新前请阅读 [迁移说明](MIGRATION.md)，保留 SCSS 定制的过渡方案也在其中。
 
 ## 耻辱柱 / Hall of Shame
 

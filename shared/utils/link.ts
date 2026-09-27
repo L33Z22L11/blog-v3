@@ -50,3 +50,8 @@ export function safelyDecodeUriComponent(str: string) {
 		return str
 	}
 }
+
+/** 静态托管添加的尾斜杠不应改变页面身份或 Content 缓存键。 */
+export function normalizeContentPath(path: string) {
+	return path.replace(/\/+$/, '') || '/'
+}

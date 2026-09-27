@@ -1,4 +1,4 @@
-// 一部分具有卡片样式的组件复用了此类
+/* 一部分具有卡片样式的组件复用了此类 */
 .card {
 	contain: paint;
 	display: block;
@@ -50,8 +50,8 @@
 	}
 }
 
-// 横向滚动遮罩
-// PURE CSS MAGIC!
+/* 横向滚动遮罩 */
+/* PURE CSS MAGIC! */
 .scrollcheck-x, .scrollcheck-y {
 	scrollbar-width: thin;
 
@@ -70,7 +70,7 @@
 }
 
 .scrollcheck-x {
-	--start-offset: 0px; // 如果填写 0 会在 calc() 时出错
+	--start-offset: 0px; /* 如果填写 0 会在 calc() 时出错 */
 	--scrollbar-height: 8px;
 	--fadeout-width: 2em;
 
@@ -100,7 +100,7 @@
 }
 
 .scrollcheck-y {
-	// 如果填写 0 会在 calc() 时出错
+	/* 如果填写 0 会在 calc() 时出错 */
 	--top-offset: 0px;
 	--guessed-scrollbar-width: 8px;
 	--fadeout-height: 2em;
@@ -130,17 +130,39 @@
 	}
 }
 
-@each $name, $size in $breakpoints {
-	@media not (max-width: $size) {
-		.#{$name}-only {
-			display: none !important; /* stylelint-disable-line declaration-no-important */
-		}
+@media not (max-width: 528px) {
+	.hide-above-phone {
+		display: none !important;
 	}
+}
 
-	@media (max-width: $size) {
-		.#{$name}-hidden {
-			display: none !important; /* stylelint-disable-line declaration-no-important */
-		}
+@media (max-width: 528px) {
+	.hide-through-phone {
+		display: none !important;
+	}
+}
+
+@media not (max-width: 768px) {
+	.hide-above-mobile {
+		display: none !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.hide-through-mobile {
+		display: none !important;
+	}
+}
+
+@media not (max-width: 1080px) {
+	.hide-above-tablet {
+		display: none !important;
+	}
+}
+
+@media (max-width: 1080px) {
+	.hide-through-tablet {
+		display: none !important;
 	}
 }
 
@@ -159,7 +181,7 @@
 .text-creative, .text-tech {
 	font-family: var(--font-creative);
 	font-weight: 550;
-	-webkit-font-smoothing: antialiased; // macOS下"DOUYINSANSBOLD-GB"过粗
+	-webkit-font-smoothing: antialiased; /* macOS下"DOUYINSANSBOLD-GB"过粗 */
 }
 
 .text-story {
@@ -178,9 +200,9 @@
 		animation: zoom 1s both;
 		animation-timeline: view();
 	}
+}
 
-	@keyframes zoom {
-		from { transform: scale(0.8); }
-		to { transform: scale(1.25); }
-	}
+@keyframes zoom {
+	from { transform: scale(0.8); }
+	to { transform: scale(1.25); }
 }
