@@ -398,7 +398,7 @@ w: 我 呀 | 我 爱 | 你 | 你 爱 我 | 我 爱 你 蜜 雪 冰 城 甜 蜜 |
 
 ### 图表渲染
 
-> 由自编写的remark-code-component插件实现，语法参见 [Mermaid 文档](https://mermaid.js.org/intro/syntax-reference.html)。图表跟随亮暗色模式重绘，进入视口附近才会加载渲染器。超宽图表可横向滚动，悬停或点击图表可切换为适应宽度。
+> 由自编写的remark-code-component插件实现，语法参见 [Mermaid 文档](https://mermaid.js.org/intro/syntax-reference.html)。图表跟随亮暗色模式重绘，进入视口附近才会加载渲染器。图表默认适应宽度，点击后在弹层中按原始尺寸查看，支持双向滚动和选字；切换到“源代码”标签可查看、复制 Mermaid 源码。
 
 ::tab{:tabs='["组件","语法"]'}
 #tab1
