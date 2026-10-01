@@ -1,5 +1,6 @@
 import { fromUrl, parseDomain, ParseResultType } from 'parse-domain'
 import { isPathFile } from 'site-config-stack/urls'
+import { domainIcons, mainDomainIcons } from './icon'
 
 const domainTip: Record<string, string> = {
 	'github.io': 'GitHub Pages 域名',
@@ -22,6 +23,14 @@ export function getMainDomain(url: string, useIcann?: boolean) {
 		return hostname
 	const { domain, topLevelDomains } = useIcann ? parseResult.icann : parseResult
 	return `${domain}.${topLevelDomains.join('.')}`
+}
+
+export function getDomainIcon(url: string) {
+	const domain = getDomain(url)
+	const mainDomain = getMainDomain(url, true)
+	if (domain in domainIcons)
+		return domainIcons[domain]
+	return mainDomainIcons[mainDomain]
 }
 
 export function getDomainType(mainDomain: string) {
