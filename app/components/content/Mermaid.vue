@@ -1,24 +1,40 @@
 <script setup lang="ts">
+import type { CSSProperties } from 'vue'
+
 const props = defineProps<{
 	code: string
+	caption?: string
+	meta?: string
 }>()
 
 const colorMode = useColorMode()
 const container = useTemplateRef('mermaid')
-const [scroll, toggleScroll] = useToggle(true)
+const modalContent = useTemplateRef('modalContent')
+const [DefineModal, Modal] = createReusableTemplate<{ open: boolean, style: CSSProperties }>({ inheritAttrs: false })
+const { open, close, status } = useModalStore().use(() => h(Modal), { unique: true })
+const expanded = computed(() => !!modalContent.value)
+const placeholderHeight = ref(0)
+const rotation = ref(0)
+
+function expand() {
+	if (status.value !== 'closed')
+		return
+	placeholderHeight.value = container.value?.offsetHeight ?? 0
+	rotation.value = 0
+	open()
+}
+
+onKeyStroke('Escape', () => status.value === 'open' && close())
+onScopeDispose(() => status.value !== 'closed' && close())
 
 const id = useId()
-// mermaid 会移除 DOM 中同 id 的旧图，故每次渲染另起 id，避免切换主题时高度塌陷
+// Mermaid 会移除同 id 的旧 SVG，主题重绘时使用新 id。
 let renderCount = 0
-
-// mermaid 体积较大，接近视口时才动态引入；隐藏容器（如 Tab）内不渲染，避免量取到错误的尺寸
 const isVisible = useElementVisibility(container, { rootMargin: '50%' })
-// 可见后即锁定，避免滚出视口时图表被清空
 const shouldRender = ref(false)
 whenever(isVisible, () => shouldRender.value = true, { once: true })
 
-const diagram = computedAsync<{ svg?: string, width?: number, error?: string }>(async () => {
-	// 异步依赖需在 await 之前读取
+const diagram = computedAsync<{ svg?: string, error?: string }>(async () => {
 	const { code } = props
 	const darkMode = colorMode.value === 'dark'
 	if (!shouldRender.value)
@@ -26,65 +42,85 @@ const diagram = computedAsync<{ svg?: string, width?: number, error?: string }>(
 
 	try {
 		const { default: mermaid } = await import('mermaid')
-		// 等待 color-mode 换好根元素类名，以及字体就绪——否则取到旧配色、量出偏窄的文本
 		await Promise.all([nextTick(), document.fonts.ready])
-
-		const style = getComputedStyle(document.documentElement)
-		const cssVar = (name: string) => style.getPropertyValue(name)
-
 		mermaid.initialize({
 			fontFamily: 'inherit',
-			// 须在 load 事件前关闭，否则 mermaid 会自行扫描并接管页面元素
+			flowchart: { padding: 8, minNodeWidth: 0 },
+			sequence: { width: 100 },
+			theme: darkMode ? 'redux-dark-color' : 'redux-color',
 			startOnLoad: false,
 			suppressErrorRendering: true,
-			// themeVariables 仅对 base 主题生效，其余主题会重算这些颜色
-			theme: 'base',
-			themeVariables: {
-				darkMode,
-				// 不指定则深色下连线被推导为近黑色、边标签被推导为绿色
-				background: cssVar('--c-bg'),
-				edgeLabelBackground: cssVar('--c-bg-2'),
-				// 仅把自带主题的紫色换成博客主题色，其余配色仍由 mermaid 推导
-				primaryBorderColor: cssVar('--c-primary'),
-				primaryColor: cssVar('--c-primary-soft'),
-				primaryTextColor: cssVar('--c-text-1'),
-				textColor: cssVar('--c-text-1'),
-			},
 		})
 		const { svg } = await mermaid.render(`${id}-${renderCount++}`, code)
-		// 用原始画布宽度保留字号，超宽图表在容器内滚动
-		const width = new DOMParser().parseFromString(svg, 'image/svg+xml').querySelector('svg')?.viewBox.baseVal.width
-		return { svg, width }
+		const element = new DOMParser().parseFromString(svg, 'image/svg+xml').querySelector('svg')!
+		element.setAttribute('width', String(element.viewBox.baseVal.width))
+		element.style.removeProperty('max-width')
+		return { svg: element.outerHTML }
 	}
 	catch (error) {
 		return { error: error instanceof Error ? error.message : String(error) }
 	}
 }, {})
+
+const displaySvg = computed(() => {
+	if (!expanded.value || !rotation.value || !diagram.value.svg)
+		return diagram.value.svg
+
+	const svg = new DOMParser().parseFromString(diagram.value.svg, 'image/svg+xml').querySelector('svg')!
+	const { x, y, width, height } = svg.viewBox.baseVal
+	const cx = x + width / 2
+	const cy = y + height / 2
+	const [w, h] = rotation.value % 180 ? [height, width] : [width, height]
+	const group = svg.ownerDocument.createElementNS(svg.namespaceURI, 'g')
+	group.setAttribute('transform', `rotate(${rotation.value} ${cx} ${cy})`)
+	group.append(...svg.childNodes)
+	svg.append(group)
+	svg.setAttribute('viewBox', `${cx - w / 2} ${cy - h / 2} ${w} ${h}`)
+	svg.setAttribute('width', String(w))
+	svg.setAttribute('height', String(h))
+	return svg.outerHTML
+})
 </script>
 
 <template>
-<div ref="mermaid" class="mermaid-diagram">
-	<Tooltip
-		v-if="diagram.svg"
-		tag="div"
-		interactive
-		trigger="mouseenter focusin"
-		:hide-on-click="false"
-		:delay="500"
-	>
-		<template #content>
-			<Icon v-show="false" :name="scroll ? 'tabler:arrows-horizontal' : 'tabler:arrows-minimize'" />
-			<ZButton
-				variant="text"
-				:icon="scroll ? 'tabler:arrows-minimize' : 'tabler:arrows-horizontal'"
-				:text="scroll ? '适应宽度' : '横向滚动'"
-				@click="toggleScroll()"
-			/>
-		</template>
-		<div class="scrollcheck-x" tabindex="0" role="region" aria-label="Mermaid 图表">
-			<div :style="{ minWidth: scroll && diagram.width ? `${diagram.width}px` : undefined }" v-html="diagram.svg" />
-		</div>
-	</Tooltip>
+<DefineModal v-slot="{ open: visible, style }">
+	<Transition name="float-in">
+		<Tab v-if="visible" class="mermaid-modal" :style :tabs="['图表', '源代码']" role="dialog" aria-modal="true" :aria-label="caption || meta || 'Mermaid 图表'">
+			<template #prefix>
+				<button type="button" class="rotate" aria-label="顺时针旋转图表" title="顺时针旋转 90°" @click="rotation = (rotation + 90) % 360">
+					<Icon name="tabler:rotate-clockwise" />
+				</button>
+			</template>
+			<template #suffix>
+				<button type="button" class="close" aria-label="关闭图表" @click="close()">
+					<Icon name="tabler:x" />
+				</button>
+			</template>
+			<template #tab1>
+				<div ref="modalContent" />
+			</template>
+			<template #tab2>
+				<ProsePre :code language="mermaid" meta="expand" />
+			</template>
+		</Tab>
+	</Transition>
+</DefineModal>
+
+<figure ref="mermaid" class="mermaid-diagram" :style="{ minHeight: expanded ? `${placeholderHeight}px` : undefined }">
+	<!-- SVG 只在一处显示，保留选字和样式继承，避免重复 SVG id。 -->
+	<Teleport v-if="diagram.svg" :to="modalContent || 'body'" :disabled="!expanded">
+		<div
+			class="mermaid-content"
+			:class="{ preview: !expanded }"
+			:tabindex="expanded ? undefined : 0"
+			:role="expanded ? undefined : 'button'"
+			:aria-label="expanded ? undefined : '放大Mermaid 图表'"
+			@click="expand()"
+			@keydown.enter="expand()"
+			@keydown.space.prevent="expand()"
+			v-html="displaySvg"
+		/>
+	</Teleport>
 	<template v-else-if="diagram.error">
 		<details class="mermaid-error">
 			<summary>图表渲染失败，查看错误详情</summary>
@@ -92,27 +128,115 @@ const diagram = computedAsync<{ svg?: string, width?: number, error?: string }>(
 		</details>
 		<ProsePre :code language="mermaid" meta="wrap" />
 	</template>
-</div>
+	<figcaption v-if="caption || meta">
+		{{ caption || meta }}
+	</figcaption>
+</figure>
 </template>
 
 <style scoped>
 /* 不可命名为 .mermaid：mermaid 会按此类名自动扫描并接管元素 */
 .mermaid-diagram {
 	margin: 0.5em 0;
+}
 
-	/* mermaid 在 <body> 下量取文本，此处需与根元素排版一致，否则图形错位 */
+.mermaid-diagram > figcaption {
+	margin-top: 0.5em;
+	font-size: 0.8em;
+	text-align: center;
+	color: var(--c-text-2);
+}
+
+.mermaid-content {
+	width: fit-content;
+	margin-inline: auto;
 	line-height: 1.4;
+
+	&.preview {
+		max-width: 100%;
+		cursor: zoom-in;
+		user-select: none;
+	}
+
+	&:not(.preview) {
+		padding: 1rem;
+	}
 
 	:deep(svg) {
 		display: block;
 		height: auto;
-		max-width: 100%;
-		margin-inline: auto;
+		max-width: none;
 	}
 
-	/* 文本标签由 foreignObject 承载，会继承文章的段落样式 */
-	:deep(p) {
+	&.preview :deep(svg) {
+		max-width: 100%;
+	}
+}
+
+.mermaid-modal {
+	position: fixed;
+	overflow: clip;
+	inset: 0;
+	width: fit-content;
+	height: fit-content;
+	min-width: min(24rem, 90vw);
+	max-width: 90vw;
+	max-height: 90dvh;
+	margin: auto;
+	border: 1px solid var(--c-border);
+	border-radius: 0.5rem;
+	box-shadow: var(--box-shadow-2), var(--box-shadow-3);
+	background-color: var(--c-bg);
+
+	&.float-in-leave-active {
+		position: fixed !important;
+	}
+
+	.close,
+	.rotate {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		inset: 0.5rem 0.5rem auto auto;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 0.4em;
+		color: var(--c-text-3);
+		cursor: pointer;
+
+		&:hover,
+		&:focus-visible {
+			background-color: var(--c-bg-soft);
+			color: var(--c-primary);
+		}
+	}
+
+	.rotate {
+		inset-inline: 0.5rem auto;
+	}
+
+	:deep(.tabs) {
+		align-items: center;
+		width: auto;
+		height: 3rem;
+		padding-inline: 3rem;
+
+		> button {
+			margin-bottom: 0;
+		}
+	}
+
+	:deep(.tab-content) {
+		overflow: auto;
+		max-height: calc(90dvh - 3rem);
 		margin: 0;
+		scrollbar-width: thin;
+	}
+
+	:deep(.z-codeblock) {
+		margin: 0;
+		border-radius: 0;
 	}
 }
 

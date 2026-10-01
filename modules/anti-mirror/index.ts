@@ -1,5 +1,5 @@
 import { defineNuxtModule } from 'nuxt/kit'
-import { minify } from 'oxc-minify'
+import { minifySync } from 'oxc-minify'
 import blogConfig from '../../blog.config'
 import handleMirror from './runtime/client'
 
@@ -25,6 +25,6 @@ export default defineNuxtModule({
 function toIifeString<T extends unknown[]>(fn: (...args: T) => void, ...args: T) {
 	const fnString = fn.toString()
 	const argsString = JSON.stringify(args).slice(1, -1)
-	const minified = minify('', `(${fnString})(${argsString})`)
+	const minified = minifySync('', `(${fnString})(${argsString})`)
 	return minified.code
 }

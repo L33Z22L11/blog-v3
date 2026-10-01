@@ -33,7 +33,7 @@ export default function remarkCodeComponent(components: CodeComponents = {}) {
 				children: [],
 				data: {
 					hName: options.component,
-					hProperties: { [options.prop]: node.value },
+					hProperties: { [options.prop]: node.value, meta: node.meta ?? undefined },
 				},
 			})
 		})
