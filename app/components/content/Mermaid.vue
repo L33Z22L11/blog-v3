@@ -45,7 +45,7 @@ const diagram = computedAsync<{ svg?: string, error?: string }>(async () => {
 		await Promise.all([nextTick(), document.fonts.ready])
 		mermaid.initialize({
 			fontFamily: 'inherit',
-			flowchart: { padding: 8, minNodeWidth: 0 },
+			flowchart: { padding: 8 },
 			sequence: { width: 100 },
 			theme: darkMode ? 'redux-dark-color' : 'redux-color',
 			startOnLoad: false,
