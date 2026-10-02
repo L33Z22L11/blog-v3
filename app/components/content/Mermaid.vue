@@ -37,15 +37,15 @@ whenever(isVisible, () => shouldRender.value = true, { once: true })
 const diagram = computedAsync<{ svg?: string, error?: string }>(async () => {
 	const { code } = props
 	const darkMode = colorMode.value === 'dark'
-	if (!shouldRender.value)
+	if (import.meta.server || !shouldRender.value)
 		return {}
 
 	try {
-		const { default: mermaid } = await import('mermaid')
+		const { default: mermaid } = await importFromJsDelivr('mermaid@12.0.0/dist/mermaid.esm.min.mjs')
 		await Promise.all([nextTick(), document.fonts.ready])
 		mermaid.initialize({
 			fontFamily: 'inherit',
-			flowchart: { padding: 8 },
+			flowchart: { padding: 8, minNodeWidth: 0 },
 			sequence: { width: 100 },
 			theme: darkMode ? 'redux-dark-color' : 'redux-color',
 			startOnLoad: false,

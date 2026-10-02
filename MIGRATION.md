@@ -19,7 +19,7 @@
 
 `prepare` 保留 `nuxt prepare`，不再自动清缓存；图标预缓存跳过类型准备阶段，安装时无需为图标访问网络。旧缓存异常时手动执行 `pnpm clean:cache`。
 
-依赖升级脚本排除 TypeScript，catalog 固定为 `6.0.3`；Mermaid 固定为 `11.17.2`。Mermaid 使用 11 的默认布局和外观，配色在 `redux-color` / `redux-dark-color` 间随亮暗模式切换；流程图节点收紧内边距。图表保留内联 SVG，默认适应文章宽度，点击后通过现有弹层系统放大；SVG 尺寸统一取自 viewBox，正文自适应宽度，弹层按原始尺寸滚动查看，支持选字、字体继承和每次 90° 旋转。弹层通过 Tab 切换图表与高亮源码，复用代码块的复制能力；代码块语言后的说明文字显示为图下 caption。图表样式仅作用于 Mermaid。
+依赖升级脚本排除 TypeScript，catalog 固定为 `6.0.3`。Mermaid 改为浏览器在图表接近视口时通过 jsDelivr 动态加载固定版本 `12.0.0` 的 ESM：并发 HEAD 探测 Gcore、Fastly、Cloudflare 测试节点和默认 CDN（5 秒超时），选中首个成功节点后取消其余探测，再导入并复用一份模块，不再安装或打包 Mermaid 及其依赖；使用 12 的默认 ELK 布局和 Neo 外观，配色在 `redux-color` / `redux-dark-color` 间随亮暗模式切换；流程图节点收紧内边距并取消最小标签宽度。图表保留内联 SVG，默认适应文章宽度，点击后通过现有弹层系统放大；SVG 尺寸统一取自 viewBox，正文自适应宽度，弹层按原始尺寸滚动查看，支持选字、字体继承和每次 90° 旋转。弹层通过 Tab 切换图表与高亮源码，复用代码块的复制能力；代码块语言后的说明文字显示为图下 caption。图表样式仅作用于 Mermaid。
 
 ## 下游如何合并
 
