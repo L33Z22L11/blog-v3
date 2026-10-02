@@ -13,7 +13,7 @@ const activeTab = ref(Number(props.active) || 1)
 <!-- BUG: MDC Tab插槽块内会吞代码缩进 -->
 <div :class="{ center }">
 	<div class="tabs">
-		<slot name="prefix" />
+		<slot name="prefix" :active-tab="activeTab" />
 		<button
 			v-for="(tab, tabIndex) in tabs"
 			:key="tabIndex"

@@ -86,8 +86,8 @@ const displaySvg = computed(() => {
 <DefineModal v-slot="{ open: visible, style }">
 	<Transition name="float-in">
 		<Tab v-if="visible" class="mermaid-modal" :style :tabs="['图表', '源代码']" role="dialog" aria-modal="true" :aria-label="caption || meta || 'Mermaid 图表'">
-			<template #prefix>
-				<button type="button" class="rotate" aria-label="顺时针旋转图表" title="顺时针旋转 90°" @click="rotation = (rotation + 90) % 360">
+			<template #prefix="{ activeTab }">
+				<button v-if="activeTab === 1" type="button" class="rotate" aria-label="顺时针旋转图表" title="顺时针旋转 90°" @click="rotation = (rotation + 90) % 360">
 					<Icon name="tabler:rotate-clockwise" />
 				</button>
 			</template>
@@ -231,6 +231,7 @@ const displaySvg = computed(() => {
 		overflow: auto;
 		max-height: calc(90dvh - 3rem);
 		margin: 0;
+		overscroll-behavior: contain;
 		scrollbar-width: thin;
 	}
 
