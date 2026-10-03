@@ -548,7 +548,8 @@ link: "#link-card"
 ---
 src: https://picsum.photos/480/240
 # mirror: # 是否借助第三方图片加载服务，见源代码
-caption: 说明文字，还支持通过 width 或 height 属性指定尺寸
+caption: 支持 width 指定宽度；设置 height 时限制最大高度，宽度自动计算
+height: 160
 # zoom: false # 是否开启灯箱缩放，默认开启
 ---
 ::
