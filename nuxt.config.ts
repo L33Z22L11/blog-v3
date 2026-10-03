@@ -29,7 +29,7 @@ export default defineNuxtConfig({
 				{ rel: 'icon', href: blogConfig.favicon },
 				{ rel: 'alternate', type: 'application/atom+xml', href: '/atom.xml' },
 				{ rel: 'preconnect', href: blogConfig.twikoo.preload },
-				{ rel: 'stylesheet', href: 'https://s4.zstatic.net/npm/katex@0.16.44/dist/katex.min.css' },
+				{ rel: 'stylesheet', href: 'https://s4.zstatic.net/npm/katex@0.16.47/dist/katex.min.css' },
 				// "InterVariable", "Inter"
 				{ rel: 'stylesheet', href: 'https://s4.zstatic.net/npm/inter-ui@4.1.1/inter-variable.css' },
 				{ rel: 'stylesheet', href: 'https://s4.zstatic.net/npm/inter-ui@4.1.1/inter.css' },
@@ -164,8 +164,9 @@ export default defineNuxtConfig({
 		build: {
 			markdown: {
 				highlight: false,
-				// @keep-sorted
 				remarkPlugins: {
+					// demo 在解析阶段展开，预览与正文共用后续转换插件。
+					[pluginPath('remark-demo')]: {},
 					[pluginPath('remark-code-component')]: {
 						options: {
 							'mermaid': { component: 'mermaid', prop: 'code' },

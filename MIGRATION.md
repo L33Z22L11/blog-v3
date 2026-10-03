@@ -21,6 +21,10 @@
 
 依赖升级脚本排除 TypeScript，catalog 固定为 `6.0.3`。Mermaid 改为浏览器在图表接近视口时通过 jsDelivr 动态加载固定版本 `12.0.0` 的 ESM：并发 HEAD 探测 Gcore、Fastly、Cloudflare 测试节点和默认 CDN（5 秒超时），选中首个成功节点后取消其余探测，再导入并复用一份模块，不再安装或打包 Mermaid 及其依赖；使用 12 的默认 ELK 布局和 Neo 外观，配色在 `redux-color` / `redux-dark-color` 间随亮暗模式切换；流程图节点收紧内边距并取消最小标签宽度。图表保留内联 SVG，默认适应文章宽度，点击后通过现有弹层系统放大；SVG 尺寸统一取自 viewBox，正文自适应宽度，弹层按原始尺寸滚动查看，支持选字、字体继承和每次 90° 旋转。弹层通过 Tab 切换图表与高亮源码，复用代码块的复制能力；代码块语言后的说明文字显示为图下 caption。图表样式仅作用于 Mermaid。
 
+`remark-demo` 在构建期解析 `demo` 代码块，Demo 组件通过插槽展示预览、通过 `raw` 展示源码，继续复用 ContentRenderer 的 Prose 和 MDC 组件映射，无运行时 Markdown 解析。使用 `demo wrap expand` 配置源码块；示例内含代码围栏时，外层使用更多反引号。Demo 在解析阶段展开，随后统一执行 MDC 属性绑定、图表转换及公式渲染。
+
+KaTeX 保持全局 CSS 和构建期公式渲染，仅将 CSS 升级到 `0.16.47`，与构建引擎版本一致。Twikoo 保持原有全局 `defer` 加载方式和 `1.7.20` 版本。
+
 ## 下游如何合并
 
 1. 从自己的工作分支创建迁移分支，保留迁移前的提交或标签。
