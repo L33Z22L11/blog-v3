@@ -24,7 +24,8 @@
     "init-project": "unrun scripts/init-project.ts",
     "new": "unrun scripts/new-blog.ts",
     "check:feed": "unrun scripts/framework/get-feed.ts",
-    "check:feed/all": "unrun scripts/framework/check-all-feeds.ts"
+    "check:feed/all": "unrun scripts/framework/check-all-feeds.ts",
+    "test:feed": "unrun scripts/framework/check-feeds.test.ts"
   },
   "dependencies": {
     "@bikariya/image-viewer": "catalog:ui",
@@ -81,7 +82,6 @@
     "remark-math": "catalog:content",
     "remark-reading-time": "catalog:content",
     "rimraf": "catalog:util",
-    "strip-ansi": "catalog:util",
     "typescript": "catalog:framework",
     "unplugin-yaml": "catalog:framework",
     "unrun": "catalog:framework"
