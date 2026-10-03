@@ -13,7 +13,7 @@ function toRect(rect: Element | Rect): Rect {
 	return rect instanceof Element ? rect.getBoundingClientRect() : rect
 }
 
-const ensurePx = (val: number | string) => typeof val === 'number' ? `${val}px` : val
+export const ensurePx = (val?: number | string) => Number.isFinite(Number(val)) ? `${val}px` : val
 
 /** CSS 时间转为 WAAPI 使用的毫秒，兼容构建压缩前后的 s / ms。 */
 export function parseCssTime(value: string) {

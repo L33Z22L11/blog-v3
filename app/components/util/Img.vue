@@ -32,7 +32,7 @@ const src = computed(() => {
 <component
 	:is="ImageComponent"
 	:src :alt :width :height :densities
-	:style="{ filter }"
+	:style="{ filter, maxHeight: ensurePx(height) }"
 	:referrerpolicy="mirror ? 'no-referrer' : undefined"
 />
 </template>
