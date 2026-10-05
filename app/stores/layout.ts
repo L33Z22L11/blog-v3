@@ -6,7 +6,9 @@ export const useLayoutStore = defineStore('layout', () => {
 	const state = ref<LayoutState>('none')
 	const avoidTargets = ref<AvoidTarget[]>([])
 
-	const close = () => state.value = 'none'
+	function close() {
+		state.value = 'none'
+	}
 
 	const toggle = (key: LayoutState) => {
 		if (state.value === key)
@@ -14,16 +16,14 @@ export const useLayoutStore = defineStore('layout', () => {
 		state.value = key
 	}
 
-	useEventListener('keydown', (e) => {
-		if (state.value !== 'none' && e.key === 'Escape') {
+	onKeyStroke('Escape', (e) => {
+		if (state.value !== 'none') {
 			e.preventDefault()
 			close()
 		}
 	})
 
-	router.beforeEach(() => {
-		close()
-	})
+	onScopeDispose(router.beforeEach(close))
 
 	return {
 		state,

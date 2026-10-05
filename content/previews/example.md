@@ -10,8 +10,7 @@ aside: [toc, meta-aside-foo, meta-aside-bar]
 
 Nuxt Content 使用 Markdown 语法和约定来提供丰富的文本编辑体验。它使用自定的 MDC 语法，可以让你在 Markdown 中使用 Vue 组件，并支持多种 remark 扩展。
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
+```demo wrap
 ::link-card
 ---
 title: MDC 基本语法（必读）
@@ -22,44 +21,15 @@ class: gradient-card active
 ::
 
 ~~也许要看到 [本页源码](https://github.com/L33Z22L11/blog-v3/blob/main/content/previews/example.md) 才能领会到这种语法的特性~~，现在可以在页面内看源代码了，[就像**这样**——]{.example-info #just-like-this style="color: #00bb66"}，或是主题介绍页面的组件入口卡片那样……确定不对照源码阅读吗？
-
-#tab2
-```mdc wrap
-::link-card
----
-title: MDC 基本语法（必读）
-icon: https://v2.content.nuxt.com/favicon.ico
-link: https://content.nuxt.com/docs/files/markdown#mdc-syntax
-class: gradient-card active
----
-::
-
-~~也许要看到 [本页源码](https://github.com/L33Z22L11/blog-v3/blob/main/content/previews/example.md) 才能领会到这种语法的特性~~，现在可以在页面内看源代码了，[就像**这样**——]{.example-info #just-like-this style="color: #00bb66"}，或是主题介绍页面的组件入口卡片那样……确定不对照源码阅读吗？
 ```
-::
 
 我编写了一些可以在 Markdown 文件中调用的组件，以下是一些示例。
 
+使用语言为 `demo` 的代码块即可生成“组件 / 语法”选项卡，`demo wrap expand` 可设置源码换行和展开。示例内含代码块时，外层使用更多反引号包裹。
+
 ## 通过 CSS 类名控制样式
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-- 各级标题
-  - 在 Front matter 中设置 `type: story`{lang="yaml"} 可以换用不同样式。
-  - 跟随 URL Hash（网址锚点）的高亮。
-- > 引用。
-- 无序和有序列表。
-- **粗体**、~~删除线~~。
-- 分割线。
----
-- 带有 `icon` 类名的图片，如 ![图片](https://picsum.photos/100/100){.icon}。
-- [只在 `type: story`{lang="yaml"} 时🀄]{.title-like}
-- [故事感。]{.text-story}
-- [阴 影 回 声]{.text-repeat}
-- 滚动，然后悄悄[变大变高]{.text-zoom}，惊艳所有人。
-
-#tab2
-```mdc
+```demo
 - 各级标题
   - 在 Front matter 中设置 `type: story`{lang="yaml"} 可以换用不同样式。
   - 跟随 URL Hash（网址锚点）的高亮。
@@ -74,7 +44,6 @@ class: gradient-card active
 - [阴 影 回 声]{.text-repeat}
 - 滚动，然后悄悄[变大变高]{.text-zoom}，惊艳所有人。
 ```
-::
 
 ## Markdown 语法组件
 
@@ -87,15 +56,9 @@ class: gradient-card active
 还会根据域名展示图标，例如 [微软文档](https://learn.microsoft.com/zh-cn/)、[GitHub](https://github.com/)、[Bilibili](https://www.bilibili.com/)、[QQ 官网](https://im.qq.com/)、[微信公众号](https://mp.weixin.qq.com/) 等。
 
 ::alert{title="自定义图标"}
-  ::tab{:tabs='["组件","语法"]'}
-  #tab1
-  你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="tabler:color-swatch"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
-
-  #tab2
-  ```mdc wrap
+  ```demo wrap
   你可以将 `icon` 属性指定 Iconify 图标名，例如 [a](#链接-prosea){icon="tabler:color-swatch"}。图标可在 [Iconify](https://icon-sets.iconify.design/) 或 [Yesicon](https://yesicon.app/) 搜索。
   ```
-  ::
 ::
 
 #### 为更多站点匹配图标
@@ -216,38 +179,7 @@ class: gradient-card active
 >
 > [支持语法列表](https://katex.org/docs/supported)（[中文版](https://www.luogu.com.cn/paste/hs3jg81l)）
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-行内公式 $\text{课程绩点} = \frac{\text{课程分数(成绩)}}{10} - 5$
-
-$$
-\text{学分绩点} = \text{课程学分} \times \text{课程绩点}
-$$
-
-```math
-\text{平均绩点(GPA)} =\frac {\text{学分绩点之和}}{\text{课程学分之和}} = \frac{\sum (\text{课程学分} \times \text{课程绩点})}{\sum \text{课程学分}}
-```
-
-$$
-\raisebox{-2pt}{\colorbox{#4A90A4}{\color{white}{\Large\text{纸}}}}\kern-2pt
-\raisebox{-4pt}{\colorbox{#5BA88C}{\color{white}{\large\text{鹿}}}}\kern-3pt
-\raisebox{-1pt}{\colorbox{#6B8E9F}{\color{white}{\normalsize\text{至}}}}\kern-1pt
-\raisebox{-3pt}{\colorbox{#A8D5E2}{\color{#2C4A52}{\large\text{麓}}}}\kern-2pt
-\raisebox{0pt}{\colorbox{#B8E0D0}{\color{#2C4A52}{\normalsize\text{不}}}}\kern-3pt
-\raisebox{-5pt}{\colorbox{#5A9AA8}{\color{white}{\large\text{知}}}}\kern-1pt
-\raisebox{-2pt}{\colorbox{#C5E0E8}{\color{#2C4A52}{\Large\text{路}}}}
-\quad
-\raisebox{-4pt}{\colorbox{#5BA88C}{\color{white}{\large\text{支}}}}\kern-2pt
-\raisebox{-1pt}{\colorbox{#4A90A4}{\color{white}{\Large\text{炉}}}}\kern-3pt
-\raisebox{-3pt}{\colorbox{#7BC4B5}{\color{white}{\normalsize\text{制}}}}\kern-1pt
-\raisebox{-5pt}{\colorbox{#A8D5E2}{\color{#2C4A52}{\large\text{麓}}}}\kern-2pt
-\raisebox{-2pt}{\colorbox{#C5E0E8}{\color{#2C4A52}{\Large\text{不}}}}\kern-3pt
-\raisebox{0pt}{\colorbox{#6B8E9F}{\color{white}{\normalsize\text{止}}}}\kern-1pt
-\raisebox{-3pt}{\colorbox{#B8E0D0}{\color{#2C4A52}{\large\text{漉}}}}
-$$
-
-#tab2
-````mdc wrap
+````demo wrap
 行内公式 $\text{课程绩点} = \frac{\text{课程分数(成绩)}}{10} - 5$
 
 $$
@@ -276,7 +208,6 @@ $$
 \raisebox{-3pt}{\colorbox{#B8E0D0}{\color{#2C4A52}{\large\text{漉}}}}
 $$
 ````
-::
 
 ### 许可协议和侧栏插槽
 
@@ -336,37 +267,7 @@ link: https://content.nuxt.com/docs/files/markdown#mdc-syntax
 >
 > 编辑器、Cheat Sheet 和语法检查：https://editor.drawthedots.com/
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-```music-abc
-L:1/8
-Q:1/4=100 "andante moderato"
-M:2/4
-K:D
-"D" FA A>B | AF DD/E/ |1 "G" FF ED | "A" E2 z2 :|2 "G" FF "A" EE | "D" D2 z2 ||
-```
-
-```music-abc
-L:1/8
-Q:1/4=100
-M:2/4
-K:D
-V:1 clef=treble
-V:2 clef=bass
-%%MIDI program 32
-[V:1] z2 z f/g/ | aa a>b | af dd/e/ | ff ee | d2 z2 || FA A>B | AF DD/E/ |
-w: | | | | | 你 爱 我 | 我 爱 你 蜜 雪
-[V:2] z4 | D,[F,A,] .A,[F,A,] | .D,[F,A,] .A,[E,A,] | .G,,[G,D,] .A,,[E,A,] | .D,[F,A,] [D,,D,]2 || .D,,[D,F,] .A,,[D,F,] | .D,,[D,F,] .A,,[D,F,] |
-[V:1] FF ED | E2 z2 | FA A>B | AF DD/E/ | FF EE | D2 z2 | G2 G2 |
-w: 冰 城 甜 蜜 | 蜜 | 你 爱 我 | 我 爱 你 蜜 雪 冰 城 甜 蜜 | 蜜 | 你 爱
-[V:2] .G,,[B,G,] .D,[B,G,] | .A,,[A,C] .E,[A,C] | .D,,[D,F,] .A,,[D,F,] | .D,,[D,F,] .A,,[D,F,] | .G,,[G,D,] .A,,[E,A,] | .D,,[A,,D,] .[A,,D,]2 | .G,,[B,G,] .D,[B,G,] |
-[V:1] GB z2 | A2 AF | E2 z2 | FA A>B | AF DD/E/ | FF EE | D2 z2 |]
-w: 我 呀 | 我 爱 | 你 | 你 爱 我 | 我 爱 你 蜜 雪 冰 城 甜 蜜 | 蜜
-[V:2] .G,,[B,G,] .D,[B,G,] | .D,,[F,D,] .A,,[F,D,] | .A,,[A,C] .E,[A,C] | .D,,[F,D,] .A,,[F,D,] | .D,,[F,D,] .A,,[F,D,] | .G,,[G,D,] .A,,[E,A,] | .D,.A,, [D,,D,]2 |]
-```
-
-#tab2
-````mdc wrap expand
+````demo wrap expand
 ```music-abc
 L:1/8
 Q:1/4=100 "andante moderato"
@@ -394,28 +295,12 @@ w: 我 呀 | 我 爱 | 你 | 你 爱 我 | 我 爱 你 蜜 雪 冰 城 甜 蜜 |
 [V:2] .G,,[B,G,] .D,[B,G,] | .D,,[F,D,] .A,,[F,D,] | .A,,[A,C] .E,[A,C] | .D,,[F,D,] .A,,[F,D,] | .D,,[F,D,] .A,,[F,D,] | .G,,[G,D,] .A,,[E,A,] | .D,.A,, [D,,D,]2 |]
 ```
 ````
-::
 
 ### 图表渲染
 
-> 由自编写的remark-code-component插件实现，语法参见 [Mermaid 文档](https://mermaid.js.org/intro/syntax-reference.html)。图表跟随亮暗色模式重绘，进入视口附近才会加载渲染器。超宽图表可横向滚动，悬停或点击图表可切换为适应宽度。
+> 由自编写的remark-code-component插件实现，语法参见 [Mermaid 文档](https://mermaid.js.org/intro/syntax-reference.html)。图表跟随亮暗色模式重绘，进入视口附近才会加载渲染器。图表默认适应宽度，点击后在弹层中按原始尺寸查看，支持双向滚动和选字；切换到“源代码”标签可查看、复制 Mermaid 源码。
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-```mermaid
-graph TD
-    A[间断点] --> B[第一类间断点]
-    A --> C[第二类间断点]
-
-    B --> B1[可去间断点]
-    B --> B2[跳跃间断点]
-
-    C --> C1[无穷间断点]
-    C --> C2[振荡间断点]
-```
-
-#tab2
-````mdc wrap expand
+````demo wrap expand
 ```mermaid
 graph TD
     A[间断点] --> B[第一类间断点]
@@ -428,7 +313,6 @@ graph TD
     C --> C2[振荡间断点]
 ```
 ````
-::
 
 ## 自定义组件
 
@@ -436,8 +320,7 @@ graph TD
 
 ### Alert
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
+```demo wrap expand
   ::alert
   你好
   ::
@@ -465,59 +348,11 @@ graph TD
   ::
 
   :alert{icon="tabler:files" color="var(--c-accent)" title="仅标题，并且自定义图标和颜色"}
-
-#tab2
-```mdc wrap expand
-::alert
-你好
-::
-
-::alert{type="question"}
-默认插槽的 [超链接](#alert) **粗体** `Inline code`
-::
-
-::alert{type="info" title="自定义标题"}
-默认插槽的 [超链接](#alert) **粗体** `Inline code`
-::
-
-::alert{type="warning" card}
-#title
-卡片风格 标题插槽的 [超链接](#alert) **粗体** `Inline code`
-#default
-默认插槽的 [超链接](#alert) **粗体** `Inline code`
-::
-
-::alert{type="error" flat}
-#title
-扁平风格 标题插槽的 [超链接](#alert) **粗体** `Inline code`
-#default
-默认插槽的 [超链接](#alert) **粗体** `Inline code`
-::
-
-:alert{icon="tabler:files" color="var(--c-accent)" title="仅标题，并且自定义图标和颜色"}
 ```
-::
 
 ### Badge
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-:badge[普通带链接]{link="#badge"} :badge[纯文本指定圆形]{round} :badge[纯文本指定方形]{square} :badge[带个图]{img="https://picsum.photos/100/100"}
-
-外部域名自动获取站点图标 :badge[纸鹿]{link="https://www.zhilu.site"}，
-:badge[古怪杂记本]{link="https://gug.thisis.host/" square}，
-GitHub链接能自动识别头像 :badge[KazariEX]{link="https://github.com/KazariEX"}，
-也可指定方形 :badge[isYangs/GioPic]{square link="https://github.com/isYangs/GioPic"}。
-
-::alert
-#title
-在其他组件中使用 :badge{img="https://picsum.photos/100/100" text="带链接" link="#badge"}
-#default
-:badge{img="https://picsum.photos/100/100" text="指定圆形" round} 背景色 [可以 :badge{img="https://picsum.photos/100/100" text="动态变化" square} 使用](#badge)
-::
-
-#tab2
-```mdc wrap expand
+```demo wrap expand
 :badge[普通带链接]{link="#badge"} :badge[纯文本指定圆形]{round} :badge[纯文本指定方形]{square} :badge[带个图]{img="https://picsum.photos/100/100"}
 
 外部域名自动获取站点图标 :badge[纸鹿]{link="https://www.zhilu.site"}，
@@ -532,19 +367,12 @@ GitHub链接能自动识别头像 :badge[KazariEX]{link="https://github.com/Kaza
 :badge{img="https://picsum.photos/100/100" text="指定圆形" round} 背景色 [可以 :badge{img="https://picsum.photos/100/100" text="动态变化" square} 使用](#badge)
 ::
 ```
-::
 
 ### BlogHeader
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-:blog-header
-
-#tab2
-```mdc
+```demo
 :blog-header
 ```
-::
 
 鼠标悬浮时的动画 Emoji `📄🦌🙌🐟🏖️` 对应“纸鹿摸鱼处”的汉字，在 `app.config.ts` 中配置，字体由 [阿里妈妈方圆体](https://www.iconfont.cn/fonts/detail?cnid=pOvFIr086ADR) 分割而来。
 
@@ -556,18 +384,7 @@ pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
 
 ### :blur[Blur]
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-:blur[你知道得太多了。]
-
-::blur
-:::quote
-也未必。
-:::
-::
-
-#tab2
-```mdc
+```demo
 :blur[你知道得太多了。]
 
 ::blur
@@ -576,24 +393,12 @@ pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
 :::
 ::
 ```
-::
 
 ### CardList
 
 > 给列表刷上了自定义样式，待完善。
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-::card-list
-- 无序列表项1
-- 无序列表项2
-  - 无序列表项2-1
-    - 无序列表项2-1-1
-  - 无序列表项2-2
-::
-
-#tab2
-```mdc
+```demo
 ::card-list
 - 无序列表项1
 - 无序列表项2
@@ -602,37 +407,10 @@ pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
   - 无序列表项2-2
 ::
 ```
-::
 
 ### Chat
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-::chat
-{:2024-11-09 23:39:30}
-
-{.}
-
-也许
-
-{.}
-
-我们可以聊聊天
-
-{.纸鹿}
-
-我还可以有名字
-
-{:纸鹿撤回了一条消息}
-
-{用户1}
-
-有趣\
-我学到了。
-::
-
-#tab2
-```mdc expand
+```demo expand
 ::chat
 {:2024-11-09 23:39:30}
 
@@ -656,27 +434,16 @@ pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
 我学到了。
 ::
 ```
-::
 
 ### Copy
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-:copy{code="rm -rf # 修改命令后再复制，也可撤销修改"}
-
-:copy{prompt code="不带提示符的命令，可以是 URL、单行代码"}
-
-:copy{prompt="自定义命令提示符、高亮语言" lang="js" code="const customLang = 'js' // 滚动条、边缘羽化会出现，假如它特别特别特别特别特别特别特别特别长"}
-
-#tab2
-```mdc wrap
+```demo wrap
 :copy{code="rm -rf # 修改命令后再复制，也可撤销修改"}
 
 :copy{prompt code="不带提示符的命令，可以是 URL、单行代码"}
 
 :copy{prompt="自定义命令提示符、高亮语言" lang="js" code="const customLang = 'js' // 滚动条、边缘羽化会出现，假如它特别特别特别特别特别特别特别特别长"}
 ```
-::
 
 #### 自动推断语言
 
@@ -686,15 +453,9 @@ pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
 
 > 现在几点了？
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-:emoji-clock (半小时) :emoji-clock{rotate} (5分钟) :emoji-clock{datetime="2024-11-09 23:39:30"} (指定时间)
-
-#tab2
-```mdc
+```demo
 :emoji-clock (半小时) :emoji-clock{rotate} (5分钟) :emoji-clock{datetime="2024-11-09 23:39:30"} (指定时间)
 ```
-::
 
 ### FeedCard 和 FeedGroup
 
@@ -704,34 +465,7 @@ pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
 
 > 折叠组件，支持折叠和展开，可以嵌套使用。
 
-:::tab{:tabs='["组件","语法"]'}
-#tab1
-  ::folding
-  #title
-  可以通过标题插槽传值 [超链接](#folding) **粗体** `Inline code`
-  #default
-  默认插槽的 [超链接](#folding) **粗体** `Inline code`
-
-    ::folding{open title="折叠还可以嵌套"}
-    默认展开的折叠。
-
-      ::alert{type="error"}
-      #title
-      在嵌套使用的组件内部使用 MDC 的 `#slotname` 插槽语法
-      #default
-      必须缩进，否则会报错。
-      ::
-    ::
-  ::
-
-::folding{open}
-```md
-- 默认展开的折叠。
-```
-::
-
-#tab2
-````mdc expand
+````demo expand
   ::folding
   #title
   可以通过标题插槽传值 [超链接](#folding) **粗体** `Inline code`
@@ -756,62 +490,30 @@ pyftsubset ./AlimamaFangYuanTi.ttf --text=Header文本 --flavor=woff2
 ```
 ::
 ````
-:::
 
 ### Key
 
 > 按下键时会亮，可以通过 `@press` 配置触发事件，鼠标点击也会触发事件，博客全站搜索框的按键提示使用了这个组件。
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
+```demo wrap
 - 纯 Code
 
-  :key{code="Escape"} :key{code="F2"} :key{code="Control"} :key{code="A"} :key{code=" "} :key{code="Tab"} :key{code="Enter"}
+:key{code="Escape"} :key{code="F2"} :key{code="Control"} :key{code="A"} :key{code=" "} :key{code="Tab"} :key{code="Enter"}
 
 - 指定修饰符、图标、文本（macOS 自动使用图标）
 
-  :key{code="Control" icon} :key{alt icon} :key{shift icon} :key{code=" " text="空格"} :key{code="Tab" icon} :key{code="Enter" icon}
+:key{code="Control" icon} :key{alt icon} :key{shift icon} :key{code=" " text="空格"} :key{code="Tab" icon} :key{code="Enter" icon}
 
 - 组合键
 
-  :key{code="A" ctrl shift} :key{alt shift} :key{code="Escape" ctrl alt icon}
-
-~~热血组合技 :key{code="ArrowUp"} :key{code="ArrowUp"} :key{code="ArrowDown"} :key{code="ArrowDown"} :key{code="ArrowLeft"} :key{code="ArrowRight"} :key{code="ArrowLeft"} :key{code="ArrowRight"} :key{code="B"} :key{code="A"}~~
-
-#tab2
-```mdc wrap
-- 纯 Code
-
-  :key{code="Escape"} :key{code="F2"} :key{code="Control"} :key{code="A"} :key{code=" "} :key{code="Tab"} :key{code="Enter"}
-
-- 指定修饰符、图标、文本（macOS 自动使用图标）
-
-  :key{code="Control" icon} :key{alt icon} :key{shift icon} :key{code=" " text="空格"} :key{code="Tab" icon} :key{code="Enter" icon}
-
-- 组合键
-
-  :key{code="A" ctrl shift} :key{alt shift} :key{code="Escape" ctrl alt icon}
+:key{code="A" ctrl shift} :key{alt shift} :key{code="Escape" ctrl alt icon}
 
 ~~热血组合技 :key{code="ArrowUp"} :key{code="ArrowUp"} :key{code="ArrowDown"} :key{code="ArrowDown"} :key{code="ArrowLeft"} :key{code="ArrowRight"} :key{code="ArrowLeft"} :key{code="ArrowRight"} :key{code="B"} :key{code="A"}~~
 ```
-::
 
 ### LinkBanner
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-::link-banner
----
-banner: https://picsum.photos/480/240
-title: 标题
-description: 这是一行描述，如果不提供描述会展示域名
-link: "#link-banner"
-# mirror: # 是否借助第三方图片加载服务，见源代码
----
-::
-
-#tab2
-```mdc
+```demo
 ::link-banner
 ---
 banner: https://picsum.photos/480/240
@@ -822,24 +524,10 @@ link: "#link-banner"
 ---
 ::
 ```
-::
 
 ### LinkCard
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-::link-card
----
-icon: https://picsum.photos/100/100
-title: 标题
-description: 这是一行描述，如果不提供描述会展示域名
-link: "#link-card"
-# mirror: # 是否借助第三方图片加载服务，见源代码
----
-::
-
-#tab2
-```mdc
+```demo
 ::link-card
 ---
 icon: https://picsum.photos/100/100
@@ -850,56 +538,28 @@ link: "#link-card"
 ---
 ::
 ```
-::
 
 ### Pic
 
 > 用于展示图片，支持说明文字、点击后打开灯箱缩放。
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
+```demo
 ::pic
 ---
 src: https://picsum.photos/480/240
 # mirror: # 是否借助第三方图片加载服务，见源代码
-caption: 说明文字，还支持通过 width 或 height 属性指定尺寸
-# zoom: false # 是否开启灯箱缩放，默认开启
----
-::
-
-#tab2
-```mdc
-::pic
----
-src: https://picsum.photos/480/240
-# mirror: # 是否借助第三方图片加载服务，见源代码
-caption: 说明文字，还支持通过 width 或 height 属性指定尺寸
+caption: 支持 width 指定宽度；设置 height 时限制最大高度，宽度自动计算
+height: 160
 # zoom: false # 是否开启灯箱缩放，默认开启
 ---
 ::
 ```
-::
 
 ### Poetry
 
 > 在文章的 type 为 `tech` 或 `story` 时，它有不同的样式。
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-::poetry
----
-title: 诗有诗的标题
-author: 一名作者
-footer: 可选的落款
----
-如你所见，
-我,
-是一首——
-*诗*。
-::
-
-#tab2
-```mdc
+```demo
 ::poetry
 ---
 title: 诗有诗的标题
@@ -912,29 +572,12 @@ footer: 可选的落款
 *诗*。
 ::
 ```
-::
 
 ### Quote
 
 > 在文章的 type 为 `tech` 或 `story` 时，它有不同的样式。
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-:quote[有时候，有些话，有点意思。]
-
-::quote{icon="tabler:files"}
-令图标有所指，引用亦有中心。
-::
-
-::quote
-#icon
-ヾ(•ω•`)o
-#default
-图标插槽也可以是 Emoji 或颜文字，或者英文装饰。
-::
-
-#tab2
-```mdc
+```demo
 :quote[有时候，有些话，有点意思。]
 
 ::quote{icon="tabler:files"}
@@ -948,12 +591,10 @@ footer: 可选的落款
 图标插槽也可以是 Emoji 或颜文字，或者英文装饰。
 ::
 ```
-::
 
 ### Tab
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
+````demo wrap expand
   ::tab{:tabs='["一个简单的", "Tab"]'}
   #tab1
   ```md
@@ -980,71 +621,11 @@ footer: 可选的落款
   #tab3
   你找到我了吗？
   ::
-
-#tab2
-````mdc wrap expand
-::tab{:tabs='["一个简单的", "Tab"]'}
-#tab1
-```md
-# 一个简单的 Tab
-```
-#tab2
-```md
-# Tab
-```
-::
-
-::tab
----
-tabs: ["当当当", "高级交互！", "就是藏得有点深"]
-center: true
-active: 2 # 默认显示第二个选项卡，可选
----
-#tab1
-这个组件设置了居中（自动调整而不是占满宽度）和默认显示第二个选项卡。
-#tab2
-```md
-是这样。
-```
-#tab3
-你找到我了吗？
-::
 ````
-::
 
 ### Timeline
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-::timeline
-{前天}
-
-看到了小兔
-
-{昨天}
-
-是小鹿
-
-{今天}
-
-是你。
-::
-
-::timeline
-{今日无事}
-
-{今日依旧无事}
-
-{然后——}
-
-一件事\
-两件事。
-
-*再添一笔*。
-::
-
-#tab2
-```mdc expand
+```demo expand
 ::timeline
 {前天}
 
@@ -1072,57 +653,18 @@ active: 2 # 默认显示第二个选项卡，可选
 *再添一笔*。
 ::
 ```
-::
 
 ### Tip
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-:tip[我是一条小提示]{tip="提示的内容是提示"}， :tip[我没有图标]{icon tip="或许也可以没有内容"}
-
-#tab2
-```mdc wrap
+```demo wrap
 :tip[我是一条小提示]{tip="提示的内容是提示"}， :tip[我没有图标]{icon tip="或许也可以没有内容"}
 ```
-::
 
 ### VideoEmbed
 
 > 放点视频给你看。
 
-::tab{:tabs='["组件","语法"]'}
-#tab1
-::video-embed
----
-type: raw
-id: https://sf-atsx-tob.larksuite.com/obj/static-atsx-online-sg-ee-tob-mycis/02c7da694d343896877c09de9db4fc42/8ede49e0a92f53cdafbbf49339194986d9d900fb2abe242b9a8b4e338bf18b05.mp4
-poster: https://sf-atsx-tob.larksuite.com/obj/static-atsx-online-sg-ee-tob-mycis/02c7da694d343896877c09de9db4fc42/e23074879c61a4d61e905ccef5771a36a2d19689c1204c2b32caa53711ac83ad.png
----
-::
-
-::video-embed
----
-type: bilibili
-id: BV1Yr421p7rW
----
-::
-
-::video-embed
----
-type: douyin-wide
-id: '7339041157571169546'
----
-::
-
-::video-embed
----
-type: douyin
-id: '7222222794333998392'
----
-::
-
-#tab2
-```mdc
+```demo
 ::video-embed
 ---
 type: raw
@@ -1152,7 +694,6 @@ id: '7222222794333998392'
 ---
 ::
 ```
-::
 
 ## 组件使用方法
 
