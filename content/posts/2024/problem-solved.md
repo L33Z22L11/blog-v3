@@ -4,8 +4,9 @@ description: 讲出来，修好了学校不通的路，解决了别人和我使�
 date: 2024-06-04 08:02:36
 updated: 2024-06-11 01:06:28
 type: story
+image: https://assets.zhilu.cyou/cover6/problem-solved.webp
 categories: [杂谈]
-tags: [问题沟通, 校园, 反思]
+tags: [博客, 校园]
 ---
 
 ## 此路不通

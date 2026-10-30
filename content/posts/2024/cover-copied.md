@@ -3,10 +3,10 @@ title: 封面被 Linux QQ 官方用了，但是有一些小缺陷
 description: 怀疑 Linux QQ 团队使用了作者的封面图片，严谨求证后发现事实确实如此，并且因此找到了 Linux QQ 官网的 bug。
 date: 2024-06-18 13:23:05
 updated: 2024-06-18 17:23:24
-image: https://assets.zhilu.cyou/cover3/cover-copied.jpg
+image: https://assets.zhilu.cyou/cover6/cover-copied.webp
 type: story
 categories: [杂谈]
-tags: [开源署名, QQ, 版权]
+tags: [博客, QQ, 版权]
 references:
   - title: Linux QQ 官网
     link: https://im.qq.com/linuxqq/index.shtml

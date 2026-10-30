@@ -4,8 +4,9 @@ description: 教室一体机性能孱弱，19班教室电脑被其他班的学�
 date: 2021-04-06
 updated: 2024-02-16 15:30:34
 type: story
-categories: [技术]
-tags: [校园运维, 教室电脑, 故障排查]
+image: https://assets.zhilu.cyou/cover6/classroom-pc.webp
+categories: [生活]
+tags: [校园, 校园修电脑]
 ---
 
 > [查看原文](https://mp.weixin.qq.com/s/-xGsB2wLOCO5m6hzUeQOfQ)

@@ -3,9 +3,9 @@ title: 电脑连接手机，手机给电脑传文件……
 description: 在同一局域网下，电脑与手机之间互传文件、屏幕投影和远程控制的各种方法。
 date: 2024-02-01 00:28:48
 updated: 2024-11-28 11:08:41
-image: https://assets.zhilu.cyou/cover3/link-util.jpg
+image: https://assets.zhilu.cyou/cover6/link-util.webp
 categories: [技术]
-tags: [跨设备互传, Windows, Android]
+tags: [文件共享, Windows, Android]
 ---
 
 以下内容假定你的设备在同一局域网下，如果不在，你可以参考 [Tailscale 不完全使用指南](/2023/tailscale-incomplete-guide)。

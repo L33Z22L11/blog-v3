@@ -4,8 +4,9 @@ description: 今日关键词是“高兴”，取外卖、打扫卫生、宣讲�
 date: 2024-10-09 22:32:05
 updated: 2024-10-11 18:19:11
 type: story
+image: https://assets.zhilu.cyou/cover6/observe-at-school.webp
 categories: [生活]
-tags: [校园观察, 大学, 随笔]
+tags: [校园]
 ---
 
 ## 战战兢兢点外卖

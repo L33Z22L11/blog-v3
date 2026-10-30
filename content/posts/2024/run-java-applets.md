@@ -3,9 +3,9 @@ title: 配置并差点运行不了 Java Applet
 description: 为了完成大学《Java 语言程序设计》课程的实验报告，尝试配置旧版 Java 环境并成功运行 Java Applet，最终认为实际应用价值有限。
 date: 2024-09-26 09:12:42
 updated: 2024-09-27 00:34:28
-image: https://assets.zhilu.cyou/cover4/run-java-applet.jpg
+image: https://assets.zhilu.cyou/cover6/run-java-applets.webp
 categories: [技术]
-tags: [Java Applet, 兼容性, 故障排查]
+tags: [Java, 开发环境, 故障排查]
 references:
   - title: Java / OpenJDK 国内镜像站指路 & 发行版简介
     link: https://magma.ink/posts/java/

@@ -5,8 +5,7 @@ date: 2023-04-13 20:05:50
 updated: 2024-12-18 22:13:41
 image: https://assets.zhilu.cyou/cover2/vscode-simple-config.jpg
 categories: [技术]
-tags: [VS Code, 开发环境, 配置]
-recommend: true
+tags: [VS Code, 开发环境]
 ---
 
 ## 主题和图标

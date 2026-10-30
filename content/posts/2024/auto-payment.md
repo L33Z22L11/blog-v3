@@ -3,10 +3,10 @@ title: 遭遇APP乱象：老人的「钱袋子」开线了
 description: 继运营商扣费之后，家中老人又被华为宰了。扣款金额不多，但这无疑是对用户知情权利的践踏和侮辱。诱导自动扣款，开通容易取消难，是互联网APP们的丑恶常态。
 date: 2024-07-07 19:52:56
 updated: 2024-07-13 11:46:43
-image: https://assets.zhilu.cyou/cover3/auto-payment.jpg
+image: https://assets.zhilu.cyou/cover6/auto-payment.webp
 type: story
 categories: [杂谈]
-tags: [消费陷阱, 自动扣费, 手机应用]
+tags: [消费, 用户体验]
 references:
   - title: 云空间套餐如何申请退款 | 华为官网
     link: https://consumer.huawei.com/cn/support/content/zh-cn00838483/

@@ -3,10 +3,10 @@ title: 从“端口无法访问”到本地环境问题——朋友的博客踩�
 description: M 来找我帮忙，从服务器搭建博客到本地 Windows 环境问题，他把坑几乎全踩了一遍。少配少错。可他博客至今空空如也，所以我发出完整踩坑过程，希望能帮助到更多人。
 date: 2024-07-24 21:20:57
 updated: 2024-08-03 10:23:46
-image: https://assets.zhilu.cyou/cover4/all-pits-stepped.jpg
+image: https://assets.zhilu.cyou/cover6/all-pits-stepped.webp
 type: story
 categories: [技术]
-tags: [博客部署, 故障排查, 本地环境]
+tags: [博客, 故障排查]
 ---
 
 > 在决心踏入计算机的世界之后，我们总会勇敢踏步，朝着某个方向走去。也许那里是堵墙，也许墙上贴着前辈们的经验，只要有怀揣一颗热爱探索的心，总归能找到答案。

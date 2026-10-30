@@ -5,7 +5,7 @@ date: 2015-05-19
 updated: 2015-05-21
 type: story
 categories: [生活]
-tags: [数码设备, 童年, 回忆]
+tags: [数码, Android, 童年]
 ---
 
 > 小学四年级发表的空间说说，有纪念意义，遂摘之。

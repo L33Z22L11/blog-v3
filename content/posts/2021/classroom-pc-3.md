@@ -4,8 +4,9 @@ description: 纸鹿在高中时又被喊去修教室电脑了，并且又和信�
 date: 2021-12-05 11:03:00
 updated: 2024-02-16 15:52:49
 type: story
-categories: [技术]
-tags: [校园运维, 教室电脑, 故障排查]
+image: https://assets.zhilu.cyou/cover6/classroom-pc.webp
+categories: [生活]
+tags: [校园, 校园修电脑]
 ---
 
 [查看原文](https://mp.weixin.qq.com/s/MT7HRrfd3hUfnC7zegFbQQ)

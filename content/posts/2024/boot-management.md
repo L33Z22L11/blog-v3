@@ -3,9 +3,9 @@ title: 系统引导配置分享
 description: 指哪里就启动哪里——在 Windows 和 Linux 系统下实现重启至特定 EFI 引导项。
 date: 2024-03-01 14:06:19
 updated: 2024-03-01 15:17:30
-image: https://assets.zhilu.cyou/cover3/boot-management.jpg
+image: https://assets.zhilu.cyou/cover6/boot-management.webp
 categories: [技术]
-tags: [双系统, 引导管理, Arch Linux]
+tags: [Windows, Arch Linux, 系统引导]
 ---
 
 ## 前置知识

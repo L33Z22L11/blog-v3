@@ -3,8 +3,9 @@ title: 写过的奇妙代码。
 description: 这些代码不算是 Best Practice，也不算是常见的写法，令人眼前一亮/黑。
 date: 2024-04-07 12:32:11
 updated: 2024-04-07 20:38:20
+image: https://assets.zhilu.cyou/cover6/magic-code.webp
 categories: [开发]
-tags: [代码随笔, 编程实验, 笔记]
+tags: [C 语言, JavaScript]
 ---
 
 ## C 语言排序：根据条件选择排序依据

@@ -3,9 +3,9 @@ title: 简单实现C语言字符串缓冲区
 description: 设计一个C语言的动态扩容缓冲区，是西邮 Linux 兴趣小组的 Lab 报告。
 date: 2023-01-01 23:58:33
 updated: 2023-07-30 11:45:33
-image: https://assets.zhilu.cyou/cover3/c-strbuf.jpg
+image: https://assets.zhilu.cyou/cover6/c-strbuf.webp
 categories: [开发]
-tags: [C语言, 字符串, 数据结构]
+tags: [C 语言, 数据结构]
 references:
   - link: https://plan.xiyoulinux.com/project/strbuf/
     title: 设计一个 C 语言的动态扩容缓冲区

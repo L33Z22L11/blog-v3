@@ -3,9 +3,10 @@ title: 前端字体二三事
 description: 前端字体排版有许多细节需要注意，文章从我的实际开发经验出发，介绍合成字形、对齐技巧、排版优化，以及自己的一些踩坑心得。
 date: 2025-04-16 08:49:50
 updated: 2025-10-06 23:22:09
-image: https://assets.zhilu.cyou/cover4/font-tips.jpg
+image: https://assets.zhilu.cyou/cover6/font-tips.webp
 categories: [开发]
-tags: [前端, 字体, 排版]
+tags: [前端, CSS, 字体排版]
+recommend: 100
 ---
 
 ## 这个世界是一个巨大的合成

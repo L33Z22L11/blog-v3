@@ -3,10 +3,10 @@ title: 运营商又想多收话费了
 description: 亲身经历的三个电信服务案例，揭示了三大运营商诱导扣费的问题。
 date: 2024-02-23 18:32:25
 updated: 2024-03-01 23:55:19
-image: https://assets.zhilu.cyou/cover3/carrier-overbilling.jpg
+image: https://assets.zhilu.cyou/cover6/carrier-overbilling.webp
 type: story
 categories: [杂谈]
-tags: [运营商, 账单, 维权]
+tags: [运营商, 消费]
 ---
 
 > 电信服务本质上是一项利国利民的普惠工程。国家在大力推进提速降费政策，意在构建高效、便捷且经济的通信环境，以促进社会和经济的整体发展。在这一大背景下，地方分公司应当遵循公平公正的服务准则，以用户的需求为中心，不应采取短视和损害用户权益的小手段来实现自身目标。

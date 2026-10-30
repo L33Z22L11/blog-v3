@@ -4,8 +4,9 @@ description: 祖母与祖父差旅南昌，谈判发电机组销售事宜，在�
 date: 2024-08-25 06:46:54
 updated: 2024-08-25 09:37:57
 type: story
+image: https://assets.zhilu.cyou/cover6/grandma-high-point.webp
 categories: [生活]
-tags: [家庭, 祖母, 回忆]
+tags: [家庭]
 ---
 
 ## 南昌差旅
