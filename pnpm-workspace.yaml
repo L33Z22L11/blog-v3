@@ -87,6 +87,8 @@ patchedDependencies:
   '@nuxtjs/mdc': patches/@nuxtjs__mdc.patch
   # IPX 的 Sharp 无法处理 ICO ，但改变运行时 NuxtImg provider 有类型问题 https://github.com/nuxt/image/issues/2174
   ipx: patches/ipx.patch
+  # 重定向响应头中的非 ASCII 字符需要编码 https://github.com/nitrojs/nitro/issues/4323
+  nitropack: patches/nitropack.patch
   # adoptedStyleSheet ::highlight 高亮选择器
   plain-shiki: patches/plain-shiki.patch
 

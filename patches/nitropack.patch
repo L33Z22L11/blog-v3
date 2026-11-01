@@ -1,0 +1,11 @@
+diff --git a/dist/runtime/internal/route-rules.mjs b/dist/runtime/internal/route-rules.mjs
+--- a/dist/runtime/internal/route-rules.mjs
++++ b/dist/runtime/internal/route-rules.mjs
+@@ -38,6 +38,7 @@ export function createRouteRulesHandler(ctx) {
+         const query = getQuery(event.path);
+         target = withQuery(target, query);
+       }
++      target = target.replace(/[^\x00-\x7F]/gu, encodeURIComponent);
+       return sendRedirect(event, target, routeRules.redirect.statusCode);
+     }
+     if (routeRules.proxy) {
