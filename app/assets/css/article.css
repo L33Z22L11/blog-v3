@@ -78,7 +78,7 @@
 		&:not([class]), &.image {
 			display: block;
 			margin: 1rem auto;
-			border-radius: 0.5rem;
+			border-radius: 0.25rem;
 		}
 	}
 

@@ -47,7 +47,7 @@ function getIndent() {
 	if (meta.value.indent)
 		return meta.value.indent
 
-	if (['md', 'mdc', 'json', 'jsonc', 'yaml', 'yml'].includes(props.language))
+	if (['md', 'mdc', 'json', 'jsonc', 'toml', 'yaml', 'yml'].includes(props.language))
 		return 2
 
 	return compConf.value.indent

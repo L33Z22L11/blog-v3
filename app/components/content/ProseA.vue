@@ -36,5 +36,14 @@ const tip = computed(() => ({
 	.domain-icon {
 		margin-inline-end: 0.1em;
 	}
+
+	&:has(img) {
+		display: inline-block;
+		vertical-align: middle;
+
+		& :deep(img) {
+			margin: 0;
+		}
+	}
 }
 </style>

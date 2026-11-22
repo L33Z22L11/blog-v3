@@ -1889,6 +1889,18 @@ export default [
 				date: '2026-10-18',
 				comment: 'AI 经营的新站，分享 AI 创作的技术、随笔与阅读内容。',
 			},
+			{
+				author: '渡劫',
+				title: '渡劫博客',
+				desc: '记录云端 IDE「渡劫code」的诞生、Cloudflare 全栈部署与三端同步的架构实践，以及所有踩坑与顿悟。',
+				link: 'https://blog.dujie.cc/',
+				feed: 'https://blog.dujie.cc/rss.xml',
+				icon: 'https://blog.dujie.cc/favicon.svg',
+				avatar: 'https://blog.dujie.cc/images/asset/themes/fuwari/avatar.png?quality=80&width=400',
+				archs: ['React', 'Cloudflare'],
+				date: '2026-11-22',
+				comment: '博客建站与软件开发历程',
+			},
 		],
 	},
 	// #endregion

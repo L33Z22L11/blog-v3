@@ -8,6 +8,8 @@ const props = withDefaults(defineProps<{
 	code?: string
 	/** 仅 macOS 默认显示图标 */
 	icon?: boolean
+	/** 默认跟随读者系统 */
+	platform?: 'mac' | 'windows'
 	ctrl?: boolean
 	shift?: boolean
 	alt?: boolean
@@ -25,7 +27,9 @@ const emit = defineEmits<{
 }>()
 
 const mounted = useMounted()
-const isMac = computed(() => mounted.value && /mac ?os/i.test(navigator?.userAgent))
+const isMac = computed(() => props.platform
+	? props.platform === 'mac'
+	: mounted.value && /mac ?os/i.test(navigator?.userAgent))
 const useSymbol = computed(() => isMac.value ? props.icon !== false : props.icon)
 const keyJoiner = computed(() => useSymbol.value ? '' : '+')
 
