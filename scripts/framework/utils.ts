@@ -1,112 +1,159 @@
-import type { FeedEntry, FeedGroup } from '../../app/types/feed'
+import type { FeedEntry } from '../../app/types/feed'
 import { Console } from 'node:console'
 import http from 'node:http'
 import https from 'node:https'
 import { Writable } from 'node:stream'
 import tls from 'node:tls'
-import stripAnsi from 'strip-ansi'
+import { stripVTControlCharacters } from 'node:util'
 import feeds from '../../app/feeds'
 
-export const entries = flattenFeedGroups(feeds)
+export const entries = feeds.flatMap(group => group.entries)
 
-function flattenFeedGroups(groups: FeedGroup[]): FeedEntry[] {
-	return groups.flatMap(g => g.entries)
-}
+type LinkEntry = Pick<FeedEntry, 'link'> & Partial<Pick<FeedEntry, 'title' | 'sitenick' | 'author' | 'archs'>>
 
-export function displayName(e: FeedEntry): string {
-	return (e.title?.trim() || e.sitenick?.trim() || e.author?.trim() || '(无标题)')!
+export function displayName(e: LinkEntry): string {
+	return e.title?.trim() || e.sitenick?.trim() || e.author?.trim() || e.link
 }
 
 export interface ServerResp {
 	name: string
 	url: string
+	finalUrl: string
 	code: number
 	time: number
+	method: 'HEAD' | 'GET'
+	redirects: string[]
 	archs: string[]
 	server: string
+	ip: string
 	certDomains: string[]
+	certExpires: string
+	certDaysLeft: number | null
 	ipCertDomains: string[]
+	ipCertError: string
 	error: string
 }
 
-export async function getLinkInfo(e: FeedEntry): Promise<ServerResp> {
-	const basicResp: ServerResp = {
-		name: displayName(e),
-		url: e.link,
-		code: -1,
-		time: -1,
-		archs: e.archs ?? [],
-		server: '',
-		certDomains: [],
-		ipCertDomains: [],
-		error: '',
-	}
+function certDomains(cert: tls.PeerCertificate): string[] {
+	const domains = cert.subjectaltname?.split(', ').filter(name => name.startsWith('DNS:')).map(name => name.slice(4)) ?? []
+	return domains.length ? domains : [cert.subject?.CN].flat().filter(name => name !== undefined)
+}
 
-	const start = Date.now()
-	const url = new URL(e.link)
-	const lib = url.protocol === 'https:' ? https : http
-
-	return new Promise<ServerResp>((resolve) => {
-		const req = lib.request(url, { method: 'HEAD', timeout: 5000 })
-
-		req.on('response', async (res) => {
-			const code = res.statusCode as number
-			const server = res.headers.server as string
-			const rawIp = res.socket.remoteAddress as string
-			const ipHost = rawIp?.includes(':') ? `[${rawIp}]` : rawIp
-			// const ip = `${url.protocol}//${ipHost}`
-			const time = Date.now() - start
-			res.resume()
-			if (url.protocol === 'https:') {
-				const certDomains = await getCertDomains({ host: url.hostname, servername: url.hostname })
-				const ipCertDomains = await getCertDomains({ host: ipHost, rejectUnauthorized: false })
-				resolve({ ...basicResp, code, time, server, certDomains, ipCertDomains })
-			}
-			else {
-				resolve({ ...basicResp, code, time, server })
-			}
+/** 收到响应头即停止读取；GET 回退也不下载整页或无限响应体。 */
+function readHeaders(url: URL, method: 'HEAD' | 'GET', signal: AbortSignal) {
+	if (!['http:', 'https:'].includes(url.protocol))
+		throw new Error(`不支持的协议: ${url.protocol}`)
+	return new Promise<{
+		code: number
+		headers: http.IncomingHttpHeaders
+		ip: string
+		cert?: tls.PeerCertificate
+	}>((resolve, reject) => {
+		const req = (url.protocol === 'https:' ? https : http).request(url, { method, signal, agent: false }, (res) => {
+			resolve({
+				code: res.statusCode ?? -1,
+				headers: res.headers,
+				ip: res.socket.remoteAddress ?? '',
+				cert: res.socket instanceof tls.TLSSocket ? res.socket.getPeerCertificate() : undefined,
+			})
+			res.destroy()
 		})
-
-		req.on('timeout', () => req.destroy() && resolve({ ...basicResp, error: '请求超时' }))
-		req.on('error', err => resolve({ ...basicResp, error: err.message }))
+		req.once('error', reject)
 		req.end()
 	})
 }
 
-const sanRegex = /^DNS:$/
-
-export async function getCertDomains(options: tls.ConnectionOptions): Promise<string[]> {
-	options = { port: 443, timeout: 5000, ...options }
-	return new Promise((resolve) => {
+/** 仅查看同一 IP、同一端口在无 SNI 时返回的默认证书，不代表站点真实托管商。 */
+function getIpCertDomains(host: string, port: number, signal: AbortSignal): Promise<string[]> {
+	return new Promise((resolve, reject) => {
+		const options = { host, port, signal, rejectUnauthorized: false }
 		const socket = tls.connect(options, () => {
-			const cert = socket.getPeerCertificate(true)
-			const san: string[] = cert.subjectaltname
-				?.split(', ')
-				.map(s => s.replace(sanRegex, '')) ?? []
-			const domains = san.length ? san : [cert.subject.CN] as string[]
-			resolve(domains)
-			socket.end()
+			resolve(certDomains(socket.getPeerCertificate()))
+			socket.destroy()
 		})
-		socket.on('error', () => resolve([]))
+		socket.once('error', reject)
 	})
 }
 
-export function toCsv(data: any[], columns: string[]) {
-	const lines: string[] = []
-	lines.push(columns.join(','))
-	for (const row of data) {
-		const vals = columns.map((col) => {
-			const v = row[col]
-			if (Array.isArray(v))
-				return v.join('; ').replaceAll('"', '""')
-			return v
-		})
-		lines.push(vals.join(','))
+export async function getLinkInfo(e: LinkEntry, { timeout = 10000, maxRedirects = 5 } = {}): Promise<ServerResp> {
+	const result: ServerResp = {
+		name: displayName(e),
+		url: e.link,
+		finalUrl: e.link,
+		code: -1,
+		time: -1,
+		method: 'HEAD',
+		redirects: [],
+		archs: e.archs ?? [],
+		server: '',
+		ip: '',
+		certDomains: [],
+		certExpires: '',
+		certDaysLeft: null,
+		ipCertDomains: [],
+		ipCertError: '',
+		error: '',
 	}
-	return lines.join('\n')
+	const start = Date.now()
+	try {
+		const signal = AbortSignal.timeout(timeout)
+		let url = new URL(e.link)
+		const visited = new Set([url.href])
+		while (true) {
+			result.finalUrl = url.href
+			let response = await readHeaders(url, 'HEAD', signal)
+			result.method = 'HEAD'
+			if ([405, 501].includes(response.code)) {
+				result.method = 'GET'
+				response = await readHeaders(url, 'GET', signal)
+			}
+			result.code = response.code
+			result.server = String(response.headers.server ?? '')
+			result.ip = response.ip
+			if ([301, 302, 303, 307, 308].includes(response.code) && response.headers.location) {
+				const next = new URL(response.headers.location, url)
+				if (visited.has(next.href))
+					throw new Error('重定向循环')
+				if (result.redirects.length >= maxRedirects)
+					throw new Error(`重定向超过 ${maxRedirects} 次`)
+				visited.add(next.href)
+				result.redirects.push(next.href)
+				url = next
+				continue
+			}
+			result.time = Date.now() - start
+			if (response.cert) {
+				result.certDomains = certDomains(response.cert)
+				const expires = Date.parse(response.cert.valid_to)
+				if (Number.isFinite(expires)) {
+					result.certExpires = new Date(expires).toISOString()
+					result.certDaysLeft = Math.ceil((expires - Date.now()) / 86400000)
+				}
+				if (response.ip) {
+					try {
+						result.ipCertDomains = await getIpCertDomains(response.ip, Number(url.port || 443), signal)
+					}
+					catch (error) {
+						result.ipCertError = signal.aborted ? 'IP 证书检测超时' : (error as Error).message
+					}
+				}
+			}
+			break
+		}
+	}
+	catch (error) {
+		result.time = Date.now() - start
+		result.error = (error as Error).name === 'AbortError' ? '请求超时' : (error as Error).message
+	}
+	return result
 }
 
-export function tableToString(data: any[], columns?: string[]) {
+export function toCsv<T extends object>(data: T[], columns: (keyof T & string)[]) {
+	const quote = (value: unknown) => `"${String(Array.isArray(value) ? value.join('; ') : value ?? '').replaceAll('"', '""')}"`
+	return [columns.map(quote).join(','), ...data.map(row => columns.map(key => quote(row[key])).join(','))].join('\n')
+}
+
+export function tableToString(data: object[], columns?: string[]) {
 	let output = ''
 	new Console(new Writable({
 		write(chunk, encoding, callback) {
@@ -114,5 +161,5 @@ export function tableToString(data: any[], columns?: string[]) {
 			callback()
 		},
 	})).table(data, columns)
-	return stripAnsi(output)
+	return stripVTControlCharacters(output)
 }
