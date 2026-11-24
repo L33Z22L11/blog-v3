@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:atom="http://www.w3.org/2005/Atom">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:xhtml="http://www.w3.org/1999/xhtml" exclude-result-prefixes="atom xhtml">
 	<xsl:output method="html" indent="yes" />
 
 	<xsl:template match="/">
@@ -54,8 +54,7 @@
 
 	<xsl:template match="atom:entry">
 		<a href="#{atom:id}" class="entry">
-			<xsl:variable name="img-src"
-				select="substring-before(substring-after(substring-after(atom:content, '&lt;img'), 'src=&quot;'), '&quot;')" />
+			<xsl:variable name="img-src" select="atom:content/xhtml:div/xhtml:img/@src" />
 			<xsl:if test="$img-src">
 				<img class="entry-image" src="{$img-src}" alt="{atom:title}" loading="lazy" />
 			</xsl:if>
@@ -101,10 +100,17 @@
 					<figcaption>
 						<xsl:value-of select="atom:title" />
 					</figcaption>
-					<xsl:value-of select="atom:content" disable-output-escaping="yes" />
+					<xsl:apply-templates select="atom:content/xhtml:div/node()" mode="xhtml" />
 				</figure>
 			</section>
 		</xsl:if>
+	</xsl:template>
+
+	<xsl:template match="xhtml:*" mode="xhtml">
+		<xsl:element name="{local-name()}">
+			<xsl:copy-of select="@*" />
+			<xsl:apply-templates select="node()" mode="xhtml" />
+		</xsl:element>
 	</xsl:template>
 
 </xsl:stylesheet>
