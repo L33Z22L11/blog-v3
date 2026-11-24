@@ -4,6 +4,7 @@ import { pathToFileURL } from 'node:url'
 import { name as ciName, CLOUDFLARE_PAGES, GITHUB_ACTIONS, NETLIFY } from 'ci-info'
 import { mapValues } from 'es-toolkit/object'
 import { pascalCase } from 'es-toolkit/string'
+import { Features } from 'lightningcss'
 import { Temporal } from 'temporal-polyfill'
 import blogConfig from './blog.config'
 import packageJson from './package.json'
@@ -113,13 +114,13 @@ export default defineNuxtConfig({
 		},
 	},
 
-	postcss: {
-		plugins: {
-			'postcss-nesting': {},
-		},
-	},
-
 	vite: {
+		css: {
+			transformer: 'lightningcss',
+			lightningcss: {
+				include: Features.Nesting,
+			},
+		},
 		define: {
 			/** 在生产环境启用 Vue DevTools */
 			// __VUE_PROD_DEVTOOLS__: 'true',
@@ -128,7 +129,7 @@ export default defineNuxtConfig({
 		},
 		optimizeDeps: {
 			// @keep-sorted
-			include: ['@shikijs/colorized-brackets', '@shikijs/transformers', '@unhead/schema-org/vue', '@vue/devtools-core', '@vue/devtools-kit', 'embla-carousel-autoplay', 'embla-carousel-vue', 'embla-carousel-wheel-gestures', 'es-toolkit/array', 'es-toolkit/math', 'es-toolkit/object', 'es-toolkit/promise', 'es-toolkit/string', 'minisearch', 'parse-domain', 'plain-shiki', 'shiki/themes/catppuccin-latte.mjs', 'shiki/themes/one-dark-pro.mjs', 'temporal-polyfill', 'vue-tippy'],
+			include: ['@shikijs/colorized-brackets', '@shikijs/transformers', '@unhead/schema-org/vue', '@vue/devtools-core', '@vue/devtools-kit', 'embla-carousel-autoplay', 'embla-carousel-vue', 'embla-carousel-wheel-gestures', 'es-toolkit/array', 'es-toolkit/function', 'es-toolkit/math', 'es-toolkit/object', 'es-toolkit/promise', 'es-toolkit/string', 'minisearch', 'parse-domain', 'plain-shiki', 'shiki/themes/catppuccin-latte.mjs', 'shiki/themes/one-dark-pro.mjs', 'temporal-polyfill', 'vue-tippy'],
 		},
 		server: {
 			allowedHosts: true,
@@ -137,6 +138,7 @@ export default defineNuxtConfig({
 
 	// @keep-sorted
 	modules: [
+		'./modules/icon-cache', // 先于 @nuxt/icon 注册
 		'@bikariya/image-viewer',
 		'@bikariya/modals',
 		'@bikariya/shiki',
@@ -217,8 +219,9 @@ ${packageJson.homepage}
 			{ prefix: 'zi', dir: './app/assets/icons' },
 		],
 		clientBundle: {
+			includeCustomCollections: true,
 			scan: {
-				globInclude: ['**\/*.{vue,jsx,tsx,ts,md,mdc,mdx}'],
+				globInclude: ['app/**/*.{vue,jsx,tsx,ts}', 'shared/**/*.ts', 'content/**/*.{md,mdc,mdx,yml,yaml}', 'blog.config.ts'],
 			},
 		},
 	},

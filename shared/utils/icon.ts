@@ -58,7 +58,7 @@ export const ciIcons: Record<string, string> = {
 
 /** 主域名图标映射 */
 // @keep-sorted
-const mainDomainIcons: Record<string, string> = {
+export const mainDomainIcons: Record<string, string> = {
 	'bilibili.com': 'ri:bilibili-fill',
 	'creativecommons.org': 'ri:creative-commons-line',
 	'feishu.cn': 'icon-park-outline:new-lark',
@@ -87,14 +87,6 @@ export const domainIcons: Record<string, string> = {
 	'developer.mozilla.org': 'simple-icons:mdnwebdocs',
 	'h5.qzone.qq.com': 'simple-icons:qzone',
 	'mp.weixin.qq.com': 'ri:wechat-fill',
-}
-
-export function getDomainIcon(url: string) {
-	const domain = getDomain(url)
-	const mainDomain = getMainDomain(url, true)
-	if (domain in domainIcons)
-		return domainIcons[domain]
-	return mainDomainIcons[mainDomain]
 }
 
 /** 文件名后缀图标映射，优先级高于代码块语言图标映射 */
