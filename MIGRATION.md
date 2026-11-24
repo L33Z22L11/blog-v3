@@ -7,17 +7,25 @@
 | 旧配置或用法 | 本次变化 |
 | --- | --- |
 | `app/assets/css/*.scss` | 六个全局样式入口改为同名 `.css`，`nuxt.config.ts` 的 `css` 路径同步更新 |
-| `<style lang="scss" scoped>` | 上游组件改为 `<style scoped>`，通过 `postcss-nesting` 转换 CSS 嵌套 |
+| `<style lang="scss" scoped>` | 上游组件改为 `<style scoped>`，通过 Lightning CSS 转换 CSS 嵌套 |
 | `sass-embedded` | 不再默认安装；下游保留 SCSS 时需要自行添加 |
 | `_variable.scss` 和 `additionalData` | 删除全局 Sass 变量注入；断点改为 528px、768px、1080px |
 | Stylelint 和 `stylelint.config.mjs` | 移除；`pnpm lint` / `pnpm lint:fix` 统一调用 ESLint |
 | 侧栏、页脚和文章动画 | 布局结构及过渡标记有调整，定制这些组件时需要逐段合并并检查效果 |
 
-这是项目默认样式工具链的调整，Nuxt 的 Sass 扩展能力没有被移除。原生 CSS 嵌套由构建工具转换，但这不代表其他 CSS 特性都被降级处理。
+这是项目默认样式工具链的调整，Nuxt 的 Sass 扩展能力没有被移除。Vite 的 CSS 转换器使用 Lightning CSS，并通过 `include: Features.Nesting` 在开发和生产环境中展开原生 CSS 嵌套；其他 CSS 特性是否转换由目标浏览器和对应配置决定。
+
+翻页按钮改为使用 `solar:rewind-back-bold-duotone` 和 `solar:rewind-forward-bold-duotone`，通过 `app/assets/icons/solar.json` 导入 `nuxt.config.ts` 的 `icon.customCollections`（配合 `includeCustomCollections: true`）直接打包，不再维护对应的本地 SVG。
+
+`prepare` 保留 `nuxt prepare`，不再自动清缓存；旧缓存异常时手动执行 `pnpm clean:cache`。
+
+依赖升级脚本排除 TypeScript，catalog 固定为 `6.0.3`。
 
 `remark-demo` 在构建期解析 `demo` 代码块，Demo 组件通过插槽展示预览、通过 `raw` 展示源码，继续复用 ContentRenderer 的 Prose 和 MDC 组件映射，无运行时 Markdown 解析。使用 `demo wrap expand` 配置源码块；示例内含代码围栏时，外层使用更多反引号。Demo 在解析阶段展开，随后统一执行 MDC 属性绑定、图表转换及公式渲染。
 
 KaTeX 保持全局 CSS 和构建期公式渲染，仅将 CSS 升级到 `0.16.47`，与构建引擎版本一致。Twikoo 保持原有全局 `defer` 加载方式和 `1.7.20` 版本。
+
+图片传入 `height` 时，通过 `ensurePx` 输出最大高度，文章中的 `img[height]` 使用自动宽度；同时传入 `width` 和 `height` 时额外输出 `max-width: min(100%, ...)`，在保留全局 `height: auto` 和 `max-width: 100%` 的前提下同时约束宽高且不变形，窄屏下继续等比缩小。设置高度后以尺寸上限为准，不强制放大图片；示例说明同步更新。
 
 ## 下游如何合并
 
@@ -44,7 +52,7 @@ $breakpoints: (
 );
 ```
 
-在现有 `nuxt.config.ts` 的 `vite` 对象中合并以下配置，保留上游的 PostCSS 配置及其他 Vite 配置：
+在现有 `nuxt.config.ts` 的 `vite` 对象中合并以下配置，保留上游的 Lightning CSS 配置及其他 Vite 配置：
 
 ```ts
 export default defineNuxtConfig({

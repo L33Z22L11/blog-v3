@@ -12,7 +12,7 @@ const showUndo = ref(false)
 const popoverBind = ref<TippyComponent['$props']>({})
 
 /** 评论区链接守卫 */
-useEventListener(commentEl, 'click', (e) => {
+useEventListener(commentEl, 'click', async (e) => {
 	if (!(e.target instanceof Element))
 		return
 
@@ -26,13 +26,15 @@ useEventListener(commentEl, 'click', (e) => {
 	e.preventDefault()
 	popoverEl.value?.hide()
 
-	popoverJumpTo.value = safelyDecodeUriComponent(popoverTarget.href)
+	const rectIndex = [...popoverTarget.getClientRects()].findIndex(r => e.clientY >= r.top && e.clientY <= r.bottom)
+	popoverJumpTo.value = popoverTarget.href
 	popoverBind.value = {
-		getReferenceClientRect: () => popoverTarget.getBoundingClientRect(),
+		getReferenceClientRect: () => popoverTarget.getClientRects()[rectIndex] ?? popoverTarget.getBoundingClientRect(),
 		triggerTarget: popoverTarget,
 	}
 
-	nextTick(checkUndoable)
+	await nextTick()
+	checkUndoable()
 	popoverEl.value?.show()
 }, { capture: true })
 
@@ -48,7 +50,7 @@ function undo() {
 }
 
 function confirmOpen() {
-	window.open(popoverInputEl.value?.textContent, '_blank')
+	window.open(popoverInputEl.value?.textContent, '_blank', 'noopener')
 }
 
 onMounted(() => {
