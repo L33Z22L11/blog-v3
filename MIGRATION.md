@@ -15,9 +15,9 @@
 
 这是项目默认样式工具链的调整，Nuxt 的 Sass 扩展能力没有被移除。Vite 的 CSS 转换器使用 Lightning CSS，并通过 `include: Features.Nesting` 在开发和生产环境中展开原生 CSS 嵌套；其他 CSS 特性是否转换由目标浏览器和对应配置决定。
 
-翻页按钮直接使用 `solar:rewind-back-bold-duotone` 和 `solar:rewind-forward-bold-duotone`，不再维护对应的本地 SVG。`modules/icon-cache.ts` 在启动或构建时自动扫描源码和文章中明确写成 `prefix:name` 的图标，优先使用已安装的图标集合，只从 Iconify API 下载缺少的单个图标。数据缓存到 `node_modules/.cache/clarity-icon/collections.json`，随 Vercel、Netlify 的依赖目录缓存复用，由手动执行的 `clean:cache` 一并清理。缓存保留作者和许可证信息，无需手工维护 JSON 或新增整套图标库。首次构建或使用新图标时需要联网；元数据与图标并行下载，同集合新增图标时复用已有元数据；缓存损坏、下载失败、写盘失败或预缓存工具 API 不兼容时，模块仅输出警告并退回 Nuxt Icon 默认加载方式，已有可用缓存仍会优先使用。开发服务运行期间新增图标仍可远端加载，重启后会自动缓存。动态拼接的图标名需在 `icon.clientBundle.icons` 中显式列出；显式配置的图标仍受 Nuxt Icon 自身的构建校验约束。
+翻页按钮改为使用 `solar:rewind-back-bold-duotone` 和 `solar:rewind-forward-bold-duotone`，通过 `nuxt.config.ts` 中 `icon.customCollections` 内联 Iconify JSON（配合 `includeCustomCollections: true`）直接打包，不再维护对应的本地 SVG。
 
-`prepare` 保留 `nuxt prepare`，不再自动清缓存；图标预缓存跳过类型准备阶段，安装时无需为图标访问网络。旧缓存异常时手动执行 `pnpm clean:cache`。
+`prepare` 保留 `nuxt prepare`，不再自动清缓存；旧缓存异常时手动执行 `pnpm clean:cache`。
 
 依赖升级脚本排除 TypeScript，catalog 固定为 `6.0.3`。
 
