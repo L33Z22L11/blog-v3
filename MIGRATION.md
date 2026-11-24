@@ -15,7 +15,7 @@
 
 这是项目默认样式工具链的调整，Nuxt 的 Sass 扩展能力没有被移除。Vite 的 CSS 转换器使用 Lightning CSS，并通过 `include: Features.Nesting` 在开发和生产环境中展开原生 CSS 嵌套；其他 CSS 特性是否转换由目标浏览器和对应配置决定。
 
-翻页按钮改为使用 `solar:rewind-back-bold-duotone` 和 `solar:rewind-forward-bold-duotone`，通过 `nuxt.config.ts` 中 `icon.customCollections` 内联 Iconify JSON（配合 `includeCustomCollections: true`）直接打包，不再维护对应的本地 SVG。
+翻页按钮改为使用 `solar:rewind-back-bold-duotone` 和 `solar:rewind-forward-bold-duotone`，通过 `app/assets/icons/solar.json` 导入 `nuxt.config.ts` 的 `icon.customCollections`（配合 `includeCustomCollections: true`）直接打包，不再维护对应的本地 SVG。
 
 `prepare` 保留 `nuxt prepare`，不再自动清缓存；旧缓存异常时手动执行 `pnpm clean:cache`。
 
@@ -25,7 +25,7 @@
 
 KaTeX 保持全局 CSS 和构建期公式渲染，仅将 CSS 升级到 `0.16.47`，与构建引擎版本一致。Twikoo 保持原有全局 `defer` 加载方式和 `1.7.20` 版本。
 
-图片传入 `height` 时，通过 `ensurePx` 输出最大高度，文章中的 `img[height]` 使用自动宽度；保留全局 `height: auto` 和 `max-width: 100%`，在窄屏下继续等比缩小。设置高度后以高度上限为准，不强制放大图片；示例说明同步更新。
+图片传入 `height` 时，通过 `ensurePx` 输出最大高度，文章中的 `img[height]` 使用自动宽度；同时传入 `width` 和 `height` 时额外输出 `max-width: min(100%, ...)`，在保留全局 `height: auto` 和 `max-width: 100%` 的前提下同时约束宽高且不变形，窄屏下继续等比缩小。设置高度后以尺寸上限为准，不强制放大图片；示例说明同步更新。
 
 ## 下游如何合并
 

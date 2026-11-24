@@ -6,6 +6,7 @@ import { mapValues } from 'es-toolkit/object'
 import { pascalCase } from 'es-toolkit/string'
 import { Features } from 'lightningcss'
 import { Temporal } from 'temporal-polyfill'
+import solarIcons from './app/assets/icons/solar.json'
 import blogConfig from './blog.config'
 import packageJson from './package.json'
 import redirectList from './redirects.json'
@@ -216,20 +217,7 @@ ${packageJson.homepage}
 	icon: {
 		customCollections: [
 			{ prefix: 'zi', dir: './app/assets/icons' },
-			{
-				// Solar Icons (CC BY 4.0)
-				prefix: 'solar',
-				width: 24,
-				height: 24,
-				icons: {
-					'rewind-back-bold-duotone': {
-						body: '<path fill="currentColor" fill-rule="evenodd" d="M22 6.426v11.148c0 1.847-1.6 3.015-2.903 2.118L13 15.232V8.768l6.097-4.46C20.399 3.411 22 4.58 22 6.426" clip-rule="evenodd" opacity=".5"/><path fill="currentColor" d="M13 7.123v9.754c0 1.616-1.467 2.638-2.661 1.853L2.92 13.853c-1.228-.807-1.228-2.899 0-3.706l7.42-4.877c1.193-.785 2.66.237 2.66 1.853"/>',
-					},
-					'rewind-forward-bold-duotone': {
-						body: '<path fill="currentColor" fill-rule="evenodd" d="M2 6.426v11.148c0 1.847 1.6 3.015 2.903 2.118L11 15.232V8.768l-6.097-4.46C3.601 3.411 2 4.58 2 6.426" clip-rule="evenodd" opacity=".5"/><path fill="currentColor" d="M11 7.123v9.754c0 1.616 1.467 2.638 2.661 1.853l7.418-4.877c1.228-.807 1.228-2.899 0-3.706L13.66 5.27C12.467 4.485 11 5.507 11 7.123"/>',
-					},
-				},
-			},
+			solarIcons,
 		],
 		clientBundle: {
 			includeCustomCollections: true,
