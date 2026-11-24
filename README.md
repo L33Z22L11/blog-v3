@@ -206,12 +206,12 @@ pnpm preview
 ### 检测友链状态
 
 ```sh
-pnpm check:feed # 交互搜索友链
-pnpm check:feed example.com # 直接检测域名或完整 URL，可加 --json
-pnpm check:feed/all # 批量检测并生成报告，可加 --concurrency 20
+pnpm check:feed # 交互搜索友链（默认探测标题/生成器与订阅源）
+pnpm check:feed example.com # 直接检测域名或完整 URL，支持 --fast / --json
+pnpm check:feed/all # 批量检测全部友链并输出汇总，支持 --concurrency 20 / --inspect / --with-feed / --json / --strict
 ```
 
-检测可访问性、跳转和证书有效期，批量报告保存到 `logs`。托管商信息仅供参考。
+检测可访问性、跳转、证书有效期、CNAME 与框架/托管推断，批量报告保存到 `logs`。托管商信息仅供参考。
 
 ## 贡献
 

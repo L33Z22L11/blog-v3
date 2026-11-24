@@ -1,18 +1,20 @@
 #!/usr/bin/env node
 
-import { isIP } from 'node:net'
 import process from 'node:process'
 import { parseArgs } from 'node:util'
 import { cancel, intro, isCancel, outro, select, text } from '@clack/prompts'
-import { mapValues } from 'es-toolkit/object'
-import { displayName, entries, getLinkInfo } from './utils'
+import { displayName, entries, getLinkInfo, resolveFeedQuery } from './utils'
 
 const { values, positionals } = parseArgs({
 	allowPositionals: true,
-	options: { json: { type: 'boolean' }, help: { type: 'boolean', short: 'h' } },
+	options: {
+		json: { type: 'boolean' },
+		fast: { type: 'boolean' },
+		help: { type: 'boolean', short: 'h' },
+	},
 })
 if (values.help) {
-	console.log('用法: pnpm check:feed [URL / 域名 / 关键字] [--json]\n不传参数时交互选择；--json 输出检测结果，适合脚本调用。')
+	console.log('用法: pnpm check:feed [URL / 域名 / 关键字] [--fast] [--json]\n不传参数时交互选择；默认探测 HTML 标题/生成器与订阅源，--fast 仅做轻量探测，--json 输出完整结果。')
 	process.exit(0)
 }
 if (positionals.length > 1) {
@@ -38,15 +40,8 @@ if (query === undefined) {
 	}
 	query = answer
 }
-query = query.trim()
 
-// 完整 URL 和域名直接检测，其余输入用于搜索友链。
-const target = URL.parse(query.includes('://') ? query : `https://${query}`)
-const hostname = target?.hostname.replace(/^\[|\]$/g, '') ?? ''
-const isAddress = target && (query.includes('://') || hostname.includes('.') || hostname === 'localhost' || isIP(hostname))
-const filtered = isAddress
-	? [entries.find(e => e.link === target.href) ?? { link: target.href }]
-	: entries.filter(e => Object.values(e).join('\n').toLowerCase().includes(query.toLowerCase()))
+const { matches: filtered } = resolveFeedQuery(query, entries)
 
 if (!filtered.length) {
 	console.error('未找到匹配的友链。')
@@ -69,12 +64,51 @@ if (filtered.length > 1) {
 	choice = filtered[selected]!
 }
 
-const info = await getLinkInfo(choice)
+const info = await getLinkInfo(choice, {
+	inspectHtml: !values.fast,
+	checkFeed: !values.fast,
+})
 if (values.json) {
 	console.log(JSON.stringify(info, null, 2))
 }
 else {
-	console.table(mapValues(info, value => ({ 值: value })))
+	const optionalEmptyKeys = new Set([
+		'title',
+		'generator',
+		'ipCertError',
+		'feedContentType',
+		'feedError',
+		'knownError',
+		'error',
+	])
+	const optionalEmptyArrayKeys = new Set(['redirects', 'cname', 'ipCertDomains'])
+	const rows: Record<string, { 值: string | number | boolean }> = {}
+
+	for (const [key, value] of Object.entries(info)) {
+		if (key === 'feedCode' && value === null && !choice.feed)
+			continue
+		if ((key === 'feedContentType' || key === 'feedError') && !choice.feed && !value)
+			continue
+		if (optionalEmptyKeys.has(key) && !value)
+			continue
+		if (Array.isArray(value)) {
+			if (!value.length && optionalEmptyArrayKeys.has(key))
+				continue
+			rows[key] = { 值: value.join(', ') }
+			continue
+		}
+		if (value && typeof value === 'object') {
+			const formatted = Object.entries(value as Record<string, string>)
+				.map(([k, v]) => `${k}: ${v}`)
+				.join(' | ')
+			if (formatted)
+				rows[key] = { 值: formatted }
+			continue
+		}
+		rows[key] = { 值: value ?? '' }
+	}
+
+	console.table(rows)
 	outro('检测完成')
 }
 if (info.error || info.code >= 400)
