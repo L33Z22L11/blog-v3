@@ -1,3 +1,6 @@
+@namespace atom url("http://www.w3.org/2005/Atom");
+@namespace xhtml url("http://www.w3.org/1999/xhtml");
+
 :root {
 	--xsl-bg-1: #F3F7F9;
 	--xsl-bg-alt: #FFF;
@@ -271,4 +274,202 @@ footer {
 	font-size: 0.8em;
 	text-align: center;
 	color: var(--xsl-text-2);
+}
+
+/* Raw XML fallback (for browsers without XSLT) */
+
+atom|feed > :is(atom|id, atom|updated, atom|author, atom|link, atom|language, atom|icon, atom|logo),
+atom|entry > :is(atom|id, atom|author, atom|link) {
+	display: none;
+}
+
+atom|feed {
+	display: flex;
+	flex-direction: column;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+atom|feed > atom|title {
+	display: block;
+	order: 1;
+	margin-top: 0.5em;
+	font-family: AlimamaFangYuanTi, sans-serif;
+	font-variation-settings: "wght" 600, "BEVL" 100;
+	font-size: clamp(1.2em, 6vw, 1.8em);
+	font-weight: bold;
+	line-height: 1.4;
+}
+
+atom|feed > atom|subtitle {
+	display: block;
+	order: 2;
+	margin-bottom: 0.5em;
+	font-size: clamp(0.8em, 4vw, 1.2em);
+	line-height: 1.4;
+	color: var(--xsl-text-2);
+}
+
+atom|feed > atom|description {
+	display: block;
+	order: 3;
+	margin: 1em 0;
+	padding: 0 0.8em;
+	border-inline-start: 0.2em solid var(--xsl-text-3);
+}
+
+atom|feed > atom|description::before {
+	content: "本页面是 Atom 订阅源，可直接被订阅。";
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+atom|entry {
+	contain: paint;
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	column-gap: 0.6em;
+	row-gap: 0.5em;
+	order: 4;
+	margin: 0.5em 0;
+	padding: 1em;
+	border-radius: 0.8em;
+	box-shadow: var(--xsl-shadow-1);
+	background-color: var(--xsl-bg-alt);
+	transition: all 0.2s;
+}
+
+atom|entry:hover {
+	box-shadow: var(--xsl-shadow-2);
+	transform: translateY(-0.1em);
+}
+
+atom|entry:hover xhtml|img {
+	opacity: 1;
+}
+
+atom|entry:has(xhtml|img) {
+	padding-inline-end: min(320px, 42%);
+}
+
+atom|entry > :is(atom|title, atom|summary, atom|published, atom|updated, atom|category) {
+	position: relative;
+	z-index: 1;
+}
+
+atom|entry > atom|title {
+	order: 1;
+	flex: 1 0 100%;
+	font-size: 1.2em;
+	font-weight: bold;
+	color: var(--xsl-text-1);
+}
+
+atom|entry > atom|summary {
+	order: 2;
+	flex: 1 0 100%;
+	font-size: 0.9em;
+	color: var(--xsl-text-2);
+}
+
+atom|entry > atom|summary:empty {
+	display: none;
+}
+
+atom|entry > :is(atom|published, atom|updated, atom|category) {
+	order: 3;
+	font-size: 0.9em;
+	color: var(--xsl-text-2);
+}
+
+atom|entry > atom|published::before {
+	content: "发布于 ";
+}
+
+atom|entry > atom|updated::before {
+	content: "· 更新于 ";
+}
+
+atom|entry > atom|category::before {
+	content: "· " attr(term);
+}
+
+atom|entry > atom|content,
+atom|entry > atom|content > xhtml|div {
+	display: contents;
+}
+
+atom|entry > atom|content xhtml|p {
+	display: none;
+}
+
+atom|entry > atom|content xhtml|img {
+	position: absolute;
+	opacity: 0.8;
+	top: 0;
+	right: 0;
+	width: min(320px, 50%);
+	height: 100%;
+	margin: 0;
+	mask-image: linear-gradient(to right, transparent, #FFF 50%);
+	transition: opacity 0.2s;
+	object-fit: cover;
+}
+
+atom|content xhtml|a.view-full {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	padding: 0;
+	border-radius: inherit;
+	background-color: transparent;
+	font-size: 0;
+	color: transparent;
+	transform: none;
+}
+
+@media (max-width: 600px) {
+	atom|entry:has(xhtml|img) {
+		padding-inline-end: 1em;
+	}
+
+	atom|entry > atom|content xhtml|img {
+		order: -1;
+		position: revert;
+		flex: 1 0 calc(100% + 2em);
+		width: calc(100% + 2em);
+		max-width: none;
+		height: auto;
+		max-height: 256px;
+		aspect-ratio: 2.4;
+		margin: -1em -1em -10%;
+		mask-image: linear-gradient(#FFF 50%, transparent);
+	}
+}
+
+atom|feed > :is(atom|rights, atom|generator) {
+	display: block;
+	font-size: 0.8em;
+	text-align: center;
+	color: var(--xsl-text-2);
+}
+
+atom|feed > atom|rights {
+	order: 100;
+	margin-top: 2em;
+}
+
+atom|feed > atom|generator {
+	order: 101;
+}
+
+atom|feed > atom|generator::before {
+	content: "由 ";
+}
+
+atom|feed > atom|generator::after {
+	content: " 生成";
 }

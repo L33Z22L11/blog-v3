@@ -10,9 +10,9 @@ const runtimeConfig = useRuntimeConfig()
 
 const builder = new XmlBuilder({
 	attributeNamePrefix: '$',
-	cdataPropName: '$',
 	format: true,
 	ignoreAttributes: false,
+	suppressEmptyNode: true,
 	textNodeName: '_',
 })
 
@@ -33,11 +33,17 @@ function getUrl(path: string | undefined) {
 }
 
 function renderContent(post: ContentCollectionItem) {
-	return [
-		post.image && `<img src="${post.image}" alt="${post.title}" />`,
-		post.description && `<p>${post.description}</p>`,
-		`<a class="view-full" href="${getUrl(post.path)}" target="_blank">点击查看全文</a>`,
-	].join(' ')
+	return {
+		$xmlns: 'http://www.w3.org/1999/xhtml',
+		img: post.image ? { $src: post.image, $alt: post.title, $loading: 'lazy' } : undefined,
+		p: post.description || undefined,
+		a: {
+			$class: 'view-full',
+			$href: getUrl(post.path),
+			$target: '_blank',
+			_: '点击查看全文',
+		},
+	}
 }
 
 export default defineEventHandler(async (event) => {
@@ -53,12 +59,12 @@ export default defineEventHandler(async (event) => {
 		updated: formatIsoDate(post.updated),
 		author: { name: post.author || blogConfig.author.name },
 		content: {
-			$type: 'html',
-			$: renderContent(post),
+			$type: 'xhtml',
+			div: renderContent(post),
 		},
 		link: { $href: getUrl(post.path) },
-		summary: post.description,
-		category: { $term: post.categories?.[0] },
+		summary: post.description || undefined,
+		category: post.categories?.[0] ? { $term: post.categories[0] } : undefined,
 		published: formatIsoDate(post.published ?? post.date),
 	}))
 
@@ -92,7 +98,12 @@ export default defineEventHandler(async (event) => {
 
 	return builder.build({
 		'?xml': { $version: '1.0', $encoding: 'UTF-8' },
-		'?xml-stylesheet': blogConfig.feed.enableStyle ? { $type: 'text/xsl', $href: '/assets/atom.xsl' } : undefined,
+		'?xml-stylesheet': blogConfig.feed.enableStyle
+			? [
+					{ $type: 'text/xsl', $href: '/assets/atom.xsl' },
+					{ $type: 'text/css', $href: '/assets/atom.css' },
+				]
+			: undefined,
 		feed,
 	})
 })
