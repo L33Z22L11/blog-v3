@@ -1,6 +1,7 @@
 import type { IncomingHttpHeaders } from 'node:http'
 import type { PeerCertificate } from 'node:tls'
 import type { FeedEntry } from '../../app/types/feed'
+import type { Arch } from '../../shared/utils/icon'
 import { Buffer } from 'node:buffer'
 import { Console } from 'node:console'
 import { resolveCname } from 'node:dns/promises'
@@ -34,7 +35,7 @@ export interface ServerResp {
 	method: 'HEAD' | 'GET'
 	redirects: string[]
 	archs: string[]
-	inferredArchs: string[]
+	inferredArchs: Arch[]
 	archMismatch: boolean
 	server: string
 	headers: Record<string, string>
@@ -178,20 +179,16 @@ const HOSTING_ARCHS = new Set([
 ])
 
 const SUSPICIOUS_TITLE_PATTERNS = [
-	/just a moment/i,
-	/attention required/i,
-	/access denied/i,
-	/security check/i,
-	/403 forbidden/i,
-	/404 not found/i,
-	/error 10\d\d/i,
-	/edgeone/i,
-	/域名停放/,
-	/网站暂停/,
-	/站点暂停/,
-	/备案/,
-	/未备案/,
-	/阻断/,
+	/^just a moment/i,
+	/^attention required/i,
+	/^access denied\b/i,
+	/^security check\b/i,
+	/^403 forbidden\b/i,
+	/^404 not found\b/i,
+	/\berror 10\d\d\b/i,
+	/edgeone.*(?:block|denied|error|security|captcha|防护|拦截)/i,
+	/域名停放|网站暂停|站点暂停|网站阻断/,
+	/网站未备案|未备案.*阻断|备案占位/,
 ]
 
 export function displayName(e: LinkEntry): string {
@@ -519,7 +516,7 @@ function formatErrorMessage(error: unknown): string {
 	return String(error)
 }
 
-export function inferArchs(input: ArchInferenceInput): string[] {
+export function inferArchs(input: ArchInferenceInput): Arch[] {
 	const headers = input.headers ?? {}
 	const server = (input.server ?? headers.server ?? '').toLowerCase()
 	const poweredBy = (headers['x-powered-by'] ?? '').toLowerCase()
@@ -528,8 +525,8 @@ export function inferArchs(input: ArchInferenceInput): string[] {
 	const cnames = (input.cname ?? []).map(c => c.toLowerCase())
 	const host = URL.parse(input.finalUrl ?? '')?.hostname.toLowerCase() ?? ''
 
-	const frameworks: string[] = []
-	const hosting: string[] = []
+	const frameworks: Arch[] = []
+	const hosting: Arch[] = []
 
 	// 框架识别
 	if (headers['x-nuxt-render'] || poweredBy.includes('nuxt') || generator.includes('nuxt') || html.includes('/_nuxt/') || html.includes('__nuxt'))

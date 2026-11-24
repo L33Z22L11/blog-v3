@@ -25,7 +25,7 @@
     "new": "unrun scripts/new-blog.ts",
     "check:feed": "unrun scripts/framework/get-feed.ts",
     "check:feed/all": "unrun scripts/framework/check-all-feeds.ts",
-    "test:feed": "unrun scripts/framework/check-feeds.test.ts"
+    "test": "unrun tests/index.ts"
   },
   "dependencies": {
     "@bikariya/image-viewer": "catalog:ui",
