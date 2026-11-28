@@ -60,6 +60,7 @@ const { copy, copied } = useCopy(shareText)
 
 	<h1 class="post-title" :class="getPostTypeClassName(type)">
 		{{ title }}
+		<PostDraft v-if="draft" />
 	</h1>
 </div>
 </template>

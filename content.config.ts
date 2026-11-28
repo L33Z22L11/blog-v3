@@ -1,6 +1,10 @@
 import type { ReadTimeResults } from 'reading-time'
+import { readdirSync, readFileSync } from 'node:fs'
+import { join, relative, resolve } from 'node:path'
+import { env } from 'node:process'
 import { defineCollection } from '@nuxt/content'
 import { defineSitemapSchema } from '@nuxtjs/sitemap/content'
+import { parseFrontMatter } from 'remark-mdc'
 import { z } from 'zod'
 import blogConfig from './blog.config'
 
@@ -21,7 +25,7 @@ export interface ArticleSchema {
 	image?: string
 	recommend?: number
 	references?: { title?: string, link?: string }[]
-	/** TODO */
+	/** 草稿默认不进入生产构建。 */
 	draft?: boolean
 	permalink?: string
 
@@ -55,9 +59,23 @@ const articleSchema = z.object({
 	}),
 }) satisfies z.ZodType<ArticleSchema>
 
+const contentDir = resolve(import.meta.dirname, 'content')
+const excludeDrafts: string[] = []
+if (env.NODE_ENV === 'production' && !env.NUXT_INCLUDE_DRAFTS) {
+	for (const entry of readdirSync(contentDir, { recursive: true, withFileTypes: true })) {
+		if (!entry.isFile() || !entry.name.endsWith('.md'))
+			continue
+		const fullPath = join(entry.parentPath, entry.name)
+		const { data } = parseFrontMatter(readFileSync(fullPath, 'utf8').replace(/^\uFEFF/, ''))
+		// exclude 接受 glob 模式，转义文件名中的通配符。
+		if (data.draft === true)
+			excludeDrafts.push(relative(contentDir, fullPath).replaceAll('\\', '/').replace(/[()[\]{}*?|]|^!|[!+@](?=\()/g, '\\$&'))
+	}
+}
+
 export const collections = {
 	content: defineCollection({
-		source: '**',
+		source: { include: '**', exclude: excludeDrafts },
 		type: 'page',
 		schema: articleSchema.extend({
 			sitemap: defineSitemapSchema({

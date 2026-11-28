@@ -51,11 +51,13 @@ useEventListener(carouselEl, 'wheel', (e) => {
 
 				<div v-if="compConf.showTitle" class="stable-info text-creative">
 					{{ article.title }}
+					<PostDraft v-if="article.draft" />
 				</div>
 
 				<div class="hover-info">
 					<div class="title text-creative">
 						{{ article.title }}
+						<PostDraft v-if="article.draft" />
 					</div>
 					<UtilDate v-if="article.date" class="desc" :date="article.date" />
 				</div>

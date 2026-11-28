@@ -19,6 +19,7 @@ const mainDate = computed(() => props.useUpdated ? props.updated : props.date)
 			<span class="article-title">
 				<Icon v-if="showCategory" :name="getCategoryIcon(categories?.[0])" />
 				{{ title }}
+				<PostDraft v-if="draft" />
 			</span>
 
 			<UtilDate
