@@ -5,7 +5,7 @@ import { randomBytes } from 'node:crypto'
 import fs from 'node:fs'
 import { join, resolve } from 'node:path'
 import process from 'node:process'
-import { intro, log, outro, select, spinner, text } from '@clack/prompts'
+import { intro, isCancel, log, multiselect, outro, select, spinner, text } from '@clack/prompts'
 import { Temporal } from 'temporal-polyfill'
 import blogConfig from '../blog.config'
 
@@ -121,29 +121,24 @@ const tagsInput = normalize(await text({
 const tags = tagsInput?.split(/[\s,，]+/).map(t => t.trim()).filter(Boolean)
 // #endregion
 
-// #region 样式类型
-let type = normalize(await select({
-	message: '选择文章版式',
-	options: [
-		{ value: 'tech', label: '技术 (tech)' },
-		{ value: 'story', label: '故事 (story)' },
-		{ value: 'custom', label: '自定义' },
-	],
-	initialValue: 'tech',
-}))
-if (!type)
-	process.exit(0)
-if (type === 'custom') {
-	const customType = normalize(await text({
-		message: '请输入自定义类型',
-		validate: val => val?.trim() === '' ? '类型不能为空' : undefined,
-	}))
-	if (!customType)
-		process.exit(0)
+const [defaultType = 'tech', ...altTypes] = Object.keys(blogConfig.article.types)
 
-	log.warn('新建分类后，建议在 blog.config.ts 中添加对应配置')
-	type = customType
-}
+// #region 可选字段
+const extras = await multiselect({
+	message: '选择可选 frontmatter 字段（空格多选，直接回车跳过）',
+	options: [
+		{ value: 'draft', label: '草稿 (draft: true)', hint: '生产构建自动排除' },
+		{ value: 'image', label: '封面图 (image)', hint: '2:1 封面占位' },
+		...altTypes.map(t => ({ value: `type:${t}`, label: `版式: ${t}`, hint: `默认 ${defaultType}` })),
+		{ value: 'references', label: '参考链接 (references)' },
+		{ value: 'recommend', label: '精选推荐 (recommend)' },
+	],
+	required: false,
+})
+if (isCancel(extras))
+	process.exit(0)
+const extraSet = new Set(extras)
+const selectedType = extras.find(v => v.startsWith('type:'))?.slice(5)
 // #endregion
 
 // #region frontmatter
@@ -152,20 +147,23 @@ const frontmatter = {
 	description: `讲述关于${title}的故事，并根据${tags?.join('、')}给出${category}。`,
 	date: dateStr,
 	updated: dateStr,
-	image: '# 封面图推荐 2:1，不含与标题重复的文字',
+	image: extraSet.has('image') || extraSet.has('recommend') ? '# 封面图推荐 2:1，不含与标题重复的文字' : undefined,
 	permalink,
-	type: type === 'tech' ? undefined : type,
+	type: selectedType,
 	categories: category === blogConfig.defaultCategory ? undefined : `[${category}]`,
 	tags: tags ? `[${tags.join(', ')}]` : undefined,
-	// draft: 'true # 撰写完成后，请删除此行',
+	recommend: extraSet.has('recommend') ? 100 : undefined,
+	draft: extraSet.has('draft') || undefined,
 }
+const frontmatterLines = Object.entries(frontmatter)
+	.filter(([, value]) => value !== undefined)
+	.map(([key, value]) => `${key}: ${value}`)
+if (extraSet.has('references'))
+	frontmatterLines.push('# references:\n#   - title: 参考标题\n#     link: https://example.com')
 // #endregion
 
 // #region 写文件
-fs.writeFileSync(mdPath, `---\n${Object.entries(frontmatter)
-	.filter(([, value]) => value !== undefined)
-	.map(([key, value]) => `${key}: ${value}`)
-	.join('\n')}
+fs.writeFileSync(mdPath, `---\n${frontmatterLines.join('\n')}
 ---
 
 ## 从${title}说起

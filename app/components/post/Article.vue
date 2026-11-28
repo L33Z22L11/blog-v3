@@ -12,6 +12,7 @@ const showAllDate = isTimeDiffSignificant(props.date, props.updated)
 	<article>
 		<h2 class="article-title text-creative">
 			{{ title }}
+			<PostDraft v-if="draft" />
 		</h2>
 
 		<p v-if="description" class="article-description">
